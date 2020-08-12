@@ -1251,6 +1251,9 @@ a
 a%5c.%EXT%
 a%5c.aspx
 a2e2gp2r2/x.jsp
+a4j/g/3_3_1.GAorg.richfaces.renderkit.html.Paint2DResource/DATA/
+a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/basic_classes.xcss/DATB/
+a4j/s/3_3_3.Finalorg.ajax4jsf.resource.UserResource/n/n/DATA/
 aadmin
 aadmin/
 ab/
@@ -2671,6 +2674,8 @@ cal
 calendar
 callback
 camadmin
+camunda
+camunda-welcome
 cancel.html
 Capfile
 careers
@@ -3177,6 +3182,10 @@ debug.py
 debug.txt
 debug.xml
 debug/
+debug/pprof/profile
+debug/pprof/heap
+debug/pprof/goroutine?debug=1
+debug/pprof/trace
 default
 default2.%EXT%
 DefaultWebApp
@@ -5852,6 +5861,7 @@ TechnologySamples/Taglib
 TechnologySamples/Taglib/
 teknoportal/readme.txt
 teleadmin
+telescope
 telephone
 telphin.log
 teluguadmin
@@ -5971,6 +5981,7 @@ tmp/whmcs.php
 tmp/xd.php
 tn
 TODO
+todo.txt
 tools
 tools/_backups/
 top

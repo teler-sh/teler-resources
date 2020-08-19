@@ -1,5 +1,7 @@
 # teler Resource Collections
 
+![Kitabisa SecLab](https://img.shields.io/badge/kitabisa-security%20project-blue)
+
 This is the main collection of external resources for [teler](https://github.com/kitabisa/teler) to detect potential threats which is updated daily and performs commit-and-push automatically.
 
 ## Contributions

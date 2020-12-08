@@ -1663,47 +1663,6 @@
       ]
     },
     {
-      "id": "cve-2019-15858",
-      "info": {
-        "author": "dwisiswant0 & fmunozs & patralos",
-        "description": "This template supports the detection part only. See references.\n\nadmin/includes/class.import.snippet.php in the \"Woody ad snippets\" plugin\nbefore 2.2.5 for WordPress allows unauthenticated options import,\nas demonstrated by storing an XSS payload for remote code execution.\n\nSource/References:\n- https://github.com/GeneralEG/CVE-2019-15858\n",
-        "name": "Unauthenticated Woody Ad Snippets WordPress Plugin RCE",
-        "severity": "high"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            },
-            {
-              "negative": true,
-              "part": "body",
-              "type": "word",
-              "words": [
-                "2.2.5"
-              ]
-            },
-            {
-              "part": "header",
-              "type": "word",
-              "words": [
-                "text/plain"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/wp-content/plugins/insert-php/readme.txt"
-          ]
-        }
-      ]
-    },
-    {
       "id": "cve-2019-16278",
       "info": {
         "author": "pikpikcu",
@@ -3888,6 +3847,46 @@
           "path": [
             "{{BaseURL}}/+CSCOT+/translation-table?type=mst&textdomain=/%2bCSCOE%2b/portal_inc.lua&default-language&lang=../",
             "{{BaseURL}}/+CSCOT+/oem-customization?app=AnyConnect&type=oem&platform=..&resource-type=..&name=%2bCSCOE%2b/portal_inc.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2020-4463",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "IBM Maximo Asset Management is vulnerable to an\nXML External Entity Injection (XXE) attack when processing XML data.\nA remote attacker could exploit this vulnerability to expose\nsensitive information or consume memory resources.\n\nReferences:\n- https://www.ibm.com/support/pages/security-bulletin-ibm-maximo-asset-management-vulnerable-information-disclosure-cve-2020-4463\n- https://github.com/Ibonok/CVE-2020-4463\n",
+        "name": "IBM Maximo Asset Management Information Disclosure via XXE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "body": "<?xml version='1.0' encoding='UTF-8'?>\n<max:QueryMXPERSON xmlns:max='http://www.ibm.com/maximo'>\n  <max:MXPERSONQuery></max:MXPERSONQuery>\n</max:QueryMXPERSON>\n",
+          "headers": {
+            "Content-Type": "application/xml"
+          },
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/xml"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "QueryMXPERSONResponse",
+                "MXPERSONSet"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/os/mxperson",
+            "{{BaseURL}}/meaweb/os/mxperson"
           ]
         }
       ]

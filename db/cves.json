@@ -2173,11 +2173,10 @@
               ]
             },
             {
-              "negative": true,
               "part": "header",
               "type": "word",
               "words": [
-                "application/json"
+                "text/html"
               ]
             }
           ],

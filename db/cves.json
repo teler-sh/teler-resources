@@ -2873,9 +2873,49 @@
       ]
     },
     {
+      "id": "cve-2020-10148",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template could allow to bypass authentication and execute API\ncommands which may result in a compromise of the SolarWinds instance.\n",
+        "name": "SolarWinds Orion API Auth Bypass Leads to RCE (SUPERNOVA)",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "SolarWinds.Orion.Core."
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/web.config.i18n.ashx?l=nuclei&v=nuclei"
+          ]
+        }
+      ]
+    },
+    {
       "id": "cve-2020-10199",
       "info": {
-        "auhtor": "hetroublemakr",
+        "author": "hetroublemakr",
         "description": "Sonatype Nexus Repository before 3.21.2 allows JavaEL Injection (issue 1 of 2).",
         "name": "Nexus Repository Manager 3 RCE",
         "severity": "high"
@@ -2912,7 +2952,7 @@
     {
       "id": "cve-2020-10204",
       "info": {
-        "auhtor": "hetroublemakr",
+        "author": "hetroublemakr",
         "description": "A Remote Code Execution vulnerability has been discovered in Nexus Repository Manager requiring immediate action. The vulnerability allows for an attacker with an administrative account on NXRM to execute arbitrary code by crafting a malicious request to NXRM",
         "name": "Sonatype Nexus Repository RCE",
         "severity": "high"

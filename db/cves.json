@@ -6387,7 +6387,11 @@
       },
       "requests": [
         {
-          "body": "op=login&username=;`cat /etc/passwd`&password=",
+          "body": "op=login&username=;`cat /etc/passwd`&password=\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
+          },
           "matchers": [
             {
               "part": "body",
@@ -6406,7 +6410,7 @@
           "matchers-condition": "and",
           "method": "POST",
           "path": [
-            "{{BaseURL}}/login.php"
+            "{{BaseURL}}/login"
           ]
         }
       ]
@@ -6871,8 +6875,8 @@
       "id": "CVE-2020-26214",
       "info": {
         "author": "CasperGN",
-        "description": "Alerta prior to version 8.1.0 is prone to Authentication Bypass when using LDAP as authorization provider and the LDAP server accepts Unauthenticated Bind reqests.",
-        "name": "Alerta Authentication Bypass (CVE-2020-26214)",
+        "description": "Alerta prior to version 8.1.0 is prone to Authentication Bypass when using LDAP as authorization provider and the LDAP server accepts Unauthenticated Bind requests.\n",
+        "name": "Alerta Authentication Bypass",
         "reference": "- https://github.com/advisories/GHSA-5hmm-x8q8-w5jh\n- https://tools.ietf.org/html/rfc4513#section-5.1.2\n- https://pypi.org/project/alerta-server/8.1.0/\n",
         "severity": "critical",
         "tags": "cve,cve2020,alerta"
@@ -7048,7 +7052,11 @@
         "author": "KareemSe1im",
         "description": "A vulnerability in the web services interface of Cisco Adaptive Security Appliance (ASA) Software and Cisco Firepower Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to conduct directory traversal attacks and obtain read and delete access to sensitive files on a targeted system.",
         "name": "CVE-2020-3187",
-        "reference": "https://twitter.com/aboul3la/status/1286809567989575685",
+        "reference": [
+          "https://twitter.com/aboul3la/status/1286809567989575685",
+          "http://packetstormsecurity.com/files/158648/Cisco-Adaptive-Security-Appliance-Software-9.7-Arbitrary-File-Deletion.html",
+          "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-path-JE3azWw43"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,cisco"
       },
@@ -7082,8 +7090,16 @@
       "id": "CVE-2020-3452",
       "info": {
         "author": "pdteam",
+        "description": "A vulnerability in the web services interface of Cisco Adaptive Security Appliance (ASA) Software and Cisco Firepower Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to conduct directory traversal attacks and read sensitive files on a targeted system. The vulnerability is due to a lack of proper input validation of URLs in HTTP requests processed by an affected device. An attacker could exploit this vulnerability by sending a crafted HTTP request containing directory traversal character sequences to an affected device. A successful exploit could allow the attacker to view arbitrary files within the web services file system on the targeted device. The web services file system is enabled when the affected device is configured with either WebVPN or AnyConnect features. This vulnerability cannot be used to obtain access to ASA or FTD system files or underlying operating system (OS) files.\n",
         "name": "CVE-2020-3452",
-        "reference": "https://twitter.com/aboul3la/status/1286012324722155525",
+        "reference": [
+          "https://twitter.com/aboul3la/status/1286012324722155525",
+          "http://packetstormsecurity.com/files/158646/Cisco-ASA-FTD-Remote-File-Disclosure.html",
+          "http://packetstormsecurity.com/files/158647/Cisco-Adaptive-Security-Appliance-Software-9.11-Local-File-Inclusion.html",
+          "http://packetstormsecurity.com/files/159523/Cisco-ASA-FTD-9.6.4.42-Path-Traversal.html",
+          "http://packetstormsecurity.com/files/160497/Cisco-ASA-9.14.1.10-FTD-6.6.0.1-Path-Traversal.html",
+          "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-ro-path-KJuQhB86"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,cisco,traversal"
       },
@@ -7424,7 +7440,7 @@
         "author": "dwisiswant0",
         "description": "Currently, all versions of MAGMI are vulnerable to CSRF due to the lack of CSRF tokens. RCE (via phpcli command) is possible in the event that a CSRF is leveraged against an existing admin session for MAGMI.",
         "name": "Cross Site Request Forgery (CSRF) in MAGMI (Magento Mass Importer) Plugin",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-5776",
+        "reference": "https://www.tenable.com/security/research/tra-2020-51",
         "severity": "high",
         "tags": "cve,cve2020,magmi"
       },
@@ -7590,7 +7606,13 @@
       "id": "CVE-2020-6287",
       "info": {
         "author": "dwisiswant0",
+        "description": "SAP NetWeaver AS JAVA (LM Configuration Wizard), versions - 7.30, 7.31, 7.40, 7.50, does not perform an authentication check which allows an attacker without prior authentication to execute configuration tasks to perform critical actions against the SAP Java system, including the ability to create an administrative user, and therefore compromising Confidentiality, Integrity and Availability of the system, leading to Missing Authentication Check.\n",
         "name": "Create an Administrative User in SAP NetWeaver AS JAVA (LM Configuration Wizard)",
+        "reference": [
+          "https://launchpad.support.sap.com/#/notes/2934135",
+          "https://wiki.scn.sap.com/wiki/pages/viewpage.action?pageId=552599675",
+          "https://www.onapsis.com/recon-sap-cyber-security-vulnerability"
+        ],
         "severity": "critical",
         "tags": "cve,cve2020,sap"
       },
@@ -7856,7 +7878,9 @@
       "id": "CVE-2020-8191",
       "info": {
         "author": "dwisiswant0",
+        "description": "Improper input validation in Citrix ADC and Citrix Gateway versions before 13.0-58.30, 12.1-57.18, 12.0-63.21, 11.1-64.14 and 10.5-70.18 and Citrix SDWAN WAN-OP versions before 11.1.1a, 11.0.3d and 10.2.7 allows reflected Cross Site Scripting (XSS).\n",
         "name": "Citrix ADC & NetScaler Gateway Reflected XSS",
+        "reference": "https://support.citrix.com/article/CTX276688",
         "severity": "high",
         "tags": "cve,cve2020,citrix,xss"
       },
@@ -7888,8 +7912,12 @@
       "id": "CVE-2020-8193",
       "info": {
         "author": "pdteam",
+        "description": "Improper access control in Citrix ADC and Citrix Gateway versions before 13.0-58.30, 12.1-57.18, 12.0-63.21, 11.1-64.14 and 10.5-70.18 and Citrix SDWAN WAN-OP versions before 11.1.1a, 11.0.3d and 10.2.7 allows unauthenticated access to certain URL endpoints.",
         "name": "Citrix unauthenticated LFI",
-        "reference": "https://github.com/jas502n/CVE-2020-8193",
+        "reference": [
+          "https://github.com/jas502n/CVE-2020-8193",
+          "http://packetstormsecurity.com/files/160047/Citrix-ADC-NetScaler-Local-File-Inclusion.html"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,citrix,traversal"
       },
@@ -8089,6 +8117,7 @@
         "author": "dwisiswant0",
         "description": "An unauthenticated arbitrary file read issue exists in all versions of Citrix ShareFile StorageZones (aka storage zones) Controller, including the most recent 5.10.x releases as of May 2020.",
         "name": "Citrix ShareFile StorageZones Unauthenticated Arbitrary File Read",
+        "reference": "https://support.citrix.com/article/CTX269106",
         "severity": "high",
         "tags": "cve,cve2020,citrix,traversal"
       },
@@ -8227,8 +8256,13 @@
       "id": "CVE-2020-9376",
       "info": {
         "author": "whynotke",
-        "description": "D-Link DIR-610 devices allow Information Disclosure via SERVICES=DEVICE.ACCOUNT%0AAUTHORIZED_GROUP=1 to getcfg.php.\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.\n\nReferences:\n- https://nvd.nist.gov/vuln/detail/CVE-2020-9376\n",
+        "description": "D-Link DIR-610 devices allow Information Disclosure via SERVICES=DEVICE.ACCOUNT%0AAUTHORIZED_GROUP=1 to getcfg.php.\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.\n",
         "name": "D-Link Information Disclosure via getcfg.php",
+        "reference": [
+          "https://gist.github.com/GouveaHeitor/dcbb67b301cc45adc00f8a6a2a0a590f",
+          "https://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10182",
+          "https://www.dlink.com.br/produto/dir-610/"
+        ],
         "severity": "high",
         "tags": "cve,cve2020,dlink"
       },
@@ -8304,7 +8338,7 @@
       "id": "CVE-2020-9484",
       "info": {
         "author": "dwisiswant0",
-        "description": "Apache Tomcat versions 10.0.0-M1 to 10.0.0-M4, 9.0.0.M1 to 9.0.34, 8.5.0 to 8.5.54 and 7.0.0 to 7.0.103 if a) an attacker is able to control the contents and name of a file on the server",
+        "description": "When using Apache Tomcat versions 10.0.0-M1 to 10.0.0-M4, 9.0.0.M1 to 9.0.34, 8.5.0 to 8.5.54 and 7.0.0 to 7.0.103 if\na) an attacker is able to control the contents and name of a file on the server; and\nb) the server is configured to use the PersistenceManager with a FileStore; and\nc) the PersistenceManager is configured with sessionAttributeValueClassNameFilter=\"null\" (the default unless a SecurityManager is used) or a sufficiently lax filter to allow the attacker provided object to be deserialized; and\nd) the attacker knows the relative file path from the storage location used by FileStore to the file the attacker has control over; then, using a specifically crafted request, the attacker will be able to trigger remote code execution via deserialization of the file under their control.\nNote that all of conditions a) to d) must be true for the attack to succeed.\n",
         "name": "Apache Tomcat RCE by deserialization",
         "reference": [
           "http://packetstormsecurity.com/files/157924/Apache-Tomcat-CVE-2020-9484-Proof-Of-Concept.html"

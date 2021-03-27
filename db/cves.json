@@ -3098,13 +3098,13 @@
           "matchers": [
             {
               "dsl": [
-                "contains(body_2, \"<script>alert(0);</script>\") == true"
+                "contains(body_2, \"<script>alert(0);</script>\")"
               ],
               "type": "dsl"
             },
             {
               "dsl": [
-                "contains(tolower(all_headers_2), 'text/html') == true"
+                "contains(tolower(all_headers_2), 'text/html')"
               ],
               "type": "dsl"
             }
@@ -6490,7 +6490,7 @@
           "matchers": [
             {
               "dsl": [
-                "contains(body, \"test-poc\") == true && status_code == 200"
+                "contains(body, \"test-poc\") && status_code == 200"
               ],
               "type": "dsl"
             }

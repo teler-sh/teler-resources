@@ -2841,7 +2841,9 @@
       "id": "CVE-2019-10092",
       "info": {
         "author": "pd-team",
+        "description": "In Apache HTTP Server 2.4.0-2.4.39, a limited cross-site scripting issue was reported affecting the mod_proxy error page. An attacker could cause the link on the error page to be malformed and instead point to a page of their choice. This would only be exploitable where a server was set up with proxying enabled but was misconfigured in such a way that the Proxy Error page was displayed.",
         "name": "Apache mod_proxy HTML Injection / Partial XSS",
+        "reference": "- https://github.com/DrunkenShells/Disclosures/tree/master/CVE-2019-10092-Limited%20Cross-Site%20Scripting%20in%20mod_proxy%20Error%20Page-Apache%20httpd\n- https://httpd.apache.org/security/vulnerabilities_24.html\n",
         "severity": "medium",
         "tags": "cve,cve2019,apache,htmli"
       },
@@ -2999,7 +3001,12 @@
       "id": "CVE-2019-11580",
       "info": {
         "author": "dwisiswant0",
+        "description": "Atlassian Crowd and Crowd Data Center\nhad the pdkinstall development plugin incorrectly enabled in release builds.\nAttackers who can send unauthenticated or authenticated requests\nto a Crowd or Crowd Data Center instance can exploit this vulnerability\nto install arbitrary plugins, which permits remote code execution on\nsystems running a vulnerable version of Crowd or Crowd Data Center.\nAll versions of Crowd from version 2.1.0 before 3.0.5 (the fixed version for 3.0.x),\nfrom version 3.1.0 before 3.1.6 (the fixed version for 3.1.x),\nfrom version 3.2.0 before 3.2.8 (the fixed version for 3.2.x),\nfrom version 3.3.0 before 3.3.5 (the fixed version for 3.3.x),\nand from version 3.4.0 before 3.4.4 (the fixed version for 3.4.x) are affected by this vulnerability.\n",
         "name": "Atlassian Crowd & Crowd Data Center - Unauthenticated RCE",
+        "reference": [
+          "https://github.com/jas502n/CVE-2019-11580",
+          "https://jira.atlassian.com/browse/CWD-5388"
+        ],
         "severity": "critical",
         "tags": "cve,cve2019,atlassian,rce"
       },
@@ -3122,7 +3129,9 @@
       "id": "CVE-2019-12314",
       "info": {
         "author": "madrobot",
+        "description": "Deltek Maconomy 2.2.5 is prone to local file inclusion via absolute path traversal in the WS.macx1.W_MCS/ PATH_INFO, as demonstrated by a cgi-bin/Maconomy/MaconomyWS.macx1.W_MCS/etc/passwd URI.",
         "name": "Deltek Maconomy 2.2.5 LFIl",
+        "reference": "http://packetstormsecurity.com/files/153079/Deltek-Maconomy-2.2.5-Local-File-Inclusion.html\nhttps://github.com/JameelNabbo/exploits/blob/master/Maconomy%20Erp%20local%20file%20include.txt\nhttps://github.com/ras313/CVE-2019-12314/security/advisories/GHSA-8762-rf4g-23xm\n",
         "severity": "high",
         "tags": "cve,cve2019,lfi"
       },
@@ -3299,7 +3308,9 @@
       "id": "CVE-2019-14223",
       "info": {
         "author": "pd-team",
+        "description": "An issue was discovered in Alfresco Community Edition versions below 5.2.6, 6.0.N and 6.1.N. The Alfresco Share application is vulnerable to an Open Redirect attack via a crafted POST request. By manipulating the POST parameters, an attacker can redirect a victim to a malicious website over any protocol the attacker desires (e.g.,http, https, ftp, smb, etc.).",
         "name": "Alfresco Share Open Redirect",
+        "reference": "- https://community.alfresco.com/content?filterID=all~objecttype~thread%5Bquestions%5D\n- https://github.com/DrunkenShells/Disclosures/tree/master/CVE-2019-14223-Open%20Redirect%20in%20Alfresco%20Share-Alfresco%20Community\n",
         "severity": "low",
         "tags": "cve,cve2019,redirect"
       },
@@ -3772,8 +3783,9 @@
       "id": "CVE-2019-17506",
       "info": {
         "author": "pikpikcu",
+        "description": "There are some web interfaces without authentication requirements on D-Link DIR-868L B1-2.03 and DIR-817LW A1-1.04 routers. An attacker can get the router's username and password (and other information) via a DEVICE.ACCOUNT value for SERVICES in conjunction with AUTHORIZED_GROUP=1%0a to getcfg.php. This could be used to control the router remotely.",
         "name": "DLINK DIR-868L & DIR-817LW Info Leak",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17506",
+        "reference": "https://github.com/dahua966/Routers-vuls/blob/master/DIR-868/name%26passwd.py",
         "severity": "critical",
         "tags": "cve,cve2019,dlink"
       },
@@ -3973,7 +3985,9 @@
       "id": "CVE-2019-19781",
       "info": {
         "author": "organiccrap",
+        "description": "An issue was discovered in Citrix Application Delivery Controller (ADC) and Gateway 10.5, 11.1, 12.0, 12.1, and 13.0. They allow Directory Traversal.",
         "name": "Citrix ADC Directory Traversal",
+        "reference": "https://support.citrix.com/article/CTX267027",
         "severity": "high",
         "tags": "cve,cve2019,citrix,lfi"
       },
@@ -4879,7 +4893,9 @@
       "id": "CVE-2019-9733",
       "info": {
         "author": "akshansh",
+        "description": "An issue was discovered in JFrog Artifactory 6.7.3. By default, the access-admin account is used to reset the password of the admin account in case an administrator gets locked out from the Artifactory console. This is only allowable from a connection directly from localhost, but providing a X-Forwarded-For HTTP header to the request allows an unauthenticated user to login with the default credentials of the access-admin account while bypassing the whitelist of allowed IP addresses. The access-admin account can use Artifactory's API to request authentication tokens for all users including the admin account and, in turn, assume full control of all artifacts and repositories managed by Artifactory.",
         "name": "Artifactory Access-Admin Login Bypass",
+        "reference": "- http://packetstormsecurity.com/files/152172/JFrog-Artifactory-Administrator-Authentication-Bypass.html\n- https://www.ciphertechs.com/jfrog-artifactory-advisory/\n- https://www.jfrog.com/confluence/display/RTF/Release+Notes#ReleaseNotes-Artifactory6.8.6\n",
         "severity": "critical",
         "tags": "cve,cve2019,artifactory"
       },
@@ -4911,7 +4927,9 @@
       "id": "CVE-2019-9955",
       "info": {
         "author": "pd-team",
+        "description": "On Zyxel ATP200, ATP500, ATP800, USG20-VPN, USG20W-VPN, USG40, USG40W, USG60, USG60W, USG110, USG210, USG310, USG1100, USG1900, USG2200-VPN, ZyWALL 110, ZyWALL 310, ZyWALL 1100 devices, the security firewall login page is vulnerable to Reflected XSS via the unsanitized 'mp_idx' parameter.",
         "name": "CVE-2019-9955 Zyxel XSS",
+        "reference": "http://packetstormsecurity.com/files/152525/Zyxel-ZyWall-Cross-Site-Scripting.html\nhttp://seclists.org/fulldisclosure/2019/Apr/22\nhttps://www.exploit-db.com/exploits/46706/\nhttps://www.securitymetrics.com/blog/Zyxel-Devices-Vulnerable-Cross-Site-Scripting-Login-page\nhttps://www.zyxel.com/support/reflected-cross-site-scripting-vulnerability-of-firewalls.shtml\n",
         "severity": "low",
         "tags": "cve,cve2019,xss"
       },
@@ -9308,7 +9326,7 @@
         "author": "madrobot",
         "description": "Apache OFBiz has unsafe deserialization prior to 17.12.06. An unauthenticated attacker can use this vulnerability to successfully take over Apache OFBiz.",
         "name": "Apache OFBiz RMI deserializes Arbitrary Code Execution",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-26295",
+        "reference": "- https://github.com/yumusb/CVE-2021-26295-POC\n- https://lists.apache.org/thread.html/r3c1802eaf34aa78a61b4e8e044c214bc94accbd28a11f3a276586a31%40%3Cuser.ofbiz.apache.org%3E\n- https://lists.apache.org/thread.html/r6e4579c4ebf7efeb462962e359501c6ca4045687f12212551df2d607@%3Cnotifications.ofbiz.apache.org%3E\n",
         "severity": "critical",
         "tags": "apache,cve,cve2021,rce,ofbiz"
       },

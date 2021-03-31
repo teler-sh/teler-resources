@@ -2941,7 +2941,12 @@
       "id": "CVE-2019-11248",
       "info": {
         "author": 52971,
+        "description": "The debugging endpoint /debug/pprof is exposed over the unauthenticated Kubelet healthz port. The go pprof endpoint is exposed over the Kubelet's healthz port. This debugging endpoint can potentially leak sensitive information such as internal Kubelet memory addresses and configuration, or for limited denial of service. Versions prior to 1.15.0, 1.14.4, 1.13.8, and 1.12.10 are affected. The issue is of medium severity, but not exposed by the default configuration.",
         "name": "exposed_pprof",
+        "reference": [
+          "https://medium.com/bugbountywriteup/my-first-bug-bounty-21d3203ffdb0",
+          "http://mmcloughlin.com/posts/your-pprof-is-showing"
+        ],
         "severity": "medium",
         "tags": "cve,cve2019,debug"
       },
@@ -3204,7 +3209,9 @@
       "id": "CVE-2019-12593",
       "info": {
         "author": "pikpikcu",
-        "name": "IIceWarp <=10.4.4 - Local File Inclusion",
+        "description": "IceWarp Mail Server through 10.4.4 is prone to a local file inclusion vulnerability via webmail/calendar/minimizer/index.php?style=..%5c directory traversal.",
+        "name": "IceWarp <=10.4.4 - Local File Inclusion",
+        "reference": "https://github.com/JameelNabbo/exploits/blob/master/IceWarp%20%3C%3D10.4.4%20local%20file%20include.txt",
         "severity": "high",
         "tags": "cve,cve2019,lfi"
       },
@@ -3445,7 +3452,9 @@
       "id": "CVE-2019-15043",
       "info": {
         "author": "bing0o",
+        "description": "In Grafana 2.x through 6.x before 6.3.4, parts of the HTTP API allow unauthenticated use. This makes it possible to run a denial of service attack against the server running Grafana.",
         "name": "Grafana unauthenticated API",
+        "reference": "- https://grafana.com/blog/2019/08/29/grafana-5.4.5-and-6.3.4-released-with-important-security-fix/\n- https://community.grafana.com/t/grafana-5-4-5-and-6-3-4-security-update/20569\tVendor Advisory\n- https://community.grafana.com/t/release-notes-v6-3-x/19202\n",
         "severity": "medium",
         "tags": "cve,cve2019,grafana"
       },
@@ -3545,6 +3554,7 @@
       "id": "CVE-2019-16097",
       "info": {
         "author": "pikpikcu",
+        "description": "core/api/user.go in Harbor 1.7.0 through 1.8.2 allows non-admin users to create admin accounts via the POST /api/users API, when Harbor is setup with DB as authentication backend and allow user to do self-registration. Fixed version: v1.7.6 v1.8.3. v.1.9.0. Workaround without applying the fix: configure Harbor to use non-DB authentication backend such as LDAP.\n",
         "issues": "https://github.com/goharbor/harbor/issues/8951",
         "name": "Harbor Enables Privilege Escalation From Zero to admin",
         "reference": "https://unit42.paloaltonetworks.com/critical-vulnerability-in-harbor-enables-privilege-escalation-from-zero-to-admin-cve-2019-16097/",
@@ -3568,6 +3578,7 @@
               ]
             },
             {
+              "condition": "or",
               "status": [
                 201,
                 409
@@ -3891,6 +3902,7 @@
       "id": "CVE-2019-18393",
       "info": {
         "author": "pikpikcu",
+        "description": "PluginServlet.java in Ignite Realtime Openfire through 4.4.2 does not ensure that retrieved files are located under the Openfire home directory, aka a directory traversal vulnerability.",
         "name": "Openfire LFI",
         "reference": "https://swarm.ptsecurity.com/openfire-admin-console/",
         "severity": "high",
@@ -3926,8 +3938,9 @@
       "id": "CVE-2019-18394",
       "info": {
         "author": "pdteam - nuclei.projectdiscovery.io",
+        "description": "A Server Side Request Forgery (SSRF) vulnerability in FaviconServlet.java in Ignite Realtime Openfire through 4.4.2 allows attackers to send arbitrary HTTP GET requests.",
         "name": "Openfire Full Read SSRF",
-        "refrense": "https://swarm.ptsecurity.com/openfire-admin-console/",
+        "refrense": "- https://swarm.ptsecurity.com/openfire-admin-console/\n- https://github.com/igniterealtime/Openfire/pull/1497\n",
         "severity": "critical",
         "tags": "cve,cve2019,ssrf"
       },
@@ -3952,7 +3965,9 @@
       "id": "CVE-2019-19368",
       "info": {
         "author": "madrobot",
+        "description": "A Reflected Cross Site Scripting was discovered in the Login page of Rumpus FTP Web File Manager 8.2.9.1. An attacker can exploit it by sending a crafted link to end users and can execute arbitrary Javascripts",
         "name": "Rumpus FTP Web File Manager 8.2.9.1 XSS",
+        "reference": "https://github.com/harshit-shukla/CVE-2019-19368/",
         "severity": "medium",
         "tags": "cve,cve2019,xss"
       },
@@ -4012,7 +4027,9 @@
       "id": "CVE-2019-19908",
       "info": {
         "author": "madrobot",
+        "description": "phpMyChat-Plus 1.98 is vulnerable to reflected XSS via JavaScript injection into the password reset URL. In the URL, the pmc_username parameter to pass_reset.php is vulnerable.",
         "name": "phpMyChat-Plus XSS",
+        "reference": "https://cinzinga.github.io/CVE-2019-19908/",
         "severity": "medium",
         "tags": "cve,cve2019,xss"
       },
@@ -4045,6 +4062,7 @@
       "id": "CVE-2019-19985",
       "info": {
         "author": "KBA@SOGETI_ESEC, madrobot & dwisiswant0",
+        "description": "The WordPress plugin, Email Subscribers & Newsletters, before 4.2.3 had a flaw that allowed unauthenticated file download with user information disclosure.",
         "name": "WordPress Plugin Email Subscribers & Newsletters 4.2.2 - Unauthenticated File Download",
         "refrense": "https://www.exploit-db.com/exploits/48698",
         "severity": "medium",
@@ -4161,7 +4179,9 @@
       "id": "CVE-2019-2725",
       "info": {
         "author": "dwisiswant0",
+        "description": "Oracle WebLogic Server component of Oracle Fusion Middleware (subcomponent: Web Services). Supported versions that are affected are 10.3.6.0.0 and 12.1.3.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server. Successful attacks of this vulnerability can result in takeover of Oracle WebLogic Server.\n",
         "name": "Oracle WebLogic Server - Unauthenticated RCE",
+        "reference": "- https://paper.seebug.org/910/\n- https://www.exploit-db.com/exploits/46780/\n- https://www.oracle.com/security-alerts/cpujan2020.html\n",
         "severity": "critical",
         "tags": "cve,cve2019,oracle,weblogic,rce"
       },
@@ -4317,7 +4337,9 @@
       "id": "CVE-2019-3799",
       "info": {
         "author": "madrobot",
+        "description": "Spring Cloud Config, versions 2.1.x prior to 2.1.2, versions 2.0.x prior to 2.0.4, and versions 1.4.x prior to 1.4.6, and older unsupported versions allow applications to serve arbitrary configuration files through the spring-cloud-config-server module. A malicious user, or attacker, can send a request using a specially crafted URL that can lead a directory traversal attack.",
         "name": "Spring-Cloud-Config-Server Directory Traversal",
+        "reference": "- https://github.com/mpgn/CVE-2019-3799\n- https://pivotal.io/security/cve-2019-3799\n",
         "severity": "high",
         "tags": "cve,cve2019,lfi"
       },
@@ -4350,8 +4372,9 @@
       "id": "CVE-2019-5127",
       "info": {
         "author": "pikpikcu",
+        "description": "A command injection have been found in YouPHPTube Encoder. A successful attack could allow an attacker to compromise the server. Exploitable unauthenticated command injections exist in YouPHPTube Encoder 2.3 a plugin for providing encoder functionality in YouPHPTube. The parameter base64Url in /objects/getImage.php is vulnerable to a command injection attack.",
         "name": "YouPHPTube Encoder RCE",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-5127",
+        "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2019-0917",
         "severity": "critical",
         "tags": "cve,cve2019,rce"
       },
@@ -4408,8 +4431,9 @@
       "id": "CVE-2019-5418",
       "info": {
         "author": "omarkurt",
+        "description": "There is a File Content Disclosure vulnerability in Action View <5.2.2.1, <5.1.6.2, <5.0.7.2, <4.2.11.1 and v3 where specially crafted accept headers can cause contents of arbitrary files on the target system's filesystem to be exposed.",
         "name": "File Content Disclosure on Rails",
-        "reference": "https://github.com/omarkurt/CVE-2019-5418",
+        "reference": "- https://github.com/omarkurt/CVE-2019-5418\n- https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/\n",
         "severity": "medium",
         "tags": "cve,cve2019,rails,lfi"
       },
@@ -4546,7 +4570,9 @@
       "id": "CVE-2019-7219",
       "info": {
         "author": "pd-team",
+        "description": "Unauthenticated reflected cross-site scripting (XSS) exists in Zarafa Webapp 2.0.1.47791 and earlier. NOTE: this is a discontinued product. The issue was fixed in later Zarafa Webapp versions; however, some former Zarafa Webapp customers use the related Kopano product instead.\n",
         "name": "Zarafa WebApp Reflected XSS",
+        "reference": "- https://github.com/verifysecurity/CVE-2019-7219\n- https://stash.kopano.io/repos?visibility=public\n",
         "severity": "low",
         "tags": "cve,cve2019,zarafa,xss"
       },
@@ -4586,6 +4612,7 @@
       "id": "CVE-2019-7256",
       "info": {
         "author": "pikpikcu",
+        "description": "Linear eMerge E3-Series devices allow Command Injections.",
         "name": "eMerge E3 1.00-06 - Remote Code Execution",
         "reference": "https://www.exploit-db.com/exploits/47619",
         "severity": "critical",
@@ -4619,8 +4646,9 @@
       "id": "CVE-2019-7609",
       "info": {
         "author": "dwisiswant0",
+        "description": "Kibana versions before 5.6.15 and 6.6.1 contain an arbitrary code execution flaw in the Timelion visualizer. An attacker with access to the Timelion application could send a request that will attempt to execute javascript code. This could possibly lead to an attacker executing arbitrary commands with permissions of the Kibana process on the host system.",
         "name": "Kibana Timelion Arbitrary Code Execution",
-        "reference": "https://github.com/mpgn/CVE-2019-7609",
+        "reference": "- https://github.com/mpgn/CVE-2019-7609\n- https://discuss.elastic.co/t/elastic-stack-6-6-1-and-5-6-15-security-update/169077\n",
         "severity": "critical",
         "tags": "cve,cve2019,kibana,rce"
       },
@@ -4665,7 +4693,9 @@
       "id": "CVE-2019-8442",
       "info": {
         "author": "Kishore Krishna (siLLyDaddy)",
+        "description": "The CachingResourceDownloadRewriteRule class in Jira before version 7.13.4, and from version 8.0.0 before version 8.0.4, and from version 8.1.0 before version 8.1.1 allows remote attackers to access files in the Jira webroot under the META-INF directory via a lax path access check.",
         "name": "JIRA Directory Traversal",
+        "reference": "https://jira.atlassian.com/browse/JRASERVER-69241",
         "severity": "medium",
         "tags": "cve,cve2019,atlassian,jira,lfi"
       },
@@ -4697,8 +4727,9 @@
       "id": "CVE-2019-8449",
       "info": {
         "author": "Harsh Bothra",
+        "description": "The /rest/api/latest/groupuserpicker resource in Jira before version 8.4.0 allows remote attackers to enumerate usernames via an information disclosure vulnerability.",
         "name": "JIRA Unauthenticated Sensitive Information Disclosure",
-        "reference": "https://www.doyler.net/security-not-included/more-jira-enumeration",
+        "reference": "- https://www.doyler.net/security-not-included/more-jira-enumeration\n- https://jira.atlassian.com/browse/JRASERVER-69796\n",
         "severity": "medium",
         "tags": "cve,cve2019,atlassian,jira"
       },
@@ -4731,8 +4762,9 @@
       "id": "CVE-2019-8451",
       "info": {
         "author": "TechbrunchFR",
+        "description": "The /plugins/servlet/gadgets/makeRequest resource in Jira before version 8.4.0 allows remote attackers to access the content of internal network resources via a Server Side Request Forgery (SSRF) vulnerability due to a logic bug in the JiraWhitelist class.",
         "name": "JIRA SSRF in the /plugins/servlet/gadgets/makeRequest resource",
-        "reference": "https://www.tenable.com/blog/cve-2019-8451-proof-of-concept-available-for-server-side-request-forgery-ssrf-vulnerability-in",
+        "reference": "- https://www.tenable.com/blog/cve-2019-8451-proof-of-concept-available-for-server-side-request-forgery-ssrf-vulnerability-in\n- https://jira.atlassian.com/browse/JRASERVER-69793\n",
         "severity": "medium",
         "tags": "cve,cve2019,atlassian,jira,ssrf"
       },
@@ -4762,7 +4794,9 @@
       "id": "CVE-2019-8903",
       "info": {
         "author": "madrobot",
+        "description": "index.js in Total.js Platform before 3.2.3 allows path traversal.",
         "name": "Totaljs - Unathenticated Directory Traversal",
+        "reference": "- https://blog.certimetergroup.com/it/articolo/security/total.js-directory-traversal-cve-2019-8903\n- https://github.com/totaljs/framework/commit/c37cafbf3e379a98db71c1125533d1e8d5b5aef7\n- https://github.com/totaljs/framework/commit/de16238d13848149f5d1dae51f54e397a525932b\n",
         "severity": "high",
         "tags": "cve,cve2019,totaljs,lfi"
       },
@@ -4795,7 +4829,9 @@
       "id": "CVE-2019-8982",
       "info": {
         "author": "madrobot",
+        "description": "com/wavemaker/studio/StudioService.java in WaveMaker Studio 6.6 mishandles the studioService.download?method=getContent&inUrl= value, leading to disclosure of local files and SSRF.",
         "name": "Wavemaker Studio 6.6 LFI/SSRF",
+        "reference": "https://www.exploit-db.com/exploits/45158",
         "severity": "high",
         "tags": "cve,cve2019,wavemaker,lfi,ssrf"
       },
@@ -4828,8 +4864,9 @@
       "id": "CVE-2019-9041",
       "info": {
         "author": "pikpikcu",
+        "description": "An issue was discovered in ZZZCMS zzzphp V1.6.1. In the inc/zzz_template.php file, the parserIfLabel() function's filtering is not strict, resulting in PHP code execution, as demonstrated by the if:assert substring.",
         "name": "ZZZCMS 1.6.1 RCE",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-9041",
+        "reference": "- http://www.iwantacve.cn/index.php/archives/118/\n- https://www.exploit-db.com/exploits/46454/\n",
         "severity": "high",
         "tags": "cve,cve2019,zzzcms,rce"
       },
@@ -4957,6 +4994,7 @@
       "id": "CVE-2019-9978",
       "info": {
         "author": "madrobot & dwisiswant0",
+        "description": "The social-warfare plugin before 3.5.3 for WordPress has stored XSS via the wp-admin/admin-post.php?swp_debug=load_options swp_url parameter, as exploited in the wild in March 2019. This affects Social Warfare and Social Warfare Pro.",
         "name": "WordPress social-warfare RFI",
         "reference": "https://github.com/mpgn/CVE-2019-9978",
         "severity": "critical",
@@ -7378,6 +7416,42 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/settings/values"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-28208",
+      "info": {
+        "author": "pdteam",
+        "description": "An email address enumeration vulnerability exists in the password reset function of Rocket.Chat through 3.9.1.",
+        "name": "RocketChat Unauthenticated Email enumeration",
+        "reference": "https://trovent.io/security-advisory-2010-01",
+        "severity": "medium",
+        "tags": "rockethchat"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"result\\\":false",
+                "\"success\":true"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /api/v1/method.callAnon/sendForgotPasswordEmail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nX-Requested-With: XMLHttpRequest\nContent-Type: application/json\nUser-Agent: Ophion SecurityGroup\nAccept-Language: en-US,en;q=0.9\n\n{\"message\":\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"sendForgotPasswordEmail\\\",\\\"params\\\":[\\\"user@local.email\\\"],\\\"id\\\":\\\"3\\\"}\"}\n"
           ]
         }
       ]

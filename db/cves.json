@@ -3320,8 +3320,11 @@
       "id": "CVE-2019-12461",
       "info": {
         "author": "pikpikcu",
+        "description": "Web Port 1.19.1 allows XSS via the /log type parameter.",
         "name": "WebPort 1.19.1 - Reflected Cross-Site Scripting",
+        "reference": "https://github.com/EmreOvunc/WebPort-v1.19.1-Reflected-XSS",
         "severity": "medium",
+        "software": "https://webport.se/nedladdningar/",
         "tags": "cve,cve2019,xss"
       },
       "requests": [
@@ -3631,6 +3634,7 @@
       "id": "CVE-2019-15107",
       "info": {
         "author": "bp0lr",
+        "description": "An issue was discovered in Webmin <=1.920. The parameter old in password_change.cgi contains a command injection vulnerability.",
         "name": "Webmin <= 1.920 Unauhenticated Remote Command Execution",
         "reference": "https://pentest.com.tr/exploits/DEFCON-Webmin-1920-Unauthenticated-Remote-Command-Execution.html",
         "severity": "high",
@@ -4448,7 +4452,7 @@
         "author": "Ganofins",
         "description": "The /rest/api/2/user/picker rest resource in Jira before version 7.13.3, from version 8.0.0 before version 8.0.4, and from version 8.1.0 before version 8.1.1 allows remote attackers to enumerate usernames via an incorrect authorisation check.",
         "name": "User enumeration via an incorrect authorisation check",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-3403",
+        "reference": "https://jira.atlassian.com/browse/JRASERVER-69242",
         "severity": "medium",
         "tags": "cve,cve2019,atlassian,jira"
       },
@@ -7251,7 +7255,7 @@
         "author": "dhiyaneshDK",
         "description": "An Open Redirect vulnerability in EpiServer Find before 13.2.7 allows an attacker to redirect users to untrusted websites via the _t_redirect parameter in a crafted URL, such as a /find_v2/_click URL.",
         "name": "CVE-2020-24550",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-24550",
+        "reference": "https://labs.nettitude.com/blog/cve-2020-24550-open-redirect-in-episerver-find/",
         "severity": "medium",
         "tags": "cve,cve2020,redirect,episerver"
       },
@@ -9377,7 +9381,7 @@
       "info": {
         "author": "dwisiswant0",
         "description": "Jellyfin allows unauthenticated arbitrary file read. This issue is more prevalent when\nWindows is used as the host OS. Servers that are exposed to the public Internet are\npotentially at risk. This is fixed in version 10.7.1.\n",
-        "name": "Jellyfin prior to 10.7.0 Unauthenticated Abritrary File Read",
+        "name": "Jellyfin prior to 10.7.0 Unauthenticated Arbitrary File Read",
         "reference": "https://securitylab.github.com/advisories/GHSL-2021-050-jellyfin/",
         "severity": "high",
         "tags": "cve,cve2021,jellyfin,lfi"

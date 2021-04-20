@@ -1,0 +1,46 @@
+name: "Update resources database"
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - name: Install dependencies
+        run: sudo apt install jq -y
+
+      - name: Set up CVEs parser
+        run: |
+          git clone https://github.com/projectdiscovery/nuclei-templates.git ~/nuclei-templates
+          cat > cves.go << EOF
+          ${{ secrets.CVE_PARSER }}
+          EOF
+
+      - name: Downloading resources
+        run: |
+          mkdir -p db
+          wget -q "https://raw.githubusercontent.com/enygma/expose/master/src/Expose/filter_rules.json" -O "db/common-web-attacks.json" &
+          wget -q "https://raw.githubusercontent.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker/master/_generator_lists/bad-ip-addresses.list" -O "db/bad-ip-addresses.txt" &
+          wget -q "https://raw.githubusercontent.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker/master/_generator_lists/bad-referrers.list" -O "db/bad-referrers.txt" &
+          wget -q "https://raw.githubusercontent.com/JayBizzle/Crawler-Detect/master/raw/Crawlers.txt" -O "db/bad-crawlers.txt" &
+          wget -q "https://raw.githubusercontent.com/maurosoria/dirsearch/master/db/dicc.txt" -O "db/directory-bruteforces.txt" &
+          wait
+          go run cves.go ~/nuclei-templates/cves/ | jq . > db/cves.json
+
+      - name: Push resources
+        run: |
+          git config --local user.email "me@dw1.io"
+          git config --local user.name "Dwi Siswanto"
+          git add .
+          git commit -m ":spiral_notepad: Update resources [$(date)] :robot:" --allow-empty
+          git push origin master

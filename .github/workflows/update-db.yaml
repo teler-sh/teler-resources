@@ -2,7 +2,7 @@ name: "Update resources database"
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   update:

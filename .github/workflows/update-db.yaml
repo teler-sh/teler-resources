@@ -3,6 +3,7 @@ name: "Update resources database"
 on:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   update:
@@ -17,12 +18,14 @@ jobs:
           go-version: 1.16
 
       - name: Install dependencies
-        run: sudo apt install jq -y
+        run: |
+          sudo apt install jq -y
+          go get github.com/go-yaml/yaml
 
       - name: Set up CVEs parser
         run: |
           git clone https://github.com/projectdiscovery/nuclei-templates.git ~/nuclei-templates
-          cat > cves.go << EOF
+          cat 2>/dev/null > cves.go << EOF
           ${{ secrets.CVE_PARSER }}
           EOF
 
@@ -39,8 +42,12 @@ jobs:
 
       - name: Push resources
         run: |
+          COMMIT_MSG=":spiral_notepad:"
+          [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && COMMIT_MSG+=" [force]"
+          COMMIT_MSG+=" Update resources [$(date)] :robot:"
+
           git config --local user.email "me@dw1.io"
           git config --local user.name "Dwi Siswanto"
           git add .
-          git commit -m ":spiral_notepad: Update resources [$(date)] :robot:" --allow-empty
+          git commit -m "${COMMIT_MSG}" --allow-empty
           git push origin master

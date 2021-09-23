@@ -12539,9 +12539,16 @@
       "id": "CVE-2018-16836",
       "info": {
         "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-16836",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Rubedo through 3.4.0 contains a Directory Traversal vulnerability in the theme component, allowing unauthenticated attackers to read and execute arbitrary files outside of the service root path, as demonstrated by a /theme/default/img/%2e%2e/..//etc/passwd URI.",
         "name": "Rubedo CMS 3.4.0 - Directory Traversal",
         "reference": "https://www.exploit-db.com/exploits/45385",
-        "severity": "high",
+        "severity": "critical",
         "tags": "cve,cve2018,rubedo,lfi"
       },
       "requests": [
@@ -27268,6 +27275,42 @@
           "raw": [
             "POST /ui/h5-vsan/rest/proxy/service/com.vmware.vsan.client.services.capability.VsanCapabilityProvider/getClusterCapabilityData HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\n\n{\"methodInput\":[{\"type\":\"ClusterComputeResource\",\"value\": null,\"serverGuid\": null}]}\n"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-22005",
+      "info": {
+        "author": "PR3R00T",
+        "description": "The vCenter Server contains an arbitrary file upload vulnerability in the Analytics service. VMware has evaluated the severity of this issue to be in the Critical severity range with a maximum CVSSv3 base score of 9.8.",
+        "name": "VMware vCenter Server file upload vulnerability",
+        "reference": [
+          "https://kb.vmware.com/s/article/85717",
+          "https://www.vmware.com/security/advisories/VMSA-2021-0020.html",
+          "https://core.vmware.com/vmsa-2021-0020-questions-answers-faq"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,vmware,vcenter"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "dsl": [
+                "status_code_1 == 200",
+                "status_code_2 == 201",
+                "contains(body_1, 'VMware vSphere')",
+                "content_length_2 == 0"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /analytics/telemetry/ph/api/hyper/send?_c&_i=test HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\ntest_data\n"
+          ],
+          "req-condition": true
         }
       ]
     },

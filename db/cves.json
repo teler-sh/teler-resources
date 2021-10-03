@@ -24265,7 +24265,8 @@
           "path": [
             "{{BaseURL}}/unauth/php/change_password.php/%22%3E%3Csvg%2Fonload%3Dalert(1)%3E",
             "{{BaseURL}}/php/change_password.php/%22%3E%3Csvg%2Fonload%3Dalert(1)%3E"
-          ]
+          ],
+          "stop-at-first-match": true
         }
       ]
     },
@@ -35582,6 +35583,12 @@
       "id": "CVE-2021-40868",
       "info": {
         "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-40868",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
         "description": "In Cloudron 6.2, the returnTo parameter on the login page is vulnerable to Reflected XSS.",
         "name": "Cloudron 6.2 Cross Site Scripting",
         "reference": [

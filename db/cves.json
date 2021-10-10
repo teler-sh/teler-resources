@@ -7052,7 +7052,8 @@
             "{{BaseURL}}/PhpSpreadsheet/Writer/PDF/DomPDF.php?input_file=dompdf.php",
             "{{BaseURL}}/lib/dompdf/dompdf.php?input_file=dompdf.php",
             "{{BaseURL}}/includes/dompdf/dompdf.php?input_file=dompdf.php"
-          ]
+          ],
+          "stop-at-first-match": true
         }
       ]
     },
@@ -12872,7 +12873,8 @@
             "{{BaseURL}}/mantisBT/verify.php?id=1&confirm_hash=",
             "{{BaseURL}}/mantisbt-2.3.0/verify.php?id=1&confirm_hash=",
             "{{BaseURL}}/bugs/verify.php?confirm_hash=&id=1"
-          ]
+          ],
+          "stop-at-first-match": true
         }
       ]
     },

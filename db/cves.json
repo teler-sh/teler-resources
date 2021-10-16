@@ -20711,7 +20711,8 @@
               "type": "word",
               "words": [
                 "uid=",
-                "gid="
+                "gid=",
+                "groups="
               ]
             },
             {

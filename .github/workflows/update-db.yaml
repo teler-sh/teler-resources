@@ -12,23 +12,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@master
 
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.17
-
       - name: Install dependencies
-        run: |
-          sudo apt install jq -y
-          go mod init github.com/${{ github.repository }}
-
-      - name: Set up CVEs parser
-        run: |
-          git clone https://github.com/projectdiscovery/nuclei-templates.git ~/nuclei-templates
-          cat 2>/dev/null > cves.go << EOF
-          ${{ secrets.CVE_PARSER }}
-          EOF
-          go mod tidy
+        run: sudo apt install jq -y
 
       - name: Downloading resources
         run: |
@@ -39,7 +24,7 @@ jobs:
           wget -q "https://raw.githubusercontent.com/JayBizzle/Crawler-Detect/master/raw/Crawlers.txt" -O "db/bad-crawlers.txt" &
           wget -q "https://raw.githubusercontent.com/maurosoria/dirsearch/master/db/dicc.txt" -O "db/directory-bruteforces.txt" &
           wait
-          go run cves.go ~/nuclei-templates/cves/ | jq . > db/cves.json
+          ./cves ~/nuclei-templates/cves/ | jq . > db/cves.json
 
       - name: Push resources
         run: |

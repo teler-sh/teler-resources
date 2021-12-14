@@ -21,6 +21,7 @@ jobs:
         run: |
           sudo apt install jq -y
           go get github.com/go-yaml/yaml
+          go get github.com/json-iterator/go
 
       - name: Set up CVEs parser
         run: |

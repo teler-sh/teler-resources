@@ -2,3 +2,4 @@ get-resources.sh
 auto-commit.sh
 cves
 cves.go
+go.*

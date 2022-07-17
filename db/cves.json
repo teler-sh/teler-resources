@@ -12726,6 +12726,21 @@
       ]
     },
     {
+      "id": "CVE-2020-8654",
+      "info": {
+        "name": "EyesOfNetwork 5.3 - Authenticated RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/css/eonweb.css"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-8771",
       "info": {
         "name": "WordPress Time Capsule < 1.21.16 - Authentication Bypass",
@@ -19195,7 +19210,7 @@
       "id": "CVE-2022-35416",
       "info": {
         "name": "H3C SSL VPN through 2022-07-10 - Cookie Based XSS",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {

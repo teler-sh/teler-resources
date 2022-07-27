@@ -269,7 +269,7 @@
     {
       "id": "CVE-2008-5587",
       "info": {
-        "name": "phpPgAdmin 4.2.1 - '_language' Local File Inclusion",
+        "name": "phpPgAdmin <=4.2.1 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -3821,7 +3821,7 @@
     {
       "id": "CVE-2015-4666",
       "info": {
-        "name": "Xceedium Xsuite 2.4.4.5 - Directory Traversal",
+        "name": "Xceedium Xsuite <=2.4.4.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4032,7 +4032,7 @@
     {
       "id": "CVE-2015-7780",
       "info": {
-        "name": "ManageEngine Firewall Analyzer 8.0 - Directory Traversal",
+        "name": "ManageEngine Firewall Analyzer <8.0 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -6366,7 +6366,7 @@
     {
       "id": "CVE-2018-1271",
       "info": {
-        "name": "Spring MVC Directory Traversal Vulnerability",
+        "name": "Spring MVC Framework - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -6418,11 +6418,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -6465,7 +6465,7 @@
     {
       "id": "CVE-2018-13980",
       "info": {
-        "name": "Zeta Producer Desktop CMS 14.2.0 - Arbitrary File Retrieval",
+        "name": "Zeta Producer Desktop CMS <14.2.1 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -6693,7 +6693,7 @@
     {
       "id": "CVE-2018-16059",
       "info": {
-        "name": "WirelessHART Fieldgate SWG70 3.0 - Directory Traversal",
+        "name": "WirelessHART Fieldgate SWG70 3.0 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -6709,7 +6709,7 @@
     {
       "id": "CVE-2018-16133",
       "info": {
-        "name": "Cybrotech CyBroHttpServer 1.0.3 Directory Traversal",
+        "name": "Cybrotech CyBroHttpServer 1.0.3 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -7039,7 +7039,7 @@
     {
       "id": "CVE-2018-18775",
       "info": {
-        "name": "Cross Site Scripting in Microstrategy Web version 7",
+        "name": "Microstrategy Web 7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7054,7 +7054,7 @@
     {
       "id": "CVE-2018-18777",
       "info": {
-        "name": "Path traversal vulnerability in Microstrategy Web version 7",
+        "name": "Microstrategy Web 7 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -7069,7 +7069,7 @@
     {
       "id": "CVE-2018-18778",
       "info": {
-        "name": "mini_httpd Path Traversal",
+        "name": "ACME mini_httpd <1.30 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -7438,7 +7438,7 @@
     {
       "id": "CVE-2018-2392",
       "info": {
-        "name": "SAP Internet Graphics Server (IGS) XML External Entity",
+        "name": "SAP Internet Graphics Server (IGS) - XML External Entity Injection",
         "severity": "high"
       },
       "requests": [
@@ -7544,7 +7544,7 @@
     {
       "id": "CVE-2018-3714",
       "info": {
-        "name": "node-srv Path Traversal",
+        "name": "node-srv - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -7559,7 +7559,7 @@
     {
       "id": "CVE-2018-3760",
       "info": {
-        "name": "Ruby On Rails Path Traversal",
+        "name": "Ruby On Rails - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7659,7 +7659,7 @@
     {
       "id": "CVE-2018-6008",
       "info": {
-        "name": "Joomla! Component Jtag Members Directory 5.3.7 - Arbitrary File Retrieval",
+        "name": "Joomla! Jtag Members Directory 5.3.7 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -7690,7 +7690,7 @@
     {
       "id": "CVE-2018-6910",
       "info": {
-        "name": "DedeCMS 5.7 path disclosure",
+        "name": "DedeCMS 5.7 - Path Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -8173,7 +8173,7 @@
     {
       "id": "CVE-2019-11013",
       "info": {
-        "name": "Nimble Streamer 3.0.2-2 to 3.5.4-9 - Path Traversal",
+        "name": "Nimble Streamer <=3.5.4-9 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -8434,7 +8434,7 @@
     {
       "id": "CVE-2019-13396",
       "info": {
-        "name": "FlightPath Local File Inclusion",
+        "name": "FlightPath - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -8498,7 +8498,7 @@
     {
       "id": "CVE-2019-14251",
       "info": {
-        "name": "T24 in TEMENOS Channels R15.01 - Pre Authenticated Path Traversal",
+        "name": "T24 Web Server - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9063,7 +9063,7 @@
     {
       "id": "CVE-2019-18393",
       "info": {
-        "name": "Openfire LFI",
+        "name": "Ignite Realtime Openfire <4.42 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -9093,7 +9093,7 @@
     {
       "id": "CVE-2019-18665",
       "info": {
-        "name": "DOMOS 5.5 - Directory Traversal",
+        "name": "DOMOS 5.5 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9347,7 +9347,7 @@
     {
       "id": "CVE-2019-2616",
       "info": {
-        "name": "XXE in Oracle Business Intelligence and XML Publisher",
+        "name": "Oracle Business Intelligence/XML Publisher - XML External Entity Injection",
         "severity": "high"
       },
       "requests": [
@@ -9392,7 +9392,7 @@
     {
       "id": "CVE-2019-2767",
       "info": {
-        "name": "Oracle Business Intelligence - Publisher XXE",
+        "name": "Oracle Business Intelligence Publisher - XML External Entity Injection",
         "severity": "high"
       },
       "requests": [
@@ -9465,7 +9465,7 @@
     {
       "id": "CVE-2019-3799",
       "info": {
-        "name": "Spring-Cloud-Config-Server Directory Traversal",
+        "name": "Spring Cloud Config Server - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -9591,7 +9591,7 @@
     {
       "id": "CVE-2019-6340",
       "info": {
-        "name": "Drupal 8 core RESTful Web Services RCE",
+        "name": "Drupal - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -9650,7 +9650,7 @@
     {
       "id": "CVE-2019-7254",
       "info": {
-        "name": "eMerge E3 1.00-06 - Unauthenticated Directory Traversal",
+        "name": "eMerge E3 1.00-06 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9696,7 +9696,7 @@
     {
       "id": "CVE-2019-7315",
       "info": {
-        "name": "Genie Access WIP3BVAF IP Camera - Directory Traversal",
+        "name": "Genie Access WIP3BVAF IP Camera - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9764,7 +9764,7 @@
     {
       "id": "CVE-2019-8442",
       "info": {
-        "name": "JIRA Directory Traversal",
+        "name": "Jira - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9829,7 +9829,7 @@
     {
       "id": "CVE-2019-8903",
       "info": {
-        "name": "Totaljs - Unauthenticated Directory Traversal",
+        "name": "Totaljs <3.2.3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -9874,7 +9874,7 @@
     {
       "id": "CVE-2019-9041",
       "info": {
-        "name": "ZZZCMS 1.6.1 RCE",
+        "name": "ZZZCMS 1.6.1 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -9951,7 +9951,7 @@
     {
       "id": "CVE-2019-9922",
       "info": {
-        "name": "JE Messenger 1.2.2 Joomla - Directory Traversal",
+        "name": "Joomla! Harmis Messenger 1.2.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10132,7 +10132,7 @@
     {
       "id": "CVE-2020-11455",
       "info": {
-        "name": "LimeSurvey 4.1.11 - Path Traversal",
+        "name": "LimeSurvey 4.1.11 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -10207,7 +10207,7 @@
     {
       "id": "CVE-2020-11738",
       "info": {
-        "name": "WordPress Duplicator plugin Directory Traversal",
+        "name": "WordPress Duplicator 1.3.24 & 1.3.26 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10223,7 +10223,7 @@
     {
       "id": "CVE-2020-11853",
       "info": {
-        "name": "Micro Focus Operation Bridge Manager RCE",
+        "name": "Micro Focus Operations Bridge Manager <=2020.05 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -10268,7 +10268,7 @@
     {
       "id": "CVE-2020-11978",
       "info": {
-        "name": "Apache Airflow <= 1.10.10 - 'Example Dag' Remote Code Execution",
+        "name": "Apache Airflow <=1.10.10 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -10392,7 +10392,7 @@
     {
       "id": "CVE-2020-13158",
       "info": {
-        "name": "Artica Proxy < 4.30.000000 Community Edition - Directory Traversal",
+        "name": "Artica Proxy Community Edition <4.30.000000 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10442,7 +10442,7 @@
     {
       "id": "CVE-2020-13700",
       "info": {
-        "name": "acf-to-rest-api wordpress plugin IDOR",
+        "name": "WordPresss acf-to-rest-api <=3.1.0- Insecure Direct Object Reference",
         "severity": "high"
       },
       "requests": [
@@ -10599,7 +10599,7 @@
     {
       "id": "CVE-2020-14864",
       "info": {
-        "name": "Oracle Fusion - \"getPreviewImage\" Directory Traversal/Local File Inclusion",
+        "name": "Oracle Fusion - Directory Traversal/Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10644,7 +10644,7 @@
     {
       "id": "CVE-2020-15050",
       "info": {
-        "name": "Suprema BioStar2 - Local File Inclusion (LFI)",
+        "name": "Suprema BioStar <2.8.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10766,7 +10766,7 @@
     {
       "id": "CVE-2020-16139",
       "info": {
-        "name": "Cisco 7937G Denial-of-Service Reboot Attack",
+        "name": "Cisco Unified IP Conference Station 7937G - Denial-of-Service",
         "severity": "high"
       },
       "requests": [
@@ -10799,7 +10799,7 @@
     {
       "id": "CVE-2020-16952",
       "info": {
-        "name": "Microsoft SharePoint Server-Side Include (SSI) and ViewState RCE",
+        "name": "Microsoft SharePoint - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -10873,7 +10873,7 @@
     {
       "id": "CVE-2020-17505",
       "info": {
-        "name": "Artica Web Proxy 4.30 OS Command Injection",
+        "name": "Artica Web Proxy 4.30 - OS Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -10903,7 +10903,7 @@
     {
       "id": "CVE-2020-17518",
       "info": {
-        "name": "Apache Flink Upload Path Traversal",
+        "name": "Apache Flink 1.5.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10923,7 +10923,7 @@
     {
       "id": "CVE-2020-17519",
       "info": {
-        "name": "Apache Flink directory traversal",
+        "name": "Apache Flink - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11073,7 +11073,7 @@
     {
       "id": "CVE-2020-2036",
       "info": {
-        "name": "Palo Alto Networks Reflected XSS",
+        "name": "Palo Alto Networks PAN-OS Web Interface - Cross Site-Scripting",
         "severity": "high"
       },
       "requests": [
@@ -11306,7 +11306,7 @@
     {
       "id": "CVE-2020-23972",
       "info": {
-        "name": "Joomla! Component GMapFP 3.5 - Unauthenticated Arbitrary File Upload",
+        "name": "Joomla! Component GMapFP 3.5 - Arbitrary File Upload",
         "severity": "high"
       },
       "requests": [
@@ -11412,7 +11412,7 @@
     {
       "id": "CVE-2020-24571",
       "info": {
-        "name": "NexusDB v4.50.22 Path Traversal",
+        "name": "NexusDB <4.50.23 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11427,7 +11427,7 @@
     {
       "id": "CVE-2020-24579",
       "info": {
-        "name": "D-Link DSL 2888a - Remote Command Execution",
+        "name": "D-Link DSL 2888a - Authentication Bypass/Remote Command Execution",
         "severity": "high"
       },
       "requests": [
@@ -11477,7 +11477,7 @@
     {
       "id": "CVE-2020-24949",
       "info": {
-        "name": "PHPFusion 9.03.50 Remote Code Execution",
+        "name": "PHP-Fusion 9.03.50 - Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -11492,7 +11492,7 @@
     {
       "id": "CVE-2020-25078",
       "info": {
-        "name": "D-Link DCS-2530L Administrator password disclosure",
+        "name": "D-Link DCS-2530L/DCS-2670L  - Administrator Password Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -11580,7 +11580,7 @@
     {
       "id": "CVE-2020-25540",
       "info": {
-        "name": "ThinkAdmin 6 - Arbitrarily File Read (CVE-2020-25540)",
+        "name": "ThinkAdmin 6 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11595,16 +11595,16 @@
     {
       "id": "CVE-2020-25780",
       "info": {
-        "name": "Commvault CommCell Directory Traversal",
+        "name": "Commvault CommCell - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -11631,7 +11631,7 @@
     {
       "id": "CVE-2020-26073",
       "info": {
-        "name": "Cisco SD-WAN vManage Software Directory Traversal",
+        "name": "Cisco SD-WAN vManage Software - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11734,7 +11734,7 @@
     {
       "id": "CVE-2020-27191",
       "info": {
-        "name": "LionWiki 3.2.11 - LFI",
+        "name": "LionWiki <3.2.12 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11749,7 +11749,7 @@
     {
       "id": "CVE-2020-27361",
       "info": {
-        "name": "Akkadian Provisioning Manager - Files Listing",
+        "name": "Akkadian Provisioning Manager 4.50.02 - Sensitive Information Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -11764,7 +11764,7 @@
     {
       "id": "CVE-2020-27467",
       "info": {
-        "name": "Processwire CMS < 2.7.1 - Directory Traversal",
+        "name": "Processwire CMS <2.7.1 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -11794,7 +11794,7 @@
     {
       "id": "CVE-2020-27866",
       "info": {
-        "name": "NETGEAR Authentication Bypass vulnerability",
+        "name": "NETGEAR - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -11823,7 +11823,7 @@
     {
       "id": "CVE-2020-27986",
       "info": {
-        "name": "SonarQube unauth",
+        "name": "SonarQube - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -12008,7 +12008,7 @@
     {
       "id": "CVE-2020-3452",
       "info": {
-        "name": "Cisco Adaptive Security Appliance (ASA) and Firepower Threat Defense (FTD) - Arbitrary File Retrieval",
+        "name": "Cisco Adaptive Security Appliance (ASA)/Firepower Threat Defense (FTD) - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -12361,7 +12361,7 @@
     {
       "id": "CVE-2020-5284",
       "info": {
-        "name": "Next.js .next/ limited path traversal",
+        "name": "Next.js <9.3.2 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -12390,7 +12390,7 @@
     {
       "id": "CVE-2020-5405",
       "info": {
-        "name": "Spring Cloud Directory Traversal",
+        "name": "Spring Cloud Config - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -12761,7 +12761,7 @@
     {
       "id": "CVE-2020-8193",
       "info": {
-        "name": "Citrix unauthenticated LFI",
+        "name": "Citrix  - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -13511,7 +13511,7 @@
     {
       "id": "CVE-2021-21402",
       "info": {
-        "name": "Jellyfin prior to 10.7.0 Unauthenticated Arbitrary File Read",
+        "name": "Jellyfin <10.7.0 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -13851,7 +13851,7 @@
     {
       "id": "CVE-2021-23241",
       "info": {
-        "name": "Mercury Router Web Server Directory Traversal",
+        "name": "MERCUSYS Mercury X18G 1.0.5 Router - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -14778,7 +14778,7 @@
     {
       "id": "CVE-2021-26085",
       "info": {
-        "name": "Confluence Pre-Authorization Arbitrary File Read in /s/ endpoint - CVE-2021-26085",
+        "name": "Atlassian Confluence Server - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -14793,7 +14793,7 @@
     {
       "id": "CVE-2021-26086",
       "info": {
-        "name": "Jira Limited Local File Read",
+        "name": "Atlassian Jira Limited -  Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -15136,7 +15136,7 @@
     {
       "id": "CVE-2021-28149",
       "info": {
-        "name": "Hongdian Directory Traversal",
+        "name": "Hongdian H8922 3.0.5 Devices - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -15166,7 +15166,7 @@
     {
       "id": "CVE-2021-28151",
       "info": {
-        "name": "Hongdian Command Injection",
+        "name": "Hongdian H8922 3.0.5 - Remote Command Injection",
         "severity": "high"
       },
       "requests": [
@@ -15212,7 +15212,7 @@
     {
       "id": "CVE-2021-28377",
       "info": {
-        "name": "ChronoForums 2.0.11 - Directory Traversal",
+        "name": "Joomla! ChronoForums 2.0.11 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -15259,7 +15259,7 @@
     {
       "id": "CVE-2021-28937",
       "info": {
-        "name": "Acexy Wireless-N WiFi Repeater Password Disclosure",
+        "name": "Acexy Wireless-N WiFi Repeater REV 1.0 - Repeater Password Disclosure",
         "severity": "high"
       },
       "requests": [
@@ -15321,7 +15321,7 @@
     {
       "id": "CVE-2021-29442",
       "info": {
-        "name": "Nacos prior to 1.4.1 Missing Authentication Check",
+        "name": "Nacos <1.4.1 - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -15500,7 +15500,7 @@
     {
       "id": "CVE-2021-30497",
       "info": {
-        "name": "Ivanti Avalanche Directory Traversal",
+        "name": "Ivanti Avalanche 6.3.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15612,7 +15612,7 @@
     {
       "id": "CVE-2021-31602",
       "info": {
-        "name": "Pentaho <= 9.1 Authentication Bypass of Spring APIs",
+        "name": "Hitachi Vantara Pentaho/Business Intelligence Server - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -15731,7 +15731,7 @@
     {
       "id": "CVE-2021-3223",
       "info": {
-        "name": "Node RED Dashboard - Directory Traversal",
+        "name": "Node RED Dashboard <2.26.2 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -15946,7 +15946,7 @@
     {
       "id": "CVE-2021-3374",
       "info": {
-        "name": "Rstudio Shiny Server Directory Traversal",
+        "name": "Rstudio Shiny Server <1.5.16 - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -16296,7 +16296,7 @@
     {
       "id": "CVE-2021-36749",
       "info": {
-        "name": "Apache Druid Authentication Restrictions Bypass",
+        "name": "Apache Druid - Local File Inclusion",
         "severity": "medium"
       },
       "requests": [
@@ -17040,7 +17040,7 @@
     {
       "id": "CVE-2021-41569",
       "info": {
-        "name": "SAS 9.4 build 1520 - Local File Inclusion",
+        "name": "SAS/Internet 9.4 1520 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -18158,7 +18158,7 @@
     {
       "id": "CVE-2022-0656",
       "info": {
-        "name": "uDraw < 3.3.3 - Unauthenticated Arbitrary File Access",
+        "name": "uDraw <3.3.3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -18195,6 +18195,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php/interact.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0870",
+      "info": {
+        "name": "Gogs - SSRF",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}"
           ]
         }
       ]
@@ -18781,7 +18796,7 @@
     {
       "id": "CVE-2022-24129",
       "info": {
-        "name": "Shibboleth OIDC OP plugin <3.0.4 - Server-Side Request Forgery",
+        "name": "Shibboleth OIDC OP <3.0.4 - Server-Side Request Forgery",
         "severity": "high"
       },
       "requests": [
@@ -19064,7 +19079,7 @@
     {
       "id": "CVE-2022-26233",
       "info": {
-        "name": "Barco Control Room Management Suite - Directory Traversal",
+        "name": "Barco Control Room Management Suite <=2.9 Build 0275 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -19124,7 +19139,7 @@
     {
       "id": "CVE-2022-27849",
       "info": {
-        "name": "WordPress Simple Ajax Chat plugin <= 20220115 - Sensitive Information Disclosure vulnerability",
+        "name": "WordPress Simple Ajax Chat <20220116 - Sensitive Information Disclosure vulnerability",
         "severity": "high"
       },
       "requests": [
@@ -19153,7 +19168,7 @@
     {
       "id": "CVE-2022-28079",
       "info": {
-        "name": "College Management System - SQL Injection",
+        "name": "College Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -19231,7 +19246,7 @@
     {
       "id": "CVE-2022-29014",
       "info": {
-        "name": "Razer Sila Gaming Router v2.0.441_api-2.0.418 - LFI",
+        "name": "Razer Sila Gaming Router 2.0.441_api-2.0.418 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -19245,7 +19260,7 @@
     {
       "id": "CVE-2022-29298",
       "info": {
-        "name": "SolarView Compact 6.00 - Directory Traversal",
+        "name": "SolarView Compact 6.00 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -19440,7 +19455,7 @@
     {
       "id": "CVE-2022-31268",
       "info": {
-        "name": "Gitblit 1.9.3 - Path traversal",
+        "name": "Gitblit 1.9.3 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -19515,7 +19530,7 @@
     {
       "id": "CVE-2022-32409",
       "info": {
-        "name": "i3geo - Directory Traversal",
+        "name": "Portal do Software Publico Brasileiro i3geo 7.0.5 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -19545,7 +19560,7 @@
     {
       "id": "CVE-2022-33174",
       "info": {
-        "name": "Powertek Firmware - Authorization Bypass",
+        "name": "Powertek Firmware <3.30.30 - Authorization Bypass",
         "severity": "high"
       },
       "requests": [

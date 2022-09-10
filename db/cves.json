@@ -2341,7 +2341,7 @@
     {
       "id": "CVE-2011-4618",
       "info": {
-        "name": "Advanced Text Widget < 2.0.2 - Reflected Cross-Site Scripting",
+        "name": "Advanced Text Widget < 2.0.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2356,7 +2356,7 @@
     {
       "id": "CVE-2011-4624",
       "info": {
-        "name": "GRAND FlAGallery 1.57 - Reflected Cross-Site Scripting",
+        "name": "GRAND FlAGallery 1.57 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2386,7 +2386,7 @@
     {
       "id": "CVE-2011-4926",
       "info": {
-        "name": "Adminimize 1.7.22 - Reflected Cross-Site Scripting",
+        "name": "Adminimize 1.7.22 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2401,7 +2401,7 @@
     {
       "id": "CVE-2011-5106",
       "info": {
-        "name": "WordPress Plugin Flexible Custom Post Type < 0.1.7 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Flexible Custom Post Type < 0.1.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2416,7 +2416,7 @@
     {
       "id": "CVE-2011-5107",
       "info": {
-        "name": "Alert Before Your Post <= 0.1.1 - Reflected Cross-Site Scripting",
+        "name": "Alert Before Your Post <= 0.1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2431,7 +2431,7 @@
     {
       "id": "CVE-2011-5179",
       "info": {
-        "name": "Skysa App Bar 1.04 - Reflected Cross-Site Scripting",
+        "name": "Skysa App Bar 1.04 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2446,7 +2446,7 @@
     {
       "id": "CVE-2011-5181",
       "info": {
-        "name": "ClickDesk Live Support Live Chat 2.0 - Reflected Cross-Site Scripting",
+        "name": "ClickDesk Live Support Live Chat 2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2461,7 +2461,7 @@
     {
       "id": "CVE-2011-5265",
       "info": {
-        "name": "Featurific For WordPress 1.6.2 - Reflected Cross-Site Scripting",
+        "name": "Featurific For WordPress 1.6.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2506,7 +2506,7 @@
     {
       "id": "CVE-2012-0901",
       "info": {
-        "name": "YouSayToo auto-publishing 1.0 - Reflected Cross-Site Scripting",
+        "name": "YouSayToo auto-publishing 1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2595,7 +2595,7 @@
     {
       "id": "CVE-2012-1835",
       "info": {
-        "name": "WordPress Plugin All-in-One Event Calendar 1.4 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin All-in-One Event Calendar 1.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2610,7 +2610,7 @@
     {
       "id": "CVE-2012-2371",
       "info": {
-        "name": "WP-FaceThumb 0.1 - Reflected Cross-Site Scripting",
+        "name": "WP-FaceThumb 0.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2641,7 +2641,7 @@
     {
       "id": "CVE-2012-4242",
       "info": {
-        "name": "WordPress Plugin MF Gig Calendar 0.9.2 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin MF Gig Calendar 0.9.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2671,7 +2671,7 @@
     {
       "id": "CVE-2012-4273",
       "info": {
-        "name": "2 Click Socialmedia Buttons < 0.34 - Reflected Cross Site Scripting",
+        "name": "2 Click Socialmedia Buttons < 0.34 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2702,7 +2702,7 @@
     {
       "id": "CVE-2012-4768",
       "info": {
-        "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Download Monitor < 3.3.5.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2732,7 +2732,7 @@
     {
       "id": "CVE-2012-4889",
       "info": {
-        "name": "ManageEngine Firewall Analyzer 7.2 - Reflected Cross Site Scripting",
+        "name": "ManageEngine Firewall Analyzer 7.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2763,7 +2763,7 @@
     {
       "id": "CVE-2012-5913",
       "info": {
-        "name": "WordPress Integrator 1.32 - Reflected Cross-Site Scripting",
+        "name": "WordPress Integrator 1.32 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2828,7 +2828,7 @@
     {
       "id": "CVE-2013-2287",
       "info": {
-        "name": "WordPress Plugin Uploader 1.0.4 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Uploader 1.0.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2843,7 +2843,7 @@
     {
       "id": "CVE-2013-3526",
       "info": {
-        "name": "WordPress Plugin Traffic Analyzer - 'aoid' Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Traffic Analyzer - 'aoid' Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2882,7 +2882,7 @@
     {
       "id": "CVE-2013-4117",
       "info": {
-        "name": "WordPress Plugin Category Grid View Gallery 2.3.1 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Category Grid View Gallery 2.3.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -2897,7 +2897,7 @@
     {
       "id": "CVE-2013-4625",
       "info": {
-        "name": "WordPress Plugin Duplicator < 0.4.5 - Reflected Cross-Site Scripting",
+        "name": "WordPress Plugin Duplicator < 0.4.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3175,7 +3175,7 @@
     {
       "id": "CVE-2014-4513",
       "info": {
-        "name": "ActiveHelper LiveHelp Server 3.1.0 - Reflected Cross-Site Scripting",
+        "name": "ActiveHelper LiveHelp Server 3.1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3190,7 +3190,7 @@
     {
       "id": "CVE-2014-4535",
       "info": {
-        "name": "Import Legacy Media <= 0.1 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Import Legacy Media <= 0.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3205,7 +3205,7 @@
     {
       "id": "CVE-2014-4536",
       "info": {
-        "name": "Infusionsoft Gravity Forms Add-on < 1.5.7 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Infusionsoft Gravity Forms Add-on < 1.5.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3220,7 +3220,7 @@
     {
       "id": "CVE-2014-4539",
       "info": {
-        "name": "Movies <= 0.6 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Movies <= 0.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3235,7 +3235,7 @@
     {
       "id": "CVE-2014-4544",
       "info": {
-        "name": "Podcast Channels < 0.28 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Podcast Channels < 0.28 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3250,7 +3250,7 @@
     {
       "id": "CVE-2014-4550",
       "info": {
-        "name": "Shortcode Ninja <= 1.4 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Shortcode Ninja <= 1.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3265,7 +3265,7 @@
     {
       "id": "CVE-2014-4558",
       "info": {
-        "name": "WooCommerce Swipe <= 2.7.1 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "WooCommerce Swipe <= 2.7.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3280,7 +3280,7 @@
     {
       "id": "CVE-2014-4561",
       "info": {
-        "name": "Ultimate Weather Plugin <= 1.0 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Ultimate Weather Plugin <= 1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3295,7 +3295,7 @@
     {
       "id": "CVE-2014-4592",
       "info": {
-        "name": "WP Planet <= 0.1 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "WP Planet <= 0.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3472,7 +3472,7 @@
     {
       "id": "CVE-2014-9094",
       "info": {
-        "name": "WordPress DZS-VideoGallery Plugin Reflected Cross-Site Scripting",
+        "name": "WordPress DZS-VideoGallery Plugin Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3502,7 +3502,7 @@
     {
       "id": "CVE-2014-9444",
       "info": {
-        "name": "Frontend Uploader <= 0.9.2 - Unauthenticated Cross-Site Scripting",
+        "name": "Frontend Uploader <= 0.9.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -4581,7 +4581,7 @@
     {
       "id": "CVE-2016-1000141",
       "info": {
-        "name": "WordPress Page Layout builder v1.9.3 - Reflected Cross-Site Scripting",
+        "name": "WordPress Page Layout builder v1.9.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -5480,7 +5480,7 @@
     {
       "id": "CVE-2017-14651",
       "info": {
-        "name": "WSO2 Data Analytics Server 3.1.0 - Reflected Cross-Site Scripting",
+        "name": "WSO2 Data Analytics Server 3.1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6431,7 +6431,7 @@
     {
       "id": "CVE-2018-11709",
       "info": {
-        "name": "WordPress wpForo Forum <= 1.4.11 - Reflected Cross-Site Scripting",
+        "name": "WordPress wpForo Forum <= 1.4.11 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10017,7 +10017,7 @@
     {
       "id": "CVE-2019-7255",
       "info": {
-        "name": "Linear eMerge E3 - Cross Site Scripting",
+        "name": "Linear eMerge E3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10850,7 +10850,7 @@
     {
       "id": "CVE-2020-13258",
       "info": {
-        "name": "Contentful - Reflected XSS",
+        "name": "Contentful - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -10878,7 +10878,7 @@
     {
       "id": "CVE-2020-13483",
       "info": {
-        "name": "Bitrix24 through 20.0.0 allows XSS",
+        "name": "Bitrix24 through 20.0.0 allows Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -11280,7 +11280,7 @@
     {
       "id": "CVE-2020-17362",
       "info": {
-        "name": "Nova Lite < 1.3.9 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "Nova Lite < 1.3.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12083,9 +12083,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -14615,7 +14615,7 @@
     {
       "id": "CVE-2021-24276",
       "info": {
-        "name": "Contact Form by Supsystic < 1.7.15 - Reflected Cross-Site scripting (XSS)",
+        "name": "Contact Form by Supsystic < 1.7.15 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14693,7 +14693,7 @@
     {
       "id": "CVE-2021-24291",
       "info": {
-        "name": "Photo Gallery < 1.5.69 - Multiple Reflected Cross-Site Scripting (XSS)",
+        "name": "Photo Gallery < 1.5.69 - Multiple Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -14708,7 +14708,7 @@
     {
       "id": "CVE-2021-24298",
       "info": {
-        "name": "Simple Giveaways < 2.36.2 - Reflected Cross-Site Scripting (XSS)",
+        "name": "Simple Giveaways < 2.36.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15004,7 +15004,7 @@
     {
       "id": "CVE-2021-24746",
       "info": {
-        "name": "WordPress Sassy Social Share Plugin - Reflected XSS",
+        "name": "WordPress Sassy Social Share Plugin - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15245,7 +15245,7 @@
     {
       "id": "CVE-2021-25055",
       "info": {
-        "name": "WordPress FeedWordPress < 2022.0123 - Authenticated Reflected Cross-Site Scripting",
+        "name": "WordPress FeedWordPress < 2022.0123 - Authenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15306,7 +15306,7 @@
     {
       "id": "CVE-2021-25085",
       "info": {
-        "name": "WOOF WordPress plugin - Reflected Cross-Site Scripting",
+        "name": "WOOF WordPress plugin - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15336,7 +15336,7 @@
     {
       "id": "CVE-2021-25112",
       "info": {
-        "name": "WHMCS Bridge < 6.4b - Cross-Site Scripting (XSS)",
+        "name": "WHMCS Bridge < 6.4b - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16288,7 +16288,7 @@
     {
       "id": "CVE-2021-31682",
       "info": {
-        "name": "WebCTRL OEM <= 6.5 Reflected Cross-Site Scripting",
+        "name": "WebCTRL OEM <= 6.5 Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16803,7 +16803,7 @@
     {
       "id": "CVE-2021-35265",
       "info": {
-        "name": "MaxSite CMS XSS",
+        "name": "MaxSite CMS Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16868,7 +16868,7 @@
     {
       "id": "CVE-2021-35488",
       "info": {
-        "name": "Thruk 2.40-2 - Cross Site Scripting",
+        "name": "Thruk 2.40-2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17063,7 +17063,7 @@
     {
       "id": "CVE-2021-37573",
       "info": {
-        "name": "Tiny Java Web Server - Reflected Cross-Site Scripting",
+        "name": "Tiny Java Web Server - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17201,7 +17201,7 @@
     {
       "id": "CVE-2021-38704",
       "info": {
-        "name": "ClinicCases 7.3.3 Reflected Cross-Site Scripting",
+        "name": "ClinicCases 7.3.3 Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17294,7 +17294,7 @@
     {
       "id": "CVE-2021-39320",
       "info": {
-        "name": "WordPress underConstruction Plugin< 1.19 - Reflected Cross-Site Scripting",
+        "name": "WordPress underConstruction Plugin< 1.19 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17309,7 +17309,7 @@
     {
       "id": "CVE-2021-39322",
       "info": {
-        "name": "WordPress Easy Social Icons Plugin < 3.0.9 - Reflected Cross-Site Scripting",
+        "name": "WordPress Easy Social Icons Plugin < 3.0.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17340,7 +17340,7 @@
     {
       "id": "CVE-2021-39350",
       "info": {
-        "name": "FV Flowplayer Video Player WordPress plugin  - Authenticated Reflected Cross-Site Scripting",
+        "name": "FV Flowplayer Video Player WordPress plugin  - Authenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17462,7 +17462,7 @@
     {
       "id": "CVE-2021-40542",
       "info": {
-        "name": "Opensis-Classic 8.0 - Reflected Cross-Site Scripting",
+        "name": "Opensis-Classic 8.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17701,7 +17701,7 @@
     {
       "id": "CVE-2021-41349",
       "info": {
-        "name": "Microsoft Exchange Server Pre-Auth POST Based Reflected Cross-Site Scripting",
+        "name": "Microsoft Exchange Server Pre-Auth POST Based Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17730,7 +17730,7 @@
     {
       "id": "CVE-2021-41467",
       "info": {
-        "name": "JustWriting  -  Reflected Cross-Site Scripting",
+        "name": "JustWriting  -  Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17852,7 +17852,7 @@
     {
       "id": "CVE-2021-41878",
       "info": {
-        "name": "i-Panel Administration System - Reflected Cross-Site Scripting",
+        "name": "i-Panel Administration System - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17881,7 +17881,7 @@
     {
       "id": "CVE-2021-41951",
       "info": {
-        "name": "Resourcespace - Reflected Cross-Site Scripting",
+        "name": "Resourcespace - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17986,7 +17986,7 @@
     {
       "id": "CVE-2021-42551",
       "info": {
-        "name": "NetBiblio WebOPAC - Reflected Cross-Site Scripting",
+        "name": "NetBiblio WebOPAC - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18002,7 +18002,7 @@
     {
       "id": "CVE-2021-42565",
       "info": {
-        "name": "myfactory FMS  -  Reflected Cross-Site Scripting",
+        "name": "myfactory FMS  -  Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18018,7 +18018,7 @@
     {
       "id": "CVE-2021-42566",
       "info": {
-        "name": "myfactory FMS  -  Reflected Cross-Site Scripting",
+        "name": "myfactory FMS  -  Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18034,7 +18034,7 @@
     {
       "id": "CVE-2021-42567",
       "info": {
-        "name": "Apereo CAS Reflected Cross-Site Scripting",
+        "name": "Apereo CAS Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18063,7 +18063,7 @@
     {
       "id": "CVE-2021-42663",
       "info": {
-        "name": "Online Event Booking and Reservation System version 2.3.0 - Cross Site Scripting",
+        "name": "Online Event Booking and Reservation System version 2.3.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18093,7 +18093,7 @@
     {
       "id": "CVE-2021-43062",
       "info": {
-        "name": "Fortinet FortiMail 7.0.1 - Reflected Cross-Site Scripting",
+        "name": "Fortinet FortiMail 7.0.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18153,7 +18153,7 @@
     {
       "id": "CVE-2021-43574",
       "info": {
-        "name": "Atmail Hosting Webserver 6.5.0 - Cross-site scripting",
+        "name": "Atmail Hosting Webserver 6.5.0 - Cross-Site scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18215,7 +18215,7 @@
     {
       "id": "CVE-2021-43810",
       "info": {
-        "name": "Admidio - Reflected Cross-Site Scripting",
+        "name": "Admidio - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18437,7 +18437,7 @@
     {
       "id": "CVE-2021-45380",
       "info": {
-        "name": "AppCMS - Reflected Cross-Site Scripting",
+        "name": "AppCMS - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18530,7 +18530,7 @@
     {
       "id": "CVE-2021-46068",
       "info": {
-        "name": "Vehicle Service Management System - Stored Cross Site Scripting",
+        "name": "Vehicle Service Management System - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18546,7 +18546,7 @@
     {
       "id": "CVE-2021-46069",
       "info": {
-        "name": "Vehicle Service Management System - Stored Cross Site Scripting",
+        "name": "Vehicle Service Management System - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18562,7 +18562,7 @@
     {
       "id": "CVE-2021-46071",
       "info": {
-        "name": "Vehicle Service Management System - Stored Cross Site Scripting",
+        "name": "Vehicle Service Management System - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18594,7 +18594,7 @@
     {
       "id": "CVE-2021-46073",
       "info": {
-        "name": "Vehicle Service Management System - Cross Site Scripting",
+        "name": "Vehicle Service Management System - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18731,7 +18731,7 @@
     {
       "id": "CVE-2022-0149",
       "info": {
-        "name": "WooCommerce Stored Exporter WordPress Plugin < 2.7.1 - Reflected Cross-Site Scripting",
+        "name": "WooCommerce Stored Exporter WordPress Plugin < 2.7.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18746,7 +18746,7 @@
     {
       "id": "CVE-2022-0150",
       "info": {
-        "name": "WP Accessibility Helper (WAH) < 0.6.0.7 - Cross-Site Scripting (XSS)",
+        "name": "WP Accessibility Helper (WAH) < 0.6.0.7 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18776,7 +18776,7 @@
     {
       "id": "CVE-2022-0189",
       "info": {
-        "name": "WordPress RSS Aggregator < 4.20 - Authenticated Reflected Cross-Site Scripting",
+        "name": "WordPress RSS Aggregator < 4.20 - Authenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18791,7 +18791,7 @@
     {
       "id": "CVE-2022-0201",
       "info": {
-        "name": "WordPress Permalink Manager < 2.2.15 - Reflected Cross-Site Scripting",
+        "name": "WordPress Permalink Manager < 2.2.15 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18806,7 +18806,7 @@
     {
       "id": "CVE-2022-0208",
       "info": {
-        "name": "WordPress Plugin MapPress < 2.73.4 - Reflected XSS",
+        "name": "WordPress Plugin MapPress < 2.73.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18836,7 +18836,7 @@
     {
       "id": "CVE-2022-0220",
       "info": {
-        "name": "WordPress GDPR & CCPA < 1.9.27 - Unauthenticated Reflected Cross-Site Scripting",
+        "name": "WordPress GDPR & CCPA < 1.9.27 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18851,7 +18851,7 @@
     {
       "id": "CVE-2022-0271",
       "info": {
-        "name": "LearnPress < 4.1.6 - Reflected Cross-Site Scripting",
+        "name": "LearnPress < 4.1.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18881,7 +18881,7 @@
     {
       "id": "CVE-2022-0288",
       "info": {
-        "name": "Ad Inserter < 2.7.10 - Reflected Cross-Site Scripting",
+        "name": "Ad Inserter < 2.7.10 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18916,7 +18916,7 @@
     {
       "id": "CVE-2022-0378",
       "info": {
-        "name": "Microweber Reflected Cross-Site Scripting",
+        "name": "Microweber Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18931,7 +18931,7 @@
     {
       "id": "CVE-2022-0381",
       "info": {
-        "name": "WordPress Plugin Embed Swagger 1.0.0 - Reflected XSS",
+        "name": "WordPress Plugin Embed Swagger 1.0.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18946,7 +18946,7 @@
     {
       "id": "CVE-2022-0422",
       "info": {
-        "name": "WordPress White Label MS < 2.2.9 - Reflected Cross-Site Scripting",
+        "name": "WordPress White Label MS < 2.2.9 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19066,7 +19066,7 @@
     {
       "id": "CVE-2022-0595",
       "info": {
-        "name": "Drag and Drop Multiple File Upload - Contact Form 7 < 1.3.6.3 - Unauthenticated Stored XSS",
+        "name": "Drag and Drop Multiple File Upload - Contact Form 7 < 1.3.6.3 - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19081,7 +19081,7 @@
     {
       "id": "CVE-2022-0599",
       "info": {
-        "name": "Mapping Multiple URLs Redirect Same Page <= 5.8 - Reflected Cross-Site Scripting",
+        "name": "Mapping Multiple URLs Redirect Same Page <= 5.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19155,7 +19155,7 @@
     {
       "id": "CVE-2022-0776",
       "info": {
-        "name": "RevealJS postMessage XSS",
+        "name": "RevealJS postMessage Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19185,7 +19185,7 @@
     {
       "id": "CVE-2022-0928",
       "info": {
-        "name": "Microweber - Cross-site Scripting",
+        "name": "Microweber - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19217,7 +19217,7 @@
     {
       "id": "CVE-2022-0954",
       "info": {
-        "name": "Microweber - Cross-site Scripting",
+        "name": "Microweber - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19327,7 +19327,7 @@
     {
       "id": "CVE-2022-1221",
       "info": {
-        "name": "Gwyn's Imagemap Selector <= 0.3.3 - Reflected Cross-Site Scripting",
+        "name": "Gwyn's Imagemap Selector <= 0.3.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19418,7 +19418,7 @@
     {
       "id": "CVE-2022-1439",
       "info": {
-        "name": "Microweber Reflected Cross-Site Scripting",
+        "name": "Microweber Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19433,7 +19433,7 @@
     {
       "id": "CVE-2022-1597",
       "info": {
-        "name": "WPQA < 5.4 - Reflected Cross-Site Scripting",
+        "name": "WPQA < 5.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19491,7 +19491,7 @@
     {
       "id": "CVE-2022-1724",
       "info": {
-        "name": "Simple Membership < 4.1.1 - Reflected Cross-Site Scripting",
+        "name": "Simple Membership < 4.1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19520,7 +19520,7 @@
     {
       "id": "CVE-2022-1904",
       "info": {
-        "name": "Easy Pricing Tables < 3.2.1 - Reflected Cross-Site-Scripting",
+        "name": "Easy Pricing Tables < 3.2.1 - Cross-Site-Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19535,7 +19535,7 @@
     {
       "id": "CVE-2022-1906",
       "info": {
-        "name": "Copyright Proof <= 4.16 - Reflected Cross-Site-Scripting",
+        "name": "Copyright Proof <= 4.16 - Cross-Site-Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19549,7 +19549,7 @@
     {
       "id": "CVE-2022-1937",
       "info": {
-        "name": "Awin Data Feed <= 1.6 - Reflected Cross-Site Scripting",
+        "name": "Awin Data Feed <= 1.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19564,7 +19564,7 @@
     {
       "id": "CVE-2022-1946",
       "info": {
-        "name": "Gallery < 2.0.0 - Reflected Cross-Site Scripting",
+        "name": "Gallery < 2.0.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19627,7 +19627,7 @@
     {
       "id": "CVE-2022-2187",
       "info": {
-        "name": "Contact Form 7 Captcha < 0.1.2 - Reflected Cross-Site Scripting",
+        "name": "Contact Form 7 Captcha < 0.1.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19830,6 +19830,21 @@
       ]
     },
     {
+      "id": "CVE-2022-2376",
+      "info": {
+        "name": "Directorist < 7.3.1 - Unauthenticated Email Address Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=directorist_author_pagination"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-23779",
       "info": {
         "name": "Zoho ManageEngine - Internal Hostname Disclosure",
@@ -19952,7 +19967,7 @@
     {
       "id": "CVE-2022-24181",
       "info": {
-        "name": "PKP Open Journals System 3.3 - Cross-Site Scripting (XSS)",
+        "name": "PKP Open Journals System 3.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19996,7 +20011,7 @@
     {
       "id": "CVE-2022-24681",
       "info": {
-        "name": "ManageEngine ADSelfService - Stored XSS",
+        "name": "ManageEngine ADSelfService - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20067,7 +20082,7 @@
     {
       "id": "CVE-2022-24899",
       "info": {
-        "name": "Contao 4.13.2 - Cross-Site Scripting (XSS)",
+        "name": "Contao 4.13.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20249,7 +20264,7 @@
     {
       "id": "CVE-2022-26564",
       "info": {
-        "name": "HotelDruid Hotel Management Software 3.0.3 XSS",
+        "name": "HotelDruid Hotel Management Software 3.0.3 Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20357,7 +20372,7 @@
     {
       "id": "CVE-2022-28363",
       "info": {
-        "name": "Reprise License Manager 14.2 - Reflected Cross-Site Scripting",
+        "name": "Reprise License Manager 14.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20538,7 +20553,7 @@
     {
       "id": "CVE-2022-29301",
       "info": {
-        "name": "SolarView Compact 6.00 - 'pow' Cross-Site Scripting (XSS)",
+        "name": "SolarView Compact 6.00 - 'pow' Cross-Site Scripting",
         "severity": "high"
       },
       "requests": [
@@ -20567,7 +20582,7 @@
     {
       "id": "CVE-2022-29349",
       "info": {
-        "name": "kkFileView v4.0.0 - Cross Site Scripting",
+        "name": "kkFileView v4.0.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20597,7 +20612,7 @@
     {
       "id": "CVE-2022-29455",
       "info": {
-        "name": "Wordpress Elementor <= 3.5.5 - DOM-based Reflected Cross-Site Scripting",
+        "name": "Wordpress Elementor <= 3.5.5 - DOM-based Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20627,7 +20642,7 @@
     {
       "id": "CVE-2022-29548",
       "info": {
-        "name": "WSO2 Management Console - Reflected XSS",
+        "name": "WSO2 Management Console - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20659,7 +20674,7 @@
     {
       "id": "CVE-2022-30489",
       "info": {
-        "name": "Wavlink Wn535g3 - POST XSS",
+        "name": "Wavlink Wn535g3 - POST Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20687,7 +20702,7 @@
     {
       "id": "CVE-2022-30776",
       "info": {
-        "name": "Atmail - Cross Site Scripting",
+        "name": "Atmail - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20702,7 +20717,7 @@
     {
       "id": "CVE-2022-30777",
       "info": {
-        "name": "Parallels H-Sphere - Cross Site Scripting",
+        "name": "Parallels H-Sphere - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20762,7 +20777,7 @@
     {
       "id": "CVE-2022-31373",
       "info": {
-        "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
+        "name": "SolarView Compact 6.00 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20807,7 +20822,7 @@
     {
       "id": "CVE-2022-31798",
       "info": {
-        "name": "Nortek Linear eMerge E3-Series - XSS",
+        "name": "Nortek Linear eMerge E3-Series - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20986,7 +21001,7 @@
     {
       "id": "CVE-2022-32195",
       "info": {
-        "name": "Open edX - Cross-site Scripting",
+        "name": "Open edX - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21031,7 +21046,7 @@
     {
       "id": "CVE-2022-32770",
       "info": {
-        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "name": "WWBN AVideo 11.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21046,7 +21061,7 @@
     {
       "id": "CVE-2022-32771",
       "info": {
-        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "name": "WWBN AVideo 11.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21061,7 +21076,7 @@
     {
       "id": "CVE-2022-32772",
       "info": {
-        "name": "WWBN AVideo 11.6 - Cross Site Scripting",
+        "name": "WWBN AVideo 11.6 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21146,7 +21161,7 @@
     {
       "id": "CVE-2022-34048",
       "info": {
-        "name": "Wavlink WN533A8 - Cross-Site Scripting (XSS)",
+        "name": "Wavlink WN533A8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21174,7 +21189,7 @@
     {
       "id": "CVE-2022-34328",
       "info": {
-        "name": "PMB 7.3.10 - Cross Site Scripting",
+        "name": "PMB 7.3.10 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21204,7 +21219,7 @@
     {
       "id": "CVE-2022-35151",
       "info": {
-        "name": "kkFileView v4.1.0 - Cross Site Scripting",
+        "name": "kkFileView v4.1.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21232,7 +21247,7 @@
     {
       "id": "CVE-2022-35416",
       "info": {
-        "name": "H3C SSL VPN through 2022-07-10 - Cookie Based XSS",
+        "name": "H3C SSL VPN through 2022-07-10 - Cookie Based Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21246,7 +21261,7 @@
     {
       "id": "CVE-2022-35493",
       "info": {
-        "name": "eShop - Cross-site Scripting",
+        "name": "eShop - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21307,7 +21322,7 @@
     {
       "id": "CVE-2022-37153",
       "info": {
-        "name": "Artica Proxy - Cross Site Scripting",
+        "name": "Artica Proxy - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21321,7 +21336,7 @@
     {
       "id": "CVE-2022-38463",
       "info": {
-        "name": "ServiceNow - Cross Site Scripting",
+        "name": "ServiceNow - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

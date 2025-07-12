@@ -10,14 +10,14 @@ This collection serves as the primary repository of external resources/datasets 
 | -------------------- | --------- |
 | Common Web Attack    | 76      |
 | CVEs                 | 3122      |
-| Bad IP Address       | 24444      |
+| Bad IP Address       | 25089      |
 | Bad Referrer         | 7104      |
 | Bad Crawler          | 1417      |
 | Directory Bruteforce | 5365      |
-|       **Total**      | **41528**      |
+|       **Total**      | **42173**      |
 
 > [!NOTE]
-> Last updated at **Fri Jul 11 01:03:34 UTC 2025**.
+> Last updated at **Sat Jul 12 01:05:04 UTC 2025**.
 
 ## Contributions
 

@@ -1,0 +1,17 @@
+name: Deploy waf.teler.app
+
+on:
+  workflow_run:
+    workflows: ["Update resources database"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Call Deploy Hook
+        env:
+          HOOK_URL: ${{ secrets.TELER_WAF_DEMO_DEPLOY_HOOK_URL }}
+        run: curl "${HOOK_URL}"

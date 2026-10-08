@@ -43,6 +43,11 @@ jobs:
           wget -qP /tmp "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt" &
           wait
           sort -u /tmp/bad-ip-addresses.list /tmp/3.txt > "db/bad-ip-addresses.txt"
+          # Wikimedia's citation services are wanted clients, not threats
+          # (https://wikitech.wikimedia.org/wiki/Citoid/Allowlisting). Crawler-Detect
+          # lists them because it answers "is this a crawler", not "is this hostile".
+          grep -vxE 'Citoid|ZoteroTranslationServer' "db/bad-crawlers.txt" > "db/bad-crawlers.txt.filtered"
+          mv "db/bad-crawlers.txt.filtered" "db/bad-crawlers.txt"
 
       - name: Convert CVEs resources
         run: python .github/scripts/convert-cves.py

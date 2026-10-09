@@ -1,0 +1,7 @@
+13f732cc4f1e38bbb9f1bd5fd9102b1f  bad-crawlers.txt
+f62651d52fc8cc9e06483309343a9cad  bad-ip-addresses.txt
+474a67d488e6bed8baad5dab6d217848  bad-referrers.txt
+394f8e08f61e118f284f899558f6629f  common-web-attacks.json
+bc1bd66d7faf90111ef062792fe2066b  cves.json
+65364d94c758402b1c4ece992bb0f303  db.tar.zst
+44e31c4d78139aef463e6c22f50a3cc6  directory-bruteforces.txt

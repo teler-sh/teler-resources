@@ -1,0 +1,4 @@
+get-resources.sh
+auto-commit.sh
+cves.go
+go.*

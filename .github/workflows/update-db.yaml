@@ -1,0 +1,69 @@
+name: "Update resources database"
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+
+      - name: Configure Git
+        env:
+          USER: "ghost"
+          HOST: "users.noreply.github.com"
+        run: |
+          git config --local user.email "${USER}@${HOST}"
+          git config --local user.name "${USER}"
+
+      - name: Filtering branch (rm DB history)
+        env:
+          FILTER_BRANCH_SQUELCH_WARNING: "1"
+        run: git filter-branch --index-filter "git rm --cached --ignore-unmatch -r db/" $GITHUB_REF
+
+      - name: Install dependencies
+        run: sudo apt install jq zstd tar wget -y
+
+      - name: Downloading latest nuclei-templates
+        run: wget -q https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/main.zip && unzip main.zip
+        working-directory: "/tmp"
+
+      - name: Downloading other resources
+        run: |
+          mkdir -p db
+          wget -q "https://raw.githubusercontent.com/Bo0oM/fuzz.txt/master/fuzz.txt" -O "db/directory-bruteforces.txt" &
+          wget -q "https://raw.githubusercontent.com/dwisiswant0/cwa-filter-rules/master/dist/filters.json" -O "db/common-web-attacks.json" &
+          wget -q "https://raw.githubusercontent.com/JayBizzle/Crawler-Detect/master/raw/Crawlers.txt" -O "db/bad-crawlers.txt" &
+          wget -q "https://raw.githubusercontent.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker/master/_generator_lists/bad-referrers.list" -O "db/bad-referrers.txt" &
+          wget -qP /tmp "https://raw.githubusercontent.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker/master/_generator_lists/bad-ip-addresses.list" &
+          wget -qP /tmp "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt" &
+          wait
+          sort -u /tmp/bad-ip-addresses.list /tmp/3.txt > "db/bad-ip-addresses.txt"
+
+      - name: Convert CVEs resources
+        run: python .github/scripts/convert-cves.py
+
+      - name: Build DB
+        env:
+          DB: "db.tar.zst"
+        working-directory: "db/"
+        run: rm -f *.zst MD5SUMS; tar -cf - * | zstd -o "${DB}"; md5sum * > MD5SUMS
+
+      - name: Generate README
+        env:
+          STATS_TABLE_TMPL: ${{ vars.STATS_TABLE_TMPL }}
+        run: bash .github/scripts/generate-readme.sh | tee README.md
+
+      - name: Push resources
+        run: |
+          COMMIT_MSG="build: "
+          [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && COMMIT_MSG+="[force] "
+          COMMIT_MSG+="Update DB [$(date)]"
+
+          git add .
+          git commit -m "${COMMIT_MSG}"
+          git push origin master -f

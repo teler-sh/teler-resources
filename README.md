@@ -9,15 +9,15 @@ This collection serves as the primary repository of external resources/datasets 
 |     **Datasets**     | **Count** |
 | -------------------- | --------- |
 | Common Web Attack    | 76      |
-| CVEs                 | 4695      |
-| Bad IP Address       | 22167      |
+| CVEs                 | 4708      |
+| Bad IP Address       | 22298      |
 | Bad Referrer         | 7116      |
 | Bad Crawler          | 1741      |
 | Directory Bruteforce | 5384      |
-|       **Total**      | **41179**      |
+|       **Total**      | **41323**      |
 
 > [!NOTE]
-> Last updated at **Fri Nov 27 05:57:27 UTC 2026**.
+> Last updated at **Sat Nov 28 05:38:58 UTC 2026**.
 
 ## Contributions
 
